@@ -34,6 +34,10 @@ def extract_customer_name(sender):
         return match.group(1).strip().strip('"')
     return sender
 
+@app.route('/health')
+def health():
+    return jsonify({'status': 'ok'}), 200
+
 @app.route('/')
 def index():
     service = get_service()

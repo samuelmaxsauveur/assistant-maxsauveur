@@ -3,6 +3,6 @@ builder = "nixpacks"
 
 [deploy]
 startCommand = "gunicorn app:app -c gunicorn.conf.py"
-healthcheckPath = "/"
+healthcheckPath = "/health"
 healthcheckTimeout = 300
 restartPolicyType = "on_failure"
