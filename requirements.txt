@@ -1,0 +1,10 @@
+Flask==3.1.3
+python-dotenv==1.2.1
+anthropic==0.86.0
+google-auth-oauthlib==1.3.0
+google-auth-httplib2==0.3.0
+google-api-python-client==2.193.0
+requests==2.32.5
+playwright==1.58.0
+APScheduler==3.10.4
+pytz==2024.1
