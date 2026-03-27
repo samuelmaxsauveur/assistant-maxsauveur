@@ -16,6 +16,8 @@ def get_gmail_service():
     # Sur Railway : token stocké dans la variable d'environnement GMAIL_TOKEN_JSON
     token_env = os.getenv('GMAIL_TOKEN_JSON')
     if token_env:
+        import re
+        token_env = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]', '', token_env)
         creds = Credentials.from_authorized_user_info(json.loads(token_env), SCOPES)
     elif os.path.exists('token.json'):
         creds = Credentials.from_authorized_user_file('token.json', SCOPES)
