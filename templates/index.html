@@ -94,11 +94,7 @@
                                 <span class="value">{{ item.order.created_at }}</span>
                             </div>
                             <div class="row">
-                                <span class="label">Total</span>
-                                <span class="value">{{ item.order.total }}</span>
-                            </div>
-                            <div class="row">
-                                <span class="label">Livraison</span>
+                                <span class="label">Statut</span>
                                 <span class="value">
                                     {% if item.order.fulfillment_status == 'fulfilled' %}
                                         <span class="badge badge-green">Expédié</span>
@@ -115,8 +111,33 @@
                                 <a href="{{ item.order.tracking_url }}" target="_blank" class="tracking-link">Voir le suivi →</a>
                             </div>
                             {% endif %}
-                            <div style="margin-top:8px; font-size:13px; color:#555;">
-                                {{ item.order.products | map(attribute='name') | join(', ') }}
+                            <div style="margin-top:10px; border-top:1px solid #eee; padding-top:10px;">
+                                {% for p in item.order.products %}
+                                <div style="margin-bottom:6px;">
+                                    <div style="display:flex; justify-content:space-between;">
+                                        <span style="font-size:13px; color:#333;">{{ p.name }} ×{{ p.qty }}</span>
+                                        <span style="font-size:13px; font-weight:500;">{{ "%.2f"|format(p.total) }} {{ item.order.currency }}</span>
+                                    </div>
+                                    {% if p.discount > 0 %}
+                                    <div style="display:flex; justify-content:space-between; color:#b45309; font-size:12px;">
+                                        <span>Remise</span>
+                                        <span>-{{ "%.2f"|format(p.discount) }} {{ item.order.currency }}</span>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                {% endfor %}
+                                {% if item.order.shipping > 0 %}
+                                <div style="display:flex; justify-content:space-between; font-size:13px; color:#666; margin-top:4px;">
+                                    <span>Livraison</span>
+                                    <span>{{ "%.2f"|format(item.order.shipping) }} {{ item.order.currency }}</span>
+                                </div>
+                                {% else %}
+                                <div style="font-size:12px; color:#888; margin-top:4px;">Livraison offerte</div>
+                                {% endif %}
+                                <div style="display:flex; justify-content:space-between; font-weight:600; font-size:14px; border-top:1px solid #eee; margin-top:8px; padding-top:8px;">
+                                    <span>Total</span>
+                                    <span>{{ item.order.total }}</span>
+                                </div>
                             </div>
                         </div>
                         {% else %}

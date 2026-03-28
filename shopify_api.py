@@ -42,5 +42,17 @@ def format_order(order):
         'customer_email': order.get('email', ''),
         'tracking_number': tracking_number,
         'tracking_url': tracking_url,
-        'products': [{'name': item['name'], 'qty': item['quantity']} for item in order.get('line_items', [])]
+        'currency': order.get('currency', 'EUR'),
+        'shipping': float(order.get('total_shipping_price_set', {}).get('shop_money', {}).get('amount', 0)),
+        'discount_total': float(order.get('total_discounts', 0)),
+        'products': [
+            {
+                'name': item['name'],
+                'qty': item['quantity'],
+                'price': float(item.get('price', 0)),
+                'total': float(item.get('price', 0)) * item['quantity'],
+                'discount': sum(float(d.get('amount', 0)) for d in item.get('discount_allocations', [])),
+            }
+            for item in order.get('line_items', [])
+        ],
     }
