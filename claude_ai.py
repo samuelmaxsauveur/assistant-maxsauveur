@@ -80,7 +80,7 @@ def generate_response(email_body, email_subject, customer_name, order_info=None)
 
 
 def answer_question(email_body, email_subject, customer_name, order_info, question):
-    """Samuel asks a question about how to handle this email. Claude answers and returns an updated draft."""
+    """Samuel asks a question about how to handle this email. Returns dict with samuel_answer and updated_draft."""
     context = _build_context(email_body, email_subject, customer_name, order_info)
     prompt = f"""Voici un email de support client :
 
@@ -88,23 +88,31 @@ def answer_question(email_body, email_subject, customer_name, order_info, questi
 
 ---
 
-Samuel (le responsable) te pose la question suivante :
+Samuel (le responsable) te demande :
 {question}
 
-Réponds d'abord à la question de Samuel en 2-3 phrases, puis propose une nouvelle réponse complète à envoyer au client, en tenant compte de sa question.
+Réponds en JSON strict avec exactement ces deux champs :
+{{
+  "samuel_answer": "ta réponse à Samuel en 2-3 phrases (explication, conseil)",
+  "updated_draft": "la réponse COMPLÈTE à envoyer au client, tenant compte de la demande de Samuel"
+}}
 
-Format :
-[RÉPONSE À SAMUEL]
-...ta réponse à Samuel...
+Réponds UNIQUEMENT avec le JSON, rien d'autre."""
 
-[BROUILLON MIS À JOUR]
-...la réponse complète à envoyer au client..."""
-
-    return _call_claude(
+    raw = _call_claude(
         system=get_system_prompt(),
         messages=[{"role": "user", "content": prompt}],
         max_tokens=1500
     )
+    try:
+        # Extract JSON even if Claude adds surrounding text
+        match = re.search(r'\{[\s\S]*\}', raw)
+        if match:
+            return json.loads(match.group())
+    except Exception:
+        pass
+    # Fallback: treat entire response as the updated draft
+    return {"samuel_answer": "", "updated_draft": raw}
 
 
 def generate_daily_summary(drafts_today, questions_today=None, rejections_today=None):

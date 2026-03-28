@@ -138,15 +138,8 @@ def ask():
         order_info,
         data['question']
     )
-    # Split response into Samuel's answer and updated draft
-    samuel_answer = ''
-    updated_draft = ''
-    if '[RÉPONSE À SAMUEL]' in result and '[BROUILLON MIS À JOUR]' in result:
-        parts = result.split('[BROUILLON MIS À JOUR]')
-        samuel_answer = parts[0].replace('[RÉPONSE À SAMUEL]', '').strip()
-        updated_draft = parts[1].strip()
-    else:
-        updated_draft = result
+    samuel_answer = result.get('samuel_answer', '')
+    updated_draft = result.get('updated_draft', '')
 
     # Save this exchange for daily learning
     try:
