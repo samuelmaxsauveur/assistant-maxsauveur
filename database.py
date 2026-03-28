@@ -40,6 +40,14 @@ def init_db():
                 processed_at TIMESTAMP NOT NULL
             )
         """)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS daily_summaries (
+                id          INTEGER PRIMARY KEY AUTOINCREMENT,
+                date        TEXT NOT NULL,
+                summary     TEXT NOT NULL,
+                created_at  TIMESTAMP NOT NULL
+            )
+        """)
         conn.commit()
     finally:
         conn.close()
@@ -191,6 +199,47 @@ def is_processed(email_id):
             "SELECT 1 FROM processed_emails WHERE email_id = ?", (email_id,)
         )
         return cursor.fetchone() is not None
+    finally:
+        conn.close()
+
+
+def save_daily_summary(date, summary_text):
+    """Save a daily summary for a given date (YYYY-MM-DD)."""
+    now = datetime.utcnow().isoformat()
+    conn = get_connection()
+    try:
+        conn.execute(
+            "INSERT INTO daily_summaries (date, summary, created_at) VALUES (?, ?, ?)",
+            (date, summary_text, now)
+        )
+        conn.commit()
+    finally:
+        conn.close()
+
+
+def get_recent_summaries(days=14):
+    """Return the last N days of daily summaries, most recent first."""
+    conn = get_connection()
+    try:
+        cursor = conn.execute(
+            "SELECT date, summary FROM daily_summaries ORDER BY created_at DESC LIMIT ?",
+            (days,)
+        )
+        return [dict(row) for row in cursor.fetchall()]
+    finally:
+        conn.close()
+
+
+def get_today_drafts():
+    """Return all drafts created today (UTC date)."""
+    today = datetime.utcnow().strftime("%Y-%m-%d")
+    conn = get_connection()
+    try:
+        cursor = conn.execute(
+            "SELECT * FROM pending_drafts WHERE created_at LIKE ? ORDER BY created_at ASC",
+            (f"{today}%",)
+        )
+        return [dict(row) for row in cursor.fetchall()]
     finally:
         conn.close()
 

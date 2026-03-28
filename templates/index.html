@@ -150,6 +150,14 @@
                                 <button type="button" class="btn btn-secondary" onclick="this.closest('.card').remove()">Ignorer</button>
                             </div>
                         </form>
+                        <div style="margin-top:20px; border-top: 1px solid #f0f0f0; padding-top:16px;">
+                            <div class="section-title">Demander à Claude</div>
+                            <textarea id="question-{{ item.email.id }}" placeholder="Ex: Le client dit que son colis est bloqué depuis 10 jours, que lui répondre ?" style="width:100%; border:1px solid #e0e0e0; border-radius:8px; padding:12px; font-size:14px; font-family:inherit; min-height:80px; resize:vertical; outline:none; margin-bottom:8px;"></textarea>
+                            <div style="display:flex; gap:8px; align-items:flex-start;">
+                                <button type="button" class="btn btn-secondary" onclick="askClaude('{{ item.email.id }}')">Demander</button>
+                                <div id="samuel-answer-{{ item.email.id }}" style="font-size:13px; color:#555; line-height:1.5; flex:1; display:none; background:#f9f9f9; border-radius:6px; padding:10px;"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -232,6 +240,34 @@ async function generateResponse(id) {
         textarea.value = 'Erreur. Réessaie.';
     }
     btn.textContent = 'Régénérer';
+    btn.disabled = false;
+}
+
+async function askClaude(id) {
+    const question = document.getElementById('question-' + id).value.trim();
+    if (!question) return;
+    const btn = event.target;
+    btn.textContent = 'En cours...';
+    btn.disabled = true;
+    try {
+        const res = await fetch('/ask', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({...emailData[id], question})
+        });
+        const data = await res.json();
+        if (data.samuel_answer) {
+            const answerDiv = document.getElementById('samuel-answer-' + id);
+            answerDiv.style.display = 'block';
+            answerDiv.textContent = data.samuel_answer;
+        }
+        if (data.updated_draft) {
+            document.getElementById('textarea-' + id).value = data.updated_draft;
+        }
+    } catch(e) {
+        alert('Erreur. Réessaie.');
+    }
+    btn.textContent = 'Demander';
     btn.disabled = false;
 }
 

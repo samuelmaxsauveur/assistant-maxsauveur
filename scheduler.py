@@ -195,6 +195,23 @@ def send_morning_report():
         print(f"[{datetime.now()}] Error sending morning report: {e}")
 
 
+def generate_and_save_daily_summary():
+    print(f"[{datetime.now()}] Generating daily summary...")
+    try:
+        paris_tz = pytz.timezone("Europe/Paris")
+        today_date = datetime.now(paris_tz).strftime("%Y-%m-%d")
+        drafts_today = database.get_today_drafts()
+        if not drafts_today:
+            print(f"[{datetime.now()}] No drafts today, skipping summary.")
+            return
+        summary_text = claude_ai.generate_daily_summary(drafts_today)
+        if summary_text:
+            database.save_daily_summary(today_date, summary_text)
+            print(f"[{datetime.now()}] Daily summary saved for {today_date}.")
+    except Exception as e:
+        print(f"[{datetime.now()}] Error generating daily summary: {e}")
+
+
 if __name__ == "__main__":
     paris_tz = pytz.timezone("Europe/Paris")
 
@@ -214,6 +231,13 @@ if __name__ == "__main__":
         send_morning_report,
         CronTrigger(hour=6, minute=0, timezone=paris_tz),
         id="morning_report"
+    )
+
+    # Generate daily summary every day at 20:00 Paris time
+    scheduler.add_job(
+        generate_and_save_daily_summary,
+        CronTrigger(hour=20, minute=0, timezone=paris_tz),
+        id="daily_summary"
     )
 
     scheduler.start()

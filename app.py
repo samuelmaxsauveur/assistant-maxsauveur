@@ -45,7 +45,7 @@ def index():
     gmail_error = None
     try:
         service = get_service()
-        emails = gmail_helper.get_unread_emails(service, max_results=2)
+        emails = gmail_helper.get_unread_emails(service, max_results=20)
     except Exception as e:
         gmail_error = str(e)
         return render_template('index.html', emails=[], pending_count=pending_count, gmail_error=gmail_error)
@@ -94,6 +94,30 @@ def generate():
         order_info
     )
     return jsonify({'response': suggested})
+
+@app.route('/ask', methods=['POST'])
+def ask():
+    data = request.json
+    customer_name = extract_customer_name(data['sender'])
+    order_info = data.get('order')
+    result = claude_ai.answer_question(
+        data['body'],
+        data['subject'],
+        customer_name,
+        order_info,
+        data['question']
+    )
+    # Split response into Samuel's answer and updated draft
+    samuel_answer = ''
+    updated_draft = ''
+    if '[RÉPONSE À SAMUEL]' in result and '[BROUILLON MIS À JOUR]' in result:
+        parts = result.split('[BROUILLON MIS À JOUR]')
+        samuel_answer = parts[0].replace('[RÉPONSE À SAMUEL]', '').strip()
+        updated_draft = parts[1].strip()
+    else:
+        updated_draft = result
+    return jsonify({'samuel_answer': samuel_answer, 'updated_draft': updated_draft})
+
 
 @app.route('/send', methods=['POST'])
 def send():

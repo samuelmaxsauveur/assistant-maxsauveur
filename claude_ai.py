@@ -1,10 +1,11 @@
 import os
 import re
+import json
 import time
 import anthropic
 from knowledge_base import KNOWLEDGE_BASE
 
-SYSTEM_PROMPT = f"""Tu es John, du service client de Max Sauveur.
+BASE_SYSTEM_PROMPT = f"""Tu es John, du service client de Max Sauveur.
 
 Ton style :
 - Friendly et professionnel, mais naturel et humain. Jamais pompeux ni administratif.
@@ -18,11 +19,24 @@ Si tu as des infos de commande disponibles, utilise-les pour personnaliser ta r�
 
 {KNOWLEDGE_BASE}"""
 
-def generate_response(email_body, email_subject, customer_name, order_info=None):
-    client = anthropic.Anthropic(api_key=os.getenv('ANTHROPIC_API_KEY'))
 
+def get_system_prompt():
+    """Build SYSTEM_PROMPT dynamically, injecting recent daily summaries."""
+    try:
+        import database
+        summaries = database.get_recent_summaries(days=14)
+        if summaries:
+            summary_block = "\n\n--- RÉSUMÉS DES JOURS PRÉCÉDENTS (référence) ---\n"
+            for s in reversed(summaries):
+                summary_block += f"\n[{s['date']}]\n{s['summary']}\n"
+            return BASE_SYSTEM_PROMPT + summary_block
+    except Exception:
+        pass
+    return BASE_SYSTEM_PROMPT
+
+
+def _build_context(email_body, email_subject, customer_name, order_info=None):
     context = f"Email de : {customer_name}\nSujet : {email_subject}\n\nContenu :\n{email_body}"
-
     if order_info:
         context += f"\n\n--- Infos commande ---"
         context += f"\nNuméro : {order_info['number']}"
@@ -36,24 +50,92 @@ def generate_response(email_body, email_subject, customer_name, order_info=None)
             context += f"\nLien suivi : {order_info['tracking_url']}"
         items_str = ', '.join([f"{i['name']} x{i['qty']}" for i in order_info['products']])
         context += f"\nArticles : {items_str}"
+    return context
 
+
+def _call_claude(system, messages, max_tokens=1024):
+    client = anthropic.Anthropic(api_key=os.getenv('ANTHROPIC_API_KEY'))
     for attempt in range(3):
         try:
             message = client.messages.create(
                 model="claude-sonnet-4-6",
-                max_tokens=1024,
-                system=SYSTEM_PROMPT,
-                messages=[{
-                    "role": "user",
-                    "content": f"Rédige une réponse à cet email de support :\n\n{context}"
-                }]
+                max_tokens=max_tokens,
+                system=system,
+                messages=messages
             )
             return message.content[0].text
         except anthropic.APIStatusError as e:
             if attempt < 2:
                 time.sleep(3)
                 continue
-            return f"⚠️ Erreur API Claude ({e.status_code}). Rafraîchis la page."
+            raise e
+
+
+def generate_response(email_body, email_subject, customer_name, order_info=None):
+    context = _build_context(email_body, email_subject, customer_name, order_info)
+    return _call_claude(
+        system=get_system_prompt(),
+        messages=[{"role": "user", "content": f"Rédige une réponse à cet email de support :\n\n{context}"}]
+    )
+
+
+def answer_question(email_body, email_subject, customer_name, order_info, question):
+    """Samuel asks a question about how to handle this email. Claude answers and returns an updated draft."""
+    context = _build_context(email_body, email_subject, customer_name, order_info)
+    prompt = f"""Voici un email de support client :
+
+{context}
+
+---
+
+Samuel (le responsable) te pose la question suivante :
+{question}
+
+Réponds d'abord à la question de Samuel en 2-3 phrases, puis propose une nouvelle réponse complète à envoyer au client, en tenant compte de sa question.
+
+Format :
+[RÉPONSE À SAMUEL]
+...ta réponse à Samuel...
+
+[BROUILLON MIS À JOUR]
+...la réponse complète à envoyer au client..."""
+
+    return _call_claude(
+        system=get_system_prompt(),
+        messages=[{"role": "user", "content": prompt}],
+        max_tokens=1500
+    )
+
+
+def generate_daily_summary(drafts_today):
+    """Generate a summary of the day's emails and responses for future reference."""
+    if not drafts_today:
+        return None
+
+    drafts_text = ""
+    for d in drafts_today:
+        intent = d.get('intent', 'other')
+        drafts_text += f"\n- Sujet: {d['subject']} | Intent: {intent} | Statut: {d['status']}\n  Réponse: {d['draft_response'][:200]}...\n"
+
+    prompt = f"""Voici les emails traités aujourd'hui par le service client Max Sauveur :
+
+{drafts_text}
+
+Génère un résumé TRÈS concis (max 300 mots) structuré ainsi :
+1. Types de questions reçues aujourd'hui
+2. Réponses types données (ce qui a bien marché)
+3. Points d'attention / cas particuliers à retenir pour les prochains jours
+
+Ce résumé servira de référence pour répondre aux futurs emails."""
+
+    client = anthropic.Anthropic(api_key=os.getenv('ANTHROPIC_API_KEY'))
+    message = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=500,
+        messages=[{"role": "user", "content": prompt}]
+    )
+    return message.content[0].text
+
 
 def detect_intent(email_body, email_subject):
     """Détecte l'intention principale de l'email."""
@@ -81,10 +163,10 @@ Réponds UNIQUEMENT avec le JSON, rien d'autre."""
         }]
     )
     try:
-        import json
         return json.loads(message.content[0].text.strip())
     except:
         return {"intent": "other", "address": None, "has_full_address": False}
+
 
 def extract_order_number(text):
     patterns = [
