@@ -40,10 +40,16 @@ def health():
 
 @app.route('/')
 def index():
-    service = get_service()
-    emails = gmail_helper.get_unread_emails(service, max_results=2)
     processed = []
     pending_count = len(database.get_pending_drafts())
+    gmail_error = None
+    try:
+        service = get_service()
+        emails = gmail_helper.get_unread_emails(service, max_results=2)
+    except Exception as e:
+        gmail_error = str(e)
+        return render_template('index.html', emails=[], pending_count=pending_count, gmail_error=gmail_error)
+
     for email in emails:
         order_number = claude_ai.extract_order_number(email['body'] + ' ' + email['subject'])
         order_info = None

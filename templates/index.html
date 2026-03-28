@@ -49,6 +49,11 @@
         <a href="/wing">+ Créer envoi Wing</a>
     </header>
     <div class="container">
+        {% if gmail_error %}
+            <div style="background:#fee2e2;border:1px solid #fca5a5;border-radius:8px;padding:16px;margin-bottom:20px;color:#991b1b;font-size:14px;">
+                ⚠️ Erreur Gmail : {{ gmail_error }}
+            </div>
+        {% endif %}
         {% if emails %}
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
     <p style="color:#888; font-size:14px; margin:0;">{{ emails|length }} email(s) non lu(s) affiché(s)</p>
