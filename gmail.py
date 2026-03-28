@@ -13,15 +13,18 @@ from googleapiclient.discovery import build
 SCOPES = ['https://www.googleapis.com/auth/gmail.modify']
 
 
-def _clean(s):
-    # Remove ALL Unicode control/format characters (category C*) — covers ASCII C0, C1, and beyond
-    return ''.join(c for c in s if unicodedata.category(c)[0] != 'C')
-
-
 def _load_token_data():
     token_env = os.getenv('GMAIL_TOKEN_JSON')
     if token_env:
-        return json.loads(_clean(token_env))
+        try:
+            # Try base64 decode first (new format, avoids Railway encoding issues)
+            decoded = base64.b64decode(token_env.strip()).decode('utf-8')
+            return json.loads(decoded)
+        except Exception:
+            pass
+        # Fallback: try raw JSON with aggressive cleaning
+        cleaned = ''.join(c for c in token_env if unicodedata.category(c)[0] != 'C')
+        return json.loads(cleaned)
     if os.path.exists('token.json'):
         with open('token.json') as f:
             return json.load(f)
