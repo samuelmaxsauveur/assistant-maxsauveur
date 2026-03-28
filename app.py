@@ -34,6 +34,23 @@ def extract_customer_name(sender):
         return match.group(1).strip().strip('"')
     return sender
 
+def resolve_sender(sender, body):
+    """If sender is a noreply/form address, extract real customer email and name from the body."""
+    raw_email = extract_email_address(sender)
+    customer_name = extract_customer_name(sender)
+
+    if re.search(r'noreply|no-reply|donotreply', raw_email, re.IGNORECASE):
+        # Extract email from form body (e.g. "E-mail : kevin@example.com")
+        email_match = re.search(r'e-?mail\s*:\s*([a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,})', body, re.IGNORECASE)
+        if email_match:
+            raw_email = email_match.group(1).strip()
+        # Extract name from form body (e.g. "Nom : Kevin Peschot")
+        name_match = re.search(r'nom\s*:\s*(.+)', body, re.IGNORECASE)
+        if name_match:
+            customer_name = name_match.group(1).strip()
+
+    return raw_email, customer_name
+
 @app.route('/health')
 def health():
     return jsonify({'status': 'ok'}), 200
@@ -55,8 +72,10 @@ def index():
         order_info = None
         if order_number:
             order_info = shopify_api.get_order_by_number(order_number)
+        # Résoudre l'email et le nom réels (gère les formulaires noreply)
+        sender_email, customer_name = resolve_sender(email['sender'], email['body'])
+
         if not order_info:
-            sender_email = extract_email_address(email['sender'])
             orders = shopify_api.get_orders_by_email(sender_email)
             if orders:
                 order_info = orders[0]
@@ -67,7 +86,6 @@ def index():
             intent_data = {"intent": "other", "address": None, "has_full_address": False}
 
         # Générer la réponse directement (pré-remplissage du champ)
-        customer_name = extract_customer_name(email['sender'])
         try:
             draft_response = claude_ai.generate_response(
                 email['body'], email['subject'], customer_name, order_info
@@ -78,7 +96,7 @@ def index():
         processed.append({
             'email': email,
             'order': order_info,
-            'sender_email': extract_email_address(email['sender']),
+            'sender_email': sender_email,
             'intent': intent_data,
             'draft_response': draft_response
         })
