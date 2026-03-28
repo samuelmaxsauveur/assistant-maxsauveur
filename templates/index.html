@@ -215,6 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
 const emailData = {
     {% for item in emails %}
     "{{ item.email.id }}": {
+        email_id: {{ item.email.id | tojson }},
         body: {{ item.email.body | tojson }},
         subject: {{ item.email.subject | tojson }},
         sender: {{ item.email.sender | tojson }},

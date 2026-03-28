@@ -61,20 +61,31 @@ def validate(token):
     ), 200
 
 
-@validation.route('/reject/<token>')
+@validation.route('/reject/<token>', methods=['GET', 'POST'])
 def reject(token):
     draft = database.get_draft_by_token(token)
 
     if not draft:
         return render_page("⚠️", "Lien invalide", "Ce lien de rejet n'existe pas."), 404
 
-    database.reject_draft(token)
+    if request.method == 'POST':
+        comment = request.form.get('comment', '').strip() or None
+        database.reject_draft(token, comment=comment)
+        return render_page("❌", "Draft rejeté", "L'email n'a pas été envoyé." + (f"<br><br>Commentaire enregistré : <em>{comment}</em>" if comment else "")), 200
 
-    return render_page(
-        "❌",
-        "Draft rejeté",
-        "L'email n'a pas été envoyé."
-    ), 200
+    # GET: show rejection form with optional comment
+    subject = draft.get('subject', '')
+    customer = draft.get('customer_name', draft.get('customer_email', ''))
+    return f"""{HTML_WRAPPER_START}
+<h1>❌</h1>
+<h2>Rejeter ce draft ?</h2>
+<p style="margin-bottom:16px;">Client : <strong>{customer}</strong> — {subject}</p>
+<form method="POST" style="text-align:left;">
+    <label style="font-size:15px;color:#555;display:block;margin-bottom:8px;">Pourquoi ce rejet ? (optionnel, aide Claude à s'améliorer)</label>
+    <textarea name="comment" rows="3" style="width:100%;padding:10px;font-size:14px;border:1px solid #ddd;border-radius:6px;font-family:inherit;resize:vertical;" placeholder="Ex: La réponse ne mentionne pas le délai de livraison..."></textarea>
+    <button type="submit" style="margin-top:12px;padding:10px 24px;background:#dc2626;color:white;border:none;border-radius:6px;font-size:15px;cursor:pointer;">Confirmer le rejet</button>
+</form>
+{HTML_WRAPPER_END}""", 200
 
 
 @validation.route('/dashboard')

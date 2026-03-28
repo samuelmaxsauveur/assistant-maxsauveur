@@ -107,9 +107,9 @@ Format :
     )
 
 
-def generate_daily_summary(drafts_today):
-    """Generate a summary of the day's emails and responses for future reference."""
-    if not drafts_today:
+def generate_daily_summary(drafts_today, questions_today=None, rejections_today=None):
+    """Generate a summary of the day's emails, questions and corrections for future reference."""
+    if not drafts_today and not questions_today and not rejections_today:
         return None
 
     drafts_text = ""
@@ -117,14 +117,27 @@ def generate_daily_summary(drafts_today):
         intent = d.get('intent', 'other')
         drafts_text += f"\n- Sujet: {d['subject']} | Intent: {intent} | Statut: {d['status']}\n  Réponse: {d['draft_response'][:200]}...\n"
 
+    questions_text = ""
+    if questions_today:
+        questions_text = "\n\n--- CORRECTIONS ET QUESTIONS DE SAMUEL ---\n"
+        for q in questions_today:
+            questions_text += f"\nEmail: {q.get('subject', '')} ({q.get('customer_name', '')})\nQuestion de Samuel: {q['question']}\nRéponse Claude: {q['claude_answer'][:300]}\n"
+
+    rejections_text = ""
+    if rejections_today:
+        rejections_text = "\n\n--- BROUILLONS REJETÉS AVEC COMMENTAIRES ---\n"
+        for r in rejections_today:
+            rejections_text += f"\nEmail: {r.get('subject', '')} ({r.get('customer_name', '')})\nCommentaire: {r['rejection_comment']}\n"
+
     prompt = f"""Voici les emails traités aujourd'hui par le service client Max Sauveur :
 
-{drafts_text}
+{drafts_text}{questions_text}{rejections_text}
 
-Génère un résumé TRÈS concis (max 300 mots) structuré ainsi :
+Génère un résumé TRÈS concis (max 400 mots) structuré ainsi :
 1. Types de questions reçues aujourd'hui
 2. Réponses types données (ce qui a bien marché)
-3. Points d'attention / cas particuliers à retenir pour les prochains jours
+3. Corrections apportées par Samuel (ce qu'il faut améliorer)
+4. Points d'attention à retenir pour les prochains jours
 
 Ce résumé servira de référence pour répondre aux futurs emails."""
 

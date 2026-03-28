@@ -201,10 +201,12 @@ def generate_and_save_daily_summary():
         paris_tz = pytz.timezone("Europe/Paris")
         today_date = datetime.now(paris_tz).strftime("%Y-%m-%d")
         drafts_today = database.get_today_drafts()
-        if not drafts_today:
-            print(f"[{datetime.now()}] No drafts today, skipping summary.")
+        questions_today = database.get_today_questions()
+        rejections_today = database.get_today_rejections()
+        if not drafts_today and not questions_today and not rejections_today:
+            print(f"[{datetime.now()}] Nothing to summarize today, skipping.")
             return
-        summary_text = claude_ai.generate_daily_summary(drafts_today)
+        summary_text = claude_ai.generate_daily_summary(drafts_today, questions_today, rejections_today)
         if summary_text:
             database.save_daily_summary(today_date, summary_text)
             print(f"[{datetime.now()}] Daily summary saved for {today_date}.")

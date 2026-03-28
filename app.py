@@ -126,7 +126,10 @@ def generate():
 @app.route('/ask', methods=['POST'])
 def ask():
     data = request.json
-    customer_name = extract_customer_name(data['sender'])
+    sender = data.get('sender', '')
+    customer_name, _ = resolve_sender(sender, data.get('body', ''))
+    if customer_name == sender:
+        customer_name = extract_customer_name(sender)
     order_info = data.get('order')
     result = claude_ai.answer_question(
         data['body'],
@@ -144,6 +147,20 @@ def ask():
         updated_draft = parts[1].strip()
     else:
         updated_draft = result
+
+    # Save this exchange for daily learning
+    try:
+        database.save_question_log(
+            email_id=data.get('email_id', ''),
+            subject=data.get('subject', ''),
+            customer_name=customer_name,
+            question=data['question'],
+            claude_answer=samuel_answer or result,
+            updated_draft=updated_draft
+        )
+    except Exception:
+        pass
+
     return jsonify({'samuel_answer': samuel_answer, 'updated_draft': updated_draft})
 
 

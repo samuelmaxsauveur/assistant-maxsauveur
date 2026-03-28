@@ -48,6 +48,23 @@ def init_db():
                 created_at  TIMESTAMP NOT NULL
             )
         """)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS questions_log (
+                id            INTEGER PRIMARY KEY AUTOINCREMENT,
+                email_id      TEXT,
+                subject       TEXT,
+                customer_name TEXT,
+                question      TEXT NOT NULL,
+                claude_answer TEXT NOT NULL,
+                updated_draft TEXT,
+                created_at    TIMESTAMP NOT NULL
+            )
+        """)
+        # Add rejection_comment column if not exists
+        try:
+            cursor.execute("ALTER TABLE pending_drafts ADD COLUMN rejection_comment TEXT")
+        except Exception:
+            pass
         conn.commit()
     finally:
         conn.close()
@@ -160,14 +177,14 @@ def validate_draft(token):
         conn.close()
 
 
-def reject_draft(token):
-    """Set status='rejected' and record the current UTC timestamp."""
+def reject_draft(token, comment=None):
+    """Set status='rejected', record timestamp and optional comment."""
     now = datetime.utcnow().isoformat()
     conn = get_connection()
     try:
         conn.execute(
-            "UPDATE pending_drafts SET status = 'rejected', validated_at = ? WHERE token = ?",
-            (now, token),
+            "UPDATE pending_drafts SET status = 'rejected', validated_at = ?, rejection_comment = ? WHERE token = ?",
+            (now, comment, token),
         )
         conn.commit()
     finally:
@@ -237,6 +254,53 @@ def get_today_drafts():
     try:
         cursor = conn.execute(
             "SELECT * FROM pending_drafts WHERE created_at LIKE ? ORDER BY created_at ASC",
+            (f"{today}%",)
+        )
+        return [dict(row) for row in cursor.fetchall()]
+    finally:
+        conn.close()
+
+
+def save_question_log(email_id, subject, customer_name, question, claude_answer, updated_draft=None):
+    """Save a Samuel→Claude question exchange for learning."""
+    now = datetime.utcnow().isoformat()
+    conn = get_connection()
+    try:
+        conn.execute(
+            """INSERT INTO questions_log
+               (email_id, subject, customer_name, question, claude_answer, updated_draft, created_at)
+               VALUES (?, ?, ?, ?, ?, ?, ?)""",
+            (email_id, subject, customer_name, question, claude_answer, updated_draft, now)
+        )
+        conn.commit()
+    finally:
+        conn.close()
+
+
+def get_today_questions():
+    """Return all question exchanges from today."""
+    today = datetime.utcnow().strftime("%Y-%m-%d")
+    conn = get_connection()
+    try:
+        cursor = conn.execute(
+            "SELECT * FROM questions_log WHERE created_at LIKE ? ORDER BY created_at ASC",
+            (f"{today}%",)
+        )
+        return [dict(row) for row in cursor.fetchall()]
+    finally:
+        conn.close()
+
+
+def get_today_rejections():
+    """Return all rejected drafts from today that have a comment."""
+    today = datetime.utcnow().strftime("%Y-%m-%d")
+    conn = get_connection()
+    try:
+        cursor = conn.execute(
+            """SELECT subject, customer_name, draft_response, rejection_comment
+               FROM pending_drafts
+               WHERE status = 'rejected' AND rejection_comment IS NOT NULL
+               AND validated_at LIKE ?""",
             (f"{today}%",)
         )
         return [dict(row) for row in cursor.fetchall()]
