@@ -134,6 +134,36 @@ def _find_body(payload, mime_type):
     return ''
 
 
+def get_customer_history(service, sender_email, max_results=10):
+    """Fetch recent sent+received emails with a given customer address."""
+    history = []
+    # Emails received from this customer
+    results = service.users().messages().list(
+        userId='me',
+        q=f'from:{sender_email}',
+        maxResults=max_results
+    ).execute()
+    for msg in results.get('messages', []):
+        data = service.users().messages().get(userId='me', id=msg['id'], format='full').execute()
+        parsed = parse_email(data)
+        parsed['direction'] = 'received'
+        history.append(parsed)
+    # Emails sent to this customer
+    results = service.users().messages().list(
+        userId='me',
+        q=f'to:{sender_email}',
+        maxResults=max_results
+    ).execute()
+    for msg in results.get('messages', []):
+        data = service.users().messages().get(userId='me', id=msg['id'], format='full').execute()
+        parsed = parse_email(data)
+        parsed['direction'] = 'sent'
+        history.append(parsed)
+    # Sort by date descending, keep last 6 exchanges
+    history.sort(key=lambda x: x.get('date', ''), reverse=True)
+    return history[:6]
+
+
 def send_email(service, to, subject, body, thread_id=None):
     message = email.mime.text.MIMEText(body, 'plain', 'utf-8')
     message['to'] = to

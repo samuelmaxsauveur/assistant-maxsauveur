@@ -21,21 +21,28 @@ Si tu as des infos de commande disponibles, utilise-les pour personnaliser ta r�
 
 
 def get_system_prompt():
-    """Build SYSTEM_PROMPT dynamically, injecting recent daily summaries."""
+    """Build SYSTEM_PROMPT dynamically, injecting summaries and saved processes."""
     try:
         import database
+        extra = ""
         summaries = database.get_recent_summaries(days=14)
         if summaries:
-            summary_block = "\n\n--- RÉSUMÉS DES JOURS PRÉCÉDENTS (référence) ---\n"
+            extra += "\n\n--- RÉSUMÉS DES JOURS PRÉCÉDENTS (référence) ---\n"
             for s in reversed(summaries):
-                summary_block += f"\n[{s['date']}]\n{s['summary']}\n"
-            return BASE_SYSTEM_PROMPT + summary_block
+                extra += f"\n[{s['date']}]\n{s['summary']}\n"
+        processes = database.get_all_processes()
+        if processes:
+            extra += "\n\n--- PROCESSUS MANUELS ENREGISTRÉS ---\n"
+            for p in processes:
+                extra += f"\n[{p['name']}] (déclencheur : {p['trigger']})\n{p['steps']}\n"
+        if extra:
+            return BASE_SYSTEM_PROMPT + extra
     except Exception:
         pass
     return BASE_SYSTEM_PROMPT
 
 
-def _build_context(email_body, email_subject, customer_name, order_info=None):
+def _build_context(email_body, email_subject, customer_name, order_info=None, history=None):
     context = f"Email de : {customer_name}\nSujet : {email_subject}\n\nContenu :\n{email_body}"
     if order_info:
         context += f"\n\n--- Infos commande ---"
@@ -50,6 +57,11 @@ def _build_context(email_body, email_subject, customer_name, order_info=None):
             context += f"\nLien suivi : {order_info['tracking_url']}"
         items_str = ', '.join([f"{i['name']} x{i['qty']}" for i in order_info['products']])
         context += f"\nArticles : {items_str}"
+    if history:
+        context += "\n\n--- Historique des échanges avec ce client ---"
+        for h in reversed(history):
+            direction = "Client →" if h['direction'] == 'received' else "Nous →"
+            context += f"\n[{h['date']}] {direction} {h['subject']}\n{h['body'][:300]}...\n"
     return context
 
 
@@ -71,8 +83,8 @@ def _call_claude(system, messages, max_tokens=1024):
             raise e
 
 
-def generate_response(email_body, email_subject, customer_name, order_info=None):
-    context = _build_context(email_body, email_subject, customer_name, order_info)
+def generate_response(email_body, email_subject, customer_name, order_info=None, history=None):
+    context = _build_context(email_body, email_subject, customer_name, order_info, history)
     return _call_claude(
         system=get_system_prompt(),
         messages=[{"role": "user", "content": f"Rédige une réponse à cet email de support :\n\n{context}"}]

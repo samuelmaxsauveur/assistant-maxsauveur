@@ -49,6 +49,15 @@ def init_db():
             )
         """)
         cursor.execute("""
+            CREATE TABLE IF NOT EXISTS processes (
+                id          INTEGER PRIMARY KEY AUTOINCREMENT,
+                name        TEXT NOT NULL,
+                trigger     TEXT NOT NULL,
+                steps       TEXT NOT NULL,
+                created_at  TIMESTAMP NOT NULL
+            )
+        """)
+        cursor.execute("""
             CREATE TABLE IF NOT EXISTS questions_log (
                 id            INTEGER PRIMARY KEY AUTOINCREMENT,
                 email_id      TEXT,
@@ -256,6 +265,30 @@ def get_today_drafts():
             "SELECT * FROM pending_drafts WHERE created_at LIKE ? ORDER BY created_at ASC",
             (f"{today}%",)
         )
+        return [dict(row) for row in cursor.fetchall()]
+    finally:
+        conn.close()
+
+
+def save_process(name, trigger, steps):
+    """Save a manual process for Wing/Shopify actions."""
+    now = datetime.utcnow().isoformat()
+    conn = get_connection()
+    try:
+        conn.execute(
+            "INSERT INTO processes (name, trigger, steps, created_at) VALUES (?, ?, ?, ?)",
+            (name, trigger, steps, now)
+        )
+        conn.commit()
+    finally:
+        conn.close()
+
+
+def get_all_processes():
+    """Return all saved processes."""
+    conn = get_connection()
+    try:
+        cursor = conn.execute("SELECT * FROM processes ORDER BY created_at DESC")
         return [dict(row) for row in cursor.fetchall()]
     finally:
         conn.close()

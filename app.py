@@ -85,10 +85,18 @@ def index():
         except Exception:
             intent_data = {"intent": "other", "address": None, "has_full_address": False}
 
+        # Historique client
+        try:
+            history = gmail_helper.get_customer_history(service, sender_email, max_results=5)
+            # Exclure l'email en cours de traitement
+            history = [h for h in history if h['id'] != email['id']]
+        except Exception:
+            history = []
+
         # Générer la réponse directement (pré-remplissage du champ)
         try:
             draft_response = claude_ai.generate_response(
-                email['body'], email['subject'], customer_name, order_info
+                email['body'], email['subject'], customer_name, order_info, history
             )
         except Exception:
             draft_response = ''
@@ -204,6 +212,18 @@ http://localhost:8080
     )
 
     return jsonify({'success': success})
+
+@app.route('/save-process', methods=['POST'])
+def save_process():
+    data = request.json
+    name = data.get('name', '').strip()
+    trigger = data.get('trigger', '').strip()
+    steps = data.get('steps', '').strip()
+    if not name or not steps:
+        return jsonify({'success': False, 'error': 'Nom et étapes requis'}), 400
+    database.save_process(name, trigger, steps)
+    return jsonify({'success': True})
+
 
 @app.route('/wing', methods=['GET', 'POST'])
 def wing_order():

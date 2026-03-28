@@ -153,9 +153,10 @@
                         <div style="margin-top:20px; border-top: 1px solid #f0f0f0; padding-top:16px;">
                             <div class="section-title">Demander à Claude</div>
                             <textarea id="question-{{ item.email.id }}" placeholder="Ex: Le client dit que son colis est bloqué depuis 10 jours, que lui répondre ?" style="width:100%; border:1px solid #e0e0e0; border-radius:8px; padding:12px; font-size:14px; font-family:inherit; min-height:80px; resize:vertical; outline:none; margin-bottom:8px;"></textarea>
-                            <div style="display:flex; gap:8px; align-items:flex-start;">
+                            <div style="display:flex; gap:8px; align-items:flex-start; flex-wrap:wrap;">
                                 <button type="button" class="btn btn-secondary" onclick="askClaude('{{ item.email.id }}')">Demander</button>
-                                <div id="samuel-answer-{{ item.email.id }}" style="font-size:13px; color:#555; line-height:1.5; flex:1; display:none; background:#f9f9f9; border-radius:6px; padding:10px;"></div>
+                                <button type="button" class="btn btn-secondary" onclick="saveProcess('{{ item.email.id }}')" style="font-size:13px;">💾 Enregistrer comme process</button>
+                                <div id="samuel-answer-{{ item.email.id }}" style="font-size:13px; color:#555; line-height:1.5; flex:1; min-width:200px; display:none; background:#f9f9f9; border-radius:6px; padding:10px;"></div>
                             </div>
                         </div>
                     </div>
@@ -287,6 +288,25 @@ async function askClaude(id) {
     }
     btn.textContent = 'Demander';
     btn.disabled = false;
+}
+
+async function saveProcess(id) {
+    const steps = document.getElementById('question-' + id).value.trim();
+    if (!steps) { alert('Décris les étapes dans le champ "Demander à Claude" avant d\'enregistrer.'); return; }
+    const name = prompt('Nom de ce process (ex: "Changement point relais Wing") :');
+    if (!name) return;
+    const trigger = prompt('Dans quel cas l\'utiliser ? (ex: "Client veut changer son point relais") :') || '';
+    const res = await fetch('/save-process', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({name, trigger, steps})
+    });
+    const data = await res.json();
+    if (data.success) {
+        alert('Process "' + name + '" enregistré. Claude s\'en souviendra pour les prochains emails.');
+    } else {
+        alert('Erreur : ' + (data.error || 'inconnu'));
+    }
 }
 
 async function triggerCheck() {
