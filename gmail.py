@@ -1,6 +1,7 @@
 import os
 import re
 import json
+import unicodedata
 import base64
 import email.mime.text
 import tempfile
@@ -13,8 +14,8 @@ SCOPES = ['https://www.googleapis.com/auth/gmail.modify']
 
 
 def _clean(s):
-    # Strip ASCII control chars (0x00-0x1f), DEL (0x7f), C1 control chars (0x80-0x9f), and BOM (U+FEFF)
-    return re.sub(r'[\x00-\x1f\x7f-\x9f\ufeff]', '', s)
+    # Remove ALL Unicode control/format characters (category C*) — covers ASCII C0, C1, and beyond
+    return ''.join(c for c in s if unicodedata.category(c)[0] != 'C')
 
 
 def _load_token_data():
