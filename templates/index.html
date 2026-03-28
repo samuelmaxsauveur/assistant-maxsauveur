@@ -227,16 +227,33 @@ const emailData = {
 async function generateResponse(id) {
     const textarea = document.getElementById('textarea-' + id);
     const btn = textarea.closest('form').querySelector('button');
+    const question = (document.getElementById('question-' + id)?.value || '').trim();
     btn.textContent = 'Génération...';
     btn.disabled = true;
     try {
-        const res = await fetch('/generate', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(emailData[id])
-        });
-        const data = await res.json();
-        textarea.value = data.response;
+        if (question) {
+            // Comment present: use /ask so the comment is taken into account
+            const res = await fetch('/ask', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({...emailData[id], question})
+            });
+            const data = await res.json();
+            if (data.updated_draft) textarea.value = data.updated_draft;
+            if (data.samuel_answer) {
+                const answerDiv = document.getElementById('samuel-answer-' + id);
+                if (answerDiv) { answerDiv.style.display = 'block'; answerDiv.textContent = data.samuel_answer; }
+            }
+        } else {
+            // No comment: regenerate from scratch
+            const res = await fetch('/generate', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(emailData[id])
+            });
+            const data = await res.json();
+            textarea.value = data.response;
+        }
     } catch(e) {
         textarea.value = 'Erreur. Réessaie.';
     }
