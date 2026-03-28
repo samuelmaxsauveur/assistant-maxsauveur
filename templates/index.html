@@ -270,7 +270,7 @@ async function generateResponse(id) {
                 const answer = data.samuel_answer;
                 appendChat(id, question, answer);
                 chatHistory[id].push({question, claude_answer: answer});
-                document.getElementById('question-' + id).value = '';
+                // Keep instruction in field — don't clear
             }
         } else {
             // No comment: regenerate from scratch
@@ -319,7 +319,7 @@ async function askClaude(id) {
         const answer = data.samuel_answer || '(brouillon mis à jour)';
         appendChat(id, question, answer);
         chatHistory[id].push({question, claude_answer: answer});
-        document.getElementById('question-' + id).value = '';
+        // Keep the question visible — do NOT clear so instructions stay accessible
         if (data.updated_draft) {
             document.getElementById('textarea-' + id).value = data.updated_draft;
         }

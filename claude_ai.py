@@ -95,6 +95,43 @@ def answer_question(email_body, email_subject, customer_name, order_info, questi
     """Samuel asks a question about how to handle this email. Returns dict with samuel_answer and updated_draft."""
     context = _build_context(email_body, email_subject, customer_name, order_info)
 
+    # If question is about price, search current catalog prices in Shopify
+    price_catalog = ""
+    price_keywords = ['prix', 'price', 'tarif', 'coût', 'combien', 'remise', 'réduction', 'promo', 'discount', 'payer', 'payé']
+    if any(kw in question.lower() for kw in price_keywords):
+        try:
+            import shopify_api
+            # Search by product names from order, or from email body keywords
+            search_terms = []
+            if order_info:
+                for p in order_info.get('products', []):
+                    search_terms.append(p['name'].split(' ')[0])
+            if not search_terms:
+                # Extract potential product names from email body
+                words = [w for w in email_body.split() if len(w) > 4 and w[0].isupper()]
+                search_terms = words[:2]
+            catalog_results = []
+            seen = set()
+            for term in search_terms[:2]:
+                for item in shopify_api.search_product_price(term):
+                    key = f"{item['product']}|{item['variant']}"
+                    if key not in seen:
+                        seen.add(key)
+                        catalog_results.append(item)
+            if catalog_results:
+                price_catalog = "\n--- Prix actuels dans le catalogue Shopify ---\n"
+                for item in catalog_results:
+                    line = f"  {item['product']}"
+                    if item['variant'] and item['variant'] != 'Default Title':
+                        line += f" — {item['variant']}"
+                    line += f" : {item['price']:.2f} EUR"
+                    if item['compare_at_price'] > item['price']:
+                        line += f" (prix barré : {item['compare_at_price']:.2f} EUR)"
+                    line += " ✓" if item['available'] else " (épuisé)"
+                    price_catalog += line + "\n"
+        except Exception:
+            pass
+
     # Build payment detail block for price-related questions
     payment_detail = ""
     if order_info:
@@ -122,7 +159,7 @@ def answer_question(email_body, email_subject, customer_name, order_info, questi
 
     prompt = f"""Voici un email de support client :
 
-{context}{payment_detail}{history_block}
+{context}{price_catalog}{payment_detail}{history_block}
 
 ---
 

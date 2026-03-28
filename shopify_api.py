@@ -24,6 +24,29 @@ def get_orders_by_email(email):
     orders = response.json().get('orders', [])
     return [format_order(o) for o in orders]
 
+def search_product_price(query):
+    """Search products by name and return current prices from Shopify catalog."""
+    shop = os.getenv('SHOPIFY_SHOP')
+    token = os.getenv('SHOPIFY_TOKEN')
+    url = f"https://{shop}/admin/api/2024-01/products.json"
+    headers = {'X-Shopify-Access-Token': token}
+    params = {'title': query, 'limit': 5}
+    response = requests.get(url, headers=headers, params=params)
+    products = response.json().get('products', [])
+    result = []
+    for p in products:
+        for v in p.get('variants', []):
+            result.append({
+                'product': p['title'],
+                'variant': v.get('title', ''),
+                'price': float(v.get('price', 0)),
+                'compare_at_price': float(v.get('compare_at_price') or 0),
+                'sku': v.get('sku', ''),
+                'available': (v.get('inventory_quantity') or 0) > 0,
+            })
+    return result
+
+
 def format_order(order):
     tracking_number = None
     tracking_url = None
