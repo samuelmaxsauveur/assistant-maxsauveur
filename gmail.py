@@ -13,7 +13,8 @@ SCOPES = ['https://www.googleapis.com/auth/gmail.modify']
 
 
 def _clean(s):
-    return re.sub(r'[\x00-\x1f\x7f]', '', s)
+    # Strip ASCII control chars (0x00-0x1f), DEL (0x7f), C1 control chars (0x80-0x9f), and BOM (U+FEFF)
+    return re.sub(r'[\x00-\x1f\x7f-\x9f\ufeff]', '', s)
 
 
 def _load_token_data():
