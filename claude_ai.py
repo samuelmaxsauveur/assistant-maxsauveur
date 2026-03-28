@@ -91,22 +91,50 @@ def generate_response(email_body, email_subject, customer_name, order_info=None,
     )
 
 
-def answer_question(email_body, email_subject, customer_name, order_info, question):
+def answer_question(email_body, email_subject, customer_name, order_info, question, previous_exchanges=None):
     """Samuel asks a question about how to handle this email. Returns dict with samuel_answer and updated_draft."""
     context = _build_context(email_body, email_subject, customer_name, order_info)
+
+    # Build payment detail block for price-related questions
+    payment_detail = ""
+    if order_info:
+        currency = order_info.get('currency', 'EUR')
+        lines = []
+        for p in order_info.get('products', []):
+            line = f"  - {p['name']} ×{p['qty']} : {p['total']:.2f} {currency}"
+            if p.get('discount', 0) > 0:
+                line += f" (remise : -{p['discount']:.2f} {currency})"
+            lines.append(line)
+        shipping = order_info.get('shipping', 0)
+        lines.append(f"  - Livraison : {'offerte' if shipping == 0 else f'{shipping:.2f} {currency}'}")
+        discount_total = order_info.get('discount_total', 0)
+        if discount_total > 0:
+            lines.append(f"  - Remise totale : -{discount_total:.2f} {currency}")
+        lines.append(f"  - TOTAL PAYÉ : {order_info.get('total', '?')}")
+        payment_detail = "\n--- Détail paiement Shopify ---\n" + "\n".join(lines)
+
+    # Build previous exchanges block
+    history_block = ""
+    if previous_exchanges:
+        history_block = "\n--- Historique de notre discussion sur cet email ---\n"
+        for ex in previous_exchanges:
+            history_block += f"\nSamuel : {ex['question']}\nClaude : {ex['claude_answer']}\n"
+
     prompt = f"""Voici un email de support client :
 
-{context}
+{context}{payment_detail}{history_block}
 
 ---
 
-Samuel (le responsable) te demande :
+Samuel (le responsable) te demande maintenant :
 {question}
+
+Utilise tous les éléments ci-dessus (historique client, détail commande, paiement, échanges précédents) pour répondre.
 
 Réponds en JSON strict avec exactement ces deux champs :
 {{
   "samuel_answer": "ta réponse à Samuel en 2-3 phrases (explication, conseil)",
-  "updated_draft": "la réponse COMPLÈTE à envoyer au client, tenant compte de la demande de Samuel"
+  "updated_draft": "la réponse COMPLÈTE à envoyer au client, tenant compte de tout le contexte"
 }}
 
 Réponds UNIQUEMENT avec le JSON, rien d'autre."""
@@ -117,13 +145,11 @@ Réponds UNIQUEMENT avec le JSON, rien d'autre."""
         max_tokens=1500
     )
     try:
-        # Extract JSON even if Claude adds surrounding text
         match = re.search(r'\{[\s\S]*\}', raw)
         if match:
             return json.loads(match.group())
     except Exception:
         pass
-    # Fallback: treat entire response as the updated draft
     return {"samuel_answer": "", "updated_draft": raw}
 
 

@@ -139,12 +139,14 @@ def ask():
     if customer_name == sender:
         customer_name = extract_customer_name(sender)
     order_info = data.get('order')
+    previous_exchanges = data.get('previous_exchanges', [])
     result = claude_ai.answer_question(
         data['body'],
         data['subject'],
         customer_name,
         order_info,
-        data['question']
+        data['question'],
+        previous_exchanges=previous_exchanges
     )
     samuel_answer = result.get('samuel_answer', '')
     updated_draft = result.get('updated_draft', '')

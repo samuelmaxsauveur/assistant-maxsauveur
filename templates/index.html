@@ -172,12 +172,12 @@
                             </div>
                         </form>
                         <div style="margin-top:20px; border-top: 1px solid #f0f0f0; padding-top:16px;">
-                            <div class="section-title">Demander à Claude</div>
-                            <textarea id="question-{{ item.email.id }}" placeholder="Ex: Le client dit que son colis est bloqué depuis 10 jours, que lui répondre ?" style="width:100%; border:1px solid #e0e0e0; border-radius:8px; padding:12px; font-size:14px; font-family:inherit; min-height:80px; resize:vertical; outline:none; margin-bottom:8px;"></textarea>
-                            <div style="display:flex; gap:8px; align-items:flex-start; flex-wrap:wrap;">
+                            <div class="section-title">Discussion avec Claude</div>
+                            <div id="chat-{{ item.email.id }}" style="display:none; background:#f9f9f9; border-radius:8px; padding:12px; margin-bottom:10px; max-height:300px; overflow-y:auto; font-size:13px; line-height:1.6;"></div>
+                            <textarea id="question-{{ item.email.id }}" placeholder="Ex: Le client demande pourquoi le prix affiché est différent de ce qu'il a payé..." style="width:100%; border:1px solid #e0e0e0; border-radius:8px; padding:12px; font-size:14px; font-family:inherit; min-height:80px; resize:vertical; outline:none; margin-bottom:8px;"></textarea>
+                            <div style="display:flex; gap:8px; flex-wrap:wrap;">
                                 <button type="button" class="btn btn-secondary" onclick="askClaude('{{ item.email.id }}')">Demander</button>
                                 <button type="button" class="btn btn-secondary" onclick="saveProcess('{{ item.email.id }}')" style="font-size:13px;">💾 Enregistrer comme process</button>
-                                <div id="samuel-answer-{{ item.email.id }}" style="font-size:13px; color:#555; line-height:1.5; flex:1; min-width:200px; display:none; background:#f9f9f9; border-radius:6px; padding:10px;"></div>
                             </div>
                         </div>
                     </div>
@@ -234,6 +234,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Stores Q&A history per email id
+const chatHistory = {};
+
 const emailData = {
     {% for item in emails %}
     "{{ item.email.id }}": {
@@ -255,16 +258,19 @@ async function generateResponse(id) {
     try {
         if (question) {
             // Comment present: use /ask so the comment is taken into account
+            if (!chatHistory[id]) chatHistory[id] = [];
             const res = await fetch('/ask', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({...emailData[id], question})
+                body: JSON.stringify({...emailData[id], question, previous_exchanges: chatHistory[id]})
             });
             const data = await res.json();
             if (data.updated_draft) textarea.value = data.updated_draft;
             if (data.samuel_answer) {
-                const answerDiv = document.getElementById('samuel-answer-' + id);
-                if (answerDiv) { answerDiv.style.display = 'block'; answerDiv.textContent = data.samuel_answer; }
+                const answer = data.samuel_answer;
+                appendChat(id, question, answer);
+                chatHistory[id].push({question, claude_answer: answer});
+                document.getElementById('question-' + id).value = '';
             }
         } else {
             // No comment: regenerate from scratch
@@ -283,24 +289,37 @@ async function generateResponse(id) {
     btn.disabled = false;
 }
 
+function appendChat(id, question, answer) {
+    const chatDiv = document.getElementById('chat-' + id);
+    chatDiv.style.display = 'block';
+    chatDiv.innerHTML += `
+        <div style="margin-bottom:12px;">
+            <div style="color:#111; font-weight:600; margin-bottom:3px;">Samuel :</div>
+            <div style="color:#333; margin-bottom:6px; padding-left:8px; border-left:2px solid #ddd;">${question}</div>
+            <div style="color:#2563eb; font-weight:600; margin-bottom:3px;">Claude :</div>
+            <div style="color:#444; padding-left:8px; border-left:2px solid #2563eb;">${answer}</div>
+        </div>`;
+    chatDiv.scrollTop = chatDiv.scrollHeight;
+}
+
 async function askClaude(id) {
     const question = document.getElementById('question-' + id).value.trim();
     if (!question) return;
     const btn = event.target;
     btn.textContent = 'En cours...';
     btn.disabled = true;
+    if (!chatHistory[id]) chatHistory[id] = [];
     try {
         const res = await fetch('/ask', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({...emailData[id], question})
+            body: JSON.stringify({...emailData[id], question, previous_exchanges: chatHistory[id]})
         });
         const data = await res.json();
-        if (data.samuel_answer) {
-            const answerDiv = document.getElementById('samuel-answer-' + id);
-            answerDiv.style.display = 'block';
-            answerDiv.textContent = data.samuel_answer;
-        }
+        const answer = data.samuel_answer || '(brouillon mis à jour)';
+        appendChat(id, question, answer);
+        chatHistory[id].push({question, claude_answer: answer});
+        document.getElementById('question-' + id).value = '';
         if (data.updated_draft) {
             document.getElementById('textarea-' + id).value = data.updated_draft;
         }
