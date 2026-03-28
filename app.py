@@ -66,11 +66,21 @@ def index():
         except Exception:
             intent_data = {"intent": "other", "address": None, "has_full_address": False}
 
+        # Générer la réponse directement (pré-remplissage du champ)
+        customer_name = extract_customer_name(email['sender'])
+        try:
+            draft_response = claude_ai.generate_response(
+                email['body'], email['subject'], customer_name, order_info
+            )
+        except Exception:
+            draft_response = ''
+
         processed.append({
             'email': email,
             'order': order_info,
             'sender_email': extract_email_address(email['sender']),
-            'intent': intent_data
+            'intent': intent_data,
+            'draft_response': draft_response
         })
     return render_template('index.html', emails=processed, pending_count=pending_count)
 
