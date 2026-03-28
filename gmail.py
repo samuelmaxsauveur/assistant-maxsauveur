@@ -112,17 +112,26 @@ def parse_email(email_data):
 
 
 def get_email_body(payload):
-    body = ''
-    if 'parts' in payload:
-        for part in payload['parts']:
-            if part['mimeType'] == 'text/plain':
-                data = part['body'].get('data', '')
-                if data:
-                    body = base64.urlsafe_b64decode(data).decode('utf-8', errors='ignore')
-                    break
-    if not body and payload['body'].get('data'):
-        body = base64.urlsafe_b64decode(payload['body']['data']).decode('utf-8', errors='ignore')
-    return body
+    # Recursive search: prioritize text/plain, fallback to text/html stripped
+    plain = _find_body(payload, 'text/plain')
+    if plain:
+        return plain
+    html = _find_body(payload, 'text/html')
+    if html:
+        return re.sub(r'<[^>]+>', ' ', html).strip()
+    return ''
+
+
+def _find_body(payload, mime_type):
+    if payload.get('mimeType') == mime_type:
+        data = payload.get('body', {}).get('data', '')
+        if data:
+            return base64.urlsafe_b64decode(data).decode('utf-8', errors='ignore')
+    for part in payload.get('parts', []):
+        result = _find_body(part, mime_type)
+        if result:
+            return result
+    return ''
 
 
 def send_email(service, to, subject, body, thread_id=None):
