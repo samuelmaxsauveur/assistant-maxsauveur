@@ -90,8 +90,12 @@ def debug():
 
 @app.route('/')
 def index():
+    import traceback
     processed = []
-    pending_count = len(database.get_pending_drafts())
+    try:
+        pending_count = len(database.get_pending_drafts())
+    except Exception as e:
+        return f"<pre>DB ERROR: {traceback.format_exc()}</pre>", 500
     gmail_error = None
     try:
         service = get_service()
