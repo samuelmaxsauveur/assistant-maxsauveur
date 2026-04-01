@@ -66,15 +66,15 @@ def format_order(order):
         'tracking_number': tracking_number,
         'tracking_url': tracking_url,
         'currency': order.get('currency', 'EUR'),
-        'shipping': float(order.get('total_shipping_price_set', {}).get('shop_money', {}).get('amount', 0)),
-        'discount_total': float(order.get('total_discounts', 0)),
+        'shipping': float((order.get('total_shipping_price_set') or {}).get('shop_money', {}).get('amount') or 0),
+        'discount_total': float(order.get('total_discounts') or 0),
         'products': [
             {
-                'name': item['name'],
-                'qty': item['quantity'],
-                'price': float(item.get('price', 0)),
-                'total': float(item.get('price', 0)) * item['quantity'],
-                'discount': sum(float(d.get('amount', 0)) for d in item.get('discount_allocations', [])),
+                'name': item.get('name', ''),
+                'qty': item.get('quantity', 1),
+                'price': float(item.get('price') or 0),
+                'total': float(item.get('price') or 0) * item.get('quantity', 1),
+                'discount': sum(float(d.get('amount') or 0) for d in item.get('discount_allocations', [])),
             }
             for item in order.get('line_items', [])
         ],

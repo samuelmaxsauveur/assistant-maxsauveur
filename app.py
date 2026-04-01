@@ -68,17 +68,26 @@ def index():
         return render_template('index.html', emails=[], pending_count=pending_count, gmail_error=gmail_error)
 
     for email in emails:
-        order_number = claude_ai.extract_order_number(email['body'] + ' ' + email['subject'])
+        try:
+            order_number = claude_ai.extract_order_number(email['body'] + ' ' + email['subject'])
+        except Exception:
+            order_number = None
         order_info = None
-        if order_number:
-            order_info = shopify_api.get_order_by_number(order_number)
+        try:
+            if order_number:
+                order_info = shopify_api.get_order_by_number(order_number)
+        except Exception:
+            pass
         # Résoudre l'email et le nom réels (gère les formulaires noreply)
         sender_email, customer_name = resolve_sender(email['sender'], email['body'])
 
-        if not order_info:
-            orders = shopify_api.get_orders_by_email(sender_email)
-            if orders:
-                order_info = orders[0]
+        try:
+            if not order_info:
+                orders = shopify_api.get_orders_by_email(sender_email)
+                if orders:
+                    order_info = orders[0]
+        except Exception:
+            pass
         # Détecter l'intention
         try:
             intent_data = claude_ai.detect_intent(email['body'], email['subject'])
