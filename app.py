@@ -90,71 +90,45 @@ def debug():
 
 @app.route('/')
 def index():
-    import traceback
-    processed = []
+    import traceback as tb
     try:
+        processed = []
         pending_count = len(database.get_pending_drafts())
-    except Exception as e:
-        return f"<pre>DB ERROR: {traceback.format_exc()}</pre>", 500
-    gmail_error = None
-    try:
-        service = get_service()
-        emails = gmail_helper.get_unread_emails(service, max_results=20)
-    except Exception as e:
-        gmail_error = str(e)
-        return render_template('index.html', emails=[], pending_count=pending_count, gmail_error=gmail_error)
-
-    for email in emails:
+        gmail_error = None
         try:
+            service = get_service()
+            emails = gmail_helper.get_unread_emails(service, max_results=10)
+        except Exception as e:
+            gmail_error = str(e)
+            return render_template('index.html', emails=[], pending_count=pending_count, gmail_error=gmail_error)
+
+        for email in emails:
             order_number = claude_ai.extract_order_number(email['body'] + ' ' + email['subject'])
-        except Exception:
-            order_number = None
-        order_info = None
-        try:
-            if order_number:
-                order_info = shopify_api.get_order_by_number(order_number)
-        except Exception:
-            pass
-        # Résoudre l'email et le nom réels (gère les formulaires noreply)
-        sender_email, customer_name = resolve_sender(email['sender'], email['body'])
+            order_info = None
+            try:
+                if order_number:
+                    order_info = shopify_api.get_order_by_number(order_number)
+            except Exception:
+                pass
+            sender_email, customer_name = resolve_sender(email['sender'], email['body'])
+            try:
+                if not order_info:
+                    orders = shopify_api.get_orders_by_email(sender_email)
+                    if orders:
+                        order_info = orders[0]
+            except Exception:
+                pass
 
-        try:
-            if not order_info:
-                orders = shopify_api.get_orders_by_email(sender_email)
-                if orders:
-                    order_info = orders[0]
-        except Exception:
-            pass
-        # Détecter l'intention
-        try:
-            intent_data = claude_ai.detect_intent(email['body'], email['subject'])
-        except Exception:
-            intent_data = {"intent": "other", "address": None, "has_full_address": False}
-
-        # Historique client
-        try:
-            history = gmail_helper.get_customer_history(service, sender_email, max_results=5)
-            # Exclure l'email en cours de traitement
-            history = [h for h in history if h['id'] != email['id']]
-        except Exception:
-            history = []
-
-        # Générer la réponse directement (pré-remplissage du champ)
-        try:
-            draft_response = claude_ai.generate_response(
-                email['body'], email['subject'], customer_name, order_info, history
-            )
-        except Exception:
-            draft_response = ''
-
-        processed.append({
-            'email': email,
-            'order': order_info,
-            'sender_email': sender_email,
-            'intent': intent_data,
-            'draft_response': draft_response
-        })
-    return render_template('index.html', emails=processed, pending_count=pending_count)
+            processed.append({
+                'email': email,
+                'order': order_info,
+                'sender_email': sender_email,
+                'intent': {"intent": "other", "address": None, "has_full_address": False},
+                'draft_response': ''
+            })
+        return render_template('index.html', emails=processed, pending_count=pending_count)
+    except Exception:
+        return f"<pre style='padding:20px'>{tb.format_exc()}</pre>", 500
 
 @app.route('/trigger-check', methods=['POST'])
 def trigger_check():
