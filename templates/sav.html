@@ -11,10 +11,10 @@
         header a { color: #aaa; text-decoration: none; font-size: 14px; margin-left: 16px; }
         header a:hover { color: white; }
         .container { max-width: 960px; margin: 32px auto; padding: 0 16px; }
-        h2 { font-size: 16px; font-weight: 600; color: #555; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
+        h2 { font-size: 15px; font-weight: 600; color: #555; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
         .card { background: white; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); padding: 20px 24px; }
         .card-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
-        .card-meta { font-size: 13px; color: #888; margin-bottom: 12px; }
+        .card-meta { font-size: 13px; color: #888; margin-bottom: 10px; }
         .card-body-text { font-size: 13px; color: #555; line-height: 1.6; max-height: 120px; overflow-y: auto; background: #f9f9f9; border-radius: 6px; padding: 10px; margin-bottom: 12px; white-space: pre-wrap; }
         .badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 12px; font-weight: 500; }
         .badge-pending { background: #fff4e5; color: #b45309; }
@@ -22,12 +22,8 @@
         .badge-rejected { background: #fee2e2; color: #991b1b; }
         .badge-ignored { background: #f0f0f0; color: #888; }
         .card-ignored { opacity: 0.7; border: 1px dashed #ddd; }
-        .trash-section { margin-top: 40px; }
-        .trash-toggle { cursor: pointer; color: #aaa; font-size: 14px; margin-bottom: 12px; display: inline-flex; align-items: center; gap: 6px; }
-        .trash-toggle:hover { color: #666; }
-        .trash-content { display: none; }
-        .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
-        .btn { padding: 9px 18px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; }
+        .actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+        .btn { padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; border: none; }
         .btn-green { background: #16a34a; color: white; }
         .btn-green:hover { background: #15803d; }
         .btn-red { background: #dc2626; color: white; }
@@ -36,18 +32,31 @@
         .btn-gray:hover { background: #e0e0e0; }
         .btn-blue { background: #2563eb; color: white; }
         .btn-blue:hover { background: #1d4ed8; }
-        .btn:disabled { opacity: 0.6; cursor: not-allowed; }
-        .rejection-form { display: none; margin-top: 12px; }
-        .rejection-form textarea { width: 100%; padding: 10px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 14px; font-family: inherit; min-height: 80px; resize: vertical; }
+        .btn-aside { background: #fee2e2; color: #dc2626; }
+        .btn-aside:hover { background: #fecaca; }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .analysis-box { margin-top: 12px; background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 14px; font-size: 13px; line-height: 1.6; display: none; }
+        .analysis-box.has-questions { background: #fff1f2; border-color: #fda4af; }
+        .compose-box { display: none; margin-top: 14px; border-top: 1px solid #f0f0f0; padding-top: 14px; }
+        .compose-box textarea { width: 100%; padding: 10px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 13px; font-family: inherit; min-height: 100px; resize: vertical; }
+        .rejection-form { display: none; margin-top: 12px; border-top: 1px solid #f0f0f0; padding-top: 12px; }
+        .rejection-form textarea { width: 100%; padding: 10px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 13px; font-family: inherit; min-height: 70px; resize: vertical; }
         .draft-preview { display: none; margin-top: 12px; }
-        .draft-preview textarea { width: 100%; padding: 10px; border: 1px solid #b3d4f5; border-radius: 8px; font-size: 13px; font-family: inherit; min-height: 180px; resize: vertical; background: #f0f7ff; }
-        .result-msg { margin-top: 10px; padding: 10px 14px; border-radius: 8px; font-size: 14px; display: none; }
+        .draft-preview textarea { width: 100%; padding: 10px; border: 1px solid #b3d4f5; border-radius: 8px; font-size: 13px; font-family: inherit; min-height: 160px; resize: vertical; background: #f0f7ff; }
+        .result-msg { margin-top: 10px; padding: 10px 14px; border-radius: 8px; font-size: 13px; display: none; }
         .result-ok { background: #e6f9ee; color: #1a7a3e; }
         .result-err { background: #fee2e2; color: #991b1b; }
-        .status-badge { display: inline-block; margin-top: 8px; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 500; background: #f0f0f0; color: #555; }
-        .email-card-actions { display: flex; gap: 10px; margin-top: 10px; }
-        .divider { border: none; border-top: 1px solid #eee; margin: 32px 0; }
-        .order-chip { display: inline-block; background: #f0f0f0; border-radius: 6px; padding: 2px 10px; font-size: 12px; font-weight: 600; margin-bottom: 8px; }
+        .status-result { margin-top: 8px; font-size: 13px; }
+        .order-chip { display: inline-block; background: #f0f0f0; border-radius: 6px; padding: 2px 10px; font-size: 12px; font-weight: 600; margin-bottom: 8px; margin-right: 6px; }
+        .divider { border: none; border-top: 1px solid #eee; margin: 28px 0; }
+        .trash-toggle { cursor: pointer; color: #aaa; font-size: 14px; margin-bottom: 12px; display: inline-block; }
+        .trash-toggle:hover { color: #666; }
+        .trash-content { display: none; }
+        /* Manual case form */
+        .manual-form { background: white; border-radius: 12px; padding: 20px 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); margin-bottom: 20px; }
+        .manual-form input, .manual-form textarea { width: 100%; padding: 9px 12px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 14px; font-family: inherit; margin-bottom: 10px; }
+        .manual-form .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .form-label { font-size: 12px; font-weight: 600; color: #888; text-transform: uppercase; margin-bottom: 4px; display: block; }
     </style>
 </head>
 <body>
@@ -65,88 +74,95 @@
     <!-- === CAS SAV OUVERTS === -->
     {% set active_cases = cases | rejectattr('status', 'equalto', 'ignored') | rejectattr('status', 'equalto', 'returned_to_client') | list %}
     {% set ignored_cases = cases | selectattr('status', 'equalto', 'ignored') | list %}
+
     <h2>Cas SAV ouverts ({{ active_cases|length }})</h2>
-    {% if active_cases %}
-        {% for case in active_cases %}
-        <div class="card" id="case-{{ case.id }}">
-            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                <div>
-                    <div class="card-title">{{ case.customer_name }} — {{ case.subject }}</div>
-                    <div class="card-meta">{{ case.customer_email }} · {{ case.created_at[:10] }}</div>
-                    {% if case.order_number %}
-                        <div class="order-chip">Commande #{{ case.order_number }}</div>
-                    {% endif %}
-                </div>
-                <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
-                    <span class="badge badge-{{ case.status }}">{{ status_labels.get(case.status, case.status) }}</span>
-                    <a href="/sav/case/{{ case.id }}" style="font-size:12px; color:#2563eb; text-decoration:none;">📋 Voir fiche suivi →</a>
-                </div>
+
+    {% for case in active_cases %}
+    <div class="card" id="case-{{ case.id }}">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:4px;">
+            <div>
+                <div class="card-title">{{ case.customer_name }} — {{ case.subject }}</div>
+                <div class="card-meta">{{ case.customer_email }} · {{ case.created_at[:10] }}</div>
+                {% if case.order_number %}<span class="order-chip">#{{ case.order_number }}</span>{% endif %}
             </div>
-            <div class="card-body-text">{{ case.email_body[:500] }}</div>
-
-            {% if case.status == 'pending' %}
-            <div class="actions">
-                <button class="btn btn-gray" onclick="analyzeCase({{ case.id }}, this)" style="font-size:13px;">🔎 Analyser</button>
-                <button class="btn btn-green" onclick="approveCase({{ case.id }}, this)">✅ OK Réparation</button>
-                <button class="btn btn-red" onclick="toggleRejection({{ case.id }})">❌ Refuser</button>
-                {% if case.order_number %}
-                <button class="btn btn-gray" onclick="checkStatus({{ case.id }}, '{{ case.order_number }}', this)" style="font-size:13px;">🔍 Statut Wing</button>
-                {% endif %}
-                <button class="btn" style="background:#fee2e2;color:#dc2626;font-size:13px;" onclick="ignoreCase({{ case.id }}, this)">🚫 Mettre de côté</button>
+            <div style="display:flex; flex-direction:column; align-items:flex-end; gap:6px;">
+                <span class="badge badge-{{ case.status }}">{{ status_labels.get(case.status, case.status) }}</span>
+                <a href="/sav/case/{{ case.id }}" style="font-size:12px; color:#2563eb; text-decoration:none;">📋 Fiche suivi →</a>
             </div>
-            <div id="analysis-{{ case.id }}" style="display:none; margin-top:12px; background:#f0f7ff; border-radius:8px; padding:14px; font-size:13px;"></div>
-
-            <!-- Rejection form -->
-            <div class="rejection-form" id="rejection-{{ case.id }}">
-                <textarea id="reason-{{ case.id }}" placeholder="Ex : La paire a plus de 2 ans, l'usure est normale — on ne prend pas en charge..."></textarea>
-                <div style="display:flex; gap:10px; margin-top:8px;">
-                    <button class="btn btn-gray" onclick="generateRejection({{ case.id }}, this)">Générer email refus</button>
-                </div>
-            </div>
-
-            <!-- Draft preview (approval or rejection) -->
-            <div class="draft-preview" id="draft-{{ case.id }}">
-                <div style="font-size:12px; font-weight:600; color:#888; margin-bottom:6px; text-transform:uppercase;">Brouillon à envoyer</div>
-                <textarea id="draft-text-{{ case.id }}"></textarea>
-                <div style="display:flex; gap:10px; margin-top:8px;">
-                    <button class="btn btn-blue" onclick="sendRejection({{ case.id }}, '{{ case.customer_email }}', '{{ case.subject }}', '{{ case.thread_id }}', this)">Envoyer ce refus</button>
-                </div>
-            </div>
-
-            <!-- Status result -->
-            <div id="status-result-{{ case.id }}"></div>
-
-            {% endif %}
-
-            <!-- Result message -->
-            <div class="result-msg" id="result-{{ case.id }}"></div>
         </div>
-        {% endfor %}
+
+        <div class="card-body-text">{{ case.email_body[:500] }}</div>
+
+        <!-- Analysis box (shown automatically on load) -->
+        <div class="analysis-box" id="analysis-{{ case.id }}"></div>
+
+        {% if case.status == 'pending' %}
+        <div class="actions">
+            <button class="btn btn-green" onclick="approveCase({{ case.id }}, this)">✅ OK Réparation</button>
+            <button class="btn btn-red" onclick="toggleRejection({{ case.id }})">❌ Refuser</button>
+            <button class="btn btn-blue" onclick="toggleCompose({{ case.id }})">✉️ Envoyer un message</button>
+            {% if case.order_number %}
+            <button class="btn btn-gray" onclick="checkStatus({{ case.id }}, '{{ case.order_number }}', this)">🔍 Statut Wing</button>
+            {% endif %}
+            <button class="btn btn-aside" onclick="ignoreCase({{ case.id }}, this)">🚫 Mettre de côté</button>
+        </div>
+
+        <!-- Rejection -->
+        <div class="rejection-form" id="rejection-{{ case.id }}">
+            <div class="form-label" style="margin-bottom:6px;">Raison du refus (pour Claude)</div>
+            <textarea id="reason-{{ case.id }}" placeholder="Ex : Usure normale, paire trop ancienne..."></textarea>
+            <div class="actions">
+                <button class="btn btn-gray" onclick="generateRejection({{ case.id }}, this)">Générer email refus</button>
+            </div>
+        </div>
+
+        <!-- Rejection draft -->
+        <div class="draft-preview" id="draft-{{ case.id }}">
+            <textarea id="draft-text-{{ case.id }}"></textarea>
+            <div class="actions" style="margin-top:8px;">
+                <button class="btn btn-blue" onclick="sendRejection({{ case.id }}, '{{ case.customer_email }}', '{{ case.subject }}', '{{ case.thread_id }}', this)">Envoyer ce refus</button>
+            </div>
+        </div>
+
+        <!-- Free compose -->
+        <div class="compose-box" id="compose-{{ case.id }}">
+            <div class="form-label" style="margin-bottom:6px;">Message libre à envoyer à {{ case.customer_email }}</div>
+            <textarea id="compose-text-{{ case.id }}" placeholder="Ex : Bonjour, pourriez-vous nous confirmer votre adresse de livraison pour le retour de votre paire réparée ?"></textarea>
+            <div class="actions" style="margin-top:8px;">
+                <button class="btn btn-blue" onclick="sendCompose({{ case.id }}, '{{ case.customer_email }}', '{{ case.subject }}', '{{ case.thread_id }}', this)">Envoyer</button>
+                <button class="btn btn-gray" onclick="suggestCompose({{ case.id }}, this)">💡 Suggérer avec Claude</button>
+            </div>
+        </div>
+
+        {% endif %}
+
+        <div id="status-result-{{ case.id }}" class="status-result"></div>
+        <div class="result-msg" id="result-{{ case.id }}"></div>
+    </div>
     {% else %}
-        <div style="text-align:center; padding:40px; color:#aaa;">Aucun cas SAV ouvert.</div>
-    {% endif %}
+    <div style="text-align:center; padding:30px; color:#aaa; font-size:14px;">Aucun cas SAV ouvert.</div>
+    {% endfor %}
 
     <!-- === CORBEILLE === -->
     {% if ignored_cases %}
-    <div class="trash-section">
+    <div style="margin-top:32px;">
         <div class="trash-toggle" onclick="document.getElementById('trash-content').style.display = document.getElementById('trash-content').style.display === 'none' ? 'block' : 'none'">
-            🗑️ Corbeille — cas mis de côté ({{ ignored_cases|length }}) ▾
+            🗑️ Corbeille — {{ ignored_cases|length }} cas mis de côté ▾
         </div>
         <div id="trash-content" class="trash-content">
             {% for case in ignored_cases %}
             <div class="card card-ignored">
-                <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                <div style="display:flex; justify-content:space-between;">
                     <div>
                         <div class="card-title">{{ case.customer_name }} — {{ case.subject }}</div>
                         <div class="card-meta">{{ case.customer_email }} · {{ case.created_at[:10] }}</div>
-                        {% if case.order_number %}<div class="order-chip">Commande #{{ case.order_number }}</div>{% endif %}
                     </div>
                     <span class="badge badge-ignored">Mis de côté</span>
                 </div>
-                <div class="card-body-text" style="margin-top:8px;">{{ case.email_body[:300] }}</div>
-                <div style="margin-top:10px;">
-                    <button class="btn btn-gray" onclick="restoreCase({{ case.id }}, this)">↩️ Reprendre ce cas</button>
-                    <a href="/sav/case/{{ case.id }}" style="font-size:12px; color:#aaa; text-decoration:none; margin-left:12px;">📋 Voir fiche</a>
+                <div class="card-body-text" style="margin-top:8px;">{{ case.email_body[:250] }}</div>
+                <div class="actions">
+                    <button class="btn btn-gray" onclick="restoreCase({{ case.id }}, this)">↩️ Reprendre</button>
+                    <a href="/sav/case/{{ case.id }}" style="font-size:12px; color:#aaa; text-decoration:none; padding:8px 0;">📋 Voir fiche</a>
                 </div>
             </div>
             {% endfor %}
@@ -156,217 +172,66 @@
 
     <hr class="divider">
 
-    <!-- === EMAILS ENTRANTS === -->
-    <h2>Emails non lus — créer un cas SAV</h2>
+    <!-- === CRÉER UN CAS MANUELLEMENT === -->
+    <h2>Créer un cas manuellement</h2>
+    <div class="manual-form">
+        <div class="row2">
+            <div>
+                <label class="form-label">Nom du client</label>
+                <input type="text" id="m-name" placeholder="Jean Dupont">
+            </div>
+            <div>
+                <label class="form-label">Email du client</label>
+                <input type="email" id="m-email" placeholder="client@email.com">
+            </div>
+        </div>
+        <div class="row2">
+            <div>
+                <label class="form-label">Sujet</label>
+                <input type="text" id="m-subject" placeholder="Problème semelle...">
+            </div>
+            <div>
+                <label class="form-label">N° commande (optionnel)</label>
+                <input type="text" id="m-order" placeholder="12345">
+            </div>
+        </div>
+        <label class="form-label">Contenu de l'email (copie-colle le mail du client)</label>
+        <textarea id="m-body" style="min-height:120px;" placeholder="Bonjour, j'ai un problème avec ma paire..."></textarea>
+        <button class="btn btn-green" onclick="createManualCase(this)">+ Créer le cas SAV</button>
+        <div class="result-msg" id="result-manual" style="margin-top:10px;"></div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- === EMAILS NON LUS === -->
+    <h2>Emails non lus — ouvrir comme cas SAV</h2>
     {% if emails %}
         {% for email in emails %}
         <div class="card">
             <div class="card-title">{{ email.subject }}</div>
             <div class="card-meta">
                 De : {{ email.sender }} · {{ email.date }}
-                {% if email.order_number %}<strong> · Commande #{{ email.order_number }}</strong>{% endif %}
+                {% if email.order_number %}<span class="order-chip">#{{ email.order_number }}</span>{% endif %}
             </div>
-            <div class="card-body-text">{{ email.body[:400] }}</div>
-            <div class="email-card-actions">
+            <div class="card-body-text">{{ email.body[:350] }}</div>
+            <div class="actions">
                 <button class="btn btn-green" onclick="createCase(
-                    '{{ email.id }}',
-                    '{{ email.thread_id }}',
+                    '{{ email.id }}', '{{ email.thread_id }}',
                     '{{ email.sender_email | replace("'", "\\'") }}',
-                    {{ email.sender | tojson }},
-                    {{ email.subject | tojson }},
-                    {{ email.body | tojson }},
-                    {{ (email.order_number or '') | tojson }},
-                    this
+                    {{ email.sender | tojson }}, {{ email.subject | tojson }},
+                    {{ email.body | tojson }}, {{ (email.order_number or '') | tojson }}, this
                 )">+ Ouvrir cas SAV</button>
             </div>
         </div>
         {% endfor %}
     {% else %}
-        <div style="text-align:center; padding:40px; color:#aaa;">Aucun email non lu.</div>
+        <div style="text-align:center; padding:30px; color:#aaa; font-size:14px;">Aucun email non lu.</div>
     {% endif %}
 
 </div>
 
 <script>
-function extractCustomerName(sender) {
-    const m = sender.match(/^(.+?)\s*</);
-    if (m) return m[1].trim().replace(/^"|"$/g, '');
-    return sender;
-}
-
-async function analyzeCase(caseId, btn) {
-    btn.textContent = 'Analyse...';
-    btn.disabled = true;
-    const res = await fetch('/sav/analyze', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(caseData[caseId])
-    });
-    const data = await res.json();
-    const el = document.getElementById('analysis-' + caseId);
-    el.style.display = 'block';
-    let html = `<strong>Problème :</strong> ${data.problem_summary}<br><br>`;
-    if (data.questions_for_samuel && data.questions_for_samuel.length > 0) {
-        html += `<strong>⚠️ Questions avant de répondre :</strong><ul style="margin:6px 0 0 16px;">`;
-        data.questions_for_samuel.forEach(q => { html += `<li style="margin-bottom:4px;">${q}</li>`; });
-        html += `</ul>`;
-    } else {
-        html += `<strong>✅ Assez d'infos pour répondre.</strong>`;
-    }
-    if (data.missing_info && data.missing_info.length > 0) {
-        html += `<br><br><strong>Infos manquantes :</strong> ${data.missing_info.join(', ')}`;
-    }
-    el.innerHTML = html;
-    btn.textContent = '🔎 Analyser';
-    btn.disabled = false;
-}
-
-async function ignoreCase(caseId, btn) {
-    btn.textContent = '...';
-    btn.disabled = true;
-    await fetch('/sav/ignore', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({case_id: caseId})
-    });
-    location.reload();
-}
-
-async function restoreCase(caseId, btn) {
-    btn.textContent = 'Restauration...';
-    btn.disabled = true;
-    await fetch('/sav/restore', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({case_id: caseId})
-    });
-    location.reload();
-}
-
-async function createCase(emailId, threadId, senderEmail, senderRaw, subject, body, orderNumber, btn) {
-    btn.textContent = 'Création...';
-    btn.disabled = true;
-    const customerName = extractCustomerName(senderRaw);
-    const res = await fetch('/sav/save-case', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-            email_id: emailId,
-            thread_id: threadId,
-            customer_email: senderEmail,
-            customer_name: customerName,
-            subject: subject,
-            email_body: body,
-            order_number: orderNumber || null
-        })
-    });
-    const data = await res.json();
-    if (data.success) {
-        btn.textContent = '✅ Cas créé — rechargement...';
-        setTimeout(() => location.reload(), 1000);
-    } else {
-        btn.textContent = '❌ Erreur';
-        btn.disabled = false;
-    }
-}
-
-async function approveCase(caseId, btn) {
-    const card = document.getElementById('case-' + caseId);
-    btn.textContent = '⏳ Génération étiquette Wing + envoi email...';
-    btn.disabled = true;
-
-    // Collect case data from the card
-    const customerEmail = btn.closest('.card').querySelector('[data-email]')?.dataset.email || '';
-    // We need to pass case data - get it from the hidden fields
-    const res = await fetch('/sav/approve', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(caseData[caseId])
-    });
-    const data = await res.json();
-    const resultEl = document.getElementById('result-' + caseId);
-    resultEl.style.display = 'block';
-    if (data.success) {
-        resultEl.className = 'result-msg result-ok';
-        resultEl.textContent = data.label_attached
-            ? '✅ Email envoyé avec étiquette Wing en pièce jointe.'
-            : '✅ Email envoyé (étiquette Wing non générée — à joindre manuellement).';
-        btn.textContent = '✅ Traité';
-        setTimeout(() => location.reload(), 3000);
-    } else {
-        resultEl.className = 'result-msg result-err';
-        resultEl.textContent = '❌ Erreur — réessaie.';
-        btn.textContent = '✅ OK Réparation + Étiquette Wing';
-        btn.disabled = false;
-    }
-}
-
-function toggleRejection(caseId) {
-    const el = document.getElementById('rejection-' + caseId);
-    el.style.display = el.style.display === 'none' || !el.style.display ? 'block' : 'none';
-}
-
-async function generateRejection(caseId, btn) {
-    const reason = document.getElementById('reason-' + caseId).value.trim();
-    if (!reason) { alert('Indique la raison du refus.'); return; }
-    btn.textContent = 'Génération...';
-    btn.disabled = true;
-    const res = await fetch('/sav/generate-rejection', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({...caseData[caseId], reason})
-    });
-    const data = await res.json();
-    const draftEl = document.getElementById('draft-' + caseId);
-    draftEl.style.display = 'block';
-    document.getElementById('draft-text-' + caseId).value = data.draft;
-    btn.textContent = 'Générer email refus';
-    btn.disabled = false;
-}
-
-async function sendRejection(caseId, customerEmail, subject, threadId, btn) {
-    const body = document.getElementById('draft-text-' + caseId).value;
-    btn.textContent = 'Envoi...';
-    btn.disabled = true;
-    const res = await fetch('/sav/send-rejection', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({case_id: caseId, customer_email: customerEmail, subject, body, thread_id: threadId})
-    });
-    const data = await res.json();
-    const resultEl = document.getElementById('result-' + caseId);
-    resultEl.style.display = 'block';
-    if (data.success) {
-        resultEl.className = 'result-msg result-ok';
-        resultEl.textContent = '✅ Refus envoyé au client.';
-        setTimeout(() => location.reload(), 2000);
-    } else {
-        resultEl.className = 'result-msg result-err';
-        resultEl.textContent = '❌ Erreur envoi.';
-        btn.disabled = false;
-    }
-}
-
-async function checkStatus(caseId, orderNumber, btn) {
-    btn.textContent = '⏳ Recherche dans Wing...';
-    btn.disabled = true;
-    const res = await fetch('/sav/check-status', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({case_id: caseId, order_number: orderNumber})
-    });
-    const data = await res.json();
-    const el = document.getElementById('status-result-' + caseId);
-    if (data.found) {
-        el.innerHTML = `<span class="status-badge">Statut réparation : <strong>${data.status}</strong></span>`;
-    } else {
-        el.innerHTML = `<span class="status-badge" style="background:#fff4e5;color:#b45309;">⏳ Réparation non encore enregistrée dans Wing — traitement en cours.</span>`;
-    }
-    btn.textContent = '🔍 Statut réparation';
-    btn.disabled = false;
-}
-
-// Case data injected from server for JS actions
+// Case data for JS actions
 const caseData = {
     {% for case in cases %}
     {{ case.id }}: {
@@ -380,6 +245,216 @@ const caseData = {
     },
     {% endfor %}
 };
+
+// Auto-analyze all pending cases on load
+document.addEventListener('DOMContentLoaded', function() {
+    {% for case in active_cases %}
+    {% if case.status == 'pending' %}
+    autoAnalyze({{ case.id }});
+    {% endif %}
+    {% endfor %}
+});
+
+async function autoAnalyze(caseId) {
+    try {
+        const res = await fetch('/sav/analyze', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(caseData[caseId])
+        });
+        const data = await res.json();
+        const el = document.getElementById('analysis-' + caseId);
+        if (data.questions_for_samuel && data.questions_for_samuel.length > 0) {
+            el.classList.add('has-questions');
+            let html = `<strong>⚠️ Infos manquantes — questions avant de répondre :</strong><ul style="margin:8px 0 0 16px;">`;
+            data.questions_for_samuel.forEach(q => { html += `<li style="margin-bottom:4px;">${q}</li>`; });
+            html += `</ul>`;
+            if (data.missing_info && data.missing_info.length > 0) {
+                html += `<div style="margin-top:8px; color:#888;">Manquant : ${data.missing_info.join(', ')}</div>`;
+            }
+            el.innerHTML = html;
+            el.style.display = 'block';
+        }
+        // If can_respond_now, don't show anything — no noise
+    } catch(e) {}
+}
+
+function toggleRejection(caseId) {
+    const el = document.getElementById('rejection-' + caseId);
+    el.style.display = el.style.display === 'block' ? 'none' : 'block';
+}
+
+function toggleCompose(caseId) {
+    const el = document.getElementById('compose-' + caseId);
+    el.style.display = el.style.display === 'block' ? 'none' : 'block';
+}
+
+async function sendCompose(caseId, customerEmail, subject, threadId, btn) {
+    const body = document.getElementById('compose-text-' + caseId).value.trim();
+    if (!body) { alert('Écris un message.'); return; }
+    btn.textContent = 'Envoi...'; btn.disabled = true;
+    const res = await fetch('/sav/send-rejection', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({case_id: caseId, customer_email: customerEmail, subject: 'Re: ' + subject, body, thread_id: threadId})
+    });
+    const data = await res.json();
+    const resultEl = document.getElementById('result-' + caseId);
+    resultEl.style.display = 'block';
+    resultEl.className = data.success ? 'result-msg result-ok' : 'result-msg result-err';
+    resultEl.textContent = data.success ? '✅ Message envoyé.' : '❌ Erreur envoi.';
+    btn.textContent = 'Envoyer'; btn.disabled = false;
+}
+
+async function suggestCompose(caseId, btn) {
+    btn.textContent = 'Génération...'; btn.disabled = true;
+    const textarea = document.getElementById('compose-text-' + caseId);
+    const context = textarea.value.trim() || '';
+    const res = await fetch('/sav/analyze', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({...caseData[caseId], suggest_message: context})
+    });
+    // Use the analysis to pre-fill a suggested message
+    const data = await res.json();
+    const questions = data.questions_for_samuel || [];
+    if (questions.length > 0) {
+        textarea.value = `Bonjour ${caseData[caseId].customer_name},\n\nAfin de traiter votre demande au mieux, pourriez-vous nous préciser :\n${questions.map((q,i) => `${i+1}. ${q}`).join('\n')}\n\nMerci d'avance.\n\nJohn – Service Client – Max Sauveur`;
+    } else {
+        textarea.value = `Bonjour ${caseData[caseId].customer_name},\n\n\n\nJohn – Service Client – Max Sauveur`;
+    }
+    btn.textContent = '💡 Suggérer avec Claude'; btn.disabled = false;
+}
+
+async function approveCase(caseId, btn) {
+    btn.textContent = '⏳ Wing + email...'; btn.disabled = true;
+    const res = await fetch('/sav/approve', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(caseData[caseId])
+    });
+    const data = await res.json();
+    const resultEl = document.getElementById('result-' + caseId);
+    resultEl.style.display = 'block';
+    if (data.success) {
+        resultEl.className = 'result-msg result-ok';
+        resultEl.textContent = data.label_attached ? '✅ Email + étiquette Wing envoyés.' : '✅ Email envoyé (étiquette à joindre manuellement).';
+        btn.textContent = '✅ Traité';
+        setTimeout(() => location.reload(), 2500);
+    } else {
+        resultEl.className = 'result-msg result-err';
+        resultEl.textContent = '❌ Erreur.';
+        btn.textContent = '✅ OK Réparation'; btn.disabled = false;
+    }
+}
+
+async function generateRejection(caseId, btn) {
+    const reason = document.getElementById('reason-' + caseId).value.trim();
+    if (!reason) { alert('Indique la raison du refus.'); return; }
+    btn.textContent = 'Génération...'; btn.disabled = true;
+    const res = await fetch('/sav/generate-rejection', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({...caseData[caseId], reason})
+    });
+    const data = await res.json();
+    const draftEl = document.getElementById('draft-' + caseId);
+    draftEl.style.display = 'block';
+    document.getElementById('draft-text-' + caseId).value = data.draft;
+    btn.textContent = 'Générer email refus'; btn.disabled = false;
+}
+
+async function sendRejection(caseId, customerEmail, subject, threadId, btn) {
+    const body = document.getElementById('draft-text-' + caseId).value;
+    btn.textContent = 'Envoi...'; btn.disabled = true;
+    const res = await fetch('/sav/send-rejection', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({case_id: caseId, customer_email: customerEmail, subject, body, thread_id: threadId})
+    });
+    const data = await res.json();
+    const resultEl = document.getElementById('result-' + caseId);
+    resultEl.style.display = 'block';
+    resultEl.className = data.success ? 'result-msg result-ok' : 'result-msg result-err';
+    resultEl.textContent = data.success ? '✅ Refus envoyé.' : '❌ Erreur envoi.';
+    if (data.success) setTimeout(() => location.reload(), 2000);
+    else btn.disabled = false;
+}
+
+async function checkStatus(caseId, orderNumber, btn) {
+    btn.textContent = '⏳...'; btn.disabled = true;
+    const res = await fetch('/sav/check-status', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({case_id: caseId, order_number: orderNumber})
+    });
+    const data = await res.json();
+    const el = document.getElementById('status-result-' + caseId);
+    el.innerHTML = data.found
+        ? `<span style="background:#e6f9ee;color:#1a7a3e;padding:4px 12px;border-radius:20px;font-size:13px;">Statut : <strong>${data.status}</strong></span>`
+        : `<span style="background:#fff4e5;color:#b45309;padding:4px 12px;border-radius:20px;font-size:13px;">⏳ Pas encore enregistré dans Wing</span>`;
+    btn.textContent = '🔍 Statut Wing'; btn.disabled = false;
+}
+
+async function ignoreCase(caseId, btn) {
+    btn.textContent = '...'; btn.disabled = true;
+    await fetch('/sav/ignore', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({case_id: caseId}) });
+    location.reload();
+}
+
+async function restoreCase(caseId, btn) {
+    btn.textContent = 'Restauration...'; btn.disabled = true;
+    await fetch('/sav/restore', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({case_id: caseId}) });
+    location.reload();
+}
+
+function extractCustomerName(sender) {
+    const m = sender.match(/^(.+?)\s*</);
+    return m ? m[1].trim().replace(/^"|"$/g, '') : sender;
+}
+
+async function createCase(emailId, threadId, senderEmail, senderRaw, subject, body, orderNumber, btn) {
+    btn.textContent = 'Création...'; btn.disabled = true;
+    const res = await fetch('/sav/save-case', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            email_id: emailId, thread_id: threadId,
+            customer_email: senderEmail, customer_name: extractCustomerName(senderRaw),
+            subject, email_body: body, order_number: orderNumber || null
+        })
+    });
+    const data = await res.json();
+    if (data.success) { btn.textContent = '✅ Créé...'; setTimeout(() => location.reload(), 800); }
+    else { btn.textContent = '❌ Erreur'; btn.disabled = false; }
+}
+
+async function createManualCase(btn) {
+    const name = document.getElementById('m-name').value.trim();
+    const email = document.getElementById('m-email').value.trim();
+    const subject = document.getElementById('m-subject').value.trim();
+    const body = document.getElementById('m-body').value.trim();
+    const order = document.getElementById('m-order').value.trim();
+    if (!name || !email || !body) { alert('Nom, email et contenu requis.'); return; }
+    btn.textContent = 'Création...'; btn.disabled = true;
+    const res = await fetch('/sav/save-case', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            email_id: 'manual_' + Date.now(),
+            thread_id: 'manual_' + Date.now(),
+            customer_email: email, customer_name: name,
+            subject: subject || 'Demande SAV', email_body: body,
+            order_number: order || null
+        })
+    });
+    const data = await res.json();
+    const resultEl = document.getElementById('result-manual');
+    resultEl.style.display = 'block';
+    if (data.success) {
+        resultEl.className = 'result-msg result-ok';
+        resultEl.textContent = '✅ Cas créé — rechargement...';
+        setTimeout(() => location.reload(), 1000);
+    } else {
+        resultEl.className = 'result-msg result-err';
+        resultEl.textContent = '❌ Erreur.';
+        btn.textContent = '+ Créer le cas SAV'; btn.disabled = false;
+    }
+}
 </script>
 </body>
 </html>
