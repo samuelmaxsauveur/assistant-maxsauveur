@@ -1,5 +1,6 @@
 import os
 import re
+from concurrent.futures import ThreadPoolExecutor
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from dotenv import load_dotenv
 
@@ -17,6 +18,32 @@ app = Flask(__name__)
 from routes_validation import validation
 app.register_blueprint(validation)
 gmail_service = None
+
+def _fetch_order_for_email(email):
+    """Fetch Shopify order for a single email. Runs in thread pool."""
+    order_number = claude_ai.extract_order_number(email['body'] + ' ' + email['subject'])
+    order_info = None
+    try:
+        if order_number:
+            order_info = shopify_api.get_order_by_number(order_number)
+    except Exception:
+        pass
+    sender_email, customer_name = resolve_sender(email['sender'], email['body'])
+    try:
+        if not order_info:
+            orders = shopify_api.get_orders_by_email(sender_email)
+            if orders:
+                order_info = orders[0]
+    except Exception:
+        pass
+    return {
+        'email': email,
+        'order': order_info,
+        'sender_email': sender_email,
+        'intent': {"intent": "other", "address": None, "has_full_address": False},
+        'draft_response': ''
+    }
+
 
 def get_service():
     global gmail_service
@@ -102,30 +129,8 @@ def index():
             gmail_error = str(e)
             return render_template('index.html', emails=[], pending_count=pending_count, gmail_error=gmail_error)
 
-        for email in emails:
-            order_number = claude_ai.extract_order_number(email['body'] + ' ' + email['subject'])
-            order_info = None
-            try:
-                if order_number:
-                    order_info = shopify_api.get_order_by_number(order_number)
-            except Exception:
-                pass
-            sender_email, customer_name = resolve_sender(email['sender'], email['body'])
-            try:
-                if not order_info:
-                    orders = shopify_api.get_orders_by_email(sender_email)
-                    if orders:
-                        order_info = orders[0]
-            except Exception:
-                pass
-
-            processed.append({
-                'email': email,
-                'order': order_info,
-                'sender_email': sender_email,
-                'intent': {"intent": "other", "address": None, "has_full_address": False},
-                'draft_response': ''
-            })
+        with ThreadPoolExecutor(max_workers=5) as executor:
+            processed = list(executor.map(_fetch_order_for_email, emails))
         return render_template('index.html', emails=processed, pending_count=pending_count)
     except Exception:
         return f"<pre style='padding:20px'>{tb.format_exc()}</pre>", 500
