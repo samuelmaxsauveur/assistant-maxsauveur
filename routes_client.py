@@ -13,94 +13,108 @@ def client_page():
 
 @client_bp.route('/client/search', methods=['POST'])
 def client_search():
-    data = request.json
-    query = data.get('query', '').strip()
+    query = (request.json or {}).get('query', '').strip()
     if not query:
         return jsonify({'found': False})
 
+    q = query.lower()
     customer_email = None
     customer_name = None
     orders = []
     sav_cases = []
     gmail_history = []
 
-    # 1. Search Shopify by email or order number
+    # --- 1. Search our database (SAV cases + pending drafts) by name/email/order ---
     try:
-        if '@' in query:
-            customer_email = query
-            shopify_orders = shopify_api.get_orders_by_email(query)
-        else:
-            shopify_orders = shopify_api.get_orders_by_email(query)  # may return nothing
-            # Try by order number
+        for case in database.get_sav_cases():
+            if (q in (case.get('customer_email') or '').lower()
+                    or q in (case.get('customer_name') or '').lower()
+                    or q in (case.get('order_number') or '').lower()):
+                sav_cases.append(case)
+                if not customer_email:
+                    customer_email = case.get('customer_email')
+                if not customer_name:
+                    customer_name = case.get('customer_name')
+    except Exception:
+        pass
+
+    try:
+        for draft in database.get_all_drafts():
+            if (q in (draft.get('customer_email') or '').lower()
+                    or q in (draft.get('customer_name') or '').lower()):
+                if not customer_email:
+                    customer_email = draft.get('customer_email')
+                if not customer_name:
+                    customer_name = draft.get('customer_name')
+    except Exception:
+        pass
+
+    # --- 2. Shopify search ---
+    if '@' in query:
+        # Direct email
+        customer_email = query
+        try:
+            orders = shopify_api.get_orders_by_email(query) or []
+            if orders and not customer_name:
+                customer_name = orders[0].get('customer_name')
+        except Exception:
+            pass
+
+    elif query.lstrip('#').isdigit():
+        # Order number
+        try:
             order = shopify_api.get_order_by_number(query.replace('#', ''))
             if order:
-                shopify_orders = [order]
-                customer_email = order.get('customer_email')
-        orders = shopify_orders or []
-        if orders and not customer_email:
-            customer_email = orders[0].get('customer_email')
-        if orders and not customer_name:
-            customer_name = orders[0].get('customer_name')
-    except Exception:
-        pass
+                orders = [order]
+                if not customer_email:
+                    customer_email = order.get('customer_email')
+                if not customer_name:
+                    customer_name = order.get('customer_name')
+        except Exception:
+            pass
 
-    # 2. Search SAV cases by email or name
-    try:
-        all_cases = database.get_sav_cases()
-        q_lower = query.lower()
-        sav_cases = [
-            c for c in all_cases
-            if q_lower in c.get('customer_email', '').lower()
-            or q_lower in c.get('customer_name', '').lower()
-            or q_lower in (c.get('order_number') or '').lower()
-        ]
-        if sav_cases and not customer_email:
-            customer_email = sav_cases[0]['customer_email']
-        if sav_cases and not customer_name:
-            customer_name = sav_cases[0]['customer_name']
-    except Exception:
-        pass
+    # If we found an email from DB but no Shopify orders yet, try fetching them
+    if customer_email and not orders:
+        try:
+            orders = shopify_api.get_orders_by_email(customer_email) or []
+        except Exception:
+            pass
 
-    # 3. Search pending drafts by email or name
-    try:
-        all_drafts = database.get_all_drafts()
-        drafts = [
-            d for d in all_drafts
-            if q_lower in d.get('customer_email', '').lower()
-            or q_lower in d.get('customer_name', '').lower()
-        ]
-        if drafts and not customer_email:
-            customer_email = drafts[0]['customer_email']
-        if drafts and not customer_name:
-            customer_name = drafts[0]['customer_name']
-    except Exception:
-        drafts = []
-
+    # Nothing found anywhere
     if not customer_email and not sav_cases and not orders:
-        return jsonify({'found': False, 'query': query})
+        return jsonify({'found': False})
 
-    # 4. Fetch Gmail history if we have an email
+    # --- 3. Gmail history ---
     if customer_email:
         try:
             service = gmail_helper.get_gmail_service()
-            raw_history = gmail_helper.get_customer_history(service, customer_email, max_results=15)
+            raw = gmail_helper.get_customer_history(service, customer_email, max_results=20)
             gmail_history = [
                 {
                     'date': h.get('date', '')[:16],
                     'subject': h.get('subject', ''),
-                    'body': h.get('body', '')[:400],
+                    'body': h.get('body', '')[:500],
                     'direction': h.get('direction', 'received'),
                 }
-                for h in raw_history
+                for h in raw
             ]
         except Exception:
             pass
 
     return jsonify({
         'found': True,
-        'customer_email': customer_email,
-        'customer_name': customer_name,
-        'orders': orders[:5],
+        'customer_email': customer_email or '',
+        'customer_name': customer_name or '',
+        'orders': [
+            {
+                'number': o.get('number', ''),
+                'created_at': o.get('created_at', ''),
+                'total': o.get('total', ''),
+                'fulfillment_status': o.get('fulfillment_status', ''),
+                'tracking_url': o.get('tracking_url'),
+            }
+            for o in (orders or [])[:5]
+        ],
         'sav_cases': [
             {
                 'id': c['id'],
@@ -117,14 +131,15 @@ def client_search():
 
 @client_bp.route('/client/send', methods=['POST'])
 def client_send():
-    data = request.json
-    customer_email = data['customer_email']
-    subject = data.get('subject', 'Max Sauveur — Service Client')
-    body = data['body']
-    thread_id = data.get('thread_id')
+    data = request.json or {}
+    customer_email = data.get('customer_email', '')
+    subject = data.get('subject') or 'Max Sauveur — Service Client'
+    body = data.get('body', '')
+    if not customer_email or not body:
+        return jsonify({'success': False, 'error': 'Email et message requis'})
     try:
         service = gmail_helper.get_gmail_service()
-        gmail_helper.send_email(service, customer_email, subject, body, thread_id=thread_id)
+        gmail_helper.send_email(service, customer_email, subject, body)
         return jsonify({'success': True})
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)})
