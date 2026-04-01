@@ -55,6 +55,39 @@ def resolve_sender(sender, body):
 def health():
     return jsonify({'status': 'ok'}), 200
 
+@app.route('/debug')
+def debug():
+    import traceback
+    results = {}
+    try:
+        import database
+        results['database'] = 'OK'
+        database.get_pending_drafts()
+        results['db_query'] = 'OK'
+    except Exception as e:
+        results['database'] = traceback.format_exc()
+    try:
+        service = get_service()
+        results['gmail'] = 'OK'
+    except Exception as e:
+        results['gmail'] = str(e)
+    try:
+        import shopify_api
+        results['shopify_import'] = 'OK'
+    except Exception as e:
+        results['shopify_import'] = str(e)
+    try:
+        import claude_ai
+        results['claude_import'] = 'OK'
+    except Exception as e:
+        results['claude_import'] = str(e)
+    try:
+        import scheduler as s
+        results['scheduler_import'] = 'OK'
+    except Exception as e:
+        results['scheduler_import'] = str(e)
+    return jsonify(results), 200
+
 @app.route('/')
 def index():
     processed = []
