@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Recherche client — Max Sauveur</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f5; color: #333; }
+        header { background: #111; color: white; padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; }
+        header h1 { font-size: 18px; font-weight: 600; }
+        header a { color: #aaa; text-decoration: none; font-size: 14px; margin-left: 16px; }
+        header a:hover { color: white; }
+        .container { max-width: 820px; margin: 40px auto; padding: 0 16px; }
+
+        .search-bar { display: flex; gap: 10px; margin-bottom: 32px; }
+        .search-bar input { flex: 1; padding: 14px 18px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 16px; font-family: inherit; outline: none; transition: border-color 0.2s; }
+        .search-bar input:focus { border-color: #111; }
+        .search-bar button { padding: 14px 24px; background: #111; color: white; border: none; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; }
+        .search-bar button:hover { background: #333; }
+
+        .not-found { text-align: center; padding: 48px; color: #aaa; font-size: 15px; }
+
+        .profile-card { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); margin-bottom: 24px; }
+        .profile-name { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+        .profile-email { font-size: 15px; color: #2563eb; margin-bottom: 16px; }
+
+        .section-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #888; margin-bottom: 12px; }
+
+        .order-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-size: 14px; }
+        .order-row:last-child { border-bottom: none; }
+        .badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 12px; font-weight: 500; background: #f0f0f0; color: #555; }
+        .badge-fulfilled { background: #e6f9ee; color: #1a7a3e; }
+        .badge-unfulfilled { background: #fff4e5; color: #b45309; }
+        .badge-pending { background: #fff4e5; color: #b45309; }
+        .badge-approved { background: #e6f9ee; color: #1a7a3e; }
+        .badge-ignored { background: #f0f0f0; color: #888; }
+        .badge-rejected { background: #fee2e2; color: #991b1b; }
+
+        .history-item { padding: 14px 0; border-bottom: 1px solid #f5f5f5; }
+        .history-item:last-child { border-bottom: none; }
+        .history-meta { display: flex; gap: 10px; align-items: center; margin-bottom: 4px; }
+        .direction-in { font-size: 12px; font-weight: 600; color: #2563eb; }
+        .direction-out { font-size: 12px; font-weight: 600; color: #16a34a; }
+        .history-date { font-size: 12px; color: #aaa; }
+        .history-subject { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+        .history-body { font-size: 13px; color: #666; line-height: 1.5; white-space: pre-wrap; max-height: 80px; overflow-y: auto; }
+
+        .sav-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-size: 14px; }
+        .sav-row a { color: #2563eb; text-decoration: none; font-size: 13px; }
+
+        .compose { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+        .compose input { width: 100%; padding: 10px 14px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 14px; font-family: inherit; margin-bottom: 10px; }
+        .compose textarea { width: 100%; padding: 12px 14px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 14px; font-family: inherit; min-height: 140px; resize: vertical; }
+        .compose-actions { display: flex; gap: 10px; margin-top: 12px; }
+        .btn { padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; }
+        .btn-primary { background: #111; color: white; }
+        .btn-primary:hover { background: #333; }
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+        .result { margin-top: 10px; padding: 10px 14px; border-radius: 8px; font-size: 14px; display: none; }
+        .result-ok { background: #e6f9ee; color: #1a7a3e; }
+        .result-err { background: #fee2e2; color: #991b1b; }
+
+        #results { display: none; }
+    </style>
+</head>
+<body>
+<header>
+    <h1>🔍 Recherche client</h1>
+    <div>
+        <a href="/">📬 Emails</a>
+        <a href="/sav">🔧 SAV</a>
+        <a href="/dashboard">📋 Dashboard</a>
+    </div>
+</header>
+
+<div class="container">
+
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Nom, email ou numéro de commande..." onkeydown="if(event.key==='Enter') search()">
+        <button onclick="search()">Rechercher</button>
+    </div>
+
+    <div id="not-found" style="display:none;" class="not-found">Aucun client trouvé pour cette recherche.</div>
+
+    <div id="results">
+        <!-- Profile -->
+        <div class="profile-card">
+            <div class="profile-name" id="r-name"></div>
+            <div class="profile-email" id="r-email"></div>
+
+            <!-- Orders -->
+            <div id="orders-section" style="margin-bottom:20px;">
+                <div class="section-title">Commandes Shopify</div>
+                <div id="r-orders"></div>
+            </div>
+
+            <!-- SAV cases -->
+            <div id="sav-section" style="display:none; margin-bottom:20px;">
+                <div class="section-title">Cas SAV</div>
+                <div id="r-sav"></div>
+            </div>
+        </div>
+
+        <!-- Gmail history -->
+        <div class="profile-card">
+            <div class="section-title">Historique des échanges email</div>
+            <div id="r-history">
+                <div style="color:#aaa; font-size:14px;">Chargement de l'historique Gmail...</div>
+            </div>
+        </div>
+
+        <!-- Compose -->
+        <div class="compose">
+            <div class="section-title" style="margin-bottom:14px;">✉️ Envoyer un message</div>
+            <input type="text" id="compose-subject" placeholder="Sujet">
+            <textarea id="compose-body" placeholder="Votre message..."></textarea>
+            <div class="compose-actions">
+                <button class="btn btn-primary" onclick="sendMessage()" id="send-btn">Envoyer</button>
+            </div>
+            <div class="result" id="send-result"></div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+let currentEmail = '';
+let lastThreadId = null;
+
+async function search() {
+    const query = document.getElementById('search-input').value.trim();
+    if (!query) return;
+
+    document.getElementById('not-found').style.display = 'none';
+    document.getElementById('results').style.display = 'none';
+    document.getElementById('r-history').innerHTML = '<div style="color:#aaa;font-size:14px;">Chargement...</div>';
+
+    const res = await fetch('/client/search', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({query})
+    });
+    const data = await res.json();
+
+    if (!data.found) {
+        document.getElementById('not-found').style.display = 'block';
+        return;
+    }
+
+    currentEmail = data.customer_email || '';
+    document.getElementById('r-name').textContent = data.customer_name || '(nom inconnu)';
+    document.getElementById('r-email').textContent = currentEmail;
+
+    // Orders
+    const ordersEl = document.getElementById('r-orders');
+    if (data.orders && data.orders.length > 0) {
+        ordersEl.innerHTML = data.orders.map(o => `
+            <div class="order-row">
+                <span><strong>${o.number}</strong> — ${o.created_at}</span>
+                <span>${o.total}</span>
+                <span class="badge badge-${o.fulfillment_status}">${o.fulfillment_status === 'fulfilled' ? 'Expédié' : o.fulfillment_status === 'partial' ? 'Partiel' : 'En attente'}</span>
+            </div>`).join('');
+    } else {
+        ordersEl.innerHTML = '<div style="color:#aaa;font-size:13px;">Aucune commande trouvée.</div>';
+    }
+
+    // SAV cases
+    if (data.sav_cases && data.sav_cases.length > 0) {
+        document.getElementById('sav-section').style.display = 'block';
+        document.getElementById('r-sav').innerHTML = data.sav_cases.map(c => `
+            <div class="sav-row">
+                <span>${c.created_at} — ${c.subject}</span>
+                <span class="badge badge-${c.status}">${c.status}</span>
+                <a href="/sav/case/${c.id}">Voir fiche →</a>
+            </div>`).join('');
+    }
+
+    // Gmail history
+    const historyEl = document.getElementById('r-history');
+    if (data.gmail_history && data.gmail_history.length > 0) {
+        lastThreadId = null;
+        historyEl.innerHTML = data.gmail_history.map(h => `
+            <div class="history-item">
+                <div class="history-meta">
+                    <span class="${h.direction === 'received' ? 'direction-in' : 'direction-out'}">
+                        ${h.direction === 'received' ? '← Client' : '→ Nous'}
+                    </span>
+                    <span class="history-date">${h.date}</span>
+                </div>
+                <div class="history-subject">${h.subject}</div>
+                <div class="history-body">${h.body}</div>
+            </div>`).join('');
+    } else {
+        historyEl.innerHTML = '<div style="color:#aaa;font-size:14px;">Aucun échange Gmail trouvé.</div>';
+    }
+
+    document.getElementById('results').style.display = 'block';
+}
+
+async function sendMessage() {
+    const subject = document.getElementById('compose-subject').value.trim() || 'Max Sauveur — Service Client';
+    const body = document.getElementById('compose-body').value.trim();
+    if (!body) { alert('Écris un message.'); return; }
+    if (!currentEmail) { alert('Aucun email client sélectionné.'); return; }
+
+    const btn = document.getElementById('send-btn');
+    btn.textContent = 'Envoi...'; btn.disabled = true;
+
+    const res = await fetch('/client/send', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({customer_email: currentEmail, subject, body, thread_id: lastThreadId})
+    });
+    const data = await res.json();
+
+    const resultEl = document.getElementById('send-result');
+    resultEl.style.display = 'block';
+    if (data.success) {
+        resultEl.className = 'result result-ok';
+        resultEl.textContent = '✅ Message envoyé à ' + currentEmail;
+        document.getElementById('compose-body').value = '';
+    } else {
+        resultEl.className = 'result result-err';
+        resultEl.textContent = '❌ Erreur : ' + (data.error || 'inconnu');
+    }
+    btn.textContent = 'Envoyer'; btn.disabled = false;
+}
+</script>
+</body>
+</html>

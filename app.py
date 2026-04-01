@@ -17,8 +17,10 @@ import scheduler as scheduler_module
 app = Flask(__name__)
 from routes_validation import validation
 from routes_sav import sav
+from routes_client import client_bp
 app.register_blueprint(validation)
 app.register_blueprint(sav)
+app.register_blueprint(client_bp)
 gmail_service = None
 
 def _fetch_order_for_email(email):
