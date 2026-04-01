@@ -4,6 +4,9 @@ import json
 import unicodedata
 import base64
 import email.mime.text
+import email.mime.multipart
+import email.mime.base
+import email.encoders
 import tempfile
 import requests as requests_lib
 from google.oauth2.credentials import Credentials
@@ -164,8 +167,18 @@ def get_customer_history(service, sender_email, max_results=10):
     return history[:6]
 
 
-def send_email(service, to, subject, body, thread_id=None):
-    message = email.mime.text.MIMEText(body, 'plain', 'utf-8')
+def send_email(service, to, subject, body, thread_id=None,
+               attachment_bytes=None, attachment_filename='etiquette_retour.pdf'):
+    if attachment_bytes:
+        message = email.mime.multipart.MIMEMultipart()
+        message.attach(email.mime.text.MIMEText(body, 'plain', 'utf-8'))
+        part = email.mime.base.MIMEBase('application', 'pdf')
+        part.set_payload(attachment_bytes)
+        email.encoders.encode_base64(part)
+        part.add_header('Content-Disposition', 'attachment', filename=attachment_filename)
+        message.attach(part)
+    else:
+        message = email.mime.text.MIMEText(body, 'plain', 'utf-8')
     message['to'] = to
     message['subject'] = subject
     raw = base64.urlsafe_b64encode(message.as_bytes()).decode()

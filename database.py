@@ -74,6 +74,20 @@ def init_db():
             cursor.execute("ALTER TABLE pending_drafts ADD COLUMN rejection_comment TEXT")
         except Exception:
             pass
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS sav_cases (
+                id            INTEGER PRIMARY KEY AUTOINCREMENT,
+                email_id      TEXT NOT NULL UNIQUE,
+                thread_id     TEXT NOT NULL,
+                customer_email TEXT NOT NULL,
+                customer_name  TEXT NOT NULL,
+                subject        TEXT NOT NULL,
+                email_body     TEXT NOT NULL,
+                order_number   TEXT,
+                status         TEXT NOT NULL DEFAULT 'pending',
+                created_at     TIMESTAMP NOT NULL
+            )
+        """)
         conn.commit()
     finally:
         conn.close()
@@ -320,6 +334,42 @@ def get_today_questions():
             (f"{today}%",)
         )
         return [dict(row) for row in cursor.fetchall()]
+    finally:
+        conn.close()
+
+
+def save_sav_case(email_id, thread_id, customer_email, customer_name, subject, email_body, order_number=None):
+    now = datetime.utcnow().isoformat()
+    conn = get_connection()
+    try:
+        conn.execute(
+            """INSERT OR IGNORE INTO sav_cases
+               (email_id, thread_id, customer_email, customer_name, subject, email_body, order_number, status, created_at)
+               VALUES (?, ?, ?, ?, ?, ?, ?, 'pending', ?)""",
+            (email_id, thread_id, customer_email, customer_name, subject, email_body, order_number, now)
+        )
+        conn.commit()
+        cursor = conn.execute("SELECT id FROM sav_cases WHERE email_id = ?", (email_id,))
+        row = cursor.fetchone()
+        return row['id'] if row else None
+    finally:
+        conn.close()
+
+
+def get_sav_cases():
+    conn = get_connection()
+    try:
+        cursor = conn.execute("SELECT * FROM sav_cases ORDER BY created_at DESC")
+        return [dict(row) for row in cursor.fetchall()]
+    finally:
+        conn.close()
+
+
+def update_sav_case_status(case_id, status):
+    conn = get_connection()
+    try:
+        conn.execute("UPDATE sav_cases SET status = ? WHERE id = ?", (status, case_id))
+        conn.commit()
     finally:
         conn.close()
 

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>SAV Réparations — Max Sauveur</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f5; color: #333; }
+        header { background: #111; color: white; padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; }
+        header h1 { font-size: 18px; font-weight: 600; }
+        header a { color: #aaa; text-decoration: none; font-size: 14px; margin-left: 16px; }
+        header a:hover { color: white; }
+        .container { max-width: 960px; margin: 32px auto; padding: 0 16px; }
+        h2 { font-size: 16px; font-weight: 600; color: #555; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .card { background: white; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); padding: 20px 24px; }
+        .card-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .card-meta { font-size: 13px; color: #888; margin-bottom: 12px; }
+        .card-body-text { font-size: 13px; color: #555; line-height: 1.6; max-height: 120px; overflow-y: auto; background: #f9f9f9; border-radius: 6px; padding: 10px; margin-bottom: 12px; white-space: pre-wrap; }
+        .badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 12px; font-weight: 500; }
+        .badge-pending { background: #fff4e5; color: #b45309; }
+        .badge-approved { background: #e6f9ee; color: #1a7a3e; }
+        .badge-rejected { background: #fee2e2; color: #991b1b; }
+        .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+        .btn { padding: 9px 18px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; }
+        .btn-green { background: #16a34a; color: white; }
+        .btn-green:hover { background: #15803d; }
+        .btn-red { background: #dc2626; color: white; }
+        .btn-red:hover { background: #b91c1c; }
+        .btn-gray { background: #f0f0f0; color: #333; }
+        .btn-gray:hover { background: #e0e0e0; }
+        .btn-blue { background: #2563eb; color: white; }
+        .btn-blue:hover { background: #1d4ed8; }
+        .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .rejection-form { display: none; margin-top: 12px; }
+        .rejection-form textarea { width: 100%; padding: 10px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 14px; font-family: inherit; min-height: 80px; resize: vertical; }
+        .draft-preview { display: none; margin-top: 12px; }
+        .draft-preview textarea { width: 100%; padding: 10px; border: 1px solid #b3d4f5; border-radius: 8px; font-size: 13px; font-family: inherit; min-height: 180px; resize: vertical; background: #f0f7ff; }
+        .result-msg { margin-top: 10px; padding: 10px 14px; border-radius: 8px; font-size: 14px; display: none; }
+        .result-ok { background: #e6f9ee; color: #1a7a3e; }
+        .result-err { background: #fee2e2; color: #991b1b; }
+        .status-badge { display: inline-block; margin-top: 8px; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 500; background: #f0f0f0; color: #555; }
+        .email-card-actions { display: flex; gap: 10px; margin-top: 10px; }
+        .divider { border: none; border-top: 1px solid #eee; margin: 32px 0; }
+        .order-chip { display: inline-block; background: #f0f0f0; border-radius: 6px; padding: 2px 10px; font-size: 12px; font-weight: 600; margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+<header>
+    <h1>🔧 SAV Réparations — Max Sauveur</h1>
+    <div>
+        <a href="/">📬 Emails</a>
+        <a href="/dashboard">📋 Dashboard</a>
+        <a href="/sav" style="color:white;">🔧 SAV</a>
+    </div>
+</header>
+
+<div class="container">
+
+    <!-- === CAS SAV OUVERTS === -->
+    <h2>Cas SAV ouverts ({{ cases|length }})</h2>
+    {% if cases %}
+        {% for case in cases %}
+        <div class="card" id="case-{{ case.id }}">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                <div>
+                    <div class="card-title">{{ case.customer_name }} — {{ case.subject }}</div>
+                    <div class="card-meta">{{ case.customer_email }} · {{ case.created_at[:10] }}</div>
+                    {% if case.order_number %}
+                        <div class="order-chip">Commande #{{ case.order_number }}</div>
+                    {% endif %}
+                </div>
+                <span class="badge badge-{{ case.status }}">{{ case.status }}</span>
+            </div>
+            <div class="card-body-text">{{ case.email_body[:500] }}</div>
+
+            {% if case.status == 'pending' %}
+            <div class="actions">
+                <button class="btn btn-green" onclick="approveCase({{ case.id }}, this)">
+                    ✅ OK Réparation + Étiquette Wing
+                </button>
+                <button class="btn btn-red" onclick="toggleRejection({{ case.id }})">
+                    ❌ Refuser
+                </button>
+                {% if case.order_number %}
+                <button class="btn btn-gray" onclick="checkStatus({{ case.id }}, '{{ case.order_number }}', this)">
+                    🔍 Statut réparation
+                </button>
+                {% endif %}
+            </div>
+
+            <!-- Rejection form -->
+            <div class="rejection-form" id="rejection-{{ case.id }}">
+                <textarea id="reason-{{ case.id }}" placeholder="Ex : La paire a plus de 2 ans, l'usure est normale — on ne prend pas en charge..."></textarea>
+                <div style="display:flex; gap:10px; margin-top:8px;">
+                    <button class="btn btn-gray" onclick="generateRejection({{ case.id }}, this)">Générer email refus</button>
+                </div>
+            </div>
+
+            <!-- Draft preview (approval or rejection) -->
+            <div class="draft-preview" id="draft-{{ case.id }}">
+                <div style="font-size:12px; font-weight:600; color:#888; margin-bottom:6px; text-transform:uppercase;">Brouillon à envoyer</div>
+                <textarea id="draft-text-{{ case.id }}"></textarea>
+                <div style="display:flex; gap:10px; margin-top:8px;">
+                    <button class="btn btn-blue" onclick="sendRejection({{ case.id }}, '{{ case.customer_email }}', '{{ case.subject }}', '{{ case.thread_id }}', this)">Envoyer ce refus</button>
+                </div>
+            </div>
+
+            <!-- Status result -->
+            <div id="status-result-{{ case.id }}"></div>
+
+            {% endif %}
+
+            <!-- Result message -->
+            <div class="result-msg" id="result-{{ case.id }}"></div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div style="text-align:center; padding:40px; color:#aaa;">Aucun cas SAV ouvert.</div>
+    {% endif %}
+
+    <hr class="divider">
+
+    <!-- === EMAILS ENTRANTS === -->
+    <h2>Emails non lus — créer un cas SAV</h2>
+    {% if emails %}
+        {% for email in emails %}
+        <div class="card">
+            <div class="card-title">{{ email.subject }}</div>
+            <div class="card-meta">
+                De : {{ email.sender }} · {{ email.date }}
+                {% if email.order_number %}<strong> · Commande #{{ email.order_number }}</strong>{% endif %}
+            </div>
+            <div class="card-body-text">{{ email.body[:400] }}</div>
+            <div class="email-card-actions">
+                <button class="btn btn-green" onclick="createCase(
+                    '{{ email.id }}',
+                    '{{ email.thread_id }}',
+                    '{{ email.sender_email | replace("'", "\\'") }}',
+                    {{ email.sender | tojson }},
+                    {{ email.subject | tojson }},
+                    {{ email.body | tojson }},
+                    {{ (email.order_number or '') | tojson }},
+                    this
+                )">+ Ouvrir cas SAV</button>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div style="text-align:center; padding:40px; color:#aaa;">Aucun email non lu.</div>
+    {% endif %}
+
+</div>
+
+<script>
+function extractCustomerName(sender) {
+    const m = sender.match(/^(.+?)\s*</);
+    if (m) return m[1].trim().replace(/^"|"$/g, '');
+    return sender;
+}
+
+async function createCase(emailId, threadId, senderEmail, senderRaw, subject, body, orderNumber, btn) {
+    btn.textContent = 'Création...';
+    btn.disabled = true;
+    const customerName = extractCustomerName(senderRaw);
+    const res = await fetch('/sav/save-case', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            email_id: emailId,
+            thread_id: threadId,
+            customer_email: senderEmail,
+            customer_name: customerName,
+            subject: subject,
+            email_body: body,
+            order_number: orderNumber || null
+        })
+    });
+    const data = await res.json();
+    if (data.success) {
+        btn.textContent = '✅ Cas créé — rechargement...';
+        setTimeout(() => location.reload(), 1000);
+    } else {
+        btn.textContent = '❌ Erreur';
+        btn.disabled = false;
+    }
+}
+
+async function approveCase(caseId, btn) {
+    const card = document.getElementById('case-' + caseId);
+    btn.textContent = '⏳ Génération étiquette Wing + envoi email...';
+    btn.disabled = true;
+
+    // Collect case data from the card
+    const customerEmail = btn.closest('.card').querySelector('[data-email]')?.dataset.email || '';
+    // We need to pass case data - get it from the hidden fields
+    const res = await fetch('/sav/approve', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(caseData[caseId])
+    });
+    const data = await res.json();
+    const resultEl = document.getElementById('result-' + caseId);
+    resultEl.style.display = 'block';
+    if (data.success) {
+        resultEl.className = 'result-msg result-ok';
+        resultEl.textContent = data.label_attached
+            ? '✅ Email envoyé avec étiquette Wing en pièce jointe.'
+            : '✅ Email envoyé (étiquette Wing non générée — à joindre manuellement).';
+        btn.textContent = '✅ Traité';
+        setTimeout(() => location.reload(), 3000);
+    } else {
+        resultEl.className = 'result-msg result-err';
+        resultEl.textContent = '❌ Erreur — réessaie.';
+        btn.textContent = '✅ OK Réparation + Étiquette Wing';
+        btn.disabled = false;
+    }
+}
+
+function toggleRejection(caseId) {
+    const el = document.getElementById('rejection-' + caseId);
+    el.style.display = el.style.display === 'none' || !el.style.display ? 'block' : 'none';
+}
+
+async function generateRejection(caseId, btn) {
+    const reason = document.getElementById('reason-' + caseId).value.trim();
+    if (!reason) { alert('Indique la raison du refus.'); return; }
+    btn.textContent = 'Génération...';
+    btn.disabled = true;
+    const res = await fetch('/sav/generate-rejection', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({...caseData[caseId], reason})
+    });
+    const data = await res.json();
+    const draftEl = document.getElementById('draft-' + caseId);
+    draftEl.style.display = 'block';
+    document.getElementById('draft-text-' + caseId).value = data.draft;
+    btn.textContent = 'Générer email refus';
+    btn.disabled = false;
+}
+
+async function sendRejection(caseId, customerEmail, subject, threadId, btn) {
+    const body = document.getElementById('draft-text-' + caseId).value;
+    btn.textContent = 'Envoi...';
+    btn.disabled = true;
+    const res = await fetch('/sav/send-rejection', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({case_id: caseId, customer_email: customerEmail, subject, body, thread_id: threadId})
+    });
+    const data = await res.json();
+    const resultEl = document.getElementById('result-' + caseId);
+    resultEl.style.display = 'block';
+    if (data.success) {
+        resultEl.className = 'result-msg result-ok';
+        resultEl.textContent = '✅ Refus envoyé au client.';
+        setTimeout(() => location.reload(), 2000);
+    } else {
+        resultEl.className = 'result-msg result-err';
+        resultEl.textContent = '❌ Erreur envoi.';
+        btn.disabled = false;
+    }
+}
+
+async function checkStatus(caseId, orderNumber, btn) {
+    btn.textContent = '⏳ Recherche dans Wing...';
+    btn.disabled = true;
+    const res = await fetch('/sav/check-status', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({case_id: caseId, order_number: orderNumber})
+    });
+    const data = await res.json();
+    const el = document.getElementById('status-result-' + caseId);
+    if (data.found) {
+        el.innerHTML = `<span class="status-badge">Statut réparation : <strong>${data.status}</strong></span>`;
+    } else {
+        el.innerHTML = `<span class="status-badge" style="background:#fff4e5;color:#b45309;">⏳ Réparation non encore enregistrée dans Wing — traitement en cours.</span>`;
+    }
+    btn.textContent = '🔍 Statut réparation';
+    btn.disabled = false;
+}
+
+// Case data injected from server for JS actions
+const caseData = {
+    {% for case in cases %}
+    {{ case.id }}: {
+        case_id: {{ case.id }},
+        customer_email: {{ case.customer_email | tojson }},
+        customer_name: {{ case.customer_name | tojson }},
+        order_number: {{ (case.order_number or '') | tojson }},
+        email_body: {{ case.email_body | tojson }},
+        subject: {{ case.subject | tojson }},
+        thread_id: {{ case.thread_id | tojson }}
+    },
+    {% endfor %}
+};
+</script>
+</body>
+</html>

@@ -264,6 +264,55 @@ Réponds UNIQUEMENT avec le JSON, rien d'autre."""
         return {"intent": "other", "address": None, "has_full_address": False}
 
 
+SAV_APPROVAL_TEMPLATE = """Bonjour {customer_name},
+
+Merci de nous avoir contacté.
+
+Nous prenons en charge la réparation de votre article. Voici la marche à suivre :
+
+1. Emballez soigneusement votre paire (idéalement dans sa boîte d'origine).
+2. Glissez dans le colis un petit mot avec votre nom, votre numéro de commande et la mention "réparation".
+3. {label_line}
+4. Déposez le colis dans n'importe quel bureau de La Poste ou point relais.
+
+Adresse de retour (déjà renseignée sur l'étiquette) :
+SSL – Solutions & Services Logistiques
+14 avenue Lamartine — 13170 Les Pennes-Mirabeau
+
+Délai estimé en atelier : 6 à 8 semaines.
+
+On reste disponible si vous avez la moindre question.
+
+John – Service Client – Max Sauveur"""
+
+
+def generate_sav_approval_email(customer_name, order_number, email_body):
+    """Generate the approval/repair email using the fixed SAV template."""
+    label_line = "Collez l'étiquette de retour ci-jointe sur votre colis — le port est entièrement pris en charge."
+    return SAV_APPROVAL_TEMPLATE.format(
+        customer_name=customer_name,
+        order_number=order_number or '(votre commande)',
+        label_line=label_line
+    )
+
+
+def generate_sav_rejection_email(customer_name, order_number, email_body, reason):
+    """Generate a polished rejection email based on Samuel's reason."""
+    prompt = f"""Email client reçu :
+{email_body}
+
+Instruction du responsable : {reason}
+
+Rédige une réponse professionnelle, courtoise et pédagogique pour refuser ou expliquer la situation.
+Sois clair mais humain, jamais froid. Utilise "vous".
+Signe : John – Service Client – Max Sauveur
+Réponds uniquement avec le corps du mail, rien d'autre."""
+    return _call_claude(
+        system=get_system_prompt(),
+        messages=[{"role": "user", "content": prompt}]
+    )
+
+
 def extract_order_number(text):
     patterns = [
         r'commande[s]?\s+n[°o]?\s*#?\s*(\d{4,6})',

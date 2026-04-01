@@ -15,6 +15,99 @@ def _login(page):
     page.wait_for_load_state('networkidle')
     time.sleep(3)
 
+def generate_return_label(order_number):
+    """Generate a return label in Wing and return PDF bytes, or None on failure."""
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        context = browser.new_context(accept_downloads=True)
+        page = context.new_page()
+        page.set_viewport_size({'width': 1280, 'height': 900})
+        try:
+            _login(page)
+            page.goto(f"{WING_URL}/orders")
+            page.wait_for_load_state('networkidle')
+            time.sleep(2)
+
+            # Search for the order
+            page.fill('input[type="search"]', str(order_number))
+            page.keyboard.press('Enter')
+            time.sleep(4)
+
+            # Select order checkbox (leftmost column)
+            page.locator('input[type="checkbox"]').first.click()
+            time.sleep(1)
+
+            # Bottom action bar: click Affranchissement then Créer
+            page.click('text=Affranchissement')
+            time.sleep(2)
+            page.click('text=Créer')
+            time.sleep(5)
+
+            # Download the generated label
+            with page.expect_download(timeout=30000) as download_info:
+                page.locator('text=Télécharger').first.click()
+            download = download_info.value
+            pdf_bytes = open(download.path(), 'rb').read()
+
+            context.close()
+            browser.close()
+            return pdf_bytes
+
+        except Exception as e:
+            print(f"Erreur génération étiquette Wing: {e}")
+            try:
+                context.close()
+                browser.close()
+            except Exception:
+                pass
+            return None
+
+
+def check_repair_status(order_number):
+    """Search Wing for order_number + '_réparation' and return the status string, or None if not found."""
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        page = browser.new_page()
+        page.set_viewport_size({'width': 1280, 'height': 900})
+        try:
+            _login(page)
+            page.goto(f"{WING_URL}/orders")
+            page.wait_for_load_state('networkidle')
+            time.sleep(2)
+
+            page.fill('input[type="search"]', f"{order_number}_réparation")
+            page.keyboard.press('Enter')
+            time.sleep(4)
+
+            body_text = page.inner_text('body').lower()
+            if 'aucun' in body_text or 'no result' in body_text or 'introuvable' in body_text:
+                browser.close()
+                return None
+
+            # Try common Wing status selectors
+            for selector in ['[class*="status"]', '[class*="statut"]', 'td:nth-child(4)']:
+                try:
+                    el = page.locator(selector).first
+                    if el.is_visible(timeout=2000):
+                        status = el.text_content().strip()
+                        if status:
+                            browser.close()
+                            return status
+                except Exception:
+                    continue
+
+            browser.close()
+            return "En cours de traitement"
+
+        except Exception as e:
+            print(f"Erreur vérification statut Wing: {e}")
+            try:
+                browser.close()
+            except Exception:
+                pass
+            return None
+
+
 def change_relay_point(order_number, new_address):
     """Change le point relais d'une commande Wing. Retourne True si succès."""
     with sync_playwright() as p:
