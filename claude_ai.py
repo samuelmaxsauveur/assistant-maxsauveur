@@ -286,6 +286,45 @@ On reste disponible si vous avez la moindre question.
 John – Service Client – Max Sauveur"""
 
 
+def analyze_sav_email(email_body, email_subject, order_info=None):
+    """Analyze a SAV email and return missing info questions + intent summary."""
+    order_context = ""
+    if order_info:
+        order_context = f"\nCommande trouvée : {order_info.get('number')} — {order_info.get('fulfillment_status')} — {order_info.get('total')}"
+    prompt = f"""Analyse cet email SAV client et réponds en JSON strict :
+
+Sujet : {email_subject}
+Corps : {email_body}{order_context}
+
+Identifie :
+1. Le problème exact décrit
+2. Les informations manquantes pour traiter la demande (ex: pas de photo, pas de numéro de commande, problème flou, etc.)
+3. Les questions à poser à Samuel (le responsable) avant de répondre
+
+Réponds UNIQUEMENT avec ce JSON :
+{{
+  "problem_summary": "résumé en 1 phrase du problème",
+  "missing_info": ["info manquante 1", "info manquante 2"],
+  "questions_for_samuel": ["question 1 ?", "question 2 ?"],
+  "can_respond_now": true
+}}
+
+Si tu as assez d'info pour répondre, mets can_respond_now à true et questions_for_samuel vide."""
+    raw = _call_claude(
+        system=get_system_prompt(),
+        messages=[{"role": "user", "content": prompt}],
+        max_tokens=500
+    )
+    try:
+        import re as _re
+        match = _re.search(r'\{[\s\S]*\}', raw)
+        if match:
+            return json.loads(match.group())
+    except Exception:
+        pass
+    return {"problem_summary": email_subject, "missing_info": [], "questions_for_samuel": [], "can_respond_now": True}
+
+
 def generate_sav_approval_email(customer_name, order_number, email_body):
     """Generate the approval/repair email using the fixed SAV template."""
     label_line = "Collez l'étiquette de retour ci-jointe sur votre colis — le port est entièrement pris en charge."

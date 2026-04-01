@@ -63,12 +63,11 @@
 <div class="container">
 
     <!-- === CAS SAV OUVERTS === -->
-    {% set active_cases = cases | selectattr('status', '!=', 'ignored') | selectattr('status', '!=', 'returned_to_client') | list %}
+    {% set active_cases = cases | rejectattr('status', 'equalto', 'ignored') | rejectattr('status', 'equalto', 'returned_to_client') | list %}
     {% set ignored_cases = cases | selectattr('status', 'equalto', 'ignored') | list %}
     <h2>Cas SAV ouverts ({{ active_cases|length }})</h2>
     {% if active_cases %}
-        {% set cases = active_cases %}
-        {% for case in cases %}
+        {% for case in active_cases %}
         <div class="card" id="case-{{ case.id }}">
             <div style="display:flex; justify-content:space-between; align-items:flex-start;">
                 <div>
@@ -87,21 +86,15 @@
 
             {% if case.status == 'pending' %}
             <div class="actions">
-                <button class="btn btn-green" onclick="approveCase({{ case.id }}, this)">
-                    ✅ OK Réparation + Étiquette Wing
-                </button>
-                <button class="btn btn-red" onclick="toggleRejection({{ case.id }})">
-                    ❌ Refuser
-                </button>
+                <button class="btn btn-gray" onclick="analyzeCase({{ case.id }}, this)" style="font-size:13px;">🔎 Analyser</button>
+                <button class="btn btn-green" onclick="approveCase({{ case.id }}, this)">✅ OK Réparation</button>
+                <button class="btn btn-red" onclick="toggleRejection({{ case.id }})">❌ Refuser</button>
                 {% if case.order_number %}
-                <button class="btn btn-gray" onclick="checkStatus({{ case.id }}, '{{ case.order_number }}', this)">
-                    🔍 Statut réparation
-                </button>
+                <button class="btn btn-gray" onclick="checkStatus({{ case.id }}, '{{ case.order_number }}', this)" style="font-size:13px;">🔍 Statut Wing</button>
                 {% endif %}
-                <button class="btn" style="background:#fee2e2;color:#dc2626;" onclick="ignoreCase({{ case.id }}, this)">
-                    🚫 Mettre de côté
-                </button>
+                <button class="btn" style="background:#fee2e2;color:#dc2626;font-size:13px;" onclick="ignoreCase({{ case.id }}, this)">🚫 Mettre de côté</button>
             </div>
+            <div id="analysis-{{ case.id }}" style="display:none; margin-top:12px; background:#f0f7ff; border-radius:8px; padding:14px; font-size:13px;"></div>
 
             <!-- Rejection form -->
             <div class="rejection-form" id="rejection-{{ case.id }}">
@@ -199,6 +192,33 @@ function extractCustomerName(sender) {
     const m = sender.match(/^(.+?)\s*</);
     if (m) return m[1].trim().replace(/^"|"$/g, '');
     return sender;
+}
+
+async function analyzeCase(caseId, btn) {
+    btn.textContent = 'Analyse...';
+    btn.disabled = true;
+    const res = await fetch('/sav/analyze', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(caseData[caseId])
+    });
+    const data = await res.json();
+    const el = document.getElementById('analysis-' + caseId);
+    el.style.display = 'block';
+    let html = `<strong>Problème :</strong> ${data.problem_summary}<br><br>`;
+    if (data.questions_for_samuel && data.questions_for_samuel.length > 0) {
+        html += `<strong>⚠️ Questions avant de répondre :</strong><ul style="margin:6px 0 0 16px;">`;
+        data.questions_for_samuel.forEach(q => { html += `<li style="margin-bottom:4px;">${q}</li>`; });
+        html += `</ul>`;
+    } else {
+        html += `<strong>✅ Assez d'infos pour répondre.</strong>`;
+    }
+    if (data.missing_info && data.missing_info.length > 0) {
+        html += `<br><br><strong>Infos manquantes :</strong> ${data.missing_info.join(', ')}`;
+    }
+    el.innerHTML = html;
+    btn.textContent = '🔎 Analyser';
+    btn.disabled = false;
 }
 
 async function ignoreCase(caseId, btn) {

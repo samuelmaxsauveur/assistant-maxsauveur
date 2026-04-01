@@ -133,6 +133,16 @@ def send_rejection():
     return jsonify({'success': True})
 
 
+@sav.route('/sav/analyze', methods=['POST'])
+def analyze():
+    data = request.json
+    result = claude_ai.analyze_sav_email(
+        data['email_body'], data['subject'],
+        order_info=data.get('order')
+    )
+    return jsonify(result)
+
+
 @sav.route('/sav/ignore', methods=['POST'])
 def ignore_case():
     data = request.json
