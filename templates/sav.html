@@ -20,6 +20,12 @@
         .badge-pending { background: #fff4e5; color: #b45309; }
         .badge-approved { background: #e6f9ee; color: #1a7a3e; }
         .badge-rejected { background: #fee2e2; color: #991b1b; }
+        .badge-ignored { background: #f0f0f0; color: #888; }
+        .card-ignored { opacity: 0.7; border: 1px dashed #ddd; }
+        .trash-section { margin-top: 40px; }
+        .trash-toggle { cursor: pointer; color: #aaa; font-size: 14px; margin-bottom: 12px; display: inline-flex; align-items: center; gap: 6px; }
+        .trash-toggle:hover { color: #666; }
+        .trash-content { display: none; }
         .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
         .btn { padding: 9px 18px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; }
         .btn-green { background: #16a34a; color: white; }
@@ -57,8 +63,11 @@
 <div class="container">
 
     <!-- === CAS SAV OUVERTS === -->
-    <h2>Cas SAV ouverts ({{ cases|length }})</h2>
-    {% if cases %}
+    {% set active_cases = cases | selectattr('status', '!=', 'ignored') | selectattr('status', '!=', 'returned_to_client') | list %}
+    {% set ignored_cases = cases | selectattr('status', 'equalto', 'ignored') | list %}
+    <h2>Cas SAV ouverts ({{ active_cases|length }})</h2>
+    {% if active_cases %}
+        {% set cases = active_cases %}
         {% for case in cases %}
         <div class="card" id="case-{{ case.id }}">
             <div style="display:flex; justify-content:space-between; align-items:flex-start;">
@@ -89,6 +98,9 @@
                     🔍 Statut réparation
                 </button>
                 {% endif %}
+                <button class="btn" style="background:#fee2e2;color:#dc2626;" onclick="ignoreCase({{ case.id }}, this)">
+                    🚫 Mettre de côté
+                </button>
             </div>
 
             <!-- Rejection form -->
@@ -119,6 +131,34 @@
         {% endfor %}
     {% else %}
         <div style="text-align:center; padding:40px; color:#aaa;">Aucun cas SAV ouvert.</div>
+    {% endif %}
+
+    <!-- === CORBEILLE === -->
+    {% if ignored_cases %}
+    <div class="trash-section">
+        <div class="trash-toggle" onclick="document.getElementById('trash-content').style.display = document.getElementById('trash-content').style.display === 'none' ? 'block' : 'none'">
+            🗑️ Corbeille — cas mis de côté ({{ ignored_cases|length }}) ▾
+        </div>
+        <div id="trash-content" class="trash-content">
+            {% for case in ignored_cases %}
+            <div class="card card-ignored">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                    <div>
+                        <div class="card-title">{{ case.customer_name }} — {{ case.subject }}</div>
+                        <div class="card-meta">{{ case.customer_email }} · {{ case.created_at[:10] }}</div>
+                        {% if case.order_number %}<div class="order-chip">Commande #{{ case.order_number }}</div>{% endif %}
+                    </div>
+                    <span class="badge badge-ignored">Mis de côté</span>
+                </div>
+                <div class="card-body-text" style="margin-top:8px;">{{ case.email_body[:300] }}</div>
+                <div style="margin-top:10px;">
+                    <button class="btn btn-gray" onclick="restoreCase({{ case.id }}, this)">↩️ Reprendre ce cas</button>
+                    <a href="/sav/case/{{ case.id }}" style="font-size:12px; color:#aaa; text-decoration:none; margin-left:12px;">📋 Voir fiche</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
     {% endif %}
 
     <hr class="divider">
@@ -159,6 +199,28 @@ function extractCustomerName(sender) {
     const m = sender.match(/^(.+?)\s*</);
     if (m) return m[1].trim().replace(/^"|"$/g, '');
     return sender;
+}
+
+async function ignoreCase(caseId, btn) {
+    btn.textContent = '...';
+    btn.disabled = true;
+    await fetch('/sav/ignore', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({case_id: caseId})
+    });
+    location.reload();
+}
+
+async function restoreCase(caseId, btn) {
+    btn.textContent = 'Restauration...';
+    btn.disabled = true;
+    await fetch('/sav/restore', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({case_id: caseId})
+    });
+    location.reload();
 }
 
 async function createCase(emailId, threadId, senderEmail, senderRaw, subject, body, orderNumber, btn) {

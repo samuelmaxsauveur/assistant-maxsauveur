@@ -17,6 +17,7 @@ STATUS_LABELS = {
     'repaired_available':  'Réparé — disponible au dépôt',
     'returned_to_client':  'Retourné au client',
     'rejected':            'Refusé',
+    'ignored':             'Mis de côté',
 }
 
 
@@ -129,6 +130,21 @@ def send_rejection():
         thread_id=data.get('thread_id')
     )
     database.update_sav_case_status(data['case_id'], 'rejected')
+    return jsonify({'success': True})
+
+
+@sav.route('/sav/ignore', methods=['POST'])
+def ignore_case():
+    data = request.json
+    database.update_sav_case_status(data['case_id'], 'ignored')
+    # Do NOT mark email as read, do NOT send anything
+    return jsonify({'success': True})
+
+
+@sav.route('/sav/restore', methods=['POST'])
+def restore_case():
+    data = request.json
+    database.update_sav_case_status(data['case_id'], 'pending')
     return jsonify({'success': True})
 
 
