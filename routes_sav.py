@@ -8,6 +8,17 @@ import wing_automation
 
 sav = Blueprint('sav', __name__)
 
+STATUS_LABELS = {
+    'pending':             'En attente',
+    'approved':            'Approuvé — email envoyé',
+    'received_warehouse':  'Reçu à l\'entrepôt',
+    'sent_repair':         'Envoyé en réparation',
+    'in_repair':           'En cours de réparation',
+    'repaired_available':  'Réparé — disponible au dépôt',
+    'returned_to_client':  'Retourné au client',
+    'rejected':            'Refusé',
+}
+
 
 def _get_service():
     return gmail_helper.get_gmail_service()
@@ -41,7 +52,7 @@ def sav_page():
         enriched = []
 
     cases = database.get_sav_cases()
-    return render_template('sav.html', emails=enriched, cases=cases)
+    return render_template('sav.html', emails=enriched, cases=cases, status_labels=STATUS_LABELS)
 
 
 @sav.route('/sav/save-case', methods=['POST'])
@@ -129,3 +140,46 @@ def check_status():
         return jsonify({'found': False, 'status': None})
     status = wing_automation.check_repair_status(order_number)
     return jsonify({'found': status is not None, 'status': status})
+
+
+@sav.route('/sav/update-status', methods=['POST'])
+def update_status():
+    data = request.json
+    case_id = data['case_id']
+    new_status = data['new_status']
+    note = data.get('note', '')
+    notify = data.get('notify', False)
+
+    # Update case status and log history
+    database.update_sav_case_status(case_id, new_status)
+
+    # Send notification email if requested
+    notified = False
+    if notify:
+        case = next((c for c in database.get_sav_cases() if c['id'] == case_id), None)
+        if case:
+            body = claude_ai.generate_sav_status_notification(
+                case['customer_name'], case['order_number'], new_status
+            )
+            service = _get_service()
+            gmail_helper.send_email(
+                service,
+                case['customer_email'],
+                f"Mise à jour de votre réparation Max Sauveur",
+                body,
+                thread_id=case['thread_id']
+            )
+            notified = True
+
+    database.add_sav_status_history(case_id, new_status, note=note or None, notified=notified)
+    return jsonify({'success': True, 'notified': notified})
+
+
+@sav.route('/sav/case/<int:case_id>')
+def case_detail(case_id):
+    cases = database.get_sav_cases()
+    case = next((c for c in cases if c['id'] == case_id), None)
+    if not case:
+        return "Cas introuvable", 404
+    history = database.get_sav_status_history(case_id)
+    return render_template('sav_case.html', case=case, history=history, status_labels=STATUS_LABELS)

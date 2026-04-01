@@ -88,6 +88,17 @@ def init_db():
                 created_at     TIMESTAMP NOT NULL
             )
         """)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS sav_status_history (
+                id           INTEGER PRIMARY KEY AUTOINCREMENT,
+                case_id      INTEGER NOT NULL,
+                status       TEXT NOT NULL,
+                note         TEXT,
+                notified     INTEGER NOT NULL DEFAULT 0,
+                created_at   TIMESTAMP NOT NULL,
+                FOREIGN KEY (case_id) REFERENCES sav_cases(id)
+            )
+        """)
         conn.commit()
     finally:
         conn.close()
@@ -370,6 +381,31 @@ def update_sav_case_status(case_id, status):
     try:
         conn.execute("UPDATE sav_cases SET status = ? WHERE id = ?", (status, case_id))
         conn.commit()
+    finally:
+        conn.close()
+
+
+def add_sav_status_history(case_id, status, note=None, notified=False):
+    now = datetime.utcnow().isoformat()
+    conn = get_connection()
+    try:
+        conn.execute(
+            "INSERT INTO sav_status_history (case_id, status, note, notified, created_at) VALUES (?, ?, ?, ?, ?)",
+            (case_id, status, note, 1 if notified else 0, now)
+        )
+        conn.commit()
+    finally:
+        conn.close()
+
+
+def get_sav_status_history(case_id):
+    conn = get_connection()
+    try:
+        cursor = conn.execute(
+            "SELECT * FROM sav_status_history WHERE case_id = ? ORDER BY created_at ASC",
+            (case_id,)
+        )
+        return [dict(row) for row in cursor.fetchall()]
     finally:
         conn.close()
 
