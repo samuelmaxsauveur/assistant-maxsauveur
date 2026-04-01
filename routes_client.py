@@ -1,9 +1,18 @@
+import re
 from flask import Blueprint, request, jsonify, render_template
 import gmail as gmail_helper
 import shopify_api
 import database
 
 client_bp = Blueprint('client_bp', __name__)
+
+
+def _extract_order_number(query):
+    """Extract a pure order number from queries like #1161, 1161_REPARATION, #1161_réparation."""
+    q = query.strip().lstrip('#')
+    # Take only the leading digits
+    m = re.match(r'^(\d+)', q)
+    return m.group(1) if m else None
 
 
 @client_bp.route('/client')
@@ -24,12 +33,15 @@ def client_search():
     sav_cases = []
     gmail_history = []
 
-    # --- 1. Search our database (SAV cases + pending drafts) by name/email/order ---
+    # --- 1. Search our database by name / email / order number ---
+    order_num = _extract_order_number(query)
     try:
         for case in database.get_sav_cases():
+            case_order = (case.get('order_number') or '').lower()
             if (q in (case.get('customer_email') or '').lower()
                     or q in (case.get('customer_name') or '').lower()
-                    or q in (case.get('order_number') or '').lower()):
+                    or (order_num and order_num in case_order)
+                    or q.lstrip('#') in case_order):
                 sav_cases.append(case)
                 if not customer_email:
                     customer_email = case.get('customer_email')
@@ -51,7 +63,6 @@ def client_search():
 
     # --- 2. Shopify search ---
     if '@' in query:
-        # Direct email
         customer_email = query
         try:
             orders = shopify_api.get_orders_by_email(query) or []
@@ -60,10 +71,10 @@ def client_search():
         except Exception:
             pass
 
-    elif query.lstrip('#').isdigit():
-        # Order number
+    elif order_num:
+        # Order number (handles #1161, 1161_REPARATION, etc.)
         try:
-            order = shopify_api.get_order_by_number(query.replace('#', ''))
+            order = shopify_api.get_order_by_number(order_num)
             if order:
                 orders = [order]
                 if not customer_email:
@@ -73,14 +84,23 @@ def client_search():
         except Exception:
             pass
 
-    # If we found an email from DB but no Shopify orders yet, try fetching them
+    else:
+        # Name search → try Shopify customer search
+        try:
+            customers = shopify_api.search_customers_by_name(query)
+            if customers and not customer_email:
+                customer_email = customers[0]['email']
+                customer_name = customers[0]['name']
+        except Exception:
+            pass
+
+    # Fetch Shopify orders if we have an email but no orders yet
     if customer_email and not orders:
         try:
             orders = shopify_api.get_orders_by_email(customer_email) or []
         except Exception:
             pass
 
-    # Nothing found anywhere
     if not customer_email and not sav_cases and not orders:
         return jsonify({'found': False})
 
@@ -113,7 +133,7 @@ def client_search():
                 'fulfillment_status': o.get('fulfillment_status', ''),
                 'tracking_url': o.get('tracking_url'),
             }
-            for o in (orders or [])[:5]
+            for o in orders[:5]
         ],
         'sav_cases': [
             {

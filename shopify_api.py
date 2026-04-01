@@ -24,6 +24,25 @@ def get_orders_by_email(email):
     orders = response.json().get('orders', [])
     return [format_order(o) for o in orders]
 
+def search_customers_by_name(name):
+    """Search Shopify customers by name, return list of {email, name, orders}."""
+    shop = os.getenv('SHOPIFY_SHOP')
+    token = os.getenv('SHOPIFY_TOKEN')
+    url = f"https://{shop}/admin/api/2024-01/customers/search.json"
+    headers = {'X-Shopify-Access-Token': token}
+    params = {'query': name, 'limit': 5}
+    response = requests.get(url, headers=headers, params=params)
+    customers = response.json().get('customers', [])
+    return [
+        {
+            'email': c.get('email', ''),
+            'name': f"{c.get('first_name', '')} {c.get('last_name', '')}".strip(),
+            'orders_count': c.get('orders_count', 0),
+        }
+        for c in customers
+    ]
+
+
 def search_product_price(query):
     """Search products by name and return current prices from Shopify catalog."""
     shop = os.getenv('SHOPIFY_SHOP')
