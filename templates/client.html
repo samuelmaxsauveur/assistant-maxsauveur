@@ -143,7 +143,11 @@ async function search() {
     const data = await res.json();
 
     if (!data.found) {
-        document.getElementById('not-found').style.display = 'block';
+        const el = document.getElementById('not-found');
+        el.style.display = 'block';
+        if (data.debug) {
+            el.innerHTML = `Aucun client trouvé.<br><small style="color:#aaa;">Debug: query="${data.debug.query}" | order extrait="${data.debug.order_num_extracted}" | SAV: ${data.debug.sav_cases_count} | Shopify: ${data.debug.orders_count}</small>`;
+        }
         return;
     }
 

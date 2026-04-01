@@ -102,7 +102,13 @@ def client_search():
             pass
 
     if not customer_email and not sav_cases and not orders:
-        return jsonify({'found': False})
+        return jsonify({'found': False, 'debug': {
+            'query': query,
+            'order_num_extracted': order_num,
+            'sav_cases_count': len(sav_cases),
+            'orders_count': len(orders),
+            'customer_email': customer_email,
+        }})
 
     # --- 3. Gmail history ---
     if customer_email:
