@@ -112,24 +112,27 @@
                             </div>
                             {% endif %}
                             <div style="margin-top:10px; border-top:1px solid #eee; padding-top:10px;">
+                                {% set currency = item.order.currency | default('EUR') %}
                                 {% for p in item.order.products %}
                                 <div style="margin-bottom:6px;">
                                     <div style="display:flex; justify-content:space-between;">
                                         <span style="font-size:13px; color:#333;">{{ p.name }} ×{{ p.qty }}</span>
-                                        <span style="font-size:13px; font-weight:500;">{{ "%.2f"|format(p.total) }} {{ item.order.currency }}</span>
+                                        {% if p.total is defined and p.total %}
+                                        <span style="font-size:13px; font-weight:500;">{{ "%.2f"|format(p.total) }} {{ currency }}</span>
+                                        {% endif %}
                                     </div>
-                                    {% if p.discount > 0 %}
+                                    {% if p.discount is defined and p.discount and p.discount > 0 %}
                                     <div style="display:flex; justify-content:space-between; color:#b45309; font-size:12px;">
                                         <span>Remise</span>
-                                        <span>-{{ "%.2f"|format(p.discount) }} {{ item.order.currency }}</span>
+                                        <span>-{{ "%.2f"|format(p.discount) }} {{ currency }}</span>
                                     </div>
                                     {% endif %}
                                 </div>
                                 {% endfor %}
-                                {% if item.order.shipping > 0 %}
+                                {% if item.order.shipping is defined and item.order.shipping and item.order.shipping > 0 %}
                                 <div style="display:flex; justify-content:space-between; font-size:13px; color:#666; margin-top:4px;">
                                     <span>Livraison</span>
-                                    <span>{{ "%.2f"|format(item.order.shipping) }} {{ item.order.currency }}</span>
+                                    <span>{{ "%.2f"|format(item.order.shipping) }} {{ currency }}</span>
                                 </div>
                                 {% else %}
                                 <div style="font-size:12px; color:#888; margin-top:4px;">Livraison offerte</div>
