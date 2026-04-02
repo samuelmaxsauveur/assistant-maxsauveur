@@ -20,6 +20,36 @@ def client_page():
     return render_template('client.html')
 
 
+@client_bp.route('/client/debug-shopify')
+def debug_shopify():
+    """Test Shopify connection — remove after debugging."""
+    import os
+    import requests as req
+    import traceback
+    shop = os.getenv('SHOPIFY_SHOP', '')
+    token = os.getenv('SHOPIFY_TOKEN', '')
+    results = {
+        'shop_configured': bool(shop),
+        'token_configured': bool(token),
+        'shop_value': shop[:40],
+    }
+    # Raw API call to see exact response
+    try:
+        url = f"https://{shop}/admin/api/2024-01/orders.json"
+        resp = req.get(url, headers={'X-Shopify-Access-Token': token},
+                       params={'name': '#11161', 'status': 'any'}, timeout=10)
+        results['shopify_status_code'] = resp.status_code
+        results['shopify_response'] = resp.json()
+    except Exception:
+        results['shopify_raw_error'] = traceback.format_exc()
+    try:
+        sav = database.get_sav_cases()
+        results['sav_count'] = len(sav)
+    except Exception as e:
+        results['sav_error'] = str(e)
+    return jsonify(results)
+
+
 @client_bp.route('/client/search', methods=['POST'])
 def client_search():
     query = (request.json or {}).get('query', '').strip()
