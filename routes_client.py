@@ -33,13 +33,20 @@ def debug_shopify():
         'token_configured': bool(token),
         'shop_value': shop[:40],
     }
-    # Raw API call to see exact response
+    # Test different search formats for order 11161
     try:
         url = f"https://{shop}/admin/api/2024-01/orders.json"
-        resp = req.get(url, headers={'X-Shopify-Access-Token': token},
-                       params={'name': '#11161', 'status': 'any'}, timeout=10)
-        results['shopify_status_code'] = resp.status_code
-        results['shopify_response'] = resp.json()
+        headers = {'X-Shopify-Access-Token': token}
+        # Try with # prefix
+        r1 = req.get(url, headers=headers, params={'name': '#11161', 'status': 'any'}, timeout=10)
+        results['search_hash_11161'] = {'status': r1.status_code, 'count': len(r1.json().get('orders', []))}
+        # Try without # prefix
+        r2 = req.get(url, headers=headers, params={'name': '11161', 'status': 'any'}, timeout=10)
+        results['search_no_hash_11161'] = {'status': r2.status_code, 'count': len(r2.json().get('orders', []))}
+        # Fetch last 5 orders to see name format
+        r3 = req.get(url, headers=headers, params={'status': 'any', 'limit': 5}, timeout=10)
+        sample_orders = r3.json().get('orders', [])
+        results['sample_order_names'] = [{'name': o.get('name'), 'order_number': o.get('order_number')} for o in sample_orders]
     except Exception:
         results['shopify_raw_error'] = traceback.format_exc()
     try:
