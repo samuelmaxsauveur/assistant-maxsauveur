@@ -169,7 +169,7 @@ def client_search():
                 'fulfillment_status': o.get('fulfillment_status', ''),
                 'tracking_url': o.get('tracking_url'),
             }
-            for o in orders[:5]
+            for o in orders[:20]
         ],
         'sav_cases': [
             {

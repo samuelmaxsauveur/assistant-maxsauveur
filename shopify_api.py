@@ -19,7 +19,7 @@ def get_orders_by_email(email):
     token = os.getenv('SHOPIFY_TOKEN')
     url = f"https://{shop}/admin/api/2024-01/orders.json"
     headers = {'X-Shopify-Access-Token': token}
-    params = {'email': email, 'status': 'any', 'limit': 3}
+    params = {'email': email, 'status': 'any', 'limit': 20}
     response = requests.get(url, headers=headers, params=params)
     orders = response.json().get('orders', [])
     return [format_order(o) for o in orders]
