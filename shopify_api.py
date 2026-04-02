@@ -7,7 +7,7 @@ def get_order_by_number(order_number):
     order_number = str(order_number).replace('#', '')
     url = f"https://{shop}/admin/api/2024-01/orders.json"
     headers = {'X-Shopify-Access-Token': token}
-    params = {'name': f'#{order_number}', 'status': 'any'}
+    params = {'name': order_number, 'status': 'any'}
     response = requests.get(url, headers=headers, params=params)
     orders = response.json().get('orders', [])
     if orders:
