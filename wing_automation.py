@@ -109,65 +109,72 @@ def check_repair_status(order_number):
 
 
 def get_relay_point_from_wing(order_number):
-    """Open a Wing order and extract the relay point address. Returns a string or None."""
+    """Open a Wing order and extract the relay point name + address from the side panel."""
+    order_number = str(order_number).lstrip('#')
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
-        page = browser.new_page(viewport={'width': 1280, 'height': 900})
+        page = browser.new_page(viewport={'width': 1440, 'height': 900})
         try:
             _login(page)
             page.goto(f"{WING_URL}/orders")
             page.wait_for_load_state('networkidle')
             time.sleep(2)
 
-            # Search for the order
-            page.fill('input[type="search"]', str(order_number))
+            # Search by order reference
+            search_input = page.locator('input[type="search"], input[placeholder*="Recherche"], input[placeholder*="recherche"]').first
+            search_input.fill(f'#{order_number}')
             page.keyboard.press('Enter')
             time.sleep(4)
 
-            # Click the order row to open details
+            # Click the first order row to open the detail panel
             page.locator('tbody tr').first.click()
-            page.wait_for_load_state('networkidle')
             time.sleep(3)
 
-            # Take a screenshot for debugging if needed
-            # Try to find relay point address in the page
-            full_text = page.inner_text('body')
+            # Wait for the detail panel "Détails de l'expédition"
+            try:
+                page.wait_for_selector('text=Détails de l\'expédition', timeout=5000)
+            except Exception:
+                pass
+            time.sleep(1)
 
-            # Look for relay-point related elements
-            relay_selectors = [
-                '[class*="relay"]',
-                '[class*="point-relais"]',
-                '[class*="pickup"]',
-                '[class*="livraison"]',
-                '[class*="delivery-address"]',
-                '[class*="shipping-address"]',
-            ]
-            for selector in relay_selectors:
-                try:
-                    el = page.locator(selector).first
-                    if el.is_visible(timeout=1500):
-                        text = el.text_content().strip()
-                        if text and len(text) > 5:
-                            browser.close()
-                            return text
-                except Exception:
-                    continue
-
-            # Fallback: grab all visible address-like blocks
-            for selector in ['address', '[class*="address"]', '[class*="adresse"]']:
+            # The relay point name appears as bold text below "Livraison estimée"
+            # Structure: Chrono 2Shop > Livraison estimée X > [RELAY NAME in bold] > [code]
+            panel_text = ''
+            for selector in [
+                '[class*="detail"] strong',
+                '[class*="panel"] strong',
+                '[class*="drawer"] strong',
+                '[class*="sidebar"] strong',
+                'strong',
+            ]:
                 try:
                     els = page.locator(selector).all()
                     for el in els:
-                        text = el.text_content().strip()
-                        if text and len(text) > 10:
+                        t = el.text_content().strip()
+                        # Relay names are typically ALL CAPS and more than 5 chars
+                        if t and t.isupper() and len(t) > 5:
+                            # Get sibling text (the relay code below)
+                            parent_text = el.locator('xpath=..').text_content().strip()
                             browser.close()
-                            return text
+                            return f"{t}\n{parent_text}".strip()
                 except Exception:
                     continue
 
+            # Fallback: grab full panel text and return it
+            for selector in ['[class*="detail"]', '[class*="panel"]', '[class*="drawer"]', '[class*="sidebar"]']:
+                try:
+                    el = page.locator(selector).first
+                    if el.is_visible(timeout=1000):
+                        panel_text = el.text_content().strip()
+                        if panel_text and len(panel_text) > 20:
+                            browser.close()
+                            return panel_text[:800]
+                except Exception:
+                    continue
+
+            # Last fallback: return visible body text
             browser.close()
-            # Return raw page dump so Claude can still try to extract it
-            return full_text[:2000] if full_text else None
+            return page.inner_text('body')[:1500]
 
         except Exception as e:
             print(f"Erreur récupération point relais Wing: {e}")
