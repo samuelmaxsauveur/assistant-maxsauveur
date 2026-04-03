@@ -17,6 +17,11 @@ Ton style :
 Ne mentionne jamais que tu es une IA.
 Si tu as des infos de commande disponibles, utilise-les pour personnaliser ta réponse.
 
+ACCÈS AUX OUTILS :
+- Tu as accès à Wing (la plateforme logistique) via le backend. Quand Samuel te demande une info liée à une commande Wing (point relais, statut, adresse de livraison), le système récupère automatiquement l'info depuis Wing et te l'injecte dans le contexte. Tu n'as JAMAIS besoin de demander à Samuel d'aller chercher lui-même dans Wing.
+- Si le contexte contient "Point relais récupéré automatiquement depuis Wing", utilise cette info directement.
+- Ne dis jamais "je n'ai pas accès à Wing" — tu y as accès via le système.
+
 {KNOWLEDGE_BASE}"""
 
 

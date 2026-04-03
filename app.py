@@ -195,7 +195,8 @@ def ask():
 
     # Auto-fetch relay point from Wing if question mentions it
     wing_relay_info = ''
-    relay_keywords = ['point relais', 'point-relais', 'relais', 'relay', 'adresse de livraison', 'adresse relais']
+    relay_keywords = ['point relais', 'point-relais', 'relais', 'relay', 'adresse de livraison', 'adresse relais',
+                      'wing', 'livraison', 'où livrer', 'adresse du client', 'retrouve', 'cherche dans wing']
     if any(kw in question.lower() for kw in relay_keywords):
         # Extract order number from order_info or from the question
         order_num = None
