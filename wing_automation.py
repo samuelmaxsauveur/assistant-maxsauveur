@@ -108,6 +108,76 @@ def check_repair_status(order_number):
             return None
 
 
+def get_relay_point_from_wing(order_number):
+    """Open a Wing order and extract the relay point address. Returns a string or None."""
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        page = browser.new_page(viewport={'width': 1280, 'height': 900})
+        try:
+            _login(page)
+            page.goto(f"{WING_URL}/orders")
+            page.wait_for_load_state('networkidle')
+            time.sleep(2)
+
+            # Search for the order
+            page.fill('input[type="search"]', str(order_number))
+            page.keyboard.press('Enter')
+            time.sleep(4)
+
+            # Click the order row to open details
+            page.locator('tbody tr').first.click()
+            page.wait_for_load_state('networkidle')
+            time.sleep(3)
+
+            # Take a screenshot for debugging if needed
+            # Try to find relay point address in the page
+            full_text = page.inner_text('body')
+
+            # Look for relay-point related elements
+            relay_selectors = [
+                '[class*="relay"]',
+                '[class*="point-relais"]',
+                '[class*="pickup"]',
+                '[class*="livraison"]',
+                '[class*="delivery-address"]',
+                '[class*="shipping-address"]',
+            ]
+            for selector in relay_selectors:
+                try:
+                    el = page.locator(selector).first
+                    if el.is_visible(timeout=1500):
+                        text = el.text_content().strip()
+                        if text and len(text) > 5:
+                            browser.close()
+                            return text
+                except Exception:
+                    continue
+
+            # Fallback: grab all visible address-like blocks
+            for selector in ['address', '[class*="address"]', '[class*="adresse"]']:
+                try:
+                    els = page.locator(selector).all()
+                    for el in els:
+                        text = el.text_content().strip()
+                        if text and len(text) > 10:
+                            browser.close()
+                            return text
+                except Exception:
+                    continue
+
+            browser.close()
+            # Return raw page dump so Claude can still try to extract it
+            return full_text[:2000] if full_text else None
+
+        except Exception as e:
+            print(f"Erreur récupération point relais Wing: {e}")
+            try:
+                browser.close()
+            except Exception:
+                pass
+            return None
+
+
 def change_relay_point(order_number, new_address):
     """Change le point relais d'une commande Wing. Retourne True si succès."""
     with sync_playwright() as p:

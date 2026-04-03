@@ -191,12 +191,35 @@ def ask():
         customer_name = extract_customer_name(sender)
     order_info = data.get('order')
     previous_exchanges = data.get('previous_exchanges', [])
+    question = data.get('question', '')
+
+    # Auto-fetch relay point from Wing if question mentions it
+    wing_relay_info = ''
+    relay_keywords = ['point relais', 'point-relais', 'relais', 'relay', 'adresse de livraison', 'adresse relais']
+    if any(kw in question.lower() for kw in relay_keywords):
+        # Extract order number from order_info or from the question
+        order_num = None
+        if order_info:
+            order_num = str(order_info.get('number', '')).replace('#', '')
+        if not order_num:
+            m = re.search(r'#?(\d{4,6})', question)
+            if m:
+                order_num = m.group(1)
+        if order_num:
+            try:
+                relay_text = wing_automation.get_relay_point_from_wing(order_num)
+                if relay_text:
+                    wing_relay_info = f"\n\n--- Point relais récupéré automatiquement depuis Wing (commande #{order_num}) ---\n{relay_text[:1000]}"
+            except Exception:
+                pass
+
+    full_question = question + wing_relay_info
     result = claude_ai.answer_question(
         data['body'],
         data['subject'],
         customer_name,
         order_info,
-        data['question'],
+        full_question,
         previous_exchanges=previous_exchanges
     )
     samuel_answer = result.get('samuel_answer', '')
