@@ -156,6 +156,11 @@
                     </div>
                     <div class="reply-section">
                         <div class="section-title">Réponse suggérée — à modifier si besoin</div>
+                        <div id="questions-{{ item.email.id }}" style="display:none; background:#fffbea; border:1px solid #f59e0b; border-radius:8px; padding:14px; margin-bottom:12px;">
+                            <div style="font-size:12px; font-weight:700; color:#92400e; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px;">⚠️ Claude a besoin de précisions avant de répondre</div>
+                            <div id="questions-list-{{ item.email.id }}" style="font-size:14px; color:#78350f; line-height:1.8;"></div>
+                            <div style="font-size:12px; color:#b45309; margin-top:8px;">Réponds dans le champ "Discussion avec Claude" ci-dessous, puis clique sur <strong>Régénérer</strong>.</div>
+                        </div>
                         <form method="POST" action="/send">
                             <input type="hidden" name="to" value="{{ item.sender_email }}">
                             <input type="hidden" name="subject" value="{{ item.email.subject }}">
@@ -254,6 +259,7 @@ const emailData = {
         body: {{ item.email.body | tojson }},
         subject: {{ item.email.subject | tojson }},
         sender: {{ item.email.sender | tojson }},
+        sender_email: {{ item.sender_email | tojson }},
         order: {{ item.order | tojson if item.order else 'null' }}
     },
     {% endfor %}
@@ -290,7 +296,12 @@ async function generateResponse(id) {
                 body: JSON.stringify(emailData[id])
             });
             const data = await res.json();
-            textarea.value = data.response;
+            if (data.questions && data.questions.length > 0) {
+                showQuestions(id, data.questions);
+            } else if (data.response) {
+                document.getElementById('questions-' + id).style.display = 'none';
+                textarea.value = data.response;
+            }
         }
     } catch(e) {
         textarea.value = 'Erreur. Réessaie.';
@@ -360,6 +371,15 @@ async function saveProcess(id) {
 }
 
 // Auto-generate drafts after page load, 3 at a time
+function showQuestions(id, questions) {
+    const box = document.getElementById('questions-' + id);
+    const list = document.getElementById('questions-list-' + id);
+    if (!box || !list) return;
+    list.innerHTML = questions.map((q, i) => `<div>${i + 1}. ${q}</div>`).join('');
+    box.style.display = 'block';
+    document.getElementById('textarea-' + id).placeholder = 'En attente de tes réponses aux questions ci-dessus...';
+}
+
 async function generateOne(id) {
     const textarea = document.getElementById('textarea-' + id);
     if (!textarea || textarea.value.trim()) return;
@@ -370,7 +390,12 @@ async function generateOne(id) {
             body: JSON.stringify(emailData[id])
         });
         const data = await res.json();
-        if (data.response) textarea.value = data.response;
+        if (data.questions && data.questions.length > 0) {
+            showQuestions(id, data.questions);
+        } else if (data.response) {
+            document.getElementById('questions-' + id).style.display = 'none';
+            textarea.value = data.response;
+        }
     } catch(e) {
         textarea.placeholder = 'Erreur — cliquer Régénérer';
     }

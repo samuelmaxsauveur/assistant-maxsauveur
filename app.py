@@ -152,12 +152,34 @@ def generate():
     data = request.json
     customer_name = extract_customer_name(data['sender'])
     order_info = data.get('order')
-    suggested = claude_ai.generate_response(
-        data['body'],
-        data['subject'],
-        customer_name,
-        order_info
-    )
+    sender_email = data.get('sender_email', '')
+
+    history = []
+    if sender_email:
+        try:
+            service = get_service()
+            raw = gmail_helper.get_customer_history(service, sender_email, max_results=10)
+            history = [
+                {'date': h.get('date', '')[:16], 'subject': h.get('subject', ''),
+                 'body': h.get('body', '')[:600], 'direction': h.get('direction', 'received')}
+                for h in raw
+            ]
+        except Exception:
+            pass
+
+    suggested = claude_ai.generate_response(data['body'], data['subject'], customer_name, order_info, history)
+
+    # Check if Claude returned a needs_info JSON instead of a draft
+    try:
+        m = re.search(r'\{[\s\S]*\}', suggested)
+        if m:
+            import json as _json
+            parsed = _json.loads(m.group())
+            if parsed.get('needs_info'):
+                return jsonify({'questions': parsed.get('questions', [])})
+    except Exception:
+        pass
+
     return jsonify({'response': suggested})
 
 @app.route('/ask', methods=['POST'])

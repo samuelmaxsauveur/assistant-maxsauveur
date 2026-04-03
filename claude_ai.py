@@ -44,6 +44,12 @@ def get_system_prompt():
 
 def _build_context(email_body, email_subject, customer_name, order_info=None, history=None):
     context = f"Email de : {customer_name}\nSujet : {email_subject}\n\nContenu :\n{email_body}"
+    # History FIRST — highest priority context
+    if history:
+        context += "\n\n--- HISTORIQUE DES ÉCHANGES AVEC CE CLIENT (priorité absolue) ---"
+        for h in history:
+            direction = "Client →" if h['direction'] == 'received' else "Nous →"
+            context += f"\n[{h['date']}] {direction} {h['subject']}\n{h['body'][:600]}\n"
     if order_info:
         context += f"\n\n--- Infos commande ---"
         context += f"\nNuméro : {order_info['number']}"
@@ -57,11 +63,6 @@ def _build_context(email_body, email_subject, customer_name, order_info=None, hi
             context += f"\nLien suivi : {order_info['tracking_url']}"
         items_str = ', '.join([f"{i['name']} x{i['qty']}" for i in order_info['products']])
         context += f"\nArticles : {items_str}"
-    if history:
-        context += "\n\n--- Historique des échanges avec ce client ---"
-        for h in reversed(history):
-            direction = "Client →" if h['direction'] == 'received' else "Nous →"
-            context += f"\n[{h['date']}] {direction} {h['subject']}\n{h['body'][:300]}...\n"
     return context
 
 
@@ -85,9 +86,20 @@ def _call_claude(system, messages, max_tokens=1024):
 
 def generate_response(email_body, email_subject, customer_name, order_info=None, history=None):
     context = _build_context(email_body, email_subject, customer_name, order_info, history)
+    prompt = f"""Voici un email de support client à traiter :
+
+{context}
+
+---
+
+INSTRUCTIONS :
+1. Utilise EN PRIORITÉ l'historique des échanges pour comprendre le contexte et éviter de répéter des choses déjà dites.
+2. Si tu manques d'informations INDISPENSABLES pour répondre correctement (ex: tu ignores si c'est sous garantie, si le problème a déjà été traité, quelle est la politique applicable, etc.), réponds UNIQUEMENT avec ce JSON :
+   {{"needs_info": true, "questions": ["question 1 ?", "question 2 ?"]}}
+3. Si tu as assez d'éléments : rédige directement le corps du mail de réponse au client (pas de JSON, juste le texte)."""
     return _call_claude(
         system=get_system_prompt(),
-        messages=[{"role": "user", "content": f"Rédige une réponse à cet email de support :\n\n{context}"}]
+        messages=[{"role": "user", "content": prompt}]
     )
 
 
