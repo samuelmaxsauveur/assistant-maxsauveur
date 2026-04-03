@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Assistant Email — Max Sauveur</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -10,16 +11,16 @@
         header h1 { font-size: 18px; font-weight: 600; }
         header a { color: #aaa; text-decoration: none; font-size: 14px; }
         header a:hover { color: white; }
-        .container { max-width: 900px; margin: 32px auto; padding: 0 16px; }
+        .container { max-width: 1100px; margin: 32px auto; padding: 0 16px; }
         .empty { text-align: center; padding: 80px; color: #999; }
         .empty h2 { font-size: 20px; margin-bottom: 8px; }
         .card { background: white; border-radius: 12px; margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); overflow: hidden; }
         .card-header { padding: 20px 24px; border-bottom: 1px solid #f0f0f0; }
         .card-header .subject { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
         .card-header .meta { font-size: 13px; color: #888; }
-        .card-body { padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .card-body { padding: 24px; display: grid; grid-template-columns: 3fr 2fr; gap: 24px; }
         .section-title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #888; margin-bottom: 10px; }
-        .email-body { font-size: 14px; line-height: 1.6; color: #555; white-space: pre-wrap; max-height: 200px; overflow-y: auto; }
+        .email-body { font-size: 14px; line-height: 1.6; color: #555; white-space: pre-wrap; max-height: 400px; overflow-y: auto; border: 1px solid #f0f0f0; border-radius: 8px; padding: 12px; background: #fafafa; }
         .order-box { background: #f9f9f9; border-radius: 8px; padding: 16px; font-size: 14px; }
         .order-box .row { display: flex; justify-content: space-between; margin-bottom: 6px; }
         .order-box .label { color: #888; }
@@ -31,7 +32,11 @@
         .tracking-link { color: #2563eb; text-decoration: none; font-size: 13px; }
         .tracking-link:hover { text-decoration: underline; }
         .reply-section { grid-column: 1 / -1; border-top: 1px solid #f0f0f0; padding-top: 20px; }
-        textarea { width: 100%; border: 1px solid #e0e0e0; border-radius: 8px; padding: 14px; font-size: 14px; font-family: inherit; line-height: 1.6; resize: vertical; min-height: 180px; outline: none; }
+        textarea { width: 100%; border: 1px solid #e0e0e0; border-radius: 8px; padding: 14px; font-size: 14px; font-family: inherit; line-height: 1.6; resize: vertical; min-height: 240px; outline: none; }
+        @media (max-width: 700px) {
+            .card-body { grid-template-columns: 1fr; }
+            header { flex-wrap: wrap; gap: 8px; padding: 12px 16px; }
+        }
         textarea:focus { border-color: #111; }
         .actions { display: flex; gap: 10px; margin-top: 12px; }
         .btn { padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; }
