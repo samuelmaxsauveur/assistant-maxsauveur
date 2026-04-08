@@ -327,6 +327,57 @@ def save_process():
     return jsonify({'success': True})
 
 
+@app.route('/wing/debug-screenshot')
+def wing_debug_screenshot():
+    """Take a screenshot of Wing after login to diagnose automation issues."""
+    import base64
+    import tempfile
+    from playwright.sync_api import sync_playwright
+    import os, time
+    results = {}
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page(viewport={'width': 1440, 'height': 900})
+            # Login
+            email = os.getenv('WING_EMAIL', '')
+            password = os.getenv('WING_PASSWORD', '')
+            results['wing_email_configured'] = bool(email)
+            results['wing_password_configured'] = bool(password)
+            page.goto('https://my.wing.eu/login')
+            page.wait_for_load_state('networkidle')
+            time.sleep(2)
+            results['login_page_title'] = page.title()
+            page.fill('input[name="email"]', email)
+            page.fill('input[name="password"]', password)
+            page.click('button[type="submit"]')
+            page.wait_for_load_state('networkidle')
+            time.sleep(4)
+            results['after_login_url'] = page.url
+            results['after_login_title'] = page.title()
+            # Screenshot
+            tmp = tempfile.NamedTemporaryFile(suffix='.png', delete=False)
+            page.screenshot(path=tmp.name, full_page=False)
+            with open(tmp.name, 'rb') as f:
+                results['screenshot_b64'] = base64.b64encode(f.read()).decode()
+            # Try searching
+            page.goto('https://my.wing.eu/orders')
+            page.wait_for_load_state('networkidle')
+            time.sleep(3)
+            results['orders_page_url'] = page.url
+            results['orders_page_text'] = page.inner_text('body')[:500]
+            browser.close()
+    except Exception as e:
+        import traceback
+        results['error'] = traceback.format_exc()
+    # Return without screenshot in JSON (too large), just text info
+    screenshot = results.pop('screenshot_b64', None)
+    html = f'<pre>{results}</pre>'
+    if screenshot:
+        html += f'<img src="data:image/png;base64,{screenshot}" style="max-width:100%">'
+    return html
+
+
 @app.route('/wing/lookup', methods=['POST'])
 def wing_lookup():
     """Manually fetch Wing info for an order number — relay point + repair status."""
