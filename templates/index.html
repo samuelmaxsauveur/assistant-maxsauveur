@@ -437,11 +437,17 @@ async function lookupWing(id, orderNum) {
             resultDiv.style.background = '#f0fdf4';
             resultDiv.style.borderColor = '#86efac';
             resultDiv.style.color = '#166534';
-            resultDiv.textContent = (repair ? '📦 Réparation :\n' + repair + '\n\n' : '') + (relay ? '📍 Point relais :\n' + relay : '');
-            // Inject into chat context for Claude
-            appendChat(id, `[Wing auto] Résultat pour #${orderNum}`, resultDiv.textContent);
+            const wingText = (repair ? '📦 Réparation :\n' + repair + '\n\n' : '') + (relay ? '📍 Point relais :\n' + relay : '');
+            resultDiv.textContent = wingText;
+            // Inject into chat context and auto-ask Claude to update the draft
             chatHistory[id] = chatHistory[id] || [];
-            chatHistory[id].push({question: `Résultat Wing #${orderNum}`, claude_answer: resultDiv.textContent});
+            chatHistory[id].push({question: `Données Wing récupérées pour #${orderNum}`, claude_answer: wingText});
+            // Auto-trigger Claude with the Wing data
+            const questionField = document.getElementById('question-' + id);
+            const prevQuestion = questionField ? questionField.value : '';
+            if (questionField) questionField.value = `Voici les données Wing pour la commande #${orderNum}. Mets à jour le brouillon en conséquence.`;
+            await askClaude(id);
+            if (questionField) questionField.value = prevQuestion;
         } else {
             resultDiv.style.background = '#fef2f2';
             resultDiv.style.borderColor = '#fca5a5';

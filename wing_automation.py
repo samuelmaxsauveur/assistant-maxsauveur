@@ -26,13 +26,20 @@ def _login(page):
 def _search_order(page, search_term):
     page.goto(f"{WING_URL}/orders")
     page.wait_for_selector('input[type="search"]', timeout=10000)
-    page.fill('input[type="search"]', search_term)
+    # Clear then type
+    inp = page.locator('input[type="search"]').first
+    inp.click()
+    inp.fill('')
+    inp.type(search_term, delay=50)
     page.keyboard.press('Enter')
-    # Wait for table to update
+    # Wait for search to settle: either matching row or "no data" message
     try:
-        page.wait_for_selector('tbody tr', timeout=8000)
+        page.wait_for_selector(
+            f'tr:has-text("{search_term}"), text=Aucune donnée',
+            timeout=8000
+        )
     except Exception:
-        pass
+        import time; time.sleep(2)
 
 def _click_order_row(page, search_term):
     try:
@@ -41,26 +48,34 @@ def _click_order_row(page, search_term):
         row.click()
     except Exception:
         page.locator('tbody tr').first.click()
-    # Wait for detail panel
+    # Wait for detail panel title
     try:
-        page.wait_for_selector('text=Détails de l\'expédition', timeout=5000)
+        page.wait_for_selector('text=Détails de l\'expédition', timeout=6000)
     except Exception:
         pass
 
 def _get_panel_text(page):
-    for selector in ['[class*="detail"]', '[class*="panel"]', '[class*="drawer"]', '[class*="sidebar"]']:
+    # Panel opens as a side overlay — grab everything after "Détails de l'expédition"
+    try:
+        panel = page.locator('text=Détails de l\'expédition').locator('xpath=ancestor::*[4]')
+        t = panel.text_content(timeout=3000).strip()
+        if t and len(t) > 30:
+            return t
+    except Exception:
+        pass
+    for selector in ['[class*="detail"]', '[class*="panel"]', '[class*="drawer"]', '[class*="sidebar"]', '[class*="sheet"]']:
         try:
-            el = page.locator(selector).first
+            el = page.locator(selector).last  # last = foreground panel
             t = el.text_content(timeout=2000).strip()
-            if t and len(t) > 20:
+            if t and len(t) > 30:
                 return t
         except Exception:
             continue
-    return page.inner_text('body')[:1500]
+    return ''
 
 def _no_results(page):
     body = page.inner_text('body').lower()
-    return any(x in body for x in ['aucun', 'no result', 'introuvable', '0 résultat'])
+    return 'aucune donnée' in body or 'no result' in body or 'introuvable' in body
 
 
 def check_repair_status(order_number):
