@@ -233,9 +233,9 @@ def ask():
                 pass
             # Also try getting the relay/tracking from the repair order in Wing
             try:
-                repair_relay = wing_automation.get_relay_point_from_wing(f"{order_num}_reparation")
+                repair_relay = wing_automation.get_relay_point_from_wing(f"{order_num}_bis")
                 if repair_relay:
-                    wing_extra += f"\n\n--- Détails Wing commande réparation #{order_num}_reparation ---\n{repair_relay[:800]}"
+                    wing_extra += f"\n\n--- Détails Wing commande réparation #{order_num}_bis ---\n{repair_relay[:800]}"
             except Exception:
                 pass
 

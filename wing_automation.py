@@ -64,40 +64,56 @@ def generate_return_label(order_number):
 
 
 def check_repair_status(order_number):
-    """Search Wing for order_number + '_réparation' and return the status string, or None if not found."""
+    """Search Wing for order_number + '_bis' (repair duplicate) and return status + details."""
+    order_number = str(order_number).lstrip('#')
+    # Try _bis first (standard repair naming), then fallbacks
+    variants = [f"{order_number}_bis", f"{order_number}_REPARATION", f"{order_number}_reparation", f"{order_number}_réparation", f"{order_number}_Reparation", order_number]
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
-        page = browser.new_page()
-        page.set_viewport_size({'width': 1280, 'height': 900})
+        page = browser.new_page(viewport={'width': 1440, 'height': 900})
         try:
             _login(page)
-            page.goto(f"{WING_URL}/orders")
-            page.wait_for_load_state('networkidle')
-            time.sleep(2)
 
-            page.fill('input[type="search"]', f"{order_number}_réparation")
-            page.keyboard.press('Enter')
-            time.sleep(4)
+            for search_term in variants:
+                page.goto(f"{WING_URL}/orders")
+                page.wait_for_load_state('networkidle')
+                time.sleep(2)
 
-            body_text = page.inner_text('body').lower()
-            if 'aucun' in body_text or 'no result' in body_text or 'introuvable' in body_text:
-                browser.close()
-                return None
+                search_input = page.locator('input[type="search"], input[placeholder*="Recherche"], input[placeholder*="recherche"]').first
+                search_input.fill(search_term)
+                page.keyboard.press('Enter')
+                time.sleep(4)
 
-            # Try common Wing status selectors
-            for selector in ['[class*="status"]', '[class*="statut"]', 'td:nth-child(4)']:
+                body_text = page.inner_text('body')
+                if any(x in body_text.lower() for x in ['aucun', 'no result', 'introuvable', '0 résultat']):
+                    continue  # Try next variant
+
+                # Found results — click first row to open detail panel
                 try:
-                    el = page.locator(selector).first
-                    if el.is_visible(timeout=2000):
-                        status = el.text_content().strip()
-                        if status:
-                            browser.close()
-                            return status
+                    page.locator('tbody tr').first.click()
+                    time.sleep(3)
                 except Exception:
-                    continue
+                    pass
+
+                # Grab full detail panel text
+                panel_text = ''
+                for selector in ['[class*="detail"]', '[class*="panel"]', '[class*="drawer"]', '[class*="sidebar"]']:
+                    try:
+                        el = page.locator(selector).first
+                        if el.is_visible(timeout=1500):
+                            t = el.text_content().strip()
+                            if t and len(t) > 20:
+                                panel_text = t
+                                break
+                    except Exception:
+                        continue
+
+                browser.close()
+                result = panel_text if panel_text else body_text[:1500]
+                return f"[Trouvé sous '{search_term}']\n{result[:1000]}"
 
             browser.close()
-            return "En cours de traitement"
+            return None
 
         except Exception as e:
             print(f"Erreur vérification statut Wing: {e}")
