@@ -327,6 +327,31 @@ def save_process():
     return jsonify({'success': True})
 
 
+@app.route('/wing/lookup', methods=['POST'])
+def wing_lookup():
+    """Manually fetch Wing info for an order number — relay point + repair status."""
+    data = request.json or {}
+    order_num = str(data.get('order_number', '')).replace('#', '').strip()
+    if not order_num:
+        return jsonify({'success': False, 'error': 'Numéro de commande requis'})
+    results = {}
+    # Try repair order (_bis and variants)
+    try:
+        repair_info = wing_automation.check_repair_status(order_num)
+        results['repair'] = repair_info
+    except Exception as e:
+        results['repair_error'] = str(e)
+    # Try relay point on base order
+    try:
+        relay_info = wing_automation.get_relay_point_from_wing(order_num)
+        results['relay'] = relay_info
+    except Exception as e:
+        results['relay_error'] = str(e)
+    if not results.get('repair') and not results.get('relay'):
+        return jsonify({'success': False, 'error': 'Aucune info trouvée dans Wing', 'details': results})
+    return jsonify({'success': True, 'data': results})
+
+
 @app.route('/wing', methods=['GET', 'POST'])
 def wing_order():
     result = None
