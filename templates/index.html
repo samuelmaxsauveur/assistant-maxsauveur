@@ -330,9 +330,8 @@ function appendChat(id, question, answer) {
 async function askClaude(id) {
     const question = document.getElementById('question-' + id).value.trim();
     if (!question) return;
-    const btn = event.target;
-    btn.textContent = 'En cours...';
-    btn.disabled = true;
+    const btn = (typeof event !== 'undefined' && event && event.target) ? event.target : document.querySelector(`#chat-${id}`)?.previousElementSibling?.querySelector('button') || null;
+    if (btn) { btn.textContent = 'En cours...'; btn.disabled = true; }
     if (!chatHistory[id]) chatHistory[id] = [];
     try {
         const res = await fetch('/ask', {
@@ -351,8 +350,7 @@ async function askClaude(id) {
     } catch(e) {
         alert('Erreur. Réessaie.');
     }
-    btn.textContent = 'Demander';
-    btn.disabled = false;
+    if (btn) { btn.textContent = 'Demander'; btn.disabled = false; }
 }
 
 async function saveProcess(id) {
