@@ -32,14 +32,19 @@ def _search_order(page, search_term):
     inp.fill('')
     inp.type(search_term, delay=50)
     page.keyboard.press('Enter')
-    # Wait for search to settle: either matching row or "no data" message
+    import time; time.sleep(2)
+    # Wing defaults to "À traiter" tab — click "Toutes" to see all orders
     try:
-        page.wait_for_selector(
-            f'tr:has-text("{search_term}"), text=Aucune donnée',
-            timeout=8000
-        )
+        toutes = page.locator('text=Toutes').first
+        toutes.click()
+        time.sleep(1)
     except Exception:
-        import time; time.sleep(2)
+        pass
+    # Wait for matching row
+    try:
+        page.wait_for_selector(f'tr:has-text("{search_term}")', timeout=6000)
+    except Exception:
+        pass
 
 def _click_order_row(page, search_term):
     try:
