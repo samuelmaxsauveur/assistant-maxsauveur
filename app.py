@@ -366,6 +366,12 @@ def wing_debug_screenshot():
             time.sleep(3)
             results['orders_page_url'] = page.url
             results['orders_page_text'] = page.inner_text('body')[:500]
+            # Test search for 11768
+            inp = page.locator('input[type="search"]').first
+            inp.click(); inp.fill(''); inp.type('11768', delay=50)
+            page.keyboard.press('Enter')
+            import time; time.sleep(3)
+            results['search_11768_text'] = page.inner_text('body')[:800]
             browser.close()
     except Exception as e:
         import traceback
