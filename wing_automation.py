@@ -66,8 +66,8 @@ def generate_return_label(order_number):
 def check_repair_status(order_number):
     """Search Wing for order_number + '_bis' (repair duplicate) and return status + details."""
     order_number = str(order_number).lstrip('#')
-    # Try _bis first (standard repair naming), then fallbacks
-    variants = [f"{order_number}_bis", f"{order_number}_REPARATION", f"{order_number}_reparation", f"{order_number}_réparation", f"{order_number}_Reparation", order_number]
+    # Wing confirmed format: #11220_REPARATION — try REPARATION first, then _bis
+    variants = [f"{order_number}_REPARATION", f"{order_number}_bis", f"{order_number}_reparation", f"{order_number}_réparation", order_number]
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         page = browser.new_page(viewport={'width': 1440, 'height': 900})
@@ -88,12 +88,19 @@ def check_repair_status(order_number):
                 if any(x in body_text.lower() for x in ['aucun', 'no result', 'introuvable', '0 résultat']):
                     continue  # Try next variant
 
-                # Found results — click first row to open detail panel
+                # Click the row containing the search term
                 try:
-                    page.locator('tbody tr').first.click()
+                    row = page.locator(f'tr:has-text("{search_term}")').first
+                    if not row.is_visible(timeout=2000):
+                        row = page.locator('tbody tr').first
+                    row.click()
                     time.sleep(3)
                 except Exception:
-                    pass
+                    try:
+                        page.locator('tbody tr').first.click()
+                        time.sleep(3)
+                    except Exception:
+                        pass
 
                 # Grab full detail panel text
                 panel_text = ''
@@ -136,14 +143,20 @@ def get_relay_point_from_wing(order_number):
             page.wait_for_load_state('networkidle')
             time.sleep(2)
 
-            # Search by order reference
+            # Search by order reference (Wing format: without # in search box)
             search_input = page.locator('input[type="search"], input[placeholder*="Recherche"], input[placeholder*="recherche"]').first
-            search_input.fill(f'#{order_number}')
+            search_input.fill(order_number)
             page.keyboard.press('Enter')
             time.sleep(4)
 
-            # Click the first order row to open the detail panel
-            page.locator('tbody tr').first.click()
+            # Click the matching row
+            try:
+                row = page.locator(f'tr:has-text("{order_number}")').first
+                if not row.is_visible(timeout=2000):
+                    row = page.locator('tbody tr').first
+                row.click()
+            except Exception:
+                page.locator('tbody tr').first.click()
             time.sleep(3)
 
             # Wait for the detail panel "Détails de l'expédition"
