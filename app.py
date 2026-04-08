@@ -193,28 +193,53 @@ def ask():
     previous_exchanges = data.get('previous_exchanges', [])
     question = data.get('question', '')
 
-    # Auto-fetch relay point from Wing if question mentions it
-    wing_relay_info = ''
-    relay_keywords = ['point relais', 'point-relais', 'relais', 'relay', 'adresse de livraison', 'adresse relais',
-                      'wing', 'livraison', 'où livrer', 'adresse du client', 'retrouve', 'cherche dans wing']
-    if any(kw in question.lower() for kw in relay_keywords):
-        # Extract order number from order_info or from the question
-        order_num = None
+    # Extract order number once (used by multiple Wing lookups below)
+    def _extract_order_num():
         if order_info:
-            order_num = str(order_info.get('number', '')).replace('#', '')
-        if not order_num:
-            m = re.search(r'#?(\d{4,6})', question)
-            if m:
-                order_num = m.group(1)
+            n = str(order_info.get('number', '')).replace('#', '').strip()
+            if n:
+                return n
+        m = re.search(r'#?(\d{4,6})', question)
+        return m.group(1) if m else None
+
+    wing_extra = ''
+    q_lower = question.lower()
+
+    # Auto-fetch relay point from Wing
+    relay_keywords = ['point relais', 'point-relais', 'relais', 'relay', 'adresse de livraison',
+                      'adresse relais', 'où livrer', 'adresse du client', 'cherche dans wing']
+    if any(kw in q_lower for kw in relay_keywords):
+        order_num = _extract_order_num()
         if order_num:
             try:
                 relay_text = wing_automation.get_relay_point_from_wing(order_num)
                 if relay_text:
-                    wing_relay_info = f"\n\n--- Point relais récupéré automatiquement depuis Wing (commande #{order_num}) ---\n{relay_text[:1000]}"
+                    wing_extra += f"\n\n--- Point relais récupéré depuis Wing (commande #{order_num}) ---\n{relay_text[:800]}"
             except Exception:
                 pass
 
-    full_question = question + wing_relay_info
+    # Auto-fetch repair tracking from Wing (_réparation suffix)
+    tracking_keywords = ['suivi', 'tracking', 'numéro de suivi', 'lien de suivi', 'où en est',
+                         'statut wing', 'réparation', 'reparation', 'wing', 'retrouve', 'cherche']
+    if any(kw in q_lower for kw in tracking_keywords):
+        order_num = _extract_order_num()
+        if order_num:
+            try:
+                # Try repair order first (order_REPARATION)
+                repair_status = wing_automation.check_repair_status(order_num)
+                if repair_status:
+                    wing_extra += f"\n\n--- Statut récupéré depuis Wing pour la réparation #{order_num} ---\nStatut : {repair_status}"
+            except Exception:
+                pass
+            # Also try getting the relay/tracking from the repair order in Wing
+            try:
+                repair_relay = wing_automation.get_relay_point_from_wing(f"{order_num}_reparation")
+                if repair_relay:
+                    wing_extra += f"\n\n--- Détails Wing commande réparation #{order_num}_reparation ---\n{repair_relay[:800]}"
+            except Exception:
+                pass
+
+    full_question = question + wing_extra
     result = claude_ai.answer_question(
         data['body'],
         data['subject'],
