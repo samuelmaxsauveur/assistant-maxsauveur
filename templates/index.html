@@ -348,7 +348,7 @@ async function askClaude(id) {
             document.getElementById('textarea-' + id).value = data.updated_draft;
         }
     } catch(e) {
-        alert('Erreur. Réessaie.');
+        appendChat(id, question, '❌ Erreur : ' + e.message);
     }
     if (btn) { btn.textContent = 'Demander'; btn.disabled = false; }
 }

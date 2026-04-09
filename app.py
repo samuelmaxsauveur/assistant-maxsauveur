@@ -218,9 +218,8 @@ def ask():
             except Exception:
                 pass
 
-    # Auto-fetch repair tracking from Wing (_réparation suffix)
-    tracking_keywords = ['suivi', 'tracking', 'numéro de suivi', 'lien de suivi', 'où en est',
-                         'statut wing', 'réparation', 'reparation', 'wing', 'retrouve', 'cherche']
+    # Auto-fetch repair tracking from Wing — only if question explicitly mentions Wing
+    tracking_keywords = ['wing', 'suivi wing', 'numéro de suivi wing', 'cherche dans wing', 'statut wing']
     if any(kw in q_lower for kw in tracking_keywords):
         order_num = _extract_order_num()
         if order_num:
