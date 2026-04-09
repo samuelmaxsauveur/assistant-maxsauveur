@@ -99,11 +99,24 @@ def check_repair_status(order_number):
             _search_order(page, search_term)
             if _no_results(page):
                 continue
+            # Extract row text first (contains SUIVI ALLER tracking number)
+            row_text = ''
+            try:
+                row = page.locator(f'tr:has-text("{search_term}")').first
+                row.wait_for(timeout=3000)
+                row_text = row.inner_text().strip()
+            except Exception:
+                pass
             _click_order_row(page, search_term)
             panel = _get_panel_text(page)
             browser.close()
             p.stop()
-            return f"[Trouvé : '{search_term}']\n{panel[:1000]}"
+            result = f"Référence Wing : {search_term}\n"
+            if row_text:
+                result += f"Données tableau (statut / transporteur / suivi) :\n{row_text}\n"
+            if panel and len(panel) > 30:
+                result += f"Panneau détail :\n{panel[:600]}"
+            return result.strip()
         browser.close()
         p.stop()
         return None
