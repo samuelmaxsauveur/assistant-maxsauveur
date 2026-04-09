@@ -184,7 +184,8 @@ def answer_question(email_body, email_subject, customer_name, order_info, questi
 Samuel (le responsable) te demande maintenant :
 {question}
 
-Utilise tous les éléments ci-dessus (historique client, détail commande, paiement, échanges précédents) pour répondre.
+Utilise tous les éléments ci-dessus pour répondre.
+Si le contexte contient un "Numéro de suivi" et un "Lien de suivi" Wing, intègre-les DIRECTEMENT dans le updated_draft (ne les omets pas, ne demande pas de confirmation).
 
 Réponds en JSON strict avec exactement ces deux champs :
 {{

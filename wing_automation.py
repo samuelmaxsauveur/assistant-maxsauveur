@@ -99,12 +99,31 @@ def check_repair_status(order_number):
             _search_order(page, search_term)
             if _no_results(page):
                 continue
-            # Extract row text first (contains SUIVI ALLER tracking number)
+            # Extract row data (tracking number + URL from SUIVI ALLER column)
             row_text = ''
+            tracking_number = ''
+            tracking_url = ''
             try:
                 row = page.locator(f'tr:has-text("{search_term}")').first
                 row.wait_for(timeout=3000)
                 row_text = row.inner_text().strip()
+                # Extract tracking link from the row
+                links = row.locator('a').all()
+                for link in links:
+                    href = link.get_attribute('href') or ''
+                    txt = link.inner_text().strip()
+                    if href and ('track' in href.lower() or 'suivi' in href.lower() or 'colissimo' in href.lower() or 'chronopost' in href.lower() or 'laposte' in href.lower()):
+                        tracking_url = href
+                        tracking_number = txt
+                        break
+                # Fallback: any external link in the row
+                if not tracking_url:
+                    for link in links:
+                        href = link.get_attribute('href') or ''
+                        if href.startswith('http') and 'wing' not in href.lower():
+                            tracking_url = href
+                            tracking_number = link.inner_text().strip()
+                            break
             except Exception:
                 pass
             _click_order_row(page, search_term)
@@ -112,10 +131,14 @@ def check_repair_status(order_number):
             browser.close()
             p.stop()
             result = f"Référence Wing : {search_term}\n"
+            if tracking_number:
+                result += f"Numéro de suivi : {tracking_number}\n"
+            if tracking_url:
+                result += f"Lien de suivi : {tracking_url}\n"
             if row_text:
-                result += f"Données tableau (statut / transporteur / suivi) :\n{row_text}\n"
+                result += f"Ligne tableau Wing : {row_text}\n"
             if panel and len(panel) > 30:
-                result += f"Panneau détail :\n{panel[:600]}"
+                result += f"Panneau détail : {panel[:400]}"
             return result.strip()
         browser.close()
         p.stop()
