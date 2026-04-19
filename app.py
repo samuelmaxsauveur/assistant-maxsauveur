@@ -314,42 +314,65 @@ http://localhost:8080
 
     return jsonify({'success': success})
 
-@app.route('/send-return-label', methods=['POST'])
-def send_return_label():
-    """Generate Wing return label and send it with SAV procedure to customer."""
+import tempfile, base64
+
+_label_store = {}  # temp storage: label_id -> {bytes, filename}
+
+@app.route('/prepare-return-label', methods=['POST'])
+def prepare_return_label():
+    """Fetch Wing return label and return draft preview — does NOT send yet."""
+    import uuid
     data = request.json or {}
-    customer_email = data.get('customer_email', '')
     customer_name = data.get('customer_name', '')
     order_number = data.get('order_number', '').replace('#', '')
-    subject = data.get('subject', 'Prise en charge de votre réparation')
-    thread_id = data.get('thread_id')
     email_body = data.get('email_body', '')
 
-    if not customer_email:
-        return jsonify({'success': False, 'error': 'Email client manquant'})
-
     # Generate return label from Wing
-    label_bytes = None
+    label_id = None
     label_attached = False
     if order_number:
         try:
             label_bytes = wing_automation.generate_return_label(order_number)
-            label_attached = label_bytes is not None
+            if label_bytes:
+                label_id = str(uuid.uuid4())
+                filename = f"etiquette_retour_{order_number}.pdf"
+                _label_store[label_id] = {'bytes': label_bytes, 'filename': filename}
+                label_attached = True
         except Exception as e:
             print(f"Wing label error: {e}")
 
-    # Generate SAV approval email with procedure
+    # Generate SAV draft
     draft = claude_ai.generate_sav_approval_email(customer_name, order_number, email_body)
+    return jsonify({'success': True, 'label_attached': label_attached, 'label_id': label_id, 'draft': draft})
 
-    # Send email with label attached
+
+@app.route('/send-return-label', methods=['POST'])
+def send_return_label():
+    """Send the prepared email with the stored label."""
+    data = request.json or {}
+    customer_email = data.get('customer_email', '')
+    subject = data.get('subject', 'Prise en charge de votre réparation')
+    thread_id = data.get('thread_id')
+    body = data.get('body', '')
+    label_id = data.get('label_id')
+    order_number = data.get('order_number', '').replace('#', '')
+
+    if not customer_email or not body:
+        return jsonify({'success': False, 'error': 'Email ou message manquant'})
+
+    label_bytes = None
+    filename = f"etiquette_retour_{order_number}.pdf"
+    if label_id and label_id in _label_store:
+        label_bytes = _label_store.pop(label_id)['bytes']
+
     service = get_service()
     gmail_helper.send_email(
-        service, customer_email, f"Re: {subject}", draft,
+        service, customer_email, f"Re: {subject}", body,
         thread_id=thread_id,
         attachment_bytes=label_bytes,
-        attachment_filename=f"etiquette_retour_{order_number}.pdf" if order_number else "etiquette_retour.pdf"
+        attachment_filename=filename
     )
-    return jsonify({'success': True, 'label_attached': label_attached, 'draft': draft})
+    return jsonify({'success': True, 'label_attached': label_bytes is not None})
 
 
 @app.route('/save-process', methods=['POST'])
