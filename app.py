@@ -314,6 +314,44 @@ http://localhost:8080
 
     return jsonify({'success': success})
 
+@app.route('/send-return-label', methods=['POST'])
+def send_return_label():
+    """Generate Wing return label and send it with SAV procedure to customer."""
+    data = request.json or {}
+    customer_email = data.get('customer_email', '')
+    customer_name = data.get('customer_name', '')
+    order_number = data.get('order_number', '').replace('#', '')
+    subject = data.get('subject', 'Prise en charge de votre réparation')
+    thread_id = data.get('thread_id')
+    email_body = data.get('email_body', '')
+
+    if not customer_email:
+        return jsonify({'success': False, 'error': 'Email client manquant'})
+
+    # Generate return label from Wing
+    label_bytes = None
+    label_attached = False
+    if order_number:
+        try:
+            label_bytes = wing_automation.generate_return_label(order_number)
+            label_attached = label_bytes is not None
+        except Exception as e:
+            print(f"Wing label error: {e}")
+
+    # Generate SAV approval email with procedure
+    draft = claude_ai.generate_sav_approval_email(customer_name, order_number, email_body)
+
+    # Send email with label attached
+    service = get_service()
+    gmail_helper.send_email(
+        service, customer_email, f"Re: {subject}", draft,
+        thread_id=thread_id,
+        attachment_bytes=label_bytes,
+        attachment_filename=f"etiquette_retour_{order_number}.pdf" if order_number else "etiquette_retour.pdf"
+    )
+    return jsonify({'success': True, 'label_attached': label_attached, 'draft': draft})
+
+
 @app.route('/save-process', methods=['POST'])
 def save_process():
     data = request.json
