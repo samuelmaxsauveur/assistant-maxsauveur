@@ -201,12 +201,22 @@ def generate_return_label(order_number):
     try:
         _login(page)
         _search_order(page, str(order_number))
+        # Click "Toutes" tab to make all orders visible (same as other functions)
+        import time
+        try:
+            toutes = page.locator('text=Toutes').first
+            toutes.click()
+            time.sleep(1)
+        except Exception:
+            pass
+        # Check the checkbox for the order row
         page.locator('input[type="checkbox"]').first.click()
+        # Open Affranchissement dropdown
         page.click('text=Affranchissement')
-        page.wait_for_selector('text=Créer', timeout=5000)
-        page.click('text=Créer')
+        # Click specifically "Créer et générer l'étiquette retour" (not generic "Créer")
+        page.wait_for_selector('text=Créer et générer', timeout=5000)
         with page.expect_download(timeout=30000) as download_info:
-            page.locator('text=Télécharger').first.click()
+            page.locator('text=Créer et générer').first.click()
         pdf_bytes = open(download_info.value.path(), 'rb').read()
         context.close()
         browser.close()
