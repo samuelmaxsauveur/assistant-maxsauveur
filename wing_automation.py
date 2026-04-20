@@ -195,35 +195,57 @@ def get_relay_point_from_wing(order_number):
 
 def generate_return_label(order_number):
     """Generate a return label in Wing and return PDF bytes, or None on failure."""
+    import time
     p, browser, page = _launch()
     context = browser.new_context(accept_downloads=True)
     page = context.new_page()
     try:
+        print(f"[Wing] Login...")
         _login(page)
+        print(f"[Wing] Searching order {order_number}...")
         _search_order(page, str(order_number))
-        # Click "Toutes" tab to make all orders visible (same as other functions)
-        import time
-        try:
-            toutes = page.locator('text=Toutes').first
-            toutes.click()
-            time.sleep(1)
-        except Exception:
-            pass
         # Check the checkbox for the order row
+        print(f"[Wing] Clicking checkbox...")
+        try:
+            page.wait_for_selector('input[type="checkbox"]', timeout=5000)
+        except Exception:
+            print(f"[Wing] No checkbox found — taking screenshot")
+            page.screenshot(path="/tmp/wing_label_debug.png")
         page.locator('input[type="checkbox"]').first.click()
+        time.sleep(0.5)
         # Open Affranchissement dropdown
+        print(f"[Wing] Clicking Affranchissement...")
+        try:
+            page.wait_for_selector('text=Affranchissement', timeout=5000)
+        except Exception:
+            print(f"[Wing] Affranchissement button not found — taking screenshot")
+            page.screenshot(path="/tmp/wing_label_debug.png")
         page.click('text=Affranchissement')
-        # Click specifically "Créer et générer l'étiquette retour" (not generic "Créer")
-        page.wait_for_selector('text=Créer et générer', timeout=5000)
+        time.sleep(0.5)
+        # Click specifically "Créer et générer l'étiquette retour"
+        print(f"[Wing] Waiting for dropdown option...")
+        try:
+            page.wait_for_selector('text=Créer et générer', timeout=5000)
+        except Exception:
+            print(f"[Wing] 'Créer et générer' not found — taking screenshot")
+            page.screenshot(path="/tmp/wing_label_debug.png")
+            raise
+        print(f"[Wing] Clicking 'Créer et générer'...")
         with page.expect_download(timeout=30000) as download_info:
             page.locator('text=Créer et générer').first.click()
+        print(f"[Wing] Download triggered, reading PDF...")
         pdf_bytes = open(download_info.value.path(), 'rb').read()
+        print(f"[Wing] PDF ready: {len(pdf_bytes)} bytes")
         context.close()
         browser.close()
         p.stop()
         return pdf_bytes
     except Exception as e:
-        print(f"Erreur génération étiquette Wing: {e}")
+        print(f"[Wing] Erreur génération étiquette: {e}")
+        try:
+            page.screenshot(path="/tmp/wing_label_debug.png")
+        except Exception:
+            pass
         try:
             context.close()
             browser.close()
