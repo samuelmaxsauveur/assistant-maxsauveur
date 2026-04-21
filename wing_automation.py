@@ -211,34 +211,51 @@ def generate_return_label(order_number):
         except Exception:
             print(f"[Wing] No table rows found — taking screenshot")
             page.screenshot(path="/tmp/wing_label_debug.png")
-        # Wing checkboxes are hidden until hover — hover first row to reveal it
+        # Wing uses custom checkbox components — try multiple strategies
+        first_row = page.locator('tbody tr').first
+        first_row.wait_for(timeout=5000)
+        first_row.hover()
+        time.sleep(0.5)
+        print(f"[Wing] Hovered first row")
+
+        # Log all checkbox-like elements found
+        for sel in ['input[type="checkbox"]', '[role="checkbox"]', '[aria-checked]', 'label']:
+            count = page.locator(f'tbody tr:first-child {sel}').count()
+            print(f"[Wing] Selector '{sel}' in first row: {count} found")
+
+        checked = False
+        # Strategy 1: role=checkbox
         try:
-            first_row = page.locator('tbody tr').first
-            first_row.wait_for(timeout=5000)
-            first_row.hover()
-            time.sleep(0.5)
-            print(f"[Wing] Hovered first row")
-            row_cb = first_row.locator('input[type="checkbox"]')
-            row_cb.wait_for(timeout=3000)
-            row_cb.click()
-            print(f"[Wing] Row checkbox clicked after hover")
+            cb = page.locator('tbody tr').first.locator('[role="checkbox"]').first
+            if cb.count() > 0:
+                cb.click()
+                print(f"[Wing] Clicked [role=checkbox]")
+                checked = True
         except Exception as e:
-            print(f"[Wing] Hover+checkbox failed ({e}), counting all checkboxes...")
-            checkboxes = page.locator('input[type="checkbox"]').all()
-            print(f"[Wing] Found {len(checkboxes)} checkboxes total")
-            # Try clicking each one and see if Affranchissement appears
-            for i, cb in enumerate(checkboxes):
-                try:
-                    cb.scroll_into_view_if_needed()
+            print(f"[Wing] role=checkbox failed: {e}")
+
+        # Strategy 2: aria-checked attribute
+        if not checked:
+            try:
+                cb = page.locator('[aria-checked]').nth(1)  # skip header
+                if cb.count() > 0:
                     cb.click()
-                    print(f"[Wing] Clicked checkbox #{i}")
-                    time.sleep(0.5)
-                    if page.locator('text=Affranchissement').count() > 0:
-                        print(f"[Wing] Affranchissement appeared after checkbox #{i}")
-                        break
-                except Exception as ce:
-                    print(f"[Wing] Checkbox #{i} failed: {ce}")
+                    print(f"[Wing] Clicked aria-checked")
+                    checked = True
+            except Exception as e:
+                print(f"[Wing] aria-checked failed: {e}")
+
+        # Strategy 3: click left side of row (x=20 = where checkbox visually is)
+        if not checked:
+            try:
+                first_row.click(position={'x': 20, 'y': 15})
+                print(f"[Wing] Clicked left side of row at x=20")
+                checked = True
+            except Exception as e:
+                print(f"[Wing] Position click failed: {e}")
+
         time.sleep(1)
+        print(f"[Wing] Affranchissement visible: {page.locator('text=Affranchissement').count() > 0}")
         # Open Affranchissement dropdown
         print(f"[Wing] Waiting for Affranchissement button (appears after checkbox)...")
         try:
