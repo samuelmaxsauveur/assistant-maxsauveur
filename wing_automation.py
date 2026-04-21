@@ -211,20 +211,33 @@ def generate_return_label(order_number):
         except Exception:
             print(f"[Wing] No table rows found — taking screenshot")
             page.screenshot(path="/tmp/wing_label_debug.png")
-        # Click the checkbox inside the first body row
+        # Wing checkboxes are hidden until hover — hover first row to reveal it
         try:
-            row_cb = page.locator('tbody tr').first.locator('input[type="checkbox"]')
+            first_row = page.locator('tbody tr').first
+            first_row.wait_for(timeout=5000)
+            first_row.hover()
+            time.sleep(0.5)
+            print(f"[Wing] Hovered first row")
+            row_cb = first_row.locator('input[type="checkbox"]')
             row_cb.wait_for(timeout=3000)
             row_cb.click()
-            print(f"[Wing] Row checkbox clicked")
+            print(f"[Wing] Row checkbox clicked after hover")
         except Exception as e:
-            print(f"[Wing] Row checkbox failed ({e}), trying all checkboxes[1]...")
+            print(f"[Wing] Hover+checkbox failed ({e}), counting all checkboxes...")
             checkboxes = page.locator('input[type="checkbox"]').all()
-            print(f"[Wing] Found {len(checkboxes)} checkboxes")
-            if len(checkboxes) > 1:
-                checkboxes[1].click()  # skip header, click first data row
-            elif checkboxes:
-                checkboxes[0].click()
+            print(f"[Wing] Found {len(checkboxes)} checkboxes total")
+            # Try clicking each one and see if Affranchissement appears
+            for i, cb in enumerate(checkboxes):
+                try:
+                    cb.scroll_into_view_if_needed()
+                    cb.click()
+                    print(f"[Wing] Clicked checkbox #{i}")
+                    time.sleep(0.5)
+                    if page.locator('text=Affranchissement').count() > 0:
+                        print(f"[Wing] Affranchissement appeared after checkbox #{i}")
+                        break
+                except Exception as ce:
+                    print(f"[Wing] Checkbox #{i} failed: {ce}")
         time.sleep(1)
         # Open Affranchissement dropdown
         print(f"[Wing] Waiting for Affranchissement button (appears after checkbox)...")
