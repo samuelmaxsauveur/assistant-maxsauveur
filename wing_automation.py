@@ -204,22 +204,37 @@ def generate_return_label(order_number):
         _login(page)
         print(f"[Wing] Searching order {order_number}...")
         _search_order(page, str(order_number))
-        # Check the checkbox for the order row
-        print(f"[Wing] Clicking checkbox...")
+        # Check the checkbox in tbody (first data row, not header)
+        print(f"[Wing] Clicking row checkbox...")
         try:
-            page.wait_for_selector('input[type="checkbox"]', timeout=5000)
+            page.wait_for_selector('tbody tr', timeout=5000)
         except Exception:
-            print(f"[Wing] No checkbox found — taking screenshot")
+            print(f"[Wing] No table rows found — taking screenshot")
             page.screenshot(path="/tmp/wing_label_debug.png")
-        page.locator('input[type="checkbox"]').first.click()
-        time.sleep(0.5)
+        # Click the checkbox inside the first body row
+        try:
+            row_cb = page.locator('tbody tr').first.locator('input[type="checkbox"]')
+            row_cb.wait_for(timeout=3000)
+            row_cb.click()
+            print(f"[Wing] Row checkbox clicked")
+        except Exception as e:
+            print(f"[Wing] Row checkbox failed ({e}), trying all checkboxes[1]...")
+            checkboxes = page.locator('input[type="checkbox"]').all()
+            print(f"[Wing] Found {len(checkboxes)} checkboxes")
+            if len(checkboxes) > 1:
+                checkboxes[1].click()  # skip header, click first data row
+            elif checkboxes:
+                checkboxes[0].click()
+        time.sleep(1)
         # Open Affranchissement dropdown
-        print(f"[Wing] Clicking Affranchissement...")
+        print(f"[Wing] Waiting for Affranchissement button (appears after checkbox)...")
         try:
-            page.wait_for_selector('text=Affranchissement', timeout=5000)
+            page.wait_for_selector('text=Affranchissement', timeout=8000)
+            print(f"[Wing] Affranchissement found, clicking...")
         except Exception:
-            print(f"[Wing] Affranchissement button not found — taking screenshot")
+            print(f"[Wing] Affranchissement not found after 8s — taking screenshot")
             page.screenshot(path="/tmp/wing_label_debug.png")
+            raise Exception("Affranchissement button not visible — checkbox may not be checked")
         page.click('text=Affranchissement')
         time.sleep(0.5)
         # Click specifically "Créer et générer l'étiquette retour"
