@@ -218,44 +218,64 @@ def generate_return_label(order_number):
         time.sleep(0.5)
         print(f"[Wing] Hovered first row")
 
-        # Log all checkbox-like elements found
-        for sel in ['input[type="checkbox"]', '[role="checkbox"]', '[aria-checked]', 'label']:
-            count = page.locator(f'tbody tr:first-child {sel}').count()
-            print(f"[Wing] Selector '{sel}' in first row: {count} found")
+        # Inspect the DOM structure of the first row to find the real checkbox element
+        try:
+            row_html = page.evaluate("""() => {
+                const row = document.querySelector('tbody tr');
+                if (!row) return 'NO ROW';
+                const els = row.querySelectorAll('*');
+                const info = [];
+                els.forEach(el => {
+                    const tag = el.tagName;
+                    const cls = el.className || '';
+                    const role = el.getAttribute('role') || '';
+                    const type = el.getAttribute('type') || '';
+                    const ariaChecked = el.getAttribute('aria-checked') || '';
+                    if (cls.includes('check') || role === 'checkbox' || type === 'checkbox' || ariaChecked || cls.includes('select') || cls.includes('tick')) {
+                        info.push(tag + ' role=' + role + ' type=' + type + ' class=' + cls.substring(0, 80));
+                    }
+                });
+                return info.length ? info.join(' | ') : 'NOTHING FOUND. Row children: ' + Array.from(row.children).map(c => c.tagName + '.' + (c.className||'').substring(0,40)).join(', ');
+            }""")
+            print(f"[Wing] First row DOM: {row_html}")
+        except Exception as e:
+            print(f"[Wing] DOM inspect failed: {e}")
 
         checked = False
-        # Strategy 1: role=checkbox
+        # Strategy 1: role=checkbox anywhere on page (skip header = index 0)
         try:
-            cb = page.locator('tbody tr').first.locator('[role="checkbox"]').first
-            if cb.count() > 0:
-                cb.click()
-                print(f"[Wing] Clicked [role=checkbox]")
+            all_role_cb = page.locator('[role="checkbox"]').all()
+            print(f"[Wing] Found {len(all_role_cb)} role=checkbox elements")
+            if len(all_role_cb) > 1:
+                all_role_cb[1].click()
+                print(f"[Wing] Clicked role=checkbox[1]")
+                checked = True
+            elif len(all_role_cb) == 1:
+                all_role_cb[0].click()
+                print(f"[Wing] Clicked role=checkbox[0]")
                 checked = True
         except Exception as e:
             print(f"[Wing] role=checkbox failed: {e}")
 
-        # Strategy 2: aria-checked attribute
+        # Strategy 2: JavaScript force-click the checkbox in first row
         if not checked:
             try:
-                cb = page.locator('[aria-checked]').nth(1)  # skip header
-                if cb.count() > 0:
-                    cb.click()
-                    print(f"[Wing] Clicked aria-checked")
-                    checked = True
-            except Exception as e:
-                print(f"[Wing] aria-checked failed: {e}")
-
-        # Strategy 3: click left side of row (x=20 = where checkbox visually is)
-        if not checked:
-            try:
-                first_row.click(position={'x': 20, 'y': 15})
-                print(f"[Wing] Clicked left side of row at x=20")
+                result = page.evaluate("""() => {
+                    const row = document.querySelector('tbody tr');
+                    if (!row) return 'no row';
+                    const td = row.querySelector('td');
+                    if (!td) return 'no td';
+                    td.click();
+                    return 'clicked td';
+                }""")
+                print(f"[Wing] JS click result: {result}")
                 checked = True
             except Exception as e:
-                print(f"[Wing] Position click failed: {e}")
+                print(f"[Wing] JS click failed: {e}")
 
         time.sleep(1)
-        print(f"[Wing] Affranchissement visible: {page.locator('text=Affranchissement').count() > 0}")
+        aff_count = page.locator('text=Affranchissement').count()
+        print(f"[Wing] Affranchissement visible: {aff_count > 0} (count={aff_count})")
         # Open Affranchissement dropdown
         print(f"[Wing] Waiting for Affranchissement button (appears after checkbox)...")
         try:
