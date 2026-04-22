@@ -204,78 +204,77 @@ def generate_return_label(order_number):
         _login(page)
         print(f"[Wing] Searching order {order_number}...")
         _search_order(page, str(order_number))
-        # Check the checkbox in tbody (first data row, not header)
-        print(f"[Wing] Clicking row checkbox...")
+        # Wait for the specific order row (not the empty-state row)
+        print(f"[Wing] Waiting for order row #{order_number}...")
+        order_row = page.locator(f'tr:has-text("{order_number}")').first
         try:
-            page.wait_for_selector('tbody tr', timeout=5000)
-        except Exception:
-            print(f"[Wing] No table rows found — taking screenshot")
+            order_row.wait_for(timeout=8000)
+            print(f"[Wing] Order row found")
+        except Exception as e:
+            print(f"[Wing] Order row not found: {e}")
             page.screenshot(path="/tmp/wing_label_debug.png")
-        # Wing uses custom checkbox components — try multiple strategies
-        first_row = page.locator('tbody tr').first
-        first_row.wait_for(timeout=5000)
-        first_row.hover()
+            raise Exception(f"Order {order_number} not found in Wing table")
+
+        # Log the row's DOM to understand its structure
+        try:
+            row_info = page.evaluate(f"""() => {{
+                const rows = document.querySelectorAll('tbody tr');
+                for (const row of rows) {{
+                    if (row.textContent.includes('{order_number}')) {{
+                        return 'children: ' + Array.from(row.children).map(c =>
+                            c.tagName + '[' + (c.className||'').substring(0,50) + '] children:' + c.children.length
+                        ).join(' | ');
+                    }}
+                }}
+                return 'row not found in JS';
+            }}""")
+            print(f"[Wing] Row structure: {row_info}")
+        except Exception as e:
+            print(f"[Wing] Row inspect failed: {e}")
+
+        # Hover over the row to reveal the checkbox (Wing uses CSS :hover)
+        order_row.hover()
         time.sleep(0.5)
-        print(f"[Wing] Hovered first row")
 
-        # Inspect the DOM structure of the first row to find the real checkbox element
-        try:
-            row_html = page.evaluate("""() => {
-                const row = document.querySelector('tbody tr');
-                if (!row) return 'NO ROW';
-                const els = row.querySelectorAll('*');
-                const info = [];
-                els.forEach(el => {
-                    const tag = el.tagName;
-                    const cls = el.className || '';
-                    const role = el.getAttribute('role') || '';
-                    const type = el.getAttribute('type') || '';
-                    const ariaChecked = el.getAttribute('aria-checked') || '';
-                    if (cls.includes('check') || role === 'checkbox' || type === 'checkbox' || ariaChecked || cls.includes('select') || cls.includes('tick')) {
-                        info.push(tag + ' role=' + role + ' type=' + type + ' class=' + cls.substring(0, 80));
-                    }
-                });
-                return info.length ? info.join(' | ') : 'NOTHING FOUND. Row children: ' + Array.from(row.children).map(c => c.tagName + '.' + (c.className||'').substring(0,40)).join(', ');
-            }""")
-            print(f"[Wing] First row DOM: {row_html}")
-        except Exception as e:
-            print(f"[Wing] DOM inspect failed: {e}")
-
+        # Try clicking the first td (leftmost cell = where checkbox is)
         checked = False
-        # Strategy 1: role=checkbox anywhere on page (skip header = index 0)
         try:
-            all_role_cb = page.locator('[role="checkbox"]').all()
-            print(f"[Wing] Found {len(all_role_cb)} role=checkbox elements")
-            if len(all_role_cb) > 1:
-                all_role_cb[1].click()
-                print(f"[Wing] Clicked role=checkbox[1]")
-                checked = True
-            elif len(all_role_cb) == 1:
-                all_role_cb[0].click()
-                print(f"[Wing] Clicked role=checkbox[0]")
+            first_td = order_row.locator('td').first
+            first_td.click()
+            print(f"[Wing] Clicked first td of order row")
+            time.sleep(0.8)
+            aff_count = page.locator('text=Affranchissement').count()
+            print(f"[Wing] After td click — Affranchissement: {aff_count}")
+            if aff_count > 0:
                 checked = True
         except Exception as e:
-            print(f"[Wing] role=checkbox failed: {e}")
+            print(f"[Wing] First td click failed: {e}")
 
-        # Strategy 2: JavaScript force-click the checkbox in first row
+        # Fallback: JS mouseover + click on first cell
         if not checked:
             try:
-                result = page.evaluate("""() => {
-                    const row = document.querySelector('tbody tr');
-                    if (!row) return 'no row';
-                    const td = row.querySelector('td');
-                    if (!td) return 'no td';
-                    td.click();
-                    return 'clicked td';
-                }""")
-                print(f"[Wing] JS click result: {result}")
-                checked = True
+                result = page.evaluate(f"""() => {{
+                    const rows = document.querySelectorAll('tbody tr');
+                    for (const row of rows) {{
+                        if (row.textContent.includes('{order_number}')) {{
+                            const td = row.querySelector('td');
+                            if (!td) return 'no td';
+                            td.dispatchEvent(new MouseEvent('mouseover', {{bubbles: true}}));
+                            td.dispatchEvent(new MouseEvent('mouseenter', {{bubbles: true}}));
+                            td.click();
+                            return 'js clicked td';
+                        }}
+                    }}
+                    return 'row not found';
+                }}""")
+                print(f"[Wing] JS mouseover+click: {result}")
+                time.sleep(0.8)
+                aff_count = page.locator('text=Affranchissement').count()
+                print(f"[Wing] After JS click — Affranchissement: {aff_count}")
+                if aff_count > 0:
+                    checked = True
             except Exception as e:
                 print(f"[Wing] JS click failed: {e}")
-
-        time.sleep(1)
-        aff_count = page.locator('text=Affranchissement').count()
-        print(f"[Wing] Affranchissement visible: {aff_count > 0} (count={aff_count})")
         # Open Affranchissement dropdown
         print(f"[Wing] Waiting for Affranchissement button (appears after checkbox)...")
         try:
