@@ -444,6 +444,69 @@ def wing_debug_screenshot():
     return html
 
 
+@app.route('/wing/debug-search/<order_number>')
+def wing_debug_search(order_number):
+    """Search Wing for a specific order and return screenshot + page text."""
+    import base64, tempfile, os, time
+    from playwright.sync_api import sync_playwright
+    html_parts = []
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True, args=['--no-sandbox','--disable-dev-shm-usage'])
+            page = browser.new_page(viewport={'width': 1440, 'height': 900})
+            email = os.getenv('WING_EMAIL', '')
+            password = os.getenv('WING_PASSWORD', '')
+            page.goto('https://my.wing.eu/login')
+            page.wait_for_selector('input[name="email"]')
+            page.fill('input[name="email"]', email)
+            page.fill('input[name="password"]', password)
+            page.click('button[type="submit"]')
+            page.wait_for_url(lambda url: '/login' not in url, timeout=15000)
+            html_parts.append(f'<p>Logged in. URL: {page.url}</p>')
+
+            # Search
+            page.goto('https://my.wing.eu/orders')
+            page.wait_for_selector('input[type="search"]', timeout=10000)
+            inp = page.locator('input[type="search"]').first
+            inp.click(); inp.fill(''); inp.type(order_number, delay=50)
+            page.keyboard.press('Enter')
+            time.sleep(2)
+            # Screenshot after search (before Toutes)
+            tmp = tempfile.NamedTemporaryFile(suffix='.png', delete=False)
+            page.screenshot(path=tmp.name)
+            with open(tmp.name, 'rb') as f:
+                b64 = base64.b64encode(f.read()).decode()
+            html_parts.append(f'<h3>Après recherche "{order_number}" (avant Toutes)</h3>')
+            html_parts.append(f'<img src="data:image/png;base64,{b64}" style="max-width:100%">')
+            html_parts.append(f'<pre>Texte: {page.inner_text("body")[:600]}</pre>')
+
+            # Click Toutes
+            try:
+                page.locator('text=Toutes').first.click()
+                time.sleep(1)
+            except Exception:
+                html_parts.append('<p>Toutes tab not found</p>')
+            # Screenshot after Toutes
+            tmp2 = tempfile.NamedTemporaryFile(suffix='.png', delete=False)
+            page.screenshot(path=tmp2.name)
+            with open(tmp2.name, 'rb') as f:
+                b64b = base64.b64encode(f.read()).decode()
+            html_parts.append(f'<h3>Après clic Toutes</h3>')
+            html_parts.append(f'<img src="data:image/png;base64,{b64b}" style="max-width:100%">')
+            html_parts.append(f'<pre>Texte: {page.inner_text("body")[:600]}</pre>')
+            # DOM first row
+            row_info = page.evaluate("""() => {
+                const rows = document.querySelectorAll('tbody tr');
+                return 'Rows: ' + rows.length + ' | First: ' + (rows[0] ? rows[0].innerHTML.substring(0,300) : 'NONE');
+            }""")
+            html_parts.append(f'<pre>DOM: {row_info}</pre>')
+            browser.close()
+    except Exception as e:
+        import traceback
+        html_parts.append(f'<pre>ERROR: {traceback.format_exc()}</pre>')
+    return ''.join(html_parts)
+
+
 @app.route('/wing/lookup', methods=['POST'])
 def wing_lookup():
     """Manually fetch Wing info for an order number — relay point + repair status."""
