@@ -202,16 +202,35 @@ def generate_return_label(order_number):
     try:
         print(f"[Wing] Login...")
         _login(page)
-        print(f"[Wing] Searching order {order_number}...")
-        _search_order(page, str(order_number))
-        # Wait for the specific order row (not the empty-state row)
-        print(f"[Wing] Waiting for order row #{order_number}...")
+        print(f"[Wing] Going to orders page...")
+        page.goto(f"https://my.wing.eu/orders")
+        page.wait_for_selector('input[type="search"]', timeout=10000)
+        # Type search term
+        inp = page.locator('input[type="search"]').first
+        inp.click(); inp.fill(''); inp.type(str(order_number), delay=50)
+        page.keyboard.press('Enter')
+        print(f"[Wing] Typed search, waiting 3s...")
+        time.sleep(3)
+        print(f"[Wing] Page text after search: {page.inner_text('body')[:300]}")
+        # Click Toutes tab explicitly
+        print(f"[Wing] Looking for Toutes tab...")
+        toutes_count = page.locator('text=Toutes').count()
+        print(f"[Wing] Toutes elements found: {toutes_count}")
+        try:
+            page.locator('text=Toutes').first.click()
+            print(f"[Wing] Clicked Toutes")
+            time.sleep(2)
+        except Exception as e:
+            print(f"[Wing] Toutes click failed: {e}")
+        print(f"[Wing] Page text after Toutes: {page.inner_text('body')[:300]}")
+        # Wait for the specific order row
+        print(f"[Wing] Waiting for order row with '{order_number}'...")
         order_row = page.locator(f'tr:has-text("{order_number}")').first
         try:
             order_row.wait_for(timeout=8000)
-            print(f"[Wing] Order row found")
+            print(f"[Wing] Order row found!")
         except Exception as e:
-            print(f"[Wing] Order row not found: {e}")
+            print(f"[Wing] Order row not found after Toutes: {e}")
             page.screenshot(path="/tmp/wing_label_debug.png")
             raise Exception(f"Order {order_number} not found in Wing table")
 
