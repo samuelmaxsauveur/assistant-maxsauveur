@@ -36,7 +36,7 @@ def _search_order(page, search_term):
     # Wing defaults to "À traiter" tab — click "Toutes" to see all orders
     try:
         toutes = page.locator('text=Toutes').first
-        toutes.click()
+        toutes.click(force=True)
         time.sleep(1)
     except Exception:
         pass
@@ -217,11 +217,23 @@ def generate_return_label(order_number):
         toutes_count = page.locator('text=Toutes').count()
         print(f"[Wing] Toutes elements found: {toutes_count}")
         try:
-            page.locator('text=Toutes').first.click()
-            print(f"[Wing] Clicked Toutes")
+            # Use force=True to bypass overlapping notification banners
+            page.locator('text=Toutes').first.click(force=True)
+            print(f"[Wing] Clicked Toutes (force)")
             time.sleep(2)
         except Exception as e:
-            print(f"[Wing] Toutes click failed: {e}")
+            print(f"[Wing] Toutes force click failed: {e}, trying JS click...")
+            try:
+                page.evaluate("""() => {
+                    const spans = Array.from(document.querySelectorAll('span'));
+                    const toutes = spans.find(s => s.textContent.trim().startsWith('Toutes'));
+                    if (toutes) { toutes.click(); return true; }
+                    return false;
+                }""")
+                print(f"[Wing] JS clicked Toutes")
+                time.sleep(2)
+            except Exception as e2:
+                print(f"[Wing] JS Toutes click also failed: {e2}")
         print(f"[Wing] Page text after Toutes: {page.inner_text('body')[:300]}")
         # Wait for the specific order row
         print(f"[Wing] Waiting for order row with '{order_number}'...")
