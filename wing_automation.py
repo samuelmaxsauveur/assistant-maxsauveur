@@ -222,103 +222,97 @@ def get_relay_point_from_wing(order_number):
 def generate_return_label(order_number):
     """Generate a return label in Wing and return PDF bytes, or None on failure."""
     import time
+    order_number = str(order_number).lstrip('#')
     p, browser, page = _launch()
     context = browser.new_context(accept_downloads=True)
     page = context.new_page()
     try:
         print(f"[Wing] Login...")
         _login(page)
-        _dismiss_notifications(page)
         print(f"[Wing] Going to orders page...")
         page.goto(f"https://my.wing.eu/orders")
         page.wait_for_selector('input[type="search"]', timeout=10000)
-        # Type search term
+
+        # Search for the order
         inp = page.locator('input[type="search"]').first
-        inp.click(); inp.fill(''); inp.type(str(order_number), delay=50)
+        inp.click()
+        inp.fill('')
+        inp.type(order_number, delay=50)
         page.keyboard.press('Enter')
-        print(f"[Wing] Typed search, waiting 3s...")
-        time.sleep(3)
-        print(f"[Wing] Page text after search: {page.inner_text('body')[:300]}")
-        # Click Toutes tab explicitly
-        _dismiss_notifications(page)
-        print(f"[Wing] Looking for Toutes tab...")
-        toutes_count = page.locator('text=Toutes').count()
-        print(f"[Wing] Toutes elements found: {toutes_count}")
+        time.sleep(2)
+
+        # Click the "Toutes" tab using data-testid (from HTML source)
+        print(f"[Wing] Clicking Toutes tab...")
         try:
-            # Target the tab specifically: span with class "flex justify-center flex-1" containing Toutes
-            result = page.evaluate("""() => {
-                const buttons = Array.from(document.querySelectorAll('button'));
-                const toutesBtn = buttons.find(btn => /^Toutes \\(\\d+\\)$/.test(btn.textContent.trim()));
-                if (toutesBtn) { toutesBtn.click(); return 'clicked: ' + toutesBtn.textContent.trim(); }
-                return 'Toutes button not found';
-            }""")
-            print(f"[Wing] JS Toutes click: {result}")
+            toutes_tab = page.locator('[data-testid="order-tab-all"]')
+            toutes_tab.wait_for(timeout=5000)
+            # Only click if not already active/disabled (disabled = already selected)
+            is_disabled = toutes_tab.get_attribute('disabled')
+            if is_disabled is None:
+                toutes_tab.click()
+                print(f"[Wing] Toutes tab clicked")
+            else:
+                print(f"[Wing] Toutes tab already active (disabled=selected)")
             time.sleep(2)
         except Exception as e:
-            print(f"[Wing] JS Toutes click failed: {e}")
-        print(f"[Wing] Page text after Toutes: {page.inner_text('body')[:300]}")
-        # Wait for the specific order row
-        print(f"[Wing] Waiting for order row with '{order_number}'...")
+            print(f"[Wing] Toutes tab click failed: {e}")
+
+        # Wait for order row
+        print(f"[Wing] Waiting for order row '{order_number}'...")
         order_row = page.locator(f'tr:has-text("{order_number}")').first
         try:
             order_row.wait_for(timeout=8000)
             print(f"[Wing] Order row found!")
         except Exception as e:
-            print(f"[Wing] Order row not found after Toutes: {e}")
+            print(f"[Wing] Order row not found: {e}")
             page.screenshot(path="/tmp/wing_label_debug.png")
             raise Exception(f"Order {order_number} not found in Wing table")
 
-        # Inject CSS to force-show hidden elements (checkbox hidden until hover)
-        page.evaluate("""() => {
-            const style = document.createElement('style');
-            style.textContent = 'tbody tr td:first-child * { opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; display: block !important; }';
-            document.head.appendChild(style);
-        }""")
-        time.sleep(0.3)
-
-        # Log what's inside first td
-        first_td_html = page.evaluate(f"""() => {{
-            const rows = document.querySelectorAll('tbody tr');
-            for (const row of rows) {{
-                if (row.textContent.includes('{order_number}')) {{
-                    const td = row.querySelector('td');
-                    return td ? td.innerHTML.substring(0, 300) : 'no td';
-                }}
-            }}
-            return 'row not found';
-        }}""")
-        print(f"[Wing] First td HTML: {first_td_html}")
-
-        # Hover the row, then click at the left edge of first td (where checkbox is)
+        # Hover to reveal checkbox, then click the checkbox input directly
+        print(f"[Wing] Clicking checkbox...")
         order_row.hover()
         time.sleep(0.5)
-        first_td = order_row.locator('td').first
-        bbox = first_td.bounding_box()
-        print(f"[Wing] First td bbox: {bbox}")
-        if bbox:
-            # Click at x+12 (left edge = checkbox position), y center
-            page.mouse.click(bbox['x'] + 12, bbox['y'] + bbox['height'] / 2)
-            print(f"[Wing] Clicked at checkbox position x={bbox['x']+12}")
-        else:
-            first_td.click()
+
+        # The checkbox is input.checkbox-cell inside the row
+        checkbox = order_row.locator('input.checkbox-cell')
+        try:
+            checkbox.wait_for(timeout=3000)
+            checkbox.click(force=True)
+            print(f"[Wing] Checkbox clicked via input.checkbox-cell")
+        except Exception as e:
+            print(f"[Wing] Checkbox click failed: {e}, trying td click...")
+            first_td = order_row.locator('td').first
+            bbox = first_td.bounding_box()
+            if bbox:
+                page.mouse.click(bbox['x'] + 12, bbox['y'] + bbox['height'] / 2)
+            else:
+                first_td.click(force=True)
+
         time.sleep(1)
-        aff_count = page.locator('text=Affranchissement').count()
-        print(f"[Wing] Affranchissement visible: {aff_count}")
-        if aff_count == 0:
+
+        # Wait for Affranchissement button in bottom action bar
+        print(f"[Wing] Waiting for Affranchissement...")
+        try:
+            page.wait_for_selector('text=Affranchissement', timeout=6000)
+        except Exception:
             page.screenshot(path="/tmp/wing_label_debug.png")
             raise Exception("Affranchissement not visible after checkbox click")
-        page.click('text=Affranchissement')
+
+        page.locator('text=Affranchissement').click()
         time.sleep(0.5)
+
         # Click "Créer et générer l'étiquette retour"
-        print(f"[Wing] Waiting for dropdown option...")
+        print(f"[Wing] Waiting for dropdown option 'Créer et générer'...")
         try:
             page.wait_for_selector('text=Créer et générer', timeout=5000)
         except Exception:
             page.screenshot(path="/tmp/wing_label_debug.png")
             raise Exception("'Créer et générer' option not found")
+
         print(f"[Wing] Clicking 'Créer et générer'...")
         with page.expect_download(timeout=30000) as download_info:
             page.locator('text=Créer et générer').first.click()
+
         print(f"[Wing] Download triggered, reading PDF...")
         pdf_bytes = open(download_info.value.path(), 'rb').read()
         print(f"[Wing] PDF ready: {len(pdf_bytes)} bytes")
@@ -326,6 +320,7 @@ def generate_return_label(order_number):
         browser.close()
         p.stop()
         return pdf_bytes
+
     except Exception as e:
         print(f"[Wing] Erreur génération étiquette: {e}")
         try:
