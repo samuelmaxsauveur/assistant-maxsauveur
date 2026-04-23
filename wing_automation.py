@@ -282,28 +282,45 @@ def generate_return_label(order_number):
             page.screenshot(path="/tmp/wing_label_debug.png")
             raise Exception(f"Order {order_number} not found in Wing table")
 
-        # Click the order row to open the detail panel (bypasses checkbox issue)
-        print(f"[Wing] Clicking order row to open detail panel...")
-        # Click on a middle cell (not the first which might be checkbox area)
-        tds = order_row.locator('td').all()
-        click_td = tds[2] if len(tds) > 2 else order_row
-        click_td.click()
-        time.sleep(1.5)
-        print(f"[Wing] Waiting for detail panel...")
-        # Look for Affranchissement button inside the detail panel
-        try:
-            page.wait_for_selector('text=Affranchissement', timeout=8000)
-            print(f"[Wing] Affranchissement found in panel!")
-        except Exception:
-            # Try clicking the row again
-            print(f"[Wing] Affranchissement not in panel, trying row click again...")
-            order_row.click()
-            time.sleep(1.5)
-            try:
-                page.wait_for_selector('text=Affranchissement', timeout=5000)
-            except Exception:
-                page.screenshot(path="/tmp/wing_label_debug.png")
-                raise Exception("Affranchissement not found after opening detail panel")
+        # Inject CSS to force-show hidden elements (checkbox hidden until hover)
+        page.evaluate("""() => {
+            const style = document.createElement('style');
+            style.textContent = 'tbody tr td:first-child * { opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; display: block !important; }';
+            document.head.appendChild(style);
+        }""")
+        time.sleep(0.3)
+
+        # Log what's inside first td
+        first_td_html = page.evaluate(f"""() => {{
+            const rows = document.querySelectorAll('tbody tr');
+            for (const row of rows) {{
+                if (row.textContent.includes('{order_number}')) {{
+                    const td = row.querySelector('td');
+                    return td ? td.innerHTML.substring(0, 300) : 'no td';
+                }}
+            }}
+            return 'row not found';
+        }}""")
+        print(f"[Wing] First td HTML: {first_td_html}")
+
+        # Hover the row, then click at the left edge of first td (where checkbox is)
+        order_row.hover()
+        time.sleep(0.5)
+        first_td = order_row.locator('td').first
+        bbox = first_td.bounding_box()
+        print(f"[Wing] First td bbox: {bbox}")
+        if bbox:
+            # Click at x+12 (left edge = checkbox position), y center
+            page.mouse.click(bbox['x'] + 12, bbox['y'] + bbox['height'] / 2)
+            print(f"[Wing] Clicked at checkbox position x={bbox['x']+12}")
+        else:
+            first_td.click()
+        time.sleep(1)
+        aff_count = page.locator('text=Affranchissement').count()
+        print(f"[Wing] Affranchissement visible: {aff_count}")
+        if aff_count == 0:
+            page.screenshot(path="/tmp/wing_label_debug.png")
+            raise Exception("Affranchissement not visible after checkbox click")
         page.click('text=Affranchissement')
         time.sleep(0.5)
         # Click "Créer et générer l'étiquette retour"
