@@ -282,85 +282,37 @@ def generate_return_label(order_number):
             page.screenshot(path="/tmp/wing_label_debug.png")
             raise Exception(f"Order {order_number} not found in Wing table")
 
-        # Log the row's DOM to understand its structure
-        try:
-            row_info = page.evaluate(f"""() => {{
-                const rows = document.querySelectorAll('tbody tr');
-                for (const row of rows) {{
-                    if (row.textContent.includes('{order_number}')) {{
-                        return 'children: ' + Array.from(row.children).map(c =>
-                            c.tagName + '[' + (c.className||'').substring(0,50) + '] children:' + c.children.length
-                        ).join(' | ');
-                    }}
-                }}
-                return 'row not found in JS';
-            }}""")
-            print(f"[Wing] Row structure: {row_info}")
-        except Exception as e:
-            print(f"[Wing] Row inspect failed: {e}")
-
-        # Hover over the row to reveal the checkbox (Wing uses CSS :hover)
-        order_row.hover()
-        time.sleep(0.5)
-
-        # Try clicking the first td (leftmost cell = where checkbox is)
-        checked = False
-        try:
-            first_td = order_row.locator('td').first
-            first_td.click()
-            print(f"[Wing] Clicked first td of order row")
-            time.sleep(0.8)
-            aff_count = page.locator('text=Affranchissement').count()
-            print(f"[Wing] After td click — Affranchissement: {aff_count}")
-            if aff_count > 0:
-                checked = True
-        except Exception as e:
-            print(f"[Wing] First td click failed: {e}")
-
-        # Fallback: JS mouseover + click on first cell
-        if not checked:
-            try:
-                result = page.evaluate(f"""() => {{
-                    const rows = document.querySelectorAll('tbody tr');
-                    for (const row of rows) {{
-                        if (row.textContent.includes('{order_number}')) {{
-                            const td = row.querySelector('td');
-                            if (!td) return 'no td';
-                            td.dispatchEvent(new MouseEvent('mouseover', {{bubbles: true}}));
-                            td.dispatchEvent(new MouseEvent('mouseenter', {{bubbles: true}}));
-                            td.click();
-                            return 'js clicked td';
-                        }}
-                    }}
-                    return 'row not found';
-                }}""")
-                print(f"[Wing] JS mouseover+click: {result}")
-                time.sleep(0.8)
-                aff_count = page.locator('text=Affranchissement').count()
-                print(f"[Wing] After JS click — Affranchissement: {aff_count}")
-                if aff_count > 0:
-                    checked = True
-            except Exception as e:
-                print(f"[Wing] JS click failed: {e}")
-        # Open Affranchissement dropdown
-        print(f"[Wing] Waiting for Affranchissement button (appears after checkbox)...")
+        # Click the order row to open the detail panel (bypasses checkbox issue)
+        print(f"[Wing] Clicking order row to open detail panel...")
+        # Click on a middle cell (not the first which might be checkbox area)
+        tds = order_row.locator('td').all()
+        click_td = tds[2] if len(tds) > 2 else order_row
+        click_td.click()
+        time.sleep(1.5)
+        print(f"[Wing] Waiting for detail panel...")
+        # Look for Affranchissement button inside the detail panel
         try:
             page.wait_for_selector('text=Affranchissement', timeout=8000)
-            print(f"[Wing] Affranchissement found, clicking...")
+            print(f"[Wing] Affranchissement found in panel!")
         except Exception:
-            print(f"[Wing] Affranchissement not found after 8s — taking screenshot")
-            page.screenshot(path="/tmp/wing_label_debug.png")
-            raise Exception("Affranchissement button not visible — checkbox may not be checked")
+            # Try clicking the row again
+            print(f"[Wing] Affranchissement not in panel, trying row click again...")
+            order_row.click()
+            time.sleep(1.5)
+            try:
+                page.wait_for_selector('text=Affranchissement', timeout=5000)
+            except Exception:
+                page.screenshot(path="/tmp/wing_label_debug.png")
+                raise Exception("Affranchissement not found after opening detail panel")
         page.click('text=Affranchissement')
         time.sleep(0.5)
-        # Click specifically "Créer et générer l'étiquette retour"
+        # Click "Créer et générer l'étiquette retour"
         print(f"[Wing] Waiting for dropdown option...")
         try:
             page.wait_for_selector('text=Créer et générer', timeout=5000)
         except Exception:
-            print(f"[Wing] 'Créer et générer' not found — taking screenshot")
             page.screenshot(path="/tmp/wing_label_debug.png")
-            raise
+            raise Exception("'Créer et générer' option not found")
         print(f"[Wing] Clicking 'Créer et générer'...")
         with page.expect_download(timeout=30000) as download_info:
             page.locator('text=Créer et générer').first.click()
