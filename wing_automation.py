@@ -320,47 +320,40 @@ def generate_return_label(order_number):
             raise Exception("Aucune option d'étiquette trouvée dans Affranchissement")
         print(f"[Wing] Clicking '{option_to_click}'...")
         page.locator(f'text={option_to_click}').first.click()
-        time.sleep(3)  # Wait for Wing to generate/confirm the label
+        time.sleep(3)
 
-        # Step 4: click the label icon button that appears in the row after affranchissement
-        print(f"[Wing] Looking for label icon button in row...")
-        label_btn = order_row.locator('button[class*="text-neutral-300"]').first
-        try:
-            label_btn.wait_for(timeout=8000)
-            print(f"[Wing] Label button found, clicking...")
-        except Exception as e:
-            print(f"[Wing] Label button not found with text-neutral-300: {e}")
-            # Fallback: any small icon button in the row
-            label_btn = order_row.locator('button[class*="p-2"]').first
-
-        # Click and capture new page (PDF URL)
+        # Step 4: click "Télécharger les étiquettes" that appears after generation
+        print(f"[Wing] Waiting for 'Télécharger les étiquettes'...")
         pdf_bytes = None
         try:
-            with context.expect_page(timeout=15000) as new_page_info:
-                label_btn.click()
+            page.wait_for_selector('text=Télécharger les étiquettes', timeout=15000)
+            print(f"[Wing] Found 'Télécharger les étiquettes', clicking...")
+            with context.expect_page(timeout=20000) as new_page_info:
+                page.locator('text=Télécharger les étiquettes').first.click()
             new_page = new_page_info.value
             new_page.wait_for_load_state('load', timeout=20000)
             label_url = new_page.url
-            print(f"[Wing] Label page URL: {label_url}")
+            print(f"[Wing] Label URL: {label_url}")
             import requests as req
             resp = req.get(label_url, timeout=30)
             if resp.status_code == 200 and len(resp.content) > 500:
                 pdf_bytes = resp.content
                 print(f"[Wing] PDF via new page: {len(pdf_bytes)} bytes")
         except Exception as e:
-            print(f"[Wing] No new page: {e}")
-            # Fallback: check for PDF in intercepted responses
-            time.sleep(5)
-            import requests as req
-            for url in pdf_url_holder:
-                try:
-                    resp = req.get(url, timeout=30)
-                    if resp.status_code == 200 and len(resp.content) > 500:
-                        pdf_bytes = resp.content
-                        print(f"[Wing] PDF via intercepted: {len(pdf_bytes)} bytes")
-                        break
-                except Exception:
+            print(f"[Wing] New page failed: {e}, trying download event...")
+            try:
+                with context.expect_page(timeout=5000) as _:
                     pass
+            except Exception:
+                pass
+            # Try as download
+            try:
+                with page.expect_download(timeout=15000) as dl:
+                    page.locator('text=Télécharger les étiquettes').first.click()
+                pdf_bytes = open(dl.value.path(), 'rb').read()
+                print(f"[Wing] PDF via download: {len(pdf_bytes)} bytes")
+            except Exception as e2:
+                print(f"[Wing] Download also failed: {e2}")
 
         if not pdf_bytes:
             page.screenshot(path="/tmp/wing_label_debug.png")
