@@ -23,6 +23,27 @@ def _login(page):
     # Wait for redirect away from login
     page.wait_for_url(lambda url: '/login' not in url, timeout=15000)
 
+def _dismiss_notifications(page):
+    """Close any Wing notification banners that block clicks."""
+    import time
+    try:
+        page.keyboard.press('Escape')
+        time.sleep(0.3)
+    except Exception:
+        pass
+    # Click any close/dismiss button on notifications
+    for selector in ['button[aria-label="Close"]', 'button[aria-label="Fermer"]',
+                     '[class*="close"]', '[class*="dismiss"]', 'button svg']:
+        try:
+            els = page.locator(selector).all()
+            for el in els[:3]:
+                if el.is_visible():
+                    el.click()
+                    time.sleep(0.2)
+        except Exception:
+            pass
+
+
 def _search_order(page, search_term):
     page.goto(f"{WING_URL}/orders")
     page.wait_for_selector('input[type="search"]', timeout=10000)
@@ -211,6 +232,7 @@ def generate_return_label(order_number):
     try:
         print(f"[Wing] Login...")
         _login(page)
+        _dismiss_notifications(page)
         print(f"[Wing] Going to orders page...")
         page.goto(f"https://my.wing.eu/orders")
         page.wait_for_selector('input[type="search"]', timeout=10000)
@@ -222,6 +244,7 @@ def generate_return_label(order_number):
         time.sleep(3)
         print(f"[Wing] Page text after search: {page.inner_text('body')[:300]}")
         # Click Toutes tab explicitly
+        _dismiss_notifications(page)
         print(f"[Wing] Looking for Toutes tab...")
         toutes_count = page.locator('text=Toutes').count()
         print(f"[Wing] Toutes elements found: {toutes_count}")
