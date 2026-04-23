@@ -7,17 +7,18 @@ WING_API_URL = "https://api-developer.wing.eu/v3"
 def _get_token():
     email = os.getenv('WING_EMAIL')
     password = os.getenv('WING_PASSWORD')
+    # Use inline values (no variables) — some GraphQL APIs don't accept variables for auth
     payload = {
-        "query": """
-        mutation($email: String!, $password: String!) {
-          createAccessToken(email: $email, password: $password) {
+        "query": f"""
+        mutation {{
+          createAccessToken(email: "{email}", password: "{password}") {{
             accessToken
-          }
-        }
-        """,
-        "variables": {"email": email, "password": password}
+          }}
+        }}
+        """
     }
     resp = requests.post(WING_API_URL, json=payload, timeout=15)
+    print(f"[WingAPI] Auth response {resp.status_code}: {resp.text[:300]}")
     resp.raise_for_status()
     data = resp.json()
     if 'errors' in data:
