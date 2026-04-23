@@ -34,6 +34,8 @@ def _gql(query, variables=None, token=None):
     if variables:
         payload["variables"] = variables
     resp = requests.post(WING_API_URL, json=payload, headers=headers, timeout=30)
+    if not resp.ok:
+        print(f"[WingAPI] _gql error {resp.status_code}: {resp.text[:500]}")
     resp.raise_for_status()
     return resp.json()
 
