@@ -212,7 +212,7 @@ def ask():
         order_num = _extract_order_num()
         if order_num:
             try:
-                relay_text = wing_automation.get_relay_point_from_wing(order_num)
+                relay_text = wing_api.get_relay_point_from_wing(order_num)
                 if relay_text:
                     wing_extra += f"\n\n--- Point relais récupéré depuis Wing (commande #{order_num}) ---\n{relay_text[:800]}"
             except Exception:
@@ -225,14 +225,14 @@ def ask():
         if order_num:
             try:
                 # Try repair order first (order_REPARATION)
-                repair_status = wing_automation.check_repair_status(order_num)
+                repair_status = wing_api.check_repair_status(order_num)
                 if repair_status:
                     wing_extra += f"\n\n--- Statut récupéré depuis Wing pour la réparation #{order_num} ---\nStatut : {repair_status}"
             except Exception:
                 pass
             # Also try getting the relay/tracking from the repair order in Wing
             try:
-                repair_relay = wing_automation.get_relay_point_from_wing(f"{order_num}_bis")
+                repair_relay = wing_api.get_relay_point_from_wing(f"{order_num}_bis")
                 if repair_relay:
                     wing_extra += f"\n\n--- Détails Wing commande réparation #{order_num}_bis ---\n{repair_relay[:800]}"
             except Exception:
@@ -332,7 +332,7 @@ def prepare_return_label():
     label_attached = False
     if order_number:
         try:
-            label_bytes = wing_automation.generate_return_label(order_number)
+            label_bytes = wing_api.generate_return_label(order_number)
             if label_bytes:
                 label_id = str(uuid.uuid4())
                 filename = f"etiquette_retour_{order_number}.pdf"
@@ -517,13 +517,13 @@ def wing_lookup():
     results = {}
     # Try repair order (_bis and variants)
     try:
-        repair_info = wing_automation.check_repair_status(order_num)
+        repair_info = wing_api.check_repair_status(order_num)
         results['repair'] = repair_info
     except Exception as e:
         results['repair_error'] = str(e)
     # Try relay point on base order
     try:
-        relay_info = wing_automation.get_relay_point_from_wing(order_num)
+        relay_info = wing_api.get_relay_point_from_wing(order_num)
         results['relay'] = relay_info
     except Exception as e:
         results['relay_error'] = str(e)
