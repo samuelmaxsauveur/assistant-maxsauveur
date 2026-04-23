@@ -241,18 +241,15 @@ def generate_return_label(order_number):
         page.keyboard.press('Enter')
         time.sleep(2)
 
-        # Click the "Toutes" tab using data-testid (from HTML source)
-        print(f"[Wing] Clicking Toutes tab...")
+        # Click the "Toutes" tab using JS (bypass overlay that intercepts pointer events)
+        print(f"[Wing] Clicking Toutes tab via JS...")
         try:
-            toutes_tab = page.locator('[data-testid="order-tab-all"]')
-            toutes_tab.wait_for(timeout=5000)
-            # Only click if not already active/disabled (disabled = already selected)
-            is_disabled = toutes_tab.get_attribute('disabled')
-            if is_disabled is None:
-                toutes_tab.click()
-                print(f"[Wing] Toutes tab clicked")
-            else:
-                print(f"[Wing] Toutes tab already active (disabled=selected)")
+            result = page.evaluate("""() => {
+                const btn = document.querySelector('[data-testid="order-tab-all"]');
+                if (btn) { btn.click(); return 'clicked'; }
+                return 'not found';
+            }""")
+            print(f"[Wing] Toutes tab JS click: {result}")
             time.sleep(2)
         except Exception as e:
             print(f"[Wing] Toutes tab click failed: {e}")
