@@ -43,20 +43,21 @@ def _gql(query, variables=None, token=None):
 def _find_fulfillment_order_id(token, order_ref):
     """Find Wing fulfillmentOrder ID by Shopify reference number."""
     order_ref = str(order_ref).lstrip('#')
-    query = """
-    query($ref: String!) {
-      order(input: { ref: $ref }) {
+    # Use inline value (no variables) — consistent with auth mutation
+    query = f"""
+    query {{
+      order(input: {{ ref: "{order_ref}" }}) {{
         id
         ref
         status
-        fulfillmentOrders {
+        fulfillmentOrders {{
           id
           status
-        }
-      }
-    }
+        }}
+      }}
+    }}
     """
-    result = _gql(query, {"ref": order_ref}, token)
+    result = _gql(query, token=token)
     if 'errors' in result:
         print(f"[WingAPI] order query errors: {result['errors']}")
         return None, None
