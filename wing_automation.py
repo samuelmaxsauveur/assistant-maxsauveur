@@ -265,65 +265,14 @@ def generate_return_label(order_number):
             page.screenshot(path="/tmp/wing_label_debug.png")
             raise Exception(f"Order {order_number} not found in Wing table")
 
-        # Hover to reveal checkbox, then click the checkbox input directly
-        print(f"[Wing] Clicking checkbox...")
-        order_row.hover()
-        time.sleep(0.5)
-
-        # The checkbox is input.checkbox-cell inside the row
-        checkbox = order_row.locator('input.checkbox-cell')
-        try:
-            checkbox.wait_for(timeout=3000)
-            checkbox.click(force=True)
-            print(f"[Wing] Checkbox clicked via input.checkbox-cell")
-        except Exception as e:
-            print(f"[Wing] Checkbox click failed: {e}, trying td click...")
-            first_td = order_row.locator('td').first
-            bbox = first_td.bounding_box()
-            if bbox:
-                page.mouse.click(bbox['x'] + 12, bbox['y'] + bbox['height'] / 2)
-            else:
-                first_td.click(force=True)
-
-        time.sleep(1)
-
-        # Wait for Affranchissement button in bottom action bar
-        print(f"[Wing] Waiting for Affranchissement...")
-        try:
-            page.wait_for_selector('text=Affranchissement', timeout=6000)
-        except Exception:
-            page.screenshot(path="/tmp/wing_label_debug.png")
-            raise Exception("Affranchissement not visible after checkbox click")
-
-        page.locator('text=Affranchissement').click()
-        time.sleep(1)
-
-        # Log all dropdown options to understand what's available
-        dropdown_text = page.inner_text('body')
-        print(f"[Wing] Dropdown options visible: {dropdown_text[dropdown_text.find('Affranchissement'):dropdown_text.find('Affranchissement')+300]}")
-
-        # Try "Créer et générer" first, fall back to "Réimprimer" or "Télécharger"
-        option_to_click = None
-        for option in ['Créer et générer', 'Réimprimer', 'Télécharger', 'Download', 'imprimer']:
-            count = page.locator(f'text={option}').count()
-            print(f"[Wing] Option '{option}' found: {count}")
-            if count > 0:
-                option_to_click = option
-                break
-
-        if not option_to_click:
-            page.screenshot(path="/tmp/wing_label_debug.png")
-            raise Exception("Aucune option d'étiquette trouvée dans Affranchissement")
-
-        # Intercept network responses to capture PDF regardless of how Wing delivers it
-        pdf_bytes_holder = []
+        # Intercept all network responses to capture PDF URL
         pdf_url_holder = []
 
         def on_response(response):
             try:
                 url = response.url
                 ct = response.headers.get('content-type', '')
-                if response.status == 200 and ('pdf' in ct.lower() or url.lower().endswith('.pdf') or 'label' in url.lower()):
+                if response.status == 200 and ('pdf' in ct.lower() or url.lower().endswith('.pdf') or 'label' in url.lower() or 'etiquette' in url.lower()):
                     print(f"[Wing] PDF response intercepted: {url} ({ct})")
                     pdf_url_holder.append(url)
             except Exception:
@@ -331,46 +280,92 @@ def generate_return_label(order_number):
 
         page.on('response', on_response)
 
+        # Step 1: click checkbox
+        print(f"[Wing] Clicking checkbox...")
+        order_row.hover()
+        time.sleep(0.5)
+        checkbox = order_row.locator('input.checkbox-cell')
+        try:
+            checkbox.wait_for(timeout=3000)
+            checkbox.click(force=True)
+            print(f"[Wing] Checkbox clicked")
+        except Exception as e:
+            print(f"[Wing] Checkbox click failed: {e}, trying bbox...")
+            first_td = order_row.locator('td').first
+            bbox = first_td.bounding_box()
+            if bbox:
+                page.mouse.click(bbox['x'] + 12, bbox['y'] + bbox['height'] / 2)
+            else:
+                first_td.click(force=True)
+        time.sleep(1)
+
+        # Step 2: click Affranchissement in bottom action bar
+        print(f"[Wing] Waiting for Affranchissement...")
+        try:
+            page.wait_for_selector('text=Affranchissement', timeout=6000)
+        except Exception:
+            page.screenshot(path="/tmp/wing_label_debug.png")
+            raise Exception("Affranchissement not visible after checkbox click")
+        page.locator('text=Affranchissement').click()
+        time.sleep(1)
+
+        # Step 3: click "Créer et générer" (or Réimprimer if label already exists)
+        option_to_click = None
+        for option in ['Créer et générer', 'Réimprimer', 'Télécharger', 'imprimer']:
+            if page.locator(f'text={option}').count() > 0:
+                option_to_click = option
+                break
+        if not option_to_click:
+            page.screenshot(path="/tmp/wing_label_debug.png")
+            raise Exception("Aucune option d'étiquette trouvée dans Affranchissement")
         print(f"[Wing] Clicking '{option_to_click}'...")
         page.locator(f'text={option_to_click}').first.click()
-        print(f"[Wing] Waiting 15s for Wing to generate label...")
-        time.sleep(15)
+        time.sleep(3)  # Wait for Wing to generate/confirm the label
 
+        # Step 4: click the label icon button that appears in the row after affranchissement
+        print(f"[Wing] Looking for label icon button in row...")
+        label_btn = order_row.locator('button[class*="text-neutral-300"]').first
+        try:
+            label_btn.wait_for(timeout=8000)
+            print(f"[Wing] Label button found, clicking...")
+        except Exception as e:
+            print(f"[Wing] Label button not found with text-neutral-300: {e}")
+            # Fallback: any small icon button in the row
+            label_btn = order_row.locator('button[class*="p-2"]').first
+
+        # Click and capture new page (PDF URL)
         pdf_bytes = None
-
-        # Try to fetch PDF from intercepted URL
-        if pdf_url_holder:
+        try:
+            with context.expect_page(timeout=15000) as new_page_info:
+                label_btn.click()
+            new_page = new_page_info.value
+            new_page.wait_for_load_state('load', timeout=20000)
+            label_url = new_page.url
+            print(f"[Wing] Label page URL: {label_url}")
+            import requests as req
+            resp = req.get(label_url, timeout=30)
+            if resp.status_code == 200 and len(resp.content) > 500:
+                pdf_bytes = resp.content
+                print(f"[Wing] PDF via new page: {len(pdf_bytes)} bytes")
+        except Exception as e:
+            print(f"[Wing] No new page: {e}")
+            # Fallback: check for PDF in intercepted responses
+            time.sleep(5)
             import requests as req
             for url in pdf_url_holder:
-                print(f"[Wing] Fetching intercepted PDF: {url}")
                 try:
                     resp = req.get(url, timeout=30)
-                    if resp.status_code == 200 and len(resp.content) > 1000:
+                    if resp.status_code == 200 and len(resp.content) > 500:
                         pdf_bytes = resp.content
-                        print(f"[Wing] PDF via intercepted URL: {len(pdf_bytes)} bytes")
+                        print(f"[Wing] PDF via intercepted: {len(pdf_bytes)} bytes")
                         break
-                except Exception as e:
-                    print(f"[Wing] Fetch failed: {e}")
-
-        # Fallback: look for PDF link that appeared on the page
-        if not pdf_bytes:
-            print(f"[Wing] Looking for PDF link on page...")
-            links = page.locator('a[href*=".pdf"], a[href*="label"], a[href*="etiquette"]').all()
-            for link in links:
-                href = link.get_attribute('href') or ''
-                if href.startswith('http'):
-                    print(f"[Wing] Found PDF link: {href}")
-                    import requests as req
-                    resp = req.get(href, timeout=30)
-                    if resp.status_code == 200 and len(resp.content) > 1000:
-                        pdf_bytes = resp.content
-                        break
+                except Exception:
+                    pass
 
         if not pdf_bytes:
             page.screenshot(path="/tmp/wing_label_debug.png")
-            body_text = page.inner_text('body')[:500]
-            print(f"[Wing] Page after click: {body_text}")
-            raise Exception("PDF non obtenu après clic 'Créer et générer'")
+            print(f"[Wing] Page state: {page.inner_text('body')[:500]}")
+            raise Exception("PDF non obtenu")
 
         print(f"[Wing] PDF ready: {len(pdf_bytes)} bytes")
         context.close()
