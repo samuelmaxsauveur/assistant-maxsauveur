@@ -344,9 +344,12 @@ Si tu as assez d'info pour répondre, mets can_respond_now à true et questions_
     return {"problem_summary": email_subject, "missing_info": [], "questions_for_samuel": [], "can_respond_now": True}
 
 
-def generate_sav_approval_email(customer_name, order_number, email_body):
+def generate_sav_approval_email(customer_name, order_number, email_body, label_url=None):
     """Generate the approval/repair email using the fixed SAV template."""
-    label_line = "Collez l'étiquette de retour ci-jointe sur votre colis — le port est entièrement pris en charge."
+    if label_url:
+        label_line = f"Voici votre étiquette de retour prépayée (port entièrement pris en charge) :\n{label_url}\n\nImprimez-la et collez-la sur votre colis avant de le déposer en point relais."
+    else:
+        label_line = "Collez l'étiquette de retour ci-jointe sur votre colis — le port est entièrement pris en charge."
     return SAV_APPROVAL_TEMPLATE.format(
         customer_name=customer_name,
         order_number=order_number or '(votre commande)',

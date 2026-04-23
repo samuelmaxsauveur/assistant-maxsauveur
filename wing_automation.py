@@ -322,49 +322,53 @@ def generate_return_label(order_number):
         page.locator(f'text={option_to_click}').first.click()
         time.sleep(3)
 
-        # Step 4: click "Télécharger les étiquettes" that appears after generation
-        print(f"[Wing] Waiting for 'Télécharger les étiquettes'...")
-        pdf_bytes = None
-        try:
-            page.wait_for_selector('text=Télécharger les étiquettes', timeout=15000)
-            print(f"[Wing] Found 'Télécharger les étiquettes', clicking...")
-            with context.expect_page(timeout=20000) as new_page_info:
-                page.locator('text=Télécharger les étiquettes').first.click()
-            new_page = new_page_info.value
-            new_page.wait_for_load_state('load', timeout=20000)
-            label_url = new_page.url
-            print(f"[Wing] Label URL: {label_url}")
-            import requests as req
-            resp = req.get(label_url, timeout=30)
-            if resp.status_code == 200 and len(resp.content) > 500:
-                pdf_bytes = resp.content
-                print(f"[Wing] PDF via new page: {len(pdf_bytes)} bytes")
-        except Exception as e:
-            print(f"[Wing] New page failed: {e}, trying download event...")
+        # Step 4: click the icon button (text-neutral-300) to reveal the S3 label URL
+        print(f"[Wing] Looking for label icon button...")
+        label_url = None
+        s3_url_holder = []
+
+        def on_response(response):
             try:
-                with context.expect_page(timeout=5000) as _:
-                    pass
+                url = response.url
+                if 'wing-labelling-system.s3' in url or ('s3' in url and 'LABEL' in url):
+                    print(f"[Wing] S3 label URL intercepted: {url}")
+                    s3_url_holder.append(url)
             except Exception:
                 pass
-            # Try as download
-            try:
-                with page.expect_download(timeout=15000) as dl:
-                    page.locator('text=Télécharger les étiquettes').first.click()
-                pdf_bytes = open(dl.value.path(), 'rb').read()
-                print(f"[Wing] PDF via download: {len(pdf_bytes)} bytes")
-            except Exception as e2:
-                print(f"[Wing] Download also failed: {e2}")
 
-        if not pdf_bytes:
+        page.on('response', on_response)
+
+        try:
+            icon_btn = order_row.locator('button[class*="text-neutral-300"]').first
+            icon_btn.wait_for(timeout=8000)
+            icon_btn.click()
+            print(f"[Wing] Icon button clicked")
+            time.sleep(3)
+        except Exception as e:
+            print(f"[Wing] Icon button not found: {e}")
+
+        # Look for the S3 URL in the page content
+        if not s3_url_holder:
+            page_html = page.content()
+            import re
+            matches = re.findall(r'https://wing-labelling-system\.s3[^\s"\'<>]+', page_html)
+            if matches:
+                s3_url_holder.extend(matches)
+                print(f"[Wing] S3 URLs found in page: {matches}")
+
+        if s3_url_holder:
+            label_url = s3_url_holder[0]
+            print(f"[Wing] Label URL: {label_url}")
+
+        if not label_url:
             page.screenshot(path="/tmp/wing_label_debug.png")
             print(f"[Wing] Page state: {page.inner_text('body')[:500]}")
-            raise Exception("PDF non obtenu")
+            raise Exception("URL étiquette non trouvée")
 
-        print(f"[Wing] PDF ready: {len(pdf_bytes)} bytes")
         context.close()
         browser.close()
         p.stop()
-        return pdf_bytes
+        return label_url
 
     except Exception as e:
         print(f"[Wing] Erreur génération étiquette: {e}")

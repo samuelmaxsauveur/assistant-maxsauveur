@@ -327,27 +327,19 @@ def prepare_return_label():
     order_number = data.get('order_number', '').replace('#', '')
     email_body = data.get('email_body', '')
 
-    # Generate return label from Wing
-    label_id = None
-    label_attached = False
+    # Generate return label from Wing — returns URL string
+    label_url = None
     if order_number:
         try:
-            # Try API first, fall back to Playwright if API fails
-            label_bytes = wing_api.generate_return_label(order_number)
-            if not label_bytes:
-                print(f"[Label] API returned None, trying Playwright...")
-                label_bytes = wing_automation.generate_return_label(order_number)
-            if label_bytes:
-                label_id = str(uuid.uuid4())
-                filename = f"etiquette_retour_{order_number}.pdf"
-                _label_store[label_id] = {'bytes': label_bytes, 'filename': filename}
-                label_attached = True
+            print(f"[Label] API returned None, trying Playwright...")
+            label_url = wing_automation.generate_return_label(order_number)
+            print(f"[Label] Got URL: {label_url}")
         except Exception as e:
             print(f"Wing label error: {e}")
 
-    # Generate SAV draft
-    draft = claude_ai.generate_sav_approval_email(customer_name, order_number, email_body)
-    return jsonify({'success': True, 'label_attached': label_attached, 'label_id': label_id, 'draft': draft})
+    # Generate SAV draft (include label URL in email if available)
+    draft = claude_ai.generate_sav_approval_email(customer_name, order_number, email_body, label_url=label_url)
+    return jsonify({'success': True, 'label_attached': bool(label_url), 'label_url': label_url, 'draft': draft})
 
 
 @app.route('/send-return-label', methods=['POST'])
@@ -364,19 +356,12 @@ def send_return_label():
     if not customer_email or not body:
         return jsonify({'success': False, 'error': 'Email ou message manquant'})
 
-    label_bytes = None
-    filename = f"etiquette_retour_{order_number}.pdf"
-    if label_id and label_id in _label_store:
-        label_bytes = _label_store.pop(label_id)['bytes']
-
     service = get_service()
     gmail_helper.send_email(
         service, customer_email, f"Re: {subject}", body,
         thread_id=thread_id,
-        attachment_bytes=label_bytes,
-        attachment_filename=filename
     )
-    return jsonify({'success': True, 'label_attached': label_bytes is not None})
+    return jsonify({'success': True})
 
 
 @app.route('/save-process', methods=['POST'])
