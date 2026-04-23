@@ -60,7 +60,7 @@ def _search_order(page, search_term):
             const spans = Array.from(document.querySelectorAll('span'));
             const toutesTab = spans.find(s =>
                 s.className && s.className.includes('justify-center') &&
-                s.textContent.trim().startsWith('Toutes')
+                /^Toutes \(\d+\)/.test(s.textContent.trim())
             );
             if (toutesTab) {
                 const btn = toutesTab.closest('button') || toutesTab.closest('a') || toutesTab.parentElement;

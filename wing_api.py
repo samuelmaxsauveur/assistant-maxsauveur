@@ -43,31 +43,34 @@ def _gql(query, variables=None, token=None):
 def _find_fulfillment_order_id(token, order_ref):
     """Find Wing fulfillmentOrder ID by Shopify reference number."""
     order_ref = str(order_ref).lstrip('#')
-    # Use inline value (no variables) — consistent with auth mutation
+    # Wing API order() only accepts internal ID — must use orders() with filter.search
     query = f"""
     query {{
-      order(input: {{ ref: "{order_ref}" }}) {{
+      orders(input: {{ filter: {{ search: "{order_ref}" }}, limit: 1 }}) {{
         id
         ref
         status
         fulfillmentOrders {{
           id
           status
+          service
         }}
       }}
     }}
     """
     result = _gql(query, token=token)
     if 'errors' in result:
-        print(f"[WingAPI] order query errors: {result['errors']}")
+        print(f"[WingAPI] orders query errors: {result['errors']}")
         return None, None
-    order = (result.get('data') or {}).get('order')
-    if not order:
+    orders = (result.get('data') or {}).get('orders') or []
+    if not orders:
         print(f"[WingAPI] No order found for ref={order_ref}")
         return None, None
+    order = orders[0]
     fos = order.get('fulfillmentOrders') or []
     fo_id = fos[0]['id'] if fos else None
-    print(f"[WingAPI] Found order {order['id']} fo={fo_id}")
+    service = fos[0].get('service') if fos else None
+    print(f"[WingAPI] Found order {order['id']} fo={fo_id} service={service}")
     return order['id'], fo_id
 
 

@@ -332,7 +332,11 @@ def prepare_return_label():
     label_attached = False
     if order_number:
         try:
+            # Try API first, fall back to Playwright if API fails
             label_bytes = wing_api.generate_return_label(order_number)
+            if not label_bytes:
+                print(f"[Label] API returned None, trying Playwright...")
+                label_bytes = wing_automation.generate_return_label(order_number)
             if label_bytes:
                 label_id = str(uuid.uuid4())
                 filename = f"etiquette_retour_{order_number}.pdf"
