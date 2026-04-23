@@ -307,11 +307,40 @@ def generate_return_label(order_number):
             raise Exception("'Créer et générer' option not found")
 
         print(f"[Wing] Clicking 'Créer et générer'...")
-        with page.expect_download(timeout=30000) as download_info:
-            page.locator('text=Créer et générer').first.click()
+        # Wing may open PDF in new tab OR trigger a download — handle both
+        pdf_bytes = None
+        try:
+            with page.expect_popup(timeout=15000) as popup_info:
+                page.locator('text=Créer et générer').first.click()
+            popup = popup_info.value
+            popup.wait_for_load_state('load', timeout=20000)
+            pdf_url = popup.url
+            print(f"[Wing] Popup URL: {pdf_url}")
+            if pdf_url and pdf_url.startswith('http') and 'about:blank' not in pdf_url:
+                import requests as req
+                resp = req.get(pdf_url, timeout=30)
+                if resp.status_code == 200:
+                    pdf_bytes = resp.content
+                    print(f"[Wing] PDF via popup URL: {len(pdf_bytes)} bytes")
+            if not pdf_bytes:
+                # Try reading page content directly (PDF rendered in tab)
+                content = popup.content()
+                if '%PDF' in content:
+                    pdf_bytes = content.encode()
+        except Exception as e_popup:
+            print(f"[Wing] No popup, trying download: {e_popup}")
+            try:
+                with page.expect_download(timeout=30000) as download_info:
+                    page.locator('text=Créer et générer').first.click()
+                pdf_bytes = open(download_info.value.path(), 'rb').read()
+                print(f"[Wing] PDF via download: {len(pdf_bytes)} bytes")
+            except Exception as e_dl:
+                print(f"[Wing] Download also failed: {e_dl}")
 
-        print(f"[Wing] Download triggered, reading PDF...")
-        pdf_bytes = open(download_info.value.path(), 'rb').read()
+        if not pdf_bytes:
+            page.screenshot(path="/tmp/wing_label_debug.png")
+            raise Exception("PDF non obtenu après clic 'Créer et générer'")
+
         print(f"[Wing] PDF ready: {len(pdf_bytes)} bytes")
         context.close()
         browser.close()
