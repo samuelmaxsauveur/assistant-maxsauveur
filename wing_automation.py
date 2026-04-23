@@ -247,20 +247,10 @@ def generate_return_label(order_number):
         try:
             # Target the tab specifically: span with class "flex justify-center flex-1" containing Toutes
             result = page.evaluate("""() => {
-                // Find the tab span (class="flex justify-center flex-1") containing "Toutes"
-                const spans = Array.from(document.querySelectorAll('span'));
-                const toutesTab = spans.find(s =>
-                    s.className && s.className.includes('justify-center') &&
-                    s.textContent.trim().startsWith('Toutes')
-                );
-                if (toutesTab) {
-                    // Click the parent button/link element
-                    const btn = toutesTab.closest('button') || toutesTab.closest('a') || toutesTab.parentElement;
-                    if (btn) { btn.click(); return 'clicked parent: ' + btn.tagName + ' ' + btn.className.substring(0, 50); }
-                    toutesTab.click();
-                    return 'clicked span directly';
-                }
-                return 'Toutes tab not found';
+                const buttons = Array.from(document.querySelectorAll('button'));
+                const toutesBtn = buttons.find(btn => /^Toutes \\(\\d+\\)$/.test(btn.textContent.trim()));
+                if (toutesBtn) { toutesBtn.click(); return 'clicked: ' + toutesBtn.textContent.trim(); }
+                return 'Toutes button not found';
             }""")
             print(f"[Wing] JS Toutes click: {result}")
             time.sleep(2)
