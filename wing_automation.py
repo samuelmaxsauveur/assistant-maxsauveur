@@ -58,14 +58,10 @@ def _search_order(page, search_term):
     try:
         page.evaluate("""() => {
             const spans = Array.from(document.querySelectorAll('span'));
-            const toutesTab = spans.find(s =>
-                s.className && s.className.includes('justify-center') &&
-                /^Toutes \(\d+\)/.test(s.textContent.trim())
-            );
-            if (toutesTab) {
-                const btn = toutesTab.closest('button') || toutesTab.closest('a') || toutesTab.parentElement;
-                if (btn) btn.click(); else toutesTab.click();
-            }
+            // Find button whose exact text matches "Toutes (N)" — the tab button
+            const buttons = Array.from(document.querySelectorAll('button'));
+            const toutesBtn = buttons.find(btn => /^Toutes \(\d+\)$/.test(btn.textContent.trim()));
+            if (toutesBtn) toutesBtn.click();
         }""")
         time.sleep(1)
     except Exception:
