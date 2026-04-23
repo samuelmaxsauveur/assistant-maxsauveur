@@ -296,15 +296,24 @@ def generate_return_label(order_number):
             raise Exception("Affranchissement not visible after checkbox click")
 
         page.locator('text=Affranchissement').click()
-        time.sleep(0.5)
+        time.sleep(1)
 
-        # Click "Créer et générer l'étiquette retour"
-        print(f"[Wing] Waiting for dropdown option 'Créer et générer'...")
-        try:
-            page.wait_for_selector('text=Créer et générer', timeout=5000)
-        except Exception:
+        # Log all dropdown options to understand what's available
+        dropdown_text = page.inner_text('body')
+        print(f"[Wing] Dropdown options visible: {dropdown_text[dropdown_text.find('Affranchissement'):dropdown_text.find('Affranchissement')+300]}")
+
+        # Try "Créer et générer" first, fall back to "Réimprimer" or "Télécharger"
+        option_to_click = None
+        for option in ['Créer et générer', 'Réimprimer', 'Télécharger', 'Download', 'imprimer']:
+            count = page.locator(f'text={option}').count()
+            print(f"[Wing] Option '{option}' found: {count}")
+            if count > 0:
+                option_to_click = option
+                break
+
+        if not option_to_click:
             page.screenshot(path="/tmp/wing_label_debug.png")
-            raise Exception("'Créer et générer' option not found")
+            raise Exception("Aucune option d'étiquette trouvée dans Affranchissement")
 
         # Intercept network responses to capture PDF regardless of how Wing delivers it
         pdf_bytes_holder = []
@@ -322,8 +331,8 @@ def generate_return_label(order_number):
 
         page.on('response', on_response)
 
-        print(f"[Wing] Clicking 'Créer et générer'...")
-        page.locator('text=Créer et générer').first.click()
+        print(f"[Wing] Clicking '{option_to_click}'...")
+        page.locator(f'text={option_to_click}').first.click()
         print(f"[Wing] Waiting 15s for Wing to generate label...")
         time.sleep(15)
 
