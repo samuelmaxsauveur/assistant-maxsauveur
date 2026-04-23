@@ -250,7 +250,10 @@ def generate_return_label(order_number):
                 return 'not found';
             }""")
             print(f"[Wing] Toutes tab JS click: {result}")
-            time.sleep(2)
+            time.sleep(3)
+            # Wait for table to populate
+            page.wait_for_selector('tbody tr', timeout=8000)
+            time.sleep(1)
         except Exception as e:
             print(f"[Wing] Toutes tab click failed: {e}")
 
@@ -258,7 +261,7 @@ def generate_return_label(order_number):
         print(f"[Wing] Waiting for order row '{order_number}'...")
         order_row = page.locator(f'tr:has-text("{order_number}")').first
         try:
-            order_row.wait_for(timeout=8000)
+            order_row.wait_for(timeout=12000)
             print(f"[Wing] Order row found!")
         except Exception as e:
             print(f"[Wing] Order row not found: {e}")
