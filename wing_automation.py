@@ -322,8 +322,7 @@ def generate_return_label(order_number):
         page.locator(f'text={option_to_click}').first.click()
         time.sleep(3)
 
-        # Step 4: click the icon button (text-neutral-300) to reveal the S3 label URL
-        print(f"[Wing] Looking for label icon button...")
+        # Step 4: find the S3 label URL
         label_url = None
         s3_url_holder = []
 
@@ -331,30 +330,51 @@ def generate_return_label(order_number):
             try:
                 url = response.url
                 if 'wing-labelling-system.s3' in url or ('s3' in url and 'LABEL' in url):
-                    print(f"[Wing] S3 label URL intercepted: {url}")
+                    print(f"[Wing] S3 URL intercepted: {url}")
                     s3_url_holder.append(url)
             except Exception:
                 pass
 
         page.on('response', on_response)
+        time.sleep(2)
 
+        # Log all buttons in the row for debugging
+        btn_info = page.evaluate(f"""() => {{
+            const rows = document.querySelectorAll('tbody tr');
+            for (const row of rows) {{
+                if (row.textContent.includes('{order_number}')) {{
+                    const btns = row.querySelectorAll('button');
+                    return Array.from(btns).map(b => ({{cls: b.className, txt: b.textContent.trim().substring(0,30)}}) );
+                }}
+            }}
+            return [];
+        }}""")
+        print(f"[Wing] Buttons in order row: {btn_info}")
+
+        # Try clicking any icon button in the row (small buttons with no text)
         try:
-            icon_btn = order_row.locator('button[class*="text-neutral-300"]').first
-            icon_btn.wait_for(timeout=8000)
-            icon_btn.click()
-            print(f"[Wing] Icon button clicked")
-            time.sleep(3)
+            all_btns = order_row.locator('button').all()
+            print(f"[Wing] Total buttons in row: {len(all_btns)}")
+            for btn in all_btns:
+                txt = (btn.text_content() or '').strip()
+                cls = btn.get_attribute('class') or ''
+                print(f"[Wing] Button: txt='{txt[:20]}' cls='{cls[:60]}'")
+                if not txt and 'p-2' in cls:  # icon button (no text, has padding class)
+                    print(f"[Wing] Clicking icon button...")
+                    btn.click(force=True)
+                    time.sleep(3)
+                    break
         except Exception as e:
-            print(f"[Wing] Icon button not found: {e}")
+            print(f"[Wing] Button iteration failed: {e}")
 
-        # Look for the S3 URL in the page content
+        # Search for S3 URL in page HTML
         if not s3_url_holder:
-            page_html = page.content()
             import re
+            page_html = page.content()
             matches = re.findall(r'https://wing-labelling-system\.s3[^\s"\'<>]+', page_html)
             if matches:
                 s3_url_holder.extend(matches)
-                print(f"[Wing] S3 URLs found in page: {matches}")
+                print(f"[Wing] S3 URLs in HTML: {matches}")
 
         if s3_url_holder:
             label_url = s3_url_holder[0]
@@ -362,7 +382,7 @@ def generate_return_label(order_number):
 
         if not label_url:
             page.screenshot(path="/tmp/wing_label_debug.png")
-            print(f"[Wing] Page state: {page.inner_text('body')[:500]}")
+            print(f"[Wing] Page state: {page.inner_text('body')[:600]}")
             raise Exception("URL étiquette non trouvée")
 
         context.close()
