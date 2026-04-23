@@ -279,6 +279,15 @@ def send():
         gmail_helper.mark_as_read(service, email_id)
     return redirect(url_for('index'))
 
+@app.route('/send-ajax', methods=['POST'])
+def send_ajax():
+    data = request.json or {}
+    service = get_service()
+    gmail_helper.send_email(service, data['to'], f"Re: {data['subject']}", data['body'], data.get('thread_id'))
+    if data.get('email_id'):
+        gmail_helper.mark_as_read(service, data['email_id'])
+    return jsonify({'success': True})
+
 @app.route('/change-relay', methods=['POST'])
 def change_relay():
     data = request.json

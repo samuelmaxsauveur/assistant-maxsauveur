@@ -296,7 +296,7 @@ Nous prenons en charge la réparation de votre article. Voici la marche à suivr
 
 Adresse de retour (déjà renseignée sur l'étiquette) :
 SSL – Solutions & Services Logistiques
-14 avenue Lamartine — 13170 Les Pennes-Mirabeau
+14 avenue Lamartine, 13170 Les Pennes-Mirabeau
 
 Délai estimé en atelier : 6 à 8 semaines.
 
@@ -358,10 +358,10 @@ def generate_sav_approval_email(customer_name, order_number, email_body, label_u
 
 
 SAV_STATUS_MESSAGES = {
-    'received_warehouse': "Bonne nouvelle : votre colis a bien été réceptionné dans notre entrepôt. Nous allons le transmettre à notre atelier de réparation dans les prochains jours.",
+    'received_warehouse': "Votre colis a bien été réceptionné dans notre entrepôt. Nous allons le transmettre à notre atelier de réparation dans les prochains jours.",
     'sent_repair': "Votre paire a été envoyée à notre atelier de réparation. Le délai estimé est de 6 à 8 semaines à compter de la réception à l'atelier.",
     'in_repair': "Votre paire est actuellement en cours de réparation dans notre atelier. Nous vous tiendrons informé dès qu'elle sera prête.",
-    'repaired_available': "Bonne nouvelle : votre paire a été réparée et est prête à être renvoyée. Nous allons procéder à son expédition dans les prochaines 48h.",
+    'repaired_available': "Votre paire a été réparée et est prête à être renvoyée. Nous allons procéder à son expédition dans les prochaines 48h.",
     'returned_to_client': "Votre paire réparée est en route ! Elle a été expédiée aujourd'hui. Vous recevrez bientôt vos informations de suivi.",
 }
 
