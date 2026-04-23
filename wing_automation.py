@@ -322,7 +322,7 @@ def generate_return_label(order_number):
         page.locator(f'text={option_to_click}').first.click()
         time.sleep(3)
 
-        # Step 4: find the S3 label URL
+        # Step 4: wait for "Télécharger les étiquettes" and intercept the S3 URL
         label_url = None
         s3_url_holder = []
 
@@ -336,38 +336,17 @@ def generate_return_label(order_number):
                 pass
 
         page.on('response', on_response)
-        time.sleep(2)
 
-        # Log all buttons in the row for debugging
-        btn_info = page.evaluate(f"""() => {{
-            const rows = document.querySelectorAll('tbody tr');
-            for (const row of rows) {{
-                if (row.textContent.includes('{order_number}')) {{
-                    const btns = row.querySelectorAll('button');
-                    return Array.from(btns).map(b => ({{cls: b.className, txt: b.textContent.trim().substring(0,30)}}) );
-                }}
-            }}
-            return [];
-        }}""")
-        print(f"[Wing] Buttons in order row: {btn_info}")
-
-        # Try clicking any icon button in the row (small buttons with no text)
+        print(f"[Wing] Waiting for 'Télécharger les étiquettes'...")
         try:
-            all_btns = order_row.locator('button').all()
-            print(f"[Wing] Total buttons in row: {len(all_btns)}")
-            for btn in all_btns:
-                txt = (btn.text_content() or '').strip()
-                cls = btn.get_attribute('class') or ''
-                print(f"[Wing] Button: txt='{txt[:20]}' cls='{cls[:60]}'")
-                if not txt and 'p-2' in cls:  # icon button (no text, has padding class)
-                    print(f"[Wing] Clicking icon button...")
-                    btn.click(force=True)
-                    time.sleep(3)
-                    break
+            page.wait_for_selector('text=Télécharger les étiquettes', timeout=10000)
+            print(f"[Wing] Found 'Télécharger les étiquettes', clicking...")
+            page.locator('text=Télécharger les étiquettes').first.click()
+            time.sleep(5)
         except Exception as e:
-            print(f"[Wing] Button iteration failed: {e}")
+            print(f"[Wing] 'Télécharger les étiquettes' not found: {e}")
 
-        # Search for S3 URL in page HTML
+        # Search for S3 URL in intercepted responses or page HTML
         if not s3_url_holder:
             import re
             page_html = page.content()
