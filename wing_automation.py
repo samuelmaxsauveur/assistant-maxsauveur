@@ -306,39 +306,61 @@ def generate_return_label(order_number):
             page.screenshot(path="/tmp/wing_label_debug.png")
             raise Exception("'Créer et générer' option not found")
 
-        print(f"[Wing] Clicking 'Créer et générer'...")
-        # Wing may open PDF in new tab OR trigger a download — handle both
-        pdf_bytes = None
-        try:
-            with page.expect_popup(timeout=15000) as popup_info:
-                page.locator('text=Créer et générer').first.click()
-            popup = popup_info.value
-            popup.wait_for_load_state('load', timeout=20000)
-            pdf_url = popup.url
-            print(f"[Wing] Popup URL: {pdf_url}")
-            if pdf_url and pdf_url.startswith('http') and 'about:blank' not in pdf_url:
-                import requests as req
-                resp = req.get(pdf_url, timeout=30)
-                if resp.status_code == 200:
-                    pdf_bytes = resp.content
-                    print(f"[Wing] PDF via popup URL: {len(pdf_bytes)} bytes")
-            if not pdf_bytes:
-                # Try reading page content directly (PDF rendered in tab)
-                content = popup.content()
-                if '%PDF' in content:
-                    pdf_bytes = content.encode()
-        except Exception as e_popup:
-            print(f"[Wing] No popup, trying download: {e_popup}")
+        # Intercept network responses to capture PDF regardless of how Wing delivers it
+        pdf_bytes_holder = []
+        pdf_url_holder = []
+
+        def on_response(response):
             try:
-                with page.expect_download(timeout=30000) as download_info:
-                    page.locator('text=Créer et générer').first.click()
-                pdf_bytes = open(download_info.value.path(), 'rb').read()
-                print(f"[Wing] PDF via download: {len(pdf_bytes)} bytes")
-            except Exception as e_dl:
-                print(f"[Wing] Download also failed: {e_dl}")
+                url = response.url
+                ct = response.headers.get('content-type', '')
+                if response.status == 200 and ('pdf' in ct.lower() or url.lower().endswith('.pdf') or 'label' in url.lower()):
+                    print(f"[Wing] PDF response intercepted: {url} ({ct})")
+                    pdf_url_holder.append(url)
+            except Exception:
+                pass
+
+        page.on('response', on_response)
+
+        print(f"[Wing] Clicking 'Créer et générer'...")
+        page.locator('text=Créer et générer').first.click()
+        print(f"[Wing] Waiting 15s for Wing to generate label...")
+        time.sleep(15)
+
+        pdf_bytes = None
+
+        # Try to fetch PDF from intercepted URL
+        if pdf_url_holder:
+            import requests as req
+            for url in pdf_url_holder:
+                print(f"[Wing] Fetching intercepted PDF: {url}")
+                try:
+                    resp = req.get(url, timeout=30)
+                    if resp.status_code == 200 and len(resp.content) > 1000:
+                        pdf_bytes = resp.content
+                        print(f"[Wing] PDF via intercepted URL: {len(pdf_bytes)} bytes")
+                        break
+                except Exception as e:
+                    print(f"[Wing] Fetch failed: {e}")
+
+        # Fallback: look for PDF link that appeared on the page
+        if not pdf_bytes:
+            print(f"[Wing] Looking for PDF link on page...")
+            links = page.locator('a[href*=".pdf"], a[href*="label"], a[href*="etiquette"]').all()
+            for link in links:
+                href = link.get_attribute('href') or ''
+                if href.startswith('http'):
+                    print(f"[Wing] Found PDF link: {href}")
+                    import requests as req
+                    resp = req.get(href, timeout=30)
+                    if resp.status_code == 200 and len(resp.content) > 1000:
+                        pdf_bytes = resp.content
+                        break
 
         if not pdf_bytes:
             page.screenshot(path="/tmp/wing_label_debug.png")
+            body_text = page.inner_text('body')[:500]
+            print(f"[Wing] Page after click: {body_text}")
             raise Exception("PDF non obtenu après clic 'Créer et générer'")
 
         print(f"[Wing] PDF ready: {len(pdf_bytes)} bytes")
