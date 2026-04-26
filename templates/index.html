@@ -268,7 +268,7 @@ const emailData = {
 
 async function generateResponse(id) {
     const textarea = document.getElementById('textarea-' + id);
-    const btn = textarea.closest('form').querySelector('button');
+    const btn = textarea.closest('.send-form').querySelector('button');
     const question = (document.getElementById('question-' + id)?.value || '').trim();
     btn.textContent = 'Génération...';
     btn.disabled = true;
