@@ -66,8 +66,63 @@
         <a href="/">📬 Emails</a>
         <a href="/dashboard">📋 Dashboard</a>
         <a href="/sav" style="color:white;">🔧 SAV</a>
+        <button onclick="document.getElementById('outbound-modal').style.display='flex'" style="margin-left:16px;padding:7px 16px;background:#2563eb;color:white;border:none;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;">✉️ Nouveau mail client</button>
     </div>
 </header>
+
+<!-- === MODAL NOUVEAU MAIL CLIENT === -->
+<div id="outbound-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center;">
+  <div style="background:white;border-radius:14px;padding:28px;width:600px;max-width:95vw;max-height:90vh;overflow-y:auto;position:relative;">
+    <button onclick="closeOutbound()" style="position:absolute;top:14px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:#888;">×</button>
+    <h2 style="font-size:16px;font-weight:700;margin-bottom:18px;">✉️ Nouveau mail client</h2>
+
+    <!-- Step 1: Search -->
+    <div id="ob-step1">
+      <label class="form-label">Rechercher le client (commande, nom ou email)</label>
+      <div style="display:flex;gap:8px;margin-bottom:12px;">
+        <input id="ob-search" type="text" placeholder="#12345 ou jean.dupont@... ou Jean Dupont" style="flex:1;padding:9px 12px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:inherit;">
+        <button onclick="outboundSearch()" class="btn btn-blue">Rechercher</button>
+      </div>
+      <div id="ob-search-result" style="font-size:13px;color:#888;"></div>
+    </div>
+
+    <!-- Step 2: Compose (shown after search) -->
+    <div id="ob-step2" style="display:none;margin-top:16px;border-top:1px solid #eee;padding-top:16px;">
+      <div style="background:#f0f7ff;border-radius:8px;padding:10px 14px;font-size:13px;margin-bottom:14px;">
+        <span id="ob-customer-display"></span>
+        <span id="ob-orders-display" style="color:#888;margin-left:8px;"></span>
+      </div>
+
+      <label class="form-label">Sujet / type de mail</label>
+      <select id="ob-type" onchange="outboundTypeChange()" style="width:100%;padding:9px 12px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:inherit;margin-bottom:12px;">
+        <option value="stock_issue">Rupture de stock / substitution produit</option>
+        <option value="return_refund">Confirmation retour reçu — remboursement (+35€ avoir)</option>
+        <option value="return_exchange">Confirmation retour reçu — échange</option>
+        <option value="custom">Autre (message libre)</option>
+      </select>
+
+      <label class="form-label">Numéro de commande concernée (optionnel)</label>
+      <select id="ob-order-select" style="width:100%;padding:9px 12px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:inherit;margin-bottom:12px;">
+        <option value="">— Aucune commande sélectionnée —</option>
+      </select>
+
+      <label class="form-label">Tes notes / brouillon (optionnel — Claude mettra en forme)</label>
+      <textarea id="ob-draft" rows="4" style="width:100%;padding:10px;border:1px solid #e0e0e0;border-radius:8px;font-size:13px;font-family:inherit;resize:vertical;margin-bottom:12px;" placeholder="Ex: dire qu'on a reçu le colis, remboursement dans 5 jours, proposer aussi 35€ avoir..."></textarea>
+
+      <button onclick="outboundGenerate(this)" class="btn btn-blue" style="width:100%;">💬 Mettre en forme avec Claude</button>
+
+      <!-- Generated draft -->
+      <div id="ob-draft-preview" style="display:none;margin-top:14px;">
+        <label class="form-label">Email généré (modifiable)</label>
+        <textarea id="ob-draft-text" rows="10" style="width:100%;padding:10px;border:1px solid #b3d4f5;border-radius:8px;font-size:13px;font-family:inherit;resize:vertical;background:#f0f7ff;"></textarea>
+        <label class="form-label" style="margin-top:10px;">Objet de l'email</label>
+        <input id="ob-subject" type="text" style="width:100%;padding:9px 12px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:inherit;margin-bottom:12px;">
+        <button onclick="outboundSend(this)" class="btn btn-green" style="width:100%;">📤 Envoyer</button>
+        <div id="ob-result" class="result-msg" style="margin-top:10px;"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="container">
 
@@ -422,6 +477,111 @@ async function createCase(emailId, threadId, senderEmail, senderRaw, subject, bo
     const data = await res.json();
     if (data.success) { btn.textContent = '✅ Créé...'; setTimeout(() => location.reload(), 800); }
     else { btn.textContent = '❌ Erreur'; btn.disabled = false; }
+}
+
+// === OUTBOUND EMAIL ===
+let outboundCustomer = null;
+let outboundOrders = [];
+
+const OUTBOUND_SUBJECTS = {
+    stock_issue: 'Votre commande Max Sauveur — information importante',
+    return_refund: 'Retour reçu — remboursement en cours',
+    return_exchange: 'Retour reçu — échange en cours',
+    custom: 'Max Sauveur — Service Client',
+};
+
+function closeOutbound() {
+    document.getElementById('outbound-modal').style.display = 'none';
+    document.getElementById('ob-step2').style.display = 'none';
+    document.getElementById('ob-draft-preview').style.display = 'none';
+    document.getElementById('ob-search').value = '';
+    document.getElementById('ob-search-result').textContent = '';
+    document.getElementById('ob-draft').value = '';
+    outboundCustomer = null;
+    outboundOrders = [];
+}
+
+async function outboundSearch() {
+    const query = document.getElementById('ob-search').value.trim();
+    if (!query) return;
+    document.getElementById('ob-search-result').textContent = 'Recherche...';
+    const res = await fetch('/sav/outbound/search', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({query})
+    });
+    const data = await res.json();
+    if (!data.found) {
+        document.getElementById('ob-search-result').textContent = 'Aucun client trouvé.';
+        return;
+    }
+    outboundCustomer = {email: data.customer_email, name: data.customer_name};
+    outboundOrders = data.orders || [];
+    document.getElementById('ob-search-result').textContent = '';
+    document.getElementById('ob-customer-display').innerHTML = `<strong>${data.customer_name}</strong> — ${data.customer_email}`;
+    document.getElementById('ob-orders-display').textContent = `${outboundOrders.length} commande(s)`;
+    // Populate order select
+    const sel = document.getElementById('ob-order-select');
+    sel.innerHTML = '<option value="">— Aucune commande sélectionnée —</option>';
+    outboundOrders.forEach(o => {
+        const opt = document.createElement('option');
+        opt.value = o.number;
+        opt.textContent = `${o.number} — ${o.total} — ${o.created_at}`;
+        sel.appendChild(opt);
+    });
+    // Auto-select most recent order
+    if (outboundOrders.length > 0) sel.selectedIndex = 1;
+    // Set default subject
+    outboundTypeChange();
+    document.getElementById('ob-step2').style.display = 'block';
+}
+
+function outboundTypeChange() {
+    const type = document.getElementById('ob-type').value;
+    const subjectEl = document.getElementById('ob-subject');
+    if (subjectEl) subjectEl.value = OUTBOUND_SUBJECTS[type] || '';
+}
+
+async function outboundGenerate(btn) {
+    if (!outboundCustomer) return;
+    btn.textContent = 'Génération...'; btn.disabled = true;
+    const type = document.getElementById('ob-type').value;
+    const orderNum = document.getElementById('ob-order-select').value;
+    const userDraft = document.getElementById('ob-draft').value;
+    const orderInfo = outboundOrders.find(o => o.number === orderNum) || null;
+    const res = await fetch('/sav/outbound/generate', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            customer_name: outboundCustomer.name,
+            customer_email: outboundCustomer.email,
+            subject_type: type,
+            user_draft: userDraft,
+            order_info: orderInfo,
+        })
+    });
+    const data = await res.json();
+    document.getElementById('ob-draft-text').value = data.draft || '';
+    document.getElementById('ob-subject').value = OUTBOUND_SUBJECTS[type] || 'Max Sauveur — Service Client';
+    document.getElementById('ob-draft-preview').style.display = 'block';
+    btn.textContent = '💬 Mettre en forme avec Claude'; btn.disabled = false;
+}
+
+async function outboundSend(btn) {
+    if (!outboundCustomer) return;
+    const body = document.getElementById('ob-draft-text').value.trim();
+    const subject = document.getElementById('ob-subject').value.trim() || 'Max Sauveur — Service Client';
+    if (!body) { alert('Le message est vide.'); return; }
+    btn.textContent = 'Envoi...'; btn.disabled = true;
+    const res = await fetch('/sav/outbound/send', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({customer_email: outboundCustomer.email, subject, body})
+    });
+    const data = await res.json();
+    const resultEl = document.getElementById('ob-result');
+    resultEl.style.display = 'block';
+    resultEl.className = data.success ? 'result-msg result-ok' : 'result-msg result-err';
+    resultEl.textContent = data.success ? '✅ Email envoyé !' : `❌ Erreur : ${data.error}`;
+    if (data.success) setTimeout(() => closeOutbound(), 2000);
+    else { btn.textContent = '📤 Envoyer'; btn.disabled = false; }
 }
 
 async function createManualCase(btn) {

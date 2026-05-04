@@ -1,3 +1,4 @@
+import re
 from flask import Blueprint, request, jsonify, render_template
 from concurrent.futures import ThreadPoolExecutor
 import gmail as gmail_helper
@@ -37,14 +38,21 @@ def sav_page():
         def enrich(email):
             order_number = claude_ai.extract_order_number(email['body'] + ' ' + email['subject'])
             order_info = None
-            try:
-                if order_number:
-                    order_info = shopify_api.get_order_by_number(order_number)
-            except Exception:
-                pass
             sender = email['sender']
             match = re.search(r'<(.+?)>', sender)
             sender_email = match.group(1) if match else sender
+            try:
+                if order_number:
+                    order_info = shopify_api.get_order_by_number(order_number)
+                # If no order found by number, try by sender email
+                if not order_info and sender_email and '@' in sender_email:
+                    orders = shopify_api.get_orders_by_email(sender_email)
+                    if orders:
+                        order_info = orders[0]
+                        if not order_number:
+                            order_number = order_info.get('number', '')
+            except Exception:
+                pass
             return {**email, 'order_number': order_number, 'order': order_info, 'sender_email': sender_email}
 
         with ThreadPoolExecutor(max_workers=5) as ex:
@@ -136,11 +144,118 @@ def send_rejection():
 @sav.route('/sav/analyze', methods=['POST'])
 def analyze():
     data = request.json
+    # Fetch full thread history for richer context
+    history = []
+    customer_email = data.get('customer_email', '')
+    thread_id = data.get('thread_id', '')
+    try:
+        if customer_email and '@' in customer_email:
+            service = _get_service()
+            raw = gmail_helper.get_customer_history(service, customer_email, max_results=30)
+            history = [
+                {
+                    'date': h.get('date', '')[:16],
+                    'subject': h.get('subject', ''),
+                    'body': h.get('body', '')[:800],
+                    'direction': h.get('direction', 'received'),
+                }
+                for h in raw
+            ]
+    except Exception:
+        pass
     result = claude_ai.analyze_sav_email(
         data['email_body'], data['subject'],
-        order_info=data.get('order')
+        order_info=data.get('order'),
+        history=history
     )
     return jsonify(result)
+
+
+@sav.route('/sav/outbound/search', methods=['POST'])
+def outbound_search():
+    query = (request.json or {}).get('query', '').strip()
+    if not query:
+        return jsonify({'found': False})
+    customer_email = None
+    customer_name = None
+    orders = []
+    order_num = re.sub(r'[^0-9]', '', query) if not '@' in query and not ' ' in query else None
+    if '@' in query:
+        customer_email = query
+        try:
+            orders = shopify_api.get_orders_by_email(query) or []
+            if orders:
+                customer_name = orders[0].get('customer_name')
+        except Exception:
+            pass
+    elif order_num:
+        try:
+            order = shopify_api.get_order_by_number(order_num)
+            if order:
+                orders = [order]
+                customer_email = order.get('customer_email')
+                customer_name = order.get('customer_name')
+        except Exception:
+            pass
+    else:
+        try:
+            customers = shopify_api.search_customers_by_name(query)
+            if customers:
+                customer_email = customers[0]['email']
+                customer_name = customers[0]['name']
+        except Exception:
+            pass
+    if customer_email and not orders:
+        try:
+            orders = shopify_api.get_orders_by_email(customer_email) or []
+        except Exception:
+            pass
+    if not customer_email and not orders:
+        return jsonify({'found': False})
+    return jsonify({
+        'found': True,
+        'customer_email': customer_email or '',
+        'customer_name': customer_name or '',
+        'orders': [
+            {
+                'number': o.get('number', ''),
+                'created_at': o.get('created_at', ''),
+                'total': o.get('total', ''),
+                'fulfillment_status': o.get('fulfillment_status', ''),
+                'products': o.get('products', []),
+            }
+            for o in orders[:10]
+        ],
+    })
+
+
+@sav.route('/sav/outbound/generate', methods=['POST'])
+def outbound_generate():
+    data = request.json or {}
+    draft = claude_ai.generate_outbound_email(
+        customer_name=data.get('customer_name', ''),
+        customer_email=data.get('customer_email', ''),
+        subject_type=data.get('subject_type', 'custom'),
+        user_draft=data.get('user_draft', ''),
+        order_info=data.get('order_info'),
+    )
+    return jsonify({'draft': draft})
+
+
+@sav.route('/sav/outbound/send', methods=['POST'])
+def outbound_send():
+    data = request.json or {}
+    customer_email = data.get('customer_email', '')
+    subject = data.get('subject', 'Max Sauveur — Service Client')
+    body = data.get('body', '')
+    if not customer_email or not body:
+        return jsonify({'success': False, 'error': 'Email et message requis'})
+    try:
+        service = _get_service()
+        gmail_helper.send_email(service, customer_email, subject, body)
+        return jsonify({'success': True})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)})
 
 
 @sav.route('/sav/ignore', methods=['POST'])

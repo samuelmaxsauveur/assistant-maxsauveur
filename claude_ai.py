@@ -316,20 +316,26 @@ On reste disponible si vous avez la moindre question.
 John – Service Client – Max Sauveur"""
 
 
-def analyze_sav_email(email_body, email_subject, order_info=None):
+def analyze_sav_email(email_body, email_subject, order_info=None, history=None):
     """Analyze a SAV email and return missing info questions + intent summary."""
     order_context = ""
     if order_info:
         order_context = f"\nCommande trouvée : {order_info.get('number')} — {order_info.get('fulfillment_status')} — {order_info.get('total')}"
+    history_context = ""
+    if history:
+        history_context = "\n\n--- HISTORIQUE COMPLET DES ÉCHANGES AVEC CE CLIENT ---"
+        for h in history:
+            direction = "Client →" if h['direction'] == 'received' else "Nous →"
+            history_context += f"\n[{h['date']}] {direction} {h['subject']}\n{h['body'][:600]}\n"
     prompt = f"""Analyse cet email SAV client et réponds en JSON strict :
 
 Sujet : {email_subject}
-Corps : {email_body}{order_context}
+Corps : {email_body}{order_context}{history_context}
 
-Identifie :
+En tenant compte de TOUT l'historique des échanges, identifie :
 1. Le problème exact décrit
 2. Les informations manquantes pour traiter la demande (ex: pas de photo, pas de numéro de commande, problème flou, etc.)
-3. Les questions à poser à Samuel (le responsable) avant de répondre
+3. Les questions à poser à Samuel (le responsable) avant de répondre — uniquement si l'historique ne répond pas déjà à ces questions
 
 Réponds UNIQUEMENT avec ce JSON :
 {{
@@ -406,6 +412,56 @@ Réponds uniquement avec le corps du mail, rien d'autre."""
     return _call_claude(
         system=get_system_prompt(),
         messages=[{"role": "user", "content": prompt}]
+    )
+
+
+OUTBOUND_SUBJECT_TEMPLATES = {
+    'stock_issue': {
+        'label': 'Rupture de stock / substitution produit',
+        'subject': 'Votre commande Max Sauveur — information importante',
+        'context': """Le client a passé une commande mais suite à une mauvaise synchronisation des stocks, nous ne sommes pas en mesure de lui envoyer sa commande complète. Tu dois lui proposer un produit de substitution ou un remboursement partiel, en t'excusant sincèrement pour la gêne occasionnée.""",
+    },
+    'return_refund': {
+        'label': 'Confirmation retour reçu — remboursement',
+        'subject': 'Retour reçu — remboursement en cours',
+        'context': """Nous avons bien reçu le colis retour du client. Nous confirmons le remboursement et nous lui offrons un avoir supplémentaire de 35€ valable sur sa prochaine commande, pour compenser la gêne.""",
+    },
+    'return_exchange': {
+        'label': 'Confirmation retour reçu — échange',
+        'subject': 'Retour reçu — échange en cours',
+        'context': """Nous avons bien reçu le colis retour du client. Nous confirmons la prise en charge de l'échange et lui indiquons la suite du processus.""",
+    },
+    'custom': {
+        'label': 'Autre (message libre)',
+        'subject': 'Max Sauveur — Service Client',
+        'context': '',
+    },
+}
+
+
+def generate_outbound_email(customer_name, customer_email, subject_type, user_draft, order_info=None):
+    """Generate a polished outbound email from Samuel's rough draft."""
+    template = OUTBOUND_SUBJECT_TEMPLATES.get(subject_type, OUTBOUND_SUBJECT_TEMPLATES['custom'])
+    order_context = ""
+    if order_info:
+        items_str = ', '.join([f"{i['name']} x{i['qty']}" for i in order_info.get('products', [])])
+        order_context = f"\nCommande : {order_info.get('number')} — {order_info.get('total')} — {order_info.get('fulfillment_status')}"
+        if items_str:
+            order_context += f"\nArticles : {items_str}"
+    type_context = f"\nContexte : {template['context']}" if template['context'] else ""
+    draft_block = f"\n\nNotes / brouillon de Samuel :\n{user_draft}" if user_draft.strip() else ""
+    prompt = f"""Tu dois rédiger un email sortant à envoyer à un client Max Sauveur.
+
+Client : {customer_name} ({customer_email}){order_context}{type_context}{draft_block}
+
+Rédige un email complet, professionnel et humain dans le style de John (service client Max Sauveur).
+Respecte les règles habituelles : pas de tiret long, pas de "Bonne nouvelle", signature John – Service Client – Max Sauveur.
+Si des notes sont fournies, utilise-les comme base mais reformule et complète.
+Réponds uniquement avec le corps de l'email, rien d'autre."""
+    return _call_claude(
+        system=get_system_prompt(),
+        messages=[{"role": "user", "content": prompt}],
+        max_tokens=800
     )
 
 
