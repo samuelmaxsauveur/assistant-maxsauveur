@@ -439,7 +439,7 @@ OUTBOUND_SUBJECT_TEMPLATES = {
 }
 
 
-def generate_outbound_email(customer_name, customer_email, subject_type, user_draft, order_info=None):
+def generate_outbound_email(customer_name, customer_email, subject_type, user_draft, order_info=None, feedback=None, previous_draft=None):
     """Generate a polished outbound email from Samuel's rough draft."""
     template = OUTBOUND_SUBJECT_TEMPLATES.get(subject_type, OUTBOUND_SUBJECT_TEMPLATES['custom'])
     order_context = ""
@@ -450,9 +450,14 @@ def generate_outbound_email(customer_name, customer_email, subject_type, user_dr
             order_context += f"\nArticles : {items_str}"
     type_context = f"\nContexte : {template['context']}" if template['context'] else ""
     draft_block = f"\n\nNotes / brouillon de Samuel :\n{user_draft}" if user_draft.strip() else ""
+    feedback_block = ""
+    if feedback and previous_draft:
+        feedback_block = f"\n\nVersion précédente générée :\n{previous_draft}\n\nCorrection demandée par Samuel : {feedback}\nRéécris l'email en tenant compte de cette correction."
+    elif feedback:
+        feedback_block = f"\n\nInstruction : {feedback}"
     prompt = f"""Tu dois rédiger un email sortant à envoyer à un client Max Sauveur.
 
-Client : {customer_name} ({customer_email}){order_context}{type_context}{draft_block}
+Client : {customer_name} ({customer_email}){order_context}{type_context}{draft_block}{feedback_block}
 
 Rédige un email complet, professionnel et humain dans le style de John (service client Max Sauveur).
 Respecte les règles habituelles : pas de tiret long, pas de "Bonne nouvelle", signature John – Service Client – Max Sauveur.

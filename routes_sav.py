@@ -238,6 +238,8 @@ def outbound_generate():
         subject_type=data.get('subject_type', 'custom'),
         user_draft=data.get('user_draft', ''),
         order_info=data.get('order_info'),
+        feedback=data.get('feedback', ''),
+        previous_draft=data.get('previous_draft', ''),
     )
     return jsonify({'draft': draft})
 

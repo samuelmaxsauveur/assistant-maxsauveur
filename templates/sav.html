@@ -117,7 +117,12 @@
         <textarea id="ob-draft-text" rows="10" style="width:100%;padding:10px;border:1px solid #b3d4f5;border-radius:8px;font-size:13px;font-family:inherit;resize:vertical;background:#f0f7ff;"></textarea>
         <label class="form-label" style="margin-top:10px;">Objet de l'email</label>
         <input id="ob-subject" type="text" style="width:100%;padding:9px 12px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:inherit;margin-bottom:12px;">
-        <button onclick="outboundSend(this)" class="btn btn-green" style="width:100%;">📤 Envoyer</button>
+        <label class="form-label" style="margin-top:14px;">Feedback / correction (optionnel)</label>
+        <textarea id="ob-feedback" rows="2" style="width:100%;padding:10px;border:1px solid #e0e0e0;border-radius:8px;font-size:13px;font-family:inherit;resize:vertical;margin-bottom:10px;" placeholder="Ex : trop formel, ajouter que le remboursement prend 5 jours, changer le ton..."></textarea>
+        <div style="display:flex;gap:8px;margin-bottom:4px;">
+          <button onclick="outboundGenerate(this)" class="btn btn-gray" style="flex:1;">🔄 Régénérer</button>
+          <button onclick="outboundSend(this)" class="btn btn-green" style="flex:1;">📤 Envoyer</button>
+        </div>
         <div id="ob-result" class="result-msg" style="margin-top:10px;"></div>
       </div>
     </div>
@@ -548,6 +553,8 @@ async function outboundGenerate(btn) {
     const orderNum = document.getElementById('ob-order-select').value;
     const userDraft = document.getElementById('ob-draft').value;
     const orderInfo = outboundOrders.find(o => o.number === orderNum) || null;
+    const feedback = document.getElementById('ob-feedback').value.trim();
+    const previousDraft = document.getElementById('ob-draft-text').value.trim();
     const res = await fetch('/sav/outbound/generate', {
         method: 'POST', headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -556,6 +563,8 @@ async function outboundGenerate(btn) {
             subject_type: type,
             user_draft: userDraft,
             order_info: orderInfo,
+            feedback: feedback,
+            previous_draft: previousDraft,
         })
     });
     const data = await res.json();
