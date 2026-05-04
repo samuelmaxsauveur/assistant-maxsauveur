@@ -244,6 +244,26 @@ def outbound_generate():
     return jsonify({'draft': draft})
 
 
+@sav.route('/sav/outbound/save-template', methods=['POST'])
+def outbound_save_template():
+    data = request.json or {}
+    subject_type = data.get('subject_type', '')
+    body = data.get('body', '')
+    if not subject_type or not body:
+        return jsonify({'success': False, 'error': 'Données manquantes'})
+    database.save_outbound_template(subject_type, body)
+    return jsonify({'success': True})
+
+
+@sav.route('/sav/outbound/templates', methods=['GET'])
+def outbound_templates():
+    types = ['stock_issue', 'return_refund', 'return_exchange', 'custom']
+    result = {}
+    for t in types:
+        result[t] = database.get_outbound_template(t) is not None
+    return jsonify(result)
+
+
 @sav.route('/sav/outbound/send', methods=['POST'])
 def outbound_send():
     data = request.json or {}

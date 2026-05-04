@@ -455,9 +455,18 @@ def generate_outbound_email(customer_name, customer_email, subject_type, user_dr
         feedback_block = f"\n\nVersion précédente générée :\n{previous_draft}\n\nCorrection demandée par Samuel : {feedback}\nRéécris l'email en tenant compte de cette correction."
     elif feedback:
         feedback_block = f"\n\nInstruction : {feedback}"
+    # Inject saved template as style reference if available
+    template_block = ""
+    try:
+        import database as _db
+        saved = _db.get_outbound_template(subject_type)
+        if saved:
+            template_block = f"\n\nMODÈLE DE RÉFÉRENCE (email validé précédemment pour ce type — respecte ce style, ce ton et cette structure) :\n{saved}"
+    except Exception:
+        pass
     prompt = f"""Tu dois rédiger un email sortant à envoyer à un client Max Sauveur.
 
-Client : {customer_name} ({customer_email}){order_context}{type_context}{draft_block}{feedback_block}
+Client : {customer_name} ({customer_email}){order_context}{type_context}{template_block}{draft_block}{feedback_block}
 
 Rédige un email complet, professionnel et humain dans le style de John (service client Max Sauveur).
 Respecte les règles habituelles : pas de tiret long, pas de "Bonne nouvelle", signature John – Service Client – Max Sauveur.

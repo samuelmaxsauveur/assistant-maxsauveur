@@ -99,7 +99,39 @@ def init_db():
                 FOREIGN KEY (case_id) REFERENCES sav_cases(id)
             )
         """)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS outbound_templates (
+                subject_type TEXT PRIMARY KEY,
+                body         TEXT NOT NULL,
+                updated_at   TIMESTAMP NOT NULL
+            )
+        """)
         conn.commit()
+    finally:
+        conn.close()
+
+
+def save_outbound_template(subject_type, body):
+    now = datetime.utcnow().isoformat()
+    conn = get_connection()
+    try:
+        conn.execute(
+            "INSERT OR REPLACE INTO outbound_templates (subject_type, body, updated_at) VALUES (?, ?, ?)",
+            (subject_type, body, now)
+        )
+        conn.commit()
+    finally:
+        conn.close()
+
+
+def get_outbound_template(subject_type):
+    conn = get_connection()
+    try:
+        cursor = conn.execute(
+            "SELECT body FROM outbound_templates WHERE subject_type = ?", (subject_type,)
+        )
+        row = cursor.fetchone()
+        return row['body'] if row else None
     finally:
         conn.close()
 

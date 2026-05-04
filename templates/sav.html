@@ -66,7 +66,7 @@
         <a href="/">📬 Emails</a>
         <a href="/dashboard">📋 Dashboard</a>
         <a href="/sav" style="color:white;">🔧 SAV</a>
-        <button onclick="document.getElementById('outbound-modal').style.display='flex'" style="margin-left:16px;padding:7px 16px;background:#2563eb;color:white;border:none;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;">✉️ Nouveau mail client</button>
+        <button onclick="document.getElementById('outbound-modal').style.display='flex'; loadOutboundTemplates();" style="margin-left:16px;padding:7px 16px;background:#2563eb;color:white;border:none;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;">✉️ Nouveau mail client</button>
     </div>
 </header>
 
@@ -93,7 +93,10 @@
         <span id="ob-orders-display" style="color:#888;margin-left:8px;"></span>
       </div>
 
-      <label class="form-label">Sujet / type de mail</label>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+        <label class="form-label" style="margin-bottom:0;">Sujet / type de mail</label>
+        <span id="ob-template-badge" style="display:none;font-size:11px;background:#e6f9ee;color:#1a7a3e;padding:2px 8px;border-radius:20px;">✅ Modèle enregistré</span>
+      </div>
       <select id="ob-type" onchange="outboundTypeChange()" style="width:100%;padding:9px 12px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:inherit;margin-bottom:12px;">
         <option value="stock_issue">Rupture de stock / substitution produit</option>
         <option value="return_refund">Confirmation retour reçu — remboursement (+35€ avoir)</option>
@@ -121,6 +124,7 @@
         <textarea id="ob-feedback" rows="2" style="width:100%;padding:10px;border:1px solid #e0e0e0;border-radius:8px;font-size:13px;font-family:inherit;resize:vertical;margin-bottom:10px;" placeholder="Ex : trop formel, ajouter que le remboursement prend 5 jours, changer le ton..."></textarea>
         <div style="display:flex;gap:8px;margin-bottom:4px;">
           <button onclick="outboundGenerate(this)" class="btn btn-gray" style="flex:1;">🔄 Régénérer</button>
+          <button onclick="outboundSaveTemplate(this)" class="btn btn-gray" style="flex:1;">💾 Garder comme modèle</button>
           <button onclick="outboundSend(this)" class="btn btn-green" style="flex:1;">📤 Envoyer</button>
         </div>
         <div id="ob-result" class="result-msg" style="margin-top:10px;"></div>
@@ -487,6 +491,7 @@ async function createCase(emailId, threadId, senderEmail, senderRaw, subject, bo
 // === OUTBOUND EMAIL ===
 let outboundCustomer = null;
 let outboundOrders = [];
+let outboundTemplatesStatus = {};
 
 const OUTBOUND_SUBJECTS = {
     stock_issue: 'Votre commande Max Sauveur — information importante',
@@ -540,10 +545,40 @@ async function outboundSearch() {
     document.getElementById('ob-step2').style.display = 'block';
 }
 
+async function loadOutboundTemplates() {
+    try {
+        const res = await fetch('/sav/outbound/templates');
+        outboundTemplatesStatus = await res.json();
+        outboundTypeChange();
+    } catch(e) {}
+}
+
 function outboundTypeChange() {
     const type = document.getElementById('ob-type').value;
     const subjectEl = document.getElementById('ob-subject');
     if (subjectEl) subjectEl.value = OUTBOUND_SUBJECTS[type] || '';
+    const badge = document.getElementById('ob-template-badge');
+    if (badge) badge.style.display = outboundTemplatesStatus[type] ? 'inline' : 'none';
+}
+
+async function outboundSaveTemplate(btn) {
+    const type = document.getElementById('ob-type').value;
+    const body = document.getElementById('ob-draft-text').value.trim();
+    if (!body) return;
+    btn.textContent = 'Sauvegarde...'; btn.disabled = true;
+    const res = await fetch('/sav/outbound/save-template', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({subject_type: type, body})
+    });
+    const data = await res.json();
+    if (data.success) {
+        outboundTemplatesStatus[type] = true;
+        document.getElementById('ob-template-badge').style.display = 'inline';
+        btn.textContent = '✅ Modèle sauvegardé';
+        setTimeout(() => { btn.textContent = '💾 Garder comme modèle'; btn.disabled = false; }, 2000);
+    } else {
+        btn.textContent = '💾 Garder comme modèle'; btn.disabled = false;
+    }
 }
 
 async function outboundGenerate(btn) {
