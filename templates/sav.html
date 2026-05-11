@@ -593,8 +593,27 @@ async function outboundSaveTemplate(btn) {
     if (data.success) {
         outboundTemplatesStatus[type] = true;
         document.getElementById('ob-template-badge').style.display = 'inline';
-        btn.textContent = '✅ Modèle sauvegardé';
-        setTimeout(() => { btn.textContent = '💾 Garder comme modèle'; btn.disabled = false; }, 2000);
+        btn.textContent = '✅ Sauvegardé';
+        btn.disabled = false;
+        // Show Railway env var instructions for persistence
+        const envKey = data.env_key;
+        const envVal = data.env_value;
+        const existing = document.getElementById('ob-railway-hint');
+        if (existing) existing.remove();
+        const hint = document.createElement('div');
+        hint.id = 'ob-railway-hint';
+        hint.style.cssText = 'margin-top:10px;background:#fffbea;border:1px solid #f59e0b;border-radius:8px;padding:12px;font-size:12px;color:#92400e;';
+        hint.innerHTML = `<strong>Pour que ce modèle survive aux mises à jour :</strong><br>
+            Dans Railway → ton service → Variables → ajoute :<br>
+            <code style="display:block;background:#fef3c7;padding:6px;margin:6px 0;border-radius:4px;font-size:11px;word-break:break-all;">
+                Nom : <strong>${envKey}</strong><br>
+                Valeur : <em>(le texte du modèle)</em>
+            </code>
+            <button onclick="navigator.clipboard.writeText(${JSON.stringify(envVal)}).then(()=>this.textContent='✅ Copié!').catch(()=>{})"
+                style="margin-top:4px;padding:5px 10px;background:#f59e0b;color:white;border:none;border-radius:6px;cursor:pointer;font-size:12px;">
+                📋 Copier la valeur du modèle
+            </button>`;
+        btn.parentNode.insertBefore(hint, btn.nextSibling);
     } else {
         btn.textContent = '💾 Garder comme modèle'; btn.disabled = false;
     }

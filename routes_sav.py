@@ -252,7 +252,9 @@ def outbound_save_template():
     if not subject_type or not body:
         return jsonify({'success': False, 'error': 'Données manquantes'})
     database.save_outbound_template(subject_type, body)
-    return jsonify({'success': True})
+    # Return the env var name/value so the user can persist it in Railway
+    env_key = f"TEMPLATE_{subject_type.upper()}"
+    return jsonify({'success': True, 'env_key': env_key, 'env_value': body})
 
 
 @sav.route('/sav/outbound/templates', methods=['GET'])

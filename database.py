@@ -149,6 +149,12 @@ def save_outbound_template(subject_type, body):
 
 
 def get_outbound_template(subject_type):
+    # Check environment variable first (survives Railway deployments)
+    env_key = f"TEMPLATE_{subject_type.upper()}"
+    env_val = os.environ.get(env_key, '').strip()
+    if env_val:
+        return env_val
+    # Fallback to database
     conn = get_connection()
     try:
         cursor = conn.execute(
