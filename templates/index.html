@@ -16,13 +16,13 @@
         header a:hover { color: white; }
 
         /* LAYOUT */
-        .container { max-width: 1100px; margin: 24px auto; padding: 0 12px; }
+        .container { max-width: 1100px; margin: 24px auto; padding: 0 12px 80px; }
         .empty { text-align: center; padding: 60px 16px; color: #999; }
         .empty h2 { font-size: 20px; margin-bottom: 8px; }
 
         /* CARD */
-        .card { background: white; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); overflow: hidden; }
-        .card-header { padding: 16px 20px; border-bottom: 1px solid #f0f0f0; }
+        .card { background: white; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+        .card-header { padding: 16px 20px; border-bottom: 1px solid #f0f0f0; border-radius: 12px 12px 0 0; }
         .card-header .subject { font-size: 15px; font-weight: 600; margin-bottom: 4px; line-height: 1.4; }
         .card-header .meta { font-size: 13px; color: #888; }
         .card-body { padding: 16px 20px; display: grid; grid-template-columns: 3fr 2fr; gap: 20px; }
@@ -58,16 +58,16 @@
             line-height: 1.6;
             resize: vertical;
             min-height: 200px;
+            max-height: 500px;
             outline: none;
             background: #fff;
             color: #111;
             display: block;
-            position: relative;
-            z-index: 1;
         }
         textarea:focus { border-color: #111; box-shadow: 0 0 0 2px rgba(0,0,0,0.06); }
         .question-textarea {
             min-height: 70px;
+            max-height: 200px;
             margin-bottom: 8px;
         }
 
