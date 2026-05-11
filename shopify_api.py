@@ -57,11 +57,32 @@ def get_full_order_history(sender_email, customer_name=None):
         for o in get_orders_by_email(sender_email):
             seen[o['number']] = o
 
-    # Step 2: by customer name — catches orders placed with a different email
-    if customer_name and len(customer_name.split()) >= 2:
-        for o in get_all_orders_by_customer_name(customer_name):
-            if o['number'] not in seen:
-                seen[o['number']] = o
+    # Step 2: by customer name — try multiple strategies to find all accounts
+    if customer_name:
+        parts = [p for p in customer_name.split() if len(p) >= 3 and '@' not in p]
+        search_queries = []
+        if len(parts) >= 2:
+            # Full name
+            search_queries.append(customer_name)
+            # Last name only (catches "Antoine FAU" even if registered as "A. FAU")
+            search_queries.append(parts[-1])
+            # Shopify field-specific syntax
+            search_queries.append(f"last_name:{parts[-1]}")
+        elif len(parts) == 1:
+            search_queries.append(parts[0])
+
+        seen_customer_ids = set()
+        for query in search_queries:
+            for c in search_customers_by_name(query)[:5]:
+                if any(d in (c.get('email') or '').lower() for d in internal_domains):
+                    continue
+                cid = c.get('id')
+                if not cid or cid in seen_customer_ids:
+                    continue
+                seen_customer_ids.add(cid)
+                for o in get_all_orders_for_customer(cid):
+                    if o['number'] not in seen:
+                        seen[o['number']] = o
 
     orders = list(seen.values())
     orders.sort(key=lambda o: o.get('created_at', ''), reverse=True)
