@@ -137,27 +137,40 @@ def _lookup_order_by_name(name, body=''):
     # Internal domains/emails to never use as customer
     internal_domains = {'maxsauveur.com', 'maxsauveur.fr'}
 
-    # --- Step 3: search Shopify by each name candidate ---
+    # Build search terms: full name + each individual word (firstname / lastname separately)
+    search_terms = list(name_candidates)
     for candidate in name_candidates:
+        parts = candidate.split()
+        if len(parts) >= 2:
+            search_terms.extend(parts)  # try "Antoine" and "FAU" separately too
+
+    seen_emails = set()
+
+    # --- Step 3: search Shopify by each name/word candidate ---
+    for term in search_terms:
+        if len(term) < 3:
+            continue
         try:
-            customers = shopify_api.search_customers_by_name(candidate)
+            customers = shopify_api.search_customers_by_name(term)
             if not customers:
                 continue
-            found = customers[0]
-            found_email = found.get('email', '')
-            found_name = found.get('name', '')
+            for found in customers[:3]:  # check top 3 results
+                found_email = found.get('email', '')
+                found_name = found.get('name', '')
 
-            # Skip internal emails
-            if any(d in found_email.lower() for d in internal_domains):
-                continue
+                if not found_email or found_email in seen_emails:
+                    continue
+                # Skip internal emails
+                if any(d in found_email.lower() for d in internal_domains):
+                    continue
 
-            # Verify at least one word of the candidate matches the found name
-            candidate_words = set(w.lower() for w in candidate.split() if len(w) > 2)
-            found_words = set(w.lower() for w in found_name.split() if len(w) > 2)
-            if not candidate_words & found_words:
-                continue  # No overlap → wrong customer
+                # Verify at least one part of the original name appears in the found name
+                all_parts = set(w.lower() for c in name_candidates for w in c.split() if len(w) > 2)
+                found_parts = set(w.lower() for w in found_name.split() if len(w) > 2)
+                if not all_parts & found_parts:
+                    continue
 
-            if found_email:
+                seen_emails.add(found_email)
                 orders = shopify_api.get_orders_by_email(found_email)
                 if orders:
                     return orders[0]
