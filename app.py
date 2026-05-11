@@ -72,28 +72,68 @@ def extract_customer_name(sender):
 
 def _lookup_order_by_name(name, body=''):
     """
-    Last-resort: search Shopify by customer name extracted from sender or email body.
+    Last-resort: search Shopify using any useful info found in the email body.
+    1. Email addresses explicitly written in the body
+    2. Customer name from sender field
+    3. Name patterns extracted from the body signature
     Returns order_info or None.
     """
-    candidates = []
-    if name and '@' not in name and len(name.split()) >= 2:
-        candidates.append(name)
-    # Try to extract a signature name from end of email body (last 300 chars)
+    # --- Step 1: find any email address written in the body ---
     if body:
-        tail = body[-300:]
-        sig_match = re.search(
-            r'(?:cordialement|sincèrement|bonne journée|merci|regards|best)[,\s]+([A-ZÀ-Ý][a-zà-ý]+(?:\s+[A-ZÀ-Ý][a-zà-ý]+)+)',
+        email_matches = re.findall(
+            r'[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}', body
+        )
+        for found_email in email_matches:
+            if 'maxsauveur' in found_email.lower():
+                continue  # skip our own domain
+            try:
+                orders = shopify_api.get_orders_by_email(found_email)
+                if orders:
+                    return orders[0]
+            except Exception:
+                pass
+
+    # --- Step 2: build name candidates ---
+    name_candidates = []
+    # Sender name (if it looks like a real name, not just an email)
+    if name and '@' not in name and len(name.split()) >= 2:
+        name_candidates.append(name)
+
+    # Extract name from body: look for patterns in the last 400 chars
+    if body:
+        tail = body[-400:]
+        # Pattern 1: after a closing word (Cordialement, Merci, Best, etc.)
+        sig_after_close = re.search(
+            r'(?:cordialement|sincèrement|bonne journée|merci|regards|best|cdlt)[,.\s]+([A-ZÀ-Ýa-zà-ý][a-zà-ý]+\s+[A-ZÀ-Ý][A-ZÀ-Ýa-zà-ý]+)',
             tail, re.IGNORECASE
         )
-        if sig_match:
-            candidates.append(sig_match.group(1).strip())
-    for candidate in candidates:
+        if sig_after_close:
+            name_candidates.append(sig_after_close.group(1).strip())
+
+        # Pattern 2: standalone "Prénom NOM" line (first + last where last can be ALL CAPS)
+        # Matches "Antoine FAU" or "Antoine Fau"
+        standalone = re.findall(
+            r'^([A-ZÀ-Ý][a-zà-ý]{1,20}\s+[A-ZÀ-Ý]{2,20})$',
+            tail, re.MULTILINE
+        )
+        name_candidates.extend(standalone)
+
+        # Pattern 3: "Nom : Antoine FAU" or "Name: Antoine FAU"
+        labeled = re.search(
+            r'(?:nom|name|prénom|prenom)\s*[:\-]\s*([A-ZÀ-Ýa-zà-ý][a-zà-ý]+\s+[A-ZÀ-Ý][A-ZÀ-Ýa-zà-ý]+)',
+            tail, re.IGNORECASE
+        )
+        if labeled:
+            name_candidates.append(labeled.group(1).strip())
+
+    # --- Step 3: search Shopify by each name candidate ---
+    for candidate in name_candidates:
         try:
             customers = shopify_api.search_customers_by_name(candidate)
             if customers:
-                customer_email = customers[0].get('email', '')
-                if customer_email:
-                    orders = shopify_api.get_orders_by_email(customer_email)
+                found_email = customers[0].get('email', '')
+                if found_email:
+                    orders = shopify_api.get_orders_by_email(found_email)
                     if orders:
                         return orders[0]
         except Exception:
