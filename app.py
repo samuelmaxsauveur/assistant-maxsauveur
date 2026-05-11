@@ -78,14 +78,16 @@ def _lookup_order_by_name(name, body=''):
     3. Name patterns extracted from the body signature
     Returns order_info or None.
     """
-    # --- Step 1: find any email address written in the body ---
+    # --- Step 1: find emails explicitly labeled by the customer in the body ---
+    # Only look for "Mails: x@x.com", "Email: x", "E-mail: x", "Contact: x" etc.
     if body:
-        email_matches = re.findall(
-            r'[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}', body
+        labeled_emails = re.findall(
+            r'(?:mails?|e-?mail|contact|courriel)\s*[:\-]\s*([a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,})',
+            body, re.IGNORECASE
         )
-        for found_email in email_matches:
+        for found_email in labeled_emails:
             if 'maxsauveur' in found_email.lower():
-                continue  # skip our own domain
+                continue
             try:
                 orders = shopify_api.get_orders_by_email(found_email)
                 if orders:
