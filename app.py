@@ -134,16 +134,33 @@ def _lookup_order_by_name(name, body=''):
         if labeled:
             name_candidates.append(labeled.group(1).strip())
 
+    # Internal domains/emails to never use as customer
+    internal_domains = {'maxsauveur.com', 'maxsauveur.fr'}
+
     # --- Step 3: search Shopify by each name candidate ---
     for candidate in name_candidates:
         try:
             customers = shopify_api.search_customers_by_name(candidate)
-            if customers:
-                found_email = customers[0].get('email', '')
-                if found_email:
-                    orders = shopify_api.get_orders_by_email(found_email)
-                    if orders:
-                        return orders[0]
+            if not customers:
+                continue
+            found = customers[0]
+            found_email = found.get('email', '')
+            found_name = found.get('name', '')
+
+            # Skip internal emails
+            if any(d in found_email.lower() for d in internal_domains):
+                continue
+
+            # Verify at least one word of the candidate matches the found name
+            candidate_words = set(w.lower() for w in candidate.split() if len(w) > 2)
+            found_words = set(w.lower() for w in found_name.split() if len(w) > 2)
+            if not candidate_words & found_words:
+                continue  # No overlap → wrong customer
+
+            if found_email:
+                orders = shopify_api.get_orders_by_email(found_email)
+                if orders:
+                    return orders[0]
         except Exception:
             pass
     return None
