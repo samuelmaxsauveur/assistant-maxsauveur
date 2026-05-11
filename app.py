@@ -42,6 +42,9 @@ def _fetch_order_for_email(email):
                 order_info = orders[0]
     except Exception:
         pass
+    # Last resort: search by name
+    if not order_info:
+        order_info = _lookup_order_by_name(customer_name, email['body'])
     return {
         'email': email,
         'order': order_info,
@@ -66,6 +69,37 @@ def extract_customer_name(sender):
     if match:
         return match.group(1).strip().strip('"')
     return sender
+
+def _lookup_order_by_name(name, body=''):
+    """
+    Last-resort: search Shopify by customer name extracted from sender or email body.
+    Returns order_info or None.
+    """
+    candidates = []
+    if name and '@' not in name and len(name.split()) >= 2:
+        candidates.append(name)
+    # Try to extract a signature name from end of email body (last 300 chars)
+    if body:
+        tail = body[-300:]
+        sig_match = re.search(
+            r'(?:cordialement|sincèrement|bonne journée|merci|regards|best)[,\s]+([A-ZÀ-Ý][a-zà-ý]+(?:\s+[A-ZÀ-Ý][a-zà-ý]+)+)',
+            tail, re.IGNORECASE
+        )
+        if sig_match:
+            candidates.append(sig_match.group(1).strip())
+    for candidate in candidates:
+        try:
+            customers = shopify_api.search_customers_by_name(candidate)
+            if customers:
+                customer_email = customers[0].get('email', '')
+                if customer_email:
+                    orders = shopify_api.get_orders_by_email(customer_email)
+                    if orders:
+                        return orders[0]
+        except Exception:
+            pass
+    return None
+
 
 def resolve_sender(sender, body):
     """If sender is a noreply/form address, extract real customer email and name from the body."""
@@ -186,6 +220,12 @@ def generate():
                     order_info = orders[0]
             except Exception:
                 pass
+        # Last resort: search by name in Shopify
+        if not order_info:
+            order_info = _lookup_order_by_name(
+                extract_customer_name(data.get('sender', '')),
+                data.get('body', '')
+            )
 
     # Auto-fetch Wing tracking for expedition-related emails
     wing_context = ''
@@ -251,6 +291,12 @@ def ask():
                     order_info = orders[0]
             except Exception:
                 pass
+        # Last resort: search by name in Shopify
+        if not order_info:
+            order_info = _lookup_order_by_name(
+                extract_customer_name(sender),
+                data.get('body', '')
+            )
 
     # Extract order number once (used by multiple Wing lookups below)
     def _extract_order_num():
