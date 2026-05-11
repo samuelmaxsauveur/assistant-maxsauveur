@@ -15,6 +15,7 @@ def get_order_by_number(order_number):
     return None
 
 def get_orders_by_email(email):
+    """Fetch all orders for a given email, expanding via customer_id."""
     shop = os.getenv('SHOPIFY_SHOP')
     token = os.getenv('SHOPIFY_TOKEN')
     url = f"https://{shop}/admin/api/2024-01/orders.json"
@@ -24,8 +25,6 @@ def get_orders_by_email(email):
     orders = response.json().get('orders', [])
     if not orders:
         return []
-    # If we found any order, use the customer_id to get ALL orders for that customer
-    # (in case the customer placed other orders with a different email)
     customer_id = (orders[0].get('customer') or {}).get('id')
     if customer_id:
         return get_all_orders_for_customer(customer_id)
@@ -42,6 +41,31 @@ def get_all_orders_for_customer(customer_id):
     response = requests.get(url, headers=headers, params=params)
     orders = response.json().get('orders', [])
     return [format_order(o) for o in orders]
+
+
+def get_full_order_history(sender_email, customer_name=None):
+    """
+    Fetch the COMPLETE order history for a customer.
+    Combines: email lookup → customer_id expansion → name search (for multiple Shopify accounts).
+    Returns deduplicated list sorted by date desc.
+    """
+    internal_domains = {'maxsauveur.com', 'maxsauveur.fr'}
+    seen = {}  # number → order
+
+    # Step 1: by email (+ customer_id expansion)
+    if sender_email and not any(d in sender_email.lower() for d in internal_domains):
+        for o in get_orders_by_email(sender_email):
+            seen[o['number']] = o
+
+    # Step 2: by customer name — catches orders placed with a different email
+    if customer_name and len(customer_name.split()) >= 2:
+        for o in get_all_orders_by_customer_name(customer_name):
+            if o['number'] not in seen:
+                seen[o['number']] = o
+
+    orders = list(seen.values())
+    orders.sort(key=lambda o: o.get('created_at', ''), reverse=True)
+    return orders
 
 def search_customers_by_name(name):
     """Search Shopify customers by name, return list of {id, email, name, orders_count}."""
