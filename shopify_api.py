@@ -44,7 +44,7 @@ def get_all_orders_for_customer(customer_id):
     return [format_order(o) for o in orders]
 
 def search_customers_by_name(name):
-    """Search Shopify customers by name, return list of {email, name, orders}."""
+    """Search Shopify customers by name, return list of {id, email, name, orders_count}."""
     shop = os.getenv('SHOPIFY_SHOP')
     token = os.getenv('SHOPIFY_TOKEN')
     url = f"https://{shop}/admin/api/2024-01/customers/search.json"
@@ -54,12 +54,35 @@ def search_customers_by_name(name):
     customers = response.json().get('customers', [])
     return [
         {
+            'id': c.get('id'),
             'email': c.get('email', ''),
             'name': f"{c.get('first_name', '')} {c.get('last_name', '')}".strip(),
             'orders_count': c.get('orders_count', 0),
         }
         for c in customers
     ]
+
+
+def get_all_orders_by_customer_name(name):
+    """Find ALL orders across all Shopify customer accounts matching a name.
+    Handles the case where the same person has ordered with multiple email addresses."""
+    internal_domains = {'maxsauveur.com', 'maxsauveur.fr'}
+    customers = search_customers_by_name(name)
+    all_orders = []
+    seen_numbers = set()
+    for c in customers[:5]:
+        if any(d in (c.get('email') or '').lower() for d in internal_domains):
+            continue
+        customer_id = c.get('id')
+        if not customer_id:
+            continue
+        for o in get_all_orders_for_customer(customer_id):
+            if o['number'] not in seen_numbers:
+                all_orders.append(o)
+                seen_numbers.add(o['number'])
+    # Sort by date descending
+    all_orders.sort(key=lambda o: o.get('created_at', ''), reverse=True)
+    return all_orders
 
 
 def search_product_price(query):

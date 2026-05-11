@@ -31,14 +31,28 @@ def _fetch_order_for_email(email):
 
     all_orders = []
 
-    # Step 1: get all orders by sender email (full history)
+    # Step 1: get all orders by sender email (+ all orders of that customer_id)
     if sender_email:
         try:
             all_orders = shopify_api.get_orders_by_email(sender_email) or []
         except Exception:
             pass
 
-    # Step 2: if a specific order number was mentioned, make sure it's first
+    # Step 2: supplement with orders from other accounts under the same name
+    # (customer may have ordered with multiple emails → multiple Shopify accounts)
+    supplement_name = customer_name or (all_orders[0].get('customer_name') if all_orders else None)
+    if supplement_name and len(supplement_name.split()) >= 2:
+        try:
+            extra = shopify_api.get_all_orders_by_customer_name(supplement_name)
+            existing = {o['number'] for o in all_orders}
+            for o in extra:
+                if o['number'] not in existing:
+                    all_orders.append(o)
+                    existing.add(o['number'])
+        except Exception:
+            pass
+
+    # Step 3: if a specific order number was mentioned, make sure it's first
     if order_number:
         mentioned = next(
             (o for o in all_orders if str(o.get('number', '')).lstrip('#') == str(order_number)),
@@ -54,7 +68,7 @@ def _fetch_order_for_email(email):
             except Exception:
                 pass
 
-    # Step 3: last resort — search by name
+    # Step 4: last resort — search by name
     if not all_orders:
         all_orders = _lookup_orders_by_name(customer_name, email['body'])
 
