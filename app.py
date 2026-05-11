@@ -322,13 +322,15 @@ def generate():
             pass
 
     # Always fetch full order history (email + name, handles multiple Shopify accounts)
+    import sys as _sys
+    _cn = extract_customer_name(data.get('sender', ''))
+    print(f"[GENERATE] sender_email={sender_email!r} name={_cn!r}", file=_sys.stderr, flush=True)
     try:
-        all_orders = shopify_api.get_full_order_history(
-            sender_email,
-            extract_customer_name(data.get('sender', ''))
-        ) or []
-    except Exception:
+        all_orders = shopify_api.get_full_order_history(sender_email, _cn) or []
+    except Exception as _e:
+        print(f"[GENERATE_ERROR] {_e}", file=_sys.stderr, flush=True)
         all_orders = []
+    print(f"[GENERATE] all_orders after lookup: {[o['number'] for o in all_orders]}", file=_sys.stderr, flush=True)
 
     # If a specific order number was mentioned, put it first
     order_num_fallback = claude_ai.extract_order_number(data.get('subject', '')) or \
