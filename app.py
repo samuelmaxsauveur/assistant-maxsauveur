@@ -187,13 +187,19 @@ def generate():
             except Exception:
                 pass
 
-    # Auto-fetch Wing tracking for order_status emails
+    # Auto-fetch Wing tracking for expedition-related emails
     wing_context = ''
     order_num = str((order_info or {}).get('number', '')).replace('#', '').strip()
-    body_lower = (data.get('body', '') + ' ' + data.get('subject', '')).lower()
-    tracking_triggers = ['suivi', 'livraison', 'colis', 'reçu', 'recu', 'expédié', 'expedie',
-                         'où est', 'ou est', 'tracking', 'retard', 'transporteur']
-    if order_num and any(kw in body_lower for kw in tracking_triggers):
+    if not order_num:
+        order_num = claude_ai.extract_order_number(data.get('subject', '')) or \
+                    claude_ai.extract_order_number(data.get('body', '')) or ''
+    email_text_lower = (data.get('body', '') + ' ' + data.get('subject', '')).lower()
+    is_fulfilled = (order_info or {}).get('fulfillment_status') == 'fulfilled'
+    expedition_triggers = ['suivi', 'livraison', 'colis', 'reçu', 'recu', 'expédié', 'expedie',
+                           'où est', 'ou est', 'tracking', 'retard', 'transporteur',
+                           'expédition', 'expedition', 'arrivée', 'arrivee', 'délai', 'delai',
+                           'pas encore reçu', 'pas reçu', 'non reçu', 'toujours pas']
+    if order_num and (is_fulfilled or any(kw in email_text_lower for kw in expedition_triggers)):
         try:
             tracking = wing_automation.get_order_tracking(order_num)
             if tracking:
@@ -258,11 +264,20 @@ def ask():
 
     wing_extra = ''
     q_lower = question.lower()
+    email_body_lower = (data.get('body', '') + ' ' + data.get('subject', '')).lower()
+    is_fulfilled_ask = (order_info or {}).get('fulfillment_status') == 'fulfilled'
 
-    # Auto-fetch Wing info when question mentions Wing or tracking/relay
-    wing_keywords = ['wing', 'suivi', 'point relais', 'relais', 'livraison', 'colis',
-                     'tracking', 'cherche dans wing', 'statut wing', 'adresse']
-    if any(kw in q_lower for kw in wing_keywords):
+    # Auto-fetch Wing whenever the email OR question involves expedition/tracking/relay
+    expedition_keywords = ['wing', 'suivi', 'livraison', 'colis', 'expédié', 'expedie',
+                           'tracking', 'retard', 'transporteur', 'expédition', 'expedition',
+                           'reçu', 'recu', 'où est', 'ou est', 'arrivée', 'arrivee',
+                           'pas encore reçu', 'pas reçu', 'point relais', 'relais', 'adresse']
+    needs_wing = (
+        is_fulfilled_ask or
+        any(kw in email_body_lower for kw in expedition_keywords) or
+        any(kw in q_lower for kw in expedition_keywords)
+    )
+    if needs_wing:
         order_num = _extract_order_num()
         if order_num:
             try:
