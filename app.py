@@ -212,6 +212,34 @@ def resolve_sender(sender, body):
 def health():
     return jsonify({'status': 'ok'}), 200
 
+@app.route('/debug/orders')
+def debug_orders():
+    """Debug: show all orders found for a given email + name."""
+    email = request.args.get('email', '')
+    name = request.args.get('name', '')
+    results = {}
+    try:
+        by_email = shopify_api.get_orders_by_email(email) if email else []
+        results['by_email'] = [{'number': o['number'], 'products': [p['name'] for p in o['products']], 'date': o['created_at']} for o in by_email]
+    except Exception as e:
+        results['by_email_error'] = str(e)
+    try:
+        customers = shopify_api.search_customers_by_name(name) if name else []
+        results['customers_found'] = customers
+    except Exception as e:
+        results['customers_error'] = str(e)
+    try:
+        by_name = shopify_api.get_all_orders_by_customer_name(name) if name else []
+        results['by_name'] = [{'number': o['number'], 'products': [p['name'] for p in o['products']], 'date': o['created_at']} for o in by_name]
+    except Exception as e:
+        results['by_name_error'] = str(e)
+    try:
+        full = shopify_api.get_full_order_history(email, name)
+        results['full_history'] = [{'number': o['number'], 'products': [p['name'] for p in o['products']], 'date': o['created_at']} for o in full]
+    except Exception as e:
+        results['full_error'] = str(e)
+    return jsonify(results)
+
 @app.route('/debug')
 def debug():
     import traceback
