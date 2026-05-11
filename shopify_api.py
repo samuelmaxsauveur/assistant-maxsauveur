@@ -90,6 +90,17 @@ def get_full_order_history(sender_email, customer_name=None):
                     if o['number'] not in seen:
                         seen[o['number']] = o
 
+        # Step 2b: GraphQL search by billing last name — finds guest orders too
+        if len(parts) >= 2:
+            last_name = parts[-1]
+            graphql_orders = search_orders_by_billing_name(last_name)
+            print(f"[ORDER_LOOKUP] graphql billing_name={last_name!r} → {[o['number'] for o in graphql_orders]}", file=sys.stderr, flush=True)
+            for o in graphql_orders:
+                if any(d in (o.get('customer_email') or '').lower() for d in internal_domains):
+                    continue
+                if o['number'] not in seen:
+                    seen[o['number']] = o
+
     result = list(seen.values())
     result.sort(key=lambda o: o.get('created_at', ''), reverse=True)
     print(f"[ORDER_LOOKUP] FINAL: {[o['number'] for o in result]}", file=sys.stderr, flush=True)
@@ -135,6 +146,81 @@ def get_all_orders_by_customer_name(name):
     # Sort by date descending
     all_orders.sort(key=lambda o: o.get('created_at', ''), reverse=True)
     return all_orders
+
+
+def search_orders_by_billing_name(last_name):
+    """Search Shopify orders by billing last name using GraphQL — finds guest orders too."""
+    shop = os.getenv('SHOPIFY_SHOP')
+    token = os.getenv('SHOPIFY_TOKEN')
+    url = f"https://{shop}/admin/api/2024-01/graphql.json"
+    headers = {'X-Shopify-Access-Token': token, 'Content-Type': 'application/json'}
+    query = """
+    {
+      orders(first: 20, query: "billing_name:%s status:any") {
+        edges {
+          node {
+            name
+            createdAt
+            email
+            financialStatus
+            fulfillmentStatus
+            totalPriceSet { shopMoney { amount currencyCode } }
+            customer { id }
+            shippingAddress { firstName lastName }
+            lineItems(first: 10) {
+              edges {
+                node {
+                  name
+                  quantity
+                  originalUnitPriceSet { shopMoney { amount } }
+                }
+              }
+            }
+            fulfillments {
+              trackingInfo { number url }
+            }
+          }
+        }
+      }
+    }
+    """ % last_name.replace('"', '')
+    try:
+        resp = requests.post(url, headers=headers, json={'query': query}, timeout=10)
+        edges = resp.json().get('data', {}).get('orders', {}).get('edges', [])
+        result = []
+        for edge in edges:
+            node = edge['node']
+            tracking_number = None
+            tracking_url = None
+            for f in node.get('fulfillments', []):
+                for t in f.get('trackingInfo', []):
+                    tracking_number = t.get('number')
+                    tracking_url = t.get('url')
+            shipping = node.get('shippingAddress') or {}
+            products = []
+            for li_edge in node.get('lineItems', {}).get('edges', []):
+                li = li_edge['node']
+                price = float((li.get('originalUnitPriceSet') or {}).get('shopMoney', {}).get('amount') or 0)
+                products.append({'name': li['name'], 'qty': li['quantity'], 'price': price, 'total': price * li['quantity'], 'discount': 0})
+            total_money = node.get('totalPriceSet', {}).get('shopMoney', {})
+            result.append({
+                'number': node['name'],
+                'status': (node.get('financialStatus') or '').lower(),
+                'fulfillment_status': (node.get('fulfillmentStatus') or 'unfulfilled').lower(),
+                'created_at': (node.get('createdAt') or '')[:10],
+                'total': f"{total_money.get('amount', '0')} {total_money.get('currencyCode', 'EUR')}",
+                'customer_name': f"{shipping.get('firstName', '')} {shipping.get('lastName', '')}".strip(),
+                'customer_email': node.get('email', ''),
+                'tracking_number': tracking_number,
+                'tracking_url': tracking_url,
+                'currency': total_money.get('currencyCode', 'EUR'),
+                'shipping': 0,
+                'discount_total': 0,
+                'products': products,
+            })
+        return result
+    except Exception:
+        return []
 
 
 def search_product_price(query):
