@@ -49,12 +49,17 @@ def get_full_order_history(sender_email, customer_name=None):
     Combines: email lookup → customer_id expansion → name search (for multiple Shopify accounts).
     Returns deduplicated list sorted by date desc.
     """
+    import sys
     internal_domains = {'maxsauveur.com', 'maxsauveur.fr'}
     seen = {}  # number → order
 
+    print(f"[ORDER_LOOKUP] email={sender_email!r} name={customer_name!r}", file=sys.stderr, flush=True)
+
     # Step 1: by email (+ customer_id expansion)
     if sender_email and not any(d in sender_email.lower() for d in internal_domains):
-        for o in get_orders_by_email(sender_email):
+        by_email = get_orders_by_email(sender_email)
+        print(f"[ORDER_LOOKUP] by_email: {[o['number'] for o in by_email]}", file=sys.stderr, flush=True)
+        for o in by_email:
             seen[o['number']] = o
 
     # Step 2: by customer name — try multiple strategies to find all accounts
@@ -62,31 +67,33 @@ def get_full_order_history(sender_email, customer_name=None):
         parts = [p for p in customer_name.split() if len(p) >= 3 and '@' not in p]
         search_queries = []
         if len(parts) >= 2:
-            # Full name
             search_queries.append(customer_name)
-            # Last name only (catches "Antoine FAU" even if registered as "A. FAU")
             search_queries.append(parts[-1])
-            # Shopify field-specific syntax
             search_queries.append(f"last_name:{parts[-1]}")
         elif len(parts) == 1:
             search_queries.append(parts[0])
 
         seen_customer_ids = set()
         for query in search_queries:
-            for c in search_customers_by_name(query)[:5]:
+            customers = search_customers_by_name(query)
+            print(f"[ORDER_LOOKUP] query={query!r} → {len(customers)} customers: {[c['name'] for c in customers]}", file=sys.stderr, flush=True)
+            for c in customers[:5]:
                 if any(d in (c.get('email') or '').lower() for d in internal_domains):
                     continue
                 cid = c.get('id')
                 if not cid or cid in seen_customer_ids:
                     continue
                 seen_customer_ids.add(cid)
-                for o in get_all_orders_for_customer(cid):
+                orders_for_c = get_all_orders_for_customer(cid)
+                print(f"[ORDER_LOOKUP] customer {c['name']} ({c['email']}) → {[o['number'] for o in orders_for_c]}", file=sys.stderr, flush=True)
+                for o in orders_for_c:
                     if o['number'] not in seen:
                         seen[o['number']] = o
 
-    orders = list(seen.values())
-    orders.sort(key=lambda o: o.get('created_at', ''), reverse=True)
-    return orders
+    result = list(seen.values())
+    result.sort(key=lambda o: o.get('created_at', ''), reverse=True)
+    print(f"[ORDER_LOOKUP] FINAL: {[o['number'] for o in result]}", file=sys.stderr, flush=True)
+    return result
 
 def search_customers_by_name(name):
     """Search Shopify customers by name, return list of {id, email, name, orders_count}."""

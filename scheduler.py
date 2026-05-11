@@ -85,10 +85,11 @@ def process_new_emails():
             database.save_draft(
                 email_id=email_id,
                 thread_id=email['thread_id'],
-                sender=email['sender'],
+                customer_email=extract_email_address(email['sender']),
+                customer_name=customer_name,
                 subject=email['subject'],
-                body=email['body'],
-                order_info=order_info,
+                email_body=email['body'],
+                order_info_json=order_info,
                 intent=intent_data,
                 draft_response=draft_response
             )
