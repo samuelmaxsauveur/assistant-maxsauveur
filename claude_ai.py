@@ -112,10 +112,9 @@ def generate_response(email_body, email_subject, customer_name, order_info=None,
 
 INSTRUCTIONS :
 1. Utilise EN PRIORITÉ l'historique des échanges pour comprendre le contexte et éviter de répéter des choses déjà dites.
-2. Si tu manques d'informations INDISPENSABLES pour répondre correctement (ex: tu ignores si c'est sous garantie, si le problème a déjà été traité, quelle est la politique applicable, etc.), réponds UNIQUEMENT avec ce JSON :
-   {{"needs_info": true, "questions": ["question 1 ?", "question 2 ?"]}}
-3. Si tu as assez d'éléments : rédige directement le corps du mail de réponse au client (pas de JSON, juste le texte).
-4. Si tu n'as pas de données Wing mais que c'est une question de suivi : génère la réponse avec les infos Shopify disponibles, sans demander à Samuel de cliquer un bouton."""
+2. Génère TOUJOURS une réponse directement. N'utilise JAMAIS le JSON needs_info pour des questions de suivi de commande, de livraison, de statut, de point relais ou de numéro de suivi — utilise les données Shopify et/ou Wing déjà dans le contexte.
+3. Le JSON needs_info est réservé UNIQUEMENT aux cas où une décision commerciale est impossible sans l'avis de Samuel (ex : accorder un geste commercial exceptionnel, savoir si une garantie s'applique dans un cas limite). Utilise-le avec parcimonie.
+4. Si le statut de livraison Shopify est disponible dans le contexte, utilise-le directement sans poser de question."""
     return _call_claude(
         system=get_system_prompt(),
         messages=[{"role": "user", "content": prompt}]
