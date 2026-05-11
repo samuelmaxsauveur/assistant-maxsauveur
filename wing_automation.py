@@ -219,6 +219,115 @@ def get_relay_point_from_wing(order_number):
         return None
 
 
+def get_order_tracking(order_number):
+    """
+    Search Wing for an order and return the tracking link + status.
+    Uses the same search pattern as generate_return_label (which works).
+    """
+    import time
+    order_number = str(order_number).lstrip('#')
+    p, browser, page = _launch()
+    try:
+        _login(page)
+        print(f"[Wing] Searching order #{order_number}...")
+        page.goto(f"{WING_URL}/orders")
+        page.wait_for_selector('input[type="search"]', timeout=10000)
+
+        inp = page.locator('input[type="search"]').first
+        inp.click()
+        inp.fill('')
+        inp.type(order_number, delay=50)
+        page.keyboard.press('Enter')
+        time.sleep(2)
+
+        # Click "Toutes" tab via data-testid (reliable method used in generate_return_label)
+        try:
+            result = page.evaluate("""() => {
+                const btn = document.querySelector('[data-testid="order-tab-all"]');
+                if (btn) { btn.click(); return 'clicked'; }
+                return 'not found';
+            }""")
+            print(f"[Wing] Toutes tab: {result}")
+            time.sleep(3)
+            page.wait_for_selector('tbody tr', timeout=8000)
+            time.sleep(1)
+        except Exception as e:
+            print(f"[Wing] Toutes tab error: {e}")
+
+        # Log page state for debugging
+        page_text = page.inner_text('body')
+        print(f"[Wing] Page text (first 400): {page_text[:400]}")
+
+        # Find the row (try exact match first, then first available row)
+        tracking_number = ''
+        tracking_url = ''
+        row_text = ''
+        try:
+            rows = page.locator('tbody tr').all()
+            print(f"[Wing] Found {len(rows)} rows")
+            row = None
+            for r in rows:
+                txt = r.inner_text().strip()
+                if order_number in txt:
+                    row = r
+                    row_text = txt
+                    break
+            if not row and rows:
+                row = rows[0]
+                row_text = rows[0].inner_text().strip()
+                print(f"[Wing] No exact match, using first row: {row_text[:100]}")
+
+            if row:
+                # Extract all external links from the row
+                for link in row.locator('a').all():
+                    href = link.get_attribute('href') or ''
+                    txt = link.inner_text().strip()
+                    if href.startswith('http') and 'wing' not in href.lower():
+                        tracking_url = href
+                        tracking_number = txt
+                        print(f"[Wing] Tracking link found: {href}")
+                        break
+        except Exception as e:
+            print(f"[Wing] Row extraction error: {e}")
+
+        # Open detail panel for status info
+        panel = ''
+        try:
+            if page.locator('tbody tr').count() > 0:
+                page.locator('tbody tr').first.click()
+                time.sleep(2)
+                panel = _get_panel_text(page)
+        except Exception as e:
+            print(f"[Wing] Panel error: {e}")
+
+        browser.close()
+        p.stop()
+
+        if not row_text and not tracking_url and not panel:
+            print(f"[Wing] Nothing found for #{order_number}")
+            return None
+
+        result = f"Commande : #{order_number}\n"
+        if tracking_number:
+            result += f"Numéro de suivi : {tracking_number}\n"
+        if tracking_url:
+            result += f"Lien de suivi : {tracking_url}\n"
+        if row_text:
+            result += f"Ligne Wing : {row_text}\n"
+        if panel and len(panel) > 20:
+            result += f"Détail : {panel[:400]}"
+        return result.strip()
+
+    except Exception as e:
+        print(f"[Wing] get_order_tracking error: {e}")
+        try:
+            browser.close()
+            p.stop()
+        except Exception:
+            pass
+        return None
+
+
 def generate_return_label(order_number):
     """Generate a return label in Wing and return PDF bytes, or None on failure."""
     import time

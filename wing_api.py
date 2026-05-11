@@ -150,44 +150,85 @@ def generate_return_label(order_number):
         return None
 
 
+def _search_orders_by_ref(token, search_term, limit=5):
+    """Search Wing orders by reference text (Shopify order number or variant)."""
+    query = """
+    query($search: String!, $limit: Int!) {
+      orders(input: { filter: { search: $search }, limit: $limit }) {
+        id
+        ref
+        status
+        recipient {
+          firstName
+          lastName
+          address {
+            line1
+            line2
+            city
+            zip
+            country
+          }
+        }
+        fulfillmentOrders {
+          id
+          status
+          service
+          parcels {
+            id
+            trackingNumber
+          }
+        }
+      }
+    }
+    """
+    result = _gql(query, {"search": search_term, "limit": limit}, token)
+    if 'errors' in result:
+        print(f"[WingAPI] search errors for '{search_term}': {result['errors']}")
+        return []
+    return (result.get('data') or {}).get('orders') or []
+
+
+def _format_order_info(order, search_ref=None):
+    """Format a Wing order dict into a readable text."""
+    lines = []
+    ref = order.get('ref') or search_ref or '?'
+    lines.append(f"Référence Wing : {ref}")
+    lines.append(f"Statut : {order.get('status', '?')}")
+    r = order.get('recipient') or {}
+    addr = r.get('address') or {}
+    name = f"{r.get('firstName', '')} {r.get('lastName', '')}".strip()
+    if name:
+        lines.append(f"Destinataire : {name}")
+    address_parts = [addr.get('line1', ''), addr.get('line2', ''),
+                     f"{addr.get('zip', '')} {addr.get('city', '')}".strip(), addr.get('country', '')]
+    address_str = ', '.join(p for p in address_parts if p)
+    if address_str:
+        lines.append(f"Adresse : {address_str}")
+    for fo in order.get('fulfillmentOrders') or []:
+        service = fo.get('service', '')
+        fo_status = fo.get('status', '?')
+        lines.append(f"Expédition ({service}) : {fo_status}")
+        for parcel in fo.get('parcels') or []:
+            tn = parcel.get('trackingNumber', '')
+            if tn:
+                lines.append(f"Numéro de suivi : {tn}")
+    return '\n'.join(lines)
+
+
 def check_repair_status(order_number):
-    """Get repair order status via Wing API."""
+    """Get repair order status via Wing API (searches by order number variants)."""
     order_number = str(order_number).lstrip('#')
-    suffixes = ['_REPARATION', '_bis', '_reparation', '_réparation']
+    suffixes = ['_REPARATION', '_bis', '_reparation', '_réparation', '']
     try:
         token = _get_token()
         for suffix in suffixes:
             ref = f"{order_number}{suffix}"
-            query = """
-            query($ref: String!) {
-              order(input: { ref: $ref }) {
-                id
-                ref
-                status
-                fulfillmentOrders {
-                  id
-                  status
-                  parcels {
-                    id
-                    trackingNumber
-                  }
-                }
-              }
-            }
-            """
-            result = _gql(query, {"ref": ref}, token)
-            order = (result.get('data') or {}).get('order')
-            if not order:
+            orders = _search_orders_by_ref(token, ref)
+            if not orders:
                 continue
-            fos = order.get('fulfillmentOrders') or []
-            lines = [f"Référence Wing : {ref}", f"Statut : {order.get('status', '?')}"]
-            for fo in fos:
-                lines.append(f"Expédition : {fo.get('status', '?')}")
-                for parcel in fo.get('parcels') or []:
-                    tn = parcel.get('trackingNumber', '')
-                    if tn:
-                        lines.append(f"Numéro de suivi : {tn}")
-            return '\n'.join(lines)
+            # Pick the most relevant match
+            order = next((o for o in orders if ref.lower() in (o.get('ref') or '').lower()), orders[0])
+            return _format_order_info(order, ref)
         return None
     except Exception as e:
         print(f"[WingAPI] check_repair_status error: {e}")
@@ -199,30 +240,10 @@ def get_relay_point_from_wing(order_number):
     order_number = str(order_number).lstrip('#')
     try:
         token = _get_token()
-        query = """
-        query($ref: String!) {
-          order(input: { ref: $ref }) {
-            id
-            ref
-            status
-            recipient {
-              firstName
-              lastName
-              address {
-                line1
-                line2
-                city
-                zip
-                country
-              }
-            }
-          }
-        }
-        """
-        result = _gql(query, {"ref": order_number}, token)
-        order = (result.get('data') or {}).get('order')
-        if not order:
+        orders = _search_orders_by_ref(token, order_number)
+        if not orders:
             return None
+        order = next((o for o in orders if order_number in (o.get('ref') or '')), orders[0])
         r = order.get('recipient') or {}
         addr = r.get('address') or {}
         parts = [

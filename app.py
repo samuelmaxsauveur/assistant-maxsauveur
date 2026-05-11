@@ -286,6 +286,13 @@ def send_ajax():
     gmail_helper.send_email(service, data['to'], f"Re: {data['subject']}", data['body'], data.get('thread_id'))
     if data.get('email_id'):
         gmail_helper.mark_as_read(service, data['email_id'])
+    database.log_sent_email(
+        to_email=data['to'],
+        subject=f"Re: {data['subject']}",
+        body=data['body'],
+        source='reply',
+        thread_id=data.get('thread_id')
+    )
     return jsonify({'success': True})
 
 @app.route('/change-relay', methods=['POST'])
@@ -507,27 +514,20 @@ def wing_debug_search(order_number):
 
 @app.route('/wing/lookup', methods=['POST'])
 def wing_lookup():
-    """Manually fetch Wing info for an order number — relay point + repair status."""
+    """Fetch Wing info for an order via browser automation: tracking link + repair status."""
     data = request.json or {}
     order_num = str(data.get('order_number', '')).replace('#', '').strip()
     if not order_num:
         return jsonify({'success': False, 'error': 'Numéro de commande requis'})
-    results = {}
-    # Try repair order (_bis and variants)
-    try:
-        repair_info = wing_api.check_repair_status(order_num)
-        results['repair'] = repair_info
-    except Exception as e:
-        results['repair_error'] = str(e)
-    # Try relay point on base order
-    try:
-        relay_info = wing_api.get_relay_point_from_wing(order_num)
-        results['relay'] = relay_info
-    except Exception as e:
-        results['relay_error'] = str(e)
-    if not results.get('repair') and not results.get('relay'):
-        return jsonify({'success': False, 'error': 'Aucune info trouvée dans Wing', 'details': results})
-    return jsonify({'success': True, 'data': results})
+    # Try base order first (tracking colis)
+    tracking = wing_automation.get_order_tracking(order_num)
+    if tracking:
+        return jsonify({'success': True, 'data': {'relay': tracking, 'repair': None}})
+    # Fallback: try repair variants
+    repair = wing_automation.check_repair_status(order_num)
+    if repair:
+        return jsonify({'success': True, 'data': {'relay': None, 'repair': repair}})
+    return jsonify({'success': False, 'error': 'Aucune info trouvée dans Wing', 'details': {'relay': None, 'repair': None}})
 
 
 @app.route('/wing', methods=['GET', 'POST'])

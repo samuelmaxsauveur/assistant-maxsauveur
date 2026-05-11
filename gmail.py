@@ -1,5 +1,7 @@
 import os
 import re
+import html as html_lib
+import quopri
 import json
 import unicodedata
 import base64
@@ -114,14 +116,33 @@ def parse_email(email_data):
     }
 
 
+def _clean_text(text):
+    """Decode HTML entities, quoted-printable, and collapse whitespace."""
+    if not text:
+        return ''
+    # Decode quoted-printable soft line breaks (=\n) and encoded chars (=XX)
+    try:
+        text = quopri.decodestring(text.encode()).decode('utf-8', errors='ignore')
+    except Exception:
+        pass
+    # Decode HTML entities (&lt; &gt; &amp; &#13; etc.)
+    text = html_lib.unescape(text)
+    # Collapse excessive blank lines (keep max 2 newlines in a row)
+    text = re.sub(r'\n{3,}', '\n\n', text)
+    return text.strip()
+
+
 def get_email_body(payload):
     # Recursive search: prioritize text/plain, fallback to text/html stripped
     plain = _find_body(payload, 'text/plain')
     if plain:
-        return plain
+        return _clean_text(plain)
     html = _find_body(payload, 'text/html')
     if html:
-        return re.sub(r'<[^>]+>', ' ', html).strip()
+        # Remove tags, then decode remaining entities
+        stripped = re.sub(r'<[^>]+>', ' ', html)
+        stripped = re.sub(r'[ \t]+', ' ', stripped)
+        return _clean_text(stripped)
     return ''
 
 

@@ -275,6 +275,12 @@ def outbound_send():
     try:
         service = _get_service()
         gmail_helper.send_email(service, customer_email, subject, body)
+        database.log_sent_email(
+            to_email=customer_email,
+            subject=subject,
+            body=body,
+            source='outbound'
+        )
         return jsonify({'success': True})
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)})
@@ -336,6 +342,46 @@ def update_status():
 
     database.add_sav_status_history(case_id, new_status, note=note or None, notified=notified)
     return jsonify({'success': True, 'notified': notified})
+
+
+@sav.route('/sav/knowledge')
+def knowledge_base():
+    patterns = database.get_response_patterns()
+    return render_template('knowledge.html', patterns=patterns)
+
+
+@sav.route('/sav/knowledge/update', methods=['POST'])
+def knowledge_update():
+    """Manually trigger a knowledge base update from recent sent emails."""
+    import claude_ai as ai
+    try:
+        sent = database.get_today_sent_emails()
+        if not sent:
+            return jsonify({'success': False, 'message': 'Aucun email envoyé aujourd\'hui'})
+        existing = database.get_response_patterns()
+        patterns = ai.extract_response_patterns(sent, existing)
+        for p in patterns:
+            database.upsert_response_pattern(
+                topic=p['topic'],
+                topic_label=p['topic_label'],
+                situation=p['situation'],
+                response_template=p['response_template'],
+                key_points=p.get('key_points', '')
+            )
+        return jsonify({'success': True, 'updated': len(patterns)})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)})
+
+
+@sav.route('/sav/knowledge/delete/<int:pattern_id>', methods=['POST'])
+def knowledge_delete(pattern_id):
+    conn = database.get_connection()
+    try:
+        conn.execute("DELETE FROM response_patterns WHERE id = ?", (pattern_id,))
+        conn.commit()
+    finally:
+        conn.close()
+    return jsonify({'success': True})
 
 
 @sav.route('/sav/case/<int:case_id>')

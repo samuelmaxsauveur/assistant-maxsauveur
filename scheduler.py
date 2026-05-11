@@ -203,13 +203,31 @@ def generate_and_save_daily_summary():
         drafts_today = database.get_today_drafts()
         questions_today = database.get_today_questions()
         rejections_today = database.get_today_rejections()
-        if not drafts_today and not questions_today and not rejections_today:
+        sent_today = database.get_today_sent_emails()
+        if not drafts_today and not questions_today and not rejections_today and not sent_today:
             print(f"[{datetime.now()}] Nothing to summarize today, skipping.")
             return
-        summary_text = claude_ai.generate_daily_summary(drafts_today, questions_today, rejections_today)
+        summary_text = claude_ai.generate_daily_summary(drafts_today, questions_today, rejections_today, sent_today)
         if summary_text:
             database.save_daily_summary(today_date, summary_text)
             print(f"[{datetime.now()}] Daily summary saved for {today_date}.")
+
+        # Update response patterns knowledge base
+        if sent_today:
+            try:
+                existing_patterns = database.get_response_patterns()
+                patterns = claude_ai.extract_response_patterns(sent_today, existing_patterns)
+                for p in patterns:
+                    database.upsert_response_pattern(
+                        topic=p['topic'],
+                        topic_label=p['topic_label'],
+                        situation=p['situation'],
+                        response_template=p['response_template'],
+                        key_points=p.get('key_points', '')
+                    )
+                print(f"[{datetime.now()}] Updated {len(patterns)} response pattern(s).")
+            except Exception as e:
+                print(f"[{datetime.now()}] Error updating response patterns: {e}")
     except Exception as e:
         print(f"[{datetime.now()}] Error generating daily summary: {e}")
 

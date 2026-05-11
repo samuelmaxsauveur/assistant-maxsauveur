@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base de référence — Max Sauveur</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            color: #222;
+            padding: 24px 16px;
+        }
+        .header {
+            max-width: 900px;
+            margin: 0 auto 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .header h1 { font-size: 22px; font-weight: 700; }
+        .header p { color: #666; font-size: 14px; margin-top: 4px; }
+        .header-actions { display: flex; gap: 10px; }
+        .btn {
+            padding: 9px 16px;
+            border-radius: 7px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-primary { background: #1a1a1a; color: #fff; }
+        .btn-primary:hover { background: #333; }
+        .btn-secondary { background: #fff; color: #333; border: 1px solid #ddd; }
+        .btn-secondary:hover { background: #f0f0f0; }
+        .btn-danger { background: #fee2e2; color: #b91c1c; border: none; font-size: 12px; padding: 5px 10px; }
+        .btn-danger:hover { background: #fecaca; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+            background: #fff;
+            border-radius: 12px;
+            border: 1px dashed #ddd;
+        }
+        .empty p { font-size: 15px; margin-bottom: 8px; }
+        .empty small { font-size: 13px; }
+        .pattern-card {
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid #e8e8e8;
+            padding: 22px 24px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+        .pattern-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .pattern-title {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        .pattern-meta {
+            font-size: 12px;
+            color: #999;
+            margin-top: 3px;
+        }
+        .badge {
+            background: #f0f0f0;
+            color: #555;
+            border-radius: 20px;
+            padding: 3px 10px;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        .section-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #999;
+            margin-bottom: 6px;
+            margin-top: 14px;
+        }
+        .situation-text {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+        }
+        .response-box {
+            background: #f8f8f8;
+            border-left: 3px solid #1a1a1a;
+            border-radius: 0 6px 6px 0;
+            padding: 12px 14px;
+            font-size: 13.5px;
+            color: #333;
+            white-space: pre-wrap;
+            line-height: 1.55;
+            margin-top: 6px;
+        }
+        .key-points {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.5;
+            margin-top: 6px;
+        }
+        .divider { border: none; border-top: 1px solid #f0f0f0; margin: 14px 0; }
+        .update-banner {
+            background: #fff9e6;
+            border: 1px solid #f5c842;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #6b4c00;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        #update-result { font-size: 13px; color: #333; }
+        @media (max-width: 600px) {
+            body { padding: 16px 12px; }
+            .pattern-card { padding: 16px; }
+            .header h1 { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div>
+        <h1>Base de référence Process</h1>
+        <p>Fiches auto-générées à partir des emails validés et envoyés</p>
+    </div>
+    <div class="header-actions">
+        <a href="/sav" class="btn btn-secondary">← SAV</a>
+        <button class="btn btn-primary" onclick="triggerUpdate()">Mettre à jour maintenant</button>
+    </div>
+</div>
+
+<div class="container">
+    <div id="update-result"></div>
+
+    {% if not patterns %}
+    <div class="empty">
+        <p>Aucune fiche de référence pour l'instant.</p>
+        <small>Les fiches se créent automatiquement chaque soir à 20h à partir des emails envoyés,<br>ou manuellement avec le bouton "Mettre à jour maintenant".</small>
+    </div>
+    {% else %}
+    <p style="font-size:13px; color:#888; margin-bottom:18px;">{{ patterns|length }} fiche(s) — mise à jour automatique chaque soir à 20h</p>
+    {% for p in patterns %}
+    <div class="pattern-card" id="card-{{ p.id }}">
+        <div class="pattern-header">
+            <div>
+                <div class="pattern-title">{{ p.topic_label }}</div>
+                <div class="pattern-meta">
+                    {{ p.example_count }} exemple(s) · Dernière mise à jour : {{ p.last_updated[:10] }}
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+                <span class="badge">{{ p.topic }}</span>
+                <button class="btn btn-danger" onclick="deletePattern({{ p.id }})">Supprimer</button>
+            </div>
+        </div>
+
+        <div class="section-label">Quand cette situation se présente</div>
+        <div class="situation-text">{{ p.situation }}</div>
+
+        <div class="section-label" style="margin-top:16px;">Modèle de réponse</div>
+        <div class="response-box">{{ p.response_template }}</div>
+
+        {% if p.key_points %}
+        <hr class="divider">
+        <div class="section-label">Points clés</div>
+        <div class="key-points">{{ p.key_points }}</div>
+        {% endif %}
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+
+<script>
+async function triggerUpdate() {
+    const el = document.getElementById('update-result');
+    el.innerHTML = '<div style="padding:12px 16px;background:#f0f7ff;border-radius:8px;border:1px solid #b3d4f5;font-size:14px;color:#1a4a8c;margin-bottom:16px;">Analyse en cours...</div>';
+    try {
+        const r = await fetch('/sav/knowledge/update', { method: 'POST' });
+        const data = await r.json();
+        if (data.success) {
+            el.innerHTML = `<div style="padding:12px 16px;background:#f0fff4;border-radius:8px;border:1px solid #86efac;font-size:14px;color:#166534;margin-bottom:16px;">${data.updated} fiche(s) mise(s) à jour. <a href="" style="color:#166534;">Actualiser la page</a></div>`;
+        } else {
+            el.innerHTML = `<div style="padding:12px 16px;background:#fff9e6;border-radius:8px;border:1px solid #f5c842;font-size:14px;color:#6b4c00;margin-bottom:16px;">${data.message || data.error}</div>`;
+        }
+    } catch(e) {
+        el.innerHTML = '<div style="padding:12px 16px;background:#fee2e2;border-radius:8px;border:1px solid #fca5a5;font-size:14px;color:#b91c1c;margin-bottom:16px;">Erreur lors de la mise à jour.</div>';
+    }
+}
+
+async function deletePattern(id) {
+    if (!confirm('Supprimer cette fiche ?')) return;
+    const r = await fetch(`/sav/knowledge/delete/${id}`, { method: 'POST' });
+    const data = await r.json();
+    if (data.success) {
+        const card = document.getElementById(`card-${id}`);
+        card.style.transition = 'opacity 0.3s';
+        card.style.opacity = '0';
+        setTimeout(() => card.remove(), 300);
+    }
+}
+</script>
+</body>
+</html>

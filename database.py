@@ -106,6 +106,30 @@ def init_db():
                 updated_at   TIMESTAMP NOT NULL
             )
         """)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS sent_emails (
+                id          INTEGER PRIMARY KEY AUTOINCREMENT,
+                to_email    TEXT NOT NULL,
+                subject     TEXT NOT NULL,
+                body        TEXT NOT NULL,
+                source      TEXT NOT NULL DEFAULT 'reply',
+                thread_id   TEXT,
+                sent_at     TIMESTAMP NOT NULL
+            )
+        """)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS response_patterns (
+                id               INTEGER PRIMARY KEY AUTOINCREMENT,
+                topic            TEXT NOT NULL UNIQUE,
+                topic_label      TEXT NOT NULL,
+                situation        TEXT NOT NULL,
+                response_template TEXT NOT NULL,
+                key_points       TEXT,
+                example_count    INTEGER NOT NULL DEFAULT 1,
+                last_updated     TIMESTAMP NOT NULL,
+                created_at       TIMESTAMP NOT NULL
+            )
+        """)
         conn.commit()
     finally:
         conn.close()
@@ -132,6 +156,74 @@ def get_outbound_template(subject_type):
         )
         row = cursor.fetchone()
         return row['body'] if row else None
+    finally:
+        conn.close()
+
+
+def log_sent_email(to_email, subject, body, source='reply', thread_id=None):
+    """Log an email actually sent to a customer (final text, not just draft)."""
+    now = datetime.utcnow().isoformat()
+    conn = get_connection()
+    try:
+        conn.execute(
+            "INSERT INTO sent_emails (to_email, subject, body, source, thread_id, sent_at) VALUES (?, ?, ?, ?, ?, ?)",
+            (to_email, subject, body, source, thread_id, now)
+        )
+        conn.commit()
+    finally:
+        conn.close()
+
+
+def get_today_sent_emails():
+    """Return all emails sent today (UTC date)."""
+    today = datetime.utcnow().strftime("%Y-%m-%d")
+    conn = get_connection()
+    try:
+        cursor = conn.execute(
+            "SELECT * FROM sent_emails WHERE sent_at LIKE ? ORDER BY sent_at ASC",
+            (f"{today}%",)
+        )
+        return [dict(row) for row in cursor.fetchall()]
+    finally:
+        conn.close()
+
+
+def get_response_patterns():
+    """Return all response patterns ordered by topic."""
+    conn = get_connection()
+    try:
+        cursor = conn.execute(
+            "SELECT * FROM response_patterns ORDER BY topic_label ASC"
+        )
+        return [dict(row) for row in cursor.fetchall()]
+    finally:
+        conn.close()
+
+
+def upsert_response_pattern(topic, topic_label, situation, response_template, key_points):
+    """Insert or update a response pattern. If topic exists, update content and increment count."""
+    now = datetime.utcnow().isoformat()
+    conn = get_connection()
+    try:
+        existing = conn.execute(
+            "SELECT id, example_count FROM response_patterns WHERE topic = ?", (topic,)
+        ).fetchone()
+        if existing:
+            conn.execute(
+                """UPDATE response_patterns
+                   SET topic_label=?, situation=?, response_template=?, key_points=?,
+                       example_count=example_count+1, last_updated=?
+                   WHERE topic=?""",
+                (topic_label, situation, response_template, key_points, now, topic)
+            )
+        else:
+            conn.execute(
+                """INSERT INTO response_patterns
+                   (topic, topic_label, situation, response_template, key_points, example_count, last_updated, created_at)
+                   VALUES (?, ?, ?, ?, ?, 1, ?, ?)""",
+                (topic, topic_label, situation, response_template, key_points, now, now)
+            )
+        conn.commit()
     finally:
         conn.close()
 

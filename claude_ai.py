@@ -220,9 +220,9 @@ Réponds UNIQUEMENT avec le JSON, rien d'autre."""
     return {"samuel_answer": "", "updated_draft": raw}
 
 
-def generate_daily_summary(drafts_today, questions_today=None, rejections_today=None):
+def generate_daily_summary(drafts_today, questions_today=None, rejections_today=None, sent_today=None):
     """Generate a summary of the day's emails, questions and corrections for future reference."""
-    if not drafts_today and not questions_today and not rejections_today:
+    if not drafts_today and not questions_today and not rejections_today and not sent_today:
         return None
 
     drafts_text = ""
@@ -242,13 +242,20 @@ def generate_daily_summary(drafts_today, questions_today=None, rejections_today=
         for r in rejections_today:
             rejections_text += f"\nEmail: {r.get('subject', '')} ({r.get('customer_name', '')})\nCommentaire: {r['rejection_comment']}\n"
 
+    sent_text = ""
+    if sent_today:
+        sent_text = "\n\n--- EMAILS RÉELLEMENT ENVOYÉS AUJOURD'HUI ---\n"
+        for s in sent_today:
+            source_label = "Réponse client" if s.get('source') == 'reply' else "Email sortant"
+            sent_text += f"\n[{source_label}] À: {s['to_email']} | Sujet: {s['subject']}\n{s['body'][:300]}{'...' if len(s['body']) > 300 else ''}\n"
+
     prompt = f"""Voici les emails traités aujourd'hui par le service client Max Sauveur :
 
-{drafts_text}{questions_text}{rejections_text}
+{drafts_text}{questions_text}{rejections_text}{sent_text}
 
 Génère un résumé TRÈS concis (max 400 mots) structuré ainsi :
 1. Types de questions reçues aujourd'hui
-2. Réponses types données (ce qui a bien marché)
+2. Réponses types données (ce qui a bien marché) — basées sur les emails réellement envoyés
 3. Corrections apportées par Samuel (ce qu'il faut améliorer)
 4. Points d'attention à retenir pour les prochains jours
 
@@ -261,6 +268,68 @@ Ce résumé servira de référence pour répondre aux futurs emails."""
         messages=[{"role": "user", "content": prompt}]
     )
     return message.content[0].text
+
+
+def extract_response_patterns(sent_emails, existing_patterns):
+    """
+    Analyze today's sent emails and return a list of patterns to upsert.
+    Each pattern has: topic, topic_label, situation, response_template, key_points.
+    Only returns patterns where the response brings something new or confirms an existing approach.
+    """
+    if not sent_emails:
+        return []
+
+    existing_summary = ""
+    if existing_patterns:
+        existing_summary = "\n\nFICHES EXISTANTES (topics déjà connus) :\n"
+        for p in existing_patterns:
+            existing_summary += f"- {p['topic']} : {p['topic_label']} — {p['situation'][:120]}\n"
+
+    emails_text = ""
+    for s in sent_emails:
+        source_label = "Réponse à un client" if s.get('source') == 'reply' else "Email sortant"
+        emails_text += f"\n[{source_label}]\nÀ : {s['to_email']}\nSujet : {s['subject']}\nContenu :\n{s['body']}\n---\n"
+
+    prompt = f"""Tu es l'assistant de Max Sauveur (marque de lunettes de soleil).
+Voici les emails envoyés aux clients aujourd'hui :{emails_text}{existing_summary}
+
+Pour chaque email, identifie le type de situation client traité et extrait la réponse validée.
+Regroupe les emails similaires ensemble.
+
+Retourne UNIQUEMENT un JSON valide (liste) comme ceci :
+[
+  {{
+    "topic": "slug_snake_case_unique",
+    "topic_label": "Titre court lisible (ex: Retour produit défectueux)",
+    "situation": "Description en 2-3 phrases de quand cette situation se présente",
+    "response_template": "Modèle de réponse extrait de l'email validé (adapté pour être réutilisé, avec [Prénom] pour les variables)",
+    "key_points": "Points clés à retenir : ton, engagements, formulations importantes"
+  }}
+]
+
+Règles :
+- Ne crée pas de fiche si l'email est trop vague ou hors sujet
+- Si le topic existe déjà dans les fiches existantes, retourne quand même la fiche avec le contenu MIS À JOUR si la réponse apporte une nuance nouvelle — sinon ne l'inclus pas
+- Maximum 5 fiches par appel
+- Réponds UNIQUEMENT avec le JSON, aucun texte autour"""
+
+    client = anthropic.Anthropic(api_key=os.getenv('ANTHROPIC_API_KEY'))
+    message = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=2000,
+        messages=[{"role": "user", "content": prompt}]
+    )
+    raw = message.content[0].text.strip()
+    # Extract JSON array from response
+    import re as _re
+    match = _re.search(r'\[.*\]', raw, _re.DOTALL)
+    if not match:
+        return []
+    try:
+        import json as _json
+        return _json.loads(match.group(0))
+    except Exception:
+        return []
 
 
 def detect_intent(email_body, email_subject):
