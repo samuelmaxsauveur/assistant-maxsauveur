@@ -549,22 +549,33 @@ def generate_outbound_email(customer_name, customer_email, subject_type, user_dr
         feedback_block = f"\n\nVersion précédente générée :\n{previous_draft}\n\nCorrection demandée par Samuel : {feedback}\nRéécris l'email en tenant compte de cette correction."
     elif feedback:
         feedback_block = f"\n\nInstruction : {feedback}"
-    # Inject saved template as style reference if available
+    # Inject saved template as strict reference if available
     template_block = ""
+    has_saved_template = False
     try:
         import database as _db
         saved = _db.get_outbound_template(subject_type)
         if saved:
-            template_block = f"\n\nMODÈLE DE RÉFÉRENCE (email validé précédemment pour ce type — respecte ce style, ce ton et cette structure) :\n{saved}"
+            has_saved_template = True
+            template_block = f"\n\nMODÈLE VALIDÉ À SUIVRE OBLIGATOIREMENT :\n---\n{saved}\n---"
     except Exception:
         pass
+
+    if has_saved_template:
+        instruction = """INSTRUCTION PRINCIPALE : Un modèle validé est fourni ci-dessus.
+Génère un email TRÈS proche de ce modèle en adaptant UNIQUEMENT les variables (prénom client, numéro de commande, montants, produits).
+Ne change pas la structure, le ton, ni les formulations du modèle.
+Si des notes de Samuel sont fournies, intègre-les sans dénaturer le modèle."""
+    else:
+        instruction = """Rédige un email complet, professionnel et humain dans le style de John (service client Max Sauveur).
+Respecte les règles habituelles : pas de tiret long, pas de "Bonne nouvelle", signature John – Service Client – Max Sauveur.
+Si des notes sont fournies, utilise-les comme base mais reformule et complète."""
+
     prompt = f"""Tu dois rédiger un email sortant à envoyer à un client Max Sauveur.
 
 Client : {customer_name} ({customer_email}){order_context}{type_context}{template_block}{draft_block}{feedback_block}
 
-Rédige un email complet, professionnel et humain dans le style de John (service client Max Sauveur).
-Respecte les règles habituelles : pas de tiret long, pas de "Bonne nouvelle", signature John – Service Client – Max Sauveur.
-Si des notes sont fournies, utilise-les comme base mais reformule et complète.
+{instruction}
 Réponds uniquement avec le corps de l'email, rien d'autre."""
     return _call_claude(
         system=get_system_prompt(),
