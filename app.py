@@ -110,13 +110,19 @@ def _lookup_order_by_name(name, body=''):
         if sig_after_close:
             name_candidates.append(sig_after_close.group(1).strip())
 
-        # Pattern 2: standalone "Prénom NOM" line (first + last where last can be ALL CAPS)
-        # Matches "Antoine FAU" or "Antoine Fau"
+        # Pattern 2: standalone "Prénom Nom" line on its own line
+        # Handles: "Antoine FAU", "Antoine Fau", "ANTOINE FAU", "Jean-Pierre Dupont"
         standalone = re.findall(
-            r'^([A-ZÀ-Ý][a-zà-ý]{1,20}\s+[A-ZÀ-Ý]{2,20})$',
+            r'^([A-ZÀ-Ýa-zà-ý][a-zA-Zà-ÿÀ-Ÿ\-]{1,20}\s+[a-zA-ZÀ-Ÿ\-]{2,25})$',
             tail, re.MULTILINE
         )
-        name_candidates.extend(standalone)
+        # Filter out obvious non-names (lines with common words)
+        skip_words = {'téléphone', 'telephone', 'mobile', 'adresse', 'address', 'mails',
+                      'email', 'bonjour', 'bonsoir', 'merci', 'cordialement', 'cdlt',
+                      'service', 'client', 'contact', 'france', 'paris', 'lyon'}
+        for s in standalone:
+            if s.lower().split()[0] not in skip_words and s.lower().split()[-1] not in skip_words:
+                name_candidates.append(s)
 
         # Pattern 3: "Nom : Antoine FAU" or "Name: Antoine FAU"
         labeled = re.search(
