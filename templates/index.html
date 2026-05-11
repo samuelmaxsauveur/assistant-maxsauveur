@@ -317,7 +317,8 @@ const emailData = {
         subject: {{ item.email.subject | tojson }},
         sender: {{ item.email.sender | tojson }},
         sender_email: {{ item.sender_email | tojson }},
-        order: {{ item.order | tojson if item.order else 'null' }}
+        order: {{ item.order | tojson if item.order else 'null' }},
+        orders: {{ item.orders | tojson if item.orders else 'null' }}
     },
     {% endfor %}
 };

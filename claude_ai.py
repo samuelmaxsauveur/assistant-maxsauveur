@@ -58,7 +58,7 @@ def get_system_prompt():
     return BASE_SYSTEM_PROMPT
 
 
-def _build_context(email_body, email_subject, customer_name, order_info=None, history=None):
+def _build_context(email_body, email_subject, customer_name, order_info=None, history=None, orders=None):
     context = f"Email de : {customer_name}\nSujet : {email_subject}\n\nContenu :\n{email_body}"
     # History FIRST — highest priority context
     if history:
@@ -66,19 +66,41 @@ def _build_context(email_body, email_subject, customer_name, order_info=None, hi
         for h in history:
             direction = "Client →" if h['direction'] == 'received' else "Nous →"
             context += f"\n[{h['date']}] {direction} {h['subject']}\n{h['body'][:600]}\n"
-    if order_info:
-        context += f"\n\n--- Infos commande ---"
-        context += f"\nNuméro : {order_info['number']}"
-        context += f"\nStatut paiement : {order_info['status']}"
-        context += f"\nStatut livraison : {order_info['fulfillment_status']}"
-        context += f"\nDate : {order_info['created_at']}"
-        context += f"\nTotal : {order_info['total']}"
-        if order_info.get('tracking_number'):
-            context += f"\nN° suivi : {order_info['tracking_number']}"
-        if order_info.get('tracking_url'):
-            context += f"\nLien suivi : {order_info['tracking_url']}"
-        items_str = ', '.join([f"{i['name']} x{i['qty']}" for i in order_info['products']])
-        context += f"\nArticles : {items_str}"
+
+    # Build the list of orders to display
+    orders_to_show = orders if orders else ([] if not order_info else [order_info])
+
+    if orders_to_show:
+        if len(orders_to_show) == 1:
+            o = orders_to_show[0]
+            context += "\n\n--- Infos commande ---"
+            context += f"\nNuméro : {o['number']}"
+            context += f"\nStatut paiement : {o['status']}"
+            context += f"\nStatut livraison : {o['fulfillment_status']}"
+            context += f"\nDate : {o['created_at']}"
+            context += f"\nTotal : {o['total']}"
+            if o.get('tracking_number'):
+                context += f"\nN° suivi : {o['tracking_number']}"
+            if o.get('tracking_url'):
+                context += f"\nLien suivi : {o['tracking_url']}"
+            items_str = ', '.join([f"{p['name']} x{p['qty']}" for p in o['products']])
+            context += f"\nArticles : {items_str}"
+        else:
+            context += f"\n\n--- Historique commandes client ({len(orders_to_show)} commandes) — lis l'email pour identifier laquelle est concernée ---"
+            for idx, o in enumerate(orders_to_show):
+                label = " (la plus récente)" if idx == 0 else ""
+                context += f"\n\n[Commande {idx + 1}{label}]"
+                context += f"\nNuméro : {o['number']}"
+                context += f"\nDate : {o['created_at']}"
+                context += f"\nStatut livraison : {o['fulfillment_status']}"
+                context += f"\nTotal : {o['total']}"
+                if o.get('tracking_number'):
+                    context += f"\nN° suivi : {o['tracking_number']}"
+                if o.get('tracking_url'):
+                    context += f"\nLien suivi : {o['tracking_url']}"
+                items_str = ', '.join([f"{p['name']} x{p['qty']}" for p in o['products']])
+                context += f"\nArticles : {items_str}"
+
     return context
 
 
@@ -100,8 +122,8 @@ def _call_claude(system, messages, max_tokens=1024):
             raise e
 
 
-def generate_response(email_body, email_subject, customer_name, order_info=None, history=None, wing_context=''):
-    context = _build_context(email_body, email_subject, customer_name, order_info, history)
+def generate_response(email_body, email_subject, customer_name, order_info=None, history=None, wing_context='', orders=None):
+    context = _build_context(email_body, email_subject, customer_name, order_info, history, orders=orders)
     if wing_context:
         context += wing_context
     prompt = f"""Voici un email de support client à traiter :
@@ -112,18 +134,19 @@ def generate_response(email_body, email_subject, customer_name, order_info=None,
 
 INSTRUCTIONS :
 1. Utilise EN PRIORITÉ l'historique des échanges pour comprendre le contexte et éviter de répéter des choses déjà dites.
-2. Génère TOUJOURS une réponse directement. N'utilise JAMAIS le JSON needs_info pour des questions de suivi de commande, de livraison, de statut, de point relais ou de numéro de suivi — utilise les données Shopify et/ou Wing déjà dans le contexte.
-3. Le JSON needs_info est réservé UNIQUEMENT aux cas où une décision commerciale est impossible sans l'avis de Samuel (ex : accorder un geste commercial exceptionnel, savoir si une garantie s'applique dans un cas limite). Utilise-le avec parcimonie.
-4. Si le statut de livraison Shopify est disponible dans le contexte, utilise-le directement sans poser de question."""
+2. Si le contexte contient PLUSIEURS commandes client : lis attentivement l'email pour identifier quelle commande est concernée (produit mentionné, numéro de commande, description). Utilise UNIQUEMENT la commande pertinente dans ta réponse. Ne parle jamais d'une commande qui n'est pas mentionnée dans l'email.
+3. Génère TOUJOURS une réponse directement. N'utilise JAMAIS le JSON needs_info pour des questions de suivi de commande, de livraison, de statut, de point relais ou de numéro de suivi — utilise les données Shopify et/ou Wing déjà dans le contexte.
+4. Le JSON needs_info est réservé UNIQUEMENT aux cas où une décision commerciale est impossible sans l'avis de Samuel (ex : accorder un geste commercial exceptionnel, savoir si une garantie s'applique dans un cas limite). Utilise-le avec parcimonie.
+5. Si le statut de livraison Shopify est disponible dans le contexte, utilise-le directement sans poser de question."""
     return _call_claude(
         system=get_system_prompt(),
         messages=[{"role": "user", "content": prompt}]
     )
 
 
-def answer_question(email_body, email_subject, customer_name, order_info, question, previous_exchanges=None):
+def answer_question(email_body, email_subject, customer_name, order_info, question, previous_exchanges=None, orders=None):
     """Samuel asks a question about how to handle this email. Returns dict with samuel_answer and updated_draft."""
-    context = _build_context(email_body, email_subject, customer_name, order_info)
+    context = _build_context(email_body, email_subject, customer_name, order_info, orders=orders)
 
     # If question is about price, search current catalog prices in Shopify
     price_catalog = ""
@@ -197,6 +220,7 @@ Samuel (le responsable) te demande maintenant :
 {question}
 
 Utilise tous les éléments ci-dessus pour répondre.
+Si le contexte contient PLUSIEURS commandes client, identifie laquelle est concernée par l'email (produit mentionné, numéro, description) et n'utilise que celle-là.
 Si le contexte contient un "Numéro de suivi" et un "Lien de suivi" Wing, intègre-les DIRECTEMENT dans le updated_draft (ne les omets pas, ne demande pas de confirmation).
 
 Réponds en JSON strict avec exactement ces deux champs :

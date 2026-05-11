@@ -24,30 +24,44 @@ app.register_blueprint(client_bp)
 gmail_service = None
 
 def _fetch_order_for_email(email):
-    """Fetch Shopify order for a single email. Runs in thread pool."""
-    # Search subject first (higher priority), then body
+    """Fetch Shopify orders for a single email. Returns all orders for the customer."""
     order_number = claude_ai.extract_order_number(email['subject']) or \
                    claude_ai.extract_order_number(email['body'])
-    order_info = None
-    try:
-        if order_number:
-            order_info = shopify_api.get_order_by_number(order_number)
-    except Exception:
-        pass
     sender_email, customer_name = resolve_sender(email['sender'], email['body'])
-    try:
-        if not order_info:
-            orders = shopify_api.get_orders_by_email(sender_email)
-            if orders:
-                order_info = orders[0]
-    except Exception:
-        pass
-    # Last resort: search by name
-    if not order_info:
-        order_info = _lookup_order_by_name(customer_name, email['body'])
+
+    all_orders = []
+
+    # Step 1: get all orders by sender email (full history)
+    if sender_email:
+        try:
+            all_orders = shopify_api.get_orders_by_email(sender_email) or []
+        except Exception:
+            pass
+
+    # Step 2: if a specific order number was mentioned, make sure it's first
+    if order_number:
+        mentioned = next(
+            (o for o in all_orders if str(o.get('number', '')).lstrip('#') == str(order_number)),
+            None
+        )
+        if mentioned:
+            all_orders = [mentioned] + [o for o in all_orders if o is not mentioned]
+        elif not all_orders:
+            try:
+                specific = shopify_api.get_order_by_number(order_number)
+                if specific:
+                    all_orders = [specific]
+            except Exception:
+                pass
+
+    # Step 3: last resort — search by name
+    if not all_orders:
+        all_orders = _lookup_orders_by_name(customer_name, email['body'])
+
     return {
         'email': email,
-        'order': order_info,
+        'order': all_orders[0] if all_orders else None,
+        'orders': all_orders,
         'sender_email': sender_email,
         'intent': {"intent": "other", "address": None, "has_full_address": False},
         'draft_response': ''
@@ -70,13 +84,13 @@ def extract_customer_name(sender):
         return match.group(1).strip().strip('"')
     return sender
 
-def _lookup_order_by_name(name, body=''):
+def _lookup_orders_by_name(name, body=''):
     """
     Last-resort: search Shopify using any useful info found in the email body.
     1. Email addresses explicitly written in the body
     2. Customer name from sender field
     3. Name patterns extracted from the body signature
-    Returns order_info or None.
+    Returns list of orders (may be empty).
     """
     # --- Step 1: find emails explicitly labeled by the customer in the body ---
     # Only look for "Mails: x@x.com", "Email: x", "E-mail: x", "Contact: x" etc.
@@ -91,7 +105,7 @@ def _lookup_order_by_name(name, body=''):
             try:
                 orders = shopify_api.get_orders_by_email(found_email)
                 if orders:
-                    return orders[0]
+                    return orders
             except Exception:
                 pass
 
@@ -173,10 +187,10 @@ def _lookup_order_by_name(name, body=''):
                 seen_emails.add(found_email)
                 orders = shopify_api.get_orders_by_email(found_email)
                 if orders:
-                    return orders[0]
+                    return orders
         except Exception:
             pass
-    return None
+    return []
 
 
 def resolve_sender(sender, body):
@@ -281,29 +295,40 @@ def generate():
         except Exception:
             pass
 
-    # If order not passed from frontend, try to extract and fetch it now
-    if not order_info:
-        raw_text = data.get('subject', '') + ' ' + data.get('body', '')
+    # If the frontend already passed a full orders list, use it; otherwise fetch all orders fresh
+    all_orders = data.get('orders') or []
+    if not all_orders:
         order_num_fallback = claude_ai.extract_order_number(data.get('subject', '')) or \
                              claude_ai.extract_order_number(data.get('body', ''))
+        if sender_email:
+            try:
+                all_orders = shopify_api.get_orders_by_email(sender_email) or []
+            except Exception:
+                pass
         if order_num_fallback:
-            try:
-                order_info = shopify_api.get_order_by_number(order_num_fallback)
-            except Exception:
-                pass
-        if not order_info and sender_email:
-            try:
-                orders = shopify_api.get_orders_by_email(sender_email)
-                if orders:
-                    order_info = orders[0]
-            except Exception:
-                pass
+            mentioned = next(
+                (o for o in all_orders if str(o.get('number', '')).lstrip('#') == str(order_num_fallback)),
+                None
+            )
+            if mentioned:
+                all_orders = [mentioned] + [o for o in all_orders if o is not mentioned]
+            elif not all_orders:
+                try:
+                    specific = shopify_api.get_order_by_number(order_num_fallback)
+                    if specific:
+                        all_orders = [specific]
+                except Exception:
+                    pass
         # Last resort: search by name in Shopify
-        if not order_info:
-            order_info = _lookup_order_by_name(
+        if not all_orders:
+            all_orders = _lookup_orders_by_name(
                 extract_customer_name(data.get('sender', '')),
                 data.get('body', '')
             )
+        # Final fallback: use single order passed from frontend
+        if not all_orders and order_info:
+            all_orders = [order_info]
+    order_info = all_orders[0] if all_orders else None
 
     # Auto-fetch Wing tracking for expedition-related emails
     wing_context = ''
@@ -326,7 +351,7 @@ def generate():
             pass
 
     suggested = claude_ai.generate_response(data['body'], data['subject'], customer_name, order_info, history,
-                                            wing_context=wing_context)
+                                            wing_context=wing_context, orders=all_orders)
 
     # Check if Claude returned a needs_info JSON instead of a draft
     try:
@@ -353,28 +378,39 @@ def ask():
     question = data.get('question', '')
     sender_email_ask = extract_email_address(sender)
 
-    # If order not passed, try to find it from subject/body/email
-    if not order_info:
+    # If the frontend already passed a full orders list, use it; otherwise fetch all orders fresh
+    all_orders_ask = data.get('orders') or []
+    if not all_orders_ask:
         order_num_fallback = claude_ai.extract_order_number(data.get('subject', '')) or \
                              claude_ai.extract_order_number(data.get('body', ''))
+        if sender_email_ask:
+            try:
+                all_orders_ask = shopify_api.get_orders_by_email(sender_email_ask) or []
+            except Exception:
+                pass
         if order_num_fallback:
-            try:
-                order_info = shopify_api.get_order_by_number(order_num_fallback)
-            except Exception:
-                pass
-        if not order_info and sender_email_ask:
-            try:
-                orders = shopify_api.get_orders_by_email(sender_email_ask)
-                if orders:
-                    order_info = orders[0]
-            except Exception:
-                pass
-        # Last resort: search by name in Shopify
-        if not order_info:
-            order_info = _lookup_order_by_name(
+            mentioned = next(
+                (o for o in all_orders_ask if str(o.get('number', '')).lstrip('#') == str(order_num_fallback)),
+                None
+            )
+            if mentioned:
+                all_orders_ask = [mentioned] + [o for o in all_orders_ask if o is not mentioned]
+            elif not all_orders_ask:
+                try:
+                    specific = shopify_api.get_order_by_number(order_num_fallback)
+                    if specific:
+                        all_orders_ask = [specific]
+                except Exception:
+                    pass
+        if not all_orders_ask:
+            all_orders_ask = _lookup_orders_by_name(
                 extract_customer_name(sender),
                 data.get('body', '')
             )
+        # Final fallback: use single order passed from frontend
+        if not all_orders_ask and order_info:
+            all_orders_ask = [order_info]
+    order_info = all_orders_ask[0] if all_orders_ask else order_info
 
     # Extract order number once (used by multiple Wing lookups below)
     def _extract_order_num():
@@ -425,7 +461,8 @@ def ask():
         customer_name,
         order_info,
         full_question,
-        previous_exchanges=previous_exchanges
+        previous_exchanges=previous_exchanges,
+        orders=all_orders_ask
     )
     samuel_answer = result.get('samuel_answer', '')
     updated_draft = result.get('updated_draft', '')

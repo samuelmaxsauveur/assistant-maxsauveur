@@ -22,6 +22,25 @@ def get_orders_by_email(email):
     params = {'email': email, 'status': 'any', 'limit': 20}
     response = requests.get(url, headers=headers, params=params)
     orders = response.json().get('orders', [])
+    if not orders:
+        return []
+    # If we found any order, use the customer_id to get ALL orders for that customer
+    # (in case the customer placed other orders with a different email)
+    customer_id = (orders[0].get('customer') or {}).get('id')
+    if customer_id:
+        return get_all_orders_for_customer(customer_id)
+    return [format_order(o) for o in orders]
+
+
+def get_all_orders_for_customer(customer_id):
+    """Fetch all orders for a Shopify customer by their internal customer ID."""
+    shop = os.getenv('SHOPIFY_SHOP')
+    token = os.getenv('SHOPIFY_TOKEN')
+    url = f"https://{shop}/admin/api/2024-01/orders.json"
+    headers = {'X-Shopify-Access-Token': token}
+    params = {'customer_id': customer_id, 'status': 'any', 'limit': 50}
+    response = requests.get(url, headers=headers, params=params)
+    orders = response.json().get('orders', [])
     return [format_order(o) for o in orders]
 
 def search_customers_by_name(name):
