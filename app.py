@@ -25,7 +25,9 @@ gmail_service = None
 
 def _fetch_order_for_email(email):
     """Fetch Shopify order for a single email. Runs in thread pool."""
-    order_number = claude_ai.extract_order_number(email['body'] + ' ' + email['subject'])
+    # Search subject first (higher priority), then body
+    order_number = claude_ai.extract_order_number(email['subject']) or \
+                   claude_ai.extract_order_number(email['body'])
     order_info = None
     try:
         if order_number:
@@ -167,6 +169,24 @@ def generate():
         except Exception:
             pass
 
+    # If order not passed from frontend, try to extract and fetch it now
+    if not order_info:
+        raw_text = data.get('subject', '') + ' ' + data.get('body', '')
+        order_num_fallback = claude_ai.extract_order_number(data.get('subject', '')) or \
+                             claude_ai.extract_order_number(data.get('body', ''))
+        if order_num_fallback:
+            try:
+                order_info = shopify_api.get_order_by_number(order_num_fallback)
+            except Exception:
+                pass
+        if not order_info and sender_email:
+            try:
+                orders = shopify_api.get_orders_by_email(sender_email)
+                if orders:
+                    order_info = orders[0]
+            except Exception:
+                pass
+
     # Auto-fetch Wing tracking for order_status emails
     wing_context = ''
     order_num = str((order_info or {}).get('number', '')).replace('#', '').strip()
@@ -207,6 +227,24 @@ def ask():
     order_info = data.get('order')
     previous_exchanges = data.get('previous_exchanges', [])
     question = data.get('question', '')
+    sender_email_ask = extract_email_address(sender)
+
+    # If order not passed, try to find it from subject/body/email
+    if not order_info:
+        order_num_fallback = claude_ai.extract_order_number(data.get('subject', '')) or \
+                             claude_ai.extract_order_number(data.get('body', ''))
+        if order_num_fallback:
+            try:
+                order_info = shopify_api.get_order_by_number(order_num_fallback)
+            except Exception:
+                pass
+        if not order_info and sender_email_ask:
+            try:
+                orders = shopify_api.get_orders_by_email(sender_email_ask)
+                if orders:
+                    order_info = orders[0]
+            except Exception:
+                pass
 
     # Extract order number once (used by multiple Wing lookups below)
     def _extract_order_num():
@@ -214,7 +252,8 @@ def ask():
             n = str(order_info.get('number', '')).replace('#', '').strip()
             if n:
                 return n
-        m = re.search(r'#?(\d{4,6})', question)
+        raw = data.get('subject', '') + ' ' + data.get('body', '') + ' ' + question
+        m = re.search(r'#?(\d{4,6})', raw)
         return m.group(1) if m else None
 
     wing_extra = ''
