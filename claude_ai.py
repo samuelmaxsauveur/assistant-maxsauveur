@@ -29,10 +29,9 @@ Ne mentionne jamais que tu es une IA.
 Si tu as des infos de commande disponibles, utilise-les pour personnaliser ta réponse.
 
 ACCÈS AUX OUTILS :
-- Tu as accès à Wing via un bouton dédié dans l'interface ("🔍 Chercher dans Wing"). Quand les données Wing sont disponibles, elles apparaissent dans le contexte sous forme de bloc "--- ... récupéré depuis Wing ---" ou "Données Wing récupérées".
-- Si un tel bloc est présent dans le contexte ou l'historique de la discussion, utilise-le directement comme source de vérité.
-- Si tu n'as PAS de données Wing dans le contexte : dis à Samuel "Clique sur le bouton 🔍 Chercher dans Wing pour récupérer les infos." Ne dis jamais "pas injecté dans le contexte" ou des formulations techniques — dis juste de cliquer le bouton.
-- Ne demande JAMAIS à Samuel de te copier-coller un lien ou une info depuis Wing manuellement.
+- Les données Wing sont automatiquement injectées dans le contexte quand disponibles, sous forme de bloc "--- Suivi Wing ---" ou "--- Données Wing ---".
+- Si un tel bloc est présent, utilise-le comme source de vérité pour le numéro de suivi et le lien.
+- Si tu n'as pas de données Wing : génère la réponse avec les infos disponibles (Shopify). Ne demande jamais à Samuel de cliquer un bouton ou de te copier-coller quoi que ce soit.
 
 {KNOWLEDGE_BASE}"""
 
@@ -101,8 +100,10 @@ def _call_claude(system, messages, max_tokens=1024):
             raise e
 
 
-def generate_response(email_body, email_subject, customer_name, order_info=None, history=None):
+def generate_response(email_body, email_subject, customer_name, order_info=None, history=None, wing_context=''):
     context = _build_context(email_body, email_subject, customer_name, order_info, history)
+    if wing_context:
+        context += wing_context
     prompt = f"""Voici un email de support client à traiter :
 
 {context}
@@ -113,7 +114,8 @@ INSTRUCTIONS :
 1. Utilise EN PRIORITÉ l'historique des échanges pour comprendre le contexte et éviter de répéter des choses déjà dites.
 2. Si tu manques d'informations INDISPENSABLES pour répondre correctement (ex: tu ignores si c'est sous garantie, si le problème a déjà été traité, quelle est la politique applicable, etc.), réponds UNIQUEMENT avec ce JSON :
    {{"needs_info": true, "questions": ["question 1 ?", "question 2 ?"]}}
-3. Si tu as assez d'éléments : rédige directement le corps du mail de réponse au client (pas de JSON, juste le texte)."""
+3. Si tu as assez d'éléments : rédige directement le corps du mail de réponse au client (pas de JSON, juste le texte).
+4. Si tu n'as pas de données Wing mais que c'est une question de suivi : génère la réponse avec les infos Shopify disponibles, sans demander à Samuel de cliquer un bouton."""
     return _call_claude(
         system=get_system_prompt(),
         messages=[{"role": "user", "content": prompt}]
