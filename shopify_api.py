@@ -44,6 +44,10 @@ def get_orders_by_email(email):
         for o in get_all_orders_for_customer(customer_id):
             if o['number'] not in seen:
                 seen[o['number']] = o
+    # GraphQL fallback — catches guest orders the REST API misses
+    for o in search_orders_by_email_graphql(email):
+        if o['number'] not in seen:
+            seen[o['number']] = o
     result = list(seen.values())
     result.sort(key=lambda o: o.get('created_at', ''), reverse=True)
     return result
@@ -254,6 +258,85 @@ def search_orders_by_billing_name(last_name):
             })
         return result
     except Exception:
+        return []
+
+
+def search_orders_by_email_graphql(email):
+    """Search all Shopify orders by email using GraphQL — catches guest orders missed by REST API."""
+    import sys
+    shop = os.getenv('SHOPIFY_SHOP')
+    token = os.getenv('SHOPIFY_TOKEN')
+    url = f"https://{shop}/admin/api/2024-01/graphql.json"
+    headers = {'X-Shopify-Access-Token': token, 'Content-Type': 'application/json'}
+    safe_email = email.replace('"', '').replace('\\', '')
+    query = """
+    {
+      orders(first: 50, query: "email:%s") {
+        edges {
+          node {
+            name
+            createdAt
+            email
+            financialStatus
+            fulfillmentStatus
+            totalPriceSet { shopMoney { amount currencyCode } }
+            customer { id }
+            shippingAddress { firstName lastName }
+            lineItems(first: 10) {
+              edges {
+                node {
+                  name
+                  quantity
+                  originalUnitPriceSet { shopMoney { amount } }
+                }
+              }
+            }
+            fulfillments {
+              trackingInfo { number url }
+            }
+          }
+        }
+      }
+    }
+    """ % safe_email
+    try:
+        resp = requests.post(url, headers=headers, json={'query': query}, timeout=10)
+        edges = resp.json().get('data', {}).get('orders', {}).get('edges', [])
+        print(f"[GRAPHQL_EMAIL] email={email!r} → {len(edges)} orders", file=sys.stderr, flush=True)
+        result = []
+        for edge in edges:
+            node = edge['node']
+            tracking_number = None
+            tracking_url = None
+            for f in node.get('fulfillments', []):
+                for t in f.get('trackingInfo', []):
+                    tracking_number = t.get('number')
+                    tracking_url = t.get('url')
+            shipping = node.get('shippingAddress') or {}
+            products = []
+            for li_edge in node.get('lineItems', {}).get('edges', []):
+                li = li_edge['node']
+                price = float((li.get('originalUnitPriceSet') or {}).get('shopMoney', {}).get('amount') or 0)
+                products.append({'name': li['name'], 'qty': li['quantity'], 'price': price, 'total': price * li['quantity'], 'discount': 0})
+            total_money = node.get('totalPriceSet', {}).get('shopMoney', {})
+            result.append({
+                'number': node['name'],
+                'status': (node.get('financialStatus') or '').lower(),
+                'fulfillment_status': (node.get('fulfillmentStatus') or 'unfulfilled').lower(),
+                'created_at': (node.get('createdAt') or '')[:10],
+                'total': f"{total_money.get('amount', '0')} {total_money.get('currencyCode', 'EUR')}",
+                'customer_name': f"{shipping.get('firstName', '')} {shipping.get('lastName', '')}".strip(),
+                'customer_email': node.get('email', ''),
+                'tracking_number': tracking_number,
+                'tracking_url': tracking_url,
+                'currency': total_money.get('currencyCode', 'EUR'),
+                'shipping': 0,
+                'discount_total': 0,
+                'products': products,
+            })
+        return result
+    except Exception as e:
+        print(f"[GRAPHQL_EMAIL] error: {e}", file=sys.stderr, flush=True)
         return []
 
 
