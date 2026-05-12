@@ -899,6 +899,57 @@ def wing_order():
         )
     return render_template('wing.html', result=result)
 
+@app.route('/shopify/install')
+def shopify_install():
+    client_id = os.getenv('SHOPIFY_CLIENT_ID', '')
+    shop = 'maxsauveur.myshopify.com'
+    scopes = 'read_all_orders,read_customers,read_orders'
+    redirect_uri = 'https://assistant-maxsauveur-production.up.railway.app/shopify/callback'
+    url = f"https://{shop}/admin/oauth/authorize?client_id={client_id}&scope={scopes}&redirect_uri={redirect_uri}"
+    return redirect(url)
+
+
+@app.route('/shopify/callback')
+def shopify_callback():
+    import requests as req_lib
+    code = request.args.get('code', '')
+    shop = request.args.get('shop', 'maxsauveur.myshopify.com')
+    client_id = os.getenv('SHOPIFY_CLIENT_ID', '')
+    client_secret = os.getenv('SHOPIFY_CLIENT_SECRET', '')
+    if not code:
+        return '<h2>Erreur: pas de code OAuth reçu</h2>', 400
+    resp = req_lib.post(
+        f"https://{shop}/admin/oauth/access_token",
+        json={'client_id': client_id, 'client_secret': client_secret, 'code': code}
+    )
+    data = resp.json()
+    token = data.get('access_token', '')
+    print(f"[SHOPIFY OAUTH] TOKEN OBTENU: {token}", flush=True)
+    # Save token to DB for easy retrieval
+    conn = database.get_connection()
+    try:
+        conn.execute("CREATE TABLE IF NOT EXISTS shopify_tokens (token TEXT, created_at TEXT)")
+        conn.execute("DELETE FROM shopify_tokens")
+        conn.execute("INSERT INTO shopify_tokens VALUES (?, datetime('now'))", (token,))
+        conn.commit()
+    finally:
+        conn.close()
+    return f'<h2>Token obtenu !</h2><p>Copie cette valeur dans Railway → SHOPIFY_ACCESS_TOKEN :</p><pre style="background:#eee;padding:20px;font-size:16px">{token}</pre>'
+
+
+@app.route('/shopify/token')
+def shopify_token():
+    conn = database.get_connection()
+    try:
+        conn.execute("CREATE TABLE IF NOT EXISTS shopify_tokens (token TEXT, created_at TEXT)")
+        row = conn.execute("SELECT token, created_at FROM shopify_tokens ORDER BY created_at DESC LIMIT 1").fetchone()
+    finally:
+        conn.close()
+    if row:
+        return f'<h2>Dernier token Shopify</h2><pre style="background:#eee;padding:20px;font-size:16px">{row["token"]}</pre><p>Créé le : {row["created_at"]}</p>'
+    return '<h2>Aucun token capturé</h2><p>Va sur /shopify/install pour lancer le flux OAuth.</p>'
+
+
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 8080))
     app.run(debug=False, host='0.0.0.0', port=port)
