@@ -250,23 +250,29 @@ def debug_raw_order():
     shop = os.environ.get('SHOPIFY_SHOP')
     token = os.environ.get('SHOPIFY_TOKEN')
     import requests as _req
-    resp = _req.get(
-        f"https://{shop}/admin/api/2024-01/orders.json",
-        headers={'X-Shopify-Access-Token': token},
-        params={'name': number, 'status': 'any'}
-    )
-    orders = resp.json().get('orders', [])
-    if not orders:
-        return jsonify({'found': False})
-    o = orders[0]
-    return jsonify({
-        'order_number': o.get('order_number'),
-        'name': o.get('name'),
-        'email': o.get('email'),
-        'contact_email': o.get('contact_email'),
-        'customer': o.get('customer'),
-        'billing_address': o.get('billing_address'),
-    })
+    results = {}
+    for variant in [number, f'#{number}', f'SS{number}', f'#SS{number}']:
+        resp = _req.get(
+            f"https://{shop}/admin/api/2024-01/orders.json",
+            headers={'X-Shopify-Access-Token': token},
+            params={'name': variant, 'status': 'any'}
+        )
+        orders = resp.json().get('orders', [])
+        if orders:
+            o = orders[0]
+            results[variant] = {
+                'found': True,
+                'order_number': o.get('order_number'),
+                'name': o.get('name'),
+                'email': o.get('email'),
+                'contact_email': o.get('contact_email'),
+                'customer_id': (o.get('customer') or {}).get('id'),
+                'customer_email': (o.get('customer') or {}).get('email'),
+                'billing_name': f"{(o.get('billing_address') or {}).get('first_name','')} {(o.get('billing_address') or {}).get('last_name','')}".strip(),
+            }
+        else:
+            results[variant] = {'found': False}
+    return jsonify(results)
 
 
 @app.route('/debug')
