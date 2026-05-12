@@ -17,6 +17,7 @@ def get_order_by_number(order_number):
 def get_orders_by_email(email):
     """Fetch all orders for a given email, expanding via customer_id.
     Merges both email-matched orders (catches guest orders) and customer_id orders."""
+    import sys
     shop = os.getenv('SHOPIFY_SHOP')
     token = os.getenv('SHOPIFY_TOKEN')
     url = f"https://{shop}/admin/api/2024-01/orders.json"
@@ -24,10 +25,15 @@ def get_orders_by_email(email):
     params = {'email': email, 'status': 'any', 'limit': 50}
     response = requests.get(url, headers=headers, params=params)
     orders = response.json().get('orders', [])
+    raw_nums = [o.get('order_number') or o.get('name') for o in orders]
+    print(f"[EMAIL_QUERY] email={email!r} → raw orders: {raw_nums}", file=sys.stderr, flush=True)
     if not orders:
         return []
     # Keep all email-matched orders (includes guest orders with no customer_id)
-    seen = {o['order_number']: format_order(o) for o in orders}
+    seen = {}
+    for o in orders:
+        fmt = format_order(o)
+        seen[fmt['number']] = fmt
     # Also expand via customer_id to catch orders placed with a different email
     customer_id = None
     for o in orders:
