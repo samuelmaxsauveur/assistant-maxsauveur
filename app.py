@@ -476,6 +476,23 @@ def ask():
         except Exception:
             pass
 
+    # Detect manual name search in question: "cherche Antoine FAU", "regarde pour X", etc.
+    _manual_name_match = re.search(
+        r'(?:cherche[z]?|recherche[z]?|trouve[z]?|regarde[z]?\s+pour|look\s+up|search\s+for)\s+["\']?([A-ZÀ-Ÿ][a-zà-ÿ\-]+(?:\s+[A-ZÀ-Ÿ][A-Za-zà-ÿ\-]+)+)["\']?',
+        question, re.IGNORECASE
+    )
+    if _manual_name_match:
+        _manual_name = _manual_name_match.group(1)
+        try:
+            _manual_orders = shopify_api.get_full_order_history(None, _manual_name) or []
+            _seen_manual = {o['number'] for o in all_orders_ask}
+            for o in _manual_orders:
+                if o['number'] not in _seen_manual:
+                    all_orders_ask.append(o)
+                    _seen_manual.add(o['number'])
+        except Exception:
+            pass
+
     if not all_orders_ask and order_info:
         all_orders_ask = [order_info]
     order_info = all_orders_ask[0] if all_orders_ask else order_info

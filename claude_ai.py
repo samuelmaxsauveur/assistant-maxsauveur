@@ -600,7 +600,7 @@ def extract_order_number(text):
 
 def extract_name_from_body(email_body):
     """
-    Extract a person's name from the email body (typically in the signature).
+    Extract a person's name mentioned anywhere in the email body.
     Returns "Prénom NOM" style string or None.
     """
     if not email_body:
@@ -611,21 +611,35 @@ def extract_name_from_body(email_body):
         'Salutations', 'Respectueuses', 'Amicalement', 'Bonne', 'Journée',
         'Service', 'Client', 'Max', 'Sauveur', 'John', 'Contact', 'Cdlt',
         'Regards', 'Best', 'Hello', 'Cher', 'Chère', 'Madame', 'Monsieur',
+        'Votre', 'Notre', 'Cette', 'Vous', 'Nous', 'Pour', 'Avec', 'Sans',
     }
 
-    lines = [l.strip() for l in email_body.strip().split('\n') if l.strip()]
-    # Check last 8 lines (signature area)
-    candidates = lines[-8:] if len(lines) > 8 else lines
-
-    # Pattern: 2 words starting with uppercase, e.g. "Antoine FAU" or "Antoine Barande"
-    pattern = re.compile(
-        r'^([A-ZÀ-Ÿ][A-Za-zà-ÿ\-]+\s+[A-ZÀ-Ÿ][A-Za-zà-ÿ\-]*)$'
+    # Priority 1: "nom de X", "au nom de X", "sous le nom X" patterns
+    name_intro = re.search(
+        r'(?:nom\s+de|au\s+nom\s+de?|sous\s+le\s+nom(?:\s+de?)?|sous\s+nom\s+de?|commande\s+(?:de|au\s+nom\s+de?))\s+([A-ZÀ-Ÿ][a-zà-ÿ\-]+\s+[A-ZÀ-Ÿ][A-Za-zà-ÿ\-]+)',
+        email_body, re.IGNORECASE
     )
+    if name_intro:
+        return name_intro.group(1)
+
+    # Priority 2: standalone line in last 8 lines (signature)
+    lines = [l.strip() for l in email_body.strip().split('\n') if l.strip()]
+    candidates = lines[-8:] if len(lines) > 8 else lines
+    line_pattern = re.compile(r'^([A-ZÀ-Ÿ][A-Za-zà-ÿ\-]+\s+[A-ZÀ-Ÿ][A-Za-zà-ÿ\-]*)$')
     for line in reversed(candidates):
-        m = pattern.match(line)
+        m = line_pattern.match(line)
         if m:
             name = m.group(1)
             words = name.split()
             if all(w not in skip_words for w in words) and len(name) >= 5:
                 return name
+
+    # Priority 3: any "Prénom NOM" (all-caps surname) anywhere in body
+    all_caps_pattern = re.compile(r'\b([A-ZÀ-Ÿ][a-zà-ÿ\-]+\s+[A-ZÀ-Ÿ]{2,})\b')
+    for m in all_caps_pattern.finditer(email_body):
+        name = m.group(1)
+        words = name.split()
+        if all(w not in skip_words for w in words) and len(name) >= 5:
+            return name
+
     return None
