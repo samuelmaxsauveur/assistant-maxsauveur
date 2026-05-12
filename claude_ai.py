@@ -134,7 +134,7 @@ def generate_response(email_body, email_subject, customer_name, order_info=None,
 
 INSTRUCTIONS :
 1. Utilise EN PRIORITÉ l'historique des échanges pour comprendre le contexte et éviter de répéter des choses déjà dites.
-2. Si le contexte contient PLUSIEURS commandes client : lis attentivement l'email pour identifier quelle commande est concernée (produit mentionné, numéro de commande, description). Utilise UNIQUEMENT la commande pertinente dans ta réponse. Ne parle jamais d'une commande qui n'est pas mentionnée dans l'email.
+2. Si le contexte contient PLUSIEURS commandes client : cherche dans TOUS les articles de TOUTES les commandes celui qui correspond au produit mentionné dans l'email (matching souple : "Jagger" = "Moc Jagger" = "Mocassin Jagger"). Si tu trouves une correspondance même partielle, utilise cette commande. Si aucune correspondance, dis-le clairement en listant les produits trouvés dans chaque commande.
 3. Génère TOUJOURS une réponse directement. N'utilise JAMAIS le JSON needs_info pour des questions de suivi de commande, de livraison, de statut, de point relais ou de numéro de suivi — utilise les données Shopify et/ou Wing déjà dans le contexte.
 4. Le JSON needs_info est réservé UNIQUEMENT aux cas où une décision commerciale est impossible sans l'avis de Samuel (ex : accorder un geste commercial exceptionnel, savoir si une garantie s'applique dans un cas limite). Utilise-le avec parcimonie.
 5. Si le statut de livraison Shopify est disponible dans le contexte, utilise-le directement sans poser de question."""

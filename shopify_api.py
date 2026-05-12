@@ -112,6 +112,9 @@ def get_full_order_history(sender_email, customer_name=None):
     result = list(seen.values())
     result.sort(key=lambda o: o.get('created_at', ''), reverse=True)
     print(f"[ORDER_LOOKUP] FINAL: {[o['number'] for o in result]}", file=sys.stderr, flush=True)
+    for o in result:
+        products = [p['name'] for p in o.get('products', [])]
+        print(f"[ORDER_LOOKUP]   {o['number']} → {products}", file=sys.stderr, flush=True)
     return result
 
 def search_customers_by_name(name):
