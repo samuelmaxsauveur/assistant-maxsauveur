@@ -292,7 +292,7 @@ def debug_raw_order():
     gql_url = f"https://{shop}/admin/api/2024-01/graphql.json"
     gql_headers = {'X-Shopify-Access-Token': token, 'Content-Type': 'application/json'}
     for variant in [number, f'#{number}']:
-        gql_query = '{ orders(first:1, query: "name:%s") { edges { node { name email contactEmail customer { id email } billingAddress { firstName lastName } } } } }' % variant
+        gql_query = '{ orders(first:1, query: "name:%s") { edges { node { name email customer { id email } billingAddress { firstName lastName } } } } }' % variant
         gr = _req.post(gql_url, headers=gql_headers, json={'query': gql_query}, timeout=10)
         edges = gr.json().get('data', {}).get('orders', {}).get('edges', [])
         if edges:
@@ -301,7 +301,6 @@ def debug_raw_order():
                 'found': True,
                 'name': node.get('name'),
                 'email': node.get('email'),
-                'contactEmail': node.get('contactEmail'),
                 'customer': node.get('customer'),
                 'billing': node.get('billingAddress'),
             }
