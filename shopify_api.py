@@ -61,6 +61,14 @@ def get_full_order_history(sender_email, customer_name=None):
         print(f"[ORDER_LOOKUP] by_email: {[o['number'] for o in by_email]}", file=sys.stderr, flush=True)
         for o in by_email:
             seen[o['number']] = o
+        # Augment customer_name from Shopify if we only have a partial name (e.g. "Alex" → "Alex Frau")
+        if by_email and (not customer_name or len(customer_name.split()) < 2):
+            for o in by_email:
+                cn = o.get('customer_name', '')
+                if cn and len(cn.split()) >= 2:
+                    print(f"[ORDER_LOOKUP] augmenting name from order: {customer_name!r} → {cn!r}", file=sys.stderr, flush=True)
+                    customer_name = cn
+                    break
 
     # Step 2: by customer name — try multiple strategies to find all accounts
     if customer_name:
