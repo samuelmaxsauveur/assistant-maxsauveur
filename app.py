@@ -360,17 +360,7 @@ def generate():
         try:
             specific = shopify_api.get_order_by_number(order_num_fallback)
             if specific:
-                # Expand to full customer history using the order's customer info
-                spec_email = specific.get('customer_email', '')
-                spec_name = specific.get('customer_name', '')
-                print(f"[GENERATE] order_num fallback #{order_num_fallback} → customer: {spec_name!r} {spec_email!r}", file=_sys.stderr, flush=True)
-                if spec_email or spec_name:
-                    try:
-                        all_orders = shopify_api.get_full_order_history(spec_email, spec_name) or [specific]
-                    except Exception:
-                        all_orders = [specific]
-                else:
-                    all_orders = [specific]
+                all_orders = [specific]
         except Exception:
             pass
 
@@ -464,15 +454,7 @@ def ask():
         try:
             specific = shopify_api.get_order_by_number(order_num_fallback)
             if specific:
-                spec_email = specific.get('customer_email', '')
-                spec_name = specific.get('customer_name', '')
-                if spec_email or spec_name:
-                    try:
-                        all_orders_ask = shopify_api.get_full_order_history(spec_email, spec_name) or [specific]
-                    except Exception:
-                        all_orders_ask = [specific]
-                else:
-                    all_orders_ask = [specific]
+                all_orders_ask = [specific]
         except Exception:
             pass
 
