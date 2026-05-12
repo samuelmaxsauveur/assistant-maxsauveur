@@ -104,7 +104,12 @@ def get_full_order_history(sender_email, customer_name=None):
                 if not cid or cid in seen_customer_ids:
                     continue
                 seen_customer_ids.add(cid)
-                orders_for_c = get_all_orders_for_customer(cid)
+                # Use get_orders_by_email to also catch guest orders at that email
+                c_email = c.get('email', '')
+                if c_email:
+                    orders_for_c = get_orders_by_email(c_email)
+                else:
+                    orders_for_c = get_all_orders_for_customer(cid)
                 print(f"[ORDER_LOOKUP] customer {c['name']} ({c['email']}) → {[o['number'] for o in orders_for_c]}", file=sys.stderr, flush=True)
                 for o in orders_for_c:
                     if o['number'] not in seen:
