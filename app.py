@@ -240,6 +240,35 @@ def debug_orders():
         results['full_error'] = str(e)
     return jsonify(results)
 
+
+@app.route('/debug/raw-order')
+def debug_raw_order():
+    """Fetch raw Shopify order data to inspect email fields."""
+    number = request.args.get('number', '')
+    if not number:
+        return jsonify({'error': 'Pass ?number=11734'})
+    shop = os.environ.get('SHOPIFY_SHOP')
+    token = os.environ.get('SHOPIFY_TOKEN')
+    import requests as _req
+    resp = _req.get(
+        f"https://{shop}/admin/api/2024-01/orders.json",
+        headers={'X-Shopify-Access-Token': token},
+        params={'name': number, 'status': 'any'}
+    )
+    orders = resp.json().get('orders', [])
+    if not orders:
+        return jsonify({'found': False})
+    o = orders[0]
+    return jsonify({
+        'order_number': o.get('order_number'),
+        'name': o.get('name'),
+        'email': o.get('email'),
+        'contact_email': o.get('contact_email'),
+        'customer': o.get('customer'),
+        'billing_address': o.get('billing_address'),
+    })
+
+
 @app.route('/debug')
 def debug():
     import traceback
