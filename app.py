@@ -251,6 +251,21 @@ def debug_raw_order():
     token = os.environ.get('SHOPIFY_TOKEN')
     import requests as _req
     results = {}
+    # Direct fetch by Shopify internal ID if provided as ?id=7791199060308
+    shopify_id = request.args.get('id', '')
+    if shopify_id:
+        resp = _req.get(
+            f"https://{shop}/admin/api/2024-01/orders/{shopify_id}.json",
+            headers={'X-Shopify-Access-Token': token}
+        )
+        o = resp.json().get('order', {})
+        results['by_internal_id'] = {
+            'order_number': o.get('order_number'),
+            'name': o.get('name'),
+            'email': o.get('email'),
+            'contact_email': o.get('contact_email'),
+            'customer_email': (o.get('customer') or {}).get('email'),
+        }
     # REST variants
     for variant in [number, f'#{number}', f'SS{number}', f'#SS{number}']:
         resp = _req.get(
