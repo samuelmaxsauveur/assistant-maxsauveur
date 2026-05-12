@@ -251,6 +251,7 @@ def debug_raw_order():
     token = os.environ.get('SHOPIFY_TOKEN')
     import requests as _req
     results = {}
+    # REST variants
     for variant in [number, f'#{number}', f'SS{number}', f'#SS{number}']:
         resp = _req.get(
             f"https://{shop}/admin/api/2024-01/orders.json",
@@ -260,7 +261,7 @@ def debug_raw_order():
         orders = resp.json().get('orders', [])
         if orders:
             o = orders[0]
-            results[variant] = {
+            results[f'REST:{variant}'] = {
                 'found': True,
                 'order_number': o.get('order_number'),
                 'name': o.get('name'),
@@ -271,7 +272,26 @@ def debug_raw_order():
                 'billing_name': f"{(o.get('billing_address') or {}).get('first_name','')} {(o.get('billing_address') or {}).get('last_name','')}".strip(),
             }
         else:
-            results[variant] = {'found': False}
+            results[f'REST:{variant}'] = {'found': False}
+    # GraphQL by name
+    gql_url = f"https://{shop}/admin/api/2024-01/graphql.json"
+    gql_headers = {'X-Shopify-Access-Token': token, 'Content-Type': 'application/json'}
+    for variant in [number, f'#{number}']:
+        gql_query = '{ orders(first:1, query: "name:%s") { edges { node { name email contactEmail customer { id email } billingAddress { firstName lastName } } } } }' % variant
+        gr = _req.post(gql_url, headers=gql_headers, json={'query': gql_query}, timeout=10)
+        edges = gr.json().get('data', {}).get('orders', {}).get('edges', [])
+        if edges:
+            node = edges[0]['node']
+            results[f'GQL:{variant}'] = {
+                'found': True,
+                'name': node.get('name'),
+                'email': node.get('email'),
+                'contactEmail': node.get('contactEmail'),
+                'customer': node.get('customer'),
+                'billing': node.get('billingAddress'),
+            }
+        else:
+            results[f'GQL:{variant}'] = {'found': False, 'raw': gr.json()}
     return jsonify(results)
 
 
