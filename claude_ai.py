@@ -596,3 +596,36 @@ def extract_order_number(text):
         if match:
             return match.group(1)
     return None
+
+
+def extract_name_from_body(email_body):
+    """
+    Extract a person's name from the email body (typically in the signature).
+    Returns "Prénom NOM" style string or None.
+    """
+    if not email_body:
+        return None
+
+    skip_words = {
+        'Cordialement', 'Merci', 'Bonjour', 'Bonsoir', 'Bien', 'Sincères',
+        'Salutations', 'Respectueuses', 'Amicalement', 'Bonne', 'Journée',
+        'Service', 'Client', 'Max', 'Sauveur', 'John', 'Contact', 'Cdlt',
+        'Regards', 'Best', 'Hello', 'Cher', 'Chère', 'Madame', 'Monsieur',
+    }
+
+    lines = [l.strip() for l in email_body.strip().split('\n') if l.strip()]
+    # Check last 8 lines (signature area)
+    candidates = lines[-8:] if len(lines) > 8 else lines
+
+    # Pattern: 2 words starting with uppercase, e.g. "Antoine FAU" or "Antoine Barande"
+    pattern = re.compile(
+        r'^([A-ZÀ-Ÿ][A-Za-zà-ÿ\-]+\s+[A-ZÀ-Ÿ][A-Za-zà-ÿ\-]*)$'
+    )
+    for line in reversed(candidates):
+        m = pattern.match(line)
+        if m:
+            name = m.group(1)
+            words = name.split()
+            if all(w not in skip_words for w in words) and len(name) >= 5:
+                return name
+    return None

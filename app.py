@@ -332,6 +332,20 @@ def generate():
         all_orders = []
     print(f"[GENERATE] all_orders after lookup: {[o['number'] for o in all_orders]}", file=_sys.stderr, flush=True)
 
+    # Step: also search by name found in email body (e.g. signature differs from sender name)
+    _body_name = claude_ai.extract_name_from_body(data.get('body', ''))
+    if _body_name and _body_name.lower() not in (_cn or '').lower():
+        print(f"[GENERATE] body_name found: {_body_name!r}", file=_sys.stderr, flush=True)
+        try:
+            _body_orders = shopify_api.get_full_order_history(None, _body_name) or []
+            _seen = {o['number'] for o in all_orders}
+            for o in _body_orders:
+                if o['number'] not in _seen:
+                    all_orders.append(o)
+                    _seen.add(o['number'])
+        except Exception as _e:
+            print(f"[GENERATE] body_name lookup error: {_e}", file=_sys.stderr, flush=True)
+
     # If a specific order number was mentioned, put it first
     order_num_fallback = claude_ai.extract_order_number(data.get('subject', '')) or \
                          claude_ai.extract_order_number(data.get('body', ''))
@@ -411,6 +425,20 @@ def ask():
         ) or []
     except Exception:
         all_orders_ask = []
+
+    # Also search by name found in email body (signature may differ from sender)
+    _ask_body_name = claude_ai.extract_name_from_body(data.get('body', ''))
+    _ask_cn = extract_customer_name(sender)
+    if _ask_body_name and _ask_body_name.lower() not in (_ask_cn or '').lower():
+        try:
+            _extra = shopify_api.get_full_order_history(None, _ask_body_name) or []
+            _seen_ask = {o['number'] for o in all_orders_ask}
+            for o in _extra:
+                if o['number'] not in _seen_ask:
+                    all_orders_ask.append(o)
+                    _seen_ask.add(o['number'])
+        except Exception:
+            pass
 
     # If a specific order number was mentioned, put it first
     order_num_fallback = claude_ai.extract_order_number(data.get('subject', '')) or \
