@@ -15,20 +15,32 @@ def get_order_by_number(order_number):
     return None
 
 def get_orders_by_email(email):
-    """Fetch all orders for a given email, expanding via customer_id."""
+    """Fetch all orders for a given email, expanding via customer_id.
+    Merges both email-matched orders (catches guest orders) and customer_id orders."""
     shop = os.getenv('SHOPIFY_SHOP')
     token = os.getenv('SHOPIFY_TOKEN')
     url = f"https://{shop}/admin/api/2024-01/orders.json"
     headers = {'X-Shopify-Access-Token': token}
-    params = {'email': email, 'status': 'any', 'limit': 20}
+    params = {'email': email, 'status': 'any', 'limit': 50}
     response = requests.get(url, headers=headers, params=params)
     orders = response.json().get('orders', [])
     if not orders:
         return []
-    customer_id = (orders[0].get('customer') or {}).get('id')
+    # Keep all email-matched orders (includes guest orders with no customer_id)
+    seen = {o['order_number']: format_order(o) for o in orders}
+    # Also expand via customer_id to catch orders placed with a different email
+    customer_id = None
+    for o in orders:
+        customer_id = (o.get('customer') or {}).get('id')
+        if customer_id:
+            break
     if customer_id:
-        return get_all_orders_for_customer(customer_id)
-    return [format_order(o) for o in orders]
+        for o in get_all_orders_for_customer(customer_id):
+            if o['number'] not in seen:
+                seen[o['number']] = o
+    result = list(seen.values())
+    result.sort(key=lambda o: o.get('created_at', ''), reverse=True)
+    return result
 
 
 def get_all_orders_for_customer(customer_id):
