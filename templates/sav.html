@@ -526,6 +526,16 @@ function closeOutbound() {
     document.getElementById('ob-search').value = '';
     document.getElementById('ob-search-result').textContent = '';
     document.getElementById('ob-draft').value = '';
+    document.getElementById('ob-draft-text').value = '';
+    document.getElementById('ob-feedback').value = '';
+    const resultEl = document.getElementById('ob-result');
+    resultEl.style.display = 'none';
+    resultEl.textContent = '';
+    const hint = document.getElementById('ob-railway-hint');
+    if (hint) hint.remove();
+    // Re-enable send button
+    const sendBtn = document.querySelector('#ob-draft-preview button.btn-green');
+    if (sendBtn) { sendBtn.textContent = '📤 Envoyer'; sendBtn.disabled = false; }
     outboundCustomer = null;
     outboundOrders = [];
 }
