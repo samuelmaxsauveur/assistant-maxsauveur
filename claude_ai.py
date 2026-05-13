@@ -51,6 +51,14 @@ def get_system_prompt():
             extra += "\n\n--- PROCESSUS MANUELS ENREGISTRÉS ---\n"
             for p in processes:
                 extra += f"\n[{p['name']}] (déclencheur : {p['trigger']})\n{p['steps']}\n"
+        patterns = database.get_response_patterns()
+        if patterns:
+            extra += "\n\n--- RÉPONSES VALIDÉES (apprises des emails envoyés) ---\n"
+            extra += "Ces fiches sont extraites des vraies réponses envoyées aux clients. Inspire-toi en priorité de ces formulations.\n"
+            for p in patterns:
+                extra += f"\n[{p['topic_label']}]\nSituation : {p['situation']}\nRéponse type : {p['response_template']}\n"
+                if p.get('key_points'):
+                    extra += f"Points clés : {p['key_points']}\n"
         if extra:
             return BASE_SYSTEM_PROMPT + extra
     except Exception:

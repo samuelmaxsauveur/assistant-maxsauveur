@@ -111,6 +111,7 @@ def approve():
     )
 
     database.update_sav_case_status(case_id, 'approved')
+    database.log_sent_email(to_email=customer_email, subject=f"Re: {subject}", body=draft, source='sav_approve', thread_id=thread_id)
     return jsonify({'success': True, 'label_attached': label_bytes is not None, 'draft': draft})
 
 
@@ -138,6 +139,7 @@ def send_rejection():
         thread_id=data.get('thread_id')
     )
     database.update_sav_case_status(data['case_id'], 'rejected')
+    database.log_sent_email(to_email=data['customer_email'], subject=f"Re: {data['subject']}", body=data['body'], source='sav_reject', thread_id=data.get('thread_id'))
     return jsonify({'success': True})
 
 
