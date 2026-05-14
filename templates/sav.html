@@ -730,6 +730,13 @@ async function outboundGenerate(btn) {
     document.getElementById('ob-subject').value = OUTBOUND_SUBJECTS[type] || 'Max Sauveur — Service Client';
     document.getElementById('ob-draft-preview').style.display = 'block';
     btn.textContent = '💬 Mettre en forme avec Claude'; btn.disabled = false;
+    // Always reset save button after each generation
+    document.querySelectorAll('#ob-draft-preview button').forEach(b => {
+        if (b !== btn) { b.disabled = false; }
+        if (b.textContent.includes('Sauvegard')) b.textContent = '💾 Sauvegarder comme nouveau modèle';
+        if (b.textContent.includes('Envoyer') || b.textContent.includes('Envoi')) b.textContent = '📤 Envoyer';
+        if (b.textContent.includes('Régén')) b.textContent = '🔄 Régénérer';
+    });
 }
 
 async function outboundSend(btn) {
