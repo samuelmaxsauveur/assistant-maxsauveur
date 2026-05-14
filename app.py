@@ -646,6 +646,22 @@ def send_ajax():
         source='reply',
         thread_id=data.get('thread_id')
     )
+    # Auto-update knowledge base in background
+    def _update_kb():
+        try:
+            sent = database.get_today_sent_emails()
+            existing = database.get_response_patterns()
+            patterns = claude_ai.extract_response_patterns(sent, existing)
+            for p in patterns:
+                database.upsert_response_pattern(
+                    topic=p['topic'], topic_label=p['topic_label'],
+                    situation=p['situation'], response_template=p['response_template'],
+                    key_points=p.get('key_points', '')
+                )
+        except Exception as ex:
+            print(f"[KB] Auto-update error: {ex}")
+    from concurrent.futures import ThreadPoolExecutor
+    ThreadPoolExecutor(max_workers=1).submit(_update_kb)
     return jsonify({'success': True})
 
 @app.route('/change-relay', methods=['POST'])

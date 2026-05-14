@@ -128,8 +128,8 @@
         <option value="">— Aucune commande sélectionnée —</option>
       </select>
 
-      <label class="form-label">Tes notes / brouillon (optionnel — Claude mettra en forme)</label>
-      <textarea id="ob-draft" rows="4" style="width:100%;padding:10px;border:1px solid #e0e0e0;border-radius:8px;font-size:13px;font-family:inherit;resize:vertical;margin-bottom:12px;" placeholder="Ex: dire qu'on a reçu le colis, remboursement dans 5 jours, proposer aussi 35€ avoir..."></textarea>
+      <label class="form-label">Instructions spécifiques à ce cas (optionnel)</label>
+      <textarea id="ob-draft" rows="3" style="width:100%;padding:10px;border:1px solid #e0e0e0;border-radius:8px;font-size:13px;font-family:inherit;resize:vertical;margin-bottom:12px;" placeholder="Ex : le client avait une remise de 40%, adapter le discours — ou : ne pas proposer l'échange, juste confirmer le remboursement — ou : ajouter que le délai est 5 jours..."></textarea>
 
       <button onclick="outboundGenerate(this)" class="btn btn-blue" style="width:100%;">💬 Mettre en forme avec Claude</button>
 
@@ -139,8 +139,8 @@
         <textarea id="ob-draft-text" rows="10" style="width:100%;padding:10px;border:1px solid #b3d4f5;border-radius:8px;font-size:13px;font-family:inherit;resize:vertical;background:#f0f7ff;"></textarea>
         <label class="form-label" style="margin-top:10px;">Objet de l'email</label>
         <input id="ob-subject" type="text" style="width:100%;padding:9px 12px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:inherit;margin-bottom:12px;">
-        <label class="form-label" style="margin-top:14px;">Feedback / correction (optionnel)</label>
-        <textarea id="ob-feedback" rows="2" style="width:100%;padding:10px;border:1px solid #e0e0e0;border-radius:8px;font-size:13px;font-family:inherit;resize:vertical;margin-bottom:10px;" placeholder="Ex : trop formel, ajouter que le remboursement prend 5 jours, changer le ton..."></textarea>
+        <label class="form-label" style="margin-top:14px;">Correction sur ce brouillon (optionnel)</label>
+        <textarea id="ob-feedback" rows="2" style="width:100%;padding:10px;border:1px solid #e0e0e0;border-radius:8px;font-size:13px;font-family:inherit;resize:vertical;margin-bottom:10px;" placeholder="Ex : trop formel, raccourcir, enlever la question sur le retour, changer le ton..."></textarea>
         <div style="display:flex;gap:8px;margin-bottom:4px;">
           <button onclick="outboundGenerate(this)" class="btn btn-gray" style="flex:1;">🔄 Régénérer</button>
           <button onclick="outboundSaveTemplate(this)" class="btn btn-gray" style="flex:1;">💾 Garder comme modèle</button>
