@@ -246,6 +246,34 @@ def outbound_generate():
     return jsonify({'draft': draft})
 
 
+def _save_to_github(subject_type, label, body):
+    """Write template directly to custom_templates.json via GitHub API."""
+    import requests as req_lib, json as _json, base64, os
+    token = os.getenv('GITHUB_TOKEN', '')
+    repo = os.getenv('GITHUB_REPO', 'samuelmaxsauveur/assistant-maxsauveur')
+    if not token:
+        return False, 'GITHUB_TOKEN manquant dans Railway'
+    api = f'https://api.github.com/repos/{repo}/contents/custom_templates.json'
+    headers = {'Authorization': f'token {token}', 'Accept': 'application/vnd.github.v3+json'}
+    r = req_lib.get(api, headers=headers)
+    file_data = r.json()
+    sha = file_data.get('sha', '')
+    content_b64 = file_data.get('content', '')
+    current = _json.loads(base64.b64decode(content_b64).decode('utf-8')) if content_b64 else {'templates': []}
+    templates = [t for t in current.get('templates', []) if t['subject_type'] != subject_type]
+    templates.append({'subject_type': subject_type, 'label': label, 'body': body})
+    current['templates'] = templates
+    new_content = base64.b64encode(_json.dumps(current, ensure_ascii=False, indent=2).encode()).decode()
+    r2 = req_lib.put(api, headers=headers, json={
+        'message': f'Save template: {label}',
+        'content': new_content,
+        'sha': sha
+    })
+    if r2.status_code in (200, 201):
+        return True, None
+    return False, r2.json().get('message', 'Erreur GitHub')
+
+
 @sav.route('/sav/outbound/save-template', methods=['POST'])
 def outbound_save_template():
     data = request.json or {}
@@ -254,60 +282,11 @@ def outbound_save_template():
     label = data.get('label')
     if not subject_type or not body:
         return jsonify({'success': False, 'error': 'Données manquantes'})
+    # Save to SQLite for immediate use
     database.save_outbound_template(subject_type, body, label=label)
-    return jsonify({'success': True, 'subject_type': subject_type})
-
-
-@sav.route('/sav/outbound/persist-template', methods=['POST'])
-def persist_template():
-    """Save a template permanently to custom_templates.json via GitHub API."""
-    import requests as req_lib, json as _json, base64, os
-    data = request.json or {}
-    subject_type = data.get('subject_type', '')
-    if not subject_type:
-        return jsonify({'success': False, 'error': 'subject_type manquant'})
-
-    # Get template from DB
-    tmpl = database.get_outbound_template(subject_type)
-    all_tmpls = database.get_all_outbound_templates()
-    entry = next((t for t in all_tmpls if t['subject_type'] == subject_type), None)
-    if not entry or not tmpl:
-        return jsonify({'success': False, 'error': 'Template introuvable'})
-
-    token = os.getenv('GITHUB_TOKEN', '')
-    repo = os.getenv('GITHUB_REPO', 'samuelmaxsauveur/assistant-maxsauveur')
-    if not token:
-        return jsonify({'success': False, 'error': 'GITHUB_TOKEN manquant dans Railway'})
-
-    api = f'https://api.github.com/repos/{repo}/contents/custom_templates.json'
-    headers = {'Authorization': f'token {token}', 'Accept': 'application/vnd.github.v3+json'}
-
-    # Fetch current file
-    r = req_lib.get(api, headers=headers)
-    file_data = r.json()
-    current = _json.loads(base64.b64decode(file_data['sha'] and file_data['content'] or 'e30='))
-    sha = file_data.get('sha', '')
-
-    # Decode actual content
-    content_b64 = file_data.get('content', '')
-    current = _json.loads(base64.b64decode(content_b64).decode('utf-8'))
-
-    # Update templates list
-    templates = current.get('templates', [])
-    templates = [t for t in templates if t['subject_type'] != subject_type]
-    templates.append({'subject_type': subject_type, 'label': entry['label'], 'body': tmpl})
-    current['templates'] = templates
-
-    # Commit back
-    new_content = base64.b64encode(_json.dumps(current, ensure_ascii=False, indent=2).encode()).decode()
-    r2 = req_lib.put(api, headers=headers, json={
-        'message': f'Save template: {entry["label"]}',
-        'content': new_content,
-        'sha': sha
-    })
-    if r2.status_code in (200, 201):
-        return jsonify({'success': True})
-    return jsonify({'success': False, 'error': r2.json().get('message', 'Erreur GitHub')})
+    # Save permanently to GitHub
+    ok, err = _save_to_github(subject_type, label or subject_type, body)
+    return jsonify({'success': True, 'permanent': ok, 'error': err})
 
 
 @sav.route('/sav/outbound/templates', methods=['GET'])
