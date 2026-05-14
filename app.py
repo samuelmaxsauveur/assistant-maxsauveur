@@ -47,12 +47,15 @@ def _fetch_order_for_email(email):
         elif not all_orders:
             try:
                 specific = shopify_api.get_order_by_number(order_number)
+                # Only use this order if it belongs to the sender
                 if specific:
-                    all_orders = [specific]
+                    order_email = specific.get('customer_email', '') or specific.get('email', '')
+                    if order_email and sender_email and order_email.lower() == sender_email.lower():
+                        all_orders = [specific]
             except Exception:
                 pass
 
-    # Last resort — search by name patterns in body
+    # Last resort — search by name patterns in body (only if no orders found by email)
     if not all_orders:
         all_orders = _lookup_orders_by_name(customer_name, email['body'])
 
