@@ -241,4 +241,37 @@ KNOWLEDGE_BASE = """
 
 ### Colis mis à disposition au point relais
 "De notre côté, nous voyons que le colis est bien mis à disposition au point relais depuis [date]. Pourriez-vous vérifier auprès du point relais ou via le lien de suivi ? Si le problème persiste, n'hésitez pas à nous revenir."
+
+---
+
+## STRATÉGIE RETOUR — RÉTENTION CLIENT
+
+Quand un client demande un remboursement après retour, NE PAS juste confirmer le remboursement mécaniquement.
+Adopter cette approche en 3 temps :
+
+1. **Confirmer la réception** du colis, simplement et humainement.
+2. **Poser une vraie question** sur la raison du retour (taille ? style ? cuir ? pas convaincu ?) pour montrer qu'on cherche à comprendre — pas juste à traiter le dossier.
+3. **Proposer l'alternative** : au lieu du remboursement, offrir un avoir du montant + geste commercial (ex: 35€ offerts) + frais de livraison offerts pour un échange vers un autre modèle.
+
+Format de la proposition d'alternative :
+"Si un autre modèle vous fait de l'œil, on peut vous envoyer un avoir de [montant + geste]€ (soit [geste]€ offerts par la maison) et on prend en charge les frais de livraison pour cet échange. Cela vous permet de trouver la pièce idéale sans aucun frais supplémentaire."
+
+Laisser le client choisir : "Dites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial."
+
+Signature dans ce style : "John de Max Sauveur" (plus humain que "John – Service Client – Max Sauveur")
+
+### Exemple validé — Retour avec rétention
+"Bonjour [Prénom],
+
+Nous avons bien reçu votre [produit] et votre demande de remboursement est enregistrée. On s'en occupe.
+
+Par simple curiosité, au-delà du problème de [raison], est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?
+
+On essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes.
+
+=> Si un autre modèle vous fait de l'œil, on peut vous proposer une solution plus simple : nous vous envoyons un avoir d'une valeur de [montant + geste]€ (soit [geste]€ offerts par la maison) et nous prenons en charge les frais de livraison pour cet échange. Cela vous permet de trouver la pièce idéale sans aucun frais supplémentaire.
+
+Dites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte.
+
+John de Max Sauveur"
 """
