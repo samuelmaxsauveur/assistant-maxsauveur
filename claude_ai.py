@@ -526,12 +526,34 @@ OUTBOUND_SUBJECT_TEMPLATES = {
     'return_refund': {
         'label': 'Confirmation retour reçu — remboursement',
         'subject': 'Retour reçu — remboursement en cours',
-        'context': """Nous avons bien reçu le colis retour du client. Nous confirmons le remboursement et nous lui offrons un avoir supplémentaire de 35€ valable sur sa prochaine commande, pour compenser la gêne.""",
+        'context': '',
+        'template': """Bonjour [Prénom],
+
+Nous avons bien reçu votre [produit] et votre demande de remboursement est enregistrée. On s'en occupe.
+
+Par simple curiosité, au-delà du problème de [raison], est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?
+
+On essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.
+
+=> Si un autre modèle vous fait de l'œil, on peut vous proposer une solution plus simple : nous vous envoyons un avoir d'une valeur de [montant + 35]€ (soit 35€ offerts par la maison) et nous prenons en charge les frais de livraison pour cet échange. Cela vous permet de trouver la pièce idéale sans aucun frais supplémentaire.
+
+Dites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte.
+
+John de Max Sauveur""",
     },
     'return_exchange': {
         'label': 'Confirmation retour reçu — échange',
         'subject': 'Retour reçu — échange en cours',
-        'context': """Nous avons bien reçu le colis retour du client. Nous confirmons la prise en charge de l'échange et lui indiquons la suite du processus.""",
+        'context': '',
+        'template': """Bonjour [Prénom],
+
+Nous avons bien reçu votre colis retour. Votre échange est enregistré et en cours de traitement.
+
+[Détails de l'échange : nouveau modèle / taille / délai estimé]
+
+N'hésitez pas si vous avez la moindre question.
+
+John de Max Sauveur""",
     },
     'custom': {
         'label': 'Autre (message libre)',
@@ -550,14 +572,14 @@ def generate_outbound_email(customer_name, customer_email, subject_type, user_dr
         order_context = f"\nCommande : {order_info.get('number')} — {order_info.get('total')} — {order_info.get('fulfillment_status')}"
         if items_str:
             order_context += f"\nArticles : {items_str}"
-    type_context = f"\nContexte : {template['context']}" if template['context'] else ""
-    draft_block = f"\n\nNotes / brouillon de Samuel :\n{user_draft}" if user_draft.strip() else ""
+    type_context = f"\nContexte : {template['context']}" if template.get('context') else ""
+    draft_block = f"\n\nInstructions spécifiques de Samuel :\n{user_draft}" if user_draft.strip() else ""
     feedback_block = ""
     if feedback and previous_draft:
         feedback_block = f"\n\nVersion précédente générée :\n{previous_draft}\n\nCorrection demandée par Samuel : {feedback}\nRéécris l'email en tenant compte de cette correction."
     elif feedback:
         feedback_block = f"\n\nInstruction : {feedback}"
-    # Inject saved template as strict reference if available
+    # 1. Check DB/env saved template, 2. Fall back to code default template
     template_block = ""
     has_saved_template = False
     try:
@@ -568,15 +590,18 @@ def generate_outbound_email(customer_name, customer_email, subject_type, user_dr
             template_block = f"\n\nMODÈLE VALIDÉ À SUIVRE OBLIGATOIREMENT :\n---\n{saved}\n---"
     except Exception:
         pass
+    if not has_saved_template and template.get('template'):
+        has_saved_template = True
+        template_block = f"\n\nMODÈLE DE BASE À SUIVRE OBLIGATOIREMENT :\n---\n{template['template']}\n---"
 
     if has_saved_template:
-        instruction = """INSTRUCTION PRINCIPALE : Un modèle validé est fourni ci-dessus.
-Génère un email TRÈS proche de ce modèle en adaptant UNIQUEMENT les variables (prénom client, numéro de commande, montants, produits).
-Ne change pas la structure, le ton, ni les formulations du modèle.
-Si des notes de Samuel sont fournies, intègre-les sans dénaturer le modèle."""
+        instruction = """INSTRUCTION PRINCIPALE : Un modèle est fourni ci-dessus. Tu DOIS partir de ce modèle exact.
+Adapte uniquement : le prénom client, le produit, le numéro de commande, les montants, et intègre les instructions spécifiques de Samuel si présentes.
+Ne réécris pas l'email from scratch. Garde la structure, le ton et les formulations du modèle.
+Si Samuel donne des instructions spécifiques, applique-les comme des ajustements au modèle, pas comme une réécriture complète."""
     else:
         instruction = """Rédige un email complet, professionnel et humain dans le style de John (service client Max Sauveur).
-Respecte les règles habituelles : pas de tiret long, pas de "Bonne nouvelle", signature John – Service Client – Max Sauveur.
+Respecte les règles habituelles : pas de tiret long, pas de "Bonne nouvelle", signature John de Max Sauveur.
 Si des notes sont fournies, utilise-les comme base mais reformule et complète."""
 
     prompt = f"""Tu dois rédiger un email sortant à envoyer à un client Max Sauveur.
