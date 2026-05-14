@@ -629,15 +629,31 @@ async function outboundSaveAsNew(btn) {
         const hint = document.createElement('div');
         hint.id = 'ob-railway-hint';
         hint.style.cssText = 'margin-top:10px;background:#fffbea;border:1px solid #f59e0b;border-radius:8px;padding:12px;font-size:12px;color:#92400e;';
-        hint.innerHTML = `<strong>Pour que ce modèle survive aux redéploiements :</strong><br>
-            Dans Railway → Variables → ajoute : <code style="background:#fef3c7;padding:2px 6px;border-radius:4px;">${data.env_key}</code><br>
-            <button onclick="navigator.clipboard.writeText(${JSON.stringify(data.env_value)});this.textContent='✅ Copié !'"
-                style="margin-top:6px;padding:6px 12px;background:#f59e0b;color:white;border:none;border-radius:6px;cursor:pointer;font-size:12px;">
-                📋 Copier la valeur
+        hint.innerHTML = `<strong>💾 Modèle sauvegardé</strong> (disponible jusqu'au prochain redéploiement)<br>
+            <button id="ob-persist-btn" data-slug="${slug}"
+                onclick="persistTemplate(this)"
+                style="margin-top:6px;padding:6px 14px;background:#16a34a;color:white;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:600;">
+                🔒 Rendre permanent
             </button>`;
         btn.parentNode.parentNode.appendChild(hint);
     } else {
         btn.textContent = '❌ Erreur'; btn.disabled = false;
+    }
+}
+
+async function persistTemplate(btn) {
+    const slug = btn.dataset.slug;
+    btn.textContent = '⏳ Sauvegarde...'; btn.disabled = true;
+    const res = await fetch('/sav/outbound/persist-template', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({subject_type: slug})
+    });
+    const data = await res.json();
+    if (data.success) {
+        btn.textContent = '✅ Permanent !'; btn.style.background = '#15803d';
+    } else {
+        btn.textContent = '❌ ' + (data.error || 'Erreur');
+        btn.disabled = false;
     }
 }
 

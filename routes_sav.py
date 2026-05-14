@@ -255,8 +255,59 @@ def outbound_save_template():
     if not subject_type or not body:
         return jsonify({'success': False, 'error': 'Données manquantes'})
     database.save_outbound_template(subject_type, body, label=label)
-    env_key = f"TEMPLATE_{subject_type.upper()}"
-    return jsonify({'success': True, 'env_key': env_key, 'env_value': body})
+    return jsonify({'success': True, 'subject_type': subject_type})
+
+
+@sav.route('/sav/outbound/persist-template', methods=['POST'])
+def persist_template():
+    """Save a template permanently to custom_templates.json via GitHub API."""
+    import requests as req_lib, json as _json, base64, os
+    data = request.json or {}
+    subject_type = data.get('subject_type', '')
+    if not subject_type:
+        return jsonify({'success': False, 'error': 'subject_type manquant'})
+
+    # Get template from DB
+    tmpl = database.get_outbound_template(subject_type)
+    all_tmpls = database.get_all_outbound_templates()
+    entry = next((t for t in all_tmpls if t['subject_type'] == subject_type), None)
+    if not entry or not tmpl:
+        return jsonify({'success': False, 'error': 'Template introuvable'})
+
+    token = os.getenv('GITHUB_TOKEN', '')
+    repo = os.getenv('GITHUB_REPO', 'samuelmaxsauveur/assistant-maxsauveur')
+    if not token:
+        return jsonify({'success': False, 'error': 'GITHUB_TOKEN manquant dans Railway'})
+
+    api = f'https://api.github.com/repos/{repo}/contents/custom_templates.json'
+    headers = {'Authorization': f'token {token}', 'Accept': 'application/vnd.github.v3+json'}
+
+    # Fetch current file
+    r = req_lib.get(api, headers=headers)
+    file_data = r.json()
+    current = _json.loads(base64.b64decode(file_data['sha'] and file_data['content'] or 'e30='))
+    sha = file_data.get('sha', '')
+
+    # Decode actual content
+    content_b64 = file_data.get('content', '')
+    current = _json.loads(base64.b64decode(content_b64).decode('utf-8'))
+
+    # Update templates list
+    templates = current.get('templates', [])
+    templates = [t for t in templates if t['subject_type'] != subject_type]
+    templates.append({'subject_type': subject_type, 'label': entry['label'], 'body': tmpl})
+    current['templates'] = templates
+
+    # Commit back
+    new_content = base64.b64encode(_json.dumps(current, ensure_ascii=False, indent=2).encode()).decode()
+    r2 = req_lib.put(api, headers=headers, json={
+        'message': f'Save template: {entry["label"]}',
+        'content': new_content,
+        'sha': sha
+    })
+    if r2.status_code in (200, 201):
+        return jsonify({'success': True})
+    return jsonify({'success': False, 'error': r2.json().get('message', 'Erreur GitHub')})
 
 
 @sav.route('/sav/outbound/templates', methods=['GET'])
