@@ -153,15 +153,29 @@ def save_outbound_template(subject_type, body, label=None):
 
 
 def get_all_outbound_templates():
-    """Return all saved custom templates with their labels."""
+    """Return all saved custom templates: from JSON file (permanent) + SQLite (session)."""
+    results = {}
+    # 1. Load from JSON file (permanent, in git repo)
+    try:
+        import json as _json
+        json_path = os.path.join(os.path.dirname(__file__), 'custom_templates.json')
+        with open(json_path) as f:
+            data = _json.load(f)
+        for t in data.get('templates', []):
+            results[t['subject_type']] = t
+    except Exception:
+        pass
+    # 2. Overlay with SQLite (may have newer entries not yet committed)
     conn = get_connection()
     try:
         cursor = conn.execute(
             "SELECT subject_type, label, body FROM outbound_templates WHERE label IS NOT NULL ORDER BY updated_at DESC"
         )
-        return [dict(row) for row in cursor.fetchall()]
+        for row in cursor.fetchall():
+            results[row['subject_type']] = dict(row)
     finally:
         conn.close()
+    return list(results.values())
 
 
 def get_outbound_template(subject_type):
@@ -170,6 +184,17 @@ def get_outbound_template(subject_type):
     env_val = os.environ.get(env_key, '').strip()
     if env_val:
         return env_val
+    # Check JSON file (permanent, in git repo)
+    try:
+        import json as _json
+        json_path = os.path.join(os.path.dirname(__file__), 'custom_templates.json')
+        with open(json_path) as f:
+            data = _json.load(f)
+        for t in data.get('templates', []):
+            if t['subject_type'] == subject_type:
+                return t['body']
+    except Exception:
+        pass
     # Fallback to database
     conn = get_connection()
     try:
