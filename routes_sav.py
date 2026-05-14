@@ -42,11 +42,18 @@ def sav_page():
             match = re.search(r'<(.+?)>', sender)
             sender_email = match.group(1) if match else sender
             try:
-                if order_number:
-                    order_info = shopify_api.get_order_by_number(order_number)
-                # If no order found by number, try by sender email
+                if order_number and sender_email and '@' in sender_email:
+                    # Fetch by order number but verify it belongs to the sender
+                    candidate = shopify_api.get_order_by_number(order_number)
+                    if candidate:
+                        order_email = (candidate.get('customer_email') or candidate.get('email') or '').lower()
+                        if order_email == sender_email.lower():
+                            order_info = candidate
+                        # else: order exists but belongs to someone else — ignore it
+                # If no verified order found, try by sender email
                 if not order_info and sender_email and '@' in sender_email:
-                    orders = shopify_api.get_orders_by_email(sender_email)
+                    orders = shopify_api.get_orders_by_email(sender_email) or []
+                    orders = [o for o in orders if (o.get('customer_email') or o.get('email') or '').lower() == sender_email.lower()]
                     if orders:
                         order_info = orders[0]
                         if not order_number:

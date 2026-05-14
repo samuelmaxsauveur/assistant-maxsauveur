@@ -29,14 +29,21 @@ def _fetch_order_for_email(email):
                    claude_ai.extract_order_number(email['body'])
     sender_email, customer_name = resolve_sender(email['sender'], email['body'])
 
-    # Fetch complete order history: by email + by name (handles multiple Shopify accounts)
+    # Fetch orders strictly by sender email only
     all_orders = []
     try:
-        all_orders = shopify_api.get_full_order_history(sender_email, customer_name) or []
+        all_orders = shopify_api.get_orders_by_email(sender_email) or []
     except Exception:
         pass
 
-    # If a specific order number was mentioned in the email, make sure it's first
+    # Filter: only keep orders that truly belong to the sender
+    if sender_email:
+        all_orders = [
+            o for o in all_orders
+            if (o.get('customer_email') or o.get('email') or '').lower() == sender_email.lower()
+        ]
+
+    # If a specific order number was mentioned, prioritise it — but only if it belongs to sender
     if order_number:
         mentioned = next(
             (o for o in all_orders if str(o.get('number', '')).lstrip('#') == str(order_number)),
@@ -44,20 +51,6 @@ def _fetch_order_for_email(email):
         )
         if mentioned:
             all_orders = [mentioned] + [o for o in all_orders if o is not mentioned]
-        elif not all_orders:
-            try:
-                specific = shopify_api.get_order_by_number(order_number)
-                # Only use this order if it belongs to the sender
-                if specific:
-                    order_email = specific.get('customer_email', '') or specific.get('email', '')
-                    if order_email and sender_email and order_email.lower() == sender_email.lower():
-                        all_orders = [specific]
-            except Exception:
-                pass
-
-    # Last resort — search by name patterns in body (only if no orders found by email)
-    if not all_orders:
-        all_orders = _lookup_orders_by_name(customer_name, email['body'])
 
     return {
         'email': email,
@@ -393,32 +386,21 @@ def generate():
         except Exception:
             pass
 
-    # Always fetch full order history (email + name, handles multiple Shopify accounts)
-    import sys as _sys
-    _cn = extract_customer_name(data.get('sender', ''))
-    print(f"[GENERATE] sender_email={sender_email!r} name={_cn!r}", file=_sys.stderr, flush=True)
+    # Fetch orders strictly by sender email only — no name-based fallback to avoid wrong matches
+    all_orders = []
     try:
-        all_orders = shopify_api.get_full_order_history(sender_email, _cn) or []
-    except Exception as _e:
-        print(f"[GENERATE_ERROR] {_e}", file=_sys.stderr, flush=True)
+        all_orders = shopify_api.get_orders_by_email(sender_email) or []
+    except Exception:
         all_orders = []
-    print(f"[GENERATE] all_orders after lookup: {[o['number'] for o in all_orders]}", file=_sys.stderr, flush=True)
 
-    # Step: also search by name found in email body (e.g. signature differs from sender name)
-    _body_name = claude_ai.extract_name_from_body(data.get('body', ''))
-    if _body_name and _body_name.lower() not in (_cn or '').lower():
-        print(f"[GENERATE] body_name found: {_body_name!r}", file=_sys.stderr, flush=True)
-        try:
-            _body_orders = shopify_api.get_full_order_history(None, _body_name) or []
-            _seen = {o['number'] for o in all_orders}
-            for o in _body_orders:
-                if o['number'] not in _seen:
-                    all_orders.append(o)
-                    _seen.add(o['number'])
-        except Exception as _e:
-            print(f"[GENERATE] body_name lookup error: {_e}", file=_sys.stderr, flush=True)
+    # Filter: only keep orders that truly belong to the sender
+    if sender_email:
+        all_orders = [
+            o for o in all_orders
+            if (o.get('customer_email') or o.get('email') or '').lower() == sender_email.lower()
+        ]
 
-    # If a specific order number was mentioned, put it first
+    # If a specific order number was mentioned, put it first — but only if it belongs to sender
     order_num_fallback = claude_ai.extract_order_number(data.get('subject', '')) or \
                          claude_ai.extract_order_number(data.get('body', ''))
     if order_num_fallback and all_orders:
@@ -428,13 +410,6 @@ def generate():
         )
         if mentioned:
             all_orders = [mentioned] + [o for o in all_orders if o is not mentioned]
-    if order_num_fallback and not all_orders:
-        try:
-            specific = shopify_api.get_order_by_number(order_num_fallback)
-            if specific:
-                all_orders = [specific]
-        except Exception:
-            pass
 
     # Final fallback: use single order passed from frontend
     if not all_orders and order_info:
@@ -489,30 +464,20 @@ def ask():
     question = data.get('question', '')
     sender_email_ask = extract_email_address(sender)
 
-    # Always fetch full order history (email + name, handles multiple Shopify accounts)
+    # Fetch orders strictly by sender email only — no name-based fallback to avoid wrong matches
     try:
-        all_orders_ask = shopify_api.get_full_order_history(
-            sender_email_ask,
-            extract_customer_name(sender)
-        ) or []
+        all_orders_ask = shopify_api.get_orders_by_email(sender_email_ask) or []
     except Exception:
         all_orders_ask = []
 
-    # Also search by name found in email body (signature may differ from sender)
-    _ask_body_name = claude_ai.extract_name_from_body(data.get('body', ''))
-    _ask_cn = extract_customer_name(sender)
-    if _ask_body_name and _ask_body_name.lower() not in (_ask_cn or '').lower():
-        try:
-            _extra = shopify_api.get_full_order_history(None, _ask_body_name) or []
-            _seen_ask = {o['number'] for o in all_orders_ask}
-            for o in _extra:
-                if o['number'] not in _seen_ask:
-                    all_orders_ask.append(o)
-                    _seen_ask.add(o['number'])
-        except Exception:
-            pass
+    # Filter: only keep orders that truly belong to the sender
+    if sender_email_ask:
+        all_orders_ask = [
+            o for o in all_orders_ask
+            if (o.get('customer_email') or o.get('email') or '').lower() == sender_email_ask.lower()
+        ]
 
-    # If a specific order number was mentioned, put it first
+    # If a specific order number was mentioned, put it first — but only if it belongs to sender
     order_num_fallback = claude_ai.extract_order_number(data.get('subject', '')) or \
                          claude_ai.extract_order_number(data.get('body', ''))
     if order_num_fallback and all_orders_ask:
@@ -522,30 +487,25 @@ def ask():
         )
         if mentioned:
             all_orders_ask = [mentioned] + [o for o in all_orders_ask if o is not mentioned]
-    if order_num_fallback and not all_orders_ask:
-        try:
-            specific = shopify_api.get_order_by_number(order_num_fallback)
-            if specific:
-                all_orders_ask = [specific]
-        except Exception:
-            pass
 
-    # Detect manual name search in question: "cherche Antoine FAU", "regarde pour X", etc.
-    _manual_name_match = re.search(
-        r'(?:cherche[z]?|recherche[z]?|trouve[z]?|regarde[z]?\s+pour|look\s+up|search\s+for)\s+["\']?([A-ZÀ-Ÿ][a-zà-ÿ\-]+(?:\s+[A-ZÀ-Ÿ][A-Za-zà-ÿ\-]+)+)["\']?',
-        question, re.IGNORECASE
-    )
-    if _manual_name_match:
-        _manual_name = _manual_name_match.group(1)
-        try:
-            _manual_orders = shopify_api.get_full_order_history(None, _manual_name) or []
-            _seen_manual = {o['number'] for o in all_orders_ask}
-            for o in _manual_orders:
-                if o['number'] not in _seen_manual:
-                    all_orders_ask.append(o)
-                    _seen_manual.add(o['number'])
-        except Exception:
-            pass
+    # Detect manual name/email search in question: "cherche Antoine FAU", "regarde pour X@x.com", etc.
+    _manual_email_match = re.search(r'[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}', question)
+    if _manual_email_match:
+        _manual_email = _manual_email_match.group(0)
+        if _manual_email.lower() != sender_email_ask.lower():
+            try:
+                _manual_orders = shopify_api.get_orders_by_email(_manual_email) or []
+                _manual_orders = [
+                    o for o in _manual_orders
+                    if (o.get('customer_email') or o.get('email') or '').lower() == _manual_email.lower()
+                ]
+                _seen_manual = {o['number'] for o in all_orders_ask}
+                for o in _manual_orders:
+                    if o['number'] not in _seen_manual:
+                        all_orders_ask.append(o)
+                        _seen_manual.add(o['number'])
+            except Exception:
+                pass
 
     if not all_orders_ask and order_info:
         all_orders_ask = [order_info]
