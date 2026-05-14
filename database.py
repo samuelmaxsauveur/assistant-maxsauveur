@@ -106,6 +106,10 @@ def init_db():
                 updated_at   TIMESTAMP NOT NULL
             )
         """)
+        try:
+            cursor.execute("ALTER TABLE outbound_templates ADD COLUMN label TEXT")
+        except Exception:
+            pass
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS sent_emails (
                 id          INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -135,15 +139,27 @@ def init_db():
         conn.close()
 
 
-def save_outbound_template(subject_type, body):
+def save_outbound_template(subject_type, body, label=None):
     now = datetime.utcnow().isoformat()
     conn = get_connection()
     try:
         conn.execute(
-            "INSERT OR REPLACE INTO outbound_templates (subject_type, body, updated_at) VALUES (?, ?, ?)",
-            (subject_type, body, now)
+            "INSERT OR REPLACE INTO outbound_templates (subject_type, body, label, updated_at) VALUES (?, ?, ?, ?)",
+            (subject_type, body, label, now)
         )
         conn.commit()
+    finally:
+        conn.close()
+
+
+def get_all_outbound_templates():
+    """Return all saved custom templates with their labels."""
+    conn = get_connection()
+    try:
+        cursor = conn.execute(
+            "SELECT subject_type, label, body FROM outbound_templates WHERE label IS NOT NULL ORDER BY updated_at DESC"
+        )
+        return [dict(row) for row in cursor.fetchall()]
     finally:
         conn.close()
 

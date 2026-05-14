@@ -251,10 +251,10 @@ def outbound_save_template():
     data = request.json or {}
     subject_type = data.get('subject_type', '')
     body = data.get('body', '')
+    label = data.get('label')
     if not subject_type or not body:
         return jsonify({'success': False, 'error': 'Données manquantes'})
-    database.save_outbound_template(subject_type, body)
-    # Return the env var name/value so the user can persist it in Railway
+    database.save_outbound_template(subject_type, body, label=label)
     env_key = f"TEMPLATE_{subject_type.upper()}"
     return jsonify({'success': True, 'env_key': env_key, 'env_value': body})
 
@@ -265,6 +265,9 @@ def outbound_templates():
     result = {}
     for t in types:
         result[t] = database.get_outbound_template(t) is not None
+    # Also return custom named templates
+    custom_templates = database.get_all_outbound_templates()
+    result['_custom'] = [{'subject_type': t['subject_type'], 'label': t['label']} for t in custom_templates]
     return jsonify(result)
 
 
