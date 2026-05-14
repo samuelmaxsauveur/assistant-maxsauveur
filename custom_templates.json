@@ -1,4 +1,10 @@
 {
   "_comment": "Templates personnalisés sauvegardés. Ajoutés ici = permanents sur Railway.",
-  "templates": []
+  "templates": [
+    {
+      "subject_type": "custom_offre_nouvelle_co_avec_ceinture_20_offer",
+      "label": "offre nouvelle co avec ceinture + 20€ offert",
+      "body": "Bonjour Gabriel,\n\nNous avons bien reçu vos Brogues Derby Daim Marron Noisette et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille ou de confort, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si un autre modèle vous fait de l'œil, voici ce qu'on peut faire : nous vous envoyons un avoir pour échanger votre paire, auquel on ajoute 20€ offerts par la maison, les frais de livraison pris en charge, et vous conservez l'avantage que vous avez eu lors du lancement de notre nouvelle collection, à savoir la ceinture Jason offerte. \n\nAutrement dit, vous repartez avec une nouvelle paire et votre ceinture, sans débourser un centime de plus.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte.\n\nJohn de Max Sauveur"
+    }
+  ]
 }
