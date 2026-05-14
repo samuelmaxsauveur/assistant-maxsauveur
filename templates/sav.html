@@ -534,9 +534,11 @@ function closeOutbound() {
     resultEl.textContent = '';
     const hint = document.getElementById('ob-railway-hint');
     if (hint) hint.remove();
-    // Re-enable send button
+    // Re-enable buttons
     const sendBtn = document.querySelector('#ob-draft-preview button.btn-green');
     if (sendBtn) { sendBtn.textContent = '📤 Envoyer'; sendBtn.disabled = false; }
+    const saveBtn = document.querySelector('#ob-draft-preview button[onclick*="SaveAsNew"]');
+    if (saveBtn) { saveBtn.textContent = '💾 Sauvegarder comme nouveau modèle'; saveBtn.disabled = false; }
     outboundCustomer = null;
     outboundOrders = [];
 }
@@ -623,16 +625,18 @@ async function outboundSaveAsNew(btn) {
         opt.value = slug; opt.textContent = label; opt.dataset.custom = '1';
         sel.appendChild(opt);
         sel.value = slug;
-        // Show Railway env var hint
+        // Show confirmation
         const existing = document.getElementById('ob-railway-hint');
         if (existing) existing.remove();
         const hint = document.createElement('div');
         hint.id = 'ob-railway-hint';
-        hint.style.cssText = 'margin-top:10px;background:#fffbea;border:1px solid #f59e0b;border-radius:8px;padding:12px;font-size:12px;color:#92400e;';
+        hint.style.cssText = 'margin-top:10px;background:#f0fdf4;border:1px solid #16a34a;border-radius:8px;padding:10px;font-size:12px;color:#15803d;';
         hint.innerHTML = data.permanent
             ? `<strong>✅ Modèle sauvegardé définitivement</strong>`
-            : `<strong>💾 Modèle sauvegardé</strong> (session uniquement — ${data.error || 'GitHub indisponible'})`;
+            : `<strong>💾 Modèle sauvegardé</strong> (session — ${data.error || 'GitHub indisponible'})`;
         btn.parentNode.parentNode.appendChild(hint);
+        // Re-enable button after 2s so user can save another variant
+        setTimeout(() => { btn.textContent = '💾 Sauvegarder comme nouveau modèle'; btn.disabled = false; }, 2000);
     } else {
         btn.textContent = '❌ Erreur'; btn.disabled = false;
     }
