@@ -740,6 +740,9 @@ def save_pattern():
         response_template=response_template,
         key_points=''
     )
+    from routes_sav import _save_patterns_to_github
+    from concurrent.futures import ThreadPoolExecutor
+    ThreadPoolExecutor(max_workers=1).submit(_save_patterns_to_github)
     return jsonify({'success': True})
 
 

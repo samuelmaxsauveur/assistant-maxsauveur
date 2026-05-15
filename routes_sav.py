@@ -253,6 +253,40 @@ def outbound_generate():
     return jsonify({'draft': draft})
 
 
+def _save_patterns_to_github():
+    """Dump all response_patterns from SQLite to custom_patterns.json via GitHub API."""
+    import requests as req_lib, json as _json, base64, os
+    token = os.getenv('GITHUB_TOKEN', '')
+    repo = os.getenv('GITHUB_REPO', 'samuelmaxsauveur/assistant-maxsauveur')
+    if not token:
+        return False
+    api = f'https://api.github.com/repos/{repo}/contents/custom_patterns.json'
+    headers = {'Authorization': f'token {token}', 'Accept': 'application/vnd.github.v3+json'}
+    r = req_lib.get(api, headers=headers)
+    sha = r.json().get('sha', '') if r.status_code == 200 else ''
+    patterns = database.get_response_patterns()
+    payload = {
+        '_comment': 'Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.',
+        'patterns': [
+            {
+                'topic': p['topic'],
+                'topic_label': p['topic_label'],
+                'situation': p.get('situation', ''),
+                'response_template': p['response_template'],
+                'key_points': p.get('key_points', ''),
+                'example_count': p.get('example_count', 1),
+            }
+            for p in patterns
+        ]
+    }
+    new_content = base64.b64encode(_json.dumps(payload, ensure_ascii=False, indent=2).encode()).decode()
+    body_data = {'message': f'Update patterns ({len(patterns)} entrées)', 'content': new_content}
+    if sha:
+        body_data['sha'] = sha
+    r2 = req_lib.put(api, headers=headers, json=body_data)
+    return r2.status_code in (200, 201)
+
+
 def _save_to_github(subject_type, label, body):
     """Write template directly to custom_templates.json via GitHub API."""
     import requests as req_lib, json as _json, base64, os
@@ -338,6 +372,8 @@ def outbound_send():
                         situation=p['situation'], response_template=p['response_template'],
                         key_points=p.get('key_points', '')
                     )
+                if patterns:
+                    _save_patterns_to_github()
             except Exception as ex:
                 print(f"[KB] Auto-update error: {ex}")
         ThreadPoolExecutor(max_workers=1).submit(_update_kb)
@@ -428,6 +464,8 @@ def knowledge_update():
                 response_template=p['response_template'],
                 key_points=p.get('key_points', '')
             )
+        if patterns:
+            _save_patterns_to_github()
         return jsonify({'success': True, 'updated': len(patterns)})
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)})
@@ -441,6 +479,7 @@ def knowledge_delete(pattern_id):
         conn.commit()
     finally:
         conn.close()
+    _save_patterns_to_github()
     return jsonify({'success': True})
 
 

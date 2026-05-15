@@ -135,8 +135,34 @@ def init_db():
             )
         """)
         conn.commit()
+        # Seed response_patterns from custom_patterns.json (survives Railway redeploys)
+        _seed_patterns_from_json(conn)
     finally:
         conn.close()
+
+
+def _seed_patterns_from_json(conn):
+    """Load patterns from custom_patterns.json into SQLite if not already present."""
+    try:
+        json_path = os.path.join(os.path.dirname(__file__), 'custom_patterns.json')
+        with open(json_path) as f:
+            data = json.load(f)
+        now = datetime.utcnow().isoformat()
+        for p in data.get('patterns', []):
+            existing = conn.execute(
+                "SELECT id FROM response_patterns WHERE topic = ?", (p['topic'],)
+            ).fetchone()
+            if not existing:
+                conn.execute(
+                    """INSERT INTO response_patterns
+                       (topic, topic_label, situation, response_template, key_points, example_count, last_updated, created_at)
+                       VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
+                    (p['topic'], p['topic_label'], p.get('situation', ''), p['response_template'],
+                     p.get('key_points', ''), p.get('example_count', 1), now, now)
+                )
+        conn.commit()
+    except Exception:
+        pass
 
 
 def save_outbound_template(subject_type, body, label=None):
