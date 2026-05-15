@@ -18,18 +18,18 @@
       "example_count": 2
     },
     {
-      "topic": "re__echange_commande_12053",
-      "topic_label": "Re: Echange commande 12053",
-      "situation": "Re: Echange commande 12053",
-      "response_template": "Bonjour Charly,\n\nC'est tout à fait ça !\n\nDeux options s'offrent à vous :\n\n1. Vous commandez le 40 maintenant et renvoyez le 39 en parallèle. Dès réception et contrôle de la paire, nous procédons au remboursement sur votre moyen de paiement initial. C'est la solution la plus rapide.\n\n2. Vous renvoyez d'abord le 39, et une fois reçu, nous vous envoyons un avoir pour commander le 40. Un peu plus long mais sans avance de frais.\n\nPour le retour, emballez soigneusement la paire et joignez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (mention \"échange de taille\"). Les frais de retour sont à votre charge.\n\nDites-moi quelle option vous préférez !\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "re__re__avis",
       "topic_label": "Re: Re: Avis",
       "situation": "Re: Re: Avis",
       "response_template": "Bonjour Frédéric,\n\nMerci pour le retour et la photo.\n\nPour répondre à votre question : oui, le cuir du Paul est tout à fait compatible avec un assouplissant cuir. Appliquez-en sur les zones de frottement (notamment l'avant et les côtés de la boîte à orteils) avant d'enfiler la paire, cela aide vraiment.\n\nConcernant les douleurs à l'avant du pied après plusieurs heures, c'est le cuir neuf qui résiste encore. La semelle en liège et le cuir vont se mouler progressivement à votre pied, mais si vous voulez accélérer le processus, voici une astuce : passez chez un cordonnier et demandez-lui de les passer à l'étireuse (ou \"électeur\"). C'est rapide, pas cher, et ça détend le cuir en profondeur sur les zones qui frottent, bien plus efficacement qu'avec les seuls ports successifs.\n\nBonne continuation avec la paire.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__re__guide_de_taille",
+      "topic_label": "Re: Re: Guide de taille",
+      "situation": "Re: Re: Guide de taille",
+      "response_template": "Bonjour Paul,\n\nPetite précision : le Fisherman n'est pas remisé en ce moment. Son prix actuel de 149€ est son prix normal. C'est l'un de nos modèles les plus populaires et nous ne prévoyons pas de promotion particulière dessus.\n\nSi vous souhaitez la paire, c'est le bon moment pour la commander.\n\nBonne journée,\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -48,6 +48,14 @@
       "response_template": "Bonjour Julie,\n\nMerci pour votre message et votre patience !\n\nVotre commande du Moc Jagger correspond à une précommande. Les articles arrivent chez nous la semaine prochaine, et nous mettrons tout en œuvre pour expédier dans la foulée, sous réserve que nos prestataires ne soient pas impactés par les jours fériés à venir.\n\nDès que votre colis sera expédié, vous recevrez un email avec votre lien de suivi Chronopost, qui vous permettra de localiser votre point relais et de suivre l'acheminement en temps réel.\n\nN'hésitez pas à nous revenir si vous avez d'autres questions d'ici là.\n\nBonne journée,\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
+    },
+    {
+      "topic": "re__echange_commande_12053",
+      "topic_label": "Échange de taille – Options proposées au client",
+      "situation": "Un client souhaite échanger un article pour une taille différente. Le service client lui présente deux options : commander la nouvelle taille immédiatement avec remboursement après retour, ou retourner d'abord l'article et recevoir un avoir. La fiche existante est mise à jour avec le détail concret des deux options et la procédure de retour.",
+      "response_template": "Bonjour [Prénom],\n\nC'est tout à fait ça !\n\nDeux options s'offrent à vous :\n\n1. Vous commandez le [nouvelle taille] maintenant et renvoyez le [ancienne taille] en parallèle. Dès réception et contrôle de la paire, nous procédons au remboursement sur votre moyen de paiement initial. C'est la solution la plus rapide.\n\n2. Vous renvoyez d'abord le [ancienne taille], et une fois reçu, nous vous envoyons un avoir pour commander le [nouvelle taille]. Un peu plus long mais sans avance de frais.\n\nPour le retour, emballez soigneusement la paire et joignez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (mention \"échange de taille\"). Les frais de retour sont à votre charge.\n\nDites-moi quelle option vous préférez !\n\n[Prénom conseiller] de Max Sauveur",
+      "key_points": "Toujours proposer les deux options (remboursement après retour OU avoir). Préciser que les frais de retour sont à la charge du client. Fournir le lien vers la page retour avec la mention 'échange de taille'. Ton chaleureux et orienté solution.",
+      "example_count": 2
     }
   ]
 }
