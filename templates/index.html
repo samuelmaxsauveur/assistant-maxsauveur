@@ -408,19 +408,22 @@ async function askClaude(id) {
 }
 
 async function saveProcess(id) {
-    const steps = document.getElementById('question-' + id).value.trim();
-    if (!steps) { alert('Décris les étapes dans le champ "Demander à Claude" avant d\'enregistrer.'); return; }
-    const name = prompt('Nom de ce process (ex: "Changement point relais Wing") :');
+    const draft = document.getElementById('textarea-' + id).value.trim();
+    if (!draft) { alert('Génère d\'abord une réponse avant d\'enregistrer.'); return; }
+    const form = document.querySelector('.send-form[data-emailid="' + id + '"]');
+    const subject = form ? form.dataset.subject : '';
+    const name = prompt('Nom de ce type de mail (ex: "Suivi colis", "Échange taille") :');
     if (!name) return;
-    const trigger = prompt('Dans quel cas l\'utiliser ? (ex: "Client veut changer son point relais") :') || '';
-    const res = await fetch('/save-process', {
+    const situation = prompt('Dans quel cas l\'utiliser ? (laisse vide pour utiliser le sujet de l\'email)') || subject || '';
+    const res = await fetch('/save-pattern', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({name, trigger, steps})
+        body: JSON.stringify({label: name, situation, response_template: draft})
     });
     const data = await res.json();
     if (data.success) {
-        alert('Process "' + name + '" enregistré. Claude s\'en souviendra pour les prochains emails.');
+        const btn = document.querySelector('button[onclick="saveProcess(\'' + id + '\')"]');
+        if (btn) { btn.textContent = '✅ Enregistré'; setTimeout(() => { btn.textContent = '💾 Enregistrer comme process'; }, 3000); }
     } else {
         alert('Erreur : ' + (data.error || 'inconnu'));
     }

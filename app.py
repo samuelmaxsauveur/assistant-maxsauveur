@@ -724,6 +724,25 @@ def save_process():
     return jsonify({'success': True})
 
 
+@app.route('/save-pattern', methods=['POST'])
+def save_pattern():
+    data = request.json
+    label = data.get('label', '').strip()
+    situation = data.get('situation', '').strip()
+    response_template = data.get('response_template', '').strip()
+    if not label or not response_template:
+        return jsonify({'success': False, 'error': 'Label et réponse requis'}), 400
+    topic = re.sub(r'[^a-z0-9_]', '_', label.lower())[:50]
+    database.upsert_response_pattern(
+        topic=topic,
+        topic_label=label,
+        situation=situation,
+        response_template=response_template,
+        key_points=''
+    )
+    return jsonify({'success': True})
+
+
 @app.route('/wing/debug-screenshot')
 def wing_debug_screenshot():
     """Take a screenshot of Wing after login to diagnose automation issues."""
