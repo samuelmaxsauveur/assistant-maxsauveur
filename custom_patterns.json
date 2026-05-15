@@ -18,12 +18,20 @@
       "example_count": 2
     },
     {
-      "topic": "re__retour_re_u___remboursement_en_cours",
-      "topic_label": "Re: Retour reçu — remboursement en cours",
-      "situation": "Re: Retour reçu — remboursement en cours",
-      "response_template": "Bonjour William,\n\nC'est noté, nous procédons au remboursement de votre commande. Vous le recevrez dans les prochains jours sur votre moyen de paiement initial.\n\nBonne soirée à vous,\n\nJohn de Max Sauveur",
+      "topic": "re__re__avis",
+      "topic_label": "Re: Re: Avis",
+      "situation": "Re: Re: Avis",
+      "response_template": "Bonjour Frédéric,\n\nMerci pour le retour et la photo.\n\nPour répondre à votre question : oui, le cuir du Paul est tout à fait compatible avec un assouplissant cuir. Appliquez-en sur les zones de frottement (notamment l'avant et les côtés de la boîte à orteils) avant d'enfiler la paire, cela aide vraiment.\n\nConcernant les douleurs à l'avant du pied après plusieurs heures, c'est le cuir neuf qui résiste encore. La semelle en liège et le cuir vont se mouler progressivement à votre pied, mais si vous voulez accélérer le processus, voici une astuce : passez chez un cordonnier et demandez-lui de les passer à l'étireuse (ou \"électeur\"). C'est rapide, pas cher, et ça détend le cuir en profondeur sur les zones qui frottent, bien plus efficacement qu'avec les seuls ports successifs.\n\nBonne continuation avec la paire.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
+    },
+    {
+      "topic": "re__retour_re_u___remboursement_en_cours",
+      "topic_label": "Retour reçu — remboursement en cours",
+      "situation": "Un client a retourné sa commande et le retour a bien été réceptionné. Le service client confirme la prise en charge et informe le client que le remboursement va être effectué sur son moyen de paiement initial dans les prochains jours.",
+      "response_template": "Bonjour [Prénom],\n\nC'est noté, nous procédons au remboursement de votre commande. Vous le recevrez dans les prochains jours sur votre moyen de paiement initial.\n\nBonne soirée à vous,\n\n[Prénom conseiller] de Max Sauveur",
+      "key_points": "Ton rassurant et concis. Confirmer explicitement que le remboursement est en cours. Préciser que le remboursement se fera sur le moyen de paiement initial. Ne pas donner de délai précis (utiliser 'prochains jours'). Formule de politesse chaleureuse.",
+      "example_count": 2
     },
     {
       "topic": "suivi_precommande_jagger",
