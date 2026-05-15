@@ -624,7 +624,9 @@ def send_ajax():
         except Exception as ex:
             print(f"[KB] Auto-update error: {ex}")
     from concurrent.futures import ThreadPoolExecutor
+    from routes_sav import _save_patterns_to_github
     ThreadPoolExecutor(max_workers=1).submit(_update_kb)
+    ThreadPoolExecutor(max_workers=1).submit(_save_patterns_to_github)
     return jsonify({'success': True})
 
 @app.route('/change-relay', methods=['POST'])

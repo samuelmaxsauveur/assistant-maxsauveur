@@ -234,7 +234,8 @@ def get_outbound_template(subject_type):
 
 
 def log_sent_email(to_email, subject, body, source='reply', thread_id=None):
-    """Log an email actually sent to a customer (final text, not just draft)."""
+    """Log an email actually sent to a customer and save it as a response pattern immediately."""
+    import re as _re
     now = datetime.utcnow().isoformat()
     conn = get_connection()
     try:
@@ -245,6 +246,17 @@ def log_sent_email(to_email, subject, body, source='reply', thread_id=None):
         conn.commit()
     finally:
         conn.close()
+    # Save directly as pattern — no AI analysis, no loss
+    clean_subject = _re.sub(r'^Re:\s*', '', subject, flags=_re.IGNORECASE).strip()
+    topic = _re.sub(r'[^a-z0-9_]', '_', clean_subject.lower())[:60]
+    if topic and body and body.strip():
+        upsert_response_pattern(
+            topic=topic,
+            topic_label=clean_subject,
+            situation=clean_subject,
+            response_template=body.strip(),
+            key_points=''
+        )
 
 
 def get_today_sent_emails():
