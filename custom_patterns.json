@@ -18,6 +18,14 @@
       "example_count": 2
     },
     {
+      "topic": "re__retour_re_u___remboursement_en_cours",
+      "topic_label": "Re: Retour reçu — remboursement en cours",
+      "situation": "Re: Retour reçu — remboursement en cours",
+      "response_template": "Bonjour William,\n\nC'est noté, nous procédons au remboursement de votre commande. Vous le recevrez dans les prochains jours sur votre moyen de paiement initial.\n\nBonne soirée à vous,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "suivi_precommande_jagger",
       "topic_label": "suivi precommande Jagger",
       "situation": "quand un cleint nous demande quand il va recevoir les mocs jagger",
