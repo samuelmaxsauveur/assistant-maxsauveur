@@ -4,10 +4,10 @@
     {
       "topic": "confirmation_taille_fisherman",
       "topic_label": "Confirmation taille Fisherman",
-      "situation": "Confirmation taille Fisherman",
-      "response_template": "Bonjour Tristan,\n\nMerci pour votre retour et le compliment sur le modèle !\n\nPour la taille à prendre, tout dépend de combien le 43 était trop grand :\n\n- S'il était légèrement grand (un peu de jeu à l'avant, talon qui se soulève légèrement), le 42 devrait être le bon choix.\n- S'il était vraiment trop large et trop long, le 42 reste la taille cible, mais sachez qu'il sera plus ajusté, le cuir grainé s'assouplissant avec le port.\n\nEn résumé : pour votre mensurations, je vous oriente vers le 42, en gardant en tête ce ressenti dans le 43 pour ajuster votre décision.\n\nDès réception et contrôle de votre retour, nous vous enverrons un avoir pour commander la bonne taille.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
+      "situation": "Un client a commandé le modèle Fisherman et estime que la taille reçue est trop grande. Il souhaite savoir quelle taille commander en échange, en précisant son ressenti au port.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre retour et le compliment sur le modèle !\n\nPour la taille à prendre, tout dépend de combien le [taille actuelle] était trop grand :\n\n- S'il était légèrement grand (un peu de jeu à l'avant, talon qui se soulève légèrement), le [taille -1] devrait être le bon choix.\n- S'il était vraiment trop large et trop long, le [taille -1] reste la taille cible, mais sachez qu'il sera plus ajusté, le cuir grainé s'assouplissant avec le port.\n\nEn résumé : pour vos mensurations, je vous oriente vers le [taille -1], en gardant en tête ce ressenti dans le [taille actuelle] pour ajuster votre décision.\n\nDès réception et contrôle de votre retour, nous vous enverrons un avoir pour commander la bonne taille.\n\n[Prénom conseiller] de Max Sauveur",
+      "key_points": "Personnaliser selon le degré de gêne ressenti par le client (légèrement grand vs vraiment trop grand). Mentionner que le cuir grainé s'assouplit avec le port. Confirmer que l'avoir sera envoyé après réception et contrôle du retour. Ton rassurant et pédagogique.",
+      "example_count": 2
     },
     {
       "topic": "conseil_pointure",
@@ -54,6 +54,14 @@
       "topic_label": "Re: Re: Form name Form submitted 2026-05-13 17:41:23",
       "situation": "Re: Re: Form name Form submitted 2026-05-13 17:41:23",
       "response_template": "Bonjour Gabriel,\n\nLe colis est toujours en cours d'acheminement et devrait vous parvenir très prochainement.\n\nAvez-vous pu faire votre réclamation directement auprès de Chronopost comme je vous le suggérais jeudi ? Si oui, qu'est-ce qu'ils vous ont indiqué ?\n\nNous sommes samedi, les équipes transporteurs ne traitent pas les dossiers ce week-end, mais dès lundi nous faisons le point et revenons vers vous si nécessaire.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__suivez_la_production_de_vos_moc_jagger",
+      "topic_label": "Re: Suivez la production de vos Moc Jagger",
+      "situation": "Re: Suivez la production de vos Moc Jagger",
+      "response_template": "Bonjour Romain,\n\nMerci pour votre message et votre patience.\n\nVos Moc Jagger arrivent chez nous la semaine prochaine, et nous prévoyons de les expédier dans la foulée. La livraison estimée se situe autour du 18 au 20 mai, sous réserve que les jours fériés et les transporteurs ne viennent pas perturber l'acheminement.\n\nDès que votre colis sera parti, vous recevrez un email avec votre lien de suivi Chronopost pour localiser votre point relais et suivre votre paire en temps réel.\n\nOn fait au plus vite de notre côté.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
