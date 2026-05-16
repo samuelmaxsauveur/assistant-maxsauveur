@@ -42,6 +42,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__form_name_form_submitted_2026_05_13_17_41_23",
+      "topic_label": "Re: Re: Form name Form submitted 2026-05-13 17:41:23",
+      "situation": "Re: Re: Form name Form submitted 2026-05-13 17:41:23",
+      "response_template": "Bonjour Gabriel,\n\nLe colis est toujours en cours d'acheminement et devrait vous parvenir très prochainement.\n\nAvez-vous pu faire votre réclamation directement auprès de Chronopost comme je vous le suggérais jeudi ? Si oui, qu'est-ce qu'ils vous ont indiqué ?\n\nNous sommes samedi, les équipes transporteurs ne traitent pas les dossiers ce week-end, mais dès lundi nous faisons le point et revenons vers vous si nécessaire.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__retour_re_u___remboursement_en_cours",
       "topic_label": "Retour reçu — remboursement en cours",
       "situation": "Un client a retourné sa commande et le retour a bien été réceptionné. Le service client confirme la prise en charge et informe le client que le remboursement va être effectué sur son moyen de paiement initial dans les prochains jours.",
