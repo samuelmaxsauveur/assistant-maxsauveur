@@ -133,9 +133,9 @@
       "topic": "re__vous_avez_rencontr__un_probl_me__",
       "topic_label": "Re: Vous avez rencontré un problème ?",
       "situation": "Re: Vous avez rencontré un problème ?",
-      "response_template": "Bonjour Bertrand,\n\nMerci pour votre retour !\n\nPour que je puisse vérifier ce qui bloque, pourriez-vous me préciser :\n- Le code exact que vous essayez d'utiliser\n- Le ou les articles dans votre panier et le montant total\n\nPour info, les codes cadeaux sont valables sur les chaussures et les ceintures, pour un minimum d'achat de 149€. Si votre code est de ce type, il faudra s'assurer que ces deux conditions sont bien réunies au moment de valider.\n\nAvec ces éléments, je vous dis rapidement ce qui ne va pas.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Christophe,\n\nMerci pour votre message.\n\nPouvez-vous essayer à nouveau ?\n\nPour les frais de livraison, voici comment procéder : passez votre commande normalement avec votre code avoir de 159€, et nous effectuerons le remboursement des frais de port manuellement dès que la commande sera validée de notre côté.\n\nCordialement,\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 1
+      "example_count": 2
     },
     {
       "topic": "re__re__form_name_form_submitted_2026_05_05_21_45_08",
