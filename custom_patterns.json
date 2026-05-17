@@ -122,6 +122,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__re__fwd__merci__et_un_rappel_important_",
+      "topic_label": "Re: Re: Re: Fwd: Merci (et un rappel important)",
+      "situation": "Re: Re: Re: Fwd: Merci (et un rappel important)",
+      "response_template": "Bonjour Antoine,\n\nOui, c'est bien l'adresse email associée à votre commande : hashirama.senju@outlook.fr.\n\nConcernant la notification de mise en disponibilité au point relais, Chrono2Shop envoie généralement un email de notification dès que votre colis est disponible. Pour les SMS, cela dépend de si un numéro de téléphone a été renseigné lors de la commande et des options proposées par le transporteur, mais ce n'est pas systématique.\n\nDès que votre colis sera pris en charge par le transporteur, vous recevrez un lien de suivi qui vous permettra de suivre l'acheminement en temps réel et d'être informé de la mise en disponibilité.\n\nBonne journée,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__vous_avez_rencontr__un_probl_me__",
       "topic_label": "Re: Vous avez rencontré un problème ?",
       "situation": "Re: Vous avez rencontré un problème ?",
@@ -144,6 +152,14 @@
       "response_template": "Bonjour [Prénom],\n\nC'est noté, nous procédons au remboursement de votre commande. Vous le recevrez dans les prochains jours sur votre moyen de paiement initial.\n\nBonne soirée à vous,\n\n[Prénom conseiller] de Max Sauveur",
       "key_points": "Ton rassurant et concis. Confirmer explicitement que le remboursement est en cours. Préciser que le remboursement se fera sur le moyen de paiement initial. Ne pas donner de délai précis (utiliser 'prochains jours'). Formule de politesse chaleureuse.",
       "example_count": 2
+    },
+    {
+      "topic": "rupture_stock_retour_hiver",
+      "topic_label": "Rupture de stock – retour prévu en saison",
+      "situation": "Un client s'interroge sur la disponibilité d'un modèle actuellement en rupture de stock. Le service client l'informe que le produit n'est pas en fin de vie mais reviendra en stock prochainement (ex : réassort hivernal), et en profite pour collecter des informations de taille afin de mieux l'orienter lors du retour en stock.",
+      "response_template": "Bonjour [Prénom],\n\nBonne nouvelle : les [Nom du modèle] devraient revenir en stock cet hiver. Ce n'est donc pas un modèle en fin de vie, simplement en rupture temporaire.\n\nPour être sûr de vous orienter vers la bonne pointure dès que le réassort arrive, pourriez-vous nous indiquer la longueur de votre pied en centimètres ? (À mesurer nu, talon contre un mur, en marquant le bout du gros orteil.)\n\nOn revient vers vous dès qu'on en sait plus sur la date exacte de disponibilité.\n\n[Prénom agent] de Max Sauveur",
+      "key_points": "Ton rassurant et positif ('Bonne nouvelle'). Distinguer clairement rupture temporaire et fin de vie. Anticiper le besoin client en collectant la mesure du pied dès maintenant pour préparer le réassort. Rester engagé sur un suivi (rappeler le client à la disponibilité).",
+      "example_count": 1
     },
     {
       "topic": "re__suivez_la_production_de_vos_moc_jagger",
