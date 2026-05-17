@@ -34,6 +34,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_05_15_19_55_16",
+      "topic_label": "Form name Form submitted 2026-05-15 19:55:16",
+      "situation": "Form name Form submitted 2026-05-15 19:55:16",
+      "response_template": "Bonjour Jimmy,\n\nMerci pour votre message.\n\nPour procéder au retour de vos embauchoirs, voici la marche à suivre :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez la raison : \"demande de remboursement\")\n2. Emballez soigneusement les embauchoirs avec le bon de retour à l'intérieur\n3. Expédiez le colis à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle du colis, nous traiterons votre demande.\n\nN'hésitez pas si vous avez des questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_05_16_12_37_42",
       "topic_label": "Form name Form submitted 2026-05-16 12:37:42",
       "situation": "Form name Form submitted 2026-05-16 12:37:42",
