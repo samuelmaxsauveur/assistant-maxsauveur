@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "cody___chaussures_derby_montagne_cuir_gras_marron",
+      "topic_label": "Cody - Chaussures Derby Montagne Cuir Gras Marron",
+      "situation": "Cody - Chaussures Derby Montagne Cuir Gras Marron",
+      "response_template": "Bonjour Mesbah,\n\nMerci pour votre message et votre intérêt pour le Cody Derby Montagne !\n\nMalheureusement, nous ne proposons pas ce modèle en 47 ni en 37 pour le moment. Nous en sommes vraiment désolés, car nous aurions été ravis de vous équiper tous les deux.\n\nPour votre pointure, avec 31 cm de pied, vous correspondez effectivement à un 47, une taille que nous ne couvrons pas encore. Si cela venait à changer, je vous invite à vous abonner à l'alerte disponibilité directement sur la fiche produit, vous serez notifié en priorité.\n\nN'hésitez pas à nous contacter si vous avez des questions sur d'autres modèles de la collection.\n\nCordialement,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "confirmation_taille_fisherman",
       "topic_label": "Confirmation taille Fisherman – échange pour bonne taille",
       "situation": "Un client a commandé le modèle Fisherman et estime que la taille reçue est trop grande. Il souhaite savoir quelle taille commander en échange. Le service client l'oriente selon le ressenti (légèrement grand vs vraiment trop large) et confirme la procédure d'avoir après retour.",
@@ -71,6 +79,14 @@
       "situation": "Mocassins cuir (Paul)",
       "response_template": "Bonjour Corentin,\n\nMerci pour ces précisions, c'est exactement ce qu'il faut pour vous orienter correctement !\n\nAvec 26,2 cm de pied, vous êtes dans la fourchette du 41. Vos références confirment ça : le 42 en sneakers est normal (les sneakers taillent plus grand), et votre 41 en Kleman est une bonne base de comparaison.\n\nCela dit, pour vous donner un conseil vraiment précis, quel modèle avez-vous en tête ? \n\nDites-moi le modèle et je vous confirme la pointure idéale.\n\nJohn de Max Sauveur",
       "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "modification_point_relais_livraison",
+      "topic_label": "Modification point relais – Confirmation de changement",
+      "situation": "Un client souhaite modifier son point relais de livraison après avoir passé sa commande. Le service client effectue la modification dans le système et confirme au client que le changement est bien pris en compte, même s'il n'apparaît pas dans l'email de confirmation initial.",
+      "response_template": "Bonjour [Prénom],\n\nC'est parfait, nous venons de modifier votre point relais de livraison dans notre système :\n\n[Nom du point relais]\n[Adresse complète]\n[Code postal] [Ville]\n\nNotez que cette modification n'apparaîtra pas dans votre email de confirmation initial, mais elle est bien prise en compte et sera visible sur votre lien de suivi dès l'expédition.\n\nVous recevrez un email avec votre lien de suivi Chronopost dès que votre colis sera parti.\n\n[Prénom agent] de Max Sauveur",
+      "key_points": "Rassurer le client sur le fait que la modification ne s'affiche pas dans l'email initial mais est bien enregistrée. Mentionner que le bon point relais sera visible sur le lien de suivi. Indiquer que le transporteur est Chronopost. Toujours recopier l'adresse complète du nouveau point relais pour confirmation.",
       "example_count": 1
     },
     {
@@ -180,10 +196,10 @@
     {
       "topic": "retour_produit_remboursement",
       "topic_label": "Retour produit – Procédure de remboursement",
-      "situation": "Un client souhaite retourner un article et obtenir un remboursement. Il a besoin de connaître la marche à suivre : téléchargement du bon de retour, emballage et adresse d'expédition.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message.\n\nPour procéder au retour de votre/vos [article(s)], voici la marche à suivre :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez la raison : \"demande de remboursement\")\n2. Emballez soigneusement [l'article / les articles] avec le bon de retour à l'intérieur\n3. Expédiez le colis à notre adresse logistique :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle du colis, nous traiterons votre demande.\n\nN'hésitez pas si vous avez des questions.\n\n[Prénom] de Max Sauveur",
-      "key_points": "Toujours préciser la raison à indiquer sur le bon de retour (\"demande de remboursement\"). Inclure le lien direct vers la page retour. Rappeler que le traitement se fait après réception ET contrôle du colis. Ton rassurant et clair.",
-      "example_count": 1
+      "situation": "Un client souhaite retourner un article et obtenir un remboursement. Il a besoin de connaître la marche à suivre : télécharger un bon de retour, emballer le colis et l'expédier à l'adresse logistique.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message.\n\nPour procéder au retour de vos [produit(s)], voici la marche à suivre :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez la raison : \"demande de remboursement\")\n2. Emballez soigneusement [le/les produit(s)] avec le bon de retour à l'intérieur\n3. Expédiez le colis à notre adresse logistique :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle du colis, nous traiterons votre demande.\n\nN'hésitez pas si vous avez des questions.\n\n[Prénom agent] de Max Sauveur",
+      "key_points": "Toujours indiquer le lien exact vers la page retour. Préciser que la raison à noter sur le bon est 'demande de remboursement'. Rappeler l'adresse logistique SSL complète. Ton rassurant et clair. Informer que le traitement se fait dès réception et contrôle.",
+      "example_count": 2
     },
     {
       "topic": "re__re__form_name_form_submitted_2026_05_05_21_45_08",
