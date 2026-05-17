@@ -114,6 +114,14 @@
       "example_count": 2
     },
     {
+      "topic": "demande_code_de_reduction_qui_fonctionne_pas",
+      "topic_label": "demande code de reduction qui fonctionne pas",
+      "situation": "quand un client demande pk son code ne fonctionne",
+      "response_template": "Bonjour Victor,\n\nMerci pour votre message et le compliment sur les sandales !\n\nLes codes de réduction ont généralement des conditions d'application spécifiques : certains ne sont valables que sur des catégories précises, d'autres ont une date d'expiration ou un montant minimum de commande. Sans connaître les codes exacts que vous avez tenté d'utiliser, il m'est difficile de vous dire précisément pourquoi ils ne fonctionnent pas.\n\nPouvez-vous me préciser :\n- Le ou les codes que vous avez essayés\n- Le modèle de sandale concerné et le montant de votre panier\n\nAvec ces informations, je pourrai vérifier ce qui bloque et vous donner une réponse claire.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "suivi_precommande_jagger",
       "topic_label": "suivi precommande Jagger",
       "situation": "quand un cleint nous demande quand il va recevoir les mocs jagger",
