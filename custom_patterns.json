@@ -58,6 +58,14 @@
       "example_count": 1
     },
     {
+      "topic": "mocassins_cuir__paul_",
+      "topic_label": "Mocassins cuir (Paul)",
+      "situation": "Mocassins cuir (Paul)",
+      "response_template": "Bonjour Corentin,\n\nMerci pour ces précisions, c'est exactement ce qu'il faut pour vous orienter correctement !\n\nAvec 26,2 cm de pied, vous êtes dans la fourchette du 41. Vos références confirment ça : le 42 en sneakers est normal (les sneakers taillent plus grand), et votre 41 en Kleman est une bonne base de comparaison.\n\nCela dit, pour vous donner un conseil vraiment précis, quel modèle avez-vous en tête ? \n\nDites-moi le modèle et je vous confirme la pointure idéale.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "pointure_sandale_fisherman",
       "topic_label": "Pointure Sandale Fisherman",
       "situation": "Pointure Sandale Fisherman",
@@ -136,6 +144,14 @@
       "response_template": "Bonjour Christophe,\n\nMerci pour votre message.\n\nPouvez-vous essayer à nouveau ?\n\nPour les frais de livraison, voici comment procéder : passez votre commande normalement avec votre code avoir de 159€, et nous effectuerons le remboursement des frais de port manuellement dès que la commande sera validée de notre côté.\n\nCordialement,\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 2
+    },
+    {
+      "topic": "remboursement_frais_port_avec_avoir",
+      "topic_label": "Remboursement frais de port avec code avoir",
+      "situation": "Un client doit passer une nouvelle commande en utilisant un code avoir, mais les frais de livraison ne sont pas couverts automatiquement. Le service client lui indique de passer la commande normalement et promet un remboursement manuel des frais de port.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message.\n\nPouvez-vous essayer à nouveau ?\n\nPour les frais de livraison, voici comment procéder : passez votre commande normalement avec votre code avoir de [montant]€, et nous effectuerons le remboursement des frais de port manuellement dès que la commande sera validée de notre côté.\n\nCordialement,\n[Prénom conseiller] de Max Sauveur",
+      "key_points": "Ton rassurant et clair. Préciser le montant de l'avoir. Engager explicitement le remboursement manuel des frais de port après validation de commande. Ne pas faire payer deux fois le client pour une erreur ou un retour.",
+      "example_count": 1
     },
     {
       "topic": "re__re__form_name_form_submitted_2026_05_05_21_45_08",
