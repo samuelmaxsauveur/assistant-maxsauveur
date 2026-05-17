@@ -146,6 +146,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__re__d_but_de_la_fabrication_de_vos_moc_jagger_et_poi",
+      "topic_label": "Re: Re: Re: Début de la fabrication de vos Moc Jagger et point livraison",
+      "situation": "Re: Re: Re: Début de la fabrication de vos Moc Jagger et point livraison",
+      "response_template": "Bonjour Alexandre,\n\nC'est parfait, nous venons de modifier votre point relais de livraison dans notre système :\n\n**Consigne Pickup U St Donnat**\n94 Avenue Général de Gaulle\n26260 St Donat sur l'Herbasse\n\nNotez que cette modification n'apparaîtra pas dans votre email de confirmation initial, mais elle est bien prise en compte et sera visible sur votre lien de suivi dès l'expédition.\n\nVous recevrez un email avec votre lien de suivi Chronopost dès que votre colis sera parti.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__fwd__merci__et_un_rappel_important_",
       "topic_label": "Re: Re: Re: Fwd: Merci (et un rappel important)",
       "situation": "Re: Re: Re: Fwd: Merci (et un rappel important)",
@@ -167,6 +175,14 @@
       "situation": "Un client doit passer une nouvelle commande en utilisant un code avoir, mais les frais de livraison ne sont pas couverts automatiquement. Le service client lui indique de passer la commande normalement et promet un remboursement manuel des frais de port.",
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre message.\n\nPouvez-vous essayer à nouveau ?\n\nPour les frais de livraison, voici comment procéder : passez votre commande normalement avec votre code avoir de [montant]€, et nous effectuerons le remboursement des frais de port manuellement dès que la commande sera validée de notre côté.\n\nCordialement,\n[Prénom conseiller] de Max Sauveur",
       "key_points": "Ton rassurant et clair. Préciser le montant de l'avoir. Engager explicitement le remboursement manuel des frais de port après validation de commande. Ne pas faire payer deux fois le client pour une erreur ou un retour.",
+      "example_count": 1
+    },
+    {
+      "topic": "retour_produit_remboursement",
+      "topic_label": "Retour produit – Procédure de remboursement",
+      "situation": "Un client souhaite retourner un article et obtenir un remboursement. Il a besoin de connaître la marche à suivre : téléchargement du bon de retour, emballage et adresse d'expédition.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message.\n\nPour procéder au retour de votre/vos [article(s)], voici la marche à suivre :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez la raison : \"demande de remboursement\")\n2. Emballez soigneusement [l'article / les articles] avec le bon de retour à l'intérieur\n3. Expédiez le colis à notre adresse logistique :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle du colis, nous traiterons votre demande.\n\nN'hésitez pas si vous avez des questions.\n\n[Prénom] de Max Sauveur",
+      "key_points": "Toujours préciser la raison à indiquer sur le bon de retour (\"demande de remboursement\"). Inclure le lien direct vers la page retour. Rappeler que le traitement se fait après réception ET contrôle du colis. Ton rassurant et clair.",
       "example_count": 1
     },
     {
