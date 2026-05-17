@@ -18,14 +18,6 @@
       "example_count": 1
     },
     {
-      "topic": "conseil_taille_ceinture",
-      "topic_label": "Conseil taille ceinture – aide au choix",
-      "situation": "Un client hésite sur la taille de ceinture à commander, souvent pour offrir. Il indique sa taille de pantalon et le service client lui recommande la bonne taille de ceinture en expliquant la logique de correspondance.",
-      "response_template": "Bonjour [Prénom],\n\nPour une taille [taille pantalon] en pantalon, je vous recommande le **[taille ceinture] cm**.\n\nLa règle générale pour nos ceintures : la taille correspond à la distance entre l'ardillon et le trou du milieu (sur 5 trous). En pratique, un [taille pantalon] correspond à un tour de taille autour de [tour de taille estimé] cm, ce qui place le [taille ceinture] dans la bonne fourchette, avec de la marge des deux côtés.\n\nLe [taille supérieure] serait un peu grand et risquerait de dépasser trop sur le côté.\n\nBonne commande !\n\nJohn de Max Sauveur",
-      "key_points": "Expliquer la logique de la taille (ardillon → trou du milieu sur 5 trous). Donner une fourchette de tour de taille correspondante. Déconseiller la taille supérieure si risque de trop grand. Ton chaleureux, personnalisé si contexte cadeau (ex: bon anniversaire).",
-      "example_count": 1
-    },
-    {
       "topic": "defaut_produit_demande_photos",
       "topic_label": "Défaut produit – Demande de photos pour analyse",
       "situation": "Un client signale un défaut sur un produit (couture, matière, assemblage). Le service client ne peut pas statuer sans preuve visuelle. Le client peut également mentionner une difficulté à joindre le support par téléphone.",
@@ -114,10 +106,10 @@
       "example_count": 1
     },
     {
-      "topic": "re__r_clamation___commande_non_re_ue_depuis_2_mois",
-      "topic_label": "Re: Réclamation – commande non reçue depuis 2 mois",
-      "situation": "Re: Réclamation – commande non reçue depuis 2 mois",
-      "response_template": "Bonjour Sara,\n\nCompte tenu de la situation et de votre souhait de remboursement, nous allons procéder au remboursement complet de votre commande (309€) sur votre moyen de paiement initial. Vous le recevrez dans les prochains jours.\n\nEncore désolé pour cette expérience, c'est vraiment la situation qu'on n'aurait pas dû vous faire vivre.\n\nJohn de Max Sauveur",
+      "topic": "re__vous_avez_rencontr__un_probl_me__",
+      "topic_label": "Re: Vous avez rencontré un problème ?",
+      "situation": "Re: Vous avez rencontré un problème ?",
+      "response_template": "Bonjour Bertrand,\n\nMerci pour votre retour !\n\nPour que je puisse vérifier ce qui bloque, pourriez-vous me préciser :\n- Le code exact que vous essayez d'utiliser\n- Le ou les articles dans votre panier et le montant total\n\nPour info, les codes cadeaux sont valables sur les chaussures et les ceintures, pour un minimum d'achat de 149€. Si votre code est de ce type, il faudra s'assurer que ces deux conditions sont bien réunies au moment de valider.\n\nAvec ces éléments, je vous dis rapidement ce qui ne va pas.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -164,10 +156,10 @@
     {
       "topic": "re__echange_commande_12053",
       "topic_label": "Échange commande – attente avoir avant nouvelle commande",
-      "situation": "Un client souhaite faire un échange et commander une nouvelle paire en même temps. Le service client conseille d'attendre la réception du retour pour générer l'avoir, afin que le client puisse tout commander en une seule fois et éviter de payer deux fois les frais de livraison.",
-      "response_template": "Bonjour [Prénom],\n\nParfait, merci pour votre retour rapide !\n\nLe plus simple, comme vous allez recommander une paire en même temps, est d'attendre de recevoir votre avoir. Cela vous évitera de régler deux fois les frais de livraison : vous commandez tout en une fois avec le code.\n\nDès réception de votre colis, je m'occupe de générer votre avoir et on finalise ça ensemble.\n\nJohn de Max Sauveur",
-      "key_points": "Conseiller d'attendre l'avoir avant de repasser commande pour éviter double frais de livraison. Rassurer sur le suivi personnalisé ('on finalise ça ensemble'). Ton proactif et bienveillant. S'engager explicitement à envoyer l'avoir dès réception du retour.",
-      "example_count": 4
+      "situation": "Un client souhaite faire un échange et commander une nouvelle paire en même temps. Le service client conseille d'attendre la réception de l'avoir pour tout commander en une seule fois et éviter de payer deux fois les frais de livraison.",
+      "response_template": "Bonjour [Prénom],\n\nParfait, merci pour votre retour rapide !\n\nLe plus simple, comme vous allez recommander une paire en même temps, est d'attendre de recevoir votre avoir. Cela vous évitera de régler deux fois les frais de livraison : vous commandez tout en une fois avec le code.\n\nDès réception de votre colis, je m'occupe de générer votre avoir et on finalise ça ensemble.\n\n[Prénom] de Max Sauveur",
+      "key_points": "Ton rassurant et pratique. Conseil proactif pour éviter des frais doubles. Engagement clair : le SA génère l'avoir dès réception du retour. Formulation 'on finalise ça ensemble' pour maintenir le lien et rassurer le client.",
+      "example_count": 3
     }
   ]
 }
