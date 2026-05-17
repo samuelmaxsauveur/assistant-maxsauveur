@@ -69,9 +69,9 @@
       "topic": "re__echange_commande_12053",
       "topic_label": "Re: Echange commande 12053",
       "situation": "Re: Echange commande 12053",
-      "response_template": "Bonjour Charly,\n\nC'est tout à fait ça !\n\nDeux options s'offrent à vous :\n\n1. Vous commandez le 40 maintenant et renvoyez le 39 en parallèle. Dès réception et contrôle de la paire, nous procédons au remboursement sur votre moyen de paiement initial. C'est la solution la plus rapide.\n\n2. Vous renvoyez d'abord le 39, et une fois reçu, nous vous envoyons un avoir pour commander le 40. Un peu plus long mais sans avance de frais.\n\nPour le retour, emballez soigneusement la paire et joignez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (mention \"échange de taille\"). Les frais de retour sont à votre charge.\n\nDites-moi quelle option vous préférez !\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Charly,\n\nParfait, merci pour votre retour rapide !\n\nLe plus simple, comme vous allez recommander une paire en même temps, est d'attendre de recevoir votre avoir. Cela vous évitera de régler deux fois les frais de livraison : vous commandez tout en une fois avec le code.\n\nDès réception de votre colis, je m'occupe de générer votre avoir et on finalise ça ensemble.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 1
+      "example_count": 2
     },
     {
       "topic": "re__max_sauveur___service_client",
