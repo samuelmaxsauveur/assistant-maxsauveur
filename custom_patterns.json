@@ -58,6 +58,14 @@
       "example_count": 1
     },
     {
+      "topic": "probl_me_commande_12106",
+      "topic_label": "Problème commande 12106",
+      "situation": "Problème commande 12106",
+      "response_template": "Bonjour Antoine,\n\nMerci pour votre message et pardon pour l'attente.\n\nNous venons de vérifier votre commande de notre côté : elle a bien été enregistrée et intégrée dans notre processus logistique, mais elle n'a pas encore été expédiée. Nous revenons vers vous dans la journée dès que nous avons une confirmation de la situation et une date d'expédition précise.\n\nNous vous tiendrons informé dès que le colis est pris en charge par le transporteur.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__echange_commande_12053",
       "topic_label": "Re: Echange commande 12053",
       "situation": "Re: Echange commande 12053",
