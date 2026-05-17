@@ -26,6 +26,22 @@
       "example_count": 2
     },
     {
+      "topic": "envoi_code_avoir",
+      "topic_label": "Envoi du code avoir après retour",
+      "situation": "Suite à la réception d'un retour validé, le service client envoie le code promo correspondant à l'avoir. Le code est unique, non cumulable, valable 6 mois et utilisable exclusivement sur la même référence produit.",
+      "response_template": "Bonjour [Prénom],\n\nSuite à votre demande, nous venons de générer votre avoir. Il est utilisable une seule fois, non cumulable avec d'autres codes ou promotions, et valable pendant 6 mois. Il est utilisable exclusivement sur [la même référence produit].\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n**[CODE_PROMO]**\n\nSi vous avez la moindre question, je reste disponible.\n\n[Prénom conseiller] de Max Sauveur",
+      "key_points": "Rappeler systématiquement les 4 conditions : usage unique, non cumulable, validité 6 mois, exclusivité sur la même référence. Mettre le code en évidence (gras). Indiquer où saisir le code (panier). Ton court, clair et disponible.",
+      "example_count": 1
+    },
+    {
+      "topic": "max_sauveur___service_client",
+      "topic_label": "Max Sauveur — Service Client",
+      "situation": "Max Sauveur — Service Client",
+      "response_template": "Bonjour Armen,\n\nSuite à votre demande, nous venons de générer votre avoir. Il est utilisable une seule fois, non cumulable avec d'autres codes ou promotions, et valable pendant 6 mois. Il est utilisable exclusivement sur la ceinture Jonas (même référence).\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n**5TZ4WKV6AXWH**\n\nSi vous avez la moindre question, je reste disponible.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "pointure_sandale_fisherman",
       "topic_label": "Pointure Sandale Fisherman",
       "situation": "Pointure Sandale Fisherman",
@@ -58,14 +74,6 @@
       "example_count": 1
     },
     {
-      "topic": "re__re__form_name_form_submitted_2026_05_05_21_45_08",
-      "topic_label": "Re: Re: Form name Form submitted 2026-05-05 21:45:08",
-      "situation": "Re: Re: Form name Form submitted 2026-05-05 21:45:08",
-      "response_template": "Bonjour Armen,\n\nNous avons bien reçu la ceinture Jonas taille 85, merci de votre retour.\n\nConformément à ce que nous vous avions indiqué, votre avoir d'une valeur de 189€ va être émis dans les prochaines heures. Vous le recevrez par email sous forme de code promo, utilisable exclusivement sur la ceinture Jonas (même référence), valable 6 mois à compter de sa réception.\n\nN'hésitez pas à revenir vers nous si vous ne le recevez pas ou si vous avez la moindre question.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "re__re__form_name_form_submitted_2026_05_13_17_41_23",
       "topic_label": "Re: Re: Form name Form submitted 2026-05-13 17:41:23",
       "situation": "Re: Re: Form name Form submitted 2026-05-13 17:41:23",
@@ -80,6 +88,14 @@
       "response_template": "Bonjour Michael,\n\nBonne question ! Les deux ont raison, c'est une question de marge d'interprétation. Le 41 commence techniquement à 25,5 cm sur notre guide, et avec vos 25,8 cm + 0,2 cm de marge, vous êtes tout juste dans la fourchette haute du 41.\n\nBonne journée\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
+    },
+    {
+      "topic": "re__re__form_name_form_submitted_2026_05_05_21_45_08",
+      "topic_label": "Retour reçu – Avoir émis (ceinture Jonas)",
+      "situation": "Un client a retourné un article (ceinture Jonas taille 85) et le retour a bien été réceptionné. Le service client confirme la prise en charge, informe que l'avoir va être émis dans les prochaines heures sous forme de code promo par email, et précise les conditions d'utilisation : exclusivement sur la même référence, valable 6 mois, non cumulable.",
+      "response_template": "Bonjour [Prénom],\n\nNous avons bien reçu [l'article retourné], merci de votre retour.\n\nConformément à ce que nous vous avions indiqué, votre avoir d'une valeur de [montant]€ va être émis dans les prochaines heures. Vous le recevrez par email sous forme de code promo, utilisable exclusivement sur [la même référence], valable 6 mois à compter de sa réception.\n\nN'hésitez pas à revenir vers nous si vous ne le recevez pas ou si vous avez la moindre question.\n\n[Prénom conseiller] de Max Sauveur",
+      "key_points": "Confirmer explicitement la réception du retour. Rappeler les conditions de l'avoir : exclusivité sur la même référence, validité 6 mois, non cumulable. Indiquer que le code arrivera par email dans les prochaines heures. Laisser une ouverture si le code n'est pas reçu. Ton rassurant et professionnel.",
+      "example_count": 3
     },
     {
       "topic": "re__retour_re_u___remboursement_en_cours",
