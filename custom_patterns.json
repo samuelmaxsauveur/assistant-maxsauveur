@@ -34,6 +34,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_05_17_10_14_01",
+      "topic_label": "Form name Form submitted 2026-05-17 10:14:01",
+      "situation": "Form name Form submitted 2026-05-17 10:14:01",
+      "response_template": "Bonjour Victor,\n\nMerci pour votre message et le compliment sur les sandales !\n\nLes codes de réduction à montant fixe (comme -40€) ou en pourcentage (comme -10%) sont valables 48h à compter de leur réception, et nécessitent un minimum d'achat de 149€ pour être activés. Si l'un de ces délais est dépassé ou que le panier est en dessous de ce seuil, le code ne s'appliquera pas.\n\nJe reste disponbile.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "max_sauveur___service_client",
       "topic_label": "Max Sauveur — Service Client",
       "situation": "Max Sauveur — Service Client",
