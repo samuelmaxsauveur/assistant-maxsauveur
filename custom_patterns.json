@@ -34,6 +34,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_05_16_12_37_42",
+      "topic_label": "Form name Form submitted 2026-05-16 12:37:42",
+      "situation": "Form name Form submitted 2026-05-16 12:37:42",
+      "response_template": "Bonjour Franck,\n\nBonne nouvelle : les Logger Boots devraient revenir en stock cet hiver. Ce n'est donc pas un modèle en fin de vie, simplement en rupture temporaire.\n\nPour être sûr de vous orienter vers la bonne pointure dès que le réassort arrive, pourriez-vous nous indiquer la longueur de votre pied en centimètres ? (À mesurer nu, talon contre un mur, en marquant le bout du gros orteil.)\n\nOn revient vers vous dès qu'on en sait plus sur la date exacte de disponibilité.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_05_17_10_14_01",
       "topic_label": "Form name Form submitted 2026-05-17 10:14:01",
       "situation": "Form name Form submitted 2026-05-17 10:14:01",
