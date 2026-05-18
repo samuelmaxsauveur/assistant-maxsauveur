@@ -114,6 +114,14 @@
       "example_count": 1
     },
     {
+      "topic": "paire_de_cody",
+      "topic_label": "Paire de Cody",
+      "situation": "Paire de Cody",
+      "response_template": "Bonjour Emilio,\n\nMerci pour votre message. Un œillet qui saute du cuir sans choc particulier, surtout après seulement 3 mois, c'est effectivement anormal et cela ressemble à un défaut de fabrication.\n\nAvant de statuer, pourriez-vous nous envoyer quelques photos de la zone concernée ? Cela nous permettra de confirmer et de prendre les mesures nécessaires.\n\nDès réception des photos, nous revenons vers vous rapidement avec une solution.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "pointure___moc_paul",
       "topic_label": "Pointure - Moc Paul",
       "situation": "Pointure - Moc Paul",
