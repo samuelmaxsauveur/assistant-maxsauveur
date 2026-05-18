@@ -178,6 +178,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__une_commande__12009_en_retour",
+      "topic_label": "Re: Une commande #12009 en retour",
+      "situation": "Re: Une commande #12009 en retour",
+      "response_template": "Bonjour Kavi,\n\nNotre position sur la décote reste inchangée, et nous y avons répondu en détail dans notre email précédent avec les justificatifs visuels.\n\nCela dit, nous prenons note de votre choix : nous allons vous renvoyer la paire à nos frais cette semaine. Vous recevrez un email avec un lien de suivi dès l'expédition.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__vous_avez_rencontr__un_probl_me__",
       "topic_label": "Re: Vous avez rencontré un problème ?",
       "situation": "Re: Vous avez rencontré un problème ?",
