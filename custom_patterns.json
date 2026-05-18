@@ -146,6 +146,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__commande__11604_confirm_e",
+      "topic_label": "Re: Commande #11604 confirmée",
+      "situation": "Re: Commande #11604 confirmée",
+      "response_template": "Bonjour Diego,\n\nMerci pour votre message.\n\nVos Moc Jagger arrivent chez nous cette semaine, et nous prévoyons de les expédier dans la foulée. La livraison estimée se situe autour du 19 mai, sous réserve que les ponts de fin mai ne viennent pas ralentir les transporteurs.\n\nDès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost pour suivre votre paire en temps réel.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__max_sauveur___service_client",
       "topic_label": "Re: Max Sauveur — Service Client",
       "situation": "Re: Max Sauveur — Service Client",
