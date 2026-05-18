@@ -146,6 +146,14 @@
       "example_count": 1
     },
     {
+      "topic": "question_sandale",
+      "topic_label": "Question sandale",
+      "situation": "Question sandale",
+      "response_template": "Bonjour Adrien,\n\nMerci pour votre message et pour vous y prendre à l'avance cette fois !\n\nMauvaise nouvelle concernant la sandale en daim : pas de réassort prévu cette année sur ce coloris. Vraiment désolé, vous avez à nouveau raté le créneau d'une courte tête.\n\nCela dit, la Fisherman en cuir grainé est une très belle alternative, et elle est toujours disponible.\n\nPour la pointure : avec vos 25,2 cm, vous êtes en 40 sur notre guide, mais la Fisherman chausse légèrement grand. Je vous recommande donc le 39. Vos passages occasionnels en 39 confirment que vous êtes bien entre les deux tailles, et là le 39 sera le bon choix pour ce modèle.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__ceci_est_un___",
       "topic_label": "Re: Ceci est un...",
       "situation": "Re: Ceci est un...",
