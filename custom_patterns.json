@@ -178,6 +178,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__retour_re_u___remboursement_en_cours",
+      "topic_label": "Re: Re: Retour reçu — remboursement en cours",
+      "situation": "Re: Re: Retour reçu — remboursement en cours",
+      "response_template": "Bonjour Théo,\n\nBonne nouvelle : votre avoir vient d'être généré. Il est utilisable une seule fois, valable pendant 12 mois, et sur toute la collection chaussures.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n0N7P206P2GKR\n\nConcernant les frais de livraison : passez votre commande normalement avec ce code, et nous effectuons le remboursement des frais de port manuellement dès que la commande est validée de notre côté.\n\nUne carte cadeau de 35€ sera envoyée dans quelques minutes également.\n\nEt pour les Moc Jagger, on attendait justement votre retour : êtes-vous toujours intéressé ? Si oui, dites-nous votre pointure et on vous tient informé dès que le stock est disponible.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__une_commande__12009_en_retour",
       "topic_label": "Re: Une commande #12009 en retour",
       "situation": "Re: Une commande #12009 en retour",
