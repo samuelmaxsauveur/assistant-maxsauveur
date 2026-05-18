@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "commande__12115",
+      "topic_label": "COMMANDE #12115",
+      "situation": "COMMANDE #12115",
+      "response_template": "Bonjour Loïc,\n\nVotre commande #12115 (Fisherman noires grainées, taille 42) a bien été expédiée. Voici votre lien de suivi Chronopost :\n\nhttps://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR626248578TS\n\nLa livraison est estimée entre le 20 et le 22 mai, en point relais Tabac Presse Aiguillerie à Montpellier.\n\nConcernant votre retour de la taille 43, nous en accusons bonne réception.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "cody___chaussures_derby_montagne_cuir_gras_marron",
       "topic_label": "Cody - Chaussures Derby Montagne Cuir Gras Marron",
       "situation": "Cody - Chaussures Derby Montagne Cuir Gras Marron",
