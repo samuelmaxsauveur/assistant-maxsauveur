@@ -154,6 +154,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__form_name_form_submitted_2026_05_17_10_14_01",
+      "topic_label": "RE: Form name Form submitted 2026-05-17 10:14:01",
+      "situation": "RE: Form name Form submitted 2026-05-17 10:14:01",
+      "response_template": "Bonjour Victor,\n\nMerci pour le test, c'est utile de le savoir.\n\nPour les sandales, il s'agit en réalité d'un problème de seuil : leur prix est légèrement en dessous de 149€, ce qui les exclut automatiquement de l'offre. Le code nécessite un panier d'au moins 150€ pour s'activer, et les sandales seules ne l'atteignent pas.\n\nSi vous souhaitez les combiner avec un autre article pour atteindre ce seuil, le code devrait alors fonctionner normalement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__ceci_est_un___",
       "topic_label": "Re: Ceci est un...",
       "situation": "Re: Ceci est un...",
