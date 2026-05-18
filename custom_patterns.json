@@ -66,6 +66,14 @@
       "example_count": 1
     },
     {
+      "topic": "fwd__conseil_pointure_pour_le_mocassin_paul",
+      "topic_label": "Fwd: Conseil pointure pour le mocassin Paul",
+      "situation": "Fwd: Conseil pointure pour le mocassin Paul",
+      "response_template": "Bonjour Fabien,\n\nMerci pour ces précisions, elles sont vraiment utiles pour vous orienter correctement.\n\nAvec vos 27,6 cm de pied, le Paul se porte idéalement en 42,5. Cependant, vous mentionnez des semelles orthopédiques : celles-ci prennent du volume à l'intérieur de la chaussure, ce qui change la donne. Dans ce cas, je vous recommande de prendre le 43 pour conserver le confort et le maintien nécessaires avec vos semelles.\n\nEn résumé :\n- Sans semelles orthopédiques : 42,5\n- Avec semelles orthopédiques : 43\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "max_sauveur___service_client",
       "topic_label": "Max Sauveur — Service Client",
       "situation": "Max Sauveur — Service Client",
