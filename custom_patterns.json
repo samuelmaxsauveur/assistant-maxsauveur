@@ -170,6 +170,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__commande__11578_confirm_e",
+      "topic_label": "Re: Commande #11578 confirmée",
+      "situation": "Re: Commande #11578 confirmée",
+      "response_template": "Bonjour Alexandre,\n\nPas d'inquiétude, ce mail que vous avez reçu est une notification automatique de confirmation de commande, et non une confirmation de livraison. Votre colis n'a pas encore été expédié.\n\nVos Moc Jagger arrivent chez nous cette semaine, et nous prévoyons de les expédier dans la foulée. La livraison estimée se situe entre cette semaine et la semaine prochaine, sous réserve que les ponts ne viennent pas ralentir les transporteurs.\n\nDès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__11590_confirm_e",
       "topic_label": "Re: Commande #11590 confirmée",
       "situation": "Re: Commande #11590 confirmée",
@@ -238,14 +246,6 @@
       "topic_label": "Re: Re: Max Sauveur — Service Client",
       "situation": "Re: Re: Max Sauveur — Service Client",
       "response_template": "Bonjour Clément,\n\nVotre commande #12137 est bien enregistrée en 44, on ne touche à rien. Vous recevrez un email avec votre lien de suivi dès expédition.\n\nBonne journée,\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__re__re__d_but_de_la_fabrication_de_vos_moc_jagger_et_poi",
-      "topic_label": "Re: Re: Re: Début de la fabrication de vos Moc Jagger et point livraison",
-      "situation": "Re: Re: Re: Début de la fabrication de vos Moc Jagger et point livraison",
-      "response_template": "Bonjour Alexandre,\n\nC'est parfait, nous venons de modifier votre point relais de livraison dans notre système :\n\n**Consigne Pickup U St Donnat**\n94 Avenue Général de Gaulle\n26260 St Donat sur l'Herbasse\n\nNotez que cette modification n'apparaîtra pas dans votre email de confirmation initial, mais elle est bien prise en compte et sera visible sur votre lien de suivi dès l'expédition.\n\nVous recevrez un email avec votre lien de suivi Chronopost dès que votre colis sera parti.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -320,6 +320,14 @@
       "response_template": "Bonjour [Prénom],\n\nBonne nouvelle : les [Nom du modèle] devraient revenir en stock cet hiver. Ce n'est donc pas un modèle en fin de vie, simplement en rupture temporaire.\n\nPour être sûr de vous orienter vers la bonne pointure dès que le réassort arrive, pourriez-vous nous indiquer la longueur de votre pied en centimètres ? (À mesurer nu, talon contre un mur, en marquant le bout du gros orteil.)\n\nOn revient vers vous dès qu'on en sait plus sur la date exacte de disponibilité.\n\n[Prénom agent] de Max Sauveur",
       "key_points": "Ton rassurant et positif ('Bonne nouvelle'). Distinguer clairement rupture temporaire et fin de vie. Anticiper le besoin client en collectant la mesure du pied dès maintenant pour préparer le réassort. Rester engagé sur un suivi (rappeler le client à la disponibilité).",
       "example_count": 1
+    },
+    {
+      "topic": "re__re__re__d_but_de_la_fabrication_de_vos_moc_jagger_et_poi",
+      "topic_label": "Suivi livraison Moc Jagger – arrivée imminente et expédition prévue",
+      "situation": "Un client relance sur la livraison de ses Moc Jagger en précommande. La paire est sur le point d'arriver en stock et l'expédition est prévue dans la foulée. Le client est informé d'un délai potentiel lié aux jours fériés.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message.\n\nVos Moc Jagger arrivent chez nous cette semaine, et nous prévoyons de les expédier dans la foulée. La livraison est estimée semaine prochaine, sous réserve que les ponts de fin mai ne viennent pas ralentir les transporteurs.\n\nDès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost pour suivre votre paire en temps réel.\n\n[Prénom de l'équipe] de Max Sauveur",
+      "key_points": "Ton rassurant et précis. Mentionner l'arrivée en stock imminente et l'expédition rapide dans la foulée. Anticiper les éventuels retards liés aux jours fériés. Rappeler que le lien de suivi Chronopost sera envoyé automatiquement à l'expédition. Signature avec prénom + 'de Max Sauveur'.",
+      "example_count": 2
     },
     {
       "topic": "re__suivez_la_production_de_vos_moc_jagger",
