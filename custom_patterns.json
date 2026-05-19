@@ -82,6 +82,14 @@
       "example_count": 1
     },
     {
+      "topic": "fwd__commande__11591_confirm_e",
+      "topic_label": "Fwd: Commande #11591 confirmée",
+      "situation": "Fwd: Commande #11591 confirmée",
+      "response_template": "Bonjour Yohann,\n\nMerci pour votre message et désolé pour l'attente sur cette précommande.\n\nVos Moc Jagger arrivent chez nous cette semaine, et nous prévoyons de les expédier dans la foulée. La livraison est estimée à la semaine prochaine, sous réserve que les ponts de fin mai ne viennent pas ralentir les transporteurs.\n\nDès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost pour suivre votre paire en temps réel.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fwd__conseil_pointure_pour_le_mocassin_paul",
       "topic_label": "Fwd: Conseil pointure pour le mocassin Paul",
       "situation": "Fwd: Conseil pointure pour le mocassin Paul",
