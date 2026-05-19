@@ -26,6 +26,14 @@
       "example_count": 3
     },
     {
+      "topic": "re__commande__11578_confirm_e",
+      "topic_label": "Confusion entre email de confirmation de commande et confirmation d'expédition",
+      "situation": "Un client a reçu un email automatique de confirmation de commande et pense que son colis a déjà été expédié ou est en route. Le service client doit clarifier que cet email est uniquement une confirmation de commande et non d'expédition.",
+      "response_template": "Bonjour [Prénom],\n\nPas d'inquiétude, ce mail que vous avez reçu est une notification automatique de confirmation de commande, et non une confirmation de livraison. Votre colis n'a pas encore été expédié.\n\nVos Moc Jagger arrivent chez nous cette semaine, et nous prévoyons de les expédier dans la foulée. La livraison estimée se situe entre cette semaine et la semaine prochaine, sous réserve que les ponts ne viennent pas ralentir les transporteurs.\n\nDès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost.\n\n[Prénom de l'équipe] de Max Sauveur",
+      "key_points": "Commencer par rassurer immédiatement ('Pas d'inquiétude'). Expliquer clairement la distinction entre email de confirmation de commande et confirmation d'expédition. Enchaîner avec une mise à jour concrète sur le délai d'expédition estimé. Mentionner l'envoi du lien Chronopost à venir.",
+      "example_count": 2
+    },
+    {
       "topic": "conseil_pointure",
       "topic_label": "Conseil pointure – Aide au choix de taille",
       "situation": "Un client hésite entre deux pointures et fournit la mesure de son pied en centimètres. Le service client lui recommande la pointure correspondant à sa mesure en s'appuyant sur un guide de correspondance taille/cm.",
@@ -170,14 +178,6 @@
       "example_count": 1
     },
     {
-      "topic": "re__commande__11578_confirm_e",
-      "topic_label": "Re: Commande #11578 confirmée",
-      "situation": "Re: Commande #11578 confirmée",
-      "response_template": "Bonjour Alexandre,\n\nPas d'inquiétude, ce mail que vous avez reçu est une notification automatique de confirmation de commande, et non une confirmation de livraison. Votre colis n'a pas encore été expédié.\n\nVos Moc Jagger arrivent chez nous cette semaine, et nous prévoyons de les expédier dans la foulée. La livraison estimée se situe entre cette semaine et la semaine prochaine, sous réserve que les ponts ne viennent pas ralentir les transporteurs.\n\nDès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "re__commande__11590_confirm_e",
       "topic_label": "Re: Commande #11590 confirmée",
       "situation": "Re: Commande #11590 confirmée",
@@ -197,9 +197,9 @@
       "topic": "re__d_but_de_la_fabrication_de_vos_moc_jagger_et_point_livra",
       "topic_label": "Re: Début de la fabrication de vos Moc Jagger et point livraison",
       "situation": "Re: Début de la fabrication de vos Moc Jagger et point livraison",
-      "response_template": "Bonjour Maxime,\n\nMerci pour votre message.\n\nVos Moc Jagger arrivent chez nous cette semaine, et nous prévoyons de les expédier dans la foulée. La livraison est estimée semaine prochaine, sous réserve que les ponts de fin mai ne viennent pas ralentir les transporteurs.\n\nDès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost pour suivre votre paire en temps réel.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour,\n\nMerci pour votre message et votre patience !\n\nVos Moc Jagger arrivent chez nous cette semaine, et nous prévoyons de les expédier dans la foulée. La livraison estimée se situe autour semaine prochaine, sous réserve que les ponts de fin mai ne viennent pas ralentir les transporteurs.\n\nDès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost pour suivre votre paire en temps réel.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 1
+      "example_count": 2
     },
     {
       "topic": "re__max_sauveur___service_client",
@@ -324,10 +324,10 @@
     {
       "topic": "re__re__re__d_but_de_la_fabrication_de_vos_moc_jagger_et_poi",
       "topic_label": "Suivi livraison Moc Jagger – arrivée imminente et expédition prévue",
-      "situation": "Un client relance sur la livraison de ses Moc Jagger en précommande. La paire est sur le point d'arriver en stock et l'expédition est prévue dans la foulée. Le client est informé d'un délai potentiel lié aux jours fériés.",
+      "situation": "Un client relance sur la livraison de ses Moc Jagger en précommande. La paire est sur le point d'arriver en stock et l'expédition est prévue dans la foulée. Le client peut s'inquiéter des délais liés aux jours fériés ou ponts.",
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre message.\n\nVos Moc Jagger arrivent chez nous cette semaine, et nous prévoyons de les expédier dans la foulée. La livraison est estimée semaine prochaine, sous réserve que les ponts de fin mai ne viennent pas ralentir les transporteurs.\n\nDès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost pour suivre votre paire en temps réel.\n\n[Prénom de l'équipe] de Max Sauveur",
-      "key_points": "Ton rassurant et précis. Mentionner l'arrivée en stock imminente et l'expédition rapide dans la foulée. Anticiper les éventuels retards liés aux jours fériés. Rappeler que le lien de suivi Chronopost sera envoyé automatiquement à l'expédition. Signature avec prénom + 'de Max Sauveur'.",
-      "example_count": 2
+      "key_points": "Ton rassurant et précis. Mentionner l'arrivée en stock cette semaine et l'expédition prévue dans la foulée. Préciser la réserve liée aux jours fériés/ponts si applicable. Rappeler que le lien de suivi Chronopost sera envoyé dès l'expédition.",
+      "example_count": 3
     },
     {
       "topic": "re__suivez_la_production_de_vos_moc_jagger",
