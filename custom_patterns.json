@@ -378,6 +378,14 @@
       "example_count": 1
     },
     {
+      "topic": "votre_commande_max_sauveur___information_importante",
+      "topic_label": "Rupture de stock – commande annulée avec proposition de compensation",
+      "situation": "Un client a passé une commande sur un modèle qui s'avère être en rupture de stock suite à une mauvaise synchronisation des stocks. Le service client doit l'informer de l'impossibilité d'honorer la commande et lui proposer deux alternatives : remboursement intégral ou avoir majoré avec livraison offerte.",
+      "response_template": "Bonjour [Prénom],\n\nJe vous contacte au sujet de votre commande #[NUMÉRO_COMMANDE], et je vous dois des excuses sincères pour ce que je vais vous annoncer.\n\nSuite à une mauvaise synchronisation de nos stocks, nous nous retrouvons dans l'impossibilité de vous expédier votre [MODÈLE] en taille [TAILLE]. Le modèle n'est plus disponible dans cette pointure et nous ne pouvons pas honorer votre commande dans les conditions prévues. Je suis vraiment désolé pour cette situation, qui n'aurait pas dû arriver.\n\nPour vous, deux options :\n\n**Option 1 : Un remboursement intégral**\nNous procédons au remboursement complet du montant de votre commande sur votre moyen de paiement initial, dans les prochains jours.\n\n**Option 2 : Un avoir majoré**\nSi un autre modèle de la collection vous fait de l'œil, nous pouvons vous générer un avoir d'une valeur de [MONTANT_AVOIR]€, avec les frais de livraison offerts, pour compenser le désagrément. Ce qui vous permettra de sélectionner un autre modèle comme le [MODÈLE_ALTERNATIF].\n\nDites-moi simplement quelle option vous convient le mieux, et je m'en occupe immédiatement.\n\nEncore toutes mes excuses pour ce contretemps.\n\n[Prénom_Conseiller] de Max Sauveur",
+      "key_points": "Ton sincèrement désolé et responsable, sans minimiser l'erreur. Toujours proposer deux options claires : remboursement intégral OU avoir majoré (supérieur au montant initial) avec livraison offerte. Mentionner un modèle alternatif concret pour faciliter le choix de l'avoir. L'avoir doit être supérieur au prix initial pour compenser le désagrément. Réactivité affichée : 's'en occupe immédiatement' dès réponse du client.",
+      "example_count": 2
+    },
+    {
       "topic": "rupture_stock_retour_hiver",
       "topic_label": "Rupture de stock – retour prévu en saison",
       "situation": "Un client s'interroge sur la disponibilité d'un modèle actuellement en rupture de stock. Le service client l'informe que le produit n'est pas en fin de vie mais reviendra en stock prochainement (ex : réassort hivernal), et en profite pour collecter des informations de taille afin de mieux l'orienter lors du retour en stock.",
