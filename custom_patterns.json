@@ -218,6 +218,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__mocassins_cuir__paul_",
+      "topic_label": "Re: Mocassins cuir (Paul)",
+      "situation": "Re: Mocassins cuir (Paul)",
+      "response_template": "Bonjour Corentin,\n\nParfait, le Paul Mocassin Cuir Marron est un excellent choix !\n\nAvec vos 26,2 cm, je vous recommande le **41**. Le Paul chausse juste au début, c'est tout à fait normal : le cuir et la semelle en liège s'assouplissent avec le port et se moulent progressivement à votre pied. Comptez quelques sorties avant d'atteindre le confort optimal.\n\nBonne commande !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__question_pointure",
       "topic_label": "Re: Question pointure",
       "situation": "Re: Question pointure",
@@ -340,10 +348,10 @@
     {
       "topic": "re__re__re__d_but_de_la_fabrication_de_vos_moc_jagger_et_poi",
       "topic_label": "Suivi livraison Moc Jagger – arrivée imminente et expédition prévue",
-      "situation": "Un client relance sur la livraison de ses Moc Jagger en précommande. La paire est sur le point d'arriver en stock cette semaine et l'expédition est prévue dans la foulée. Le client peut avoir reçu un email de confirmation de commande qu'il confond avec une confirmation d'expédition.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message [et votre patience !]\n\nVos Moc Jagger arrivent chez nous cette semaine, et nous prévoyons de les expédier dans la foulée. La livraison estimée se situe autour de la semaine prochaine, sous réserve que les ponts de fin mai ne viennent pas ralentir les transporteurs.\n\nDès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost pour suivre votre paire en temps réel.\n\nJohn de Max Sauveur",
-      "key_points": "Préciser que les paires arrivent en stock cette semaine et que l'expédition suit immédiatement. Mentionner l'aléa des ponts de fin mai comme réserve sur le délai. Rassurer sur l'envoi automatique du lien de suivi Chronopost dès expédition. Si le client a confondu l'email de confirmation de commande avec une confirmation d'expédition, clarifier explicitement que ce n'est qu'une notification automatique et que le colis n'a pas encore été envoyé.",
-      "example_count": 4
+      "situation": "Un client relance sur la livraison de ses Moc Jagger en précommande. La paire est sur le point d'arriver en stock cette semaine, avec une expédition prévue dans la foulée. Des jours fériés (ponts de fin mai) peuvent potentiellement retarder les transporteurs.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et désolé pour l'attente sur cette précommande.\n\nVos Moc Jagger arrivent chez nous cette semaine, et nous prévoyons de les expédier dans la foulée. La livraison est estimée à la semaine prochaine, sous réserve que les ponts de fin mai ne viennent pas ralentir les transporteurs.\n\nDès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost pour suivre votre paire en temps réel.\n\n[Prénom] de Max Sauveur",
+      "key_points": "Ton rassurant et transparent. Mentionner l'arrivée en stock cette semaine + expédition rapide dans la foulée. Avertir si des jours fériés/ponts peuvent impacter les délais transporteurs. Rappeler que le lien de suivi Chronopost sera envoyé par email dès expédition. Signer avec le prénom du conseiller.",
+      "example_count": 5
     },
     {
       "topic": "re__suivez_la_production_de_vos_moc_jagger",
