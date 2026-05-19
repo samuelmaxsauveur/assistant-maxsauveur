@@ -35,11 +35,11 @@
     },
     {
       "topic": "conseil_pointure",
-      "topic_label": "Conseil pointure – Aide au choix de taille (Paul Mocassin Cuir)",
-      "situation": "Un client hésite sur sa pointure pour le modèle Paul Mocassin Cuir et fournit la mesure de son pied en centimètres. Le service client lui recommande une taille précise et précise que le cuir et la semelle en liège s'assouplissent avec le port.",
-      "response_template": "Bonjour [Prénom],\n\nParfait, le [Modèle] est un excellent choix !\n\nAvec vos [XX] cm, je vous recommande le **[Taille]**. Le Paul chausse juste au début, c'est tout à fait normal : le cuir et la semelle en liège s'assouplissent avec le port et se moulent progressivement à votre pied. Comptez quelques sorties avant d'atteindre le confort optimal.\n\nBonne commande !\n\n[Prénom de l'équipe] de Max Sauveur",
-      "key_points": "Ton chaleureux et rassurant. Confirmer la taille recommandée en gras. Préciser que le chaussant juste au début est normal pour le cuir + liège. Encourager le client avant la commande.",
-      "example_count": 2
+      "topic_label": "Conseil pointure – Aide au choix de taille selon mesure en cm",
+      "situation": "Un client fournit la mesure de son pied en centimètres et demande quelle taille commander. Le service client lui indique la pointure correspondante selon le guide, puis invite le client à préciser le modèle visé pour affiner la recommandation selon le chaussant spécifique.",
+      "response_template": "Bonjour [Prénom],\n\nAvec [X] cm de pied, vous êtes en **[taille]** sur notre guide.\n\nCela dit, la pointure idéale dépend aussi du modèle que vous avez en tête. Dites-moi lequel vous intéresse et je pourrai vous confirmer la taille exacte, certains modèles chaussant légèrement grand ou légèrement juste.\n\nJohn de Max Sauveur",
+      "key_points": "Réponse courte et directe. Toujours nuancer avec le modèle visé car le chaussant varie selon les articles. Inviter le client à préciser le modèle pour une recommandation personnalisée. Ne pas sur-promettre sans connaître le modèle.",
+      "example_count": 3
     },
     {
       "topic": "defaut_produit_demande_photos",
@@ -290,6 +290,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__re__guide_de_taille",
+      "topic_label": "Re: Re: Re: Guide de taille",
+      "situation": "Re: Re: Re: Guide de taille",
+      "response_template": "Bonjour Paul,\n\nMerci pour ce retour. Concernant le 43,5 : cette pointure n'existe pas sur la Fisherman, la taille au-dessus est directement le 43, et c'est celle-là qu'il vous faut.\n\nN'hésitez pas si vous avez des questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__retour_re_u___remboursement_en_cours",
       "topic_label": "Re: Re: Retour reçu — remboursement en cours",
       "situation": "Re: Re: Retour reçu — remboursement en cours",
@@ -331,11 +339,11 @@
     },
     {
       "topic": "retour_produit_remboursement",
-      "topic_label": "Retour produit – Procédure de remboursement",
-      "situation": "Un client souhaite retourner un article et obtenir un remboursement. Il a besoin de connaître la marche à suivre : télécharger un bon de retour, emballer le colis et l'expédier à l'adresse logistique.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message.\n\nPour procéder au retour de vos [produit(s)], voici la marche à suivre :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez la raison : \"demande de remboursement\")\n2. Emballez soigneusement [le/les produit(s)] avec le bon de retour à l'intérieur\n3. Expédiez le colis à notre adresse logistique :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle du colis, nous traiterons votre demande.\n\nN'hésitez pas si vous avez des questions.\n\n[Prénom agent] de Max Sauveur",
-      "key_points": "Toujours indiquer le lien exact vers la page retour. Préciser que la raison à noter sur le bon est 'demande de remboursement'. Rappeler l'adresse logistique SSL complète. Ton rassurant et clair. Informer que le traitement se fait dès réception et contrôle.",
-      "example_count": 2
+      "topic_label": "Retour produit – Procédure de remboursement ou avoir (taille indisponible)",
+      "situation": "Un client souhaite échanger un article dans une taille non disponible (ex : taille max dépassée). Le service client propose deux options : remboursement avec retour à la charge du client, ou avoir avec frais de livraison offerts sur le prochain achat.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre retour.\n\nLe [modèle] chausse effectivement juste au départ, le cuir et la semelle en liège s'assouplissant avec le port pour se mouler progressivement au pied. Cela dit, si le [taille commandée] est vraiment trop petit et inconfortable, on comprend tout à fait que vous souhaitiez changer de taille.\n\nConcernant le [taille souhaitée] : nos [modèles] ne dépassent pas le [taille max]. Je suis donc dans l'impossibilité de vous proposer un échange dans cette pointure, et je m'en excuse.\n\nVous avez deux options :\n\n**Option 1 : Remboursement**\nRetournez la paire à vos frais en suivant cette procédure :\n1. Téléchargez et complétez le bon de retour ici : https://maxsauveur.com/pages/livraison-et-retour (raison : \"demande de remboursement\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous procédons au remboursement.\n\n**Option 2 : Avoir**\nSi vous souhaitez explorer d'autres modèles de la collection (certains offrent un chaussant plus généreux), nous pouvons vous générer un avoir plutôt qu'un remboursement, avec les frais de livraison offerts sur votre prochain achat.\n\nDites-moi quelle option vous convient le mieux.\n\nJohn de Max Sauveur",
+      "key_points": "Reconnaître la contrainte (taille max atteinte), s'excuser de ne pas pouvoir satisfaire la demande d'échange, proposer systématiquement les deux options (remboursement ou avoir avec frais de port offerts). Mentionner que certains modèles offrent un chaussant plus généreux pour orienter vers un avoir. Adresse logistique SSL toujours incluse dans l'option remboursement.",
+      "example_count": 3
     },
     {
       "topic": "re__re__form_name_form_submitted_2026_05_05_21_45_08",
@@ -408,6 +416,14 @@
       "response_template": "Bonjour [Prénom],\n\nParfait, merci pour votre retour rapide !\n\nLe plus simple, comme vous allez recommander une paire en même temps, est d'attendre de recevoir votre avoir. Cela vous évitera de régler deux fois les frais de livraison : vous commandez tout en une fois avec le code.\n\nDès réception de votre colis, je m'occupe de générer votre avoir et on finalise ça ensemble.\n\n[Prénom] de Max Sauveur",
       "key_points": "Ton rassurant et pratique. Conseil proactif pour éviter des frais doubles. Engagement clair : le SA génère l'avoir dès réception du retour. Formulation 'on finalise ça ensemble' pour maintenir le lien et rassurer le client.",
       "example_count": 3
+    },
+    {
+      "topic": "echange_impossible_taille_superieure_non_disponible",
+      "topic_label": "Échange impossible – taille supérieure hors gamme",
+      "situation": "Un client souhaite échanger sa paire pour une taille supérieure, mais cette taille dépasse la taille maximale proposée par la marque. Le service client ne peut pas satisfaire la demande d'échange et doit proposer des alternatives.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre retour.\n\nLe [modèle] chausse effectivement juste au départ, le cuir et la semelle en liège s'assouplissant avec le port pour se mouler progressivement au pied. Cela dit, si le [taille actuelle] est vraiment trop petit et inconfortable, on comprend tout à fait que vous souhaitiez changer de taille.\n\nConcernant le [taille souhaitée] : nos [modèles] ne dépassent pas le [taille max]. Je suis donc dans l'impossibilité de vous proposer un échange dans cette pointure, et je m'en excuse.\n\nVous avez deux options :\n\n**Option 1 : Remboursement**\nRetournez la paire à vos frais en suivant cette procédure :\n1. Téléchargez et complétez le bon de retour ici : https://maxsauveur.com/pages/livraison-et-retour (raison : \"demande de remboursement\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous procédons au remboursement.\n\n**Option 2 : Avoir**\nSi vous souhaitez explorer d'autres modèles de la collection (certains offrent un chaussant plus généreux), nous pouvons vous générer un avoir plutôt qu'un remboursement, avec les frais de livraison offerts sur votre prochain achat.\n\nDites-moi quelle option vous convient le mieux.\n\n[Prénom] de Max Sauveur",
+      "key_points": "Reconnaître d'abord la caractéristique du produit (chausse juste, s'assouplit avec le temps) avant d'annoncer l'impossibilité. Être transparent sur la limite de gamme de tailles. Proposer systématiquement deux options : remboursement ou avoir avec frais de port offerts. Inclure l'adresse logistique complète et le lien vers le bon de retour. Ton empathique et sans jugement.",
+      "example_count": 1
     }
   ]
 }
