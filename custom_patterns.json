@@ -298,6 +298,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__une_commande__12061_est_en_transit",
+      "topic_label": "Re: Une commande #12061 est en transit",
+      "situation": "Re: Une commande #12061 est en transit",
+      "response_template": "Bonjour Emmanuel,\n\nMerci pour votre retour.\n\nLe Paul chausse effectivement juste au départ, le cuir et la semelle en liège s'assouplissant avec le port pour se mouler progressivement au pied. Cela dit, si le 45 est vraiment trop petit et inconfortable, on comprend tout à fait que vous souhaitiez changer de taille.\n\nConcernant le 46 : nos mocassins ne dépassent pas le 45. Je suis donc dans l'impossibilité de vous proposer un échange dans cette pointure, et je m'en excuse.\n\nVous avez deux options :\n\n**Option 1 : Remboursement**\nRetournez la paire à vos frais en suivant cette procédure :\n1. Téléchargez et complétez le bon de retour ici : https://maxsauveur.com/pages/livraison-et-retour (raison : \"demande de remboursement\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous procédons au remboursement.\n\n**Option 2 : Avoir**\nSi vous souhaitez explorer d'autres modèles de la collection (certains offrent un chaussant plus généreux), nous pouvons vous générer un avoir plutôt qu'un remboursement, avec les frais de livraison offerts sur votre prochain achat.\n\nDites-moi quelle option vous convient le mieux.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__vous_avez_rencontr__un_probl_me__",
       "topic_label": "Re: Vous avez rencontré un problème ?",
       "situation": "Re: Vous avez rencontré un problème ?",
