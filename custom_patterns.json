@@ -98,6 +98,14 @@
       "example_count": 1
     },
     {
+      "topic": "ma_pointure_id_ale_",
+      "topic_label": "Ma pointure idéale?",
+      "situation": "Ma pointure idéale?",
+      "response_template": "Bonjour Pierfranco,\n\nAvec 27 cm de pied, vous êtes en **42** sur notre guide.\n\nCela dit, la pointure idéale dépend aussi du modèle que vous avez en tête. Dites-moi lequel vous intéresse et je pourrai vous confirmer la taille exacte, certains modèles chaussant légèrement grand ou légèrement juste.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "max_sauveur___service_client",
       "topic_label": "Max Sauveur — Service Client",
       "situation": "Max Sauveur — Service Client",
