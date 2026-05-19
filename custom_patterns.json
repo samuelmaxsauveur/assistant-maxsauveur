@@ -186,6 +186,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__d_but_de_la_fabrication_de_vos_moc_jagger_et_point_livra",
+      "topic_label": "Re: Début de la fabrication de vos Moc Jagger et point livraison",
+      "situation": "Re: Début de la fabrication de vos Moc Jagger et point livraison",
+      "response_template": "Bonjour Maxime,\n\nMerci pour votre message.\n\nVos Moc Jagger arrivent chez nous cette semaine, et nous prévoyons de les expédier dans la foulée. La livraison est estimée semaine prochaine, sous réserve que les ponts de fin mai ne viennent pas ralentir les transporteurs.\n\nDès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost pour suivre votre paire en temps réel.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__max_sauveur___service_client",
       "topic_label": "Re: Max Sauveur — Service Client",
       "situation": "Re: Max Sauveur — Service Client",
