@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "avoir___code",
+      "topic_label": "Avoir / code",
+      "situation": "Avoir / code",
+      "response_template": "Bonjour Florian,\n\nMerci pour votre message.\n\nVotre code avoir 4VSFFZYA3CS6 est toujours actif et valable. Pour qu'il fonctionne, il doit être appliqué exclusivement sur la collection Derbies (Brogues), qui correspond à votre commande d'origine. Si vous l'avez essayé sur un autre modèle, c'est probablement pour ça qu'il ne s'applique pas.\n\nPouvez-vous me confirmer sur quel article vous souhaitez l'utiliser ? Je vérifierai de notre côté et, si besoin, je générerai un nouveau code.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande__12115",
       "topic_label": "COMMANDE #12115",
       "situation": "COMMANDE #12115",
