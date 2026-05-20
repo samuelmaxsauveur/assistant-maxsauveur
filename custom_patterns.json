@@ -20,10 +20,10 @@
     {
       "topic": "colis_bloque_intervention_expediteur_chronopost",
       "topic_label": "Colis bloqué – Ouverture dossier Chronopost en tant qu'expéditeur",
-      "situation": "Un client signale que son colis est bloqué chez Chronopost. Chronopost a indiqué au client que c'est à l'expéditeur (Max Sauveur) d'intervenir pour débloquer la situation. Le service client ouvre un dossier auprès de Chronopost et promet un retour.",
+      "situation": "Un client signale que son colis est bloqué chez Chronopost. Chronopost a indiqué au client que c'est à l'expéditeur (Max Sauveur) d'intervenir pour débloquer la situation. Le service client ouvre un dossier et prend en charge la démarche.",
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre message. Nous avons bien noté la situation avec votre colis bloqué.\n\nNous ouvrons un dossier auprès de Chronopost dès maintenant pour débloquer la situation. Ce type de blocage est indépendant de notre volonté, mais nous allons intervenir directement en tant qu'expéditeur comme Chronopost vous l'a indiqué.\n\nNous revenons vers vous dès que nous avons un retour concret de leur part. Désolé pour ce contretemps.\n\nJohn de Max Sauveur",
-      "key_points": "Ton rassurant et proactif. Reconnaître le problème sans en prendre la faute. Préciser que l'intervention se fait en tant qu'expéditeur (comme indiqué par Chronopost). Promettre un retour concret. Ne pas donner de délai précis.",
-      "example_count": 2
+      "key_points": "Reconnaître le problème sans en endosser la responsabilité (blocage indépendant de leur volonté). Confirmer l'ouverture du dossier immédiatement. S'engager à revenir vers le client avec un retour concret. Ton sobre et rassurant, sans sur-promettre.",
+      "example_count": 3
     },
     {
       "topic": "commande__12059",
@@ -162,6 +162,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_05_20_14_03_43",
+      "topic_label": "Form name Form submitted 2026-05-20 14:03:43",
+      "situation": "Form name Form submitted 2026-05-20 14:03:43",
+      "response_template": "Bonjour Clément,\n\nMerci pour votre message.\n\nEn vérifiant votre commande #12136, nous voyons que le colis a bien été expédié en Chrono2Shop avec pour destination un point relais à Saint-Malo. En effet, il semblerait qu'il y ait eu une erreur d'acheminement vers un autre point relais.\n\nDe notre côté, nous ouvrons immédiatement un dossier auprès de Chronopost pour demander le réacheminement vers le bon point relais à Saint-Malo. Ce type de correction doit être fait en tant qu'expéditeur, nous prenons donc l'affaire en main directement.\n\nNous revenons vers vous dès que nous avons un retour concret de leur part. Désolé pour ce contretemps.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fwd__commande__11591_confirm_e",
       "topic_label": "Fwd: Commande #11591 confirmée",
       "situation": "Fwd: Commande #11591 confirmée",
@@ -224,6 +232,14 @@
       "response_template": "Bonjour Emilio,\n\nMerci pour votre message. Un œillet qui saute du cuir sans choc particulier, surtout après seulement 3 mois, c'est effectivement anormal et cela ressemble à un défaut de fabrication.\n\nAvant de statuer, pourriez-vous nous envoyer quelques photos de la zone concernée ? Cela nous permettra de confirmer et de prendre les mesures nécessaires.\n\nDès réception des photos, nous revenons vers vous rapidement avec une solution.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
+    },
+    {
+      "topic": "re__commande__12022___erreur_et_question_taille_mocassin_pau",
+      "topic_label": "Pli d'aisance mocassin cuir – explication assouplissement normal + suivi échange",
+      "situation": "Un client ayant reçu un mocassin en cuir (ex : Paul) signale un pli visible sur le dessus du pied. Parallèlement, un échange est en cours (retour reçu, renvoi prévu). Le service client rassure sur le pli d'aisance, normal en début de port, et confirme le calendrier d'expédition du nouvel article.",
+      "response_template": "Bonjour [Prénom],\n\nOui, nous avons bien reçu [l'article retourné], merci de l'avoir retourné rapidement. Nous prévoyons de vous envoyer [le nouvel article] avant la fin de semaine, et nous vous notifierons dès l'expédition avec un lien de suivi.\n\nConcernant le pli d'aisance : pas d'inquiétude, c'est tout à fait normal. Le cuir du [modèle] est encore rigide au début, et ces plis se forment naturellement au niveau de l'articulation du pied dès les premiers ports. C'est précisément le signe que le cuir commence à se mettre en forme et à se mouler à votre pied. Avec quelques sorties supplémentaires, le cuir va s'assouplir et le pli va se stabiliser proprement. Ce n'est pas un défaut, c'est la vie du cuir pleine fleur.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn de Max Sauveur",
+      "key_points": "Confirmer la réception du retour et donner un délai concret pour le renvoi. Expliquer le pli d'aisance comme un phénomène naturel et positif (le cuir se met en forme). Utiliser la formulation 'la vie du cuir pleine fleur' pour valoriser la matière. Ton rassurant, pédagogique et chaleureux.",
+      "example_count": 2
     },
     {
       "topic": "pointure___moc_paul",
@@ -294,14 +310,6 @@
       "topic_label": "Re: Commande #11604 confirmée",
       "situation": "Re: Commande #11604 confirmée",
       "response_template": "Bonjour Diego,\n\nMerci pour votre message.\n\nVos Moc Jagger arrivent chez nous cette semaine, et nous prévoyons de les expédier dans la foulée. La livraison estimée se situe autour du 19 mai, sous réserve que les ponts de fin mai ne viennent pas ralentir les transporteurs.\n\nDès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost pour suivre votre paire en temps réel.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__commande__12022___erreur_et_question_taille_mocassin_pau",
-      "topic_label": "Re: Commande #12022 - erreur et question taille mocassin Paul",
-      "situation": "Re: Commande #12022 - erreur et question taille mocassin Paul",
-      "response_template": "Bonjour Pierre,\n\nOui, nous avons bien reçu la ceinture noire, merci de l'avoir retournée rapidement. Nous prévoyons de vous envoyer la Jason en cuir de veau marron avant la fin de semaine, et nous vous notifierons dès l'expédition avec un lien de suivi.\n\nConcernant le pli d'aisance : pas d'inquiétude, c'est tout à fait normal. Le cuir du Paul est encore rigide au début, et ces plis se forment naturellement au niveau de l'articulation du pied dès les premiers ports. C'est précisément le signe que le cuir commence à se mettre en forme et à se mouler à votre pied. Avec quelques sorties supplémentaires, le cuir va s'assouplir et le pli va se stabiliser proprement. Ce n'est pas un défaut, c'est la vie du cuir pleine fleur.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -532,10 +540,10 @@
     {
       "topic": "defaut_apparent_matiere_naturelle_cuir_chevre",
       "topic_label": "Trace ou irrégularité sur article en cuir de chèvre – caractéristique naturelle",
-      "situation": "Un client signale une trace, une marque de gras ou une irrégularité visible sur un article dont la doublure ou la surface est en cuir de chèvre. Il s'interroge sur un éventuel défaut de fabrication. Le service client explique que ces variations sont inhérentes à la matière naturelle.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et ravi d'apprendre que vous appréciez la qualité de la commande dans l'ensemble !\n\nConcernant la trace visible sur [zone concernée] : nos [produits concernés] sont [description matière], une matière naturelle qui peut présenter des marques de gras, des variations de teinte ou des légères irrégularités. Cela fait partie des caractéristiques de cette peau et n'est pas considéré comme un défaut de fabrication.\n\nCela dit, si vous souhaitez que nous jetions un œil à l'atelier pour confirmer qu'il ne s'agit pas d'autre chose, n'hésitez pas à nous retourner [le produit]. On regardera ça de près et on reviendra vers vous avec une réponse claire.\n\nJohn de Max Sauveur",
-      "key_points": "Commencer par valoriser la satisfaction générale du client. Expliquer pédagogiquement la caractéristique de la matière naturelle (cuir de chèvre : marques de gras, variations de teinte, irrégularités). Ne pas fermer la porte : proposer le retour à l'atelier pour vérification si le client a un doute. Ton bienveillant et transparent. Ne pas statuer définitivement sans avoir vu le produit si un doute subsiste.",
-      "example_count": 1
+      "situation": "Un client signale une trace, une marque de gras ou une irrégularité visible sur un article dont la doublure ou la surface est en cuir de chèvre. Le service client explique que ces variations sont inhérentes à la matière naturelle et ne constituent pas un défaut, tout en laissant la possibilité au client de retourner l'article pour vérification atelier si un doute subsiste.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et ravi d'apprendre que vous appréciez la qualité de la commande dans l'ensemble !\n\nConcernant la trace visible sur [localisation de la trace, ex : la doublure de la ceinture] : nos [articles concernés] sont doublés en cuir de chèvre, une matière naturelle qui peut présenter des marques de gras, des variations de teinte ou des légères irrégularités. Cela fait partie des caractéristiques de cette peau et n'est pas considéré comme un défaut de fabrication.\n\nCela dit, si vous souhaitez que nous jetions un œil à l'atelier pour confirmer qu'il ne s'agit pas d'autre chose, n'hésitez pas à nous retourner [l'article]. On regardera ça de près et on reviendra vers vous avec une réponse claire.\n\nJohn de Max Sauveur",
+      "key_points": "Expliquer pédagogiquement les caractéristiques naturelles du cuir de chèvre (marques de gras, variations de teinte, irrégularités). Ne pas statuer définitivement sur un défaut sans voir la pièce. Proposer systématiquement un retour atelier comme filet de sécurité. Ton bienveillant et expert, sans être défensif.",
+      "example_count": 2
     },
     {
       "topic": "votre_commande_max_sauveur___information_importante",
