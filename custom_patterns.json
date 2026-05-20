@@ -426,6 +426,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__form_name_form_submitted_2026_05_18_15_07_57",
+      "topic_label": "Re: Re: Form name Form submitted 2026-05-18 15:07:57",
+      "situation": "Re: Re: Form name Form submitted 2026-05-18 15:07:57",
+      "response_template": "Bonjour Baptiste,\n\nVotre commande #12170 (Peter A. daim marron, 41) est bien enregistrée et en cours de préparation. Vous recevrez un email avec votre lien de suivi Chronopost dès l'expédition.\n\nConcernant le retour de la ceinture, nous revenons vers vous demain avec une confirmation dès que nous avons vérifié sa bonne réception de notre côté.\n\nBonne journée,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__max_sauveur___service_client",
       "topic_label": "Re: Re: Max Sauveur — Service Client",
       "situation": "Re: Re: Max Sauveur — Service Client",
