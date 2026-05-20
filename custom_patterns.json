@@ -546,6 +546,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__un_mod_le_que_j_aurais_jamais_d__mettre_de_c_t_",
+      "topic_label": "Re :Un modèle que j'aurais jamais dû mettre de côté",
+      "situation": "Re :Un modèle que j'aurais jamais dû mettre de côté",
+      "response_template": "Bonjour,\n\nMerci pour ce retour sur vos Brogues, ravi que vous soyez satisfait !\n\nPour la Wood, la précommande qui ouvre vendredi 22 mai sera disponible en deux coloris uniquement : cuir noir et cuir marron foncé. Pas de marron clair prévu pour cette édition.\n\nSi l'un de ces deux coloris vous convient, vous pourrez passer commande vendredi à 239€ au lieu de 335€, pour une livraison mi-septembre.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "rupture_stock_avoir_majore_ou_remboursement",
       "topic_label": "Rupture de stock – Avoir majoré ou remboursement au choix",
       "situation": "Un client a commandé un modèle qui n'est plus disponible dans sa taille suite à une mauvaise synchronisation des stocks. Le service client ne peut pas honorer la commande et propose deux options : remboursement intégral ou avoir majoré avec livraison offerte.",
