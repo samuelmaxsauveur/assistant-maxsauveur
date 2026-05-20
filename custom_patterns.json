@@ -26,6 +26,14 @@
       "example_count": 1
     },
     {
+      "topic": "commande_12043",
+      "topic_label": "Commande 12043",
+      "situation": "Commande 12043",
+      "response_template": "Bonjour Maël,\n\nMerci pour votre message. Vous avez raison de nous alerter : la livraison était initialement estimée au 9-11 mai, et votre colis n'a effectivement plus bougé depuis le 15 mai.\n\nNous avons ouvert un dossier auprès de Chronopost pour faire le point sur la situation. Ce type de blocage est indépendant de notre volonté, mais nous suivons l'affaire de près et revenons vers vous dès que nous avons une réponse concrète.\n\nEn attendant, vous pouvez suivre l'état de votre colis via ce lien : https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR620300283TS\n\nDésolé pour ce retard et merci pour votre patience.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "confirmation_taille_fisherman",
       "topic_label": "Confirmation taille Fisherman – échange pour bonne taille",
       "situation": "Un client a commandé le modèle Fisherman et estime que la taille reçue est trop grande. Il souhaite savoir quelle taille commander en échange. Le service client l'oriente selon le ressenti (légèrement grand vs vraiment trop large) et confirme la procédure d'avoir après retour.",
