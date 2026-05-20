@@ -26,14 +26,6 @@
       "example_count": 1
     },
     {
-      "topic": "commande_12043",
-      "topic_label": "Commande 12043",
-      "situation": "Commande 12043",
-      "response_template": "Bonjour Maël,\n\nMerci pour votre message. Vous avez raison de nous alerter : la livraison était initialement estimée au 9-11 mai, et votre colis n'a effectivement plus bougé depuis le 15 mai.\n\nNous avons ouvert un dossier auprès de Chronopost pour faire le point sur la situation. Ce type de blocage est indépendant de notre volonté, mais nous suivons l'affaire de près et revenons vers vous dès que nous avons une réponse concrète.\n\nEn attendant, vous pouvez suivre l'état de votre colis via ce lien : https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR620300283TS\n\nDésolé pour ce retard et merci pour votre patience.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "confirmation_taille_fisherman",
       "topic_label": "Confirmation taille Fisherman – échange pour bonne taille",
       "situation": "Un client a commandé le modèle Fisherman et estime que la taille reçue est trop grande. Il souhaite savoir quelle taille commander en échange. Le service client l'oriente selon le ressenti (légèrement grand vs vraiment trop large) et confirme la procédure d'avoir après retour.",
@@ -290,6 +282,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__pointure_sandale_fisherman",
+      "topic_label": "Re: Pointure Sandale Fisherman",
+      "situation": "Re: Pointure Sandale Fisherman",
+      "response_template": "Bonjour Quentin,\n\nAh, mince !\n\nAvec 2-3 cm à l'avant et le 5e orteil qui déborde, le 42 est effectivement trop grand pour vous.\n\nVoici comment procéder pour l'échange :\n\n1. Téléchargez et complétez le bon de retour ici : https://maxsauveur.com/pages/livraison-et-retour (cochez \"avoir\")\n2. Emballez soigneusement les sandales avec le bon à l'intérieur\n3. Expédiez le colis à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous générons un avoir pour commander le 41.\n\nPetite astuce si vous souhaitez recevoir le 41 rapidement : vous pouvez commander le 41 dès maintenant (avec livraison express si besoin) et retourner le 42 en parallèle. \n\nBon courage pour attendre le soleil avec la bonne pointure !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__question_pointure",
       "topic_label": "Re: Question pointure",
       "situation": "Re: Question pointure",
@@ -440,6 +440,14 @@
       "response_template": "Bonjour [Prénom],\n\nJe vous contacte au sujet de votre commande #[NUMÉRO], et je vous dois des excuses sincères pour ce que je vais vous annoncer.\n\nSuite à une mauvaise synchronisation de nos stocks, nous nous retrouvons dans l'impossibilité de vous expédier [MODÈLE] en taille [TAILLE]. Ce modèle n'est plus disponible dans cette pointure et nous ne pouvons pas honorer votre commande dans les conditions prévues. Je suis vraiment désolé pour cette situation, qui n'aurait pas dû arriver.\n\nPour vous, deux options :\n\n**Option 1 : Remboursement intégral**\nNous procédons au remboursement complet de votre commande sur votre moyen de paiement initial, dans les prochains jours.\n\n**Option 2 : Échange vers le [TAILLE SUPÉRIEURE]**\nLe [MODÈLE] chausse légèrement juste, ce qui signifie que le [TAILLE SUPÉRIEURE] reste une option tout à fait viable pour vous. Si vous souhaitez tenter cette taille, nous pouvons vous l'expédier directement, et si elle ne convient pas, vous aurez bien entendu la possibilité de la retourner.\n\nDites-moi simplement quelle option vous convient le mieux, et je m'en occupe immédiatement.\n\nEncore toutes mes excuses pour ce contretemps.\n\n[Prénom agent] de Max Sauveur",
       "key_points": "Ton : excuses sincères, solution proactive. À utiliser uniquement quand le modèle chausse juste et que la taille supérieure est disponible. Toujours garantir la possibilité de retour si la taille supérieure ne convient pas. Justifier la recommandation de la taille supérieure par le fit du modèle.",
       "example_count": 1
+    },
+    {
+      "topic": "commande_12043",
+      "topic_label": "Suivi colis bloqué – Dossier Chronopost ouvert",
+      "situation": "Un client signale que son colis n'a plus bougé depuis plusieurs jours après la date de livraison estimée. Le service client confirme le constat, ouvre un dossier auprès du transporteur (Chronopost) et fournit un lien de suivi en attendant une réponse concrète.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message. Vous avez raison de nous alerter : la livraison était initialement estimée au [dates estimées], et votre colis n'a effectivement plus bougé depuis le [date de dernier mouvement].\n\nNous avons ouvert un dossier auprès de Chronopost pour faire le point sur la situation. Ce type de blocage est indépendant de notre volonté, mais nous suivons l'affaire de près et revenons vers vous dès que nous avons une réponse concrète.\n\nEn attendant, vous pouvez suivre l'état de votre colis via ce lien : [lien de suivi Chronopost]\n\nDésolé pour ce retard et merci pour votre patience.\n\n[Prénom équipe] de Max Sauveur",
+      "key_points": "Reconnaître le problème sans minimiser. Confirmer explicitement que le constat est validé (colis bloqué). Mentionner l'ouverture d'un dossier transporteur. Fournir le lien de suivi personnalisé. Ton empathique et transparent, sans promettre de délai précis.",
+      "example_count": 2
     },
     {
       "topic": "re__re__re__d_but_de_la_fabrication_de_vos_moc_jagger_et_poi",
