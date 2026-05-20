@@ -58,6 +58,14 @@
       "example_count": 3
     },
     {
+      "topic": "conseil_pointure_comparaison_modeles",
+      "topic_label": "Conseil pointure – Comparaison entre modèles pour affiner le choix",
+      "situation": "Un client connaît déjà sa pointure sur un modèle Max Sauveur et souhaite savoir quelle taille prendre sur un autre modèle. Il utilise son expérience sur le premier modèle comme référence pour affiner son choix sur le second.",
+      "response_template": "Bonjour [Prénom],\n\nBonne logique de raisonnement ! En portant le [Modèle A] en [taille], vous avez une bonne base de comparaison.\n\nLe [Modèle B] chausse effectivement [grand/petit], donc le [taille recommandée] est tout à fait cohérent pour vous. Avec vos [mesure en cm] de pied (d'après nos échanges), le [taille recommandée] est votre pointure naturelle sur notre guide, et le fait que le [Modèle B] taille [grand/petit] confirme que c'est la bonne direction.\n\nJe vous recommande donc le [taille recommandée] sur ce modèle.\n\nBonne journée,\n\n[Prénom conseiller] de Max Sauveur",
+      "key_points": "Valoriser le raisonnement du client ('Bonne logique de raisonnement'). S'appuyer sur la mesure en cm déjà connue du client + l'expérience sur l'autre modèle pour justifier la recommandation. Mentionner explicitement si le modèle chausse grand ou petit. Conclure avec une recommandation claire et directe sans ambiguïté.",
+      "example_count": 1
+    },
+    {
       "topic": "conseil_pointure_cuir_chausse_juste",
       "topic_label": "Conseil pointure – Cuir chausse juste au départ (assouplissement normal)",
       "situation": "Un client demande conseil sur sa pointure pour un modèle en cuir (ex : mocassin Paul). Il fournit sa mesure en cm et/ou ses références dans d'autres marques. Le modèle chausse juste au départ, ce qui peut inquiéter le client.",
@@ -278,6 +286,14 @@
       "topic_label": "Re: Form name Form submitted 2026-05-18 15:07:57",
       "situation": "Re: Form name Form submitted 2026-05-18 15:07:57",
       "response_template": "Bonjour Baptiste,\n\nBonne logique de raisonnement ! En portant le Paul en 42, vous avez une bonne base de comparaison.\n\nLa Peter A. chausse effectivement grand, donc le 41 est tout à fait cohérent pour vous. Avec vos 26 cm de pied (d'après nos échanges), le 41 est votre pointure naturelle sur notre guide, et le fait que la Peter taille grand confirme que c'est la bonne direction.\n\nJe vous recommande donc le 41 sur ce modèle.\n\nBonne journée,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__ma_pointure_id_ale_",
+      "topic_label": "Re: Ma pointure idéale?",
+      "situation": "Re: Ma pointure idéale?",
+      "response_template": "Bonjour Pierfranco,\n\nMerci pour votre confiance, c'est un beau premier achat à faire !\n\nPour répondre à vos questions sur la Fisherman :\n\nLa sandale chausse **grand**. Avec vos 27 cm de pied, le 42 est votre taille de référence sur notre guide. Par expérience, nos clients prennent cette pointure quand il chausse du 43.\n\nConcernant votre inquiétude sur le maintien : oui, les boucles de réglage permettent d'ajuster le tour de pied et de cheville avec précision, ce qui compense tout à fait le fait d'être légèrement entre deux tailles. Vous n'aurez pas la sensation de \"perdre\" la sandale.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande !\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
