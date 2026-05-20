@@ -18,10 +18,26 @@
       "example_count": 1
     },
     {
+      "topic": "colis_bloque_intervention_expediteur_chronopost",
+      "topic_label": "Colis bloqué – Ouverture dossier Chronopost en tant qu'expéditeur",
+      "situation": "Un client signale que son colis est bloqué chez Chronopost. Chronopost a indiqué au client que c'est à l'expéditeur (Max Sauveur) d'intervenir pour débloquer la situation. Le service client ouvre un dossier auprès du transporteur.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message. Nous avons bien noté la situation avec votre colis bloqué.\n\nNous ouvrons un dossier auprès de Chronopost dès maintenant pour débloquer la situation. Ce type de blocage est indépendant de notre volonté, mais nous allons intervenir directement en tant qu'expéditeur comme Chronopost vous l'a indiqué.\n\nNous revenons vers vous dès que nous avons un retour concret de leur part. Désolé pour ce contretemps.\n\n[Prénom équipe] de Max Sauveur",
+      "key_points": "Ton rassurant et proactif. Reconnaître le blocage sans rejeter la faute sur le client. Préciser que Max Sauveur intervient en tant qu'expéditeur. Promettre un retour concret (pas de délai précis si non connu). S'excuser brièvement sans sur-dramatiser.",
+      "example_count": 1
+    },
+    {
       "topic": "commande__12059",
       "topic_label": "Commande #12059",
       "situation": "Commande #12059",
       "response_template": "Bonjour Kevin,\n\nMerci pour votre message. Nous avons bien noté la situation avec votre colis bloqué.\n\nNous ouvrons un dossier auprès de Chronopost dès maintenant pour débloquer la situation. Ce type de blocage est indépendant de notre volonté, mais nous allons intervenir directement en tant qu'expéditeur comme Chronopost vous l'a indiqué.\n\nNous revenons vers vous dès que nous avons un retour concret de leur part. Désolé pour ce contretemps.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "commande__12132",
+      "topic_label": "Commande #12132",
+      "situation": "Commande #12132",
+      "response_template": "Bonjour Michael,\n\nMerci pour votre message et ravi d'apprendre que vous appréciez la qualité de la commande dans l'ensemble !\n\nConcernant la trace visible sur la doublure de la ceinture marron : nos ceintures sont doublées en cuir de chèvre, une matière naturelle qui peut présenter des marques de gras, des variations de teinte ou des légères irrégularités. Cela fait partie des caractéristiques de cette peau et n'est pas considéré comme un défaut de fabrication.\n\nCela dit, si vous souhaitez que nous jetions un œil à l'atelier pour confirmer qu'il ne s'agit pas d'autre chose, n'hésitez pas à nous retourner la ceinture. On regardera ça de près et on reviendra vers vous avec une réponse claire.\n\nEn attendant, bienvenue chez Max Sauveur, et nous serons ravis de vous retrouver pour La Wood le moment venu !\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
