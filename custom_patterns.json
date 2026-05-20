@@ -314,14 +314,6 @@
       "example_count": 1
     },
     {
-      "topic": "re__question_sandale",
-      "topic_label": "RE: Question sandale",
-      "situation": "RE: Question sandale",
-      "response_template": "Bonjour Adrien,\n\nBonne observation ! La sandale en daim ne démarre effectivement qu'en 40, c'est bien exact, ce n'est pas une erreur. Le 39 n'a pas été produit dans ce coloris, d'où l'absence dans la gamme.\n\nC'est d'ailleurs une des raisons pour lesquelles je vous orientais vers la Fisherman en cuir grainé, qui elle était disponible en 39.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "re__ceci_est_un___",
       "topic_label": "Re: Ceci est un...",
       "situation": "Re: Ceci est un...",
@@ -408,6 +400,14 @@
       "response_template": "Bonjour Mathieu,\n\nMerci pour ce retour détaillé, c'est exactement le genre d'infos qui m'aide à vous orienter correctement.\n\nVotre ressenti sur le 40 en Paul (sensation de poids, chaussure qui flotte) est tout à fait cohérent avec votre morphologie de pied. Mais pour la Peter, il y a une approche qui peut vraiment changer la donne : le 40 avec une semelle d'ajustement (pas une semelle cuir, mais une vraie semelle d'ajustement en volume).\n\nConcrètement, ça comble le volume interne sans comprimer les orteils. Vous retrouvez un maintien proche de celui du 39, mais sans la sensation d'être à l'étroit avec des chaussettes épaisses. C'est la solution adaptée quand on est entre deux tailles sur un mocassin sans doublure.\n\nEn résumé : ne faites pas l'impasse sur la Peter tout de suite. Le 40 avec une semelle d'ajustement est clairement la piste à explorer avant de conclure que le modèle ne peut pas vous convenir.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
+    },
+    {
+      "topic": "re__question_sandale",
+      "topic_label": "Re: Question sandale",
+      "situation": "Re: Question sandale",
+      "response_template": "Bonjour Adrien,\n\nMalheureusement, pas de retours prévus sur la Fisherman en cuir grainé 39 pour cette saison, les stocks sont épuisés.\n\nLa bonne nouvelle, c'est que le modèle reviendra l'année prochaine. Je vous invite à activer l'alerte disponibilité directement sur la fiche produit : vous serez notifié en priorité dès que le 39 sera disponible, et vous ne raterez pas le créneau cette fois.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 2
     },
     {
       "topic": "re__re__avis",
