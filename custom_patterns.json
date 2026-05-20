@@ -18,6 +18,14 @@
       "example_count": 1
     },
     {
+      "topic": "commande__18878",
+      "topic_label": "Commande #18878",
+      "situation": "Commande #18878",
+      "response_template": "Bonjour Jean-Baptiste,\n\nMerci pour ce retour détaillé, c'est exactement ce qu'il faut pour bien vous orienter.\n\nLe ressenti que vous décrivez (orteil glissant entre deux lanières, espace derrière le talon) indique effectivement que le 42 est un peu trop grand pour vous. Le 41 devrait corriger ces deux points.\n\nConcernant votre stratégie : elle est tout à fait sensée. Vous pouvez tout à fait commander le 41 en premier pour vérifier qu'il vous convient, puis retourner le 42 ensuite. Pour éviter d'attendre, je vous recommande de choisir la livraison en Chronopost Express lors de votre prochaine commande : vous recevrez la paire en 1 à 2 jours ouvrés (commande passée avant 11h), ce qui vous laissera largement le temps de tester et de retourner le 42 dans le délai légal de 14 jours.\n\nPour le délai des 15 jours sur votre commande #11878 : cela était effectivement lié aux nombreux jours fériés de fin avril et mai, qui ont impacté les transporteurs. Ce n'est pas notre délai habituel en Chronopost standard.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "confirmation_taille_fisherman",
       "topic_label": "Confirmation taille Fisherman – échange pour bonne taille",
       "situation": "Un client a commandé le modèle Fisherman et estime que la taille reçue est trop grande. Il souhaite savoir quelle taille commander en échange. Le service client l'oriente selon le ressenti (légèrement grand vs vraiment trop large) et confirme la procédure d'avoir après retour.",
@@ -40,6 +48,14 @@
       "response_template": "Bonjour [Prénom],\n\nAvec [X] cm de pied, vous êtes en **[taille]** sur notre guide.\n\nCela dit, la pointure idéale dépend aussi du modèle que vous avez en tête. Dites-moi lequel vous intéresse et je pourrai vous confirmer la taille exacte, certains modèles chaussant légèrement grand ou légèrement juste.\n\nJohn de Max Sauveur",
       "key_points": "Réponse courte et directe. Toujours nuancer avec le modèle visé car le chaussant varie selon les articles. Inviter le client à préciser le modèle pour une recommandation personnalisée. Ne pas sur-promettre sans connaître le modèle.",
       "example_count": 3
+    },
+    {
+      "topic": "conseil_pointure_cuir_chausse_juste",
+      "topic_label": "Conseil pointure – Cuir chausse juste au départ (assouplissement normal)",
+      "situation": "Un client demande conseil sur sa pointure pour un modèle en cuir (ex : mocassin Paul). Il fournit sa mesure en cm et/ou ses références dans d'autres marques. Le modèle chausse juste au départ, ce qui peut inquiéter le client.",
+      "response_template": "Bonjour [Prénom],\n\nAvec [X] cm de pied ([X+marge] cm avec la marge), vous êtes en **[taille]** sur notre guide.\n\nLe [modèle] chausse juste au départ, ce qui est tout à fait normal : le cuir et la semelle en liège s'assouplissent avec le port et se moulent progressivement à votre pied. Vos références [marque] en [type de chaussure] ([taille habituelle]) confirment que vous êtes bien dans le profil du [taille] sur ce type de chaussure.\n\nJe vous recommande donc le [taille].\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\n[Prénom agent] de Max Sauveur",
+      "key_points": "Rassurer le client sur le fait que serrer au départ est normal pour le cuir. S'appuyer sur ses références de pointure dans d'autres marques pour valider la recommandation. Ton direct et pédagogique. Toujours conclure avec une invitation à poser d'autres questions.",
+      "example_count": 1
     },
     {
       "topic": "demande_renseignements___pointure___pr__commande",
