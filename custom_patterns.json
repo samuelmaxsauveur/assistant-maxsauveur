@@ -90,6 +90,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_05_20_00_25_24",
+      "topic_label": "Form name Form submitted 2026-05-20 00:25:24",
+      "situation": "Form name Form submitted 2026-05-20 00:25:24",
+      "response_template": "Bonjour,\n\nVos Moc Jagger arrivent chez nous très prochainement, et nous prévoyons de les expédier dans la foulée. Petite nuance : avec les ponts de fin mai, l'expédition pourrait être légèrement décalée. Nous faisons au mieux pour limiter l'impact.\n\nNous avons d'ailleurs envoyé un email d'information à ce sujet hier via notre newsletter. Pour être tenu informé en priorité des prochaines mises à jour, je vous invite à vous y abonner directement sur notre site.\n\nDès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fwd__commande__11591_confirm_e",
       "topic_label": "Fwd: Commande #11591 confirmée",
       "situation": "Fwd: Commande #11591 confirmée",
