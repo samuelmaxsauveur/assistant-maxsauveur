@@ -349,9 +349,9 @@
       "topic": "re__une_commande__12009_en_retour",
       "topic_label": "Re: Une commande #12009 en retour",
       "situation": "Re: Une commande #12009 en retour",
-      "response_template": "Bonjour Kavi,\n\nNotre position sur la décote reste inchangée, et nous y avons répondu en détail dans notre email précédent avec les justificatifs visuels.\n\nCela dit, nous prenons note de votre choix : nous allons vous renvoyer la paire à nos frais cette semaine. Vous recevrez un email avec un lien de suivi dès l'expédition.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Kavi,\n\nNous procéderons à l'expédition de votre paire la semaine prochaine. Vous recevrez un email avec votre nouveau lien de suivi Chronopost dès que le colis sera parti.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 1
+      "example_count": 2
     },
     {
       "topic": "re__une_commande__12061_est_en_transit",
