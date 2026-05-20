@@ -290,6 +290,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__demande_renseignements___pointure___pr__commande",
+      "topic_label": "RE: Demande renseignements - Pointure / pré-commande",
+      "situation": "RE: Demande renseignements - Pointure / pré-commande",
+      "response_template": "Bonjour Christophe,\n\nExcellent choix ! Vous avez bien fait de commander le 41, c'est la bonne pointure pour vous.\n\nComptez quelques sorties pour que le cuir et la semelle en liège se mettent bien en forme, et vous serez parfaitement à l'aise.\n\nBonne réception !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__form_name_form_submitted_2026_05_13_17_23_16",
       "topic_label": "RE: Form name Form submitted 2026-05-13 17:23:16",
       "situation": "RE: Form name Form submitted 2026-05-13 17:23:16",
