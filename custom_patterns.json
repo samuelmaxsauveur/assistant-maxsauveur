@@ -20,10 +20,10 @@
     {
       "topic": "colis_bloque_intervention_expediteur_chronopost",
       "topic_label": "Colis bloqué – Ouverture dossier Chronopost en tant qu'expéditeur",
-      "situation": "Un client signale que son colis est bloqué chez Chronopost. Chronopost a indiqué au client que c'est à l'expéditeur (Max Sauveur) d'intervenir pour débloquer la situation. Le service client ouvre un dossier et prend en charge la démarche.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message. Nous avons bien noté la situation avec votre colis bloqué.\n\nNous ouvrons un dossier auprès de Chronopost dès maintenant pour débloquer la situation. Ce type de blocage est indépendant de notre volonté, mais nous allons intervenir directement en tant qu'expéditeur comme Chronopost vous l'a indiqué.\n\nNous revenons vers vous dès que nous avons un retour concret de leur part. Désolé pour ce contretemps.\n\nJohn de Max Sauveur",
-      "key_points": "Reconnaître le problème sans en endosser la responsabilité (blocage indépendant de leur volonté). Confirmer l'ouverture du dossier immédiatement. S'engager à revenir vers le client avec un retour concret. Ton sobre et rassurant, sans sur-promettre.",
-      "example_count": 3
+      "situation": "Un client signale que son colis est bloqué ou mal acheminé chez Chronopost. Chronopost a indiqué au client que c'est à l'expéditeur d'intervenir. Peut concerner un blocage simple ou une erreur d'acheminement vers un mauvais point relais.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message. Nous avons bien noté la situation avec votre colis [bloqué / mal acheminé].\n\nNous ouvrons un dossier auprès de Chronopost dès maintenant pour [débloquer la situation / demander le réacheminement vers le bon point relais]. Ce type de [blocage / problème d'acheminement] est indépendant de notre volonté, mais nous allons intervenir directement en tant qu'expéditeur comme Chronopost vous l'a indiqué.\n\nNous revenons vers vous dès que nous avons un retour concret de leur part. Désolé pour ce contretemps.\n\n[Signature]",
+      "key_points": "Ton rassurant et proactif. Prendre en charge immédiatement sans minimiser. Préciser que l'intervention se fait en tant qu'expéditeur. Promettre un retour dès que Chronopost répond. S'excuser sans sur-excuser. Couvre deux sous-cas : colis bloqué simple et erreur d'acheminement vers mauvais point relais.",
+      "example_count": 4
     },
     {
       "topic": "commande__12059",
@@ -54,6 +54,14 @@
       "topic_label": "Commande 12043",
       "situation": "Commande 12043",
       "response_template": "Bonjour Maël,\n\nMerci pour votre message. Vous avez raison de nous alerter : la livraison était initialement estimée au 9-11 mai, et votre colis n'a effectivement plus bougé depuis le 15 mai.\n\nNous avons ouvert un dossier auprès de Chronopost pour faire le point sur la situation. Ce type de blocage est indépendant de notre volonté, mais nous suivons l'affaire de près et revenons vers vous dès que nous avons une réponse concrète.\n\nEn attendant, vous pouvez suivre l'état de votre colis via ce lien : https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR620300283TS\n\nDésolé pour ce retard et merci pour votre patience.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "commande_12164",
+      "topic_label": "Commande 12164",
+      "situation": "Commande 12164",
+      "response_template": "Bonjour Brieuc,\n\nMerci pour votre message et ravi d'apprendre que vos Boat vous plaisent !\n\nConcernant le défaut constaté sur la chaussure droite, nous prenons cela très au sérieux, toutes nos excuses.\n\nPour que nous puissions procéder à la réparation, voici la procédure à suivre :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez la raison : \"défaut fabrication\")\n2. Emballez soigneusement la paire avec le bon de retour à l'intérieur\n3. Expédiez le colis à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nVoici l'étiquette retour :\n\nhttps://wing-labelling-system.s3.eu-west-3.amazonaws.com/52d660c3-ca88-4c89-8407-47cb6498562c/LABEL/2026-05-20/LABEL-f9eb0afd-444d-4c13-89a2-b34814efb45d-1779300576965-8R49847763181.pdf\n\nUne fois la paire reçue, elle sera prise en charge par notre atelier. Comptez un délai de 6 à 8 semaines pour la réparation.\n\nN'hésitez pas si vous avez des questions.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -236,10 +244,10 @@
     {
       "topic": "re__commande__12022___erreur_et_question_taille_mocassin_pau",
       "topic_label": "Pli d'aisance mocassin cuir – explication assouplissement normal + suivi échange",
-      "situation": "Un client ayant reçu un mocassin en cuir (ex : Paul) signale un pli visible sur le dessus du pied. Parallèlement, un échange est en cours (retour reçu, renvoi prévu). Le service client rassure sur le pli d'aisance, normal en début de port, et confirme le calendrier d'expédition du nouvel article.",
-      "response_template": "Bonjour [Prénom],\n\nOui, nous avons bien reçu [l'article retourné], merci de l'avoir retourné rapidement. Nous prévoyons de vous envoyer [le nouvel article] avant la fin de semaine, et nous vous notifierons dès l'expédition avec un lien de suivi.\n\nConcernant le pli d'aisance : pas d'inquiétude, c'est tout à fait normal. Le cuir du [modèle] est encore rigide au début, et ces plis se forment naturellement au niveau de l'articulation du pied dès les premiers ports. C'est précisément le signe que le cuir commence à se mettre en forme et à se mouler à votre pied. Avec quelques sorties supplémentaires, le cuir va s'assouplir et le pli va se stabiliser proprement. Ce n'est pas un défaut, c'est la vie du cuir pleine fleur.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn de Max Sauveur",
-      "key_points": "Confirmer la réception du retour et donner un délai concret pour le renvoi. Expliquer le pli d'aisance comme un phénomène naturel et positif (le cuir se met en forme). Utiliser la formulation 'la vie du cuir pleine fleur' pour valoriser la matière. Ton rassurant, pédagogique et chaleureux.",
-      "example_count": 2
+      "situation": "Un client ayant reçu un mocassin en cuir (ex : Paul) signale un pli visible sur le dessus du pied. Parallèlement, un échange de produit est en cours (retour reçu, nouvel envoi prévu). Les deux sujets sont traités dans le même email.",
+      "response_template": "Bonjour [Prénom],\n\nOui, nous avons bien reçu [l'article retourné], merci de l'avoir retourné rapidement. Nous prévoyons de vous envoyer [le nouvel article] avant la fin de semaine, et nous vous notifierons dès l'expédition avec un lien de suivi.\n\nConcernant le pli d'aisance : pas d'inquiétude, c'est tout à fait normal. Le cuir du [modèle] est encore rigide au début, et ces plis se forment naturellement au niveau de l'articulation du pied dès les premiers ports. C'est précisément le signe que le cuir commence à se mettre en forme et à se mouler à votre pied. Avec quelques sorties supplémentaires, le cuir va s'assouplir et le pli va se stabiliser proprement. Ce n'est pas un défaut, c'est la vie du cuir pleine fleur.\n\nN'hésitez pas si vous avez d'autres questions.\n\n[Signature]",
+      "key_points": "Confirmer la réception du retour et annoncer l'expédition imminente avec notification de suivi. Rassurer sur le pli d'aisance : phénomène normal, signe de mise en forme du cuir, disparaît avec l'usage. Expression clé : 'c'est la vie du cuir pleine fleur'. Ton expert et pédagogique.",
+      "example_count": 3
     },
     {
       "topic": "pointure___moc_paul",
@@ -540,10 +548,10 @@
     {
       "topic": "defaut_apparent_matiere_naturelle_cuir_chevre",
       "topic_label": "Trace ou irrégularité sur article en cuir de chèvre – caractéristique naturelle",
-      "situation": "Un client signale une trace, une marque de gras ou une irrégularité visible sur un article dont la doublure ou la surface est en cuir de chèvre. Le service client explique que ces variations sont inhérentes à la matière naturelle et ne constituent pas un défaut, tout en laissant la possibilité au client de retourner l'article pour vérification atelier si un doute subsiste.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et ravi d'apprendre que vous appréciez la qualité de la commande dans l'ensemble !\n\nConcernant la trace visible sur [localisation de la trace, ex : la doublure de la ceinture] : nos [articles concernés] sont doublés en cuir de chèvre, une matière naturelle qui peut présenter des marques de gras, des variations de teinte ou des légères irrégularités. Cela fait partie des caractéristiques de cette peau et n'est pas considéré comme un défaut de fabrication.\n\nCela dit, si vous souhaitez que nous jetions un œil à l'atelier pour confirmer qu'il ne s'agit pas d'autre chose, n'hésitez pas à nous retourner [l'article]. On regardera ça de près et on reviendra vers vous avec une réponse claire.\n\nJohn de Max Sauveur",
-      "key_points": "Expliquer pédagogiquement les caractéristiques naturelles du cuir de chèvre (marques de gras, variations de teinte, irrégularités). Ne pas statuer définitivement sur un défaut sans voir la pièce. Proposer systématiquement un retour atelier comme filet de sécurité. Ton bienveillant et expert, sans être défensif.",
-      "example_count": 2
+      "situation": "Un client signale une trace visible, une marque de gras ou une irrégularité sur un article dont la surface ou la doublure est en cuir de chèvre (ex : ceinture doublée cuir de chèvre). Le client peut interpréter cela comme un défaut de fabrication.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message [et ravi d'apprendre que vous appréciez la qualité de la commande dans l'ensemble !]\n\nConcernant [la trace visible sur / l'irrégularité sur] [l'article concerné] : [celui-ci / celle-ci] est [doublé(e) / fabriqué(e)] en cuir de chèvre, une matière naturelle qui peut présenter des marques de gras, des variations de teinte ou des légères irrégularités. Cela fait partie des caractéristiques de cette peau et n'est pas considéré comme un défaut de fabrication.\n\nCela dit, si vous souhaitez que nous jetions un œil à l'atelier pour confirmer qu'il ne s'agit pas d'autre chose, n'hésitez pas à nous retourner [l'article]. On regardera ça de près et on reviendra vers vous avec une réponse claire.\n\n[Signature]",
+      "key_points": "Expliquer pédagogiquement les caractéristiques naturelles du cuir de chèvre (marques de gras, variations de teinte, irrégularités). Ne pas statuer définitivement sur l'absence de défaut sans avoir vu l'article. Proposer le retour atelier comme option rassurante. Ton bienveillant et expert.",
+      "example_count": 3
     },
     {
       "topic": "votre_commande_max_sauveur___information_importante",
