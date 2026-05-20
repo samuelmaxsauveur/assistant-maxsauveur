@@ -282,6 +282,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__form_name_form_submitted_2026_05_13_17_23_16",
+      "topic_label": "RE: Form name Form submitted 2026-05-13 17:23:16",
+      "situation": "RE: Form name Form submitted 2026-05-13 17:23:16",
+      "response_template": "Bonjour Quentin,\n\nBonne nouvelle, nous confirmons bien la réception de votre retour !\n\nVotre avoir va être traité dans la semaine. Comptez jusqu'à 10 jours pour recevoir votre code par email. \n\nN'hésitez pas si vous avez des questions d'ici là !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__form_name_form_submitted_2026_05_17_10_14_01",
       "topic_label": "RE: Form name Form submitted 2026-05-17 10:14:01",
       "situation": "RE: Form name Form submitted 2026-05-17 10:14:01",
