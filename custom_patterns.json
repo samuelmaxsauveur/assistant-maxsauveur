@@ -18,6 +18,14 @@
       "example_count": 1
     },
     {
+      "topic": "commande__12059",
+      "topic_label": "Commande #12059",
+      "situation": "Commande #12059",
+      "response_template": "Bonjour Kevin,\n\nMerci pour votre message. Nous avons bien noté la situation avec votre colis bloqué.\n\nNous ouvrons un dossier auprès de Chronopost dès maintenant pour débloquer la situation. Ce type de blocage est indépendant de notre volonté, mais nous allons intervenir directement en tant qu'expéditeur comme Chronopost vous l'a indiqué.\n\nNous revenons vers vous dès que nous avons un retour concret de leur part. Désolé pour ce contretemps.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande__18878",
       "topic_label": "Commande #18878",
       "situation": "Commande #18878",
