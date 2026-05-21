@@ -2,14 +2,6 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
-      "topic": "avoir___code",
-      "topic_label": "Avoir / code",
-      "situation": "Avoir / code",
-      "response_template": "Bonjour Florian,\n\nMerci pour votre message.\n\nVotre code avoir 4VSFFZYA3CS6 est toujours actif et valable. Pour qu'il fonctionne, il doit être appliqué exclusivement sur la collection Derbies (Brogues), qui correspond à votre commande d'origine. Si vous l'avez essayé sur un autre modèle, c'est probablement pour ça qu'il ne s'applique pas.\n\nPouvez-vous me confirmer sur quel article vous souhaitez l'utiliser ? Je vérifierai de notre côté et, si besoin, je générerai un nouveau code.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "commande__12115",
       "topic_label": "COMMANDE #12115",
       "situation": "COMMANDE #12115",
@@ -28,10 +20,10 @@
     {
       "topic": "colis_bloque_intervention_expediteur_chronopost",
       "topic_label": "Colis bloqué – Ouverture dossier Chronopost en tant qu'expéditeur",
-      "situation": "Un client signale que son colis est bloqué ou mal acheminé chez Chronopost. Chronopost a indiqué au client que c'est à l'expéditeur d'intervenir. Peut concerner un blocage simple ou une erreur d'acheminement vers un mauvais point relais.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message. Nous avons bien noté la situation avec votre colis [bloqué / mal acheminé].\n\nNous ouvrons un dossier auprès de Chronopost dès maintenant pour [débloquer la situation / demander le réacheminement vers le bon point relais]. Ce type de [blocage / problème d'acheminement] est indépendant de notre volonté, mais nous allons intervenir directement en tant qu'expéditeur comme Chronopost vous l'a indiqué.\n\nNous revenons vers vous dès que nous avons un retour concret de leur part. Désolé pour ce contretemps.\n\n[Signature]",
-      "key_points": "Ton rassurant et proactif. Prendre en charge immédiatement sans minimiser. Préciser que l'intervention se fait en tant qu'expéditeur. Promettre un retour dès que Chronopost répond. S'excuser sans sur-excuser. Couvre deux sous-cas : colis bloqué simple et erreur d'acheminement vers mauvais point relais.",
-      "example_count": 4
+      "situation": "Un client signale que son colis est bloqué chez Chronopost. Chronopost a indiqué au client que c'est à l'expéditeur (Max Sauveur) d'intervenir pour débloquer la situation. Le service client ouvre un dossier auprès de Chronopost et promet un retour.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message. Nous avons bien noté la situation avec votre colis bloqué.\n\nNous ouvrons un dossier auprès de Chronopost dès maintenant pour débloquer la situation. Ce type de blocage est indépendant de notre volonté, mais nous allons intervenir directement en tant qu'expéditeur comme Chronopost vous l'a indiqué.\n\nNous revenons vers vous dès que nous avons un retour concret de leur part. Désolé pour ce contretemps.\n\nJohn de Max Sauveur",
+      "key_points": "Ton rassurant et proactif. Reconnaître le problème sans en prendre la faute. Préciser que l'intervention se fait en tant qu'expéditeur (comme indiqué par Chronopost). Promettre un retour concret. Ne pas donner de délai précis.",
+      "example_count": 2
     },
     {
       "topic": "commande__12059",
@@ -62,14 +54,6 @@
       "topic_label": "Commande 12043",
       "situation": "Commande 12043",
       "response_template": "Bonjour Maël,\n\nMerci pour votre message. Vous avez raison de nous alerter : la livraison était initialement estimée au 9-11 mai, et votre colis n'a effectivement plus bougé depuis le 15 mai.\n\nNous avons ouvert un dossier auprès de Chronopost pour faire le point sur la situation. Ce type de blocage est indépendant de notre volonté, mais nous suivons l'affaire de près et revenons vers vous dès que nous avons une réponse concrète.\n\nEn attendant, vous pouvez suivre l'état de votre colis via ce lien : https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR620300283TS\n\nDésolé pour ce retard et merci pour votre patience.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "commande_12164",
-      "topic_label": "Commande 12164",
-      "situation": "Commande 12164",
-      "response_template": "Bonjour Brieuc,\n\nMerci pour votre message et ravi d'apprendre que vos Boat vous plaisent !\n\nConcernant le défaut constaté sur la chaussure droite, nous prenons cela très au sérieux, toutes nos excuses.\n\nPour que nous puissions procéder à la réparation, voici la procédure à suivre :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez la raison : \"défaut fabrication\")\n2. Emballez soigneusement la paire avec le bon de retour à l'intérieur\n3. Expédiez le colis à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nVoici l'étiquette retour :\n\nhttps://wing-labelling-system.s3.eu-west-3.amazonaws.com/52d660c3-ca88-4c89-8407-47cb6498562c/LABEL/2026-05-20/LABEL-f9eb0afd-444d-4c13-89a2-b34814efb45d-1779300576965-8R49847763181.pdf\n\nUne fois la paire reçue, elle sera prise en charge par notre atelier. Comptez un délai de 6 à 8 semaines pour la réparation.\n\nN'hésitez pas si vous avez des questions.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -178,14 +162,6 @@
       "example_count": 1
     },
     {
-      "topic": "form_name_form_submitted_2026_05_20_14_03_43",
-      "topic_label": "Form name Form submitted 2026-05-20 14:03:43",
-      "situation": "Form name Form submitted 2026-05-20 14:03:43",
-      "response_template": "Bonjour Clément,\n\nMerci pour votre message.\n\nEn vérifiant votre commande #12136, nous voyons que le colis a bien été expédié en Chrono2Shop avec pour destination un point relais à Saint-Malo. En effet, il semblerait qu'il y ait eu une erreur d'acheminement vers un autre point relais.\n\nDe notre côté, nous ouvrons immédiatement un dossier auprès de Chronopost pour demander le réacheminement vers le bon point relais à Saint-Malo. Ce type de correction doit être fait en tant qu'expéditeur, nous prenons donc l'affaire en main directement.\n\nNous revenons vers vous dès que nous avons un retour concret de leur part. Désolé pour ce contretemps.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "fwd__commande__11591_confirm_e",
       "topic_label": "Fwd: Commande #11591 confirmée",
       "situation": "Fwd: Commande #11591 confirmée",
@@ -250,14 +226,6 @@
       "example_count": 1
     },
     {
-      "topic": "re__commande__12022___erreur_et_question_taille_mocassin_pau",
-      "topic_label": "Pli d'aisance mocassin cuir – explication assouplissement normal + suivi échange",
-      "situation": "Un client ayant reçu un mocassin en cuir (ex : Paul) signale un pli visible sur le dessus du pied. Parallèlement, un échange de produit est en cours (retour reçu, nouvel envoi prévu). Les deux sujets sont traités dans le même email.",
-      "response_template": "Bonjour [Prénom],\n\nOui, nous avons bien reçu [l'article retourné], merci de l'avoir retourné rapidement. Nous prévoyons de vous envoyer [le nouvel article] avant la fin de semaine, et nous vous notifierons dès l'expédition avec un lien de suivi.\n\nConcernant le pli d'aisance : pas d'inquiétude, c'est tout à fait normal. Le cuir du [modèle] est encore rigide au début, et ces plis se forment naturellement au niveau de l'articulation du pied dès les premiers ports. C'est précisément le signe que le cuir commence à se mettre en forme et à se mouler à votre pied. Avec quelques sorties supplémentaires, le cuir va s'assouplir et le pli va se stabiliser proprement. Ce n'est pas un défaut, c'est la vie du cuir pleine fleur.\n\nN'hésitez pas si vous avez d'autres questions.\n\n[Signature]",
-      "key_points": "Confirmer la réception du retour et annoncer l'expédition imminente avec notification de suivi. Rassurer sur le pli d'aisance : phénomène normal, signe de mise en forme du cuir, disparaît avec l'usage. Expression clé : 'c'est la vie du cuir pleine fleur'. Ton expert et pédagogique.",
-      "example_count": 3
-    },
-    {
       "topic": "pointure___moc_paul",
       "topic_label": "Pointure - Moc Paul",
       "situation": "Pointure - Moc Paul",
@@ -290,26 +258,18 @@
       "example_count": 1
     },
     {
-      "topic": "re__demande_renseignements___pointure___pr__commande",
-      "topic_label": "RE: Demande renseignements - Pointure / pré-commande",
-      "situation": "RE: Demande renseignements - Pointure / pré-commande",
-      "response_template": "Bonjour Christophe,\n\nExcellent choix ! Vous avez bien fait de commander le 41, c'est la bonne pointure pour vous.\n\nComptez quelques sorties pour que le cuir et la semelle en liège se mettent bien en forme, et vous serez parfaitement à l'aise.\n\nBonne réception !\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__form_name_form_submitted_2026_05_13_17_23_16",
-      "topic_label": "RE: Form name Form submitted 2026-05-13 17:23:16",
-      "situation": "RE: Form name Form submitted 2026-05-13 17:23:16",
-      "response_template": "Bonjour Quentin,\n\nBonne nouvelle, nous confirmons bien la réception de votre retour !\n\nVotre avoir va être traité dans la semaine. Comptez jusqu'à 10 jours pour recevoir votre code par email. \n\nN'hésitez pas si vous avez des questions d'ici là !\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "re__form_name_form_submitted_2026_05_17_10_14_01",
       "topic_label": "RE: Form name Form submitted 2026-05-17 10:14:01",
       "situation": "RE: Form name Form submitted 2026-05-17 10:14:01",
       "response_template": "Bonjour Victor,\n\nMerci pour le test, c'est utile de le savoir.\n\nPour les sandales, il s'agit en réalité d'un problème de seuil : leur prix est légèrement en dessous de 149€, ce qui les exclut automatiquement de l'offre. Le code nécessite un panier d'au moins 150€ pour s'activer, et les sandales seules ne l'atteignent pas.\n\nSi vous souhaitez les combiner avec un autre article pour atteindre ce seuil, le code devrait alors fonctionner normalement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__question_sandale",
+      "topic_label": "RE: Question sandale",
+      "situation": "RE: Question sandale",
+      "response_template": "Bonjour Adrien,\n\nBonne observation ! La sandale en daim ne démarre effectivement qu'en 40, c'est bien exact, ce n'est pas une erreur. Le 39 n'a pas été produit dans ce coloris, d'où l'absence dans la gamme.\n\nC'est d'ailleurs une des raisons pour lesquelles je vous orientais vers la Fisherman en cuir grainé, qui elle était disponible en 39.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -338,20 +298,20 @@
       "example_count": 1
     },
     {
+      "topic": "re__commande__12022___erreur_et_question_taille_mocassin_pau",
+      "topic_label": "Re: Commande #12022 - erreur et question taille mocassin Paul",
+      "situation": "Re: Commande #12022 - erreur et question taille mocassin Paul",
+      "response_template": "Bonjour Pierre,\n\nOui, nous avons bien reçu la ceinture noire, merci de l'avoir retournée rapidement. Nous prévoyons de vous envoyer la Jason en cuir de veau marron avant la fin de semaine, et nous vous notifierons dès l'expédition avec un lien de suivi.\n\nConcernant le pli d'aisance : pas d'inquiétude, c'est tout à fait normal. Le cuir du Paul est encore rigide au début, et ces plis se forment naturellement au niveau de l'articulation du pied dès les premiers ports. C'est précisément le signe que le cuir commence à se mettre en forme et à se mouler à votre pied. Avec quelques sorties supplémentaires, le cuir va s'assouplir et le pli va se stabiliser proprement. Ce n'est pas un défaut, c'est la vie du cuir pleine fleur.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__d_but_de_la_fabrication_de_vos_moc_jagger_et_point_livra",
       "topic_label": "Re: Début de la fabrication de vos Moc Jagger et point livraison",
       "situation": "Re: Début de la fabrication de vos Moc Jagger et point livraison",
       "response_template": "Bonjour,\n\nMerci pour votre message et votre patience !\n\nVos Moc Jagger arrivent chez nous cette semaine, et nous prévoyons de les expédier dans la foulée. La livraison estimée se situe autour semaine prochaine, sous réserve que les ponts de fin mai ne viennent pas ralentir les transporteurs.\n\nDès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost pour suivre votre paire en temps réel.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 2
-    },
-    {
-      "topic": "re__fin_de_production_et_exp_ditions_de_vos_moc_jagger",
-      "topic_label": "Re: Fin de production et expéditions de vos Moc Jagger",
-      "situation": "Re: Fin de production et expéditions de vos Moc Jagger",
-      "response_template": "Bonjour Benjamin,\n\nMerci pour votre message et pour avoir précisé le contexte, c'est exactement ce qu'il nous faut pour agir.\n\nNous allons faire le maximum pour que votre commande #11588 fasse partie des premiers colis expédiés semaine prochaine. Si c'est techniquement possible de la passer en express, nous le ferons. Cela signifie une livraison estimée au plus tôt vendredi 23 ou début de semaine prochaine, ce qui vous laisserait le temps de recevoir et d'essayer vos Moc Jagger avant votre mariage du 29 mai.\n\nNous ne pouvons pas vous garantir à 100% le jeudi 28 au soir, car cela dépend également des transporteurs, mais nous vous tiendrons informé dès l'expédition avec votre lien de suivi Chronopost. Si nous voyons que le délai est trop juste, nous vous préviendrons sans attendre pour que vous puissiez vous organiser.\n\nBelle journée à vous,\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
     },
     {
       "topic": "re__form_name_form_submitted_2026_05_18_15_07_57",
@@ -402,14 +362,6 @@
       "example_count": 1
     },
     {
-      "topic": "re__question_sandale",
-      "topic_label": "Re: Question sandale",
-      "situation": "Re: Question sandale",
-      "response_template": "Bonjour Adrien,\n\nMalheureusement, pas de retours prévus sur la Fisherman en cuir grainé 39 pour cette saison, les stocks sont épuisés.\n\nLa bonne nouvelle, c'est que le modèle reviendra l'année prochaine. Je vous invite à activer l'alerte disponibilité directement sur la fiche produit : vous serez notifié en priorité dès que le 39 sera disponible, et vous ne raterez pas le créneau cette fois.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 2
-    },
-    {
       "topic": "re__re__avis",
       "topic_label": "Re: Re: Avis",
       "situation": "Re: Re: Avis",
@@ -434,14 +386,6 @@
       "example_count": 1
     },
     {
-      "topic": "re__re__form_name_form_submitted_2026_05_18_15_07_57",
-      "topic_label": "Re: Re: Form name Form submitted 2026-05-18 15:07:57",
-      "situation": "Re: Re: Form name Form submitted 2026-05-18 15:07:57",
-      "response_template": "Bonjour Baptiste,\n\nVotre commande #12170 (Peter A. daim marron, 41) est bien enregistrée et en cours de préparation. Vous recevrez un email avec votre lien de suivi Chronopost dès l'expédition.\n\nConcernant le retour de la ceinture, nous revenons vers vous demain avec une confirmation dès que nous avons vérifié sa bonne réception de notre côté.\n\nBonne journée,\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "re__re__max_sauveur___service_client",
       "topic_label": "Re: Re: Max Sauveur — Service Client",
       "situation": "Re: Re: Max Sauveur — Service Client",
@@ -462,14 +406,6 @@
       "topic_label": "Re: Re: Re: Guide de taille",
       "situation": "Re: Re: Re: Guide de taille",
       "response_template": "Bonjour Paul,\n\nMerci pour ce retour. Concernant le 43,5 : cette pointure n'existe pas sur la Fisherman, la taille au-dessus est directement le 43, et c'est celle-là qu'il vous faut.\n\nN'hésitez pas si vous avez des questions.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__re__re__max_sauveur___service_client",
-      "topic_label": "Re: Re: Re: Max Sauveur — Service Client",
-      "situation": "Re: Re: Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Clément,\n\nRavi d'apprendre que le 44 est bien la bonne taille et que les Brogues vous plaisent, c'est l'essentiel !\n\nPour votre question sur les demi-tailles : nous n'en proposons pas actuellement dans notre collection. C'est une contrainte de nos ateliers de fabrication qui ne nous permet pas d'offrir du 43,5. Honnêtement, je ne peux pas vous dire si cela changera à l'avenir, mais c'est un retour que nous notons et qui peut nourrir nos réflexions pour les prochaines collections.\n\nBonne journée et bonne route avec les Brogues !\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -530,6 +466,14 @@
       "example_count": 3
     },
     {
+      "topic": "retour_recu_proposition_avoir_majore_echange",
+      "topic_label": "Retour reçu – Proposition d'avoir majoré pour inciter à l'échange",
+      "situation": "Un client a retourné un article et demande un remboursement. Le service client a bien réceptionné le retour mais tente, avant de valider le remboursement, de proposer un avoir majoré (valeur supérieure au montant initial) avec frais de port offerts pour encourager un échange vers un autre modèle de la collection.",
+      "response_template": "Bonjour [Prénom],\n\nNous avons bien reçu votre [article retourné] et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème rencontré, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si un autre modèle vous fait de l'œil, on peut vous proposer une solution plus simple : nous vous envoyons un avoir d'une valeur de [montant avoir] (soit [montant offert]€ offerts par la maison) et nous prenons en charge les frais de livraison pour cet échange. Cela vous permet de trouver la pièce idéale sans aucun frais supplémentaire.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte.\n\n[Prénom conseiller] de Max Sauveur",
+      "key_points": "Ton bienveillant et non intrusif. Confirmer la réception du retour avant tout. Poser une question ouverte sur les raisons du retour (esthétique, durabilité) pour personnaliser la proposition. L'avoir doit être supérieur au montant initial (ex : +35€ offerts). Les frais de port sont pris en charge par Max Sauveur. Laisser le choix final au client sans pression : remboursement ou avoir.",
+      "example_count": 1
+    },
+    {
       "topic": "re__retour_re_u___remboursement_en_cours",
       "topic_label": "Retour reçu — remboursement en cours",
       "situation": "Un client a retourné sa commande et le retour a bien été réceptionné. Le service client confirme la prise en charge et informe le client que le remboursement va être effectué sur son moyen de paiement initial dans les prochains jours.",
@@ -538,18 +482,18 @@
       "example_count": 2
     },
     {
-      "topic": "re___d_but_de_la_fabrication_de_vos_moc_jagger_et_point_livr",
-      "topic_label": "Re : Début de la fabrication de vos Moc Jagger et point livraison",
-      "situation": "Re : Début de la fabrication de vos Moc Jagger et point livraison",
-      "response_template": "Bonjour,\n\nMerci pour votre message et votre patience !\n\nVos Moc Jagger arrivent chez nous cette semaine, et nous prévoyons de les expédier dans la foulée. La livraison estimée se situe autour semaine prochaine, sous réserve que les ponts de fin mai ne viennent pas ralentir les transporteurs.\n\nDès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost pour suivre votre paire en temps réel.\n\nJohn de Max Sauveur",
+      "topic": "retour_re_u___remboursement_en_cours",
+      "topic_label": "Retour reçu — remboursement en cours",
+      "situation": "Retour reçu — remboursement en cours",
+      "response_template": "Bonjour Marie-Aude,\n\nNous avons bien reçu votre porte carte et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème rencontré, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si un autre modèle vous fait de l'œil, on peut vous proposer une solution plus simple : nous vous envoyons un avoir d'une valeur de 164€ (soit 35€ offerts par la maison) et nous prenons en charge les frais de livraison pour cet échange. Cela vous permet de trouver la pièce idéale sans aucun frais supplémentaire.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
     {
-      "topic": "re__un_mod_le_que_j_aurais_jamais_d__mettre_de_c_t_",
-      "topic_label": "Re :Un modèle que j'aurais jamais dû mettre de côté",
-      "situation": "Re :Un modèle que j'aurais jamais dû mettre de côté",
-      "response_template": "Bonjour,\n\nMerci pour ce retour sur vos Brogues, ravi que vous soyez satisfait !\n\nPour la Wood, la précommande qui ouvre vendredi 22 mai sera disponible en deux coloris uniquement : cuir noir et cuir marron foncé. Pas de marron clair prévu pour cette édition.\n\nSi l'un de ces deux coloris vous convient, vous pourrez passer commande vendredi à 239€ au lieu de 335€, pour une livraison mi-septembre.\n\nJohn de Max Sauveur",
+      "topic": "re___d_but_de_la_fabrication_de_vos_moc_jagger_et_point_livr",
+      "topic_label": "Re : Début de la fabrication de vos Moc Jagger et point livraison",
+      "situation": "Re : Début de la fabrication de vos Moc Jagger et point livraison",
+      "response_template": "Bonjour,\n\nMerci pour votre message et votre patience !\n\nVos Moc Jagger arrivent chez nous cette semaine, et nous prévoyons de les expédier dans la foulée. La livraison estimée se situe autour semaine prochaine, sous réserve que les ponts de fin mai ne viennent pas ralentir les transporteurs.\n\nDès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost pour suivre votre paire en temps réel.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -604,10 +548,10 @@
     {
       "topic": "defaut_apparent_matiere_naturelle_cuir_chevre",
       "topic_label": "Trace ou irrégularité sur article en cuir de chèvre – caractéristique naturelle",
-      "situation": "Un client signale une trace visible, une marque de gras ou une irrégularité sur un article dont la surface ou la doublure est en cuir de chèvre (ex : ceinture doublée cuir de chèvre). Le client peut interpréter cela comme un défaut de fabrication.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message [et ravi d'apprendre que vous appréciez la qualité de la commande dans l'ensemble !]\n\nConcernant [la trace visible sur / l'irrégularité sur] [l'article concerné] : [celui-ci / celle-ci] est [doublé(e) / fabriqué(e)] en cuir de chèvre, une matière naturelle qui peut présenter des marques de gras, des variations de teinte ou des légères irrégularités. Cela fait partie des caractéristiques de cette peau et n'est pas considéré comme un défaut de fabrication.\n\nCela dit, si vous souhaitez que nous jetions un œil à l'atelier pour confirmer qu'il ne s'agit pas d'autre chose, n'hésitez pas à nous retourner [l'article]. On regardera ça de près et on reviendra vers vous avec une réponse claire.\n\n[Signature]",
-      "key_points": "Expliquer pédagogiquement les caractéristiques naturelles du cuir de chèvre (marques de gras, variations de teinte, irrégularités). Ne pas statuer définitivement sur l'absence de défaut sans avoir vu l'article. Proposer le retour atelier comme option rassurante. Ton bienveillant et expert.",
-      "example_count": 3
+      "situation": "Un client signale une trace, une marque de gras ou une irrégularité visible sur un article dont la doublure ou la surface est en cuir de chèvre. Il s'interroge sur un éventuel défaut de fabrication. Le service client explique que ces variations sont inhérentes à la matière naturelle.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et ravi d'apprendre que vous appréciez la qualité de la commande dans l'ensemble !\n\nConcernant la trace visible sur [zone concernée] : nos [produits concernés] sont [description matière], une matière naturelle qui peut présenter des marques de gras, des variations de teinte ou des légères irrégularités. Cela fait partie des caractéristiques de cette peau et n'est pas considéré comme un défaut de fabrication.\n\nCela dit, si vous souhaitez que nous jetions un œil à l'atelier pour confirmer qu'il ne s'agit pas d'autre chose, n'hésitez pas à nous retourner [le produit]. On regardera ça de près et on reviendra vers vous avec une réponse claire.\n\nJohn de Max Sauveur",
+      "key_points": "Commencer par valoriser la satisfaction générale du client. Expliquer pédagogiquement la caractéristique de la matière naturelle (cuir de chèvre : marques de gras, variations de teinte, irrégularités). Ne pas fermer la porte : proposer le retour à l'atelier pour vérification si le client a un doute. Ton bienveillant et transparent. Ne pas statuer définitivement sans avoir vu le produit si un doute subsiste.",
+      "example_count": 1
     },
     {
       "topic": "votre_commande_max_sauveur___information_importante",
