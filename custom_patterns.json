@@ -442,6 +442,14 @@
       "example_count": 2
     },
     {
+      "topic": "re___tat_de_l__change_pour_la_commande__11992",
+      "topic_label": "Re: État de l'échange pour la commande #11992",
+      "situation": "Re: État de l'échange pour la commande #11992",
+      "response_template": "Bonjour Alexandru,\n\nBien noté pour la taille 42, c'est exactement celle de votre commande initiale.\n\nVotre retour est bien enregistré de notre côté et votre nouvelle paire de Cody Derby Montagne Cuir Marron en 42 est prête à partir. La livraison est estimée entre le 26 et le 28 mai, en Consigne La Poste à Thionville.\n\nVous recevrez un email avec votre lien de suivi Chronopost dès que le colis est pris en charge par le transporteur.\n\nBonne journée à vous,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "remboursement_frais_port_avec_avoir",
       "topic_label": "Remboursement frais de port avec code avoir",
       "situation": "Un client doit passer une nouvelle commande en utilisant un code avoir, mais les frais de livraison ne sont pas couverts automatiquement. Le service client lui indique de passer la commande normalement et promet un remboursement manuel des frais de port.",
