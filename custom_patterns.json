@@ -84,10 +84,10 @@
     {
       "topic": "conseil_pointure_comparaison_modeles",
       "topic_label": "Conseil pointure – Comparaison entre modèles pour affiner le choix",
-      "situation": "Un client connaît déjà sa pointure sur un modèle Max Sauveur et souhaite savoir quelle taille prendre sur un autre modèle. Il utilise son expérience sur le premier modèle comme référence pour affiner son choix sur le second.",
-      "response_template": "Bonjour [Prénom],\n\nBonne logique de raisonnement ! En portant le [Modèle A] en [taille], vous avez une bonne base de comparaison.\n\nLe [Modèle B] chausse effectivement [grand/petit], donc le [taille recommandée] est tout à fait cohérent pour vous. Avec vos [mesure en cm] de pied (d'après nos échanges), le [taille recommandée] est votre pointure naturelle sur notre guide, et le fait que le [Modèle B] taille [grand/petit] confirme que c'est la bonne direction.\n\nJe vous recommande donc le [taille recommandée] sur ce modèle.\n\nBonne journée,\n\n[Prénom conseiller] de Max Sauveur",
-      "key_points": "Valoriser le raisonnement du client ('Bonne logique de raisonnement'). S'appuyer sur la mesure en cm déjà connue du client + l'expérience sur l'autre modèle pour justifier la recommandation. Mentionner explicitement si le modèle chausse grand ou petit. Conclure avec une recommandation claire et directe sans ambiguïté.",
-      "example_count": 1
+      "situation": "Un client connaît déjà sa pointure sur un ou plusieurs modèles Max Sauveur et souhaite savoir quelle taille prendre sur un nouveau modèle. Un modèle particulier peut chausser grand ou différemment des autres, ce qui nécessite une explication contextualisée.",
+      "response_template": "Bonjour [Prénom],\n\nPour la [Modèle cible] : elle est fabriquée dans le même atelier que vos [Modèle A] et vos [Modèle B], qui vous vont parfaitement en [Pointure]. Je vous recommande donc sans hésitation le [Pointure] sur ce modèle.\n\nLa [Modèle atypique] qui chausse grand en [Pointure] est un cas particulier lié à la forme de ce modèle, ce n'est pas représentatif de votre pointure sur le reste de la collection.\n\nBonne journée,\n[Prénom] de Max Sauveur",
+      "key_points": "Rassurer le client en s'appuyant sur ses expériences positives avec d'autres modèles de la même gamme/atelier. Expliquer clairement que les exceptions de chaussage (trop grand, trop petit) sont liées à la forme du modèle concerné et ne remettent pas en cause la pointure habituelle du client. Ton direct, pédagogique et rassurant.",
+      "example_count": 2
     },
     {
       "topic": "conseil_pointure_cuir_chausse_juste",
@@ -322,6 +322,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "RE: Max Sauveur — Service Client",
+      "situation": "RE: Max Sauveur — Service Client",
+      "response_template": "Bonjour Quentin,\n\nSuper, ravi que tout soit rentré dans l'ordre ! Bonne commande et profitez bien de vos mocassins pour le mariage.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 4
+    },
+    {
       "topic": "re__question_sandale",
       "topic_label": "RE: Question sandale",
       "situation": "RE: Question sandale",
@@ -392,14 +400,6 @@
       "response_template": "Bonjour Pierfranco,\n\nMerci pour votre confiance, c'est un beau premier achat à faire !\n\nPour répondre à vos questions sur la Fisherman :\n\nLa sandale chausse **grand**. Avec vos 27 cm de pied, le 42 est votre taille de référence sur notre guide. Par expérience, nos clients prennent cette pointure quand il chausse du 43.\n\nConcernant votre inquiétude sur le maintien : oui, les boucles de réglage permettent d'ajuster le tour de pied et de cheville avec précision, ce qui compense tout à fait le fait d'être légèrement entre deux tailles. Vous n'aurez pas la sensation de \"perdre\" la sandale.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande !\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Stanislas,\n\nRavi que la proposition vous intéresse, et merci pour ce retour sur la Boat !\n\nPour la Wood : elle est fabriquée dans le même atelier que vos Blucher et vos Springsteen, qui vous vont parfaitement en 41. Je vous recommande donc sans hésitation le 41 sur ce modèle.\n\nLa Boat qui chausse grand en 41 est un cas particulier lié à la forme de ce modèle, ce n'est pas représentatif de votre pointure sur le reste de la collection.\n\nJe génère votre avoir de 159€ et vous le transmets dans les prochaines heures sous forme de carte cadeau. Attention toutefois, après l'édition de cette carte cadeau, seul un échange pour un autre modèle sera possible.\n\nJ'attends votre confirmation.\n\nBonne journée,\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 3
     },
     {
       "topic": "re__message_de_max_sauveur",
@@ -563,11 +563,11 @@
     },
     {
       "topic": "retour_recu_proposition_avoir_majore_echange",
-      "topic_label": "Retour reçu – Proposition d'avoir majoré pour inciter à l'échange",
-      "situation": "Un client a retourné un article et demande un remboursement. Le service client a bien réceptionné le colis et propose, en alternative au remboursement, un avoir majoré (montant de la commande + bonus offert par la maison) avec frais de port offerts pour un échange. Deux variantes existent : avec ou sans cadeau additionnel conservé (ex : ceinture).",
-      "response_template": "Bonjour [Prénom],\n\nNous avons bien reçu votre [Nom du produit] en taille [Taille] et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème rencontré, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si un autre modèle vous fait de l'œil, voici ce qu'on peut faire : nous vous envoyons un avoir de [Montant avoir]€ (soit votre commande à [Montant commande]€, vous conservez votre remise initiale et [Bonus]€ supplémentaires offerts par la maison), avec les frais de livraison pris en charge pour cet échange.\n\nAutrement dit, vous repartez avec une nouvelle pièce sans débourser un centime de plus, et avec un peu de marge en poche.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte.\n\nJohn de Max Sauveur",
-      "key_points": "Ton chaleureux et non intrusif. Toujours confirmer la réception du retour en premier. Poser une question ouverte sur le motif de retour pour personnaliser l'offre. Proposer l'avoir majoré comme alternative claire (montant commande + bonus maison + frais port offerts). Si un cadeau accompagnait la commande (ex : ceinture), préciser qu'il est conservé. Laisser le choix sans pression entre avoir et remboursement.",
-      "example_count": 14
+      "topic_label": "Retour reçu – Génération avoir et mise en garde sur irréversibilité",
+      "situation": "Suite à la réception d'un retour client et à son accord pour un avoir, le service client génère une carte cadeau. Le client doit être averti qu'une fois la carte cadeau émise, seul un échange vers un autre modèle sera possible (pas de remboursement).",
+      "response_template": "Bonjour [Prénom],\n\nRavi que la proposition vous intéresse.\n\nJe génère votre avoir de [Montant]€ et vous le transmets dans les prochaines heures sous forme de carte cadeau. Attention toutefois, après l'édition de cette carte cadeau, seul un échange pour un autre modèle sera possible.\n\nJ'attends votre confirmation.\n\nBonne journée,\n[Prénom] de Max Sauveur",
+      "key_points": "Toujours demander une confirmation explicite du client AVANT d'émettre la carte cadeau. Mentionner clairement l'irréversibilité : une fois la carte cadeau générée, remboursement impossible, uniquement un échange. Préciser le montant de l'avoir et le délai d'envoi (dans les prochaines heures).",
+      "example_count": 15
     },
     {
       "topic": "retour_re_u___remboursement_en_cours",
