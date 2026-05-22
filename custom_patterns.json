@@ -26,14 +26,6 @@
       "example_count": 2
     },
     {
-      "topic": "commande__12019_taille___changer",
-      "topic_label": "Commande #12019 taille à changer",
-      "situation": "Commande #12019 taille à changer",
-      "response_template": "Bonjour Mekki,\n\nPas de souci pour l'échange de taille, voici comment ça fonctionne :\n\nPour procéder :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique (frais de retour à votre charge) :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous envoyons un avoir du montant payé, incluant la réduction de 15€ que vous avez obtenue à la commande. Le code sera valable 6 mois sur notre site.\n\nJe reste disponbile.\n\nCordialement\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "commande__12059",
       "topic_label": "Commande #12059",
       "situation": "Commande #12059",
@@ -338,14 +330,6 @@
       "example_count": 1
     },
     {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "RE: Max Sauveur — Service Client",
-      "situation": "RE: Max Sauveur — Service Client",
-      "response_template": "Bonjour Quentin,\n\nSuper, ravi que tout soit rentré dans l'ordre ! Bonne commande et profitez bien de vos mocassins pour le mariage.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 4
-    },
-    {
       "topic": "re__question_sandale",
       "topic_label": "RE: Question sandale",
       "situation": "RE: Question sandale",
@@ -416,6 +400,14 @@
       "response_template": "Bonjour Pierfranco,\n\nMerci pour votre confiance, c'est un beau premier achat à faire !\n\nPour répondre à vos questions sur la Fisherman :\n\nLa sandale chausse **grand**. Avec vos 27 cm de pied, le 42 est votre taille de référence sur notre guide. Par expérience, nos clients prennent cette pointure quand il chausse du 43.\n\nConcernant votre inquiétude sur le maintien : oui, les boucles de réglage permettent d'ajuster le tour de pied et de cheville avec précision, ce qui compense tout à fait le fait d'être légèrement entre deux tailles. Vous n'aurez pas la sensation de \"perdre\" la sandale.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande !\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
+    },
+    {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Emmanuel,\n\nBien compris, nous procédons au remboursement de votre commande sur votre moyen de paiement initial. Comptez quelques jours ouvrés pour que le montant apparaisse.\n\nC'est dommage pour le mariage, j'espère que la prochaine occasion sera la bonne pour vous équiper chez nous.\n\nBonne journée à vous,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 5
     },
     {
       "topic": "re__message_de_max_sauveur",
@@ -680,6 +672,14 @@
       "response_template": "Bonjour [Prénom],\n\nParfait, merci pour votre retour rapide !\n\nLe plus simple, comme vous allez recommander une paire en même temps, est d'attendre de recevoir votre avoir. Cela vous évitera de régler deux fois les frais de livraison : vous commandez tout en une fois avec le code.\n\nDès réception de votre colis, je m'occupe de générer votre avoir et on finalise ça ensemble.\n\n[Prénom] de Max Sauveur",
       "key_points": "Ton rassurant et pratique. Conseil proactif pour éviter des frais doubles. Engagement clair : le SA génère l'avoir dès réception du retour. Formulation 'on finalise ça ensemble' pour maintenir le lien et rassurer le client.",
       "example_count": 3
+    },
+    {
+      "topic": "commande__12019_taille___changer",
+      "topic_label": "Échange de taille – procédure retour pour avoir",
+      "situation": "Un client souhaite changer la taille d'un article reçu. Il n'y a pas d'échange direct : le client retourne la paire, reçoit un avoir du montant payé (incluant les éventuelles réductions), puis repasse commande. Les frais de retour sont à sa charge.",
+      "response_template": "Bonjour [Prénom],\n\nPas de souci pour l'échange de taille, voici comment ça fonctionne :\n\nPour procéder :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique (frais de retour à votre charge) :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous envoyons un avoir du montant payé, incluant la réduction de [montant €] que vous avez obtenue à la commande. Le code sera valable 6 mois sur notre site.\n\nJe reste disponible.\n\nCordialement\n[Prénom] de Max Sauveur",
+      "key_points": "Ton rassurant et direct. L'avoir inclut les réductions obtenues à la commande d'origine. Frais de retour à la charge du client. Avoir valable 6 mois. Adresse logistique : SSL – 14 avenue Lamartine, 13170 Les Pennes-Mirabeau. Faute à corriger dans le template original : 'disponbile' → 'disponible'.",
+      "example_count": 2
     },
     {
       "topic": "echange_taille_remboursement_avec_carte_cadeau",
