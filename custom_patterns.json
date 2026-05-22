@@ -330,6 +330,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__retour_re_u___remboursement_en_cours",
+      "topic_label": "RE: Retour reçu — remboursement en cours",
+      "situation": "RE: Retour reçu — remboursement en cours",
+      "response_template": "Bonjour Loïc,\n\nMerci pour ce retour très complet et sincère, c'est vraiment utile pour nous améliorer.\n\nOn comprend tout à fait votre réflexe de sécuriser le 42 directement, surtout sur un modèle qui peut partir vite. \n\nDe notre côté, nous procédons au remboursement de votre commande initiale. Vous le recevrez dans les prochains jours sur votre moyen de paiement.\n\nPour compenser le fait de ne pas avoir pu profiter de l'offre, nous vous envoyons également une carte cadeau de 15€ valable sur votre prochain achat.\n\nConcernant Le Boat en blanc : pas de date annoncée à ce stade, mais je transmets l'intérêt à l'équipe. N'hésitez pas à vous abonner aux alertes sur notre site pour être informé en priorité si le modèle revient dans ce coloris.\n\nBonne fin de journée à vous aussi !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 3
+    },
+    {
       "topic": "re__ceci_est_un___",
       "topic_label": "Re: Ceci est un...",
       "situation": "Re: Ceci est un...",
@@ -562,14 +570,6 @@
       "example_count": 14
     },
     {
-      "topic": "re__retour_re_u___remboursement_en_cours",
-      "topic_label": "Retour reçu — remboursement en cours",
-      "situation": "Un client a retourné sa commande et le retour a bien été réceptionné. Le service client confirme la prise en charge et informe le client que le remboursement va être effectué sur son moyen de paiement initial dans les prochains jours.",
-      "response_template": "Bonjour [Prénom],\n\nC'est noté, nous procédons au remboursement de votre commande. Vous le recevrez dans les prochains jours sur votre moyen de paiement initial.\n\nBonne soirée à vous,\n\n[Prénom conseiller] de Max Sauveur",
-      "key_points": "Ton rassurant et concis. Confirmer explicitement que le remboursement est en cours. Préciser que le remboursement se fera sur le moyen de paiement initial. Ne pas donner de délai précis (utiliser 'prochains jours'). Formule de politesse chaleureuse.",
-      "example_count": 2
-    },
-    {
       "topic": "retour_re_u___remboursement_en_cours",
       "topic_label": "Retour reçu — remboursement en cours",
       "situation": "Retour reçu — remboursement en cours",
@@ -664,6 +664,14 @@
       "response_template": "Bonjour [Prénom],\n\nParfait, merci pour votre retour rapide !\n\nLe plus simple, comme vous allez recommander une paire en même temps, est d'attendre de recevoir votre avoir. Cela vous évitera de régler deux fois les frais de livraison : vous commandez tout en une fois avec le code.\n\nDès réception de votre colis, je m'occupe de générer votre avoir et on finalise ça ensemble.\n\n[Prénom] de Max Sauveur",
       "key_points": "Ton rassurant et pratique. Conseil proactif pour éviter des frais doubles. Engagement clair : le SA génère l'avoir dès réception du retour. Formulation 'on finalise ça ensemble' pour maintenir le lien et rassurer le client.",
       "example_count": 3
+    },
+    {
+      "topic": "re__re__re___tat_de_l__change_pour_la_commande__11992",
+      "topic_label": "Échange en cours – colis en préparation, suivi à venir",
+      "situation": "Un client suit l'avancement de son échange. Le colis de remplacement est en cours de préparation mais n'a pas encore été pris en charge par le transporteur. Le client attend un lien de suivi.",
+      "response_template": "Bonjour [Prénom],\n\nLe colis est en cours de préparation et n'a pas encore été pris en charge par le transporteur. Dès qu'il sera expédié, vous recevrez automatiquement un email avec votre lien de suivi Chronopost.\n\nBonne fin de semaine à vous également,\n\n[Prénom conseiller] de Max Sauveur",
+      "key_points": "Ton rassurant et concis. Préciser clairement que le colis n'est pas encore remis au transporteur pour éviter toute confusion. Rappeler que le lien de suivi Chronopost sera envoyé automatiquement par email dès l'expédition. Ne pas donner de délai précis si la prise en charge transporteur n'est pas encore effective.",
+      "example_count": 1
     },
     {
       "topic": "echange_impossible_taille_superieure_non_disponible",
