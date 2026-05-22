@@ -43,11 +43,11 @@
     },
     {
       "topic": "commande__12132",
-      "topic_label": "Commande #12132",
-      "situation": "Commande #12132",
-      "response_template": "Bonjour Michael,\n\nMerci pour votre message et ravi d'apprendre que vous appréciez la qualité de la commande dans l'ensemble !\n\nConcernant la trace visible sur la doublure de la ceinture marron : nos ceintures sont doublées en cuir de chèvre, une matière naturelle qui peut présenter des marques de gras, des variations de teinte ou des légères irrégularités. Cela fait partie des caractéristiques de cette peau et n'est pas considéré comme un défaut de fabrication.\n\nCela dit, si vous souhaitez que nous jetions un œil à l'atelier pour confirmer qu'il ne s'agit pas d'autre chose, n'hésitez pas à nous retourner la ceinture. On regardera ça de près et on reviendra vers vous avec une réponse claire.\n\nEn attendant, bienvenue chez Max Sauveur, et nous serons ravis de vous retrouver pour La Wood le moment venu !\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
+      "topic_label": "Commande #12132 – Retour en cours : choix remboursement ou avoir",
+      "situation": "Un client a initié un retour produit et doit choisir entre un remboursement ou un avoir. Le service client l'informe des conditions de l'avoir (durée de validité, périmètre d'utilisation) et propose un geste commercial sous forme de frais de port offerts sur la prochaine commande.",
+      "response_template": "Bonjour [Prénom],\n\nPas de souci, nous allons traiter ça.\n\nDès réception et contrôle de votre retour, nous traiterons votre demande. Si vous optez pour l'avoir, il sera valable 6 mois sur l'ensemble de notre collection, ce qui vous permettra de l'utiliser pour votre prochain achat — et nous vous offrons les frais de port sur votre prochaine commande.\n\nN'hésitez pas à nous confirmer votre choix (remboursement ou avoir) pour qu'on prépare tout dans les meilleures conditions.\n\n[Prénom de l'agent] de Max Sauveur",
+      "key_points": "- Ton rassurant et simple ('Pas de souci, nous allons traiter ça')\n- L'avoir est valable 6 mois sur toute la collection\n- Geste commercial : frais de port offerts sur la prochaine commande\n- Demander explicitement la confirmation du choix du client (remboursement ou avoir)\n- Attention : l'email mentionne 'chaussures' alors que Max Sauveur est une marque de lunettes — adapter la catégorie produit au contexte réel",
+      "example_count": 2
     },
     {
       "topic": "commande__18878",
@@ -437,9 +437,9 @@
       "topic": "re__max_sauveur___service_client",
       "topic_label": "Re: Max Sauveur — Service Client",
       "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Julien,\n\nMerci pour ce retour détaillé, c'est vraiment utile.\n\nRavi que la forme et le maintien de cheville vous aient convaincu. Pour l'histoire de pointure : la Fisherman chausse effectivement grand, c'est une caractéristique de ce modèle (sandale ouverte avec plus d'espace). En réalité, votre pointure sur ce modèle est le 40, pas le 41.\n\nPuisque vous avez mentionné un intérêt pour notre Deck (modèle bateau), sachez qu'il chausse également légèrement grand, donc même logique : si vous êtes en 40 sur la Fisherman, vous serez en 40 sur le Deck aussi. Avec vos frais de livraison offerts et l'avoir de 159€, vous pourriez repartir sur une paire parfaitement ajustée sans rien débourser de plus.\n\nMais si votre choix est arrêté sur le remboursement, pas de problème : nous procédons au remboursement de 149€ (prix du produit) sur votre moyen de paiement initial. Comptez quelques jours ouvrés pour que le montant apparaisse.\n\nDites-moi simplement ce que vous préférez.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Charly,\n\nParfait, ravi que le modèle vous ait convaincu !\n\nPas d'inquiétude pour la ceinture : nous avons bien reçu les deux articles ensemble. Voici votre code avoir, valable sur les deux produits (Paul Mocassin Cuir Noir + Tony Ceinture Cuir Noir) en une seule commande :\n\n**C38H6NYB3TEJ**\n\nSaisissez-le dans votre panier au moment de finaliser votre commande. Il couvre l'ensemble de votre commande initiale (Paul taille 40 + ceinture Tony Cuir Noir).\n\nN'hésitez pas si vous avez le moindre souci au moment de passer commande.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 6
+      "example_count": 7
     },
     {
       "topic": "re__message_de_max_sauveur",
