@@ -114,6 +114,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__commande__12019_taille___changer",
+      "topic_label": "Conseil taille Fisherman selon mesure en cm + gestion stock",
+      "situation": "Un client demande conseil sur la taille à prendre pour la sandale Fisherman en fournissant la mesure de son pied en cm. Il s'inquiète également de la disponibilité des tailles pendant le délai de traitement de son dossier.",
+      "response_template": "Bonjour [Prénom],\n\nBonne question, et je comprends l'inquiétude.\n\nPour la disponibilité des tailles : si entre-temps la taille que vous souhaitez venait à ne plus être disponible, nous en tiendrions compte et trouverions une solution adaptée. Vous ne serez pas pénalisé pour le délai de traitement.\n\nPour la Fisherman avec [XX] cm de pied : vous êtes en **[TAILLE GUIDE]** sur notre guide, mais la Fisherman chausse légèrement grand. Je vous recommande donc le **[TAILLE RECOMMANDÉE]**. Le [TAILLE INFÉRIEURE] serait trop petit pour vous.\n\nEn résumé : le [TAILLE RECOMMANDÉE] est votre taille sur ce modèle.\n\nJohn de Max Sauveur",
+      "key_points": "La Fisherman chausse légèrement grand : recommander une taille en dessous de celle indiquée par le guide. Rassurer le client sur le risque de rupture de stock pendant le traitement : il ne sera pas pénalisé. Donner une réponse claire et synthétique en fin de message. Utiliser le gras pour mettre en évidence la taille recommandée.",
+      "example_count": 2
+    },
+    {
       "topic": "demande_renseignements___pointure___pr__commande",
       "topic_label": "Demande renseignements - Pointure / pré-commande",
       "situation": "Demande renseignements - Pointure / pré-commande",
@@ -214,6 +222,14 @@
       "topic_label": "Form name Form submitted 2026-05-22 07:59:27",
       "situation": "Form name Form submitted 2026-05-22 07:59:27",
       "response_template": "Bonjour,\n\nMerci pour votre message et désolé pour l'attente sur cette précommande.\n\nNous vous avions d'ailleurs envoyé un email d'information à ce sujet la semaine dernière. Vos Moc Jagger arrivent chez nous cette semaine, et nous prévoyons de les expédier dans la foulée. La livraison est estimée la semaine prochaine, sous réserve que les transporteurs ne viennent pas perturber l'acheminement.\n\nDès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost pour suivre votre paire en temps réel.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "form_name_form_submitted_2026_05_22_11_20_06",
+      "topic_label": "Form name Form submitted 2026-05-22 11:20:06",
+      "situation": "Form name Form submitted 2026-05-22 11:20:06",
+      "response_template": "Bonjour Maxence,\n\nMerci pour votre message et le compliment sur les mocassins zèbre !\n\nMalheureusement, je n'ai pas de date de réassort confirmée sur le 43 pour le moment. Pour être informé en priorité dès que cette taille est de nouveau disponible, je vous invite à vous abonner à l'alerte directement sur la fiche produit du modèle sur notre site.\n\nDès qu'on a du nouveau, vous serez notifié automatiquement.\n\nBonne journée à vous également.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -430,14 +446,6 @@
       "topic_label": "Re: Commande #11604 confirmée",
       "situation": "Re: Commande #11604 confirmée",
       "response_template": "Bonjour Diego,\n\nMerci pour votre message.\n\nVos Moc Jagger arrivent chez nous cette semaine, et nous prévoyons de les expédier dans la foulée. La livraison estimée se situe autour du 19 mai, sous réserve que les ponts de fin mai ne viennent pas ralentir les transporteurs.\n\nDès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost pour suivre votre paire en temps réel.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__commande__12019_taille___changer",
-      "topic_label": "Re: Commande #12019 taille à changer",
-      "situation": "Re: Commande #12019 taille à changer",
-      "response_template": "Bonjour Mekki,\n\nBonne question, et je comprends l'inquiétude.\n\nPour la disponibilité des tailles : si entre-temps la taille que vous souhaitez venait à ne plus être disponible, nous en tiendrions compte et trouverions une solution adaptée. Vous ne serez pas pénalisé pour le délai de traitement.\n\nPour la Fisherman avec 29,3 cm de pied : vous êtes en **45** sur notre guide, mais la Fisherman chausse légèrement grand. Je vous recommande donc le **44**. Le 43 serait trop petit pour vous.\n\nEn résumé : le 44 est votre taille sur ce modèle.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -669,9 +677,9 @@
       "topic": "retour_re_u___remboursement_en_cours",
       "topic_label": "Retour reçu – Remboursement validé avec feedback produit",
       "situation": "Le retour client a été réceptionné et validé. Le remboursement est lancé sur le moyen de paiement initial. Le client a fourni un retour détaillé sur le produit et exprimé un intérêt pour un autre modèle de la collection.",
-      "response_template": "Bonjour [Prénom],\n\nParfait, nous validons le remboursement de votre commande #[NUMÉRO]. Comptez quelques jours ouvrés pour que la somme apparaisse sur votre moyen de paiement initial.\n\nMerci pour ce retour détaillé sur [MODÈLE], c'est utile pour nous. Et on note votre intérêt pour [MODÈLE SOUHAITÉ], on espère vous revoir sur la collection [SAISON] !\n\nBonne journée,\n\n[Prénom] de Max Sauveur",
-      "key_points": "Confirmer explicitement la validation du remboursement et mentionner le délai (quelques jours ouvrés). Remercier chaleureusement pour le feedback produit si le client en a fourni un. Si le client a mentionné un intérêt pour un autre modèle, le noter et encourager un retour sur la collection — crée un lien commercial positif en fin de dossier. Ton chaleureux et humain, pas purement transactionnel.",
-      "example_count": 8
+      "response_template": "Bonjour [Prénom],\n\nParfait, nous validons le remboursement de votre commande #[NUMÉRO]. Comptez quelques jours ouvrés pour que la somme apparaisse sur votre moyen de paiement initial.\n\nMerci pour ce retour détaillé sur [MODÈLE RETOURNÉ], c'est utile pour nous. Et on note votre intérêt pour [MODÈLE SOUHAITÉ], on espère vous revoir sur la collection hiver !\n\nBonne journée,\n\nJohn de Max Sauveur",
+      "key_points": "Ton chaleureux et personnalisé. Confirmer le remboursement avec délai (quelques jours ouvrés). Valoriser le feedback produit du client. Mentionner le modèle alternatif s'il en a exprimé un. Garder la porte ouverte pour un futur achat.",
+      "example_count": 9
     },
     {
       "topic": "re___d_but_de_la_fabrication_de_vos_moc_jagger_et_point_livr",
