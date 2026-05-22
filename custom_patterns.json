@@ -506,6 +506,14 @@
       "example_count": 1
     },
     {
+      "topic": "retour_produit___r_f_rence_12149",
+      "topic_label": "Retour produit - référence 12149",
+      "situation": "Retour produit - référence 12149",
+      "response_template": "Bonjour Paul,\n\nMerci pour votre message et la preuve d'expédition transmise.\n\nDès réception de votre colis en entrepôt, nous contrôlerons la paire et générerons votre avoir d'une valeur de 149€, utilisable pour commander la Fisherman en grainé noir taille 43. Comptez 10 jours maximum entre la réception du retour et l'envoi de votre code par email.\n\nN'hésitez pas si vous avez des questions d'ici là.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "retour_produit_remboursement",
       "topic_label": "Retour produit – Procédure de remboursement ou avoir (taille indisponible)",
       "situation": "Un client souhaite échanger un article dans une taille non disponible (ex : taille max dépassée). Le service client propose deux options : remboursement avec retour à la charge du client, ou avoir avec frais de livraison offerts sur le prochain achat.",
