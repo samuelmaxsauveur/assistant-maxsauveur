@@ -482,6 +482,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re___tat_de_l__change_pour_la_commande__11992",
+      "topic_label": "Re: Re: État de l'échange pour la commande #11992",
+      "situation": "Re: Re: État de l'échange pour la commande #11992",
+      "response_template": "Bonjour Alexandru,\n\nLe colis est en cours de préparation et n'a pas encore été pris en charge par le transporteur. Dès qu'il sera expédié, vous recevrez automatiquement un email avec votre lien de suivi Chronopost.\n\nBonne fin de semaine à vous également,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__une_commande__12009_en_retour",
       "topic_label": "Re: Une commande #12009 en retour",
       "situation": "Re: Une commande #12009 en retour",
