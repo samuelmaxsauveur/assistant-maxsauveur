@@ -218,6 +218,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_05_22_11_26_41",
+      "topic_label": "Form name Form submitted 2026-05-22 11:26:41",
+      "situation": "Form name Form submitted 2026-05-22 11:26:41",
+      "response_template": "Bonjour Yassine,\n\nMerci pour votre message et bravo pour votre gain !\n\nMalheureusement, les codes générés par notre roue sont uniques et créés à la volée, sans être enregistrés dans notre système.\nNous sommes vraiment désolés pour ce désagrément. Si vous avez vérifié vos spams sans succès, c'est que le code n'a malheureusement pas été sauvegardé.\n\nEncore désolé de ne pas pouvoir faire mieux dans ce cas.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_05_22_13_48_06",
       "topic_label": "Form name Form submitted 2026-05-22 13:48:06",
       "situation": "Form name Form submitted 2026-05-22 13:48:06",
