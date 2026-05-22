@@ -170,6 +170,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_05_21_15_34_36",
+      "topic_label": "Form name Form submitted 2026-05-21 15:34:36",
+      "situation": "Form name Form submitted 2026-05-21 15:34:36",
+      "response_template": "Bonjour Jérémy,\n\nMerci pour votre message !\n\nPour la Derby Golf : bien que vous soyez en 44 sur les Deck, je vous recommande de prendre le 45. La forme de la Derby Golf est légèrement plus courte que celle de la Deck, ce qui justifie de monter d'une demi-taille pour conserver le même confort.\n\nConcernant les précommandes : oui, un échange est tout à fait possible en cas de mauvaise taille. La procédure est la même que pour tout autre modèle : vous retournez la paire, nous générons un avoir, et vous recommandez dans la bonne taille.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_05_21_18_52_12",
       "topic_label": "Form name Form submitted 2026-05-21 18:52:12",
       "situation": "Form name Form submitted 2026-05-21 18:52:12",
