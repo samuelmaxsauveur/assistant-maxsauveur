@@ -525,9 +525,9 @@
       "topic": "re__re__max_sauveur___service_client",
       "topic_label": "Re: Re: Max Sauveur — Service Client",
       "situation": "Re: Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Stanislas,\n\nParfait, votre carte cadeau d'une valeur de 159€ vient d'être générée et vous sera transmise dans les prochaines minutes par email.\n\nN'hésitez pas si vous avez des questions sur la Wood ou un autre modèle avant de passer commande.\n\nJohn de Max Sauveur",
+      "response_template": "Ravie que tout soit rentré dans l'ordre et que votre mari profite de ses mocassins !\n\nBonne journée à vous deux.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 3
+      "example_count": 2
     },
     {
       "topic": "re__re__re__fwd__merci__et_un_rappel_important_",
@@ -650,14 +650,6 @@
       "example_count": 7
     },
     {
-      "topic": "retour_emballage_alternatif_et_raison_retour",
-      "topic_label": "Retour – emballage alternatif accepté + demande de raison",
-      "situation": "Un client souhaite retourner un article mais n'a pas le carton d'origine. Il demande s'il peut utiliser un autre emballage. Le service client confirme que c'est possible sous conditions et demande la raison du retour avant de finaliser le traitement.",
-      "response_template": "Bonjour [Prénom],\n\nPas de problème, vous pouvez tout à fait renvoyer la paire dans un autre carton, du moment qu'elle est emballée soigneusement avec la boîte à chaussures à l'intérieur.\n\nAvant de vous donner la procédure complète, pourriez-vous nous indiquer la raison de votre retour (problème de taille, défaut constaté, autre) ? Cela nous permet de mieux préparer le traitement de votre dossier.\n\nEn attendant, voici la marche à suivre :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez la raison du retour : \"avoir\" ou \"remboursement\")\n2. Glissez le bon de retour à l'intérieur du colis\n3. Expédiez à notre adresse logistique :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous traitons votre demande.\n\n[Prénom équipe] de Max Sauveur",
-      "key_points": "Accepter un emballage alternatif si la boîte d'origine est à l'intérieur et le colis bien protégé. Toujours demander la raison du retour (taille / défaut / autre) pour préparer le dossier. Fournir le lien vers le bon de retour et l'adresse logistique SSL dès le premier échange. Préciser que le choix avoir/remboursement doit figurer sur le bon de retour.",
-      "example_count": 1
-    },
-    {
       "topic": "re___d_but_de_la_fabrication_de_vos_moc_jagger_et_point_livr",
       "topic_label": "Re : Début de la fabrication de vos Moc Jagger et point livraison",
       "situation": "Re : Début de la fabrication de vos Moc Jagger et point livraison",
@@ -742,6 +734,14 @@
       "topic_label": "demande code de reduction qui fonctionne pas",
       "situation": "quand un client demande pk son code ne fonctionne",
       "response_template": "Bonjour Victor,\n\nMerci pour votre message et le compliment sur les sandales !\n\nLes codes de réduction ont généralement des conditions d'application spécifiques : certains ne sont valables que sur des catégories précises, d'autres ont une date d'expiration ou un montant minimum de commande. Sans connaître les codes exacts que vous avez tenté d'utiliser, il m'est difficile de vous dire précisément pourquoi ils ne fonctionnent pas.\n\nPouvez-vous me préciser :\n- Le ou les codes que vous avez essayés\n- Le modèle de sandale concerné et le montant de votre panier\n\nAvec ces informations, je pourrai vérifier ce qui bloque et vous donner une réponse claire.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "question_taille",
+      "topic_label": "question taille",
+      "situation": "question taille",
+      "response_template": "Bonjour Arnold,\n\nAvec 27,2 cm de pied, voici mes recommandations :\n\n- Derby Wood : prenez le 42. La Wood chausse plus ajusté, c'est la taille qui vous correspondra le mieux.\n- Brogues : prenez le 41. Les Brogues chaussent légèrement grand, donc on descend d'une taille par rapport à votre pointure de référence.\n- Deck (bateau) : prenez le 42.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
