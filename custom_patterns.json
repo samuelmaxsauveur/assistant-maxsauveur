@@ -186,6 +186,14 @@
       "example_count": 1
     },
     {
+      "topic": "fwd__max_sauveur___service_client",
+      "topic_label": "Fwd: Max Sauveur — Service Client",
+      "situation": "Fwd: Max Sauveur — Service Client",
+      "response_template": "Bonjour Guillaume,\n\nMerci pour votre message. Nous ne pouvons pas fusionner les deux codes en un seul, mais nous avons fait en sorte qu'ils puissent être utilisés ensemble sur une même commande.\n\nVoici vos deux codes :\n- NC81K38PR3CG\n- CW8T1ABJQHVE\n\nApliquez-les l'un après l'autre dans votre panier au moment de finaliser votre commande, vous n'aurez ainsi qu'une seule livraison à régler.\n\nN'hésitez pas si vous avez le moindre souci au moment de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "ma_pointure_id_ale_",
       "topic_label": "Ma pointure idéale?",
       "situation": "Ma pointure idéale?",
