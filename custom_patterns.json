@@ -82,14 +82,6 @@
       "example_count": 2
     },
     {
-      "topic": "conseil_pointure_semelles_orthopediques",
-      "topic_label": "Conseil pointure – Adaptation avec semelles orthopédiques",
-      "situation": "Un client utilise des semelles orthopédiques et demande conseil sur la taille à prendre. Il connaît déjà sa pointure habituelle sur d'autres modèles Max Sauveur. Les semelles prenant du volume intérieur, la recommandation est de prendre une taille au-dessus de sa pointure habituelle sur le modèle concerné.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et bonne idée de prendre de l'avance !\n\nAvec vos semelles orthopédiques, la donne change effectivement : elles prennent du volume à l'intérieur et peuvent rapidement rendre une pointure trop juste, même sur un modèle qui vous allait bien avant. Dans votre cas, en partant de votre [taille habituelle] habituel sur [modèles de référence] (deux modèles qui chaussent déjà assez juste avec vos ortho), je vous recommande le **[taille recommandée]** sur [le modèle concerné].\n\nCela vous donnera la marge nécessaire pour intégrer vos semelles confortablement sans comprimer les orteils.\n\n[Si applicable : Pour la livraison : [le modèle] est bien en précommande, avec une livraison prévue [date].]\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nBonne journée à vous également !\n\n[Prénom de l'agent] de Max Sauveur",
-      "key_points": "Expliquer clairement pourquoi les semelles orthopédiques imposent de prendre une taille supérieure (volume intérieur). S'appuyer sur les modèles déjà connus du client comme référence. Mentionner le délai de livraison si le modèle est en précommande. Ton pédagogique et rassurant.",
-      "example_count": 1
-    },
-    {
       "topic": "conseil_pointure",
       "topic_label": "Conseil pointure – Aide au choix de taille selon mesure en cm",
       "situation": "Un client fournit la mesure de son pied en centimètres et demande quelle taille commander. Le service client lui indique la pointure correspondante selon le guide, puis invite le client à préciser le modèle visé pour affiner la recommandation selon le chaussant spécifique.",
@@ -154,20 +146,12 @@
       "example_count": 2
     },
     {
-      "topic": "envoi_carte_cadeau_compensation",
-      "topic_label": "Envoi carte cadeau – compensation client",
-      "situation": "Suite à un échange ou un retour, le service client envoie une carte cadeau de compensation au client. Le montant a été déterminé en amont. L'email confirme l'envoi et mentionne parfois un commentaire personnel ou contextuel.",
-      "response_template": "Bonjour [Prénom],\n\nVotre carte cadeau de [montant]€ vient d'être envoyée, vous devriez la recevoir dans quelques minutes.\n\n[Commentaire personnel optionnel]\n\n[Prénom de l'agent] de Max Sauveur",
-      "key_points": "Ton chaleureux et direct. Confirmer l'envoi immédiat et préciser le délai de réception (quelques minutes). Peut inclure une touche personnelle si un contexte a été partagé par le client. Montant à adapter selon le dossier.",
-      "example_count": 2
-    },
-    {
       "topic": "envoi_code_avoir",
       "topic_label": "Envoi du code avoir après retour",
-      "situation": "Suite à la réception et validation d'un retour client, le service client génère et envoie un code avoir. Le code est à usage unique, non cumulable, valable 6 mois.",
+      "situation": "Suite à la réception et validation d'un retour client, le service client génère et envoie un code avoir. Le code est à usage unique, non cumulable, et valable 6 mois.",
       "response_template": "Bonjour [Prénom],\n\nSuite à votre demande, nous venons de générer votre avoir. Il est utilisable une seule fois, non cumulable avec d'autres codes ou promotions, et valable pendant 6 mois.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n**[CODE_AVOIR]**\n\nSi vous avez la moindre question, je reste disponible.\n\n[Prénom agent] de Max Sauveur",
-      "key_points": "Préciser clairement les conditions d'utilisation du code : usage unique, non cumulable, validité 6 mois. Indiquer que le code doit être saisi dans le panier avant finalisation. Ton direct et bienveillant.",
-      "example_count": 8
+      "key_points": "Rappeler systématiquement les 3 conditions d'utilisation : usage unique, non cumulable, valable 6 mois. Indiquer que le code est à saisir dans le panier avant finalisation. Ton direct et rassurant. Rester disponible pour toute question.",
+      "example_count": 9
     },
     {
       "topic": "form_name_form_submitted_2026_05_15_19_55_16",
@@ -309,9 +293,9 @@
       "topic": "max_sauveur___service_client",
       "topic_label": "Max Sauveur — Service Client",
       "situation": "Max Sauveur — Service Client",
-      "response_template": "Bonjour Guillaume,\n\nSuite à votre demande, nous venons de générer votre avoir. Il est utilisable une seule fois, non cumulable avec d'autres codes ou promotions, et valable pendant 6 mois.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n**CW8T1ABJQHVE**\n\nSi vous avez la moindre question, je reste disponible.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Eric,\n\nSuite à votre demande, nous venons de générer votre avoir. Il est utilisable une seule fois, non cumulable avec d'autres codes ou promotions, et valable pendant 6 mois.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n**C38H6NYB3TEJ**\n\nSi vous avez la moindre question, je reste disponible.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 17
+      "example_count": 18
     },
     {
       "topic": "moc_jagger___date_de_r_ception",
@@ -554,14 +538,6 @@
       "example_count": 1
     },
     {
-      "topic": "re__re__commande__11946___taille_incorrecte_ceinture",
-      "topic_label": "Re: Re: Commande #11946 - Taille incorrecte ceinture",
-      "situation": "Re: Re: Commande #11946 - Taille incorrecte ceinture",
-      "response_template": "Bonjour Éric,\n\nDésolé pour l'absence de nouvelles, votre retour est bien enregistré de notre côté. Votre avoir va vous être envoyé sous peu.\n\nAvant que vous passiez commande pour la nouvelle taille, une précision importante sur la mesure de la Jason : la taille à prendre correspond à la distance entre le 3e trou et la fin de l'ardillon, et non jusqu'à la pointe de l'ardillon. Cela vous permettra de choisir la bonne taille sans mauvaise surprise.\n\nN'hésitez pas si vous avez des questions avant de passer commande.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "re__re__form_name_form_submitted_2026_05_13_17_41_23",
       "topic_label": "Re: Re: Form name Form submitted 2026-05-13 17:41:23",
       "situation": "Re: Re: Form name Form submitted 2026-05-13 17:41:23",
@@ -663,14 +639,6 @@
       "situation": "Un client doit passer une nouvelle commande en utilisant un code avoir, mais les frais de livraison ne sont pas couverts automatiquement. Le service client lui indique de passer la commande normalement et promet un remboursement manuel des frais de port.",
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre message.\n\nPouvez-vous essayer à nouveau ?\n\nPour les frais de livraison, voici comment procéder : passez votre commande normalement avec votre code avoir de [montant]€, et nous effectuerons le remboursement des frais de port manuellement dès que la commande sera validée de notre côté.\n\nCordialement,\n[Prénom conseiller] de Max Sauveur",
       "key_points": "Ton rassurant et clair. Préciser le montant de l'avoir. Engager explicitement le remboursement manuel des frais de port après validation de commande. Ne pas faire payer deux fois le client pour une erreur ou un retour.",
-      "example_count": 1
-    },
-    {
-      "topic": "renseignements_wood",
-      "topic_label": "Renseignements Wood",
-      "situation": "Renseignements Wood",
-      "response_template": "Bonjour Jason,\n\nMerci pour votre message et bonne idée de prendre de l'avance !\n\nAvec vos semelles orthopédiques, la donne change effectivement : elles prennent du volume à l'intérieur et peuvent rapidement rendre une pointure trop juste, même sur un modèle qui vous allait bien avant. Dans votre cas, en partant de votre 42 habituel sur la Peter et le Boat (deux modèles qui chaussent déjà assez juste avec vos ortho), je vous recommande le **43** sur la Derby Wood.\n\nCela vous donnera la marge nécessaire pour intégrer vos semelles confortablement sans comprimer les orteils.\n\nPour la livraison : la Derby Wood est bien en précommande, avec une livraison prévue fin juillet.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nBonne journée à vous également !\n\nJohn de Max Sauveur",
-      "key_points": "",
       "example_count": 1
     },
     {
