@@ -274,6 +274,14 @@
       "example_count": 1
     },
     {
+      "topic": "pointure_pour_ma_commande_pass_e",
+      "topic_label": "Pointure pour ma commande passée",
+      "situation": "Pointure pour ma commande passée",
+      "response_template": "Bonjour Julien,\n\nMerci pour ce retour enthousiaste sur vos Chelsea Chapman, et bravo d'avoir suivi la méthode de mesure à la lettre !\n\nPour répondre à votre question : avec 28 cm de pied, vous êtes effectivement dans la fourchette du 43. Le fait que le pied gauche soit parfait est rassurant.\n\nCe que vous ressentez sur le pied droit (orteils qui touchent le bout) est en partie lié à deux choses :\n\n**1. La forme à bout plus pointu**\nLes Chelsea ont une forme plus effilée que vos Paraboot ou Doc Martens, qui ont un bout arrondi et large. Ce n'est pas votre pied qui est trop grand, c'est simplement que les orteils se retrouvent positionnés différemment dans la chaussure. Ce ressenti s'atténue avec le port.\n\n**2. Le cuir neuf est rigide**\nLe cuir grainé de la Chapman est encore raide. Avec quelques ports, il va s'assouplir et la boîte à orteils va légèrement se détendre, ce qui libère de l'espace à l'avant.\n\nEn revanche, si la douleur est franche dès le départ (ongles qui frottent, grande douleur), n'hésitez pas à me le signaler rapidement, car vous êtes encore dans le délai de retour.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "probl_me_commande_12106",
       "topic_label": "Problème commande 12106",
       "situation": "Problème commande 12106",
