@@ -250,6 +250,14 @@
       "example_count": 1
     },
     {
+      "topic": "quelle_pointure_prendre_",
+      "topic_label": "Quelle pointure prendre?",
+      "situation": "Quelle pointure prendre?",
+      "response_template": "Bonjour Christopher,\n\nAvec 26,3 cm de pied, vous êtes en **40** sur notre guide.\n\nLa Fisherman chausse légèrement grand, donc je vous recommande le **40**.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "question_sandale",
       "topic_label": "Question sandale",
       "situation": "Question sandale",
