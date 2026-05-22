@@ -429,9 +429,9 @@
       "topic": "re__c_est_ouvert___la_wood___239_",
       "topic_label": "Re: C'est ouvert ! la Wood à 239€",
       "situation": "Re: C'est ouvert ! la Wood à 239€",
-      "response_template": "Bonjour Arnaud,\n\nRavi que la Wood vous plaise, c'est une belle pièce !\n\nPour la desert boot/chukka, c'est noté et transmis à Sam. Vous n'êtes clairement pas le seul à y penser, et ce type de retour compte vraiment dans les décisions de collection. On verra ce que l'avenir réserve !\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Jason,\n\nMerci de prendre de l'avance, c'est exactement la bonne approche pour une précommande !\n\nPour la taille sur la Wood, voici mon raisonnement basé sur vos références :\n\nVous portez la Peter A. en 42 et le Boat en 41, et vos semelles orthopédiques rendent ces deux pointures un peu courtes. La Wood chausse plus ajusté que le Boat, ce qui m'amène à vous recommander le **43** pour intégrer confortablement vos semelles.\n\nConcernant la livraison : c'est fin juillet. Prenez ça en compte si vous avez un besoin particulier d'ici là.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 1
+      "example_count": 2
     },
     {
       "topic": "re__ceci_est_un___",
@@ -770,6 +770,14 @@
       "example_count": 1
     },
     {
+      "topic": "retour_produit_suggestion_collection",
+      "topic_label": "Suggestion de nouveau modèle – transmission à l'équipe produit",
+      "situation": "Un client, satisfait d'un produit, suggère spontanément un nouveau modèle ou type de chaussure qu'il aimerait voir dans la collection. Le service client accuse réception de la suggestion avec enthousiasme et confirme qu'elle est transmise à l'équipe en charge des décisions de collection.",
+      "response_template": "Bonjour [Prénom],\n\nRavi que [le produit] vous plaise, c'est une belle pièce !\n\nPour [la suggestion de modèle], c'est noté et transmis à [Responsable collection]. Vous n'êtes clairement pas le seul à y penser, et ce type de retour compte vraiment dans les décisions de collection. On verra ce que l'avenir réserve !\n\n[Prénom] de Max Sauveur",
+      "key_points": "Ton chaleureux et enthousiaste. Valoriser le retour client en indiquant que d'autres partagent le même avis — cela renforce le sentiment d'être écouté. Ne pas promettre la réalisation du modèle. Mentionner que la suggestion est transmise nommément à la bonne personne (ex : Sam).",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__d_but_de_la_fabrication_de_vos_moc_jagger_et_poi",
       "topic_label": "Suivi livraison Moc Jagger – arrivée imminente et expédition prévue",
       "situation": "Un client relance sur la livraison de ses Moc Jagger en précommande. La paire est sur le point d'arriver en stock cette semaine, et l'expédition est prévue dans la foulée. Le client est prévenu d'un éventuel délai lié aux jours fériés.",
@@ -836,10 +844,10 @@
     {
       "topic": "echange_taille_colis_deja_livre_consigne",
       "topic_label": "Échange de taille – colis déjà livré en consigne",
-      "situation": "Un client demande un échange de taille avant ou juste après la livraison, mais le colis a déjà été déposé en consigne (ex : La Poste). Le service client conseille d'essayer le produit à réception avant de confirmer l'échange.",
-      "response_template": "Bonjour [Prénom],\n\nPas de souci pour l'échange, on va s'en occuper. Cela dit, votre commande a déjà été livrée en consigne La Poste à [Ville]. Vous pouvez suivre votre colis ici : [lien de suivi Chronopost]\n\nLe mieux est d'essayer [le produit] à réception. Si le [taille reçue] ne convient pas et que vous confirmez vouloir le [taille souhaitée], voici la procédure :\n\n1. Téléchargez et complétez le bon de retour ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique (frais de retour à votre charge) :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander le [taille souhaitée].\n\nN'hésitez pas si vous avez des questions.\n\nJohn de Max Sauveur",
-      "key_points": "Ton rassurant et direct. Préciser que le colis est déjà disponible en consigne. Encourager l'essayage avant de confirmer l'échange. Rappeler que les frais de retour sont à la charge du client. Adresse logistique SSL à inclure systématiquement. Indiquer \"avoir\" sur le bon de retour.",
-      "example_count": 1
+      "situation": "Un client demande un échange de taille avant ou juste après la livraison, mais le colis a déjà été déposé en consigne (ex : La Poste). Le service client conseille d'essayer d'abord à réception avant de confirmer l'échange, et explique la procédure de retour.",
+      "response_template": "Bonjour [Prénom],\n\nPas de souci pour l'échange, on va s'en occuper. Cela dit, votre commande a déjà été livrée en consigne La Poste à [Ville]. Vous pouvez suivre votre colis ici : [LIEN_SUIVI_CHRONOPOST]\n\nLe mieux est d'essayer [le produit] à réception. Si le [TAILLE_REÇUE] ne convient pas et que vous confirmez vouloir le [TAILLE_SOUHAITÉE], voici la procédure :\n\n1. Téléchargez et complétez le bon de retour ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique (frais de retour à votre charge) :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander le [TAILLE_SOUHAITÉE].\n\nN'hésitez pas si vous avez des questions.\n\n[Prénom] de Max Sauveur",
+      "key_points": "Toujours encourager le client à essayer d'abord le produit avant de confirmer l'échange. Rappeler que les frais de retour sont à la charge du client. Préciser l'adresse logistique SSL. Le retour génère un avoir (et non un remboursement direct). Lien bon de retour : https://maxsauveur.com/pages/livraison-et-retour avec mention 'avoir'.",
+      "example_count": 2
     },
     {
       "topic": "commande__12019_taille___changer",
