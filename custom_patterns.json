@@ -92,10 +92,10 @@
     {
       "topic": "conseil_pointure_comparaison_modeles",
       "topic_label": "Conseil pointure – Comparaison entre modèles pour affiner le choix",
-      "situation": "Un client connaît déjà sa pointure sur un ou plusieurs modèles Max Sauveur et souhaite savoir quelle taille prendre sur un nouveau modèle. Le service client compare le chaussant des deux modèles pour orienter le choix, en précisant si le nouveau modèle chausse plus juste ou plus large.",
-      "response_template": "Bonjour [Prénom],\n\nTout à fait, le [taille haute] ne sera pas trop grand : la [nouveau modèle] chausse légèrement plus ajusté que vos [modèle de référence], donc le [taille haute] sur ce modèle correspond en réalité à un volume proche de votre [taille habituelle] habituel. Vous ne serez pas dans une chaussure flottante.\n\nCela dit, si vous voyez que le [taille intermédiaire] est disponible, cette taille peut également convenir. Les deux options sont viables, c'est vraiment une question de préférence : un peu plus de place avec le [taille haute], ou un chaussant plus ajusté avec le [taille intermédiaire].\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\n[Prénom conseiller] de Max Sauveur",
-      "key_points": "Rassurer le client sur le fait qu'il ne sera pas dans une chaussure flottante. Expliquer la différence de chaussant entre les modèles de façon concrète. Proposer deux options viables si une demi-taille intermédiaire existe, en laissant le choix au client selon sa préférence (ajusté vs. légèrement plus d'espace). Ton direct, rassurant et sans jargon technique.",
-      "example_count": 3
+      "situation": "Un client connaît déjà sa pointure sur un ou plusieurs modèles Max Sauveur et souhaite savoir quelle taille prendre sur un nouveau modèle. Il peut également mentionner un ressenti sur le chaussant (légèrement large, juste, etc.) et poser des questions sur d'autres modèles en parallèle.",
+      "response_template": "Bonjour [Prénom],\n\nRavi d'apprendre que vos [modèle actuel] en [coloris] vous plaisent !\n\nPour la [nouveau modèle] : restez sur le [pointure]. La [nouveau modèle] chausse [plus ajusté / plus large] que la [modèle actuel], donc si vos [pointure] sont [ressenti actuel] sur la [modèle actuel], ils seront [ressenti attendu] sur la [nouveau modèle]. [Recommandation demi-taille si pertinente].\n\nPour votre quête de [type de chaussure] : nous avons la [modèle suggéré], qui est justement en [matière / caractéristique]. Elle pourrait correspondre à ce que vous cherchez.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nBonne journée,\n\nJohn de Max Sauveur",
+      "key_points": "Commencer par valoriser le choix actuel du client. Expliquer la logique du conseil de taille (comparaison entre modèles) plutôt que de simplement donner un chiffre. Proposer proactivement un autre modèle si le client mentionne une recherche. Inviter à poser d'autres questions avant commande. Ton chaleureux et expert.",
+      "example_count": 4
     },
     {
       "topic": "conseil_pointure_cuir_chausse_juste",
@@ -103,6 +103,14 @@
       "situation": "Un client demande conseil sur sa pointure pour un modèle en cuir (ex : mocassin Paul). Il fournit sa mesure en cm et/ou ses références dans d'autres marques. Le modèle chausse juste au départ, ce qui peut inquiéter le client.",
       "response_template": "Bonjour [Prénom],\n\nAvec [X] cm de pied ([X+marge] cm avec la marge), vous êtes en **[taille]** sur notre guide.\n\nLe [modèle] chausse juste au départ, ce qui est tout à fait normal : le cuir et la semelle en liège s'assouplissent avec le port et se moulent progressivement à votre pied. Vos références [marque] en [type de chaussure] ([taille habituelle]) confirment que vous êtes bien dans le profil du [taille] sur ce type de chaussure.\n\nJe vous recommande donc le [taille].\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\n[Prénom agent] de Max Sauveur",
       "key_points": "Rassurer le client sur le fait que serrer au départ est normal pour le cuir. S'appuyer sur ses références de pointure dans d'autres marques pour valider la recommandation. Ton direct et pédagogique. Toujours conclure avec une invitation à poser d'autres questions.",
+      "example_count": 1
+    },
+    {
+      "topic": "conseil_taille___sandales_fisherman",
+      "topic_label": "Conseil taille - Sandales Fisherman",
+      "situation": "Conseil taille - Sandales Fisherman",
+      "response_template": "Bonjour Kevin,\n\nMerci pour votre message et pour ce fidèle intérêt de 2 ans pour la Fisherman !\n\nAvec 26.5-27 cm de pied, vous êtes en 42 sur notre guide. Cependant, la Fisherman chausse légèrement grand, ce qui m'amène à vous recommander le 41.\n\nConcernant votre pied large : la Fisherman est réglable grâce à ses boucles sur le dessus du pied et la cheville, ce qui permet un ajustement précis et compense tout à fait ce facteur. Pas d'inquiétude de ce côté-là.\n\nJe vous recommande donc le 41.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
       "example_count": 1
     },
     {
@@ -628,10 +636,10 @@
     {
       "topic": "retour_re_u___remboursement_en_cours",
       "topic_label": "Retour reçu — remboursement en cours",
-      "situation": "Le retour du client a été réceptionné et validé. Le remboursement est en cours sur le moyen de paiement initial. Le client a pu laisser un commentaire ou un retour sur le produit.",
-      "response_template": "Bonjour [Prénom],\n\nBien reçu, nous procédons au remboursement de [montant] € sur votre moyen de paiement initial. Comptez quelques jours ouvrés pour que la somme apparaisse.\n\nMerci pour votre retour sur [produit], et bonne journée.\n\n[Prénom conseiller] de Max Sauveur",
-      "key_points": "Ton chaleureux et concis. Confirmer le montant exact remboursé. Préciser le délai (quelques jours ouvrés). Remercier le client pour son retour produit si applicable. Ne pas s'étendre inutilement.",
-      "example_count": 6
+      "situation": "Le retour du client a été réceptionné et validé. Le remboursement est en cours sur le moyen de paiement initial. Le client peut avoir laissé un commentaire sur le produit retourné (ex : porte-carte).",
+      "response_template": "Bonjour [Prénom],\n\nBien reçu, nous procédons au remboursement de [montant] € sur votre moyen de paiement initial. Comptez quelques jours ouvrés pour que la somme apparaisse.\n\nMerci pour votre retour sur [produit], et bonne journée.\n\nJohn de Max Sauveur",
+      "key_points": "Confirmer la réception du retour, indiquer le montant exact remboursé, préciser 'moyen de paiement initial', mentionner le délai 'quelques jours ouvrés'. Ton sobre et rassurant. Remercier si le client a fait un retour produit (commentaire).",
+      "example_count": 7
     },
     {
       "topic": "re___d_but_de_la_fabrication_de_vos_moc_jagger_et_point_livr",
