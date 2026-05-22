@@ -330,14 +330,6 @@
       "example_count": 1
     },
     {
-      "topic": "re__retour_re_u___remboursement_en_cours",
-      "topic_label": "RE: Retour reçu — remboursement en cours",
-      "situation": "RE: Retour reçu — remboursement en cours",
-      "response_template": "Bonjour Loïc,\n\nMerci pour ce retour très complet et sincère, c'est vraiment utile pour nous améliorer.\n\nOn comprend tout à fait votre réflexe de sécuriser le 42 directement, surtout sur un modèle qui peut partir vite. \n\nDe notre côté, nous procédons au remboursement de votre commande initiale. Vous le recevrez dans les prochains jours sur votre moyen de paiement.\n\nPour compenser le fait de ne pas avoir pu profiter de l'offre, nous vous envoyons également une carte cadeau de 15€ valable sur votre prochain achat.\n\nConcernant Le Boat en blanc : pas de date annoncée à ce stade, mais je transmets l'intérêt à l'équipe. N'hésitez pas à vous abonner aux alertes sur notre site pour être informé en priorité si le modèle revient dans ce coloris.\n\nBonne fin de journée à vous aussi !\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 3
-    },
-    {
       "topic": "re__ceci_est_un___",
       "topic_label": "Re: Ceci est un...",
       "situation": "Re: Ceci est un...",
@@ -496,6 +488,14 @@
       "response_template": "Bonjour Alexandru,\n\nLe colis est en cours de préparation et n'a pas encore été pris en charge par le transporteur. Dès qu'il sera expédié, vous recevrez automatiquement un email avec votre lien de suivi Chronopost.\n\nBonne fin de semaine à vous également,\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
+    },
+    {
+      "topic": "re__retour_re_u___remboursement_en_cours",
+      "topic_label": "Re: Retour reçu — remboursement en cours",
+      "situation": "Re: Retour reçu — remboursement en cours",
+      "response_template": "Bonjour Marie-Aude,\n\nMerci pour ce retour sincère, il nous aide à mieux expliquer notre produit.\n\nConcernant l'élastique : pas d'inquiétude de ce côté-là. Nous avons conduit des tests d'usage sur un an avant de lancer le porte-carte, et la résistance de l'élastique en fait partie. Pour vous rassurer davantage, si l'élastique venait à céder dans les 2 ans, nous vous échangeons le porte-carte sans discussion.\n\nPour les emplacements : le porte-carte peut accueillir jusqu'à 8 cartes. Au début, le cuir est encore rigide et il faut un peu forcer, mais avec le port régulier il s'assouplit et la capacité s'ouvre naturellement.\n\nSi ces éléments vous rassurent et que vous souhaitez garder la pièce ou en essayer une autre, notre offre d'avoir à 164€ avec livraison offerte reste valable.\n\nSi vous préférez malgré tout le remboursement, nous le validons sans problème. Dites-nous simplement ce que vous choisissez.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 4
     },
     {
       "topic": "re__une_commande__12009_en_retour",
@@ -664,6 +664,14 @@
       "response_template": "Bonjour [Prénom],\n\nParfait, merci pour votre retour rapide !\n\nLe plus simple, comme vous allez recommander une paire en même temps, est d'attendre de recevoir votre avoir. Cela vous évitera de régler deux fois les frais de livraison : vous commandez tout en une fois avec le code.\n\nDès réception de votre colis, je m'occupe de générer votre avoir et on finalise ça ensemble.\n\n[Prénom] de Max Sauveur",
       "key_points": "Ton rassurant et pratique. Conseil proactif pour éviter des frais doubles. Engagement clair : le SA génère l'avoir dès réception du retour. Formulation 'on finalise ça ensemble' pour maintenir le lien et rassurer le client.",
       "example_count": 3
+    },
+    {
+      "topic": "echange_taille_remboursement_avec_carte_cadeau",
+      "topic_label": "Échange de taille – remboursement + carte cadeau de compensation",
+      "situation": "Un client a commandé une taille, a dû passer par un échange indirect (nouvelle commande plutôt qu'échange direct), et la bonne taille a bien été reçue. Le service client procède au remboursement de la commande initiale et offre une carte cadeau pour compenser le désagrément.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour ce retour, et ravi(e) d'apprendre que les [taille] sont déjà au pied de [bénéficiaire] !\n\nNous procédons au remboursement de votre commande initiale sur votre moyen de paiement. Vous le recevrez dans les prochains jours.\n\nPour compenser l'inconvénient de ne pas avoir pu faire l'échange directement, nous vous envoyons également une carte cadeau de [montant]€ valable sur votre prochain achat.\n\nBonne journée à vous,\n\n[Prénom agent] de Max Sauveur",
+      "key_points": "Ton chaleureux et positif. Confirmer que le bon article est bien reçu avant d'annoncer le remboursement. Mentionner explicitement la carte cadeau comme geste commercial pour compenser l'impossibilité d'un échange direct. Ne pas trop s'étendre sur les excuses, rester concis et bienveillant.",
+      "example_count": 1
     },
     {
       "topic": "re__re__re___tat_de_l__change_pour_la_commande__11992",
