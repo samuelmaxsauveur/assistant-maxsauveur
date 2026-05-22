@@ -26,6 +26,14 @@
       "example_count": 2
     },
     {
+      "topic": "commande__12019_taille___changer",
+      "topic_label": "Commande #12019 taille à changer",
+      "situation": "Commande #12019 taille à changer",
+      "response_template": "Bonjour Mekki,\n\nPas de souci pour l'échange de taille, voici comment ça fonctionne :\n\nPour procéder :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique (frais de retour à votre charge) :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous envoyons un avoir du montant payé, incluant la réduction de 15€ que vous avez obtenue à la commande. Le code sera valable 6 mois sur notre site.\n\nJe reste disponbile.\n\nCordialement\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande__12059",
       "topic_label": "Commande #12059",
       "situation": "Commande #12059",
