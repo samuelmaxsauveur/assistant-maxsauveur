@@ -226,6 +226,14 @@
       "example_count": 1
     },
     {
+      "topic": "fw__commande__12087_confirm_e",
+      "topic_label": "Fw: Commande #12087 confirmée",
+      "situation": "Fw: Commande #12087 confirmée",
+      "response_template": "Bonjour Samy,\n\nPas de problème, vous pouvez tout à fait renvoyer la paire dans un autre carton, du moment qu'elle est emballée soigneusement avec la boîte à chaussures à l'intérieur.\n\nAvant de vous donner la procédure complète, pourriez-vous nous indiquer la raison de votre retour (problème de taille, défaut constaté, autre) ? Cela nous permet de mieux préparer le traitement de votre dossier.\n\nEn attendant, voici la marche à suivre :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez la raison du retour : \"avoir\" ou \"remboursement\")\n2. Glissez le bon de retour à l'intérieur du colis\n3. Expédiez à  notre adresse logistique :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous traitons votre demande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fwd__commande__11591_confirm_e",
       "topic_label": "Fwd: Commande #11591 confirmée",
       "situation": "Fwd: Commande #11591 confirmée",
