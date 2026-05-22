@@ -626,6 +626,14 @@
       "example_count": 7
     },
     {
+      "topic": "re__suite_message_avec_john_max_sauveur",
+      "topic_label": "Re: Suite message avec John max sauveur",
+      "situation": "Re: Suite message avec John max sauveur",
+      "response_template": "Bonjour Arnaud,\n\nRavi d'apprendre que la Fisherman en 44 vous va parfaitement !\n\nConcernant votre mail précédent, nous vous avions bien répondu il y a quelques semaines. Il est possible que notre réponse soit passée en spam, n'hésitez pas à y jeter un œil.\n\nPour revenir sur votre question et l'écart que vous percevez entre vos deux Paul 45 :\n\nLa mesure à faire n'est pas à partir de la semelle d'usure, mais à l'intérieur du chaussant (de la paroi du talon jusqu'au bout de la pointe). La semelle d'usure est taillée manuellement dans notre processus de fabrication artisanale, ce qui peut entraîner de légères variations d'une paire à l'autre. Mais ce n'est pas cette partie qui détermine la pointure intérieure.\n\nCe que vous ressentez s'explique très probablement par une autre raison : le cuir grainé et le cuir lisse ne se comportent pas de la même façon. Le cuir grainé est généralement plus rigide et structure davantage la chaussure, ce qui laisse un espace intérieur légèrement différent de celui d'un cuir plus souple. Avec le port, le cuir grainé se détend moins vite, ce qui peut donner l'impression d'un volume intérieur plus généreux au départ.\n\nEn résumé : la différence que vous ressentez entre votre Paul marron grainé et votre Paul noir est très cohérente avec les caractéristiques de chaque cuir. Il ne s'agit pas d'une erreur de fabrication sur la pointure.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__une_commande__12009_en_retour",
       "topic_label": "Re: Une commande #12009 en retour",
       "situation": "Re: Une commande #12009 en retour",
