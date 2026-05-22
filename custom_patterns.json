@@ -290,6 +290,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__commande__10212_d_faut",
+      "topic_label": "Re: Commande #10212 défaut",
+      "situation": "Re: Commande #10212 défaut",
+      "response_template": "Bonjour Medart,\n\nMerci pour vos photos et pour nous avoir alertés.\n\nEn effet, un décollement du talon après quelques ports n'est pas normal et nous le prenons en charge. Ce type de défaut peut malheureusement survenir sur une fabrication artisanale, notamment sur les parties faites main. Nous allons vous la réparer.\n\nVoici la procédure à suivre :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez la raison : \"défaut fabrication\")\n2. Emballez soigneusement la paire avec le bon de retour à l'intérieur\n3. Expédiez le colis à notre adresse logistique (nous prenons en charge les frais de retour) :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nTélécharger votre étiquette : https://wing-labelling-system.s3.eu-west-3.amazonaws.com/52d660c3-ca88-4c89-8407-47cb6498562c/LABEL/2026-05-22/LABEL-5c995f26-dac1-4b76-9e32-c1243492525e-1779436006057-8R49851474493.pdf\n\n\nUne fois reçue, votre paire sera transmise à notre atelier pour réparation. Comptez 6 à 8 semaines maximum pour le traitement.\n\nN'hésitez pas si vous avez des questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__11590_confirm_e",
       "topic_label": "Re: Commande #11590 confirmée",
       "situation": "Re: Commande #11590 confirmée",
