@@ -162,6 +162,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_05_22_07_59_27",
+      "topic_label": "Form name Form submitted 2026-05-22 07:59:27",
+      "situation": "Form name Form submitted 2026-05-22 07:59:27",
+      "response_template": "Bonjour,\n\nMerci pour votre message et désolé pour l'attente sur cette précommande.\n\nNous vous avions d'ailleurs envoyé un email d'information à ce sujet la semaine dernière. Vos Moc Jagger arrivent chez nous cette semaine, et nous prévoyons de les expédier dans la foulée. La livraison est estimée la semaine prochaine, sous réserve que les transporteurs ne viennent pas perturber l'acheminement.\n\nDès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost pour suivre votre paire en temps réel.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fwd__commande__11591_confirm_e",
       "topic_label": "Fwd: Commande #11591 confirmée",
       "situation": "Fwd: Commande #11591 confirmée",
