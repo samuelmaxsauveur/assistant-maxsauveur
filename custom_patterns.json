@@ -106,6 +106,14 @@
       "example_count": 1
     },
     {
+      "topic": "fusion_codes_promo_utilisation_cumul",
+      "topic_label": "Deux codes promo – utilisation cumulée sur une commande",
+      "situation": "Un client possède deux codes de réduction distincts et souhaite les utiliser ensemble, idéalement fusionnés en un seul. Le service client ne peut pas fusionner les codes mais les configure pour qu'ils soient cumulables sur une même commande.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message. Nous ne pouvons pas fusionner les deux codes en un seul, mais nous avons fait en sorte qu'ils puissent être utilisés ensemble sur une même commande.\n\nVoici vos deux codes :\n- [CODE_1]\n- [CODE_2]\n\nAppliquez-les l'un après l'autre dans votre panier au moment de finaliser votre commande, vous n'aurez ainsi qu'une seule livraison à régler.\n\nN'hésitez pas si vous avez le moindre souci au moment de passer commande.\n\n[Prénom de l'agent] de Max Sauveur",
+      "key_points": "Être transparent sur l'impossibilité de fusionner les codes. Rassurer le client en confirmant que les deux codes sont bien cumulables. Préciser l'ordre d'application (l'un après l'autre dans le panier). Mentionner qu'il n'y aura qu'une seule livraison à régler pour éviter toute confusion.",
+      "example_count": 1
+    },
+    {
       "topic": "defaut_produit_demande_photos",
       "topic_label": "Défaut produit – Demande de photos pour analyse",
       "situation": "Un client signale un défaut sur un produit (couture, matière, assemblage). Le service client ne peut pas statuer sans preuve visuelle. Le client peut également mentionner une difficulté à joindre le support par téléphone.",
@@ -158,6 +166,14 @@
       "topic_label": "Form name Form submitted 2026-05-20 00:25:24",
       "situation": "Form name Form submitted 2026-05-20 00:25:24",
       "response_template": "Bonjour,\n\nVos Moc Jagger arrivent chez nous très prochainement, et nous prévoyons de les expédier dans la foulée. Petite nuance : avec les ponts de fin mai, l'expédition pourrait être légèrement décalée. Nous faisons au mieux pour limiter l'impact.\n\nNous avons d'ailleurs envoyé un email d'information à ce sujet hier via notre newsletter. Pour être tenu informé en priorité des prochaines mises à jour, je vous invite à vous y abonner directement sur notre site.\n\nDès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "form_name_form_submitted_2026_05_21_21_11_19",
+      "topic_label": "Form name Form submitted 2026-05-21 21:11:19",
+      "situation": "Form name Form submitted 2026-05-21 21:11:19",
+      "response_template": "Bonjour Dylan,\n\nMerci pour votre message et votre intérêt pour le Paul en cuir grainé marron !\n\nPetite précision importante : le 43,5 ne sera pas produit, même en cas de réassort. La bonne nouvelle, c'est que la différence entre un 43 et un 44 est vraiment minime sur ce modèle, et l'un ou l'autre peut tout à fait convenir selon la forme de votre pied.\n\nPour vous orienter vers la bonne taille, pourriez-vous nous indiquer la longueur de votre pied en centimètres ? (À mesurer nu, talon contre un mur, en marquant le bout du gros orteil.) Avec cette info, je pourrai vous dire précisément si le 43 ou le 44 est votre pointure sur ce modèle.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
