@@ -482,6 +482,14 @@
       "example_count": 2
     },
     {
+      "topic": "re__form_name_form_submitted_2026_05_14_18_05_44",
+      "topic_label": "Re: Form name Form submitted 2026-05-14 18:05:44",
+      "situation": "Re: Form name Form submitted 2026-05-14 18:05:44",
+      "response_template": "Bonjour Quentin,\n\nPas de souci pour l'échange, on va s'en occuper. Cela dit, votre commande a déjà été livrée en consigne La Poste à Nantes. Vous pouvez suivre votre colis ici : https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR627185392TS\n\nLe mieux est d'essayer les sandales à réception. Si le 43 ne convient pas et que vous confirmez vouloir le 40, voici la procédure :\n\n1. Téléchargez et complétez le bon de retour ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique (frais de retour à votre charge) :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander le 40.\n\nN'hésitez pas si vous avez des questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__form_name_form_submitted_2026_05_18_15_07_57",
       "topic_label": "Re: Form name Form submitted 2026-05-18 15:07:57",
       "situation": "Re: Form name Form submitted 2026-05-18 15:07:57",
