@@ -82,6 +82,14 @@
       "example_count": 2
     },
     {
+      "topic": "conseil_pointure_semelles_orthopediques",
+      "topic_label": "Conseil pointure – Adaptation avec semelles orthopédiques",
+      "situation": "Un client utilise des semelles orthopédiques et demande conseil sur la taille à prendre. Il connaît déjà sa pointure habituelle sur d'autres modèles Max Sauveur. Les semelles prenant du volume intérieur, la recommandation est de prendre une taille au-dessus de sa pointure habituelle sur le modèle concerné.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et bonne idée de prendre de l'avance !\n\nAvec vos semelles orthopédiques, la donne change effectivement : elles prennent du volume à l'intérieur et peuvent rapidement rendre une pointure trop juste, même sur un modèle qui vous allait bien avant. Dans votre cas, en partant de votre [taille habituelle] habituel sur [modèles de référence] (deux modèles qui chaussent déjà assez juste avec vos ortho), je vous recommande le **[taille recommandée]** sur [le modèle concerné].\n\nCela vous donnera la marge nécessaire pour intégrer vos semelles confortablement sans comprimer les orteils.\n\n[Si applicable : Pour la livraison : [le modèle] est bien en précommande, avec une livraison prévue [date].]\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nBonne journée à vous également !\n\n[Prénom de l'agent] de Max Sauveur",
+      "key_points": "Expliquer clairement pourquoi les semelles orthopédiques imposent de prendre une taille supérieure (volume intérieur). S'appuyer sur les modèles déjà connus du client comme référence. Mentionner le délai de livraison si le modèle est en précommande. Ton pédagogique et rassurant.",
+      "example_count": 1
+    },
+    {
       "topic": "conseil_pointure",
       "topic_label": "Conseil pointure – Aide au choix de taille selon mesure en cm",
       "situation": "Un client fournit la mesure de son pied en centimètres et demande quelle taille commander. Le service client lui indique la pointure correspondante selon le guide, puis invite le client à préciser le modèle visé pour affiner la recommandation selon le chaussant spécifique.",
@@ -148,10 +156,10 @@
     {
       "topic": "envoi_carte_cadeau_compensation",
       "topic_label": "Envoi carte cadeau – compensation client",
-      "situation": "Suite à un échange ou un retour, le service client envoie une carte cadeau de compensation au client. Le montant a été déterminé en amont et la carte est envoyée par email directement au client.",
-      "response_template": "Bonjour [Prénom],\n\nVotre carte cadeau de [montant]€ vient d'être envoyée, vous devriez la recevoir dans quelques minutes.\n\n[Commentaire chaleureux optionnel en lien avec le contexte du client]\n\n[Prénom de l'agent] de Max Sauveur",
-      "key_points": "Ton chaleureux et décontracté. Confirmer l'envoi immédiat de la carte cadeau et préciser que le client la recevra dans quelques minutes. Possibilité d'ajouter une touche personnelle si un élément du contexte client s'y prête (ex : projet mentionné). Signature avec prénom + 'de Max Sauveur'.",
-      "example_count": 1
+      "situation": "Suite à un échange ou un retour, le service client envoie une carte cadeau de compensation au client. Le montant a été déterminé en amont. L'email confirme l'envoi et mentionne parfois un commentaire personnel ou contextuel.",
+      "response_template": "Bonjour [Prénom],\n\nVotre carte cadeau de [montant]€ vient d'être envoyée, vous devriez la recevoir dans quelques minutes.\n\n[Commentaire personnel optionnel]\n\n[Prénom de l'agent] de Max Sauveur",
+      "key_points": "Ton chaleureux et direct. Confirmer l'envoi immédiat et préciser le délai de réception (quelques minutes). Peut inclure une touche personnelle si un contexte a été partagé par le client. Montant à adapter selon le dossier.",
+      "example_count": 2
     },
     {
       "topic": "envoi_code_avoir",
@@ -542,6 +550,14 @@
       "topic_label": "Re: Re: Avis",
       "situation": "Re: Re: Avis",
       "response_template": "Bonjour Frédéric,\n\nMerci pour le retour et la photo.\n\nPour répondre à votre question : oui, le cuir du Paul est tout à fait compatible avec un assouplissant cuir. Appliquez-en sur les zones de frottement (notamment l'avant et les côtés de la boîte à orteils) avant d'enfiler la paire, cela aide vraiment.\n\nConcernant les douleurs à l'avant du pied après plusieurs heures, c'est le cuir neuf qui résiste encore. La semelle en liège et le cuir vont se mouler progressivement à votre pied, mais si vous voulez accélérer le processus, voici une astuce : passez chez un cordonnier et demandez-lui de les passer à l'étireuse (ou \"électeur\"). C'est rapide, pas cher, et ça détend le cuir en profondeur sur les zones qui frottent, bien plus efficacement qu'avec les seuls ports successifs.\n\nBonne continuation avec la paire.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__re__commande__11946___taille_incorrecte_ceinture",
+      "topic_label": "Re: Re: Commande #11946 - Taille incorrecte ceinture",
+      "situation": "Re: Re: Commande #11946 - Taille incorrecte ceinture",
+      "response_template": "Bonjour Éric,\n\nDésolé pour l'absence de nouvelles, votre retour est bien enregistré de notre côté. Votre avoir va vous être envoyé sous peu.\n\nAvant que vous passiez commande pour la nouvelle taille, une précision importante sur la mesure de la Jason : la taille à prendre correspond à la distance entre le 3e trou et la fin de l'ardillon, et non jusqu'à la pointe de l'ardillon. Cela vous permettra de choisir la bonne taille sans mauvaise surprise.\n\nN'hésitez pas si vous avez des questions avant de passer commande.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
