@@ -330,6 +330,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__avoir___code",
+      "topic_label": "RE: Avoir / code",
+      "situation": "RE: Avoir / code",
+      "response_template": "Bonjour Florian,\n\nMerci pour ce retour.\n\nVoici ce qui s'est passé : votre commande de Brogues avait bénéficié d'une remise exceptionnelle de 15% valable sur ce modèle précis et sur une période limitée. Lorsque nous avons généré votre avoir, nous l'avions restreint aux Brogues pour vous permettre de conserver l'intégralité de cet avantage. C'est la raison pour laquelle le code ne fonctionnait pas sur d'autres modèles.\n\nCela dit, votre demande est tout à fait légitime : vous souhaitez vous orienter vers un modèle qui vous correspond mieux, et nous allons vous y aider. Nous venons de modifier votre code avoir pour qu'il soit utilisable sur l'ensemble de la collection, avec un montant ajusté à 276,25€ (correspondant au montant que vous avez payé).\n\nVous pouvez l'appliquer directement sur la paire de bateau qui vous intéresse. N'hésitez pas si vous avez une question sur la pointure ou le modèle avant de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__form_name_form_submitted_2026_05_17_10_14_01",
       "topic_label": "RE: Form name Form submitted 2026-05-17 10:14:01",
       "situation": "RE: Form name Form submitted 2026-05-17 10:14:01",
