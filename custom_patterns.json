@@ -92,10 +92,10 @@
     {
       "topic": "conseil_pointure_comparaison_modeles",
       "topic_label": "Conseil pointure – Comparaison entre modèles pour affiner le choix",
-      "situation": "Un client connaît déjà sa pointure sur un ou plusieurs modèles Max Sauveur et souhaite savoir quelle taille prendre sur un nouveau modèle. Un modèle particulier peut chausser grand ou différemment des autres, ce qui nécessite une explication contextualisée.",
-      "response_template": "Bonjour [Prénom],\n\nPour la [Modèle cible] : elle est fabriquée dans le même atelier que vos [Modèle A] et vos [Modèle B], qui vous vont parfaitement en [Pointure]. Je vous recommande donc sans hésitation le [Pointure] sur ce modèle.\n\nLa [Modèle atypique] qui chausse grand en [Pointure] est un cas particulier lié à la forme de ce modèle, ce n'est pas représentatif de votre pointure sur le reste de la collection.\n\nBonne journée,\n[Prénom] de Max Sauveur",
-      "key_points": "Rassurer le client en s'appuyant sur ses expériences positives avec d'autres modèles de la même gamme/atelier. Expliquer clairement que les exceptions de chaussage (trop grand, trop petit) sont liées à la forme du modèle concerné et ne remettent pas en cause la pointure habituelle du client. Ton direct, pédagogique et rassurant.",
-      "example_count": 2
+      "situation": "Un client connaît déjà sa pointure sur un ou plusieurs modèles Max Sauveur et souhaite savoir quelle taille prendre sur un nouveau modèle. Le service client compare le chaussant des deux modèles pour orienter le choix, en précisant si le nouveau modèle chausse plus juste ou plus large.",
+      "response_template": "Bonjour [Prénom],\n\nTout à fait, le [taille haute] ne sera pas trop grand : la [nouveau modèle] chausse légèrement plus ajusté que vos [modèle de référence], donc le [taille haute] sur ce modèle correspond en réalité à un volume proche de votre [taille habituelle] habituel. Vous ne serez pas dans une chaussure flottante.\n\nCela dit, si vous voyez que le [taille intermédiaire] est disponible, cette taille peut également convenir. Les deux options sont viables, c'est vraiment une question de préférence : un peu plus de place avec le [taille haute], ou un chaussant plus ajusté avec le [taille intermédiaire].\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\n[Prénom conseiller] de Max Sauveur",
+      "key_points": "Rassurer le client sur le fait qu'il ne sera pas dans une chaussure flottante. Expliquer la différence de chaussant entre les modèles de façon concrète. Proposer deux options viables si une demi-taille intermédiaire existe, en laissant le choix au client selon sa préférence (ajusté vs. légèrement plus d'espace). Ton direct, rassurant et sans jargon technique.",
+      "example_count": 3
     },
     {
       "topic": "conseil_pointure_cuir_chausse_juste",
@@ -655,6 +655,14 @@
       "situation": "Un client a commandé un modèle dans une taille indisponible. Le modèle chausse légèrement juste, ce qui rend la taille supérieure une alternative viable. Le service client propose soit un remboursement, soit l'envoi de la taille au-dessus avec possibilité de retour.",
       "response_template": "Bonjour [Prénom],\n\nJe vous contacte au sujet de votre commande #[NUMÉRO], et je vous dois des excuses sincères pour ce que je vais vous annoncer.\n\nSuite à une mauvaise synchronisation de nos stocks, nous nous retrouvons dans l'impossibilité de vous expédier [MODÈLE] en taille [TAILLE]. Ce modèle n'est plus disponible dans cette pointure et nous ne pouvons pas honorer votre commande dans les conditions prévues. Je suis vraiment désolé pour cette situation, qui n'aurait pas dû arriver.\n\nPour vous, deux options :\n\n**Option 1 : Remboursement intégral**\nNous procédons au remboursement complet de votre commande sur votre moyen de paiement initial, dans les prochains jours.\n\n**Option 2 : Échange vers le [TAILLE SUPÉRIEURE]**\nLe [MODÈLE] chausse légèrement juste, ce qui signifie que le [TAILLE SUPÉRIEURE] reste une option tout à fait viable pour vous. Si vous souhaitez tenter cette taille, nous pouvons vous l'expédier directement, et si elle ne convient pas, vous aurez bien entendu la possibilité de la retourner.\n\nDites-moi simplement quelle option vous convient le mieux, et je m'en occupe immédiatement.\n\nEncore toutes mes excuses pour ce contretemps.\n\n[Prénom agent] de Max Sauveur",
       "key_points": "Ton : excuses sincères, solution proactive. À utiliser uniquement quand le modèle chausse juste et que la taille supérieure est disponible. Toujours garantir la possibilité de retour si la taille supérieure ne convient pas. Justifier la recommandation de la taille supérieure par le fit du modèle.",
+      "example_count": 1
+    },
+    {
+      "topic": "statut_commande_et_changement_de_point_de_retrait",
+      "topic_label": "Statut commande et changement de point de retrait",
+      "situation": "Statut commande et changement de point de retrait",
+      "response_template": "Bonjour Cédric,\n\nMerci pour votre message.\n\nVotre point relais d'origine étant fermé, Chronopost ne peut pas y livrer votre colis, ce qui explique le message d'erreur lors du suivi.\n\nPour débloquer la situation, il nous faut un nouveau point relais Chrono2Shop de votre choix. Vous pouvez en trouver un près de chez vous via ce lien : https://www.chronopost.fr/expeditionAvanceeSec/ounoustrouver.html\n\nCommuniquez-nous l'adresse complète du point relais souhaité, et nous effectuerons le changement dans notre système. Si vous n'avez pas de préférence, Chronopost peut en sélectionner un automatiquement, dites-le nous et nous transmettons l'instruction.\n\nJohn de Max Sauveur",
+      "key_points": "",
       "example_count": 1
     },
     {
