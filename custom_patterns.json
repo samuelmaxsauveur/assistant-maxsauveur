@@ -210,6 +210,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_05_22_13_48_06",
+      "topic_label": "Form name Form submitted 2026-05-22 13:48:06",
+      "situation": "Form name Form submitted 2026-05-22 13:48:06",
+      "response_template": "Bonjour Pierre,\n\nRavi d'apprendre que vos Powell en marron grainé vous plaisent !\n\nPour la Wood : restez sur le 42. La Wood chausse plus ajusté que la Powell, donc si vos 42 sont légèrement larges sur la Powell, ils seront bien proportionnés sur la Wood. Pas besoin de descendre en 41,5.\n\nPour votre quête de derby en cuir gras : nous avons la Brogue, qui est justement en cuir gras. Elle pourrait correspondre à ce que vous cherchez.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nBonne journée,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fwd__commande__11591_confirm_e",
       "topic_label": "Fwd: Commande #11591 confirmée",
       "situation": "Fwd: Commande #11591 confirmée",
@@ -620,10 +628,10 @@
     {
       "topic": "retour_re_u___remboursement_en_cours",
       "topic_label": "Retour reçu — remboursement en cours",
-      "situation": "Retour reçu — remboursement en cours",
-      "response_template": "Bonjour Yann,\n\nNous avons bien reçu votre Paul Mocassin Cuir Noir et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème rencontré, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si un autre modèle vous fait de l'œil, on peut vous proposer une solution plus simple : nous vous envoyons un avoir d'une valeur de 370€ (soit 35€ offerts par la maison et vous gardez votre remise initiale de 45€) et nous prenons en charge les frais de livraison pour cet échange. Cela vous permet de trouver la pièce idéale sans aucun frais supplémentaire.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 5
+      "situation": "Le retour du client a été réceptionné et validé. Le remboursement est en cours sur le moyen de paiement initial. Le client a pu laisser un commentaire ou un retour sur le produit.",
+      "response_template": "Bonjour [Prénom],\n\nBien reçu, nous procédons au remboursement de [montant] € sur votre moyen de paiement initial. Comptez quelques jours ouvrés pour que la somme apparaisse.\n\nMerci pour votre retour sur [produit], et bonne journée.\n\n[Prénom conseiller] de Max Sauveur",
+      "key_points": "Ton chaleureux et concis. Confirmer le montant exact remboursé. Préciser le délai (quelques jours ouvrés). Remercier le client pour son retour produit si applicable. Ne pas s'étendre inutilement.",
+      "example_count": 6
     },
     {
       "topic": "re___d_but_de_la_fabrication_de_vos_moc_jagger_et_point_livr",
