@@ -106,14 +106,6 @@
       "example_count": 1
     },
     {
-      "topic": "conseil_pointure_largeur_pied_derby_golf",
-      "topic_label": "Conseil pointure – Pied large sur Derby Golf",
-      "situation": "Un client fournit sa mesure de pied en cm (longueur et largeur) pour la Derby Golf. Le pied est en limite haute de largeur et le client peut avoir une préoccupation sur le confort latéral. Le client a parfois déjà été conseillé par le passé.",
-      "response_template": "Bonjour [Prénom],\n\nAvec [X] cm de pied ([X+0,2] cm avec la marge), vous êtes effectivement dans la fourchette du [pointure] sur notre guide. La Derby Golf commence bien au [pointure], donc bonne nouvelle, vous êtes dans notre gamme.\n\n[Si historique : En [mois/année] vous m'aviez contacté avec [X ancien] cm de pied pour la même chaussure, et je vous avais orienté vers un [pointure]. Depuis, votre pied a donc légèrement évolué, et vous restez sur un [pointure].]\n\nSur la largeur : avec [X cm] de large, vous avez un pied assez large. La Derby Golf chausse légèrement plus ajusté que beaucoup de modèles, donc si vous avez l'habitude d'être à l'étroit dans les derbies, il vaut mieux en tenir compte. Cela dit, un [pointure] reste votre taille sur ce modèle, et le cuir s'assouplira avec le port.\n\nJe vous recommande donc le **[pointure]**.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\n[Prénom de l'équipe] de Max Sauveur",
-      "key_points": "Mentionner la marge ajoutée à la mesure brute (+0,2 cm). Signaler que la Derby Golf chausse légèrement ajusté, surtout pour les pieds larges. Rappeler que le cuir s'assouplira. Si historique client disponible, le mentionner pour créer un lien de confiance. Toujours conclure avec une recommandation franche et en gras.",
-      "example_count": 1
-    },
-    {
       "topic": "conseil_taille___sandales_fisherman",
       "topic_label": "Conseil taille - Sandales Fisherman",
       "situation": "Conseil taille - Sandales Fisherman",
@@ -136,14 +128,6 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour cette observation précise, vous avez bien repéré une coquille dans notre newsletter.\n\nLa fiche produit fait foi : les [Modèle] livrées à l'issue de cette précommande sont montées en [montage correct], en [nombre] étapes. La mention du [montage incorrect] en [nombre] étapes était une erreur dans la newsletter, qui sera corrigée dans les prochaines communications.\n\nIdem pour la date de livraison : la newsletter indiquait [date incorrecte], mais c'est bien [date correcte] que vous recevrez votre paire.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\n[Prénom équipe] de Max Sauveur",
       "key_points": "Reconnaître l'erreur clairement et sans détour. Préciser que la fiche produit fait foi. Corriger les deux points erronés (montage + date). Ton professionnel et rassurant. Inviter à poser d'autres questions avant commande.",
       "example_count": 3
-    },
-    {
-      "topic": "demande_de_pointure___fisherman",
-      "topic_label": "Demande de pointure / Fisherman",
-      "situation": "Demande de pointure / Fisherman",
-      "response_template": "Bonjour Marc-Antoine,\n\nAvec 27,7 cm de pied, vous correspondez à un 43 sur notre guide standard. Cependant, la Fisherman chausse légèrement grand, donc je vous recommande le 42.\n\nC'est la taille qui vous donnera le meilleur confort sur ce modèle.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
     },
     {
       "topic": "demande_renseignements___pointure___pr__commande",
@@ -558,6 +542,14 @@
       "topic_label": "Re: Form name Form submitted 2026-05-21 18:52:12",
       "situation": "Re: Form name Form submitted 2026-05-21 18:52:12",
       "response_template": "Bonjour Henri,\n\nMerci pour ces précisions et pour le retour sur Istanbul, c'est exactement le genre d'usage pour lequel les Wayne ont été conçues !\n\nNous avons bien pris note de vos arguments, notamment le bilan podologique. Cela dit, nous produisons et vendons ce modèle depuis plusieurs années et ce phénomène de languette déviée n'est pas un problème que nous observons en fabrication ni sur les retours d'autres clients. Si quelque chose dévie la languette sur votre paire, nous sommes convaincus que cela tient à un facteur propre au port de cette paire spécifique, même sans anomalie de démarche cliniquement mesurable.\n\nNous comprenons tout à fait que vous souhaitiez garder vos Wayne, et nous en sommes ravis. La solution la plus adaptée reste un cordonnier qui pourra examiner la languette en direct et proposer une retouche ciblée, que ce soit l'ajout d'un passant de maintien ou un léger réajustement de la couture. C'est précisément pour ce type d'ajustement qu'un professionnel en atelier est plus à même d'intervenir efficacement que nous à distance.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__form_name_form_submitted_2026_05_24_20_36_03",
+      "topic_label": "Re: Form name Form submitted 2026-05-24 20:36:03",
+      "situation": "Re: Form name Form submitted 2026-05-24 20:36:03",
+      "response_template": "Bonjour Karim,\n\nPour le Miller, le site conseille effectivement de prendre une taille en dessous, ce qui vous amènerait au **42**.\n\nMême logique que pour les autres modèles :\n\n- Sans semelles orthopédiques : **42**\n- Avec semelles orthopédiques : **43**\n\nVous connaissez maintenant la règle par cœur !\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
