@@ -266,6 +266,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_05_24_20_36_03",
+      "topic_label": "Form name Form submitted 2026-05-24 20:36:03",
+      "situation": "Form name Form submitted 2026-05-24 20:36:03",
+      "response_template": "Bonjour Karim,\n\nRavi de vous revoir !\n\nAvec 26,9 cm de pied, vous êtes en **42** sur notre guide. Cela dit, comme nous en avions parlé en janvier, si vous utilisez des semelles orthopédiques, restez sur le **43** pour conserver le bon volume interne.\n\nSans semelles orthopédiques : **42**\nAvec semelles orthopédiques : **43**\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fw__commande__12087_confirm_e",
       "topic_label": "Fw: Commande #12087 confirmée",
       "situation": "Fw: Commande #12087 confirmée",
