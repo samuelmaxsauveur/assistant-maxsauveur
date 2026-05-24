@@ -485,9 +485,9 @@
       "topic": "re__commande__10212_d_faut",
       "topic_label": "Re: Commande #10212 défaut",
       "situation": "Re: Commande #10212 défaut",
-      "response_template": "Bonjour Medart,\n\nMerci pour vos photos et pour nous avoir alertés.\n\nEn effet, un décollement du talon après quelques ports n'est pas normal et nous le prenons en charge. Ce type de défaut peut malheureusement survenir sur une fabrication artisanale, notamment sur les parties faites main. Nous allons vous la réparer.\n\nVoici la procédure à suivre :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez la raison : \"défaut fabrication\")\n2. Emballez soigneusement la paire avec le bon de retour à l'intérieur\n3. Expédiez le colis à notre adresse logistique (nous prenons en charge les frais de retour) :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nTélécharger votre étiquette : https://wing-labelling-system.s3.eu-west-3.amazonaws.com/52d660c3-ca88-4c89-8407-47cb6498562c/LABEL/2026-05-22/LABEL-5c995f26-dac1-4b76-9e32-c1243492525e-1779436006057-8R49851474493.pdf\n\n\nUne fois reçue, votre paire sera transmise à notre atelier pour réparation. Comptez 6 à 8 semaines maximum pour le traitement.\n\nN'hésitez pas si vous avez des questions.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Medart,\n\nMerci pour votre retour. Malheureusement, l'étiquette que nous avons générée est uniquement valable pour une expédition depuis la France, nous ne pouvons pas en créer une pour bpost.\n\nPour le retour depuis Bruxelles, vous devrez donc expédier la paire à vos frais à notre adresse logistique :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\nFrance\n\nN'oubliez pas d'inclure le bon de retour complété (https://maxsauveur.com/pages/livraison-et-retour, raison : \"défaut fabrication\"). Conservez bien votre preuve d'envoi, elle pourra être utile en cas de question sur le traitement.\n\nDès réception, votre paire est transmise à notre atelier pour réparation. Comptez 6 à 8 semaines.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 1
+      "example_count": 2
     },
     {
       "topic": "re__commande__11590_confirm_e",
@@ -912,6 +912,14 @@
       "response_template": "Bonjour [Prénom],\n\nParfait, merci pour votre retour rapide !\n\nLe plus simple, comme vous allez recommander une paire en même temps, est d'attendre de recevoir votre avoir. Cela vous évitera de régler deux fois les frais de livraison : vous commandez tout en une fois avec le code.\n\nDès réception de votre colis, je m'occupe de générer votre avoir et on finalise ça ensemble.\n\n[Prénom] de Max Sauveur",
       "key_points": "Ton rassurant et pratique. Conseil proactif pour éviter des frais doubles. Engagement clair : le SA génère l'avoir dès réception du retour. Formulation 'on finalise ça ensemble' pour maintenir le lien et rassurer le client.",
       "example_count": 3
+    },
+    {
+      "topic": "echange_taille_depot_direct_impossible",
+      "topic_label": "Échange de taille – dépôt en direct refusé, procédure retour en ligne uniquement",
+      "situation": "Un client souhaite déposer sa paire en mains propres (en boutique ou directement) pour effectuer un échange de taille. Max Sauveur n'ayant pas de boutique physique, il faut l'informer que la procédure se fait uniquement en ligne et par voie postale.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message.\n\nConcernant le dépôt en direct : nous n'avons pas de boutique physique, la vente et les retours se font uniquement en ligne. Il ne nous est donc pas possible de récupérer votre paire en mains propres, même à [Ville].\n\nPour l'échange vers le [Taille souhaitée], voici la procédure :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique (frais de retour à votre charge) :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander la [Modèle] en taille [Taille souhaitée].\n\nN'hésitez pas si vous avez des questions.\n\nJohn de Max Sauveur",
+      "key_points": "Rappeler clairement l'absence de boutique physique. Préciser que les frais de retour sont à la charge du client. Indiquer la taille souhaitée et le modèle concerné dans la réponse. L'avoir est émis après réception et contrôle du retour. Toujours inclure l'adresse logistique complète et le lien vers le bon de retour.",
+      "example_count": 1
     },
     {
       "topic": "commande__12019_taille___changer",
