@@ -82,6 +82,14 @@
       "example_count": 2
     },
     {
+      "topic": "conseil_de_pointure",
+      "topic_label": "Conseil de pointure",
+      "situation": "Conseil de pointure",
+      "response_template": "Bonjour Vincent,\n\nMerci pour ces mesures précises, et ne vous en faites pas, des pieds légèrement asymétriques c'est très courant !\n\nVotre raisonnement est bon sur le principe, mais il y a un élément important à prendre en compte : la Wood chausse plus ajusté que la Fisherman. Autrement dit, si votre 42 vous va bien sur la Fisherman, restez sur le 42 pour la Wood. Descendre en 41 serait trop juste pour vous.\n\nJe vous recommande donc le 42.\n\nBonne commande et n'hésitez pas si vous avez d'autres questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "conseil_pointure",
       "topic_label": "Conseil pointure – Aide au choix de taille selon mesure en cm",
       "situation": "Un client fournit la mesure de son pied en centimètres et demande quelle taille commander. Le service client lui indique la pointure correspondante selon le guide, puis invite le client à préciser le modèle visé pour affiner la recommandation selon le chaussant spécifique.",
@@ -840,6 +848,14 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et votre patience.\n\nVos Moc Jagger arrivent chez nous [délai arrivée entrepôt], et nous prévoyons de les expédier dans la foulée. La livraison estimée se situe autour du [date estimée], sous réserve que les jours fériés et les transporteurs ne viennent pas perturber l'acheminement.\n\nDès que votre colis sera parti, vous recevrez un email avec votre lien de suivi Chronopost pour localiser votre point relais et suivre votre paire en temps réel.\n\nOn fait au plus vite de notre côté.\n\n[Prénom conseiller] de Max Sauveur",
       "key_points": "Remercier le client pour sa patience. Donner une fourchette de dates précise mais nuancée (mentionner les aléas potentiels). Rappeler systématiquement l'envoi automatique du lien de suivi Chronopost à l'expédition. Ton engagé et humain ('On fait au plus vite de notre côté').",
       "example_count": 2
+    },
+    {
+      "topic": "suivi_precommande_jagger_contrainte_depart",
+      "topic_label": "Suivi précommande Moc Jagger – contrainte de départ client",
+      "situation": "Un client en précommande des Moc Jagger relance sur sa date de réception et mentionne une contrainte de départ imminente. Le service client rassure sur le délai estimé et explique les facteurs hors de son contrôle (jours fériés, production artisanale).",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre retour et votre patience.\n\nVotre commande #[NUMÉRO] est en cours de préparation et la livraison est estimée à la semaine prochaine, ce qui vous laisse une marge confortable avant votre départ.\n\nConcernant les délais : les restrictions de circulation imposées aux transporteurs lors des jours fériés ne sont pas connues en avance par nos partenaires logistiques, qui établissent leurs plannings indépendamment. À cela s'ajoutent des délais de production qui dépendent de nombreux facteurs que nous ne maîtrisons pas entièrement. Ce n'est pas une excuse, mais c'est la réalité de ce type de précommande artisanale, et nous comprenons que cela puisse être frustrant lorsqu'on s'est engagé sur la base d'une estimation.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez un email avec votre lien de suivi Chronopost. Pensez également à vérifier vos courriers indésirables.\n\n[Prénom de l'équipe] de Max Sauveur",
+      "key_points": "Ton empathique mais transparent. Reconnaître la frustration sans se dédouaner. Expliquer les deux facteurs de délai : jours fériés (transporteurs) + production artisanale. Confirmer l'envoi automatique du lien Chronopost. Rappeler de vérifier les spams. Ne pas promettre une date précise, utiliser 'estimée à la semaine prochaine'.",
+      "example_count": 1
     },
     {
       "topic": "suivi_precommande_jagger",
