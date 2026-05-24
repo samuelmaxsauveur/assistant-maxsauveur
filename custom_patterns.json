@@ -674,6 +674,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__votre_commande_max_sauveur___information_importante",
+      "topic_label": "Re: Votre commande Max Sauveur — information importante",
+      "situation": "Re: Votre commande Max Sauveur — information importante",
+      "response_template": "Bonjour Antoine,\n\nMerci pour votre retour, et pas de souci : on part sur l'avoir majoré de 469€ avec les frais de livraison offerts.\n\nPour votre information, les Logger Boots devraient revenir en stock en novembre. Votre avoir est valable 6 mois, ce qui vous laisse le temps de patienter si vous souhaitez repartir sur ce modèle, ou de jeter votre dévolu sur un autre modèle d'ici là.\n\nJe génère votre code et vous le transmets dans les prochaines heures.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__vous_avez_rencontr__un_probl_me__",
       "topic_label": "Re: Vous avez rencontré un problème ?",
       "situation": "Re: Vous avez rencontré un problème ?",
