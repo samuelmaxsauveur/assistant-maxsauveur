@@ -394,6 +394,14 @@
       "example_count": 1
     },
     {
+      "topic": "question_de_taille_pointure_chaussures_bateau",
+      "topic_label": "Question de taille pointure chaussures bateau",
+      "situation": "Question de taille pointure chaussures bateau",
+      "response_template": "Bonjour,\n\nMerci pour votre message et la recommandation de votre ami !\n\nPour vous orienter sur la pointure : Le Boat chausse légèrement grand. Avec vos références (44 chez Aigle, 10/10.5 chez Caulaincourt), vous êtes typiquement dans un profil 43-44. Le 45 serait probablement trop grand pour vous sur ce modèle.\n\nMalheureusement, il n'y a pas de réassort prévu sur Le Boat en blanc, et le 44 n'est plus disponible dans ce coloris. En revanche, le 44 existe bien sur ce modèle dans d'autres coloris : marine, marron et léopard.\n\nSi l'un de ces coloris vous tente, le 44 sera votre taille sur Le Boat. N'hésitez pas à me dire si vous souhaitez plus de détails sur l'un d'eux.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "question_sandale",
       "topic_label": "Question sandale",
       "situation": "Question sandale",
