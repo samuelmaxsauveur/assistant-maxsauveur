@@ -274,6 +274,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_05_23_11_04_26",
+      "topic_label": "Form name Form submitted 2026-05-23 11:04:26",
+      "situation": "Form name Form submitted 2026-05-23 11:04:26",
+      "response_template": "Bonjour Grégoire,\n\nMerci pour votre message.\n\nConcernant le dépôt en direct : nous n'avons pas de boutique physique, la vente et les retours se font uniquement en ligne. Il ne nous est donc pas possible de récupérer votre paire en mains propres, même à Aix-en-Provence.\n\nPour l'échange vers le 43, voici la procédure :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique (frais de retour à votre charge) :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander la Fisherman en taille 43.\n\n\nN'hésitez pas si vous avez des questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_05_24_20_36_03",
       "topic_label": "Form name Form submitted 2026-05-24 20:36:03",
       "situation": "Form name Form submitted 2026-05-24 20:36:03",
