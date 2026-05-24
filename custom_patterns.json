@@ -506,6 +506,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__commande__11639_confirm_e",
+      "topic_label": "Re: Commande #11639 confirmée",
+      "situation": "Re: Commande #11639 confirmée",
+      "response_template": "Bonsoir Tom,\n\nVotre commande est en cours de préparation et sera expédiée très prochainement. La livraison est estimée semaine prochaine , en point relais Station Total Beaumont à Roubaix.\n\nDès que le colis est pris en charge par le transporteur, vous recevrez un email avec votre lien de suivi Chronopost.\n\nBelle soirée à vous également.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__12022___erreur_et_question_taille_mocassin_pau",
       "topic_label": "Re: Commande #12022 - erreur et question taille mocassin Paul",
       "situation": "Re: Commande #12022 - erreur et question taille mocassin Paul",
