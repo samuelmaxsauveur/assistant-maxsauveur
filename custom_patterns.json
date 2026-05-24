@@ -66,6 +66,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__commande__11639_confirm_e",
+      "topic_label": "Commande en cours de préparation – expédition imminente avec point relais",
+      "situation": "Un client s'interroge sur le statut de sa commande. La commande est en cours de préparation et sera expédiée prochainement. La livraison est prévue en point relais. Le client attend une confirmation et un lien de suivi.",
+      "response_template": "Bonsoir [Prénom],\n\nVotre commande est en cours de préparation et sera expédiée très prochainement. La livraison est estimée semaine prochaine, en point relais [Nom du point relais] à [Ville].\n\nDès que le colis est pris en charge par le transporteur, vous recevrez un email avec votre lien de suivi Chronopost.\n\nBelle soirée à vous également.\n\nJohn de Max Sauveur",
+      "key_points": "Ton rassurant et cordial. Préciser le point relais et la ville. Indiquer que le lien de suivi Chronopost sera envoyé automatiquement dès prise en charge par le transporteur. Ne pas donner de date précise, mais une estimation (ex : semaine prochaine).",
+      "example_count": 2
+    },
+    {
       "topic": "confirmation_taille_fisherman",
       "topic_label": "Confirmation taille Fisherman – échange pour bonne taille",
       "situation": "Un client a commandé le modèle Fisherman et estime que la taille reçue est trop grande. Il souhaite savoir quelle taille commander en échange. Le service client l'oriente selon le ressenti (légèrement grand vs vraiment trop large) et confirme la procédure d'avoir après retour.",
@@ -506,14 +514,6 @@
       "example_count": 1
     },
     {
-      "topic": "re__commande__11639_confirm_e",
-      "topic_label": "Re: Commande #11639 confirmée",
-      "situation": "Re: Commande #11639 confirmée",
-      "response_template": "Bonsoir Tom,\n\nVotre commande est en cours de préparation et sera expédiée très prochainement. La livraison est estimée semaine prochaine , en point relais Station Total Beaumont à Roubaix.\n\nDès que le colis est pris en charge par le transporteur, vous recevrez un email avec votre lien de suivi Chronopost.\n\nBelle soirée à vous également.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "re__commande__12022___erreur_et_question_taille_mocassin_pau",
       "topic_label": "Re: Commande #12022 - erreur et question taille mocassin Paul",
       "situation": "Re: Commande #12022 - erreur et question taille mocassin Paul",
@@ -526,6 +526,14 @@
       "topic_label": "Re: Commande #12132",
       "situation": "Re: Commande #12132",
       "response_template": "Bonjour Michael,\n\nPas de souci, nous allons traiter ça.\n\nDès réception et contrôle, nous traiterons votre demande. Si vous optez pour l'avoir, il sera valable 6 mois sur l'ensemble de notre collection, ce qui vous permettra de l'utiliser pour votre prochain achat de chaussures et nous vous offrons les frais de port sur votre prochaine commande.\n\nN'hésitez pas à nous confirmer votre choix (remboursement ou avoir) pour qu'on prépare tout dans les meilleures conditions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__commande_12164",
+      "topic_label": "Re: Commande 12164",
+      "situation": "Re: Commande 12164",
+      "response_template": "Bonjour Brieuc,\n\nMerci pour le retour rapide, nous devrions bien recevoir le colis mardi.\n\nConcernant votre demande d'une nouvelle paire plutôt qu'une réparation : nous allons analyser la paire à réception et nous ferons au mieux selon ce que nous constatons. Nous ne pouvons pas vous promettre un renvoi direct à ce stade, mais nous prenons bien en compte votre situation (paire jamais portée, défaut à l'ouverture, envie d'en profiter cet été) et nous vous donnerons une réponse claire dès l'examen effectué.\n\nBonne journée à vous également.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
