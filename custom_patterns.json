@@ -74,6 +74,14 @@
       "example_count": 2
     },
     {
+      "topic": "re__re__lien_vers_la_commande__11451_refus_douanes",
+      "topic_label": "Commande refusée par les douanes – réexpédition conditionnelle",
+      "situation": "Une commande a été refusée par les douanes et retournée à l'expéditeur. Le client n'a pas répondu au premier contact. Le service client relance pour obtenir une adresse de livraison valide avant de réexpédier.",
+      "response_template": "Hi [Prénom],\n\nSorry for the delay in getting back to you.\n\nAs mentioned in our previous email from [date], your order #[numéro] was returned to us after being refused by customs. We reached out at the time but didn't hear back.\n\nTo reship your order, please confirm a valid delivery address. Note that customs fees and reshipping costs would be on your end.\n\nLooking forward to hearing from you.\n\n[Prénom] – Customer Service – Max Sauveur",
+      "key_points": "Ton professionnel et factuel. Rappeler la date du premier contact pour situer le contexte. Indiquer clairement que les frais de douane et de réexpédition sont à la charge du client. Conditionner la réexpédition à la confirmation d'une adresse valide. Ne pas promettre de prise en charge des frais supplémentaires.",
+      "example_count": 1
+    },
+    {
       "topic": "confirmation_taille_fisherman",
       "topic_label": "Confirmation taille Fisherman – échange pour bonne taille",
       "situation": "Un client a commandé le modèle Fisherman et estime que la taille reçue est trop grande. Il souhaite savoir quelle taille commander en échange. Le service client l'oriente selon le ressenti (légèrement grand vs vraiment trop large) et confirme la procédure d'avoir après retour.",
@@ -936,6 +944,14 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et désolé pour l'attente.\n\nBonne nouvelle : vos Moc Jagger arrivent chez nous cette semaine, et nous prévoyons de les expédier dans la foulée. La livraison estimée se situe autour du [date estimée], sous réserve que les jours fériés et les ponts de fin mai ne ralentissent pas les transporteurs.\n\nOn fait tout notre possible pour que vous les ayez à temps pour [occasion mentionnée par le client]. Dès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost.\n\n[Prénom de l'agent] de Max Sauveur",
       "key_points": "Ton rassurant et chaleureux. Mentionner explicitement la contrainte du client si elle a été exprimée (ex : mariage). Préciser la nuance sur les jours fériés/ponts qui peuvent impacter la livraison. Confirmer que le lien de suivi Chronopost sera envoyé à l'expédition. Ne pas promettre une date ferme, utiliser 'autour du' ou 'estimée'.",
       "example_count": 2
+    },
+    {
+      "topic": "taille_sandale_fisher",
+      "topic_label": "Taille Sandale Fisher",
+      "situation": "Taille Sandale Fisher",
+      "response_template": "Bonjour Chris,\n\nAvec 26,4 cm de pied, vous êtes en **41** sur notre guide. La Fisherman chausse légèrement grand, donc je vous recommande le **40**.\n\nLe 41 serait trop grand pour vous sur ce modèle.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
     },
     {
       "topic": "defaut_apparent_matiere_naturelle_cuir_chevre",
