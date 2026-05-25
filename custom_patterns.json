@@ -116,10 +116,10 @@
     {
       "topic": "conseil_pointure_cuir_chausse_juste",
       "topic_label": "Conseil pointure – Cuir chausse juste au départ (assouplissement normal)",
-      "situation": "Un client demande conseil sur sa pointure pour un modèle en cuir (ex : mocassin Paul). Il fournit sa mesure en cm et/ou ses références dans d'autres marques. Le modèle chausse juste au départ, ce qui peut inquiéter le client.",
-      "response_template": "Bonjour [Prénom],\n\nAvec [X] cm de pied ([X+marge] cm avec la marge), vous êtes en **[taille]** sur notre guide.\n\nLe [modèle] chausse juste au départ, ce qui est tout à fait normal : le cuir et la semelle en liège s'assouplissent avec le port et se moulent progressivement à votre pied. Vos références [marque] en [type de chaussure] ([taille habituelle]) confirment que vous êtes bien dans le profil du [taille] sur ce type de chaussure.\n\nJe vous recommande donc le [taille].\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\n[Prénom agent] de Max Sauveur",
-      "key_points": "Rassurer le client sur le fait que serrer au départ est normal pour le cuir. S'appuyer sur ses références de pointure dans d'autres marques pour valider la recommandation. Ton direct et pédagogique. Toujours conclure avec une invitation à poser d'autres questions.",
-      "example_count": 1
+      "situation": "Un client demande conseil sur sa pointure pour un modèle en cuir (ex : mocassin Paul). Il a essayé une taille qui était trop grande et hésite sur la taille en dessous. Le cuir chausse naturellement juste au départ avant assouplissement.",
+      "response_template": "Bonjour [Prénom],\n\nBonne question. Le [Modèle] chausse juste au départ, donc si votre [taille habituelle] était trop grand chez nous, le [taille inférieure] est effectivement la bonne direction.\n\n[Prénom] de Max Sauveur",
+      "key_points": "Ton direct et rassurant. Confirmer explicitement que le cuir chausse juste au départ (c'est normal). Valider le raisonnement du client si sa taille habituelle était trop grande. Formulation 'la bonne direction' pour rassurer sans sur-promettre.",
+      "example_count": 2
     },
     {
       "topic": "conseil_taille___sandales_fisherman",
@@ -622,6 +622,14 @@
       "topic_label": "Re: Mocassins cuir (Paul)",
       "situation": "Re: Mocassins cuir (Paul)",
       "response_template": "Bonjour Corentin,\n\nParfait, le Paul Mocassin Cuir Marron est un excellent choix !\n\nAvec vos 26,2 cm, je vous recommande le **41**. Le Paul chausse juste au début, c'est tout à fait normal : le cuir et la semelle en liège s'assouplissent avec le port et se moulent progressivement à votre pied. Comptez quelques sorties avant d'atteindre le confort optimal.\n\nBonne commande !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__paire_de_derby_golf",
+      "topic_label": "Re: Paire de derby golf",
+      "situation": "Re: Paire de derby golf",
+      "response_template": "Bonjour Fabrice,\n\nPas de souci pour la coquille ! Dans ce cas, la situation est encore plus simple : avec 24,5 cm de pied, vous êtes bien en **38** sur notre guide, mais la Derby Golf commence au 39, et c'est exactement la taille que nous vous avions recommandée en 2024.\n\nLe conseil reste donc le même : **39**. Et puisque vous avez un pied large, gardez en tête que le cuir s'assouplira avec le port.\n\nBonne journée à vous,\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
