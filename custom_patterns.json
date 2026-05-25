@@ -554,6 +554,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__demande_de_pointure___fisherman",
+      "topic_label": "Re: Demande de pointure / Fisherman",
+      "situation": "Re: Demande de pointure / Fisherman",
+      "response_template": "Bonjour Marc-Antoine,\n\nVos références sont utiles mais difficiles à comparer directement : les boots ont une construction différente des sandales.\n\nEn partant de vos mesures (27,7 cm), le 42 reste ma recommandation principale sur la Fisherman, qui chausse grand. Le 43 peut aussi convenir si vous préférez un peu plus de volume, notamment parce que vos Dakota en 43 vous semblent légèrement petites (ce qui suggère que vous êtes peut-être en haut de la fourchette du 42).\n\nEn résumé : si vous voulez un chaussant ajusté, prenez le 42. Si vous préférez avoir de la marge et que vos pieds ont tendance à gonfler, le 43 est une option viable. À vous de choisir selon votre ressenti habituel.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__d_but_de_la_fabrication_de_vos_moc_jagger_et_point_livra",
       "topic_label": "Re: Début de la fabrication de vos Moc Jagger et point livraison",
       "situation": "Re: Début de la fabrication de vos Moc Jagger et point livraison",
