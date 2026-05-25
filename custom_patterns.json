@@ -690,6 +690,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__demande_renseignements___pointure___pr__commande",
+      "topic_label": "Re: RE: Demande renseignements - Pointure / pré-commande",
+      "situation": "Re: RE: Demande renseignements - Pointure / pré-commande",
+      "response_template": "Bonjour Christophe,\n\nRavi que la paire soit arrivée rapidement ! Pour la sensation en largeur, pas d'inquiétude, le cuir et la semelle en liège vont s'assouplir progressivement avec le port. Comptez quelques sorties pour atteindre le confort optimal.\n\nConcernant le poinçonnement sur le cuir, nous avons bien noté le défaut. Pour y remédier, nous vous proposons deux options :\n\n- Un dédommagement de 20€ sous forme de code promo, si vous souhaitez garder la paire telle quelle.\n- Un échange de la paire, si vous préférez repartir sur un modèle sans défaut.\n\nDites-nous simplement ce que vous préférez, et nous nous en occupons immédiatement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__avis",
       "topic_label": "Re: Re: Avis",
       "situation": "Re: Re: Avis",
