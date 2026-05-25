@@ -298,6 +298,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_05_25_08_40_56",
+      "topic_label": "Form name Form submitted 2026-05-25 08:40:56",
+      "situation": "Form name Form submitted 2026-05-25 08:40:56",
+      "response_template": "Bonjour Arnaud,\n\nMerci pour votre message !\n\nMalheureusement, nous n'avons plus de boutique physique. La vente se fait uniquement en ligne sur maxsauveur.com, même pour les clients proches de Marseille.\n\nSi vous avez des questions sur les modèles, les pointures ou un produit en particulier, je suis là pour vous aider à faire le bon choix avant de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fw__commande__12087_confirm_e",
       "topic_label": "Fw: Commande #12087 confirmée",
       "situation": "Fw: Commande #12087 confirmée",
