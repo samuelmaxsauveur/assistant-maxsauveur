@@ -10,14 +10,6 @@
       "example_count": 1
     },
     {
-      "topic": "carte_cadeau_utilisable_sandales_fisherman",
-      "topic_label": "Carte cadeau – utilisation sur sandales Fisherman",
-      "situation": "Un client souhaite savoir si une carte cadeau peut être utilisée pour commander les sandales Fisherman. Il veut confirmer la compatibilité avant de passer commande.",
-      "response_template": "Bonjour [Prénom],\n\nAvec plaisir ! La carte cadeau est utilisable sur nos chaussures et ceintures.\n\nLes sandales Fisherman sont bien disponibles sur le site, donc oui, vous pouvez tout à fait l'utiliser pour en commander une paire. Si vous avez un doute sur la taille à prendre, n'hésitez pas à me donner la mesure de votre pied en cm, je vous oriente.\n\n[Signature]",
-      "key_points": "Confirmer que la carte cadeau couvre chaussures et ceintures. Mentionner la disponibilité du modèle visé. Proposer proactivement un conseil de taille si besoin. Ton chaleureux et proactif.",
-      "example_count": 1
-    },
-    {
       "topic": "re__re__re__max_sauveur___service_client",
       "topic_label": "Clôture de dossier – problème résolu (mocassins)",
       "situation": "Le client confirme que le problème est résolu et que le produit (mocassin) a bien été reçu et convient. Le service client conclut la conversation de manière chaleureuse.",
@@ -168,6 +160,14 @@
       "response_template": "Bonjour [Prénom],\n\nAvec [X] cm de pied, vous êtes en **[taille guide]** sur notre guide. La Fisherman chausse légèrement grand, donc je vous recommande le **[taille guide - 1]**.\n\nLe [taille guide] serait trop grand pour vous sur ce modèle.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
       "key_points": "Toujours indiquer d'abord la taille du guide, puis la taille recommandée (une taille en dessous). Justifier clairement pourquoi : le modèle chausse légèrement grand. Formulation directe et rassurante. Inviter à poser d'autres questions avant commande.",
       "example_count": 2
+    },
+    {
+      "topic": "re__c_est_ouvert___la_wood___239_",
+      "topic_label": "Correction coquilles newsletter – Wood (montage et date de livraison)",
+      "situation": "Un client a repéré des incohérences entre une newsletter et la fiche produit officielle, notamment sur le type de montage (Blake vs Goodyear stormwelt) et la date de livraison estimée (fin juillet vs mi-septembre). Le service client doit corriger les informations et rassurer le client.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour cette observation précise, vous avez bien repéré une coquille dans notre newsletter.\n\nLa fiche produit fait foi : les [Modèle] livrées à l'issue de cette précommande sont montées en [montage correct], en [nombre] étapes. La mention du [montage incorrect] en [nombre] étapes était une erreur dans la newsletter, qui sera corrigée dans les prochaines communications.\n\nIdem pour la date de livraison : la newsletter indiquait [date incorrecte], mais c'est bien [date correcte] que vous recevrez votre paire.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\n[Prénom équipe] de Max Sauveur",
+      "key_points": "Reconnaître l'erreur clairement et sans détour. Préciser que la fiche produit fait foi. Corriger les deux points erronés (montage + date). Ton professionnel et rassurant. Inviter à poser d'autres questions avant commande.",
+      "example_count": 3
     },
     {
       "topic": "demande_renseignements___pointure___pr__commande",
@@ -602,14 +602,6 @@
       "example_count": 1
     },
     {
-      "topic": "re__c_est_ouvert___la_wood___239_",
-      "topic_label": "Re: C'est ouvert ! la Wood à 239€",
-      "situation": "Re: C'est ouvert ! la Wood à 239€",
-      "response_template": "Bonjour,\n\nC'est même l'inverse : la Wood chausse plus ajusté que la Peter. Donc si votre Peter en 42 est déjà un peu courte avec vos semelles orthopédiques, je vous recommande de prendre le 43 sur la Wood.\n\nSans semelles orthopédiques, le 42 aurait suffi. Avec, le 43 est clairement la bonne option.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande !\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 4
-    },
-    {
       "topic": "re__ceci_est_un___",
       "topic_label": "Re: Ceci est un...",
       "situation": "Re: Ceci est un...",
@@ -869,9 +861,9 @@
       "topic": "re__re__max_sauveur___service_client",
       "topic_label": "Re: Re: Max Sauveur — Service Client",
       "situation": "Re: Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Éric,\n\nMerci pour votre persistance et désolé pour ce désagrément. Nous avons vérifié le code de notre côté et généré un nouveau code avoir à la place :\n\n**V3ZFK1A9GTWG**\n\nSaisissez-le directement dans le champ prévu à cet effet dans votre panier, sans aucun caractère supplémentaire, et il devrait fonctionner normalement.\n\nN'hésitez pas à nous revenir si vous rencontrez le moindre souci au moment de passer commande.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Julien,\n\nBien reçu, nous procédons au remboursement de 149€ sur votre moyen de paiement initial. Comptez quelques jours ouvrés pour que le montant apparaisse.\n\nEt si l'envie d'un Deck vous reprend un jour, n'hésitez pas à revenir vers nous pour le conseil de taille.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 3
+      "example_count": 4
     },
     {
       "topic": "re__re__re__form_name_form_submitted_2026_05_18_15_07_57",
@@ -978,14 +970,6 @@
       "example_count": 1
     },
     {
-      "topic": "re__un_mod_le__conomique_tr_s_avantageux",
-      "topic_label": "Re: Un modèle économique très avantageux",
-      "situation": "Re: Un modèle économique très avantageux",
-      "response_template": "Bonjour Jim,\n\nMalheureusement, la Fisherman en cuir grainé n'est plus disponible en 46 pour le moment.\n\nBonne nouvelle cependant : la Fisherman chausse très grand, ce qui signifie que le 45 peut tout à fait faire l'affaire pour vous. C'est une option sérieuse à envisager.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande !\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "re__une_commande__12009_en_retour",
       "topic_label": "Re: Une commande #12009 en retour",
       "situation": "Re: Une commande #12009 en retour",
@@ -1016,14 +1000,6 @@
       "response_template": "Bonjour Christophe,\n\nMerci pour votre message.\n\nPouvez-vous essayer à nouveau ?\n\nPour les frais de livraison, voici comment procéder : passez votre commande normalement avec votre code avoir de 159€, et nous effectuerons le remboursement des frais de port manuellement dès que la commande sera validée de notre côté.\n\nCordialement,\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 2
-    },
-    {
-      "topic": "re___change_commande__12078",
-      "topic_label": "Re: Échange Commande #12078",
-      "situation": "Re: Échange Commande #12078",
-      "response_template": "Bonjour Chris,\n\nCe que vous décrivez est tout à fait rassurant : le pied ne glisse pas vers l'avant, la chaussure est bien fittée sur votre pied fort, et le léger soulèvement au talon n'est présent que sur l'autre pied. C'est typiquement lié à une asymétrie naturelle entre les deux pieds, très courante, et non à une question de taille.\n\nPasser en 41,5 ne changerait probablement pas grand chose sur ce point précis, et vous risqueriez de vous retrouver trop juste sur votre pied fort.\n\nMon conseil : gardez le 42. Avec le port, le cuir et la semelle en liège vont se mouler à vos deux pieds, et ce léger décalage s'atténuera naturellement.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
     },
     {
       "topic": "re___tat_de_l__change_pour_la_commande__11992",
