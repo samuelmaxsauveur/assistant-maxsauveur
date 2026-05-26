@@ -914,6 +914,14 @@
       "example_count": 8
     },
     {
+      "topic": "re__statut_commande_et_changement_de_point_de_retrait",
+      "topic_label": "Re: Statut commande et changement de point de retrait",
+      "situation": "Re: Statut commande et changement de point de retrait",
+      "response_template": "Bonjour Cédric,\n\nC'est fait, nous venons de modifier votre point relais de livraison dans notre système :\n\n**CARREFOUR CITY (6967Y)**\n22 avenue du Consul Général Nordling\n93190 Livry-Gargan\n\nNotez que cette modification n'apparaîtra pas dans votre email de confirmation initial, mais elle est bien prise en compte et sera visible sur votre lien de suivi dès l'expédition.\n\nVous recevrez un email avec votre lien de suivi Chronopost dès que votre colis sera pris en charge par le transporteur.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__suite_message_avec_john_max_sauveur",
       "topic_label": "Re: Suite message avec John max sauveur",
       "situation": "Re: Suite message avec John max sauveur",
