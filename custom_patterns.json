@@ -362,6 +362,14 @@
       "example_count": 2
     },
     {
+      "topic": "form_name_form_submitted_2026_05_26_14_35_24",
+      "topic_label": "Form name Form submitted 2026-05-26 14:35:24",
+      "situation": "Form name Form submitted 2026-05-26 14:35:24",
+      "response_template": "Bonjour Jean-Claude,\n\nAvec plaisir ! La carte cadeau est utilisable sur nos chaussures et ceintures.\n\nLes sandales Fisherman sont bien disponibles sur le site, donc oui, vous pouvez tout à fait l'utiliser pour en commander une paire. Si vous avez un doute sur la taille à prendre, n'hésitez pas à me donner la mesure de votre pied en cm, je vous oriente.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fw__commande__12087_confirm_e",
       "topic_label": "Fw: Commande #12087 confirmée",
       "situation": "Fw: Commande #12087 confirmée",
