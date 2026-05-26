@@ -330,6 +330,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_05_26_11_41_14",
+      "topic_label": "Form name Form submitted 2026-05-26 11:41:14",
+      "situation": "Form name Form submitted 2026-05-26 11:41:14",
+      "response_template": "Bonjour Juliette,\n\nMerci pour votre message et pour nous avoir signalé la situation.\n\nNous avons bien pris note de votre retour pour la commande #12068. Nous nous rapprochons de notre logistique pour confirmer la réception de la ceinture et vous revenons vers vous cette semaine avec une confirmation.\n\nMerci pour votre patience.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_05_26_12_05_58",
       "topic_label": "Form name Form submitted 2026-05-26 12:05:58",
       "situation": "Form name Form submitted 2026-05-26 12:05:58",
