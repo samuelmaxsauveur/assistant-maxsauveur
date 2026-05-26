@@ -10,6 +10,14 @@
       "example_count": 1
     },
     {
+      "topic": "carte_cadeau_utilisable_sandales_fisherman",
+      "topic_label": "Carte cadeau – utilisation sur sandales Fisherman",
+      "situation": "Un client souhaite savoir si une carte cadeau peut être utilisée pour commander les sandales Fisherman. Il veut confirmer la compatibilité avant de passer commande.",
+      "response_template": "Bonjour [Prénom],\n\nAvec plaisir ! La carte cadeau est utilisable sur nos chaussures et ceintures.\n\nLes sandales Fisherman sont bien disponibles sur le site, donc oui, vous pouvez tout à fait l'utiliser pour en commander une paire. Si vous avez un doute sur la taille à prendre, n'hésitez pas à me donner la mesure de votre pied en cm, je vous oriente.\n\n[Signature]",
+      "key_points": "Confirmer que la carte cadeau couvre chaussures et ceintures. Mentionner la disponibilité du modèle visé. Proposer proactivement un conseil de taille si besoin. Ton chaleureux et proactif.",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__max_sauveur___service_client",
       "topic_label": "Clôture de dossier – problème résolu (mocassins)",
       "situation": "Le client confirme que le problème est résolu et que le produit (mocassin) a bien été reçu et convient. Le service client conclut la conversation de manière chaleureuse.",
@@ -1000,6 +1008,14 @@
       "response_template": "Bonjour Christophe,\n\nMerci pour votre message.\n\nPouvez-vous essayer à nouveau ?\n\nPour les frais de livraison, voici comment procéder : passez votre commande normalement avec votre code avoir de 159€, et nous effectuerons le remboursement des frais de port manuellement dès que la commande sera validée de notre côté.\n\nCordialement,\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 2
+    },
+    {
+      "topic": "re___change_commande__12078",
+      "topic_label": "Re: Échange Commande #12078",
+      "situation": "Re: Échange Commande #12078",
+      "response_template": "Bonjour Chris,\n\nCe que vous décrivez est tout à fait rassurant : le pied ne glisse pas vers l'avant, la chaussure est bien fittée sur votre pied fort, et le léger soulèvement au talon n'est présent que sur l'autre pied. C'est typiquement lié à une asymétrie naturelle entre les deux pieds, très courante, et non à une question de taille.\n\nPasser en 41,5 ne changerait probablement pas grand chose sur ce point précis, et vous risqueriez de vous retrouver trop juste sur votre pied fort.\n\nMon conseil : gardez le 42. Avec le port, le cuir et la semelle en liège vont se mouler à vos deux pieds, et ce léger décalage s'atténuera naturellement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
     },
     {
       "topic": "re___tat_de_l__change_pour_la_commande__11992",
