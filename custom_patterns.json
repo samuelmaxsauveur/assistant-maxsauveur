@@ -20,10 +20,10 @@
     {
       "topic": "envoi_code_avoir_remplacement",
       "topic_label": "Code avoir défaillant – remplacement par un nouveau code",
-      "situation": "Un client rencontre un problème avec un code avoir qui ne fonctionne pas au moment de passer commande, malgré plusieurs tentatives. Après vérification en interne, un nouveau code est généré et transmis en remplacement.",
+      "situation": "Un client rencontre un problème avec un code avoir qui ne fonctionne pas au moment de passer commande, malgré plusieurs tentatives. Le service client génère un nouveau code de remplacement et l'envoie au client avec des instructions de saisie précises.",
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre persistance et désolé pour ce désagrément. Nous avons vérifié le code de notre côté et généré un nouveau code avoir à la place :\n\n**[NOUVEAU_CODE]**\n\nSaisissez-le directement dans le champ prévu à cet effet dans votre panier, sans aucun caractère supplémentaire, et il devrait fonctionner normalement.\n\nN'hésitez pas à nous revenir si vous rencontrez le moindre souci au moment de passer commande.\n\n[Prénom équipe] de Max Sauveur",
-      "key_points": "Reconnaître la persistance du client avec empathie. Mentionner explicitement que le code a été vérifié côté interne avant de fournir le nouveau. Insister sur la saisie sans caractère supplémentaire pour éviter les erreurs. Laisser la porte ouverte à un nouveau contact.",
-      "example_count": 1
+      "key_points": "Reconnaître la persistance du client et s'excuser. Générer un nouveau code côté back-office avant d'envoyer. Préciser explicitement de ne pas ajouter de caractère supplémentaire lors de la saisie. Ton empathique et rassurant.",
+      "example_count": 2
     },
     {
       "topic": "cody___chaussures_derby_montagne_cuir_gras_marron",
@@ -208,14 +208,6 @@
       "response_template": "Bonjour [Prénom],\n\nMerci de nous avoir contactés au sujet de [nom du produit].\n\nNous sommes désolés d'apprendre ce problème avec [description du défaut]. [Si applicable : Concernant notre ligne téléphonique, nous sommes actuellement en train de la changer, ce qui explique pourquoi vous n'arrivez pas à nous joindre.] Le canal email reste le plus adapté pour traiter votre demande dans les meilleures conditions.\n\nPour que nous puissions analyser la situation et trouver la meilleure solution, pourriez-vous nous envoyer des photos du défaut constaté ?\n\nDès réception, nous revenons vers vous rapidement.\n\nCordialement,\n[Prénom agent] – Service Client – Max Sauveur",
       "key_points": "Ton empathique et rassurant. Expliquer l'indisponibilité téléphonique si le client en fait mention. Toujours demander des photos avant de statuer. Promettre un retour rapide après réception des visuels. Ne pas proposer de solution (remboursement, échange) avant d'avoir analysé le défaut.",
       "example_count": 2
-    },
-    {
-      "topic": "envoi_code_avoir",
-      "topic_label": "Envoi du code avoir après retour",
-      "situation": "Suite à la réception et validation d'un retour client, le service client génère et envoie un code avoir. Le code est à usage unique, non cumulable, valable 6 mois.",
-      "response_template": "Bonjour [Prénom],\n\nSuite à votre demande, nous venons de générer votre avoir. Il est utilisable une seule fois, non cumulable avec d'autres codes ou promotions, et valable pendant 6 mois.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n**[CODE_AVOIR]**\n\nSi vous avez la moindre question, je reste disponible.\n\n[Prénom_conseiller] de Max Sauveur",
-      "key_points": "- Préciser clairement les conditions : usage unique, non cumulable, valable 6 mois\n- Le code doit être mis en évidence (gras) pour faciliter la lecture\n- Rappeler que le code se saisit dans le panier avant finalisation\n- Ton chaleureux et disponible",
-      "example_count": 10
     },
     {
       "topic": "form_name_form_submitted_2026_05_15_19_55_16",
@@ -714,14 +706,6 @@
       "example_count": 1
     },
     {
-      "topic": "re__form_name_form_submitted_2026_05_21_21_11_19",
-      "topic_label": "Re: Form name Form submitted 2026-05-21 21:11:19",
-      "situation": "Re: Form name Form submitted 2026-05-21 21:11:19",
-      "response_template": "Bonjour Dylan,\n\nAvec 27,9 cm de pied (28,1 cm avec la marge), vous êtes en **43**  je pense.\n\nLe Paul chausse juste au départ, c'est tout à fait normal : le cuir et la semelle en liège s'assouplissent avec le port et se moulent progressivement à votre pied. \n\nBonne commande et n'hésitez pas si vous avez d'autres questions !\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "re__form_name_form_submitted_2026_05_23_11_04_26",
       "topic_label": "Re: Form name Form submitted 2026-05-23 11:04:26",
       "situation": "Re: Form name Form submitted 2026-05-23 11:04:26",
@@ -986,6 +970,14 @@
       "example_count": 1
     },
     {
+      "topic": "envoi_code_avoir",
+      "topic_label": "Renvoi du code avoir après retour reçu",
+      "situation": "Un client demande à recevoir à nouveau son code avoir suite à un retour déjà validé. Le code avait déjà été envoyé une première fois mais le client ne le retrouve pas ou souhaite confirmation. Le service client renvoie le code avec les conditions d'utilisation.",
+      "response_template": "Bonjour [Prénom],\n\nVotre retour a bien été réceptionné, merci de vous en être assuré.\n\nVoici à nouveau votre code avoir, il vous a déjà été envoyé le [DATE] : **[CODE_AVOIR]**, valable 6 mois, à usage unique et non cumulable.\n\nN'hésitez pas si vous avez d'autres questions.\n\n[Prénom équipe] de Max Sauveur",
+      "key_points": "Confirmer la bonne réception du retour. Rappeler la date d'envoi initial du code. Préciser les conditions : valable 6 mois, usage unique, non cumulable. Ton bref et factuel.",
+      "example_count": 11
+    },
+    {
       "topic": "form_name_form_submitted_2026_05_26_11_41_14",
       "topic_label": "Retour ceinture – confirmation de réception en cours (commande #12068)",
       "situation": "Un client signale qu'il a retourné un article (ici une ceinture) pour la commande #12068 et attend une confirmation de bonne réception de la part du service client. L'équipe doit vérifier auprès de la logistique avant de confirmer.",
@@ -1142,6 +1134,22 @@
       "topic_label": "question taille",
       "situation": "question taille",
       "response_template": "Bonjour Arnold,\n\nAvec 27,2 cm de pied, voici mes recommandations :\n\n- Derby Wood : prenez le 42. La Wood chausse plus ajusté, c'est la taille qui vous correspondra le mieux.\n- Brogues : prenez le 41. Les Brogues chaussent légèrement grand, donc on descend d'une taille par rapport à votre pointure de référence.\n- Deck (bateau) : prenez le 42.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "trouver_ma_pointure",
+      "topic_label": "trouver ma pointure",
+      "situation": "trouver ma pointure",
+      "response_template": "Bonjour Fabrice,\n\nAvec 25 cm de pied, vous êtes en *40*. La Wood chausse plus ajusté que beaucoup de modèles, je vous recommande donc de rester sur le **40**.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "_change_commande__12078",
+      "topic_label": "Échange Commande #12078",
+      "situation": "Échange Commande #12078",
+      "response_template": "Bonjour Chris,\n\nConcernant le talon qui se soulève : c'est tout à fait normal sur un mocassin. Sans lacets, le maintien dépend uniquement du cou-de-pied, et un léger soulèvement du talon ne signifie pas que la chaussure est trop grande. Ce qui compte vraiment, c'est la longueur : est-ce que vos orteils ont de la place à l'avant sans excès ? Est-ce que votre pied glisse vers l'avant quand vous marchez ?\n\nSi la longueur vous convient, le 42 est très probablement votre bonne taille sur ce modèle et l'échange ne s'impose pas forcément.\n\nSi en revanche vous sentez que la chaussure est vraiment trop longue ou que votre pied flotte à l'intérieur, voici la procédure pour l'échange :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique (frais de retour à votre charge) :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous enverrons un avoir pour commander la bonne taille.\n\nN'hésitez pas à me décrire votre ressenti en longueur, je pourrai vous confirmer si l'échange est vraiment nécessaire.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
