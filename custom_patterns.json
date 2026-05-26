@@ -130,14 +130,6 @@
       "example_count": 3
     },
     {
-      "topic": "conseil_pointure_guide_taille_wood",
-      "topic_label": "Conseil pointure – Guide taille Wood (chaussure ajustée)",
-      "situation": "Un client fournit la mesure de son pied en cm et demande quelle taille prendre pour le modèle Wood. Le modèle Wood chausse plus ajusté que les autres modèles de la gamme, ce qui nécessite une précision particulière dans le conseil.",
-      "response_template": "Bonjour [Prénom],\n\nAvec [X] cm de pied, vous êtes en **[taille]** sur notre guide. La Wood chausse plus ajusté que beaucoup de modèles, je vous recommande donc de rester sur le **[taille]**.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
-      "key_points": "Mentionner explicitement que la Wood chausse plus ajusté que les autres modèles. Confirmer la taille du guide sans recommander de prendre au-dessus. Ton direct et rassurant. Invitation à recontacter avant la commande.",
-      "example_count": 1
-    },
-    {
       "topic": "conseil_pointure_pied_large_debut_gamme",
       "topic_label": "Conseil pointure – Pied large, modèle débutant à une taille au-dessus du guide",
       "situation": "Un client fournit la mesure de son pied en cm, ce qui correspond à une taille selon le guide, mais le modèle visé commence à la taille supérieure. Le client a également un pied large. Le service client confirme la taille recommandée et anticipe l'assouplissement du cuir.",
@@ -330,14 +322,6 @@
       "example_count": 1
     },
     {
-      "topic": "form_name_form_submitted_2026_05_25_16_10_54",
-      "topic_label": "Form name Form submitted 2026-05-25 16:10:54",
-      "situation": "Form name Form submitted 2026-05-25 16:10:54",
-      "response_template": "Bonjour Romain,\n\nMerci pour votre message.\n\nMalheureusement, votre commande #12233 est déjà expédiée et en transit. Chronopost a modifié le point relais de livraison de son côté, car votre point relais initial n'était plus en mesure de recevoir des colis. C'est une pratique standard de Chrono2Shop : en cas d'indisponibilité, ils redirigent automatiquement vers le point relais le plus proche.\n\nNous ne sommes donc plus en mesure de modifier la destination. Voici votre lien de suivi pour suivre l'acheminement en temps réel :\nhttps://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR630929060TS\n\nDeux options s'offrent à vous :\n\n1. Récupérer votre colis au point relais indiqué : Consigne Grand Frais Vieil Evreux, 7918X.\n2. Ne pas récupérer le colis, qui nous sera retourné après le délai de mise en disponibilité. Nous pourrons alors le réexpédier vers un point relais de votre choix \nN'hésitez pas si vous avez des questions.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "form_name_form_submitted_2026_05_25_16_11_44",
       "topic_label": "Form name Form submitted 2026-05-25 16:11:44",
       "situation": "Form name Form submitted 2026-05-25 16:11:44",
@@ -349,9 +333,9 @@
       "topic": "form_name_form_submitted_2026_05_26_12_05_58",
       "topic_label": "Form name Form submitted 2026-05-26 12:05:58",
       "situation": "Form name Form submitted 2026-05-26 12:05:58",
-      "response_template": "Bonjour Robin,\n\nBonne nouvelle : votre commande #11546 (Le Moc Jagger Cuir Pony Marron, 41,5) sera expédiée cette semaine.\n\nDésolé pour l'attente sur cette précommande, et merci pour votre patience.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Robin,\n\nNous vous avions indiqué le 26 mai que votre commande #11546 (Le Moc Jagger Cuir Pony Marron, 41,5) serait expédiée cette semaine. L'expédition est donc en cours ou imminente, et vous recevrez un email avec votre lien de suivi Chronopost dès que le colis sera pris en charge par le transporteur.\n\nMerci encore pour votre patience sur cette précommande.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 1
+      "example_count": 2
     },
     {
       "topic": "fw__commande__12087_confirm_e",
