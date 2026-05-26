@@ -562,6 +562,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__commande__12242_confirm_e",
+      "topic_label": "Re: Commande #12242 confirmée",
+      "situation": "Re: Commande #12242 confirmée",
+      "response_template": "Bonjour Xavier,\n\nMalheureusement, votre commande #12242 a déjà été emballée et mise en collecte tôt ce matin. Nous ne sommes plus en mesure de modifier la taille avant expédition.\n\nVoici ce que nous vous proposons : dès réception de la Fisherman en 40, retournez-la en suivant cette procédure :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander la Fisherman en taille 45.\n\nEn attendant, vous pouvez suivre votre livraison ici :\nhttps://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR630774456TS\n\nN'hésitez pas si vous avez des questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande_12164",
       "topic_label": "Re: Commande 12164",
       "situation": "Re: Commande 12164",
