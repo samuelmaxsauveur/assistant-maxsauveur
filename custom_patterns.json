@@ -546,6 +546,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__re__demande_renseignements___pointure___pr__commande",
+      "topic_label": "RE: Re: RE: Demande renseignements - Pointure / pré-commande",
+      "situation": "RE: Re: RE: Demande renseignements - Pointure / pré-commande",
+      "response_template": "Bonjour Christophe,\n\nMerci pour ce retour enthousiaste, ça fait vraiment plaisir à lire ! Ravi que l'unboxing ait été à la hauteur, et bienvenue dans la famille Max Sauveur.\n\nPour procéder à l'échange, pourriez-vous nous communiquer votre numéro de commande ? Il se trouve dans l'email de confirmation que vous avez reçu lors de votre achat. Dès que nous l'avons, on s'en occupe immédiatement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__ceci_est_un___",
       "topic_label": "Re: Ceci est un...",
       "situation": "Re: Ceci est un...",
