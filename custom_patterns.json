@@ -730,6 +730,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__lien_vers_la_commande__11707",
+      "topic_label": "Re: Re: Lien vers la commande #11707",
+      "situation": "Re: Re: Lien vers la commande #11707",
+      "response_template": "Bonjour Arthur,\n\nPas d'inquiétude, le colis partira cette semaine de notre entrepôt.\n\nDès que le colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi Chronopost.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__max_sauveur___service_client",
       "topic_label": "Re: Re: Max Sauveur — Service Client",
       "situation": "Re: Re: Max Sauveur — Service Client",
