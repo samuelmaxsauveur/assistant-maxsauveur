@@ -322,6 +322,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_05_25_16_11_44",
+      "topic_label": "Form name Form submitted 2026-05-25 16:11:44",
+      "situation": "Form name Form submitted 2026-05-25 16:11:44",
+      "response_template": "Bonjour Nicolas,\n\nMerci pour votre message !\n\nPour les codes issus de notre roue, il y a une condition importante : c'est la paire de chaussures elle-même qui doit atteindre le montant minimum requis, et non le total du panier. Ajouter des embauchoirs pour franchir le seuil ne permet pas de débloquer le code, malheureusement.\n\nPar ailleurs, nous ne proposons pas de codes à 50€ via ce jeu. Les codes générés par notre roue sont créés à la volée avec des valeurs spécifiques, et il est possible que la valeur affichée lors du tirage ne corresponde pas exactement à ce que vous avez retenu.\n\nBonne journée\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_05_26_12_05_58",
       "topic_label": "Form name Form submitted 2026-05-26 12:05:58",
       "situation": "Form name Form submitted 2026-05-26 12:05:58",
