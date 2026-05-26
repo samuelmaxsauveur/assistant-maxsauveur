@@ -170,14 +170,6 @@
       "example_count": 2
     },
     {
-      "topic": "re__c_est_ouvert___la_wood___239_",
-      "topic_label": "Correction coquilles newsletter – Wood (montage et date de livraison)",
-      "situation": "Un client a repéré des incohérences entre une newsletter et la fiche produit officielle, notamment sur le type de montage (Blake vs Goodyear stormwelt) et la date de livraison estimée (fin juillet vs mi-septembre). Le service client doit corriger les informations et rassurer le client.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour cette observation précise, vous avez bien repéré une coquille dans notre newsletter.\n\nLa fiche produit fait foi : les [Modèle] livrées à l'issue de cette précommande sont montées en [montage correct], en [nombre] étapes. La mention du [montage incorrect] en [nombre] étapes était une erreur dans la newsletter, qui sera corrigée dans les prochaines communications.\n\nIdem pour la date de livraison : la newsletter indiquait [date incorrecte], mais c'est bien [date correcte] que vous recevrez votre paire.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\n[Prénom équipe] de Max Sauveur",
-      "key_points": "Reconnaître l'erreur clairement et sans détour. Préciser que la fiche produit fait foi. Corriger les deux points erronés (montage + date). Ton professionnel et rassurant. Inviter à poser d'autres questions avant commande.",
-      "example_count": 3
-    },
-    {
       "topic": "demande_renseignements___pointure___pr__commande",
       "topic_label": "Demande renseignements - Pointure / pré-commande",
       "situation": "Demande renseignements - Pointure / pré-commande",
@@ -608,6 +600,14 @@
       "response_template": "Bonjour Christophe,\n\nMerci pour ce retour enthousiaste, ça fait vraiment plaisir à lire ! Ravi que l'unboxing ait été à la hauteur, et bienvenue dans la famille Max Sauveur.\n\nPour procéder à l'échange, pourriez-vous nous communiquer votre numéro de commande ? Il se trouve dans l'email de confirmation que vous avez reçu lors de votre achat. Dès que nous l'avons, on s'en occupe immédiatement.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
+    },
+    {
+      "topic": "re__c_est_ouvert___la_wood___239_",
+      "topic_label": "Re: C'est ouvert ! la Wood à 239€",
+      "situation": "Re: C'est ouvert ! la Wood à 239€",
+      "response_template": "Bonjour,\n\nC'est même l'inverse : la Wood chausse plus ajusté que la Peter. Donc si votre Peter en 42 est déjà un peu courte avec vos semelles orthopédiques, je vous recommande de prendre le 43 sur la Wood.\n\nSans semelles orthopédiques, le 42 aurait suffi. Avec, le 43 est clairement la bonne option.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 4
     },
     {
       "topic": "re__ceci_est_un___",
