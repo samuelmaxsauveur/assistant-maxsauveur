@@ -370,6 +370,14 @@
       "example_count": 1
     },
     {
+      "topic": "fwd__commande__11534",
+      "topic_label": "Fwd: Commande #11534",
+      "situation": "Fwd: Commande #11534",
+      "response_template": "Bonjour Teo,\n\nBonne nouvelle concernant vos Moc Jagger Cuir Noir : votre commande est en cours de préparation et l'expédition est prévue cette semaine.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez un email avec votre lien de suivi Chronopost pour suivre votre paire en temps réel.\n\nMerci pour votre patience sur cette précommande !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fwd__commande__11591_confirm_e",
       "topic_label": "Fwd: Commande #11591 confirmée",
       "situation": "Fwd: Commande #11591 confirmée",
