@@ -322,6 +322,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_05_26_12_05_58",
+      "topic_label": "Form name Form submitted 2026-05-26 12:05:58",
+      "situation": "Form name Form submitted 2026-05-26 12:05:58",
+      "response_template": "Bonjour Robin,\n\nBonne nouvelle : votre commande #11546 (Le Moc Jagger Cuir Pony Marron, 41,5) sera expédiée cette semaine.\n\nDésolé pour l'attente sur cette précommande, et merci pour votre patience.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fw__commande__12087_confirm_e",
       "topic_label": "Fw: Commande #12087 confirmée",
       "situation": "Fw: Commande #12087 confirmée",
