@@ -370,6 +370,14 @@
       "example_count": 1
     },
     {
+      "topic": "guide_taille_wood",
+      "topic_label": "Guide taille Wood",
+      "situation": "Guide taille Wood",
+      "response_template": "Bonjour Clément,\n\nAvec 27,6 cm de pied, vous êtes en **43** sur notre guide. La Wood chausse plus ajusté que beaucoup de modèles, je vous recommande donc de rester sur le **43**.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "je_suis_perdu___sizing_mocassin_paul",
       "topic_label": "Je suis perdu ~ Sizing Mocassin Paul",
       "situation": "Je suis perdu ~ Sizing Mocassin Paul",
