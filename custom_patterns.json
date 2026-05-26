@@ -18,6 +18,14 @@
       "example_count": 1
     },
     {
+      "topic": "code_avoir_asterisques_formatage",
+      "topic_label": "Code avoir – problème de formatage (astérisques)",
+      "situation": "Un client possède un code avoir mais n'arrive pas à l'utiliser car le code a été envoyé encadré d'astérisques dans l'email. Il faut lui préciser de saisir uniquement le code brut, sans les étoiles ni aucun autre caractère.",
+      "response_template": "Bonjour [Prénom],\n\nConcernant le code avoir : le problème vient très probablement des astérisques qui encadraient le code dans notre email. Saisissez uniquement [CODE] sans les étoiles ni aucun autre caractère, et il fonctionnera normalement.\n\nDès que vous passez votre commande avec le code [CODE], n'hésitez pas à nous revenir si vous rencontrez le moindre souci.\n\n[Prénom de l'équipe] de Max Sauveur",
+      "key_points": "Expliquer clairement que les astérisques sont un artefact de formatage de l'email, pas une partie du code. Donner le code en clair dans la réponse. Ton rassurant et direct.",
+      "example_count": 1
+    },
+    {
       "topic": "cody___chaussures_derby_montagne_cuir_gras_marron",
       "topic_label": "Cody - Chaussures Derby Montagne Cuir Gras Marron",
       "situation": "Cody - Chaussures Derby Montagne Cuir Gras Marron",
@@ -144,6 +152,14 @@
       "response_template": "Bonjour [Prénom],\n\nBonne question, et je comprends l'inquiétude.\n\nPour la disponibilité des tailles : si entre-temps la taille que vous souhaitez venait à ne plus être disponible, nous en tiendrions compte et trouverions une solution adaptée. Vous ne serez pas pénalisé pour le délai de traitement.\n\nPour la Fisherman avec [XX] cm de pied : vous êtes en **[TAILLE GUIDE]** sur notre guide, mais la Fisherman chausse légèrement grand. Je vous recommande donc le **[TAILLE RECOMMANDÉE]**. Le [TAILLE INFÉRIEURE] serait trop petit pour vous.\n\nEn résumé : le [TAILLE RECOMMANDÉE] est votre taille sur ce modèle.\n\nJohn de Max Sauveur",
       "key_points": "La Fisherman chausse légèrement grand : recommander une taille en dessous de celle indiquée par le guide. Rassurer le client sur le risque de rupture de stock pendant le traitement : il ne sera pas pénalisé. Donner une réponse claire et synthétique en fin de message. Utiliser le gras pour mettre en évidence la taille recommandée.",
       "example_count": 2
+    },
+    {
+      "topic": "conseil_taille_ceinture",
+      "topic_label": "Conseil taille – Ceinture (fourchette et méthode de mesure)",
+      "situation": "Un client demande quelle taille de ceinture prendre. Il suit le guide de taille mais s'interroge sur la précision de la mesure ou sur les marges disponibles. Le service client explique que les ceintures ont plusieurs trous pour s'adapter à différentes morphologies et façons de porter.",
+      "response_template": "Bonjour [Prénom],\n\nSur la méthode de mesure : notre guide donne des repères, mais il reste des conseils. Les ceintures comportent plusieurs trous précisément pour s'adapter à des morphologies et des façons de porter différentes. Chaque client ajuste sa ceinture à sa propre position sur le pantalon, ce qui varie d'une personne à l'autre. Une mesure unique ne peut pas être universelle, et c'est pour cela que nous indiquons des fourchettes et non des tailles fixes. En prenant le [TAILLE], vous aurez de la marge des deux côtés.\n\nN'hésitez pas si vous avez d'autres questions.\n\n[Prénom de l'équipe] de Max Sauveur",
+      "key_points": "Valoriser la flexibilité des ceintures (plusieurs trous). Ne pas promettre une taille unique parfaite, parler de fourchettes. Ton pédagogique et rassurant. Mentionner concrètement que le client aura de la marge dans les deux sens avec la taille recommandée.",
+      "example_count": 1
     },
     {
       "topic": "conseil_taille___sandales_fisherman",
@@ -778,6 +794,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__form_name_form_submitted_2026_05_24_20_36_03",
+      "topic_label": "Re: Re: Form name Form submitted 2026-05-24 20:36:03",
+      "situation": "Re: Re: Form name Form submitted 2026-05-24 20:36:03",
+      "response_template": "Avec plaisir Karim, bonne journée à vous aussi !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__lien_vers_la_commande__11707",
       "topic_label": "Re: Re: Lien vers la commande #11707",
       "situation": "Re: Re: Lien vers la commande #11707",
@@ -907,11 +931,11 @@
     },
     {
       "topic": "remboursement_frais_port_avec_avoir",
-      "topic_label": "Remboursement frais de port avec code avoir",
-      "situation": "Un client doit passer une nouvelle commande en utilisant un code avoir, mais les frais de livraison ne sont pas couverts automatiquement. Le service client lui indique de passer la commande normalement et promet un remboursement manuel des frais de port.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message.\n\nPouvez-vous essayer à nouveau ?\n\nPour les frais de livraison, voici comment procéder : passez votre commande normalement avec votre code avoir de [montant]€, et nous effectuerons le remboursement des frais de port manuellement dès que la commande sera validée de notre côté.\n\nCordialement,\n[Prénom conseiller] de Max Sauveur",
-      "key_points": "Ton rassurant et clair. Préciser le montant de l'avoir. Engager explicitement le remboursement manuel des frais de port après validation de commande. Ne pas faire payer deux fois le client pour une erreur ou un retour.",
-      "example_count": 1
+      "topic_label": "Refus de remboursement des frais de port sur retour – livraison déjà offerte",
+      "situation": "Un client demande la prise en charge des frais de port sur un retour ou une nouvelle commande, alors que la livraison avait déjà été offerte lors de la commande initiale. Le service client refuse de les offrir une seconde fois.",
+      "response_template": "Bonjour [Prénom],\n\nConcernant les frais de port : votre [produit] avait été offert intégralement lors de votre commande #[NUMÉRO], et les frais de livraison de cette commande avaient également été pris en charge. Nous ne pouvons pas les offrir une nouvelle fois sur ce retour.\n\nDès que vous passez votre commande en taille [TAILLE] avec le code [CODE], n'hésitez pas à nous revenir si vous rencontrez le moindre souci.\n\n[Prénom de l'équipe] de Max Sauveur",
+      "key_points": "Rappeler factuellement ce qui avait déjà été offert sur la commande initiale (produit + frais de port). Formuler le refus de manière neutre et non conflictuelle. Ne pas s'excuser, simplement expliquer la règle. Enchaîner directement sur la suite (nouvelle commande avec le code avoir).",
+      "example_count": 2
     },
     {
       "topic": "form_name_form_submitted_2026_05_26_11_41_14",
