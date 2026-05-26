@@ -204,10 +204,10 @@
     {
       "topic": "envoi_code_avoir",
       "topic_label": "Envoi du code avoir après retour",
-      "situation": "Suite à la réception et validation d'un retour client, le service client génère et envoie un code avoir. Le code est à usage unique, non cumulable, et valable 6 mois.",
-      "response_template": "Bonjour [Prénom],\n\nSuite à votre demande, nous venons de générer votre avoir. Il est utilisable une seule fois, non cumulable avec d'autres codes ou promotions, et valable pendant 6 mois.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n**[CODE_AVOIR]**\n\nSi vous avez la moindre question, je reste disponible.\n\n[Prénom agent] de Max Sauveur",
-      "key_points": "Rappeler systématiquement les 3 conditions d'utilisation : usage unique, non cumulable, valable 6 mois. Indiquer que le code est à saisir dans le panier avant finalisation. Ton direct et rassurant. Rester disponible pour toute question.",
-      "example_count": 9
+      "situation": "Suite à la réception et validation d'un retour client, le service client génère et envoie un code avoir. Le code est à usage unique, non cumulable, valable 6 mois.",
+      "response_template": "Bonjour [Prénom],\n\nSuite à votre demande, nous venons de générer votre avoir. Il est utilisable une seule fois, non cumulable avec d'autres codes ou promotions, et valable pendant 6 mois.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n**[CODE_AVOIR]**\n\nSi vous avez la moindre question, je reste disponible.\n\n[Prénom_conseiller] de Max Sauveur",
+      "key_points": "- Préciser clairement les conditions : usage unique, non cumulable, valable 6 mois\n- Le code doit être mis en évidence (gras) pour faciliter la lecture\n- Rappeler que le code se saisit dans le panier avant finalisation\n- Ton chaleureux et disponible",
+      "example_count": 10
     },
     {
       "topic": "form_name_form_submitted_2026_05_15_19_55_16",
@@ -429,9 +429,9 @@
       "topic": "max_sauveur___service_client",
       "topic_label": "Max Sauveur — Service Client",
       "situation": "Max Sauveur — Service Client",
-      "response_template": "Bonjour Eric,\n\nSuite à votre demande, nous venons de générer votre avoir. Il est utilisable une seule fois, non cumulable avec d'autres codes ou promotions, et valable pendant 6 mois.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n**C38H6NYB3TEJ**\n\nSi vous avez la moindre question, je reste disponible.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Nabi,\n\nSuite à votre demande, nous venons de générer votre avoir. Il est utilisable une seule fois, non cumulable avec d'autres codes ou promotions, et valable pendant 6 mois.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n**J3GNWY2M8SNY**\n\nSi vous avez la moindre question, je reste disponible.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 18
+      "example_count": 19
     },
     {
       "topic": "moc_jagger___date_de_r_ception",
