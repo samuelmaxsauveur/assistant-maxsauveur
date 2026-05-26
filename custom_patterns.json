@@ -186,6 +186,14 @@
       "example_count": 1
     },
     {
+      "topic": "defaut_fabrication_oeillet_cuir_prise_en_charge",
+      "topic_label": "Défaut fabrication – Œillet décollé du cuir, prise en charge et retour atelier",
+      "situation": "Un client signale qu'un œillet s'est désolidarisé du cuir après quelques mois d'utilisation sans choc particulier. Après réception de photos, le service client confirme un défaut de fabrication et prend en charge la réparation via retour atelier.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour les photos.\n\nAprès examen, l'œillet qui se désoude du cuir après seulement [X] mois sans choc particulier confirme bien un défaut de fabrication. Nous prenons cela en charge.\n\nVoici la procédure pour nous retourner la paire :\n\n1. Téléchargez et complétez le bon de retour ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"défaut fabrication\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique, frais de retour à notre charge (ci-dessous le lien pour télécharger l'étiquette) :\n\n[LIEN ÉTIQUETTE RETOUR]\n\nDès réception, la paire est transmise à notre atelier. Comptez 6 à 8 semaines pour la réparation.\n\nCe type de défaut est rare et n'est pas représentatif de nos standards habituels. On espère vous revoir sur la boutique bientôt.\n\n[Prénom équipe] de Max Sauveur",
+      "key_points": "- Confirmation explicite du défaut de fabrication après analyse des photos\n- Prise en charge totale : frais de retour offerts via étiquette prépayée\n- Délai de réparation : 6 à 8 semaines (atelier)\n- Bon de retour à compléter avec mention 'défaut fabrication'\n- Ton rassurant : relativiser le défaut ('rare, non représentatif de nos standards')\n- Ne pas oublier d'envoyer le lien d'étiquette retour généré individuellement",
+      "example_count": 1
+    },
+    {
       "topic": "defaut_produit_demande_photos",
       "topic_label": "Défaut produit – Demande de photos pour analyse",
       "situation": "Un client signale un défaut sur un produit (couture, matière, assemblage). Le service client ne peut pas statuer sans preuve visuelle. Le client peut également mentionner une difficulté à joindre le support par téléphone.",
@@ -686,6 +694,14 @@
       "topic_label": "Re: Form name Form submitted 2026-05-24 20:36:03",
       "situation": "Re: Form name Form submitted 2026-05-24 20:36:03",
       "response_template": "Bonjour Karim,\n\nPour le Miller, le site conseille effectivement de prendre une taille en dessous, ce qui vous amènerait au **42**.\n\nMême logique que pour les autres modèles :\n\n- Sans semelles orthopédiques : **42**\n- Avec semelles orthopédiques : **43**\n\nVous connaissez maintenant la règle par cœur !\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__fwd__max_sauveur___service_client",
+      "topic_label": "Re: Fwd: Max Sauveur — Service Client",
+      "situation": "Re: Fwd: Max Sauveur — Service Client",
+      "response_template": "Bonjour Guillaume,\n\nMerci pour la capture d'écran.\n\nDe notre côté, les deux codes sont bien actifs et configurés pour fonctionner ensemble. Pour s'assurer que la procédure est correcte, voici comment procéder :\n\n1. Ajoutez votre article dans le panier\n2. Saisissez le premier code : CW8T1ABJQHVE  et validez\n3. Saisissez ensuite le second code : NC81K38PR3CG et validez\n\nLes deux remises doivent apparaître séparément dans le récapitulatif avant de finaliser la commande.\n\nSi l'erreur persiste, pouvez-vous me préciser à quelle étape le blocage se produit et quel message d'erreur s'affiche ? Cela nous permettra d'identifier exactement ce qui se passe.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
