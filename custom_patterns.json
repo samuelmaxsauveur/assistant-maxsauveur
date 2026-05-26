@@ -578,6 +578,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__re__re__demande_renseignements___pointure___pr__comm",
+      "topic_label": "RE: RE: Re: RE: Demande renseignements - Pointure / pré-commande",
+      "situation": "RE: RE: Re: RE: Demande renseignements - Pointure / pré-commande",
+      "response_template": "Bonjour Christophe,\n\nVoici la procédure pour nous retourner la paire en vue de l'échange :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique, frais de retour à notre charge, voici votre étiquette prépayée :\n\nhttps://wing-labelling-system.s3.eu-west-3.amazonaws.com/52d660c3-ca88-4c89-8407-47cb6498562c/LABEL/2026-05-26/LABEL-502e25e5-05fb-4365-8f93-cc6040aa04ea-1779802172644-8R49873213438.pdf\n\nAdresse de retour :\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle de la paire, nous générons votre avoir pour commander la bonne taille.\n\nN'hésitez pas si vous avez des questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__demande_renseignements___pointure___pr__commande",
       "topic_label": "RE: Re: RE: Demande renseignements - Pointure / pré-commande",
       "situation": "RE: Re: RE: Demande renseignements - Pointure / pré-commande",
@@ -1196,10 +1204,10 @@
     {
       "topic": "echange_taille_avoir_avec_article_supplementaire",
       "topic_label": "Échange de taille + ajout d'un article supplémentaire à la nouvelle commande",
-      "situation": "Un client retourne un article pour en obtenir une autre taille via un avoir, et souhaite également commander un article supplémentaire (ex : ceinture, accessoire). Le service client propose d'ajouter cet article à la future commande passée avec l'avoir.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour votre retour.\n\n**Pour l'échange de la [Nom du produit] :** voici la procédure :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous enverrons un avoir de [montant]€ valable 6 mois sur notre site.\n\n**Pour le [Nom de l'article supplémentaire] :** nous vous l'ajouterons à votre nouvelle commande dans la bonne taille.\n\nPouvez-vous nous confirmer la taille de votre choix en même temps ?\n\nBonne fin de journée.\n\nJohn de Max Sauveur",
-      "key_points": "Proposer proactivement d'ajouter l'article supplémentaire à la nouvelle commande. Demander confirmation de la taille souhaitée pour l'article supplémentaire avant expédition. Maintenir la procédure standard de retour pour l'article principal.",
-      "example_count": 1
+      "situation": "Un client retourne un article pour en obtenir une autre taille via un avoir, et souhaite également commander un article supplémentaire (ex : une ceinture) dans la même nouvelle commande. Le service client confirme le produit choisi en remplacement, la taille, et explique que l'avoir sera généré dès réception du retour.",
+      "response_template": "Bonjour [Prénom],\n\nParfait, tout est noté : [produit choisi] en [matière/couleur], taille [taille].\n\nDès réception et contrôle de votre retour de [produit retourné], nous générerons votre avoir de [montant]€ et ajouterons [article supplémentaire] [taille/détails] à votre nouvelle commande.\n\nÀ très vite,\n\n[Prénom] de Max Sauveur",
+      "key_points": "Confirmer explicitement le produit choisi, la matière/couleur et la taille. Préciser que l'avoir sera généré après réception ET contrôle du retour. Mentionner que l'article supplémentaire sera ajouté à la nouvelle commande. Ton chaleureux et concis. Indiquer le montant exact de l'avoir.",
+      "example_count": 2
     },
     {
       "topic": "echange_taille_avoir_avec_remise_incluse",
