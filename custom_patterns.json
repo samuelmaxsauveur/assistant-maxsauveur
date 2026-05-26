@@ -370,6 +370,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_05_26_16_03_43",
+      "topic_label": "Form name Form submitted 2026-05-26 16:03:43",
+      "situation": "Form name Form submitted 2026-05-26 16:03:43",
+      "response_template": "Bonjour Thomas,\n\nMerci pour votre message !\n\nLe code WHEEL45SIDFLL est bien valide, mais il ne s'applique que sur des chaussures dont le prix est supérieur à 149€. Si le modèle que vous souhaitez commander est en dessous de ce seuil, le code ne fonctionnera pas automatiquement.\n\nPourriez-vous me préciser quel modèle vous avez en tête et le montant de votre panier ? Je pourrai ainsi confirmer si le code peut s'appliquer à votre commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fw__commande__12087_confirm_e",
       "topic_label": "Fw: Commande #12087 confirmée",
       "situation": "Fw: Commande #12087 confirmée",
