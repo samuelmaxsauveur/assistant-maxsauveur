@@ -452,10 +452,10 @@
     {
       "topic": "modification_point_relais_livraison",
       "topic_label": "Modification point relais – Confirmation de changement",
-      "situation": "Un client souhaite modifier son point relais de livraison après avoir passé sa commande. Le service client effectue la modification dans le système et confirme au client que le changement est bien pris en compte, même s'il n'apparaît pas dans l'email de confirmation initial.",
-      "response_template": "Bonjour [Prénom],\n\nC'est parfait, nous venons de modifier votre point relais de livraison dans notre système :\n\n[Nom du point relais]\n[Adresse complète]\n[Code postal] [Ville]\n\nNotez que cette modification n'apparaîtra pas dans votre email de confirmation initial, mais elle est bien prise en compte et sera visible sur votre lien de suivi dès l'expédition.\n\nVous recevrez un email avec votre lien de suivi Chronopost dès que votre colis sera parti.\n\n[Prénom agent] de Max Sauveur",
-      "key_points": "Rassurer le client sur le fait que la modification ne s'affiche pas dans l'email initial mais est bien enregistrée. Mentionner que le bon point relais sera visible sur le lien de suivi. Indiquer que le transporteur est Chronopost. Toujours recopier l'adresse complète du nouveau point relais pour confirmation.",
-      "example_count": 1
+      "situation": "Un client souhaite modifier son point relais de livraison après avoir passé sa commande. Le service client effectue la modification dans le système et confirme au client que le changement est bien pris en compte, même s'il n'apparaît pas sur l'email de confirmation initial.",
+      "response_template": "Bonjour [Prénom],\n\nC'est fait, nous venons de modifier votre point relais de livraison dans notre système :\n\n**[NOM DU POINT RELAIS] ([CODE])**\n[Adresse complète]\n[Code postal] [Ville]\n\nNotez que cette modification n'apparaîtra pas dans votre email de confirmation initial, mais elle est bien prise en compte et sera visible sur votre lien de suivi dès l'expédition.\n\nVous recevrez un email avec votre lien de suivi Chronopost dès que votre colis sera pris en charge par le transporteur.\n\nJohn de Max Sauveur",
+      "key_points": "Rassurer immédiatement le client en confirmant que la modification est bien faite. Préciser que l'email de confirmation initial ne sera pas mis à jour (pour éviter l'inquiétude). Indiquer que le bon point relais sera visible sur le suivi Chronopost. Rappeler qu'un email de suivi sera envoyé à l'expédition.",
+      "example_count": 2
     },
     {
       "topic": "paire_de_cody",
@@ -702,6 +702,14 @@
       "topic_label": "Re: Form name Form submitted 2026-05-21 18:52:12",
       "situation": "Re: Form name Form submitted 2026-05-21 18:52:12",
       "response_template": "Bonjour Henri,\n\nMerci pour ces précisions et pour le retour sur Istanbul, c'est exactement le genre d'usage pour lequel les Wayne ont été conçues !\n\nNous avons bien pris note de vos arguments, notamment le bilan podologique. Cela dit, nous produisons et vendons ce modèle depuis plusieurs années et ce phénomène de languette déviée n'est pas un problème que nous observons en fabrication ni sur les retours d'autres clients. Si quelque chose dévie la languette sur votre paire, nous sommes convaincus que cela tient à un facteur propre au port de cette paire spécifique, même sans anomalie de démarche cliniquement mesurable.\n\nNous comprenons tout à fait que vous souhaitiez garder vos Wayne, et nous en sommes ravis. La solution la plus adaptée reste un cordonnier qui pourra examiner la languette en direct et proposer une retouche ciblée, que ce soit l'ajout d'un passant de maintien ou un léger réajustement de la couture. C'est précisément pour ce type d'ajustement qu'un professionnel en atelier est plus à même d'intervenir efficacement que nous à distance.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__form_name_form_submitted_2026_05_22_11_26_41",
+      "topic_label": "Re: Form name Form submitted 2026-05-22 11:26:41",
+      "situation": "Re: Form name Form submitted 2026-05-22 11:26:41",
+      "response_template": "Bonjour Yassine,\n\nVous n'avez pas tort, c'est un reflexe qu'on n'avait pas anticipé car nos autres utilisateurs arrivent généralement à récupérer leur code sans difficulté. Merci pour ce retour, c'est utile et on le remonte à l'équipe pour voir si on peut rendre cette étape plus explicite.\n\nEncore désolé pour la situation.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -1176,6 +1184,30 @@
       "response_template": "Bonjour [Prénom],\n\nParfait, merci pour votre retour rapide !\n\nLe plus simple, comme vous allez recommander une paire en même temps, est d'attendre de recevoir votre avoir. Cela vous évitera de régler deux fois les frais de livraison : vous commandez tout en une fois avec le code.\n\nDès réception de votre colis, je m'occupe de générer votre avoir et on finalise ça ensemble.\n\n[Prénom] de Max Sauveur",
       "key_points": "Ton rassurant et pratique. Conseil proactif pour éviter des frais doubles. Engagement clair : le SA génère l'avoir dès réception du retour. Formulation 'on finalise ça ensemble' pour maintenir le lien et rassurer le client.",
       "example_count": 3
+    },
+    {
+      "topic": "echange_taille_avoir_avec_article_supplementaire",
+      "topic_label": "Échange de taille + ajout d'un article supplémentaire à la nouvelle commande",
+      "situation": "Un client retourne un article pour en obtenir une autre taille via un avoir, et souhaite également commander un article supplémentaire (ex : ceinture, accessoire). Le service client propose d'ajouter cet article à la future commande passée avec l'avoir.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre retour.\n\n**Pour l'échange de la [Nom du produit] :** voici la procédure :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous enverrons un avoir de [montant]€ valable 6 mois sur notre site.\n\n**Pour le [Nom de l'article supplémentaire] :** nous vous l'ajouterons à votre nouvelle commande dans la bonne taille.\n\nPouvez-vous nous confirmer la taille de votre choix en même temps ?\n\nBonne fin de journée.\n\nJohn de Max Sauveur",
+      "key_points": "Proposer proactivement d'ajouter l'article supplémentaire à la nouvelle commande. Demander confirmation de la taille souhaitée pour l'article supplémentaire avant expédition. Maintenir la procédure standard de retour pour l'article principal.",
+      "example_count": 1
+    },
+    {
+      "topic": "echange_taille_avoir_avec_remise_incluse",
+      "topic_label": "Échange de taille – avoir incluant une remise préalablement obtenue",
+      "situation": "Un client souhaite échanger un article (ex : lunettes ou chaussures) pour une taille différente. Il avait bénéficié d'une remise lors de sa commande initiale. La procédure implique un retour physique, puis l'émission d'un avoir intégrant la remise d'origine, utilisable sur le site.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre retour.\n\n**Pour l'échange de la [Nom du produit] :** voici la procédure :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous enverrons un avoir de [montant€] (incluant la remise de [montant remise€] que vous aviez obtenue), valable 6 mois sur notre site, pour commander le/la [Nom du produit] en taille [taille souhaitée].\n\n[Si article supplémentaire à ajouter : **Pour le/la [Nom article 2] : Nous vous l'ajouterons à votre nouvelle commande dans la bonne taille. Pouvez-vous nous confirmer la taille de votre choix en même temps ?**]\n\nBonne fin de journée.\n\n[Prénom agent] de Max Sauveur",
+      "key_points": "- L'avoir inclut la remise d'origine du client : ne pas oublier de l'intégrer dans le montant total\n- Avoir valable 6 mois sur le site\n- Si plusieurs articles sont concernés (ex : ceinture en plus), proposer de les regrouper dans la nouvelle commande et demander confirmation de taille\n- Adresse logistique à toujours inclure : SSL – 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n- Ton chaleureux et professionnel, signature prénom + marque",
+      "example_count": 1
+    },
+    {
+      "topic": "echange_taille_avec_avoir_remise_incluse",
+      "topic_label": "Échange de taille – avoir incluant une remise préalablement obtenue",
+      "situation": "Un client souhaite échanger un article pour une taille différente et avait bénéficié d'une remise sur sa commande initiale. L'avoir émis doit inclure la remise initiale pour que le client ne soit pas pénalisé lors de son échange.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre retour.\n\n**Pour l'échange de la [Nom du produit] :** voici la procédure :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous enverrons un avoir de [montant]€ (incluant la remise de [montant remise]€ que vous aviez obtenue), valable 6 mois sur notre site, pour commander le [Nom du produit] en taille [taille souhaitée].\n\nBonne fin de journée.\n\nJohn de Max Sauveur",
+      "key_points": "Inclure explicitement la remise initiale dans le montant de l'avoir pour rassurer le client. Préciser la valeur totale de l'avoir et sa durée de validité (6 mois). Rappeler les 3 étapes claires de retour. Mentionner l'adresse logistique complète.",
+      "example_count": 1
     },
     {
       "topic": "echange_taille_depot_direct_impossible",
