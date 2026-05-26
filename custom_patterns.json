@@ -18,6 +18,14 @@
       "example_count": 1
     },
     {
+      "topic": "envoi_code_avoir_remplacement",
+      "topic_label": "Code avoir défaillant – remplacement par un nouveau code",
+      "situation": "Un client rencontre un problème avec un code avoir qui ne fonctionne pas au moment de passer commande, malgré plusieurs tentatives. Après vérification en interne, un nouveau code est généré et transmis en remplacement.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre persistance et désolé pour ce désagrément. Nous avons vérifié le code de notre côté et généré un nouveau code avoir à la place :\n\n**[NOUVEAU_CODE]**\n\nSaisissez-le directement dans le champ prévu à cet effet dans votre panier, sans aucun caractère supplémentaire, et il devrait fonctionner normalement.\n\nN'hésitez pas à nous revenir si vous rencontrez le moindre souci au moment de passer commande.\n\n[Prénom équipe] de Max Sauveur",
+      "key_points": "Reconnaître la persistance du client avec empathie. Mentionner explicitement que le code a été vérifié côté interne avant de fournir le nouveau. Insister sur la saisie sans caractère supplémentaire pour éviter les erreurs. Laisser la porte ouverte à un nouveau contact.",
+      "example_count": 1
+    },
+    {
       "topic": "cody___chaussures_derby_montagne_cuir_gras_marron",
       "topic_label": "Cody - Chaussures Derby Montagne Cuir Gras Marron",
       "situation": "Cody - Chaussures Derby Montagne Cuir Gras Marron",
@@ -518,6 +526,14 @@
       "topic_label": "Question de taille pointure chaussures bateau",
       "situation": "Question de taille pointure chaussures bateau",
       "response_template": "Bonjour,\n\nMerci pour votre message et la recommandation de votre ami !\n\nPour vous orienter sur la pointure : Le Boat chausse légèrement grand. Avec vos références (44 chez Aigle, 10/10.5 chez Caulaincourt), vous êtes typiquement dans un profil 43-44. Le 45 serait probablement trop grand pour vous sur ce modèle.\n\nMalheureusement, il n'y a pas de réassort prévu sur Le Boat en blanc, et le 44 n'est plus disponible dans ce coloris. En revanche, le 44 existe bien sur ce modèle dans d'autres coloris : marine, marron et léopard.\n\nSi l'un de ces coloris vous tente, le 44 sera votre taille sur Le Boat. N'hésitez pas à me dire si vous souhaitez plus de détails sur l'un d'eux.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "question_retout",
+      "topic_label": "Question retout",
+      "situation": "Question retout",
+      "response_template": "Bonjour Nabi,\n\nVotre retour a bien été réceptionné, merci de vous en être assuré.\n\nVoici à nouveau votre code avoir, il vous a déjà été envoyé le 26 mai : **J3GNWY2M8SNY**, valable 6 mois, à usage unique et non cumulable.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
