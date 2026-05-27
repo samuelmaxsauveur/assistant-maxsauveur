@@ -1274,6 +1274,14 @@
       "example_count": 1
     },
     {
+      "topic": "pointure",
+      "topic_label": "pointure",
+      "situation": "pointure",
+      "response_template": "Bonjour Pascal,\n\nAvec 24,8 cm de pied, vous êtes en **40** sur notre guide. La Wood chausse plus ajusté que la Deck et le Paul, donc restez sur le **40**, pas besoin de descendre.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "question_taille",
       "topic_label": "question taille",
       "situation": "question taille",
