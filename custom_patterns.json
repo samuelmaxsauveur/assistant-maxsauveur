@@ -178,6 +178,14 @@
       "example_count": 1
     },
     {
+      "topic": "derby_golf___taille",
+      "topic_label": "Derby Golf - taille",
+      "situation": "Derby Golf - taille",
+      "response_template": "Bonjour Simon,\n\nMerci pour ces précisions, elles sont exactement ce qu'il faut pour bien vous orienter.\n\n**Pour vos Brogues en 43 :** la sensation de serrement au cou-de-pied est tout à fait normale sur un cuir neuf. Deux choses à faire : desserrez un peu les lacets et continuez à porter la paire pour laisser le cuir s'assouplir progressivement. Ce serrement va s'atténuer avec le temps.\n\n**Pour la Derby Golf :** le modèle a un patron différent des Brogues et chausse plus petit. Avec vos Brogues en 43, je vous recommande de partir directement sur le **44** pour la Derby Golf Marron.\n\n**Pour les mocassins :** même logique. Un mocassin sans lacets doit maintenir le pied, donc il chausse plus ajusté que les Brogues. Je vous recommande également le **44** sur les modèles comme le Paul.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fusion_codes_promo_utilisation_cumul",
       "topic_label": "Deux codes promo – utilisation cumulée sur une commande",
       "situation": "Un client possède deux codes de réduction distincts et souhaite les utiliser ensemble, idéalement fusionnés en un seul. Le service client ne peut pas fusionner les codes mais les configure pour qu'ils soient cumulables sur une même commande.",
