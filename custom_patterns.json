@@ -74,6 +74,14 @@
       "example_count": 1
     },
     {
+      "topic": "commande_jagger",
+      "topic_label": "Commande Jagger",
+      "situation": "Commande Jagger",
+      "response_template": "Bonjour Bruno,\n\nMerci pour votre message et désolé pour l'inquiétude.\n\nVotre commande #11705 contient deux paires en précommande : le Moc Jagger en cuir Pony Marron (41) et la Peter A. en cuir grainé Noir et Pony Zèbre (42). De notre côté, la commande n'a pas encore été expédiée.\n\nComme pour les autres précommandes Moc Jagger, les paires arrivent chez nous en ce moment même et nous prévoyons les expéditions dans les tous prochains jours. La livraison est estimée la semaine prochaine.\n\nDès que votre colis est pris en charge, vous recevrez un email avec votre lien de suivi Chronopost. Pensez à vérifier vos courriers indésirables au cas où.\n\nMerci pour votre patience.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__11639_confirm_e",
       "topic_label": "Commande en cours de préparation – expédition imminente avec point relais",
       "situation": "Un client s'interroge sur le statut de sa commande. La commande est en cours de préparation et sera expédiée prochainement. La livraison est prévue en point relais. Le client attend une confirmation et un lien de suivi.",
@@ -386,6 +394,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_05_26_21_42_37",
+      "topic_label": "Form name Form submitted 2026-05-26 21:42:37",
+      "situation": "Form name Form submitted 2026-05-26 21:42:37",
+      "response_template": "Bonjour Colin,\n\nMerci pour votre message et votre intérêt pour nos produits.\n\nSur la question de la TVA française, je vais être transparent avec vous : nous ne proposons pas de détaxe à l'export, et il nous est impossible de créer un bon de réduction spécifique pour annuler la TVA française. Notre boutique en ligne applique les prix TTC pour tous les clients, quelle que soit leur résidence. Ce n'est pas une politique que nous pouvons contourner via un code promo.\n\nConcernant la livraison en poste restante en France : oui, c'est possible via Colissimo, à condition que l'adresse de livraison soit une adresse postale valide en France. Si vous avez une adresse de relais ou de retrait en zone frontalière, nous pouvons livrer là-bas sans problème.\n\nLa solution la plus simple si vous souhaitez éviter la double imposition reste effectivement de vous faire livrer en France (poste restante ou chez un proche), puis de passer la douane vous-même.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fw__commande__12087_confirm_e",
       "topic_label": "Fw: Commande #12087 confirmée",
       "situation": "Fw: Commande #12087 confirmée",
@@ -518,14 +534,6 @@
       "topic_label": "Pointure Sandale Fisherman",
       "situation": "Pointure Sandale Fisherman",
       "response_template": "Bonjour Quentin,\n\nAvec 27 cm de pied, vous correspondez à un 42 (qui couvre généralement les pieds entre 26,5 et 27,2 cm environ). Le 43 serait trop grand pour vous.\n\nPour votre pied fin, bonne nouvelle : la Fisherman est réglable grâce à ses boucles, ce qui permet un ajustement précis sur le tour de pied et de cheville. Pas d'inquiétude de ce côté-là.\n\nJe vous recommande donc le 42 sans hésitation.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "pointure_wood___chaussures_derby_golf",
-      "topic_label": "Pointure Wood - Chaussures Derby Golf",
-      "situation": "Pointure Wood - Chaussures Derby Golf",
-      "response_template": "Bonjour Vincent,\n\nMerci pour ces informations précises, c'est vraiment utile pour bien vous orienter !\n\nAvec 29,6/29,7 cm de pied gauche, vous êtes en **46** sur notre guide. C'est donc votre taille de référence sur ce modèle.\n\nLa Wood chausse plus ajusté que beaucoup de modèles, ce qui joue en votre faveur ici : le 46 ne sera pas trop grand, il compensera justement le chaussant serré de la Wood. Et puisque vous avez des pieds très fins, la forme ajustée de la Derby Golf vous maintiendra bien sans excès de volume.\n\n**Je vous recommande donc le 46.**\n\nLe 45 serait effectivement trop juste sur ce modèle, surtout en début de journée quand le pied est à son volume minimal.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -694,6 +702,14 @@
       "topic_label": "Re: Commande 12164",
       "situation": "Re: Commande 12164",
       "response_template": "Bonjour Brieuc,\n\nMerci pour le retour rapide, nous devrions bien recevoir le colis mardi.\n\nConcernant votre demande d'une nouvelle paire plutôt qu'une réparation : nous allons analyser la paire à réception et nous ferons au mieux selon ce que nous constatons. Nous ne pouvons pas vous promettre un renvoi direct à ce stade, mais nous prenons bien en compte votre situation (paire jamais portée, défaut à l'ouverture, envie d'en profiter cet été) et nous vous donnerons une réponse claire dès l'examen effectué.\n\nBonne journée à vous également.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__conseil_de_pointure",
+      "topic_label": "Re: Conseil de pointure",
+      "situation": "Re: Conseil de pointure",
+      "response_template": "Bonjour Vincent,\n\nParfait, bon choix ! Vous ne serez pas déçu.\n\nBonne commande et n'hésitez pas si vous avez la moindre question à la réception.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -986,14 +1002,6 @@
       "example_count": 1
     },
     {
-      "topic": "re__re__votre_commande_max_sauveur___information_importante",
-      "topic_label": "Re: Re: Votre commande Max Sauveur — information importante",
-      "situation": "Re: Re: Votre commande Max Sauveur — information importante",
-      "response_template": "Bonjour Antoine,\n\nBien reçu, nous procédons au remboursement intégral de votre commande #12106 sur votre moyen de paiement initial. Comptez quelques jours ouvrés pour que la somme apparaisse.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "re__re___tat_de_l__change_pour_la_commande__11992",
       "topic_label": "Re: Re: État de l'échange pour la commande #11992",
       "situation": "Re: Re: État de l'échange pour la commande #11992",
@@ -1083,11 +1091,11 @@
     },
     {
       "topic": "remboursement_frais_port_avec_avoir",
-      "topic_label": "Remboursement frais de port avec code avoir – erreur de préparation",
-      "situation": "Un client a reçu un article en mauvaise couleur ou mauvais article (erreur de préparation). Il doit passer une nouvelle commande avec un code avoir, mais les frais de port ne doivent pas être à sa charge car l'erreur vient de Max Sauveur.",
-      "response_template": "Bonjour [Prénom],\n\nVous avez tout à fait raison : [description de l'erreur, ex: la ceinture vous avait été envoyée en mauvaise couleur], ce qui constitue bien une erreur de préparation de notre côté. Les frais de livraison ne seront donc pas à votre charge.\n\nVoici comment procéder : passez votre commande normalement en appliquant votre code avoir dans le panier, et nous effectuerons le remboursement des frais de port manuellement dès que la commande sera validée de notre côté.\n\nN'hésitez pas si vous avez le moindre souci au moment de commander.\n\n[Prénom de l'équipe] de Max Sauveur",
-      "key_points": "Reconnaître clairement la responsabilité de Max Sauveur. Ne pas faire payer les frais de port au client. La procédure est : le client commande normalement avec son avoir, et le remboursement des frais de port est fait manuellement après validation. Ton direct, rassurant et sans ambiguïté sur la prise en charge.",
-      "example_count": 2
+      "topic_label": "Remboursement frais de port avec code avoir",
+      "situation": "Un client doit passer une nouvelle commande en utilisant un code avoir, mais les frais de livraison ne sont pas couverts automatiquement. Le service client lui indique de passer la commande normalement et promet un remboursement manuel des frais de port.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message.\n\nPouvez-vous essayer à nouveau ?\n\nPour les frais de livraison, voici comment procéder : passez votre commande normalement avec votre code avoir de [montant]€, et nous effectuerons le remboursement des frais de port manuellement dès que la commande sera validée de notre côté.\n\nCordialement,\n[Prénom conseiller] de Max Sauveur",
+      "key_points": "Ton rassurant et clair. Préciser le montant de l'avoir. Engager explicitement le remboursement manuel des frais de port après validation de commande. Ne pas faire payer deux fois le client pour une erreur ou un retour.",
+      "example_count": 1
     },
     {
       "topic": "envoi_code_avoir",
