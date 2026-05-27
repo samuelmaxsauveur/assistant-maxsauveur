@@ -810,6 +810,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__form_name_form_submitted_2026_05_26_16_03_43",
+      "topic_label": "Re: Form name Form submitted 2026-05-26 16:03:43",
+      "situation": "Re: Form name Form submitted 2026-05-26 16:03:43",
+      "response_template": "Bonjour Thomas,\n\nMerci pour votre retour et bienvenue dans la famille !\n\nLa Fisherman est un très bon choix pour débuter avec Max Sauveur. Concernant votre code WHEEL45SIDFLL, malheureusement les Fisherman sont en dessous du seuil de 149€, ce qui explique pourquoi il ne s'appliquera pas sur ce modèle.\n\nEn attendant, si vous avez des questions sur la taille à prendre pour la Fisherman, je suis là.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__fwd__max_sauveur___service_client",
       "topic_label": "Re: Fwd: Max Sauveur — Service Client",
       "situation": "Re: Fwd: Max Sauveur — Service Client",
@@ -1208,6 +1216,14 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et votre patience.\n\nVos Moc Jagger arrivent chez nous [délai arrivée entrepôt], et nous prévoyons de les expédier dans la foulée. La livraison estimée se situe autour du [date estimée], sous réserve que les jours fériés et les transporteurs ne viennent pas perturber l'acheminement.\n\nDès que votre colis sera parti, vous recevrez un email avec votre lien de suivi Chronopost pour localiser votre point relais et suivre votre paire en temps réel.\n\nOn fait au plus vite de notre côté.\n\n[Prénom conseiller] de Max Sauveur",
       "key_points": "Remercier le client pour sa patience. Donner une fourchette de dates précise mais nuancée (mentionner les aléas potentiels). Rappeler systématiquement l'envoi automatique du lien de suivi Chronopost à l'expédition. Ton engagé et humain ('On fait au plus vite de notre côté').",
       "example_count": 2
+    },
+    {
+      "topic": "suivi_precommande_jagger_commande_mixte",
+      "topic_label": "Suivi précommande Moc Jagger – commande mixte (plusieurs paires)",
+      "situation": "Un client a passé une commande contenant plusieurs paires en précommande (ex : Moc Jagger + autre modèle). Il s'inquiète de ne pas avoir reçu de suivi ou d'expédition. Les paires arrivent en stock et les expéditions sont imminentes.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et désolé pour l'inquiétude.\n\nVotre commande #[NUMÉRO] contient [DESCRIPTION DES PAIRES en précommande]. De notre côté, la commande n'a pas encore été expédiée.\n\nComme pour les autres précommandes Moc Jagger, les paires arrivent chez nous en ce moment même et nous prévoyons les expéditions dans les tous prochains jours. La livraison est estimée la semaine prochaine.\n\nDès que votre colis est pris en charge, vous recevrez un email avec votre lien de suivi Chronopost. Pensez à vérifier vos courriers indésirables au cas où.\n\nMerci pour votre patience.\n\n[Prénom équipe] de Max Sauveur",
+      "key_points": "Ton rassurant et empathique. Préciser le contenu exact de la commande. Mentionner que les paires arrivent en stock 'en ce moment même'. Donner une estimation de livraison (semaine prochaine). Rappeler que le lien de suivi Chronopost sera envoyé par email et suggérer de vérifier les spams.",
+      "example_count": 1
     },
     {
       "topic": "suivi_precommande_jagger_contrainte_depart",
