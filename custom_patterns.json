@@ -698,6 +698,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__conseil_de_pointure",
+      "topic_label": "Re: Conseil de pointure",
+      "situation": "Re: Conseil de pointure",
+      "response_template": "Bonjour Vincent,\n\nParfait, bon choix ! Vous ne serez pas déçu.\n\nBonne commande et n'hésitez pas si vous avez la moindre question à la réception.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__date_pour_les_moc_jagger",
       "topic_label": "Re: Date pour les Moc Jagger",
       "situation": "Re: Date pour les Moc Jagger",
