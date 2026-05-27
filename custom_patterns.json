@@ -106,6 +106,14 @@
       "example_count": 2
     },
     {
+      "topic": "conseil_achat",
+      "topic_label": "Conseil achat",
+      "situation": "Conseil achat",
+      "response_template": "Bonjour Simon,\n\nMerci pour votre message et bienvenue dans l'univers du mocassin !\n\nPour vous aider à choisir entre la Peter A et le Paul, voici les principales différences :\n\n- **Le Paul** est un mocassin classique en cuir pleine fleur, avec une semelle en liège qui se moule progressivement au pied. Il chausse juste au départ, le temps que le cuir et la semelle s'assouplissent, mais le confort devient excellent avec le port.\n- **La Peter A** est une alternative un peu plus accessible, avec un chaussant légèrement plus généreux dès le départ car il est sans doublure (plus souple immédiatement).\n\nPour la pointure, en partant de votre référence G.H. Bass en 42,5 (280mm), voici mes recommandations :\n\n- **Peter A : prenez le 42.** Ce modèle chausse légèrement grand, le 42 correspondra bien à votre pied.\n- **Paul : prenez le 43.** Le Paul chausse plus juste, il faut monter d'une taille par rapport à votre référence habituelle.\n\nBonne nouvelle concernant la Peter A : le 42,5 n'existe pas dans notre gamme, mais le 42 est bien disponible et c'est la taille qu'il vous faut sur ce modèle.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande, je suis là pour vous guider.\n\nBonne journée,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "conseil_de_pointure",
       "topic_label": "Conseil de pointure",
       "situation": "Conseil de pointure",
@@ -124,10 +132,10 @@
     {
       "topic": "conseil_pointure_comparaison_modeles",
       "topic_label": "Conseil pointure – Comparaison entre modèles pour affiner le choix",
-      "situation": "Un client connaît déjà sa pointure sur un ou plusieurs modèles Max Sauveur et souhaite savoir quelle taille prendre sur un nouveau modèle. Il peut également mentionner une sensation de serrement sur un modèle en cuir neuf. La réponse couvre plusieurs modèles en une seule fois (ex : Derby Golf + mocassin Paul).",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour ces précisions, elles sont exactement ce qu'il faut pour bien vous orienter.\n\n**Pour vos [Modèle actuel] en [Taille actuelle] :** la sensation de serrement au cou-de-pied est tout à fait normale sur un cuir neuf. Deux choses à faire : desserrez un peu les lacets et continuez à porter la paire pour laisser le cuir s'assouplir progressivement. Ce serrement va s'atténuer avec le temps.\n\n**Pour la [Modèle cible] :** le modèle a un patron différent et chausse plus petit. Avec vos [Modèle actuel] en [Taille actuelle], je vous recommande de partir directement sur le **[Taille recommandée]**.\n\n**Pour les mocassins :** même logique. Un mocassin sans lacets doit maintenir le pied, donc il chausse plus ajusté que les Brogues. Je vous recommande également le **[Taille recommandée]** sur les modèles comme le Paul.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
-      "key_points": "- Rassurer sur le serrement normal du cuir neuf (phénomène d'assouplissement)\n- Conseiller de desserrer les lacets + continuer le port\n- Derby Golf chausse plus petit que les Brogues : prévoir +1 taille\n- Mocassin sans lacets chausse plus ajusté que les modèles lacés : prévoir +1 taille\n- Ton chaleureux, conseiller expert, réponse structurée par modèle en gras\n- Inviter à recontacter avant commande",
-      "example_count": 5
+      "situation": "Un client connaît déjà sa pointure sur un ou plusieurs modèles Max Sauveur et souhaite savoir quelle taille prendre sur un nouveau modèle. Il peut également mentionner un ressenti sur le chaussant (légèrement large, juste, etc.) et poser des questions sur d'autres modèles en parallèle.",
+      "response_template": "Bonjour [Prénom],\n\nRavi d'apprendre que vos [modèle actuel] en [coloris] vous plaisent !\n\nPour la [nouveau modèle] : restez sur le [pointure]. La [nouveau modèle] chausse [plus ajusté / plus large] que la [modèle actuel], donc si vos [pointure] sont [ressenti actuel] sur la [modèle actuel], ils seront [ressenti attendu] sur la [nouveau modèle]. [Recommandation demi-taille si pertinente].\n\nPour votre quête de [type de chaussure] : nous avons la [modèle suggéré], qui est justement en [matière / caractéristique]. Elle pourrait correspondre à ce que vous cherchez.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nBonne journée,\n\nJohn de Max Sauveur",
+      "key_points": "Commencer par valoriser le choix actuel du client. Expliquer la logique du conseil de taille (comparaison entre modèles) plutôt que de simplement donner un chiffre. Proposer proactivement un autre modèle si le client mentionne une recherche. Inviter à poser d'autres questions avant commande. Ton chaleureux et expert.",
+      "example_count": 4
     },
     {
       "topic": "conseil_pointure_cuir_chausse_juste",
@@ -758,14 +766,6 @@
       "topic_label": "Re: Form name Form submitted 2026-05-24 20:36:03",
       "situation": "Re: Form name Form submitted 2026-05-24 20:36:03",
       "response_template": "Bonjour Karim,\n\nPour le Miller, le site conseille effectivement de prendre une taille en dessous, ce qui vous amènerait au **42**.\n\nMême logique que pour les autres modèles :\n\n- Sans semelles orthopédiques : **42**\n- Avec semelles orthopédiques : **43**\n\nVous connaissez maintenant la règle par cœur !\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__form_name_form_submitted_2026_05_26_14_35_24",
-      "topic_label": "Re: Form name Form submitted 2026-05-26 14:35:24",
-      "situation": "Re: Form name Form submitted 2026-05-26 14:35:24",
-      "response_template": "Bonjour Jean-Claude,\n\nAvec 27,3 cm de pied, vous êtes en **42** sur notre guide. La Fisherman chausse légèrement grand, donc je vous recommande le **41**.\n\nConcernant votre pied fin, bonne nouvelle : la Fisherman est réglable grâce à ses boucles, ce qui permet un ajustement précis. Pas d'inquiétude de ce côté-là.\n\nPour la carte cadeau de 125€, elle est bien utilisable sur les chaussures, donc vous pouvez l'appliquer directement lors de votre commande.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
