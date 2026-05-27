@@ -1010,6 +1010,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__une_commande__11763_est_en_transit",
+      "topic_label": "Re: Une commande #11763 est en transit",
+      "situation": "Re: Une commande #11763 est en transit",
+      "response_template": "Bonjour Adrien,\n\nMerci pour votre retour !\n\nPour bien vous orienter, j'ai besoin d'un peu plus de détails sur ce que vous ressentez : est-ce que vous avez de l'espace en excès à l'avant (vos orteils flottent, le bout de la chaussure est vide) ou plutôt sur les côtés (votre pied bouge latéralement à l'intérieur) ?\n\nEn fonction de votre réponse, je pourrai vous dire si un échange de taille s'impose et vers quelle pointure vous orienter.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__une_commande__12009_en_retour",
       "topic_label": "Re: Une commande #12009 en retour",
       "situation": "Re: Une commande #12009 en retour",
@@ -1180,10 +1188,10 @@
     {
       "topic": "suivi_precommande_jagger",
       "topic_label": "Suivi précommande Moc Jagger – date de réception estimée",
-      "situation": "Un client en précommande des Moc Jagger demande quand il va recevoir sa commande. Il peut avoir une contrainte particulière (ex : mariage, événement) et souhaite une estimation fiable de la date de livraison.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et désolé pour l'attente.\n\nBonne nouvelle : vos Moc Jagger arrivent chez nous cette semaine, et nous prévoyons de les expédier dans la foulée. La livraison estimée se situe autour du [date estimée], sous réserve que les jours fériés et les ponts de fin mai ne ralentissent pas les transporteurs.\n\nOn fait tout notre possible pour que vous les ayez à temps pour [occasion mentionnée par le client]. Dès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost.\n\n[Prénom de l'agent] de Max Sauveur",
-      "key_points": "Ton rassurant et chaleureux. Mentionner explicitement la contrainte du client si elle a été exprimée (ex : mariage). Préciser la nuance sur les jours fériés/ponts qui peuvent impacter la livraison. Confirmer que le lien de suivi Chronopost sera envoyé à l'expédition. Ne pas promettre une date ferme, utiliser 'autour du' ou 'estimée'.",
-      "example_count": 2
+      "situation": "Un client en précommande des Moc Jagger demande quand il va recevoir sa commande. La commande est en cours de préparation en entrepôt et l'expédition est imminente. Une fenêtre de livraison estimée peut être communiquée avec le point relais choisi.",
+      "response_template": "Bonjour [Prénom],\n\nVos Moc Jagger sont en cours de préparation dans notre entrepôt et l'expédition est prévue très prochainement. La livraison est estimée entre le [date début] et le [date fin], en point relais [NOM DU POINT RELAIS] à [Ville].\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez un email avec votre lien de suivi Chronopost.\n\n[Prénom de l'agent] de Max Sauveur",
+      "key_points": "Ton rassurant et factuel. Indiquer la fenêtre de livraison estimée (2-3 jours). Préciser le nom exact du point relais et la ville. Mentionner que le lien de suivi Chronopost sera envoyé par email dès la prise en charge. Ne pas promettre une date exacte, seulement une fourchette.",
+      "example_count": 3
     },
     {
       "topic": "taille_sandale_fisher",
