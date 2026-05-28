@@ -402,6 +402,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_05_28_15_46_25",
+      "topic_label": "Form name Form submitted 2026-05-28 15:46:25",
+      "situation": "Form name Form submitted 2026-05-28 15:46:25",
+      "response_template": "Bonjour,\n\nLes codes issus de la roue ont une condition importante : ils ne s'appliquent que sur des articles dont le prix est supérieur à 149€. Si le Boat en marine est en dessous de ce seuil, le code ne fonctionnera pas automatiquement.\n\nPourriez-vous me préciser le code exact que vous avez reçu ainsi que le prix du modèle dans votre panier ? Avec ces informations, je pourrai vous confirmer si le code peut s'appliquer à votre commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fw__commande__12087_confirm_e",
       "topic_label": "Fw: Commande #12087 confirmée",
       "situation": "Fw: Commande #12087 confirmée",
