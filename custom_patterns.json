@@ -26,6 +26,14 @@
       "example_count": 2
     },
     {
+      "topic": "code_roue_condition_prix_minimum",
+      "topic_label": "Code roue de la fortune – condition prix minimum non remplie",
+      "situation": "Un client a obtenu un code de réduction via la roue de la fortune et tente de l'appliquer sur un article, mais le code ne fonctionne pas. La raison probable est que l'article est en dessous du seuil de prix minimum requis pour que le code soit valide.",
+      "response_template": "Bonjour,\n\nLes codes issus de la roue ont une condition importante : ils ne s'appliquent que sur des articles dont le prix est supérieur à 149€. Si le [nom du modèle] est en dessous de ce seuil, le code ne fonctionnera pas automatiquement.\n\nPourriez-vous me préciser le code exact que vous avez reçu ainsi que le prix du modèle dans votre panier ? Avec ces informations, je pourrai vous confirmer si le code peut s'appliquer à votre commande.\n\n[Prénom] de Max Sauveur",
+      "key_points": "Toujours préciser la condition de prix minimum (149€) avant de statuer sur le dysfonctionnement. Demander le code exact et le prix de l'article pour pouvoir confirmer ou infirmer l'éligibilité. Ne pas rejeter la demande d'emblée, rester dans une posture d'investigation bienveillante.",
+      "example_count": 1
+    },
+    {
       "topic": "cody___chaussures_derby_montagne_cuir_gras_marron",
       "topic_label": "Cody - Chaussures Derby Montagne Cuir Gras Marron",
       "situation": "Cody - Chaussures Derby Montagne Cuir Gras Marron",
@@ -406,6 +414,14 @@
       "topic_label": "Form name Form submitted 2026-05-28 15:46:25",
       "situation": "Form name Form submitted 2026-05-28 15:46:25",
       "response_template": "Bonjour,\n\nLes codes issus de la roue ont une condition importante : ils ne s'appliquent que sur des articles dont le prix est supérieur à 149€. Si le Boat en marine est en dessous de ce seuil, le code ne fonctionnera pas automatiquement.\n\nPourriez-vous me préciser le code exact que vous avez reçu ainsi que le prix du modèle dans votre panier ? Avec ces informations, je pourrai vous confirmer si le code peut s'appliquer à votre commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "form_name_form_submitted_2026_05_28_16_04_40",
+      "topic_label": "Form name Form submitted 2026-05-28 16:04:40",
+      "situation": "Form name Form submitted 2026-05-28 16:04:40",
+      "response_template": "Bonjour Philippe,\n\nMerci pour votre message et désolé pour ce désagrément.\n\nMalheureusement, les codes générés par notre roue sont créés à la volée et ne sont pas enregistrés dans notre système. Sans la capture ou la copie du code au moment du tirage, nous ne sommes pas en mesure de vous le retrouver ni de vous le renvoyer.\n\nPar ailleurs, ces codes ont une condition importante : ils ne sont valables que sur des chaussures dont le prix est supérieur à 149€. Si les sandales que vous aviez en tête sont en dessous de ce seuil, le code ne se serait pas appliqué de toute façon.\n\nEncore désolé de ne pas pouvoir faire mieux dans ce cas.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
