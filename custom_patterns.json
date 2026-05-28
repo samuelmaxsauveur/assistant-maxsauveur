@@ -242,6 +242,14 @@
       "example_count": 2
     },
     {
+      "topic": "envoi_commande__12265",
+      "topic_label": "Envoi Commande #12265",
+      "situation": "Envoi Commande #12265",
+      "response_template": "Bonjour Simon,\n\nMerci pour votre message.\n\nMalheureusement, notre système logistique ne nous permet pas de scinder une commande en deux expéditions distinctes. Pour que le Paul vous soit envoyé sans attendre la Derby Golf en précommande, il faudrait annuler la commande #12265 et la repasser en deux commandes séparées.\n\nVoici comment procéder :\n1. Passez une première commande pour le Paul uniquement (expédition immédiate)\n2. Passez une seconde commande pour la Derby Golf (précommande, expédiée dès disponibilité)\n\nSi vous souhaitez procéder à l'annulation de la commande #12265, dites-le nous et nous nous en occupons immédiatement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_05_15_19_55_16",
       "topic_label": "Form name Form submitted 2026-05-15 19:55:16",
       "situation": "Form name Form submitted 2026-05-15 19:55:16",
