@@ -28,9 +28,17 @@
     {
       "topic": "code_roue_condition_prix_minimum",
       "topic_label": "Code roue de la fortune – condition prix minimum non remplie",
-      "situation": "Un client a obtenu un code de réduction via la roue de la fortune et tente de l'appliquer sur un article, mais le code ne fonctionne pas. La raison probable est que l'article est en dessous du seuil de prix minimum requis pour que le code soit valide.",
-      "response_template": "Bonjour,\n\nLes codes issus de la roue ont une condition importante : ils ne s'appliquent que sur des articles dont le prix est supérieur à 149€. Si le [nom du modèle] est en dessous de ce seuil, le code ne fonctionnera pas automatiquement.\n\nPourriez-vous me préciser le code exact que vous avez reçu ainsi que le prix du modèle dans votre panier ? Avec ces informations, je pourrai vous confirmer si le code peut s'appliquer à votre commande.\n\n[Prénom] de Max Sauveur",
-      "key_points": "Toujours préciser la condition de prix minimum (149€) avant de statuer sur le dysfonctionnement. Demander le code exact et le prix de l'article pour pouvoir confirmer ou infirmer l'éligibilité. Ne pas rejeter la demande d'emblée, rester dans une posture d'investigation bienveillante.",
+      "situation": "Un client a obtenu un code de réduction via la roue de la fortune et tente de l'appliquer sur un article, mais le code ne fonctionne pas. La condition d'éligibilité (prix supérieur à 149€) n'est pas remplie ou n'est pas connue du client. Le service client doit vérifier le code exact et le prix du produit avant de statuer.",
+      "response_template": "Bonjour,\n\nLes codes issus de la roue ont une condition importante : ils ne s'appliquent que sur des articles dont le prix est supérieur à 149€. Si le produit que vous souhaitez commander est en dessous de ce seuil, le code ne fonctionnera pas automatiquement.\n\nPourriez-vous me préciser le code exact que vous avez reçu ainsi que le prix du modèle dans votre panier ? Avec ces informations, je pourrai vous confirmer si le code peut s'appliquer à votre commande.\n\nJohn de Max Sauveur",
+      "key_points": "Toujours rappeler la condition de prix minimum (>149€) avant tout diagnostic. Demander le code exact ET le prix du produit pour pouvoir statuer. Ton neutre et factuel, pas d'engagement avant vérification.",
+      "example_count": 2
+    },
+    {
+      "topic": "code_roue_non_sauvegarde_irrécupérable",
+      "topic_label": "Code roue de la fortune – non enregistré, impossible à retrouver",
+      "situation": "Un client a obtenu un code via la roue de la fortune mais ne l'a pas noté ou copié au moment du tirage. Il demande à ce que le code lui soit renvoyé. Les codes sont générés à la volée et ne sont pas stockés dans le système, ce qui rend toute récupération impossible.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et désolé pour ce désagrément.\n\nMalheureusement, les codes générés par notre roue sont créés à la volée et ne sont pas enregistrés dans notre système. Sans la capture ou la copie du code au moment du tirage, nous ne sommes pas en mesure de vous le retrouver ni de vous le renvoyer.\n\nPar ailleurs, ces codes ont une condition importante : ils ne sont valables que sur des articles dont le prix est supérieur à 149€. Si le produit que vous aviez en tête est en dessous de ce seuil, le code ne se serait pas appliqué de toute façon.\n\nEncore désolé de ne pas pouvoir faire mieux dans ce cas.\n\nJohn de Max Sauveur",
+      "key_points": "Expliquer clairement que les codes ne sont pas enregistrés côté système — aucune récupération possible. Mentionner systématiquement la condition de prix >149€ pour contextualiser. Ton empathique mais ferme sur l'impossibilité. Ne pas proposer de compensation spontanée.",
       "example_count": 1
     },
     {
@@ -406,6 +414,14 @@
       "topic_label": "Form name Form submitted 2026-05-26 21:42:37",
       "situation": "Form name Form submitted 2026-05-26 21:42:37",
       "response_template": "Bonjour Colin,\n\nMerci pour votre message et votre intérêt pour nos produits.\n\nSur la question de la TVA française, je vais être transparent avec vous : nous ne proposons pas de détaxe à l'export, et il nous est impossible de créer un bon de réduction spécifique pour annuler la TVA française. Notre boutique en ligne applique les prix TTC pour tous les clients, quelle que soit leur résidence. Ce n'est pas une politique que nous pouvons contourner via un code promo.\n\nConcernant la livraison en poste restante en France : oui, c'est possible via Colissimo, à condition que l'adresse de livraison soit une adresse postale valide en France. Si vous avez une adresse de relais ou de retrait en zone frontalière, nous pouvons livrer là-bas sans problème.\n\nLa solution la plus simple si vous souhaitez éviter la double imposition reste effectivement de vous faire livrer en France (poste restante ou chez un proche), puis de passer la douane vous-même.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "form_name_form_submitted_2026_05_28_13_58_14",
+      "topic_label": "Form name Form submitted 2026-05-28 13:58:14",
+      "situation": "Form name Form submitted 2026-05-28 13:58:14",
+      "response_template": "Bonjour Kevin,\n\nMerci pour votre message.\n\nPour procéder à l'échange, voici la procédure :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez « avoir »)\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique (frais de retour à votre charge) :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous envoyons un avoir de 239€ pour commander la bonne taille.\n\nConcernant le réassort du Moc Jagger noir : le modèle devrait être de nouveau disponible la semaine prochaine. Vous aurez donc largement le temps de commander la bonne taille avec votre avoir.\n\nAvant de renvoyer la paire, dans quelle taille souhaitez-vous l'échanger ? Cela nous permettra de vérifier la disponibilité dès le retour en stock.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
