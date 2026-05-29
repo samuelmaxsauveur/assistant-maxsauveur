@@ -914,14 +914,6 @@
       "example_count": 2
     },
     {
-      "topic": "re__commande__11486___changement_de_taille",
-      "topic_label": "Re: Commande #11486 - Changement de taille",
-      "situation": "Re: Commande #11486 - Changement de taille",
-      "response_template": "Bonjour Jean-Christophe,\n\nC'est noté, merci pour la confirmation. Voici la procédure pour l'envoi :\n\nExpédiez la paire à notre adresse logistique (frais de retour à votre charge) :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander le Moc Jagger Cuir Noir en taille 41.\n\nN'hésitez pas si vous avez des questions d'ici là.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "re__commande__11590_confirm_e",
       "topic_label": "Re: Commande #11590 confirmée",
       "situation": "Re: Commande #11590 confirmée",
@@ -1029,9 +1021,9 @@
       "topic": "re__form_name_form_submitted_2026_05_14_18_05_44",
       "topic_label": "Re: Form name Form submitted 2026-05-14 18:05:44",
       "situation": "Re: Form name Form submitted 2026-05-14 18:05:44",
-      "response_template": "Bonjour Quentin,\n\nOui, nous avons bien réceptionné vos sandales, merci.\n\nVotre avoir de 149€ sera généré aujourd'hui et vous parviendra par email dans la journée sous forme de code promo. Il sera valable 6 mois, à usage unique et non cumulable.\n\nComme convenu, les frais de port sur votre nouvelle commande en taille 40 sont offerts de notre côté.\n\nN'hésitez pas à nous revenir si vous ne recevez pas le code ou si vous avez la moindre question.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Quentin,\n\nOui, nous avons bien réceptionné vos sandales, merci.\n\nVotre avoir de 149€ sera généré aujourd'hui et vous parviendra par email dans la journée sous forme de code promo. Il sera valable 6 mois, à usage unique et non cumulable.\n\nN'hésitez pas à nous revenir si vous ne recevez pas le code ou si vous avez la moindre question.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 3
+      "example_count": 4
     },
     {
       "topic": "re__form_name_form_submitted_2026_05_18_15_07_57",
@@ -1760,6 +1752,14 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre retour.\n\nLe [modèle] chausse effectivement juste au départ, le cuir et la semelle en liège s'assouplissant avec le port pour se mouler progressivement au pied. Cela dit, si le [taille actuelle] est vraiment trop petit et inconfortable, on comprend tout à fait que vous souhaitiez changer de taille.\n\nConcernant le [taille souhaitée] : nos [modèles] ne dépassent pas le [taille max]. Je suis donc dans l'impossibilité de vous proposer un échange dans cette pointure, et je m'en excuse.\n\nVous avez deux options :\n\n**Option 1 : Remboursement**\nRetournez la paire à vos frais en suivant cette procédure :\n1. Téléchargez et complétez le bon de retour ici : https://maxsauveur.com/pages/livraison-et-retour (raison : \"demande de remboursement\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous procédons au remboursement.\n\n**Option 2 : Avoir**\nSi vous souhaitez explorer d'autres modèles de la collection (certains offrent un chaussant plus généreux), nous pouvons vous générer un avoir plutôt qu'un remboursement, avec les frais de livraison offerts sur votre prochain achat.\n\nDites-moi quelle option vous convient le mieux.\n\n[Prénom] de Max Sauveur",
       "key_points": "Reconnaître d'abord la caractéristique du produit (chausse juste, s'assouplit avec le temps) avant d'annoncer l'impossibilité. Être transparent sur la limite de gamme de tailles. Proposer systématiquement deux options : remboursement ou avoir avec frais de port offerts. Inclure l'adresse logistique complète et le lien vers le bon de retour. Ton empathique et sans jugement.",
       "example_count": 1
+    },
+    {
+      "topic": "re__commande__11486___changement_de_taille",
+      "topic_label": "Échange taille mocassin – procédure retour après confirmation",
+      "situation": "Un client a confirmé sa demande d'échange de taille pour un mocassin. Le service client lui communique la procédure d'envoi du retour : adresse logistique, frais à sa charge, et envoi d'un avoir dès réception pour commander la bonne taille.",
+      "response_template": "Bonjour [Prénom],\n\nC'est noté, merci pour la confirmation. Voici la procédure pour l'envoi :\n\nExpédiez la paire à notre adresse logistique (frais de retour à votre charge) :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander le [Modèle + Couleur] en taille [Taille souhaitée].\n\nN'hésitez pas si vous avez des questions d'ici là.\n\n[Prénom conseiller] de Max Sauveur",
+      "key_points": "Ton direct et rassurant. Indiquer clairement que les frais de retour sont à la charge du client. Préciser l'adresse SSL complète. Confirmer explicitement le modèle et la taille souhaitée dans le message. L'avoir est émis après réception ET contrôle de la paire retournée.",
+      "example_count": 2
     },
     {
       "topic": "commande__11486___changement_de_taille",
