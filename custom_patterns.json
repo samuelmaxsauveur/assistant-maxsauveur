@@ -882,6 +882,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__form_name_form_submitted_2026_05_28_15_46_25",
+      "topic_label": "Re: Form name Form submitted 2026-05-28 15:46:25",
+      "situation": "Re: Form name Form submitted 2026-05-28 15:46:25",
+      "response_template": "Bonjour Axel,\n\nVous avez bien compris, malheureusement. Le Boat en marine étant à 149€ exactement, le code ne s'applique que sur des articles dont le prix est **supérieur** à 149€, pas égal. \n\nDésolé pour cette mauvaise nouvelle.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__fwd__max_sauveur___service_client",
       "topic_label": "Re: Fwd: Max Sauveur — Service Client",
       "situation": "Re: Fwd: Max Sauveur — Service Client",
