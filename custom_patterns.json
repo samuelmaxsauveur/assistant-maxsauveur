@@ -1082,6 +1082,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__pointure_deck___chaussures_bateau_cuir_marron_et__change",
+      "topic_label": "Re: Pointure Deck - Chaussures Bateau Cuir Marron et échange ?",
+      "situation": "Re: Pointure Deck - Chaussures Bateau Cuir Marron et échange ?",
+      "response_template": "Bonjour Cyrille,\n\nMerci pour ce retour, et bonne nouvelle : si la longueur vous convient, l'échange n'est probablement pas nécessaire.\n\nCe que vous décrivez (pied bien en longueur mais peu de maintien au talon) est un ressenti classique sur une chaussure bateau, et il y a une solution simple : ajouter une semelle d'ajustement à l'intérieur. Ce type de semelle (disponible en pharmacie ou chez un cordonnier) prend du volume dans la chaussure, cale le pied vers l'arrière et améliore nettement le maintien sans comprimer les orteils. Beaucoup de nos clients l'utilisent sur ce modèle avec d'excellents résultats.\n\nConcernant les photos des griffures : inutile de vous en préoccuper pour le moment. Profitez bien de votre séjour en Italie, et si à votre retour vous sentez que la semelle d'ajustement ne suffit pas et que vous souhaitez quand même envisager un retour, revenez vers nous et on réévaluera la situation ensemble.\n\nBonne fin de voyage !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__question_pointure",
       "topic_label": "Re: Question pointure",
       "situation": "Re: Question pointure",
@@ -1395,11 +1403,11 @@
     },
     {
       "topic": "rupture_stock_retour_hiver",
-      "topic_label": "Rupture de stock – retour prévu en saison",
-      "situation": "Un client s'interroge sur la disponibilité d'un modèle actuellement en rupture de stock. Le service client l'informe que le produit n'est pas en fin de vie mais reviendra en stock prochainement (ex : réassort hivernal), et en profite pour collecter des informations de taille afin de mieux l'orienter lors du retour en stock.",
-      "response_template": "Bonjour [Prénom],\n\nBonne nouvelle : les [Nom du modèle] devraient revenir en stock cet hiver. Ce n'est donc pas un modèle en fin de vie, simplement en rupture temporaire.\n\nPour être sûr de vous orienter vers la bonne pointure dès que le réassort arrive, pourriez-vous nous indiquer la longueur de votre pied en centimètres ? (À mesurer nu, talon contre un mur, en marquant le bout du gros orteil.)\n\nOn revient vers vous dès qu'on en sait plus sur la date exacte de disponibilité.\n\n[Prénom agent] de Max Sauveur",
-      "key_points": "Ton rassurant et positif ('Bonne nouvelle'). Distinguer clairement rupture temporaire et fin de vie. Anticiper le besoin client en collectant la mesure du pied dès maintenant pour préparer le réassort. Rester engagé sur un suivi (rappeler le client à la disponibilité).",
-      "example_count": 1
+      "topic_label": "Rupture de stock – pas de date de réassort confirmée + alerte dispo",
+      "situation": "Un client demande la disponibilité d'un modèle ou d'une taille spécifique en rupture de stock. Il n'y a pas de date de réassort confirmée. Le service client oriente le client vers l'alerte disponibilité sur la fiche produit.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message !\n\nPour le moment, nous n'avons pas de date de réassort confirmée sur le modèle [Nom du modèle] en [variante / matière], ni en [taille 1] ni en [taille 2]. Pour être informé en priorité dès que ces tailles sont de nouveau disponibles, je vous invite à vous abonner à l'alerte directement sur la fiche produit du modèle sur notre site.\n\nN'hésitez pas si vous avez d'autres questions.\n\n[Prénom agent] de Max Sauveur",
+      "key_points": "Ton chaleureux et direct. Ne pas promettre de date. Toujours rediriger vers l'alerte disponibilité sur la fiche produit. Mentionner précisément le modèle et les tailles concernées. Ne pas laisser le client sans solution concrète.",
+      "example_count": 2
     },
     {
       "topic": "rupture_stock_echange_taille_superieure",
