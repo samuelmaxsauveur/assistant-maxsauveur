@@ -821,9 +821,9 @@
       "topic": "re__fin_de_production_et_exp_ditions_de_vos_moc_jagger",
       "topic_label": "Re: Fin de production et expéditions de vos Moc Jagger",
       "situation": "Re: Fin de production et expéditions de vos Moc Jagger",
-      "response_template": "Bonjour Guillem,\n\nVotre commande #11468 (Moc Jagger Cuir Noir 42 + ceinture Carter) est actuellement en cours de préparation dans notre entrepôt. Elle sera expediée cette semaine.\n\nVous recevrez automatiquement un email avec votre lien de suivi Chronopost dès que le colis sera pris en charge par le transporteur. Pensez également à vérifier vos courriers indésirables.\n\nBonne journée à vous.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Pierre,\n\nVotre commande #11492 (Moc Jagger Cuir Pony Marron, taille 44) a bien été expédiée. Voici votre lien de suivi Chronopost :\n\nhttps://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR632598445TS\n\nLa livraison est estimée entre le 31 mai et le 2 juin, en point relais Esat les Ateliers de Jemmapes à Paris (75012).\n\nPensez à vérifier vos courriers indésirables si vous n'avez pas reçu l'email de confirmation d'expédition.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 2
+      "example_count": 3
     },
     {
       "topic": "re__form_name_form_submitted_2026_05_14_18_05_44",
