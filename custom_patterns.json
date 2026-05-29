@@ -10,6 +10,14 @@
       "example_count": 1
     },
     {
+      "topic": "chaussures_trop_petite__commande__11582",
+      "topic_label": "Chaussures trop petite  commande #11582",
+      "situation": "Chaussures trop petite  commande #11582",
+      "response_template": "Bonjour Landi,\n\nMerci pour ce retour et le compliment sur la qualité de la paire, ça fait vraiment plaisir à lire !\n\nPas de souci, on peut tout à fait procéder à un échange pour la taille au-dessus. Voici la procédure :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique (frais de retour à votre charge) :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander le Moc Jagger en taille 43.\n\nConcernant la disponibilité : si le 43 n'est plus en stock au moment de votre retour, l'avoir sera bien sûr utilisable sur n'importe quel autre modèle de la collection, vous ne serez pas bloqué.\n\nAvant de vous lancer, un petit rappel sur le ressenti dans un mocassin qui peut être utile : un mocassin doit tenir le pied fermement, sans lacets pour le maintenir. Au départ, il chausse juste, c'est tout à fait normal. Le cuir et la semelle en liège s'assouplissent avec le port et se moulent progressivement à votre pied. \n\nSi après quelques ports le 42 reste vraiment inconfortable, le 43 reste la bonne direction. Mais si c'est surtout une question de largeur, le cuir va s'assouplir.\n\nN'hésitez pas si vous avez des questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__max_sauveur___service_client",
       "topic_label": "Clôture de dossier – problème résolu (mocassins)",
       "situation": "Le client confirme que le problème est résolu et que le produit (mocassin) a bien été reçu et convient. Le service client conclut la conversation de manière chaleureuse.",
