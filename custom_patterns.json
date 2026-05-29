@@ -274,6 +274,14 @@
       "example_count": 1
     },
     {
+      "topic": "defaut_fabrication_retour_international_frais_port",
+      "topic_label": "Défaut fabrication – Retour depuis l'étranger, frais avancés par le client",
+      "situation": "Un client situé hors de France signale un défaut de fabrication (ex : cuir qui se déchire à l'essayage). Le système logistique ne permet pas de générer une étiquette prépayée depuis l'étranger. Le client doit avancer les frais de retour, qui lui seront remboursés à réception.",
+      "response_template": "Bonjour [Prénom],\n\nNous sommes sincèrement désolés pour ce qui vous arrive. Un [description du défaut] est clairement un défaut de fabrication, cela n'aurait pas dû se produire.\n\nNous prenons en charge la réparation intégralement. Notre système logistique ne nous permet malheureusement pas de générer une étiquette de retour prépayée depuis [pays du client]. Vous devrez donc expédier la paire à vos frais à notre adresse logistique :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\nFrance\n\nN'oubliez pas d'inclure le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"défaut fabrication\").\n\nDès réception de la paire, nous vous remboursons les frais de port de votre commande initiale ([montant]€) et nous vous renvoyons la paire réparée gratuitement.\n\nEncore désolé pour ce désagrément, et merci pour votre patience.\n\nCordialement,\n[Prénom conseiller] de Max Sauveur",
+      "key_points": "Reconnaître clairement la responsabilité (défaut fabrication). Expliquer la contrainte logistique internationale sans se dédouaner. Indiquer l'adresse exacte SSL Les Pennes-Mirabeau. Préciser le lien vers le bon de retour et la mention 'défaut fabrication'. Promettre le remboursement des frais de port initiaux + renvoi gratuit de la paire réparée. Ton empathique et responsable.",
+      "example_count": 1
+    },
+    {
       "topic": "defaut_fabrication_oeillet_cuir_prise_en_charge",
       "topic_label": "Défaut fabrication – Œillet décollé du cuir, prise en charge et retour atelier",
       "situation": "Un client signale qu'un œillet s'est désolidarisé du cuir après quelques mois d'utilisation sans choc particulier. Après réception de photos, le service client confirme un défaut de fabrication et prend en charge la réparation via retour atelier.",
@@ -1046,6 +1054,14 @@
       "topic_label": "Re: Form name Form submitted 2026-05-26 16:03:43",
       "situation": "Re: Form name Form submitted 2026-05-26 16:03:43",
       "response_template": "Bonjour Thomas,\n\nMerci pour votre retour et bienvenue dans la famille !\n\nLa Fisherman est un très bon choix pour débuter avec Max Sauveur. Concernant votre code WHEEL45SIDFLL, malheureusement les Fisherman sont en dessous du seuil de 149€, ce qui explique pourquoi il ne s'appliquera pas sur ce modèle.\n\nEn attendant, si vous avez des questions sur la taille à prendre pour la Fisherman, je suis là.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__form_name_form_submitted_2026_05_28_09_19_27",
+      "topic_label": "Re: Form name Form submitted 2026-05-28 09:19:27",
+      "situation": "Re: Form name Form submitted 2026-05-28 09:19:27",
+      "response_template": "Bonjour Cyril,\n\nMerci pour le lien,.\n\nLe problème vient du fonctionnement du code : il ne s'applique que sur des articles dont le prix est strictement supérieur à 149€, et la Fisherman est à 149€ pile. Un euro de trop, comme vous le dites.\n\nMais il y a une raison plus fondamentale derrière cette limite : nos sandales et modèles accessibles sont déjà vendus avec des marges très réduites. Sur ce type de produit, appliquer une remise de 45€ n'est tout simplement pas viable pour nous économiquement. Ce n'est pas une restriction arbitraire, c'est une contrainte réelle.\n\nLe code est conçu pour fonctionner sur des modèles à plus forte valeur ajoutée, comme nos boots ou derbies, où ce type de geste est absorbable.\n\nJe suis sincèrement désolé de ne pas pouvoir faire mieux dans ce cas.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
