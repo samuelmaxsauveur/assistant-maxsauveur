@@ -914,6 +914,14 @@
       "example_count": 2
     },
     {
+      "topic": "re__commande__11486___changement_de_taille",
+      "topic_label": "Re: Commande #11486 - Changement de taille",
+      "situation": "Re: Commande #11486 - Changement de taille",
+      "response_template": "Bonjour Jean-Christophe,\n\nC'est noté, merci pour la confirmation. Voici la procédure pour l'envoi :\n\nExpédiez la paire à notre adresse logistique (frais de retour à votre charge) :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander le Moc Jagger Cuir Noir en taille 41.\n\nN'hésitez pas si vous avez des questions d'ici là.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__11590_confirm_e",
       "topic_label": "Re: Commande #11590 confirmée",
       "situation": "Re: Commande #11590 confirmée",
