@@ -146,6 +146,14 @@
       "example_count": 2
     },
     {
+      "topic": "conseil_pointure_fisherman_mesure_cm",
+      "topic_label": "Conseil pointure Fisherman – mesure en cm, recommandation taille + info chausse grand",
+      "situation": "Un client fournit la mesure de son pied en centimètres (marge déjà incluse ou non) et demande quelle taille commander pour la sandale Fisherman. Le service client applique le guide de taille et précise si le modèle chausse grand ou normalement.",
+      "response_template": "Bonjour [Prénom],\n\nAvec [X] cm de pied (marge déjà incluse), vous êtes en **[taille EU]** sur notre guide. La Fisherman chausse légèrement grand, mais dans votre cas, je vous recommande de rester sur le **[taille EU]**.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\n[Prénom conseiller] de Max Sauveur",
+      "key_points": "Toujours préciser si la marge est déjà incluse dans la mesure fournie. Indiquer que la Fisherman chausse légèrement grand. Recommander la taille du guide sans forcer un ajustement si la mesure est dans la norme. Ton rassurant et concis.",
+      "example_count": 1
+    },
+    {
       "topic": "conseil_pointure",
       "topic_label": "Conseil pointure – Aide au choix de taille selon mesure en cm (Fisherman)",
       "situation": "Un client fournit la mesure de son pied en centimètres et demande quelle taille commander, notamment pour la sandale Fisherman. Le client peut exprimer une réticence à descendre en taille ou mentionner une référence de marque tierce (ex : Birkenstock) pour comparer.",
@@ -864,6 +872,14 @@
       "response_template": "Bonjour,\n\nMerci pour votre message et votre patience !\n\nVos Moc Jagger arrivent chez nous cette semaine, et nous prévoyons de les expédier dans la foulée. La livraison estimée se situe autour semaine prochaine, sous réserve que les ponts de fin mai ne viennent pas ralentir les transporteurs.\n\nDès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost pour suivre votre paire en temps réel.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 2
+    },
+    {
+      "topic": "re__d_faut_de_fabrication___semelle_d_coll_e___chaussures_ch",
+      "topic_label": "Re: Défaut de fabrication – Semelle décollée | Chaussures Chelsea Chapman",
+      "situation": "Re: Défaut de fabrication – Semelle décollée | Chaussures Chelsea Chapman",
+      "response_template": "Bonjour Jeremy,\n\nMerci pour votre relance.\n\nDe notre côté, nous n'avons pas encore réceptionné votre paire en atelier. \n\nLa paire est toujours en cours de réparation.\n\nCordialement\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
     },
     {
       "topic": "re__envoi_commande__12265",
