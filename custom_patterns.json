@@ -4,10 +4,10 @@
     {
       "topic": "bug_code_promo_disparait_etape_connexion",
       "topic_label": "Bug code promo – disparition à l'étape de connexion/email",
-      "situation": "Un client tente d'appliquer un code de réduction (ex : code ceinture) lors du passage de commande, mais le code disparaît au moment où il renseigne son adresse email ou se connecte. Le bug est lié à une interaction entre les codes et l'étape de connexion dans le système de paiement et ne peut pas être corrigé à la volée.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour cette précision.\nLe bug que vous décrivez ([description du code] qui disparaît au moment où vous renseignez votre email) est lié à une interaction entre les codes et l'étape de connexion dans notre système de paiement. C'est un comportement que nous ne pouvons pas corriger à la volée.\n\nPour débloquer la situation rapidement et ne pas risquer de rupture de stock, voici ce que je vous propose : passez deux commandes séparées, une pour chaque article. Dès que les deux commandes sont passées, remontez-nous les numéros et nous remboursons l'un des deux frais de port directement sur votre moyen de paiement.\n\nC'est la solution la plus simple et la plus rapide pour vous.\n\nN'hésitez pas si vous avez la moindre question.\n\n[Prénom équipe] de Max Sauveur",
-      "key_points": "Reconnaître le bug sans minimiser ; expliquer la cause technique brièvement ; proposer une solution de contournement concrète (2 commandes séparées) ; s'engager sur le remboursement d'un des frais de port dès réception des numéros de commande ; ton rassurant et orienté solution.",
-      "example_count": 1
+      "situation": "Un client tente d'appliquer un code de réduction lors du passage de commande, mais le code disparaît au moment où il renseigne son email ou passe à l'étape de connexion. Le bug est lié à une interaction entre les codes et l'étape de connexion dans le système de paiement.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour cette précision.\nLe bug que vous décrivez (le code [NOM DU CODE] qui disparaît au moment où vous renseignez votre email) est lié à une interaction entre les codes et l'étape de connexion dans notre système de paiement. C'est un comportement que nous ne pouvons pas corriger à la volée.\n\nPour débloquer la situation rapidement et ne pas risquer de rupture de stock, voici ce que je vous propose : passez deux commandes séparées, une pour chaque article. Dès que les deux commandes sont passées, remontez-nous les numéros et nous remboursons l'un des deux frais de port directement sur votre moyen de paiement.\n\nC'est la solution la plus simple et la plus rapide pour vous.\n\nN'hésitez pas si vous avez la moindre question.\n\n[Prénom de l'agent] de Max Sauveur",
+      "key_points": "Reconnaître le bug sans minimiser. Ne pas promettre de correction immédiate. Proposer une solution de contournement concrète : deux commandes séparées + remboursement d'un des frais de port sur présentation des numéros de commande. Ton rassurant et orienté solution.",
+      "example_count": 2
     },
     {
       "topic": "commande__12115",
@@ -35,11 +35,11 @@
     },
     {
       "topic": "code_roue_condition_prix_minimum",
-      "topic_label": "Code roue de la fortune – condition prix minimum non remplie",
-      "situation": "Un client a obtenu un code de réduction via la roue de la fortune et tente de l'appliquer sur un article, mais le code ne fonctionne pas. La cause est que l'article concerné ne dépasse pas le seuil de prix minimum requis par le code (ici 149€). Le service client confirme la validité du code tout en expliquant la condition de prix, et demande des précisions sur le modèle visé pour statuer.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message.\n\nLe code [CODE] est bien valide, mais il ne s'applique que sur des articles dont le prix est supérieur à [MONTANT SEUIL]€. Si le modèle que vous souhaitez commander est en dessous de ce seuil, le code ne fonctionnera pas automatiquement.\n\nPourriez-vous me préciser quel modèle vous avez dans votre panier et son prix ? Je pourrai ainsi confirmer si le code peut s'y appliquer.\n\n[Prénom conseiller] de Max Sauveur",
-      "key_points": "- Confirmer explicitement que le code est valide (ne pas laisser penser qu'il est défectueux)\n- Expliquer clairement la condition de prix minimum\n- Demander le modèle et le prix du produit visé avant de conclure\n- Ton rassurant et pédagogique\n- Ne pas promettre d'exception à la règle sans avoir les informations",
-      "example_count": 3
+      "topic_label": "Code promo – condition de prix minimum non remplie (produit ciblé, pas panier)",
+      "situation": "Un client a obtenu un code de réduction (ex : roue de la fortune, code ceinture) et tente de l'appliquer sur un article ou en complétant son panier avec des accessoires pour atteindre le seuil. Le code ne fonctionne pas car la condition porte sur le prix de l'article ciblé lui-même, et non sur le total du panier. De plus, certains modèles à marge réduite sont explicitement exclus.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour le retour.\n\nLe problème vient du fonctionnement du code : c'est bien [l'article lui-même / la chaussure elle-même] qui doit dépasser [MONTANT]€, pas le total du panier. Ajouter des [chaussettes / accessoires] pour atteindre le seuil ne déclenche pas la condition.\n\nMais il y a une raison plus fondamentale pour laquelle ce code ne peut pas s'appliquer sur des modèles comme [MODÈLES EXCLUS] : nos prix sur ces produits sont déjà volontairement accessibles, ce qui signifie que nos marges y sont très réduites. Appliquer une réduction de [MONTANT]€ sur ce type de modèle n'est tout simplement pas viable pour nous économiquement. Ce n'est pas une restriction arbitraire, c'est une contrainte réelle.\n\nLe code est conçu pour s'appliquer sur des modèles à plus forte valeur ajoutée, comme [EXEMPLES DE MODÈLES ÉLIGIBLES], où ce type de geste est absorbable.\n\nCordialement\n[Prénom de l'agent] de Max Sauveur",
+      "key_points": "Expliquer la double contrainte : (1) le seuil porte sur l'article seul, pas sur le panier total ; (2) certains modèles à faible marge sont structurellement exclus. Justifier l'exclusion par une contrainte économique réelle, pas une règle arbitraire. Ton direct et transparent, sans sur-promettre ni proposer de compensation si non prévue.",
+      "example_count": 4
     },
     {
       "topic": "code_roue_non_sauvegarde_irrécupérable",
@@ -1056,6 +1056,14 @@
       "response_template": "Bonjour Axel,\n\nMerci pour le retour.\n\nLe problème vient du fonctionnement du code : c'est bien la chaussure elle-même qui doit dépasser 149€, pas le total du panier. Ajouter des chaussettes ou des accessoires pour atteindre le seuil ne déclenche pas la condition.\n\nMais il y a une raison plus fondamentale pour laquelle ce code ne peut pas s'appliquer sur des modèles comme Le Boat ou les sandales : nos prix sur ces produits sont déjà volontairement accessibles, ce qui signifie que nos marges y sont très réduites. Appliquer une réduction de 45€ sur ce type de modèle n'est tout simplement pas viable pour nous économiquement. Ce n'est pas une restriction arbitraire, c'est une contrainte réelle.\n\nLe code est conçu pour s'appliquer sur des modèles à plus forte valeur ajoutée, comme nos boots ou derbies, où ce type de geste est absorbable.\n\nCordialement\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 2
+    },
+    {
+      "topic": "re__form_name_form_submitted_2026_05_28_17_47_43",
+      "topic_label": "Re: Form name Form submitted 2026-05-28 17:47:43",
+      "situation": "Re: Form name Form submitted 2026-05-28 17:47:43",
+      "response_template": "Bonjour Jean-François,\n\nMerci pour ce retour et pour avoir expédié la paire aussi rapidement.\n\nTout à fait compréhensible, des pieds asymétriques peuvent effectivement rendre le choix de chaussant plus délicat, surtout sur un mocassin sans lacets.\n\nDès réception et contrôle de votre colis, nous procédons au remboursement sur votre moyen de paiement initial. Comptez quelques jours ouvrés après la réception en entrepôt.\n\nN'hésitez pas si vous avez des questions d'ici là.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
     },
     {
       "topic": "re__fw__commande__12087_confirm_e",
