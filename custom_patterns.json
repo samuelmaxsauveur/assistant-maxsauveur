@@ -138,6 +138,14 @@
       "example_count": 1
     },
     {
+      "topic": "mocassins_pour_mariage_ete",
+      "topic_label": "Conseil mocassin Paul pour mariage – confort longue durée",
+      "situation": "Un client possède ou a essayé un modèle existant (ex : Peter A.) et s'interroge sur le Paul Mocassin pour un usage spécifique comme un mariage. Il souhaite savoir si le modèle convient et comment affiner son choix de taille.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message ! Avant de vous répondre sur le Paul, j'aurais besoin d'en savoir un peu plus sur ce que vous ressentez dans le [modèle actuel] : est-ce que c'est une question de longueur (orteils qui touchent le bout) ou plutôt de largeur et de maintien général ?\n\nEt oui, pour [usage prévu], le Paul Mocassin est tout à fait adapté. Il offre même un confort supérieur sur la durée : sa semelle en liège se moule progressivement à votre pied avec le port, et sa doublure intérieure le rend plus confortable dès le départ. C'est un mocassin fait pour être porté toute une journée.\n\nDites-moi comment vous vous sentez exactement dans le [modèle actuel] et on voit ensemble si un échange ou un autre modèle fait plus sens pour vous.\n\nJohn de Max Sauveur",
+      "key_points": "Poser une question de diagnostic avant de conclure (longueur vs largeur). Mettre en avant les caractéristiques du Paul (semelle liège, doublure intérieure) pour rassurer sur le confort longue durée. Ton conversationnel et personnalisé.",
+      "example_count": 2
+    },
+    {
       "topic": "conseil_pointure",
       "topic_label": "Conseil pointure – Aide au choix de taille selon mesure en cm (Fisherman)",
       "situation": "Un client fournit la mesure de son pied en centimètres et demande quelle taille commander, notamment pour la sandale Fisherman. Le client peut exprimer une réticence à descendre en taille ou mentionner une référence de marque tierce (ex : Birkenstock) pour comparer.",
@@ -167,6 +175,14 @@
       "situation": "Un client fournit la mesure de son pied en cm, ce qui correspond à une taille selon le guide, mais le modèle visé commence à la taille supérieure. Le client a également un pied large. Le service client confirme la taille recommandée et anticipe l'assouplissement du cuir.",
       "response_template": "Bonjour [Prénom],\n\nPas de souci pour la coquille ! Dans ce cas, la situation est encore plus simple : avec [X] cm de pied, vous êtes bien en **[taille guide]** sur notre guide, mais la [modèle] commence au [taille disponible], et c'est exactement la taille que nous vous avions recommandée en [année].\n\nLe conseil reste donc le même : **[taille recommandée]**. Et puisque vous avez un pied large, gardez en tête que le cuir s'assouplira avec le port.\n\nBonne journée à vous,\n\n[Prénom] de Max Sauveur",
       "key_points": "Dédramatiser la coquille du client avec bienveillance. Expliquer clairement pourquoi la taille recommandée est légèrement au-dessus du guide (gamme qui démarre plus haut). Mentionner l'assouplissement du cuir pour rassurer sur le pied large. Cohérence avec un éventuel conseil antérieur.",
+      "example_count": 1
+    },
+    {
+      "topic": "identification_de_la_pointure_ideale",
+      "topic_label": "Conseil pointure – mesure en cm vers taille EU + demande de précision modèle",
+      "situation": "Un client fournit la mesure de son pied en centimètres (en précisant parfois quel pied est le plus grand) et demande quelle taille commander. Le service client lui indique la taille EU correspondante selon le guide, puis demande quel modèle est visé pour affiner le conseil selon les spécificités de coupe.",
+      "response_template": "Bonjour [Prénom],\n\nAvec [X] cm de pied ([pied gauche/droit], le plus grand), vous êtes en **[taille EU]** sur notre guide.\n\nPour vous orienter vers la bonne taille, quel modèle avez-vous en tête ? Certains chaussent légèrement grand, d'autres plus ajusté, et votre largeur de [X] cm est également un élément à prendre en compte selon le modèle.\n\nJohn de Max Sauveur",
+      "key_points": "Donner la taille EU directement et clairement. Ne pas s'arrêter là : demander le modèle visé pour affiner. Mentionner la largeur du pied si elle a été fournie car elle peut influencer le conseil final. Réponse courte et efficace.",
       "example_count": 1
     },
     {
@@ -430,6 +446,14 @@
       "topic_label": "Form name Form submitted 2026-05-26 21:42:37",
       "situation": "Form name Form submitted 2026-05-26 21:42:37",
       "response_template": "Bonjour Colin,\n\nMerci pour votre message et votre intérêt pour nos produits.\n\nSur la question de la TVA française, je vais être transparent avec vous : nous ne proposons pas de détaxe à l'export, et il nous est impossible de créer un bon de réduction spécifique pour annuler la TVA française. Notre boutique en ligne applique les prix TTC pour tous les clients, quelle que soit leur résidence. Ce n'est pas une politique que nous pouvons contourner via un code promo.\n\nConcernant la livraison en poste restante en France : oui, c'est possible via Colissimo, à condition que l'adresse de livraison soit une adresse postale valide en France. Si vous avez une adresse de relais ou de retrait en zone frontalière, nous pouvons livrer là-bas sans problème.\n\nLa solution la plus simple si vous souhaitez éviter la double imposition reste effectivement de vous faire livrer en France (poste restante ou chez un proche), puis de passer la douane vous-même.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "form_name_form_submitted_2026_05_28_11_06_10",
+      "topic_label": "Form name Form submitted 2026-05-28 11:06:10",
+      "situation": "Form name Form submitted 2026-05-28 11:06:10",
+      "response_template": "Bonjour Yémène,\n\nMerci pour votre message !\n\nLe  bon a une condition de prix minimum : ils ne s'appliquent que sur des articles dont le prix est supérieur à 149€. Si la sandale que vous avez choisie est en dessous de ce seuil, cela expliquerait pourquoi le code ne fonctionne pas.\n\nPour la taille de la Fisherman : avec une pointure habituelle de 43,5, je vous recommande le **43**. La Fisherman chausse légèrement grand, ce qui signifie qu'un 43 sur ce modèle offre un volume proche d'un 43,5 standard. De plus, les boucles de réglage permettent un ajustement précis du tour de pied et de cheville, ce qui compensera facilement les demi-tailles.\n\nLe 44 serait trop grand pour vous sur ce modèle.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
