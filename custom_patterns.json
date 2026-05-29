@@ -154,20 +154,20 @@
       "example_count": 5
     },
     {
-      "topic": "conseil_pointure_cuir_chausse_juste",
-      "topic_label": "Conseil pointure – Cuir chausse juste au départ (assouplissement normal)",
-      "situation": "Un client demande conseil sur sa pointure pour un modèle en cuir (ex : mocassin Paul). Il a essayé une taille qui était trop grande et hésite sur la taille en dessous, qui chausse juste au départ.",
-      "response_template": "Bonjour [Prénom],\n\nBonne question. Le [modèle] chausse juste au départ, donc si votre [taille habituelle] était trop grand chez nous, le [taille inférieure] est effectivement la bonne direction.\n\n[Prénom] de Max Sauveur",
-      "key_points": "Ton direct et rassurant. Valider explicitement le raisonnement du client (taille habituelle trop grande → taille en dessous = bonne direction). Mentionner que le cuir chausse juste au départ est normal. Réponse courte et affirmative.",
-      "example_count": 3
-    },
-    {
       "topic": "conseil_pointure_pied_large_debut_gamme",
       "topic_label": "Conseil pointure – Pied large, modèle débutant à une taille au-dessus du guide",
       "situation": "Un client fournit la mesure de son pied en cm, ce qui correspond à une taille selon le guide, mais le modèle visé commence à la taille supérieure. Le client a également un pied large. Le service client confirme la taille recommandée et anticipe l'assouplissement du cuir.",
       "response_template": "Bonjour [Prénom],\n\nPas de souci pour la coquille ! Dans ce cas, la situation est encore plus simple : avec [X] cm de pied, vous êtes bien en **[taille guide]** sur notre guide, mais la [modèle] commence au [taille disponible], et c'est exactement la taille que nous vous avions recommandée en [année].\n\nLe conseil reste donc le même : **[taille recommandée]**. Et puisque vous avez un pied large, gardez en tête que le cuir s'assouplira avec le port.\n\nBonne journée à vous,\n\n[Prénom] de Max Sauveur",
       "key_points": "Dédramatiser la coquille du client avec bienveillance. Expliquer clairement pourquoi la taille recommandée est légèrement au-dessus du guide (gamme qui démarre plus haut). Mentionner l'assouplissement du cuir pour rassurer sur le pied large. Cohérence avec un éventuel conseil antérieur.",
       "example_count": 1
+    },
+    {
+      "topic": "conseil_pointure_cuir_chausse_juste",
+      "topic_label": "Conseil pointure – Retour en cours : question avant lancement (mocassin forme)",
+      "situation": "Un client souhaite retourner un mocassin car la forme ne lui convient pas. Avant de lancer la procédure, le service client cherche à comprendre si le problème est lié à la longueur, à la largeur ou au maintien au cou-de-pied, pour éventuellement orienter vers une autre taille ou rassurer sur l'assouplissement naturel du cuir.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message. Le bon de retour est disponible directement ici : https://maxsauveur.com/pages/livraison-et-retour. Imprimez-le, indiquez la raison du retour, et glissez-le dans le colis.\n\nAvant que vous ne lanciez la procédure, j'aurais une question : quand vous dites que la forme ne vous va pas, est-ce une question de longueur (le mocassin est trop long ou trop court) ou plutôt de largeur ou de maintien au niveau du cou-de-pied ?\n\nJe vous pose la question car sur un mocassin, certains ressentis s'améliorent naturellement avec le port (le cuir et la semelle en liège se moulent au pied), et en fonction de ce que vous décrivez, il est possible qu'une autre taille vous convienne mieux.\n\nJohn de Max Sauveur",
+      "key_points": "Toujours fournir le lien de retour immédiatement, même en posant une question. Distinguer longueur / largeur / cou-de-pied pour affiner le diagnostic. Rappeler que le cuir et la semelle liège s'assouplissent avec le port. Ne pas bloquer le retour mais inviter le client à préciser avant de l'initier.",
+      "example_count": 4
     },
     {
       "topic": "re__commande__12019_taille___changer",
@@ -886,6 +886,14 @@
       "topic_label": "Re: Form name Form submitted 2026-05-26 16:03:43",
       "situation": "Re: Form name Form submitted 2026-05-26 16:03:43",
       "response_template": "Bonjour Thomas,\n\nMerci pour votre retour et bienvenue dans la famille !\n\nLa Fisherman est un très bon choix pour débuter avec Max Sauveur. Concernant votre code WHEEL45SIDFLL, malheureusement les Fisherman sont en dessous du seuil de 149€, ce qui explique pourquoi il ne s'appliquera pas sur ce modèle.\n\nEn attendant, si vous avez des questions sur la taille à prendre pour la Fisherman, je suis là.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__form_name_form_submitted_2026_05_28_13_58_14",
+      "topic_label": "Re: Form name Form submitted 2026-05-28 13:58:14",
+      "situation": "Re: Form name Form submitted 2026-05-28 13:58:14",
+      "response_template": "Bonjour Kevin,\n\nParfait, le 39 est noté.\n\nBonne nouvelle : votre avoir sera bien de 239€, soit le même montant que votre commande initiale. Vous ne paierez pas plus cher pour cet échange.\n\nLancez le retour quand vous êtes prêt en suivant la procédure indiquée dans notre précédent email, et dès réception et contrôle de la paire, nous vous envoyons votre avoir pour commander le Moc Jagger noir en 39.\n\nBonne soirée à vous également.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
