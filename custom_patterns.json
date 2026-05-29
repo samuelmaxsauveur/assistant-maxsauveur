@@ -698,6 +698,14 @@
       "example_count": 1
     },
     {
+      "topic": "mocassin_42_5",
+      "topic_label": "Mocassin 42,5",
+      "situation": "Mocassin 42,5",
+      "response_template": "Bonjour,\n\nMerci pour votre message.\n\nMalheureusement, les mocassins non doublés en 42,5 ne seront pas réassortis. Cette pointure n'est pas prévue dans les prochaines productions.\n\nBonne nouvelle cependant : nos mocassins non doublés chaussent large, ce qui signifie que le 42 est tout à fait viable pour vous. Si vous souhaitez en être sûr avant de commander, mesurez votre pied nu, talon contre un mur, en marquant le bout du gros orteil, et ajoutez 0,2 cm. Communiquez-moi ce chiffre et je vous confirme la taille idéale.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "mocassins_cuir__paul_",
       "topic_label": "Mocassins cuir (Paul)",
       "situation": "Mocassins cuir (Paul)",
