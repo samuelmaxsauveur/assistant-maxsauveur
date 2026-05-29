@@ -530,6 +530,14 @@
       "example_count": 1
     },
     {
+      "topic": "identification_de_la_pointure_id_ale_",
+      "topic_label": "Identification de la pointure idéale.",
+      "situation": "Identification de la pointure idéale.",
+      "response_template": "Bonjour Jean-Charles,\n\nAvec 25,6 cm de pied (pied gauche, le plus grand), vous êtes en **40** sur notre guide.\n\nPour vous orienter vers la bonne taille, quel modèle avez-vous en tête ? Certains chaussent légèrement grand, d'autres plus ajusté, et votre largeur de 10,5 cm est également un élément à prendre en compte selon le modèle.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "je_suis_perdu___sizing_mocassin_paul",
       "topic_label": "Je suis perdu ~ Sizing Mocassin Paul",
       "situation": "Je suis perdu ~ Sizing Mocassin Paul",
