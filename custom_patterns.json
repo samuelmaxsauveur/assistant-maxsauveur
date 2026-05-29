@@ -906,6 +906,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__fw__commande__12087_confirm_e",
+      "topic_label": "Re: Fw: Commande #12087 confirmée",
+      "situation": "Re: Fw: Commande #12087 confirmée",
+      "response_template": "Bonjour Samy,\n\nMerci, nous avons bien réceptionné votre colis.\n\nAvant de traiter votre dossier, j'aurais besoin d'une précision : quelle est la raison de ce retour ? En fonction de votre réponse, voici ce que nous pouvons faire pour vous :\n\n**Si c'est un problème de pointure sur le Deck Grainé Noir 41.5** : nous prenons en charge l'expédition de la nouvelle taille, vous n'avez rien à avancer. Dites-nous simplement la taille souhaitée et nous nous en occupons.\n\n**Si vous préférez vous orienter vers un autre modèle** : nous pouvons vous générer un avoir de 355€ (soit 335€ + 25€ offerts par la maison), valable 6 mois sur l'ensemble de notre collection.\n\nDites-moi ce qui vous convient le mieux et je m'en occupe immédiatement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__fwd__max_sauveur___service_client",
       "topic_label": "Re: Fwd: Max Sauveur — Service Client",
       "situation": "Re: Fwd: Max Sauveur — Service Client",
