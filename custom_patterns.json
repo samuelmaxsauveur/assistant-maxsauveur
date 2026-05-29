@@ -458,6 +458,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_05_28_17_47_43",
+      "topic_label": "Form name Form submitted 2026-05-28 17:47:43",
+      "situation": "Form name Form submitted 2026-05-28 17:47:43",
+      "response_template": "Bonjour Jean-François,\n\nMerci pour votre message. Le bon de retour est disponible directement ici : https://maxsauveur.com/pages/livraison-et-retour. Imprimez-le, indiquez la raison du retour, et glissez-le dans le colis.\n\nAvant que vous ne lanciez la procédure, j'aurais une question : quand vous dites que la forme ne vous va pas, est-ce une question de longueur (le mocassin est trop long ou trop court) ou plutôt de largeur ou de maintien au niveau du cou-de-pied ?\n\nJe vous pose la question car sur un mocassin, certains ressentis s'améliorent naturellement avec le port (le cuir et la semelle en liège se moulent au pied), et en fonction de ce que vous décrivez, il est possible qu'une autre taille vous convienne mieux.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fw__commande__12087_confirm_e",
       "topic_label": "Fw: Commande #12087 confirmée",
       "situation": "Fw: Commande #12087 confirmée",
