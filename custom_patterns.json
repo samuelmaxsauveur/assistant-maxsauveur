@@ -28,10 +28,10 @@
     {
       "topic": "code_roue_condition_prix_minimum",
       "topic_label": "Code roue de la fortune – condition prix minimum non remplie",
-      "situation": "Un client a obtenu un code de réduction via la roue de la fortune et tente de l'appliquer sur un article, mais le code ne fonctionne pas. La condition d'éligibilité (prix supérieur à 149€) n'est pas remplie ou n'est pas connue du client. Le service client doit vérifier le code exact et le prix du produit avant de statuer.",
-      "response_template": "Bonjour,\n\nLes codes issus de la roue ont une condition importante : ils ne s'appliquent que sur des articles dont le prix est supérieur à 149€. Si le produit que vous souhaitez commander est en dessous de ce seuil, le code ne fonctionnera pas automatiquement.\n\nPourriez-vous me préciser le code exact que vous avez reçu ainsi que le prix du modèle dans votre panier ? Avec ces informations, je pourrai vous confirmer si le code peut s'appliquer à votre commande.\n\nJohn de Max Sauveur",
-      "key_points": "Toujours rappeler la condition de prix minimum (>149€) avant tout diagnostic. Demander le code exact ET le prix du produit pour pouvoir statuer. Ton neutre et factuel, pas d'engagement avant vérification.",
-      "example_count": 2
+      "situation": "Un client a obtenu un code de réduction via la roue de la fortune et tente de l'appliquer sur un article, mais le code ne fonctionne pas. La cause est que l'article concerné ne dépasse pas le seuil de prix minimum requis par le code (ici 149€). Le service client confirme la validité du code tout en expliquant la condition de prix, et demande des précisions sur le modèle visé pour statuer.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message.\n\nLe code [CODE] est bien valide, mais il ne s'applique que sur des articles dont le prix est supérieur à [MONTANT SEUIL]€. Si le modèle que vous souhaitez commander est en dessous de ce seuil, le code ne fonctionnera pas automatiquement.\n\nPourriez-vous me préciser quel modèle vous avez dans votre panier et son prix ? Je pourrai ainsi confirmer si le code peut s'y appliquer.\n\n[Prénom conseiller] de Max Sauveur",
+      "key_points": "- Confirmer explicitement que le code est valide (ne pas laisser penser qu'il est défectueux)\n- Expliquer clairement la condition de prix minimum\n- Demander le modèle et le prix du produit visé avant de conclure\n- Ton rassurant et pédagogique\n- Ne pas promettre d'exception à la règle sans avoir les informations",
+      "example_count": 3
     },
     {
       "topic": "code_roue_non_sauvegarde_irrécupérable",
@@ -1182,6 +1182,14 @@
       "topic_label": "Re: Re: Retour reçu — remboursement en cours",
       "situation": "Re: Re: Retour reçu — remboursement en cours",
       "response_template": "Bonjour Théo,\n\nBonne nouvelle : votre avoir vient d'être généré. Il est utilisable une seule fois, valable pendant 12 mois, et sur toute la collection chaussures.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n0N7P206P2GKR\n\nConcernant les frais de livraison : passez votre commande normalement avec ce code, et nous effectuons le remboursement des frais de port manuellement dès que la commande est validée de notre côté.\n\nUne carte cadeau de 35€ sera envoyée dans quelques minutes également.\n\nEt pour les Moc Jagger, on attendait justement votre retour : êtes-vous toujours intéressé ? Si oui, dites-nous votre pointure et on vous tient informé dès que le stock est disponible.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__re__une_commande__11763_est_en_transit",
+      "topic_label": "Re: Re: Une commande #11763 est en transit",
+      "situation": "Re: Re: Une commande #11763 est en transit",
+      "response_template": "Bonjour Adrien,\n\nMerci pour ces précisions, c'est beaucoup plus clair.\n\nCe que vous décrivez (languettes qui se touchent déjà sans laçage, talon qui se lève, impossibilité de serrer davantage) ressemble à une chaussure qui a beaucoup travaillé plutôt qu'à un simple problème de pointure. Le cuir des Brogues s'assouplit et s'élargit avec le port, ce qui peut expliquer ce que vous ressentez aujourd'hui.\n\nJ'aurais besoin de quelques précisions pour mieux vous orienter :\n\n- Depuis combien de temps portez-vous cette paire ? L'avez-vous portée régulièrement depuis mars ?\n- Le ressenti a-t-il évolué dans le temps (chaussure qui a pris plus de volume, lacets moins efficaces qu'au début) ?\n\nAvec ces éléments, je pourrai vous dire si la solution est une semelle d'ajustement plus volumineuse, un resserrage des lacets depuis le bas, ou autre chose.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
