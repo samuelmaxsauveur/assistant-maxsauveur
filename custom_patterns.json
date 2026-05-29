@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "bug_code_promo_disparait_etape_connexion",
+      "topic_label": "Bug code promo – disparition à l'étape de connexion/email",
+      "situation": "Un client tente d'appliquer un code de réduction (ex : code ceinture) lors du passage de commande, mais le code disparaît au moment où il renseigne son adresse email ou se connecte. Le bug est lié à une interaction entre les codes et l'étape de connexion dans le système de paiement et ne peut pas être corrigé à la volée.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour cette précision.\nLe bug que vous décrivez ([description du code] qui disparaît au moment où vous renseignez votre email) est lié à une interaction entre les codes et l'étape de connexion dans notre système de paiement. C'est un comportement que nous ne pouvons pas corriger à la volée.\n\nPour débloquer la situation rapidement et ne pas risquer de rupture de stock, voici ce que je vous propose : passez deux commandes séparées, une pour chaque article. Dès que les deux commandes sont passées, remontez-nous les numéros et nous remboursons l'un des deux frais de port directement sur votre moyen de paiement.\n\nC'est la solution la plus simple et la plus rapide pour vous.\n\nN'hésitez pas si vous avez la moindre question.\n\n[Prénom équipe] de Max Sauveur",
+      "key_points": "Reconnaître le bug sans minimiser ; expliquer la cause technique brièvement ; proposer une solution de contournement concrète (2 commandes séparées) ; s'engager sur le remboursement d'un des frais de port dès réception des numéros de commande ; ton rassurant et orienté solution.",
+      "example_count": 1
+    },
+    {
       "topic": "commande__12115",
       "topic_label": "COMMANDE #12115",
       "situation": "COMMANDE #12115",
@@ -1037,9 +1045,9 @@
       "topic": "re__form_name_form_submitted_2026_05_28_15_46_25",
       "topic_label": "Re: Form name Form submitted 2026-05-28 15:46:25",
       "situation": "Re: Form name Form submitted 2026-05-28 15:46:25",
-      "response_template": "Bonjour Axel,\n\nVous avez bien compris, malheureusement. Le Boat en marine étant à 149€ exactement, le code ne s'applique que sur des articles dont le prix est **supérieur** à 149€, pas égal. \n\nDésolé pour cette mauvaise nouvelle.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Axel,\n\nMerci pour le retour.\n\nLe problème vient du fonctionnement du code : c'est bien la chaussure elle-même qui doit dépasser 149€, pas le total du panier. Ajouter des chaussettes ou des accessoires pour atteindre le seuil ne déclenche pas la condition.\n\nMais il y a une raison plus fondamentale pour laquelle ce code ne peut pas s'appliquer sur des modèles comme Le Boat ou les sandales : nos prix sur ces produits sont déjà volontairement accessibles, ce qui signifie que nos marges y sont très réduites. Appliquer une réduction de 45€ sur ce type de modèle n'est tout simplement pas viable pour nous économiquement. Ce n'est pas une restriction arbitraire, c'est une contrainte réelle.\n\nLe code est conçu pour s'appliquer sur des modèles à plus forte valeur ajoutée, comme nos boots ou derbies, où ce type de geste est absorbable.\n\nCordialement\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 1
+      "example_count": 2
     },
     {
       "topic": "re__fw__commande__12087_confirm_e",
