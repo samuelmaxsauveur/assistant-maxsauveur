@@ -66,14 +66,6 @@
       "example_count": 2
     },
     {
-      "topic": "commande__11486___changement_de_taille",
-      "topic_label": "Commande #11486 - Changement de taille",
-      "situation": "Commande #11486 - Changement de taille",
-      "response_template": "Bonjour Jean-Christophe,\n\nRavi que les Moc Jagger vous plaisent !\n\nAvant de lancer l'échange, une petite précision utile : sur un mocassin, un léger excès de volume est parfois trompeur au premier essayage. Ce qui compte vraiment, c'est la longueur. Vos orteils ont-ils vraiment trop d'espace à l'avant ? Votre pied glisse-t-il vers l'avant quand vous marchez ?\n\nJe vous pose la question car votre commande est bien un 42 (et non un 43 comme indiqué dans votre message). Si la paire reçue est effectivement trop grande, c'est donc vers un 41 qu'on s'orienterait.\n\nConfirmez-moi votre ressenti et on trouve la meilleure solution ensemble.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "commande__12059",
       "topic_label": "Commande #12059",
       "situation": "Commande #12059",
@@ -1274,6 +1266,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__re__re__re__re__sizing_fisherman",
+      "topic_label": "Re: Re: Re: Re: Re: Re: Sizing fisherman",
+      "situation": "Re: Re: Re: Re: Re: Re: Sizing fisherman",
+      "response_template": "Bonjour Jonasz,\n\nMalheureusement, nous ne pouvons pas conditionner un remboursement à d'éventuels retours clients en cours de journée. Ce n'est pas un fonctionnement que nous maîtrisons ni pouvons gérer de cette façon.\n\nLa proposition reste celle que nous vous avons faite : remboursement de 149€ sur votre moyen de paiement initial, avec annulation de l'avoir Z7MYRQAWF3XQ.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__re__re__sizing_fisherman",
       "topic_label": "Re: Re: Re: Re: Re: Sizing fisherman",
       "situation": "Re: Re: Re: Re: Re: Sizing fisherman",
@@ -1688,6 +1688,14 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre retour.\n\nLe [modèle] chausse effectivement juste au départ, le cuir et la semelle en liège s'assouplissant avec le port pour se mouler progressivement au pied. Cela dit, si le [taille actuelle] est vraiment trop petit et inconfortable, on comprend tout à fait que vous souhaitiez changer de taille.\n\nConcernant le [taille souhaitée] : nos [modèles] ne dépassent pas le [taille max]. Je suis donc dans l'impossibilité de vous proposer un échange dans cette pointure, et je m'en excuse.\n\nVous avez deux options :\n\n**Option 1 : Remboursement**\nRetournez la paire à vos frais en suivant cette procédure :\n1. Téléchargez et complétez le bon de retour ici : https://maxsauveur.com/pages/livraison-et-retour (raison : \"demande de remboursement\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous procédons au remboursement.\n\n**Option 2 : Avoir**\nSi vous souhaitez explorer d'autres modèles de la collection (certains offrent un chaussant plus généreux), nous pouvons vous générer un avoir plutôt qu'un remboursement, avec les frais de livraison offerts sur votre prochain achat.\n\nDites-moi quelle option vous convient le mieux.\n\n[Prénom] de Max Sauveur",
       "key_points": "Reconnaître d'abord la caractéristique du produit (chausse juste, s'assouplit avec le temps) avant d'annoncer l'impossibilité. Être transparent sur la limite de gamme de tailles. Proposer systématiquement deux options : remboursement ou avoir avec frais de port offerts. Inclure l'adresse logistique complète et le lien vers le bon de retour. Ton empathique et sans jugement.",
       "example_count": 1
+    },
+    {
+      "topic": "commande__11486___changement_de_taille",
+      "topic_label": "Échange taille mocassin – vérification du ressenti avant lancement",
+      "situation": "Un client demande un échange de taille pour un mocassin en indiquant que la paire reçue est trop grande. Avant de lancer l'échange, le service client vérifie le ressenti réel du client et corrige une éventuelle confusion sur la taille reçue, car les mocassins peuvent sembler volumineux au premier essayage sans que la longueur soit réellement en cause.",
+      "response_template": "Bonjour [Prénom],\n\nRavi que les [modèle] vous plaisent !\n\nAvant de lancer l'échange, une petite précision utile : sur un mocassin, un léger excès de volume est parfois trompeur au premier essayage. Ce qui compte vraiment, c'est la longueur. Vos orteils ont-ils vraiment trop d'espace à l'avant ? Votre pied glisse-t-il vers l'avant quand vous marchez ?\n\nJe vous pose la question car votre commande est bien un [taille réelle] (et non un [taille mentionnée par le client] comme indiqué dans votre message). Si la paire reçue est effectivement trop grande, c'est donc vers un [taille inférieure] qu'on s'orienterait.\n\nConfirmez-moi votre ressenti et on trouve la meilleure solution ensemble.\n\n[Prénom de l'équipe] de Max Sauveur",
+      "key_points": "Ton chaleureux et pédagogique. Toujours vérifier la taille réellement reçue avant de lancer un échange. Rappeler que le volume apparent d'un mocassin peut être trompeur : c'est la longueur qui compte. Corriger avec tact toute confusion du client sur sa taille commandée. Ne pas lancer l'échange sans confirmation du ressenti réel.",
+      "example_count": 2
     },
     {
       "topic": "chaussures_trop_petite__commande__11582",
