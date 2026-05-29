@@ -466,6 +466,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_05_27_16_42_12",
+      "topic_label": "Form name Form submitted 2026-05-27 16:42:12",
+      "situation": "Form name Form submitted 2026-05-27 16:42:12",
+      "response_template": "Bonjour Alexandre,\n\nAvec 27,3 cm de pied, vous êtes en **42** sur notre guide. Cela dit, pour le Golby, je vous recommande le **42,5** : c'est la taille qui correspondra le mieux à votre morphologie sur ce modèle.\n\nVos références en chaussures de ville (42/43) sont cohérentes avec ce conseil.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_05_27_18_41_31",
       "topic_label": "Form name Form submitted 2026-05-27 18:41:31",
       "situation": "Form name Form submitted 2026-05-27 18:41:31",
