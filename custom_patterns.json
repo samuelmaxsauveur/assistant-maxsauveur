@@ -146,14 +146,6 @@
       "example_count": 2
     },
     {
-      "topic": "conseil_pointure_fisherman_mesure_cm",
-      "topic_label": "Conseil pointure Fisherman – mesure en cm, recommandation taille + info chausse grand",
-      "situation": "Un client fournit la mesure de son pied en centimètres (marge déjà incluse ou non) et demande quelle taille commander pour la sandale Fisherman. Le service client applique le guide de taille et précise si le modèle chausse grand ou normalement.",
-      "response_template": "Bonjour [Prénom],\n\nAvec [X] cm de pied (marge déjà incluse), vous êtes en **[taille EU]** sur notre guide. La Fisherman chausse légèrement grand, mais dans votre cas, je vous recommande de rester sur le **[taille EU]**.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\n[Prénom conseiller] de Max Sauveur",
-      "key_points": "Toujours préciser si la marge est déjà incluse dans la mesure fournie. Indiquer que la Fisherman chausse légèrement grand. Recommander la taille du guide sans forcer un ajustement si la mesure est dans la norme. Ton rassurant et concis.",
-      "example_count": 1
-    },
-    {
       "topic": "conseil_pointure",
       "topic_label": "Conseil pointure – Aide au choix de taille selon mesure en cm (Fisherman)",
       "situation": "Un client fournit la mesure de son pied en centimètres et demande quelle taille commander, notamment pour la sandale Fisherman. Le client peut exprimer une réticence à descendre en taille ou mentionner une référence de marque tierce (ex : Birkenstock) pour comparer.",
@@ -874,14 +866,6 @@
       "example_count": 2
     },
     {
-      "topic": "re__d_faut_de_fabrication___semelle_d_coll_e___chaussures_ch",
-      "topic_label": "Re: Défaut de fabrication – Semelle décollée | Chaussures Chelsea Chapman",
-      "situation": "Re: Défaut de fabrication – Semelle décollée | Chaussures Chelsea Chapman",
-      "response_template": "Bonjour Jeremy,\n\nMerci pour votre relance.\n\nDe notre côté, nous n'avons pas encore réceptionné votre paire en atelier. \n\nLa paire est toujours en cours de réparation.\n\nCordialement\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "re__envoi_commande__12265",
       "topic_label": "Re: Envoi Commande #12265",
       "situation": "Re: Envoi Commande #12265",
@@ -1423,6 +1407,14 @@
       "situation": "Un client signale une trace, une marque de gras ou une irrégularité visible sur un article dont la doublure ou la surface est en cuir de chèvre. Il s'interroge sur un éventuel défaut de fabrication. Le service client explique que ces variations sont inhérentes à la matière naturelle.",
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et ravi d'apprendre que vous appréciez la qualité de la commande dans l'ensemble !\n\nConcernant la trace visible sur [zone concernée] : nos [produits concernés] sont [description matière], une matière naturelle qui peut présenter des marques de gras, des variations de teinte ou des légères irrégularités. Cela fait partie des caractéristiques de cette peau et n'est pas considéré comme un défaut de fabrication.\n\nCela dit, si vous souhaitez que nous jetions un œil à l'atelier pour confirmer qu'il ne s'agit pas d'autre chose, n'hésitez pas à nous retourner [le produit]. On regardera ça de près et on reviendra vers vous avec une réponse claire.\n\nJohn de Max Sauveur",
       "key_points": "Commencer par valoriser la satisfaction générale du client. Expliquer pédagogiquement la caractéristique de la matière naturelle (cuir de chèvre : marques de gras, variations de teinte, irrégularités). Ne pas fermer la porte : proposer le retour à l'atelier pour vérification si le client a un doute. Ton bienveillant et transparent. Ne pas statuer définitivement sans avoir vu le produit si un doute subsiste.",
+      "example_count": 1
+    },
+    {
+      "topic": "urgente__la_commande__12247_n_a_pas_encore__t__envoy_e",
+      "topic_label": "URGENTE: la commande #12247 n'a pas encore été envoyée",
+      "situation": "URGENTE: la commande #12247 n'a pas encore été envoyée",
+      "response_template": "Bonjour Pierfranco,\n\nVotre commande #12247 (Fisherman en cuir grainé marron foncé, taille 43) a bien été expédiée. Voici votre lien de suivi Colissimo :\n\nhttps://www.laposte.fr/outils/suivre-vos-envois?code=CB535075555FR\n\nLa livraison est estimée entre le 3 et le 13 juin à votre adresse à Turin. Le colis est en cours d'acheminement international, ce qui explique la fenêtre de livraison un peu plus large.\n\nBonne réception !\n\nJohn de Max Sauveur",
+      "key_points": "",
       "example_count": 1
     },
     {
