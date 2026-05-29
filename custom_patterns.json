@@ -866,6 +866,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__echange_ou_retour",
+      "topic_label": "RE: Re: Echange ou retour",
+      "situation": "RE: Re: Echange ou retour",
+      "response_template": "Bonjour Charlotte,\n\nMerci pour ce retour, et je comprends tout à fait votre hésitation : sans certitude sur la bonne taille, passer par un avoir peut sembler risqué.\n\nAvant de valider le remboursement, permettez-moi de vous proposer une alternative qui lève ce frein : si vous retournez le 38 et optez pour un avoir plutôt qu'un remboursement, nous vous offrons les frais de livraison sur votre prochaine commande. Cela vous permet de commander le 37 sans frais supplémentaires, et si cette taille ne vous convient pas non plus, vous pouvez le retourner dans les 14 jours pour un remboursement.\n\nEn pratique, vous ne prenez aucun risque financier, et vous avez une deuxième chance de trouver la bonne taille sur un modèle qui vous plaît visiblement beaucoup.\n\nSi vous préférez rester sur le remboursement, c'est tout à fait compréhensible. Voici la procédure pour le retour :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"remboursement\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique (frais de retour à votre charge) :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous procédons au remboursement sur votre moyen de paiement initial.\n\nDites-moi ce que vous préférez, je m'en occupe.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__demande_renseignements___pointure___pr__commande",
       "topic_label": "RE: Re: RE: Demande renseignements - Pointure / pré-commande",
       "situation": "RE: Re: RE: Demande renseignements - Pointure / pré-commande",
