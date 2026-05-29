@@ -762,6 +762,14 @@
       "example_count": 1
     },
     {
+      "topic": "pointure_pour_derby",
+      "topic_label": "Pointure pour Derby",
+      "situation": "Pointure pour Derby",
+      "response_template": "Bonjour Alma,\n\nMerci pour votre message !\n\nVous avez raison : la Derby Golf est tout à fait portée par des femmes et la gamme descend jusqu'au 39, ce qui confirme son caractère mixte.\n\nAvec 25 cm de pied (25,2 cm avec la marge), vous êtes en **39** sur notre guide. La Derby Golf chausse de façon assez ajustée, je vous recommande donc de rester sur le **39**.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "pointure_pour_ma_commande_pass_e",
       "topic_label": "Pointure pour ma commande passée",
       "situation": "Pointure pour ma commande passée",
