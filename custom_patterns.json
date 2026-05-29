@@ -26,14 +26,6 @@
       "example_count": 1
     },
     {
-      "topic": "envoi_code_avoir_remplacement",
-      "topic_label": "Code avoir défaillant – remplacement par un nouveau code",
-      "situation": "Un client rencontre un problème avec un code avoir qui ne fonctionne pas au moment de passer commande, malgré plusieurs tentatives. Le service client génère un nouveau code de remplacement et l'envoie au client avec des instructions de saisie précises.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour votre persistance et désolé pour ce désagrément. Nous avons vérifié le code de notre côté et généré un nouveau code avoir à la place :\n\n**[NOUVEAU_CODE]**\n\nSaisissez-le directement dans le champ prévu à cet effet dans votre panier, sans aucun caractère supplémentaire, et il devrait fonctionner normalement.\n\nN'hésitez pas à nous revenir si vous rencontrez le moindre souci au moment de passer commande.\n\n[Prénom équipe] de Max Sauveur",
-      "key_points": "Reconnaître la persistance du client et s'excuser. Générer un nouveau code côté back-office avant d'envoyer. Préciser explicitement de ne pas ajouter de caractère supplémentaire lors de la saisie. Ton empathique et rassurant.",
-      "example_count": 2
-    },
-    {
       "topic": "code_roue_condition_prix_minimum",
       "topic_label": "Code promo – condition de prix minimum non remplie (produit ciblé, pas panier)",
       "situation": "Un client a obtenu un code de réduction (ex : roue de la fortune, code ceinture) et tente de l'appliquer sur un article ou en complétant son panier avec des accessoires pour atteindre le seuil. Le code ne fonctionne pas car la condition porte sur le prix de l'article ciblé lui-même, et non sur le total du panier. De plus, certains modèles à marge réduite sont explicitement exclus.",
@@ -123,11 +115,11 @@
     },
     {
       "topic": "confirmation_taille_fisherman",
-      "topic_label": "Confirmation taille Fisherman – échange pour bonne taille",
-      "situation": "Un client a commandé le modèle Fisherman (ou tout autre modèle) et estime que la taille reçue est trop grande. Il souhaite savoir quelle taille prendre en échange. Le service client demande la mesure du pied en cm pour confirmer la taille exacte avant de lancer la procédure de retour.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour la confirmation, c'est clair : le [taille reçue] est trop grand pour vous.\n\nPour la taille à prendre en échange, voici notre guide : mesurez votre pied nu, talon contre un mur, et marquez le bout du gros orteil. Ajoutez 0,2 cm à cette mesure. Donnez-moi ce chiffre et je vous confirme la taille exacte à commander.\n\nEn attendant, voici la procédure pour retourner le [taille reçue] :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander la bonne taille.\n\n[Prénom de l'agent] de Max Sauveur",
-      "key_points": "Ton direct et rassurant. Confirmer d'abord le problème identifié ('c'est clair'). Demander la mesure en cm (+0,2 cm) avant de confirmer la taille. Donner la procédure de retour immédiatement sans attendre la mesure pour ne pas perdre de temps. Indiquer explicitement 'avoir' sur le bon de retour. Adresse logistique : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau.",
-      "example_count": 4
+      "topic_label": "Confirmation taille – échange pour bonne taille (procédure retour)",
+      "situation": "Un client a reçu une paire et estime que la taille est trop grande. Il souhaite un échange. Le service client lui demande de mesurer son pied pour confirmer la bonne taille à commander, et lui communique la procédure de retour avec adresse logistique.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour la confirmation, c'est clair : le [taille actuelle] est trop grand pour vous.\n\nPour la taille à prendre en échange, voici notre guide : mesurez votre pied nu, talon contre un mur, et marquez le bout du gros orteil. Ajoutez 0,2 cm à cette mesure. Donnez-moi ce chiffre et je vous confirme la taille exacte à commander.\n\nEn attendant, voici la procédure pour retourner le [taille actuelle] :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander la bonne taille.\n\n[Prénom de l'agent] de Max Sauveur",
+      "key_points": "Toujours demander la mesure en cm (+0,2 cm) avant de confirmer la taille. Communiquer la procédure de retour avec le lien et l'adresse logistique SSL. Préciser que le bon de retour doit indiquer 'avoir'. L'avoir est envoyé après réception et contrôle.",
+      "example_count": 5
     },
     {
       "topic": "re__commande__11578_confirm_e",
@@ -298,12 +290,28 @@
       "example_count": 2
     },
     {
+      "topic": "echange_ou_retour",
+      "topic_label": "Echange ou retour",
+      "situation": "Echange ou retour",
+      "response_template": "Bonjour Charlotte,\n\nMerci pour votre message au sujet de votre commande #11484 (Le Moc Jagger Cuir Noir).\n\nAvant de lancer l'échange, une question qui peut vous éviter un aller-retour inutile : sur un mocassin, un léger excès de volume est parfois trompeur au premier essayage. Ce qui compte vraiment, c'est la longueur. Vos orteils ont-ils vraiment trop d'espace à l'avant, ou votre pied glisse-t-il vers l'avant quand vous marchez ?\n\nJe vous pose la question car si c'est surtout une question de volume général, le cuir et la semelle en liège vont s'assouplir et se mouler à votre pied avec le port. En revanche, si la chaussure est vraiment trop longue en longueur, l'échange s'impose.\n\nSi vous souhaitez procéder à l'échange vers le 37 , voici la procédure :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\" pour un échange)\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique (frais de retour à votre charge) :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous générons votre avoir pour commander le 37, ou nous procédons au remboursement selon votre choix.\n\nDites-moi comment se passe la longueur, je reste disponible.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "envoi_commande__12265",
       "topic_label": "Envoi Commande #12265",
       "situation": "Envoi Commande #12265",
       "response_template": "Bonjour Simon,\n\nMerci pour votre message.\n\nMalheureusement, notre système logistique ne nous permet pas de scinder une commande en deux expéditions distinctes. Pour que le Paul vous soit envoyé sans attendre la Derby Golf en précommande, il faudrait annuler la commande #12265 et la repasser en deux commandes séparées.\n\nVoici comment procéder :\n1. Passez une première commande pour le Paul uniquement (expédition immédiate)\n2. Passez une seconde commande pour la Derby Golf (précommande, expédiée dès disponibilité)\n\nSi vous souhaitez procéder à l'annulation de la commande #12265, dites-le nous et nous nous en occupons immédiatement.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
+    },
+    {
+      "topic": "envoi_code_avoir_remplacement",
+      "topic_label": "Envoi code avoir après retour reçu – résolution directe sans attendre réparation",
+      "situation": "Un client a retourné un produit. Après analyse, le service client décide de lui envoyer directement un code avoir pour commander une nouvelle paire, sans passer par une procédure de réparation ou d'échange standard. Les frais de port de la nouvelle commande sont remboursés sur le moyen de paiement initial.",
+      "response_template": "Bonjour [Prénom],\n\nNous avons bien reçu votre colis retour, merci.\n\nAprès analyse de la situation nous avons décidé de vous envoyer directement un avoir pour que vous puissiez commander une nouvelle paire, sans attendre les délais de réparation.\n\nVoici votre code avoir : **[CODE_AVOIR]**\n\nAppliquez-le dans votre panier au moment de passer commande. Dès que la commande est validée, nous vous remboursons les frais de port sur votre moyen de paiement initial.\n\nN'hésitez pas si vous avez la moindre question.\n\n[Prénom de l'agent] de Max Sauveur",
+      "key_points": "Confirmer la réception du retour. Justifier brièvement la décision (éviter les délais de réparation). Fournir le code avoir en gras. Préciser que les frais de port seront remboursés sur le moyen de paiement initial après validation de la commande. Ton rassurant et proactif.",
+      "example_count": 3
     },
     {
       "topic": "form_name_form_submitted_2026_05_15_19_55_16",
