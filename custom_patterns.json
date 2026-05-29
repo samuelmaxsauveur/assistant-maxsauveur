@@ -586,6 +586,14 @@
       "example_count": 1
     },
     {
+      "topic": "fwd__re__fwd__max_sauveur___service_client",
+      "topic_label": "Fwd: Re: Fwd: Max Sauveur — Service Client",
+      "situation": "Fwd: Re: Fwd: Max Sauveur — Service Client",
+      "response_template": "Bonjour Guillaume,\n\nMerci pour cette précision.\nLe bug que vous décrivez (le code ceinture qui disparaît au moment où vous renseignez votre email) est lié à une interaction entre les codes et l'étape de connexion dans notre système de paiement. C'est un comportement que nous ne pouvons pas corriger à la volée.\n\nPour débloquer la situation rapidement et ne pas risquer de rupture de stock, voici ce que je vous propose : passez deux commandes séparées, une pour chaque article. Dès que les deux commandes sont passées, remontez-nous les numéros et nous remboursons l'un des deux frais de port directement sur votre moyen de paiement.\n\nC'est la solution la plus simple et la plus rapide pour vous.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "guide_taille",
       "topic_label": "Guide taille",
       "situation": "Guide taille",
