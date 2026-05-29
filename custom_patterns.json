@@ -10,14 +10,6 @@
       "example_count": 1
     },
     {
-      "topic": "chaussures_trop_petite__commande__11582",
-      "topic_label": "Chaussures trop petite  commande #11582",
-      "situation": "Chaussures trop petite  commande #11582",
-      "response_template": "Bonjour Landi,\n\nMerci pour ce retour et le compliment sur la qualité de la paire, ça fait vraiment plaisir à lire !\n\nPas de souci, on peut tout à fait procéder à un échange pour la taille au-dessus. Voici la procédure :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique (frais de retour à votre charge) :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander le Moc Jagger en taille 43.\n\nConcernant la disponibilité : si le 43 n'est plus en stock au moment de votre retour, l'avoir sera bien sûr utilisable sur n'importe quel autre modèle de la collection, vous ne serez pas bloqué.\n\nAvant de vous lancer, un petit rappel sur le ressenti dans un mocassin qui peut être utile : un mocassin doit tenir le pied fermement, sans lacets pour le maintenir. Au départ, il chausse juste, c'est tout à fait normal. Le cuir et la semelle en liège s'assouplissent avec le port et se moulent progressivement à votre pied. \n\nSi après quelques ports le 42 reste vraiment inconfortable, le 43 reste la bonne direction. Mais si c'est surtout une question de largeur, le cuir va s'assouplir.\n\nN'hésitez pas si vous avez des questions.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "re__re__re__max_sauveur___service_client",
       "topic_label": "Clôture de dossier – problème résolu (mocassins)",
       "situation": "Le client confirme que le problème est résolu et que le produit (mocassin) a bien été reçu et convient. Le service client conclut la conversation de manière chaleureuse.",
@@ -1330,6 +1322,14 @@
       "example_count": 1
     },
     {
+      "topic": "echange_commande__12241",
+      "topic_label": "echange commande #12241",
+      "situation": "echange commande #12241",
+      "response_template": "Bonjour François,\n\nMerci pour votre message.\n\nConcernant le showroom : nous n'avons plus de boutique physique à Paris. Les retours et échanges se font uniquement par voie postale, je suis désolé si une information sur notre site prêtait à confusion.\n\nPour l'échange vers le 43, voici la procédure :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous envoyons un avoir de 149€ pour commander la Fisherman en taille 43.\n\nN'hésitez pas si vous avez des questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "pointure",
       "topic_label": "pointure",
       "situation": "pointure",
@@ -1432,6 +1432,14 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre retour.\n\nLe [modèle] chausse effectivement juste au départ, le cuir et la semelle en liège s'assouplissant avec le port pour se mouler progressivement au pied. Cela dit, si le [taille actuelle] est vraiment trop petit et inconfortable, on comprend tout à fait que vous souhaitiez changer de taille.\n\nConcernant le [taille souhaitée] : nos [modèles] ne dépassent pas le [taille max]. Je suis donc dans l'impossibilité de vous proposer un échange dans cette pointure, et je m'en excuse.\n\nVous avez deux options :\n\n**Option 1 : Remboursement**\nRetournez la paire à vos frais en suivant cette procédure :\n1. Téléchargez et complétez le bon de retour ici : https://maxsauveur.com/pages/livraison-et-retour (raison : \"demande de remboursement\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous procédons au remboursement.\n\n**Option 2 : Avoir**\nSi vous souhaitez explorer d'autres modèles de la collection (certains offrent un chaussant plus généreux), nous pouvons vous générer un avoir plutôt qu'un remboursement, avec les frais de livraison offerts sur votre prochain achat.\n\nDites-moi quelle option vous convient le mieux.\n\n[Prénom] de Max Sauveur",
       "key_points": "Reconnaître d'abord la caractéristique du produit (chausse juste, s'assouplit avec le temps) avant d'annoncer l'impossibilité. Être transparent sur la limite de gamme de tailles. Proposer systématiquement deux options : remboursement ou avoir avec frais de port offerts. Inclure l'adresse logistique complète et le lien vers le bon de retour. Ton empathique et sans jugement.",
       "example_count": 1
+    },
+    {
+      "topic": "chaussures_trop_petite__commande__11582",
+      "topic_label": "Échange taille – mocassin trop petit + conseil assouplissement cuir",
+      "situation": "Un client signale que son mocassin est trop petit et souhaite échanger pour la taille au-dessus. L'email apporte une nuance nouvelle : un conseil pédagogique sur le comportement du cuir et de la semelle liège avant de valider l'échange, pour s'assurer que l'échange est vraiment nécessaire.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour ce retour et le compliment sur la qualité de la paire, ça fait vraiment plaisir à lire !\n\nPas de souci, on peut tout à fait procéder à un échange pour la taille au-dessus. Voici la procédure :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique (frais de retour à votre charge) :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander le [Modèle] en taille [Taille souhaitée].\n\nConcernant la disponibilité : si le [Taille souhaitée] n'est plus en stock au moment de votre retour, l'avoir sera bien sûr utilisable sur n'importe quel autre modèle de la collection, vous ne serez pas bloqué.\n\nAvant de vous lancer, un petit rappel sur le ressenti dans un mocassin qui peut être utile : un mocassin doit tenir le pied fermement, sans lacets pour le maintenir. Au départ, il chausse juste, c'est tout à fait normal. Le cuir et la semelle en liège s'assouplissent avec le port et se moulent progressivement à votre pied.\n\nSi après quelques ports la [Taille actuelle] reste vraiment inconfortable, la [Taille souhaitée] reste la bonne direction. Mais si c'est surtout une question de largeur, le cuir va s'assouplir.\n\nN'hésitez pas si vous avez des questions.\n\n[Prénom agent] de Max Sauveur",
+      "key_points": "Toujours rappeler que le cuir et la semelle liège s'assouplissent avec le port avant de valider un échange de taille sur un mocassin. Distinguer inconfort lié à la longueur (→ échange) vs largeur (→ assouplissement naturel). Préciser que l'avoir reste utilisable sur tout autre modèle si la taille souhaitée est en rupture au moment du retour. Frais de retour à la charge du client. Ton chaleureux et rassurant.",
+      "example_count": 2
     }
   ]
 }
