@@ -570,6 +570,14 @@
       "example_count": 1
     },
     {
+      "topic": "mocassins_pour_mariage__t_",
+      "topic_label": "Mocassins pour mariage été",
+      "situation": "Mocassins pour mariage été",
+      "response_template": "Bonjour Clément,\n\nMerci pour votre message ! Avant de vous répondre sur le Paul, j'aurais besoin d'en savoir un peu plus sur ce que vous ressentez dans la Peter A. : est-ce que c'est une question de longueur (orteils qui touchent le bout) ou plutôt de largeur et de maintien général ?\n\nEt oui, pour des mariages cet été, le Paul Mocassin est tout à fait adapté. Il offre même un confort supérieur sur la durée : sa semelle en liège se moule progressivement à votre pied avec le port, et sa doublure intérieure le rend plus confortable dès le départ. C'est un mocassin fait pour être porté toute une journée.\n\nDites-moi comment vous vous sentez exactement dans la Peter A. et on voit ensemble si un échange ou un autre modèle fait plus sens pour vous.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "modification_point_relais_livraison",
       "topic_label": "Modification point relais – Confirmation de changement",
       "situation": "Un client souhaite modifier son point relais de livraison après avoir passé sa commande. Le service client effectue la modification dans le système et confirme au client que le changement est bien pris en compte, même s'il n'apparaît pas sur l'email de confirmation initial.",
