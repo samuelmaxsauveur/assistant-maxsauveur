@@ -178,6 +178,14 @@
       "example_count": 3
     },
     {
+      "topic": "pointure_pour_derby",
+      "topic_label": "Conseil pointure – Derby Golf (mixte, chausse juste)",
+      "situation": "Un client (souvent une femme) demande quelle taille prendre pour la Derby Golf. Il fournit la mesure de son pied en cm et s'interroge sur le caractère mixte du modèle. La Derby Golf chausse de façon ajustée.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message !\n\nVous avez raison : la Derby Golf est tout à fait portée par des femmes et la gamme descend jusqu'au 39, ce qui confirme son caractère mixte.\n\nAvec [X] cm de pied ([X+0,2] cm avec la marge), vous êtes en **[taille]** sur notre guide. La Derby Golf chausse de façon assez ajustée, je vous recommande donc de rester sur le **[taille]**.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\n[Prénom de l'équipe] de Max Sauveur",
+      "key_points": "Confirmer le caractère mixte de la Derby Golf (gamme dès le 39). Signaler que le modèle chausse ajusté : ne pas prendre une taille au-dessus sauf pied large. Ton chaleureux et rassurant. Toujours inclure la marge de 0,2 cm dans le calcul.",
+      "example_count": 2
+    },
+    {
       "topic": "conseil_pointure_pied_large_debut_gamme",
       "topic_label": "Conseil pointure – Pied large, modèle débutant à une taille au-dessus du guide",
       "situation": "Un client fournit la mesure de son pied en cm, ce qui correspond à une taille selon le guide, mais le modèle visé commence à la taille supérieure. Le client a également un pied large. Le service client confirme la taille recommandée et anticipe l'assouplissement du cuir.",
@@ -762,14 +770,6 @@
       "example_count": 1
     },
     {
-      "topic": "pointure_pour_derby",
-      "topic_label": "Pointure pour Derby",
-      "situation": "Pointure pour Derby",
-      "response_template": "Bonjour Alma,\n\nMerci pour votre message !\n\nVous avez raison : la Derby Golf est tout à fait portée par des femmes et la gamme descend jusqu'au 39, ce qui confirme son caractère mixte.\n\nAvec 25 cm de pied (25,2 cm avec la marge), vous êtes en **39** sur notre guide. La Derby Golf chausse de façon assez ajustée, je vous recommande donc de rester sur le **39**.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "pointure_pour_ma_commande_pass_e",
       "topic_label": "Pointure pour ma commande passée",
       "situation": "Pointure pour ma commande passée",
@@ -1246,6 +1246,14 @@
       "topic_label": "Re: Re: Form name Form submitted 2026-05-15 14:33:16",
       "situation": "Re: Re: Form name Form submitted 2026-05-15 14:33:16",
       "response_template": "Bonjour Michael,\n\nBonne question ! Les deux ont raison, c'est une question de marge d'interprétation. Le 41 commence techniquement à 25,5 cm sur notre guide, et avec vos 25,8 cm + 0,2 cm de marge, vous êtes tout juste dans la fourchette haute du 41.\n\nBonne journée\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__re__fw__commande__12087_confirm_e",
+      "topic_label": "Re: Re: Fw: Commande #12087 confirmée",
+      "situation": "Re: Re: Fw: Commande #12087 confirmée",
+      "response_template": "Bonjour Samy,\n\nMerci pour la précision.\n\nC'est noté, je comprends que la paire ne vous convenait finalement pas côté style. Votre retour a bien été réceptionné et nous allons procéder au remboursement de 335€ sur votre moyen de paiement initial. Comptez quelques jours ouvrés pour que la somme apparaisse.\n\nSi l'envie vous prend d'explorer d'autres modèles de la collection, n'hésitez pas à nous contacter, nous serons ravis de vous guider.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
