@@ -66,6 +66,14 @@
       "example_count": 2
     },
     {
+      "topic": "commande__11486___changement_de_taille",
+      "topic_label": "Commande #11486 - Changement de taille",
+      "situation": "Commande #11486 - Changement de taille",
+      "response_template": "Bonjour Jean-Christophe,\n\nRavi que les Moc Jagger vous plaisent !\n\nAvant de lancer l'échange, une petite précision utile : sur un mocassin, un léger excès de volume est parfois trompeur au premier essayage. Ce qui compte vraiment, c'est la longueur. Vos orteils ont-ils vraiment trop d'espace à l'avant ? Votre pied glisse-t-il vers l'avant quand vous marchez ?\n\nJe vous pose la question car votre commande est bien un 42 (et non un 43 comme indiqué dans votre message). Si la paire reçue est effectivement trop grande, c'est donc vers un 41 qu'on s'orienterait.\n\nConfirmez-moi votre ressenti et on trouve la meilleure solution ensemble.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande__12059",
       "topic_label": "Commande #12059",
       "situation": "Commande #12059",
