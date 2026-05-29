@@ -893,9 +893,9 @@
       "topic": "re__date_pour_les_moc_jagger",
       "topic_label": "Re: Date pour les Moc Jagger",
       "situation": "Re: Date pour les Moc Jagger",
-      "response_template": "Bonjour Marie,\n\nVos Moc Jagger sont en cours de préparation dans notre entrepôt et l'expédition est prévue très prochainement. La livraison est estimée entre le 29 et le 31 mai, en point relais ACCUEIL E.LECLERC à Pantin.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez un email avec votre lien de suivi Chronopost.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Marie,\n\nOui, votre commande #11637 comprend bien les trois articles : les Moc Jagger Cuir Noir (39), le kit d'entretien et la ceinture Carter Western Noire (75). Tout est expédié ensemble.\n\nD'ailleurs, votre colis est déjà parti ! Voici votre lien de suivi Chronopost :\n\nhttps://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR632451705TS\n\nLa livraison est estimée entre le 30 mai et le 1er juin, en point relais ACCUEIL E.LECLERC à Pantin.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 1
+      "example_count": 2
     },
     {
       "topic": "re__demande_de_pointure___fisherman",
