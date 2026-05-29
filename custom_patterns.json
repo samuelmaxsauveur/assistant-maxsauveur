@@ -146,6 +146,14 @@
       "example_count": 2
     },
     {
+      "topic": "conseil_pointure_fisherman_mesure_cm",
+      "topic_label": "Conseil pointure Fisherman – mesure en cm, recommandation taille + info chausse grand",
+      "situation": "Un client fournit la mesure de son pied en centimètres (marge déjà incluse ou non) et demande quelle taille commander pour la sandale Fisherman. Le service client applique le guide de taille et précise si le modèle chausse grand ou normalement.",
+      "response_template": "Bonjour [Prénom],\n\nAvec [X] cm de pied (marge déjà incluse), vous êtes en **[taille EU]** sur notre guide. La Fisherman chausse légèrement grand, mais dans votre cas, je vous recommande de rester sur le **[taille EU]**.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\n[Prénom conseiller] de Max Sauveur",
+      "key_points": "Toujours préciser si la marge est déjà incluse dans la mesure fournie. Indiquer que la Fisherman chausse légèrement grand. Recommander la taille du guide sans forcer un ajustement si la mesure est dans la norme. Ton rassurant et concis.",
+      "example_count": 1
+    },
+    {
       "topic": "conseil_pointure",
       "topic_label": "Conseil pointure – Aide au choix de taille selon mesure en cm (Fisherman)",
       "situation": "Un client fournit la mesure de son pied en centimètres et demande quelle taille commander, notamment pour la sandale Fisherman. Le client peut exprimer une réticence à descendre en taille ou mentionner une référence de marque tierce (ex : Birkenstock) pour comparer.",
@@ -454,6 +462,14 @@
       "topic_label": "Form name Form submitted 2026-05-26 21:42:37",
       "situation": "Form name Form submitted 2026-05-26 21:42:37",
       "response_template": "Bonjour Colin,\n\nMerci pour votre message et votre intérêt pour nos produits.\n\nSur la question de la TVA française, je vais être transparent avec vous : nous ne proposons pas de détaxe à l'export, et il nous est impossible de créer un bon de réduction spécifique pour annuler la TVA française. Notre boutique en ligne applique les prix TTC pour tous les clients, quelle que soit leur résidence. Ce n'est pas une politique que nous pouvons contourner via un code promo.\n\nConcernant la livraison en poste restante en France : oui, c'est possible via Colissimo, à condition que l'adresse de livraison soit une adresse postale valide en France. Si vous avez une adresse de relais ou de retrait en zone frontalière, nous pouvons livrer là-bas sans problème.\n\nLa solution la plus simple si vous souhaitez éviter la double imposition reste effectivement de vous faire livrer en France (poste restante ou chez un proche), puis de passer la douane vous-même.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "form_name_form_submitted_2026_05_28_09_19_27",
+      "topic_label": "Form name Form submitted 2026-05-28 09:19:27",
+      "situation": "Form name Form submitted 2026-05-28 09:19:27",
+      "response_template": "Bonjour Bruna,\n\nMerci pour votre message.\n\nLe code WHEEL45SIDFLL est bien valide, mais il ne s'applique que sur des articles dont le prix est supérieur à 149€. Si le modèle que vous souhaitez commander est en dessous de ce seuil, le code ne fonctionnera pas automatiquement.\n\nPourriez-vous me préciser quel modèle vous avez dans votre panier et son prix ? Je pourrai ainsi confirmer si le code peut s'y appliquer.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -864,6 +880,14 @@
       "response_template": "Bonjour,\n\nMerci pour votre message et votre patience !\n\nVos Moc Jagger arrivent chez nous cette semaine, et nous prévoyons de les expédier dans la foulée. La livraison estimée se situe autour semaine prochaine, sous réserve que les ponts de fin mai ne viennent pas ralentir les transporteurs.\n\nDès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost pour suivre votre paire en temps réel.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 2
+    },
+    {
+      "topic": "re__d_faut_de_fabrication___semelle_d_coll_e___chaussures_ch",
+      "topic_label": "Re: Défaut de fabrication – Semelle décollée | Chaussures Chelsea Chapman",
+      "situation": "Re: Défaut de fabrication – Semelle décollée | Chaussures Chelsea Chapman",
+      "response_template": "Bonjour Jeremy,\n\nMerci pour votre relance.\n\nDe notre côté, nous n'avons pas encore réceptionné votre paire en atelier. \n\nLa paire est toujours en cours de réparation.\n\nCordialement\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
     },
     {
       "topic": "re__envoi_commande__12265",
@@ -1407,14 +1431,6 @@
       "situation": "Un client signale une trace, une marque de gras ou une irrégularité visible sur un article dont la doublure ou la surface est en cuir de chèvre. Il s'interroge sur un éventuel défaut de fabrication. Le service client explique que ces variations sont inhérentes à la matière naturelle.",
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et ravi d'apprendre que vous appréciez la qualité de la commande dans l'ensemble !\n\nConcernant la trace visible sur [zone concernée] : nos [produits concernés] sont [description matière], une matière naturelle qui peut présenter des marques de gras, des variations de teinte ou des légères irrégularités. Cela fait partie des caractéristiques de cette peau et n'est pas considéré comme un défaut de fabrication.\n\nCela dit, si vous souhaitez que nous jetions un œil à l'atelier pour confirmer qu'il ne s'agit pas d'autre chose, n'hésitez pas à nous retourner [le produit]. On regardera ça de près et on reviendra vers vous avec une réponse claire.\n\nJohn de Max Sauveur",
       "key_points": "Commencer par valoriser la satisfaction générale du client. Expliquer pédagogiquement la caractéristique de la matière naturelle (cuir de chèvre : marques de gras, variations de teinte, irrégularités). Ne pas fermer la porte : proposer le retour à l'atelier pour vérification si le client a un doute. Ton bienveillant et transparent. Ne pas statuer définitivement sans avoir vu le produit si un doute subsiste.",
-      "example_count": 1
-    },
-    {
-      "topic": "urgente__la_commande__12247_n_a_pas_encore__t__envoy_e",
-      "topic_label": "URGENTE: la commande #12247 n'a pas encore été envoyée",
-      "situation": "URGENTE: la commande #12247 n'a pas encore été envoyée",
-      "response_template": "Bonjour Pierfranco,\n\nVotre commande #12247 (Fisherman en cuir grainé marron foncé, taille 43) a bien été expédiée. Voici votre lien de suivi Colissimo :\n\nhttps://www.laposte.fr/outils/suivre-vos-envois?code=CB535075555FR\n\nLa livraison est estimée entre le 3 et le 13 juin à votre adresse à Turin. Le colis est en cours d'acheminement international, ce qui explique la fenêtre de livraison un peu plus large.\n\nBonne réception !\n\nJohn de Max Sauveur",
-      "key_points": "",
       "example_count": 1
     },
     {
