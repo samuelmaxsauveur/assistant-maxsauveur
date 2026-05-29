@@ -1354,6 +1354,14 @@
       "example_count": 9
     },
     {
+      "topic": "retour_avoir_article_indisponible_remboursement",
+      "topic_label": "Retour – avoir sur article épuisé, bascule vers remboursement",
+      "situation": "Un client a retourné un article dans l'espoir d'un échange via avoir, mais la couleur ou la taille souhaitée est devenue indisponible entre-temps. Le client se retrouve avec un avoir inutilisable et demande à être remboursé. Le service client ne peut pas réserver un article pendant le traitement d'un retour.",
+      "response_template": "Bonjour [Prénom],\n\nJe comprends votre frustration, et je vais être honnête avec vous.\n\nNous n'avons pas de système permettant de bloquer un article pendant le traitement d'un retour. Ce n'est pas une excuse, c'est simplement une limite de notre fonctionnement logistique actuelle. Si [le coloris / la taille souhaitée] était disponible au moment de votre demande de retour, nous n'avions pas la possibilité de vous le réserver.\n\nCela dit, votre situation est claire : vous avez retourné une paire dans l'espoir d'un échange, et vous vous retrouvez avec un avoir sur un modèle introuvable dans [la couleur / la taille] souhaitée. Ce n'est pas ce que vous attendiez, et c'est tout à fait compréhensible.\n\nNous pouvons procéder au remboursement de [montant]€ sur votre moyen de paiement initial. Pour cela, votre avoir [CODE_AVOIR] sera simplement annulé de notre côté.\n\nConfirmez-moi votre choix et je m'en occupe immédiatement.\n\n[Prénom] de Max Sauveur",
+      "key_points": "Ton honnête et transparent sur la limite logistique (pas de réservation pendant retour). Ne pas se défausser mais expliquer clairement. Proposer le remboursement comme solution de sortie propre. Mentionner explicitement l'annulation de l'avoir. Demander une confirmation avant d'agir.",
+      "example_count": 1
+    },
+    {
       "topic": "re___d_but_de_la_fabrication_de_vos_moc_jagger_et_point_livr",
       "topic_label": "Re : Début de la fabrication de vos Moc Jagger et point livraison",
       "situation": "Re : Début de la fabrication de vos Moc Jagger et point livraison",
@@ -1469,9 +1477,9 @@
       "topic": "pointure",
       "topic_label": "pointure",
       "situation": "pointure",
-      "response_template": "Bonjour Pascal,\n\nAvec 24,8 cm de pied, vous êtes en **40** sur notre guide. La Wood chausse plus ajusté que la Deck et le Paul, donc restez sur le **40**, pas besoin de descendre.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Michel,\n\nAvec 27 cm de pied (marge déjà incluse), vous êtes en **42** sur notre guide. La Fisherman chausse légèrement grand, donc je vous recommande le **41**.\n\nLe 42 serait trop grand pour vous sur ce modèle.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 1
+      "example_count": 2
     },
     {
       "topic": "question_taille",
