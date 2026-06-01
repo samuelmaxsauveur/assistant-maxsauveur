@@ -610,6 +610,14 @@
       "example_count": 1
     },
     {
+      "topic": "fwd__commande__12280_confirm_e",
+      "topic_label": "Fwd: Commande #12280 confirmée",
+      "situation": "Fwd: Commande #12280 confirmée",
+      "response_template": "Hi Luca,\n\nYour order #12280 (Le Boat, size 44) has been packed and is on its way to you via Colissimo Europe.\n\nHere is your tracking link:\nhttps://www.laposte.fr/outils/suivre-vos-envois?code=CB535839187FR\n\nDelivery is estimated between June 6 and June 16 to your Milan address.\n\nDon't hesitate to reach out if you have any questions.\n\nJohn – Customer Service – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fwd__conseil_pointure_pour_le_mocassin_paul",
       "topic_label": "Fwd: Conseil pointure pour le mocassin Paul",
       "situation": "Fwd: Conseil pointure pour le mocassin Paul",
@@ -1775,6 +1783,14 @@
       "situation": "Un client souhaite échanger sa paire pour une taille supérieure, mais cette taille dépasse la taille maximale proposée par la marque. Le service client ne peut pas satisfaire la demande d'échange et doit proposer des alternatives.",
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre retour.\n\nLe [modèle] chausse effectivement juste au départ, le cuir et la semelle en liège s'assouplissant avec le port pour se mouler progressivement au pied. Cela dit, si le [taille actuelle] est vraiment trop petit et inconfortable, on comprend tout à fait que vous souhaitiez changer de taille.\n\nConcernant le [taille souhaitée] : nos [modèles] ne dépassent pas le [taille max]. Je suis donc dans l'impossibilité de vous proposer un échange dans cette pointure, et je m'en excuse.\n\nVous avez deux options :\n\n**Option 1 : Remboursement**\nRetournez la paire à vos frais en suivant cette procédure :\n1. Téléchargez et complétez le bon de retour ici : https://maxsauveur.com/pages/livraison-et-retour (raison : \"demande de remboursement\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous procédons au remboursement.\n\n**Option 2 : Avoir**\nSi vous souhaitez explorer d'autres modèles de la collection (certains offrent un chaussant plus généreux), nous pouvons vous générer un avoir plutôt qu'un remboursement, avec les frais de livraison offerts sur votre prochain achat.\n\nDites-moi quelle option vous convient le mieux.\n\n[Prénom] de Max Sauveur",
       "key_points": "Reconnaître d'abord la caractéristique du produit (chausse juste, s'assouplit avec le temps) avant d'annoncer l'impossibilité. Être transparent sur la limite de gamme de tailles. Proposer systématiquement deux options : remboursement ou avoir avec frais de port offerts. Inclure l'adresse logistique complète et le lien vers le bon de retour. Ton empathique et sans jugement.",
+      "example_count": 1
+    },
+    {
+      "topic": "echange_taille_mocassin_conseil_avant_retour",
+      "topic_label": "Échange taille mocassin – conseil ressenti avant retour + procédure",
+      "situation": "Un client souhaite échanger son mocassin pour une taille inférieure (ex : 39 au lieu de 40). Le service client lui explique la procédure de retour tout en l'invitant à vérifier si l'échange est vraiment nécessaire, notamment en distinguant excès de longueur (justifie l'échange) et excès de volume (le cuir et la semelle liège s'assouplissent avec le port).",
+      "response_template": "Bonjour [Prénom],\n\nRavi que les [modèle] vous plaisent !\n\nConcernant l'échange vers le [taille], voici la procédure :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique (frais de retour à votre charge) :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander le [taille].\n\nAvant de vous lancer, un point rapide qui peut vous éviter un aller-retour inutile : sur un mocassin, un léger excès de volume au premier essayage est parfois trompeur. Ce qui compte vraiment, c'est la longueur. Vos orteils ont-ils vraiment trop d'espace à l'avant, ou votre pied glisse-t-il vers l'avant quand vous marchez ? Si c'est surtout une question de volume général, le cuir et la semelle en liège vont s'assouplir avec le port. En revanche, si la longueur est clairement trop grande, l'échange vers le [taille] s'impose.\n\nN'hésitez pas à me donner votre ressenti sur ce point, je reste disponible.\n\n[Prénom agent] de Max Sauveur",
+      "key_points": "Toujours distinguer problème de longueur (justifie échange) vs problème de volume (le cuir s'assouplit). Frais de retour à la charge du client. Adresse logistique : SSL, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau. Indiquer 'avoir' sur le bon de retour. Ne pas promettre d'échange en pop-up store ou boutique physique (pas de stock sur place).",
       "example_count": 1
     },
     {
