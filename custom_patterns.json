@@ -602,6 +602,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_05_31_17_29_01",
+      "topic_label": "Form name Form submitted 2026-05-31 17:29:01",
+      "situation": "Form name Form submitted 2026-05-31 17:29:01",
+      "response_template": "Bonjour Dylan,\n\nMerci pour votre message, et ravi de vous retrouver !\n\nMalheureusement, votre commande #12319 a déjà été emballée et mise en collecte ce matin. Elle est donc en cours d'acheminement vers votre point relais, et nous ne pouvons plus modifier la taille avant expédition.\n\nVoici votre lien de suivi Chronopost :\nhttps://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR634493005TS\n\nLa livraison est estimée entre le 3 et le 5 juin en point relais Super U (3502S) à Neufgrange.\n\nConcernant votre question sur la taille, je vous rassure : je me souviens de nos échanges de l'été dernier. Vous portez actuellement vos Fisherman grainé marron en 42 et vous m'aviez confirmé que la taille vous semblait bonne avec un léger espace à l'intérieur. Le 42 devrait donc vous convenir tout aussi bien sur le modèle grainé noir, qui est exactement la même coupe.\n\nJe ne pense pas qu'un échange vers le 41 soit nécessaire dans votre cas. Dès réception, portez-les quelques minutes et faites-moi confiance : vous devriez retrouver le même ressenti que sur votre paire marron.\n\nSi toutefois après essayage le 42 vous semble vraiment trop grand, la procédure d'échange reste ouverte. N'hésitez pas à me contacter et on s'organise.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fw__commande__12087_confirm_e",
       "topic_label": "Fw: Commande #12087 confirmée",
       "situation": "Fw: Commande #12087 confirmée",
