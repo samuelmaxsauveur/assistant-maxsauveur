@@ -56,10 +56,8 @@ def get_system_prompt():
         if patterns:
             extra += "\n\n--- RÉPONSES VALIDÉES (apprises des emails envoyés) ---\n"
             extra += "Ces fiches sont extraites des vraies réponses envoyées aux clients. Inspire-toi en priorité de ces formulations.\n"
-            for p in patterns:
-                extra += f"\n[{p['topic_label']}]\nSituation : {p['situation']}\nRéponse type : {p['response_template']}\n"
-                if p.get('key_points'):
-                    extra += f"Points clés : {p['key_points']}\n"
+            for p in patterns[:15]:  # Max 15 patterns pour limiter les tokens
+                extra += f"\n[{p['topic_label']}]\nSituation : {p['situation'][:200]}\nRéponse type : {p['response_template'][:400]}\n"
         if extra:
             return BASE_SYSTEM_PROMPT + extra
     except Exception:
@@ -113,12 +111,12 @@ def _build_context(email_body, email_subject, customer_name, order_info=None, hi
     return context
 
 
-def _call_claude(system, messages, max_tokens=1024):
+def _call_claude(system, messages, max_tokens=1024, model="claude-sonnet-4-6"):
     client = anthropic.Anthropic(api_key=os.getenv('ANTHROPIC_API_KEY'))
     for attempt in range(3):
         try:
             message = client.messages.create(
-                model="claude-sonnet-4-6",
+                model=model,
                 max_tokens=max_tokens,
                 system=system,
                 messages=messages
@@ -129,6 +127,16 @@ def _call_claude(system, messages, max_tokens=1024):
                 time.sleep(3)
                 continue
             raise e
+
+
+def _call_haiku(messages, max_tokens=512, system=None):
+    """Appel rapide et économique pour les tâches simples."""
+    client = anthropic.Anthropic(api_key=os.getenv('ANTHROPIC_API_KEY'))
+    kwargs = dict(model="claude-haiku-4-5-20251001", max_tokens=max_tokens, messages=messages)
+    if system:
+        kwargs["system"] = system
+    message = client.messages.create(**kwargs)
+    return message.content[0].text
 
 
 def generate_response(email_body, email_subject, customer_name, order_info=None, history=None, wing_context='', orders=None):
@@ -368,31 +376,20 @@ Règles :
 
 def detect_intent(email_body, email_subject):
     """Détecte l'intention principale de l'email."""
-    client = anthropic.Anthropic(api_key=os.getenv('ANTHROPIC_API_KEY'))
-    message = client.messages.create(
-        model="claude-sonnet-4-6",
-        max_tokens=200,
-        messages=[{
-            "role": "user",
-            "content": f"""Analyse cet email et réponds UNIQUEMENT avec un JSON comme ceci :
+    raw = _call_haiku(
+        messages=[{"role": "user", "content": f"""Analyse cet email et réponds UNIQUEMENT avec un JSON :
 {{"intent": "relay_change", "address": "adresse complète ou null", "has_full_address": true}}
 
-Les intents possibles :
-- "relay_change" : le client veut changer son point relais ou adresse de livraison
-- "order_status" : le client demande où est sa commande
-- "return_repair" : le client veut retourner ou faire réparer un article
-- "product_question" : question sur un produit (taille, stock, etc.)
-- "other" : autre
+Intents possibles : relay_change, order_status, return_repair, product_question, other
 
-Email :
 Sujet: {email_subject}
-Corps: {email_body}
+Corps: {email_body[:500]}
 
-Réponds UNIQUEMENT avec le JSON, rien d'autre."""
-        }]
+JSON uniquement."""}],
+        max_tokens=150
     )
     try:
-        return json.loads(message.content[0].text.strip())
+        return json.loads(raw.strip())
     except:
         return {"intent": "other", "address": None, "has_full_address": False}
 
@@ -449,10 +446,9 @@ Réponds UNIQUEMENT avec ce JSON :
 }}
 
 Si tu as assez d'info pour répondre, mets can_respond_now à true et questions_for_samuel vide."""
-    raw = _call_claude(
-        system=get_system_prompt(),
+    raw = _call_haiku(
         messages=[{"role": "user", "content": prompt}],
-        max_tokens=500
+        max_tokens=400
     )
     try:
         import re as _re
