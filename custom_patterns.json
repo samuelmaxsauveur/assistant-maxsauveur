@@ -250,6 +250,14 @@
       "example_count": 3
     },
     {
+      "topic": "envoi_code_avoir_remplacement",
+      "topic_label": "Correction et renvoi d'un code avoir défectueux",
+      "situation": "Un client possède un code avoir qui ne fonctionne pas correctement (erreur technique, code invalide). Le service client corrige le problème côté back-office et transmet un nouveau code fonctionnel au client.",
+      "response_template": "Bonjour [Prénom],\n\nNous venons de corriger le problème sur votre code avoir. Pouvez-vous réessayer avec le code [CODE_AVOIR] ?\n\nN'hésitez pas à nous revenir si vous rencontrez encore un souci au moment de passer commande.\n\n[Prénom agent] de Max Sauveur",
+      "key_points": "Ton direct et rassurant. Indiquer clairement le nouveau code. Inviter le client à revenir si le problème persiste. Ne pas sur-expliquer la cause technique de l'erreur.",
+      "example_count": 5
+    },
+    {
       "topic": "demande_conseil_pointure_fisherman",
       "topic_label": "Demande conseil pointure Fisherman",
       "situation": "Demande conseil pointure Fisherman",
@@ -336,14 +344,6 @@
       "response_template": "Bonjour Simon,\n\nMerci pour votre message.\n\nMalheureusement, notre système logistique ne nous permet pas de scinder une commande en deux expéditions distinctes. Pour que le Paul vous soit envoyé sans attendre la Derby Golf en précommande, il faudrait annuler la commande #12265 et la repasser en deux commandes séparées.\n\nVoici comment procéder :\n1. Passez une première commande pour le Paul uniquement (expédition immédiate)\n2. Passez une seconde commande pour la Derby Golf (précommande, expédiée dès disponibilité)\n\nSi vous souhaitez procéder à l'annulation de la commande #12265, dites-le nous et nous nous en occupons immédiatement.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "envoi_code_avoir_remplacement",
-      "topic_label": "Envoi code avoir – génération et transmission au client",
-      "situation": "Un client a effectué un retour ou une demande d'avoir. Le service client génère un code avoir et le transmet par email avec les conditions d'utilisation (usage unique, non cumulable, durée de validité).",
-      "response_template": "Bonjour [Prénom],\n\nSuite à votre demande, nous venons de générer votre avoir. Il est utilisable une seule fois, non cumulable avec d'autres codes ou promotions, et valable pendant 6 mois.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n**[CODE_AVOIR]**\n\nSi vous avez la moindre question, je reste disponible.\n\n[Prénom conseiller] de Max Sauveur",
-      "key_points": "Toujours préciser les 3 conditions : usage unique, non cumulable, validité 6 mois. Mettre le code en gras pour le rendre bien visible. Ton sobre et disponible. Ne pas sur-expliquer.",
-      "example_count": 4
     },
     {
       "topic": "form_name_form_submitted_2026_05_15_19_55_16",
@@ -1734,6 +1734,14 @@
       "topic_label": "Taille Sandale Fisher",
       "situation": "Taille Sandale Fisher",
       "response_template": "Bonjour Chris,\n\nAvec 26,4 cm de pied, vous êtes en **41** sur notre guide. La Fisherman chausse légèrement grand, donc je vous recommande le **40**.\n\nLe 41 serait trop grand pour vous sur ce modèle.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "taille_sandales",
+      "topic_label": "Taille sandales",
+      "situation": "Taille sandales",
+      "response_template": "Bonjour Jacques,\n\nMerci pour le compliment, ça fait vraiment plaisir !\n\nAvec 27,3 cm de pied (27,5 cm avec la marge), vous êtes en **42** sur notre guide. La Fisherman chausse légèrement grand, donc je vous recommande le **41**.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
