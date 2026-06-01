@@ -10,6 +10,14 @@
       "example_count": 2
     },
     {
+      "topic": "commande__11731",
+      "topic_label": "COMMANDE #11731",
+      "situation": "COMMANDE #11731",
+      "response_template": "Bonjour Éloïse,\n\nRavie que la qualité vous plaise !\n\nAvant de lancer un échange, quelques précisions qui peuvent vous éviter un aller-retour inutile. Avec 26 cm de pied (25,8 + 0,2), le 40 est effectivement votre taille sur notre guide, et le Moc Jagger chausse juste au départ. Ce que vous ressentez comme \"un poil grand\" au premier essayage est souvent trompeur sur un mocassin.\n\nLa vraie question à vous poser : est-ce que vos orteils ont vraiment trop d'espace en longueur, ou votre pied glisse-t-il vers l'avant quand vous marchez ? Si oui, le 39 peut s'imposer. En revanche, si c'est surtout une sensation de volume général, le cuir et la semelle en liège vont s'assouplir et se mouler à votre pied avec le port. Ce ressenti s'atténue naturellement après quelques sorties.\n\nDites-moi comment ça se passe en longueur et je vous confirme si l'échange est vraiment nécessaire.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande__12115",
       "topic_label": "COMMANDE #12115",
       "situation": "COMMANDE #12115",
@@ -156,10 +164,10 @@
     {
       "topic": "conseil_pointure_fisherman_mesure_cm",
       "topic_label": "Conseil pointure Fisherman – mesure en cm, recommandation taille + info chausse grand",
-      "situation": "Un client fournit la mesure de son pied en centimètres (marge déjà incluse ou non) et demande quelle taille commander pour la sandale Fisherman. Le service client convertit la mesure en pointure EU selon le guide, précise que la Fisherman chausse légèrement grand, et propose deux options selon les préférences du client (ajusté ou avec marge), en mentionnant les boucles de réglage.",
-      "response_template": "Bonjour,\n\nAvec [X] cm de pied ([Y] cm avec la marge), vous êtes en **[taille guide]** sur notre guide. La Fisherman chausse légèrement grand, ce qui explique le conseil de downsizer.\n\nEn pratique, tout dépend de vos préférences :\n\n- Le **[taille -1]** pour un chaussant plus ajusté\n- Le **[taille guide]** si vous aimez avoir un peu de marge, ce qui est tout à fait viable sur ce modèle grâce aux boucles de réglage qui permettent un ajustement précis du tour de pied et de cheville\n\nLes deux tailles fonctionnent à votre pointure, c'est vraiment une question de ressenti.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\n[Prénom] de Max Sauveur",
-      "key_points": "Toujours mentionner que la Fisherman chausse légèrement grand. Proposer les deux tailles comme viables et laisser le choix au client selon son ressenti. Mettre en avant les boucles de réglage comme argument pour la taille guide. Ne pas imposer une taille unique. Ton rassurant et informatif.",
-      "example_count": 2
+      "situation": "Un client fournit la mesure de son pied en centimètres (marge déjà incluse ou non) et demande quelle taille commander pour la sandale Fisherman. Le service client applique le guide de taille et précise si le modèle chausse grand ou normalement.",
+      "response_template": "Bonjour [Prénom],\n\nAvec [X] cm de pied (marge déjà incluse), vous êtes en **[taille EU]** sur notre guide. La Fisherman chausse légèrement grand, mais dans votre cas, je vous recommande de rester sur le **[taille EU]**.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\n[Prénom conseiller] de Max Sauveur",
+      "key_points": "Toujours préciser si la marge est déjà incluse dans la mesure fournie. Indiquer que la Fisherman chausse légèrement grand. Recommander la taille du guide sans forcer un ajustement si la mesure est dans la norme. Ton rassurant et concis.",
+      "example_count": 1
     },
     {
       "topic": "conseil_pointure",
@@ -862,14 +870,6 @@
       "topic_label": "Question sandale",
       "situation": "Question sandale",
       "response_template": "Bonjour Adrien,\n\nMerci pour votre message et pour vous y prendre à l'avance cette fois !\n\nMauvaise nouvelle concernant la sandale en daim : pas de réassort prévu cette année sur ce coloris. Vraiment désolé, vous avez à nouveau raté le créneau d'une courte tête.\n\nCela dit, la Fisherman en cuir grainé est une très belle alternative, et elle est toujours disponible.\n\nPour la pointure : avec vos 25,2 cm, vous êtes en 40 sur notre guide, mais la Fisherman chausse légèrement grand. Je vous recommande donc le 39. Vos passages occasionnels en 39 confirment que vous êtes bien entre les deux tailles, et là le 39 sera le bon choix pour ce modèle.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "question_sizing",
-      "topic_label": "Question sizing",
-      "situation": "Question sizing",
-      "response_template": "Bonjour Colin,\n\nAvec 25 cm de pied, vous êtes en **39** sur notre guide.\n\nLe Paul chausse juste au départ, c'est tout à fait normal : le cuir et la semelle en liège s'assouplissent avec le port et se moulent progressivement à votre pied. Avec un pied fin en volume comme le vôtre, le **39** est la bonne taille. Pas besoin de monter au 40.\n\nConcernant votre question sur le guide des tailles : les mesures en centimètres correspondent à la semelle intérieure oui.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
