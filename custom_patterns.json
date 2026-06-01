@@ -1682,6 +1682,14 @@
       "example_count": 1
     },
     {
+      "topic": "taille_pour_chaussures",
+      "topic_label": "Taille pour chaussures",
+      "situation": "Taille pour chaussures",
+      "response_template": "Bonjour,\n\nAvec 25,6 cm de pied, vous êtes en **40** sur notre guide.\n\nPour vous orienter vers la bonne taille, quel modèle avez-vous en tête ? Certains chaussent légèrement grand, d'autres plus ajusté, et cela change la recommandation finale.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "defaut_apparent_matiere_naturelle_cuir_chevre",
       "topic_label": "Trace ou irrégularité sur article en cuir de chèvre – caractéristique naturelle",
       "situation": "Un client signale une trace, une marque de gras ou une irrégularité visible sur un article dont la doublure ou la surface est en cuir de chèvre. Il s'interroge sur un éventuel défaut de fabrication. Le service client explique que ces variations sont inhérentes à la matière naturelle.",
