@@ -315,11 +315,11 @@
     },
     {
       "topic": "envoi_code_avoir_remplacement",
-      "topic_label": "Envoi code avoir après retour reçu – résolution directe sans attendre réparation",
-      "situation": "Un client a retourné un produit. Après analyse, le service client décide de lui envoyer directement un code avoir pour commander une nouvelle paire, sans passer par une procédure de réparation ou d'échange standard. Les frais de port de la nouvelle commande sont remboursés sur le moyen de paiement initial.",
-      "response_template": "Bonjour [Prénom],\n\nNous avons bien reçu votre colis retour, merci.\n\nAprès analyse de la situation nous avons décidé de vous envoyer directement un avoir pour que vous puissiez commander une nouvelle paire, sans attendre les délais de réparation.\n\nVoici votre code avoir : **[CODE_AVOIR]**\n\nAppliquez-le dans votre panier au moment de passer commande. Dès que la commande est validée, nous vous remboursons les frais de port sur votre moyen de paiement initial.\n\nN'hésitez pas si vous avez la moindre question.\n\n[Prénom de l'agent] de Max Sauveur",
-      "key_points": "Confirmer la réception du retour. Justifier brièvement la décision (éviter les délais de réparation). Fournir le code avoir en gras. Préciser que les frais de port seront remboursés sur le moyen de paiement initial après validation de la commande. Ton rassurant et proactif.",
-      "example_count": 3
+      "topic_label": "Envoi code avoir – génération et transmission au client",
+      "situation": "Un client a effectué un retour ou une demande d'avoir. Le service client génère un code avoir et le transmet par email avec les conditions d'utilisation (usage unique, non cumulable, durée de validité).",
+      "response_template": "Bonjour [Prénom],\n\nSuite à votre demande, nous venons de générer votre avoir. Il est utilisable une seule fois, non cumulable avec d'autres codes ou promotions, et valable pendant 6 mois.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n**[CODE_AVOIR]**\n\nSi vous avez la moindre question, je reste disponible.\n\n[Prénom conseiller] de Max Sauveur",
+      "key_points": "Toujours préciser les 3 conditions : usage unique, non cumulable, validité 6 mois. Mettre le code en gras pour le rendre bien visible. Ton sobre et disponible. Ne pas sur-expliquer.",
+      "example_count": 4
     },
     {
       "topic": "form_name_form_submitted_2026_05_15_19_55_16",
@@ -685,9 +685,9 @@
       "topic": "max_sauveur___service_client",
       "topic_label": "Max Sauveur — Service Client",
       "situation": "Max Sauveur — Service Client",
-      "response_template": "Bonjour Nabi,\n\nSuite à votre demande, nous venons de générer votre avoir. Il est utilisable une seule fois, non cumulable avec d'autres codes ou promotions, et valable pendant 6 mois.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n**J3GNWY2M8SNY**\n\nSi vous avez la moindre question, je reste disponible.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Quentin,\n\nSuite à votre demande, nous venons de générer votre avoir. Il est utilisable une seule fois, non cumulable avec d'autres codes ou promotions, et valable pendant 6 mois.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n**10JAZDDWVEKB**\n\nSi vous avez la moindre question, je reste disponible.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 19
+      "example_count": 20
     },
     {
       "topic": "moc_jagger___date_de_r_ception",
