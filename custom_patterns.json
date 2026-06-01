@@ -610,6 +610,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_05_31_17_44_58",
+      "topic_label": "Form name Form submitted 2026-05-31 17:44:58",
+      "situation": "Form name Form submitted 2026-05-31 17:44:58",
+      "response_template": "Bonjour Simon,\n\nMerci pour votre message.\n\nConcernant le dépôt en direct à l'entrepôt : l'adresse de Les Pennes-Mirabeau est bien celle de notre prestataire logistique, mais il s'agit d'un entrepôt qui ne reçoit pas de visiteurs. Il n'est donc malheureusement pas possible d'y déposer un colis en mains propres, même en habitant à proximité. Le retour se fait uniquement par voie postale.\n\nAvant que vous ne lanciez la procédure, pourriez-vous me préciser la raison de ce retour ? Selon ce que vous me dites, il est possible qu'on trouve une solution adaptée à votre situation.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fw__commande__12087_confirm_e",
       "topic_label": "Fw: Commande #12087 confirmée",
       "situation": "Fw: Commande #12087 confirmée",
