@@ -1165,9 +1165,9 @@
       "topic": "re__form_name_form_submitted_2026_05_28_09_19_27",
       "topic_label": "Re: Form name Form submitted 2026-05-28 09:19:27",
       "situation": "Re: Form name Form submitted 2026-05-28 09:19:27",
-      "response_template": "Bonjour Cyril,\n\nMerci pour le lien,.\n\nLe problème vient du fonctionnement du code : il ne s'applique que sur des articles dont le prix est strictement supérieur à 149€, et la Fisherman est à 149€ pile. Un euro de trop, comme vous le dites.\n\nMais il y a une raison plus fondamentale derrière cette limite : nos sandales et modèles accessibles sont déjà vendus avec des marges très réduites. Sur ce type de produit, appliquer une remise de 45€ n'est tout simplement pas viable pour nous économiquement. Ce n'est pas une restriction arbitraire, c'est une contrainte réelle.\n\nLe code est conçu pour fonctionner sur des modèles à plus forte valeur ajoutée, comme nos boots ou derbies, où ce type de geste est absorbable.\n\nJe suis sincèrement désolé de ne pas pouvoir faire mieux dans ce cas.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Cyril,\n\nMerci pour ce retour, c'est apprécié.\n\nBonne commande à vous, et n'hésitez pas si vous avez des questions sur d'autres modèles de la collection.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 1
+      "example_count": 2
     },
     {
       "topic": "re__form_name_form_submitted_2026_05_28_15_46_25",
