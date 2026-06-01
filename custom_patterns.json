@@ -74,6 +74,14 @@
       "example_count": 2
     },
     {
+      "topic": "commande__12168",
+      "topic_label": "Commande #12168",
+      "situation": "Commande #12168",
+      "response_template": "Bonjour Florent,\n\nDésolé pour l'absence de réponse à vos précédents contacts, ce n'est pas notre habitude.\n\nConcernant votre retour pour la commande #12168 : nous ne générons pas de bon de retour à proprement parler, c'est vous qui devez télécharger et compléter le formulaire disponible directement ici :\n\n**https://maxsauveur.com/pages/livraison-et-retour**\n\nIndiquez comme raison : \"avoir\" (si vous souhaitez un échange vers les bonnes tailles).\n\nEnsuite, expédiez la commande complète à notre adresse logistique  :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous traitons votre demande.\n\nAvant de vous lancer, pourriez-vous me préciser quelles tailles vous avez reçues et vers quelles tailles vous souhaitez aller ? Je pourrai ainsi vous confirmer les bonnes pointures selon les modèles et vérifier la disponibilité avant votre retour.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande__18878",
       "topic_label": "Commande #18878",
       "situation": "Commande #18878",
@@ -215,6 +223,14 @@
       "situation": "Un client fournit la mesure de son pied en centimètres et demande quelle taille prendre pour la sandale Fisherman. Le service client lui indique la taille correspondant au guide, puis recommande une taille en dessous car le modèle chausse légèrement grand.",
       "response_template": "Bonjour [Prénom],\n\nAvec [X] cm de pied, vous êtes en **[taille guide]** sur notre guide. La Fisherman chausse légèrement grand, donc je vous recommande le **[taille guide - 1]**.\n\nLe [taille guide] serait trop grand pour vous sur ce modèle.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
       "key_points": "Toujours indiquer d'abord la taille du guide, puis la taille recommandée (une taille en dessous). Justifier clairement pourquoi : le modèle chausse légèrement grand. Formulation directe et rassurante. Inviter à poser d'autres questions avant commande.",
+      "example_count": 2
+    },
+    {
+      "topic": "taille_pour_chaussures",
+      "topic_label": "Conseil taille – mesure en cm vers pointure EU (générique)",
+      "situation": "Un client fournit la mesure de son pied en centimètres et demande quelle taille commander. Le service client convertit la mesure selon le guide de tailles, puis demande le modèle visé pour affiner la recommandation selon le galbe spécifique du modèle (chausse grand, chausse juste, etc.).",
+      "response_template": "Bonjour,\n\nAvec [X] cm de pied, vous êtes en **[taille EU]** sur notre guide.\n\nPour vous orienter vers la bonne taille, quel modèle avez-vous en tête ? Certains chaussent légèrement grand, d'autres plus ajusté, et cela change la recommandation finale.\n\n[Prénom] de Max Sauveur",
+      "key_points": "- Donner d'abord la taille brute du guide selon la mesure en cm\n- Ne pas conclure définitivement sans connaître le modèle ciblé\n- Mentionner explicitement que le comportement varie selon le modèle (chausse grand / ajusté)\n- Ton direct, concis, sans formule de politesse lourde\n- Toujours signer avec le prénom + 'de Max Sauveur'",
       "example_count": 2
     },
     {
@@ -1678,14 +1694,6 @@
       "topic_label": "Taille Sandale Fisher",
       "situation": "Taille Sandale Fisher",
       "response_template": "Bonjour Chris,\n\nAvec 26,4 cm de pied, vous êtes en **41** sur notre guide. La Fisherman chausse légèrement grand, donc je vous recommande le **40**.\n\nLe 41 serait trop grand pour vous sur ce modèle.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "taille_pour_chaussures",
-      "topic_label": "Taille pour chaussures",
-      "situation": "Taille pour chaussures",
-      "response_template": "Bonjour,\n\nAvec 25,6 cm de pied, vous êtes en **40** sur notre guide.\n\nPour vous orienter vers la bonne taille, quel modèle avez-vous en tête ? Certains chaussent légèrement grand, d'autres plus ajusté, et cela change la recommandation finale.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
