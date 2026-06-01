@@ -834,6 +834,14 @@
       "example_count": 1
     },
     {
+      "topic": "question_par_rapport___la_taille_de_la_logger_boots_noir",
+      "topic_label": "Question par rapport à la taille de la logger boots noir",
+      "situation": "Question par rapport à la taille de la logger boots noir",
+      "response_template": "Bonjour Urim,\n\nMerci pour votre message et désolé pour l'absence de réponse sur Instagram, l'email reste notre canal le plus réactif pour ce type de question.\n\nBonne nouvelle : pour les Logger Boots, pas de prise de tête. Ce modèle se prend à votre pointure habituelle, sans ajustement particulier. Vos Timberland en 45 sont une bonne référence pour des bottes, donc je vous recommande directement le **45**.\n\nPetite nuance utile : les sneakers taillent souvent plus grand que les chaussures en cuir, donc si vous aviez tendance à prendre du 46 en sneakers, inutile d'aller dans cette direction ici.\n\nEn résumé : **45**, sans hésitation.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "question_retout",
       "topic_label": "Question retout",
       "situation": "Question retout",
