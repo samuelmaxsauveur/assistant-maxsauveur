@@ -1722,6 +1722,14 @@
       "example_count": 1
     },
     {
+      "topic": "_change_moc_jagger_noirs_42____42_5",
+      "topic_label": "Échange Moc Jagger noirs 42 -> 42.5",
+      "situation": "Échange Moc Jagger noirs 42 -> 42.5",
+      "response_template": "Bonjour Antoine,\n\nAvant de lancer la procédure d'échange, une petite question qui peut vous éviter un aller-retour inutile : sur un mocassin, un léger serrement au premier essayage est tout à fait normal. Le cuir et la semelle en liège s'assouplissent avec le port et se moulent progressivement au pied. Ce qui compte vraiment, c'est la longueur : vos orteils touchent-ils le bout de la chaussure ? Votre pied glisse-t-il vers l'avant quand vous marchez ?\n\nSi oui, l'échange vers le 42,5 s'impose. En revanche, si c'est surtout une sensation de serrement sur les côtés ou au niveau du cou-de-pied, ça s'atténue généralement après quelques sorties.\n\nSi vous confirmez que l'échange est nécessaire, voici la procédure :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander le Moc Jagger Noir en 42,5.\n\nDites-moi comment se passe la longueur, je reste disponible.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__echange_commande_12053",
       "topic_label": "Échange commande – attente avoir avant nouvelle commande",
       "situation": "Un client souhaite faire un échange et commander une nouvelle paire en même temps. Le service client conseille d'attendre la réception de l'avoir pour tout commander en une seule fois et éviter de payer deux fois les frais de livraison.",
