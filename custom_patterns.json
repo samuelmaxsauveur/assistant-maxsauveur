@@ -98,6 +98,14 @@
       "example_count": 1
     },
     {
+      "topic": "commande_11621_demande_d__change",
+      "topic_label": "Commande 11621 demande d'échange",
+      "situation": "Commande 11621 demande d'échange",
+      "response_template": "Bonjour Maxence,\n\nRavi que la paire vous plaise !\n\nAvant de lancer l'échange, une question qui peut vous éviter un aller-retour inutile : sur un mocassin, un léger excès de volume au premier essayage est parfois trompeur. Ce qui compte vraiment, c'est la longueur. Vos orteils ont-ils vraiment trop d'espace à l'avant, ou votre pied glisse-t-il vers l'avant quand vous marchez ? Si c'est surtout une sensation de volume général, le cuir et la semelle en liège vont s'assouplir et se mouler à votre pied avec le port.\n\nSi en revanche la chaussure est vraiment trop longue, voici la procédure pour l'échange vers le 39 :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander le Moc Jagger Noir en 39.\n\nDites-moi comment se passe la longueur, je reste disponible.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande_12043",
       "topic_label": "Commande 12043",
       "situation": "Commande 12043",
