@@ -1570,6 +1570,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__une_commande__11718_est_en_transit",
+      "topic_label": "Re: Une commande #11718 est en transit",
+      "situation": "Re: Une commande #11718 est en transit",
+      "response_template": "Bonjour Hugo,\n\nMerci pour votre message et désolé pour ce contretemps.\n\nDe notre côté, nous n'avons pas la main pour prolonger le délai de garde en consigne, c'est effectivement Chronopost qui gère cela. Si votre démarche auprès d'eux n'aboutit pas, deux scénarios possibles :\n\n1. **Le colis vous est retourné** : dès réception dans notre entrepôt, nous le réexpédions vers vous avec l'adresse ou le point relais de votre choix, sans frais supplémentaires.\n2. **Chronopost accepte de prolonger** : dans ce cas, vous pouvez récupérer le colis sereinement à votre retour le 3.\n\nEn attendant, je surveille le suivi de votre côté. Voici le lien si vous souhaitez vérifier l'évolution : https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR631124015TS\n\nRevenez vers moi dès que vous avez du nouveau, et on organise la suite selon la situation.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__une_commande__11763_est_en_transit",
       "topic_label": "Re: Une commande #11763 est en transit",
       "situation": "Re: Une commande #11763 est en transit",
