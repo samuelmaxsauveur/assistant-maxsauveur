@@ -122,14 +122,6 @@
       "example_count": 1
     },
     {
-      "topic": "commande_12068",
-      "topic_label": "Commande 12068",
-      "situation": "Commande 12068",
-      "response_template": "Bonjour Juliette,\n\nToutes nos excuses pour l'absence de retour suite à vos précédents messages, ce n'est pas dans nos habitudes.\n\nBonne nouvelle : nous confirmons bien la réception de votre ceinture à notre entrepôt. Votre demande de remboursement est enregistrée et nous la traitons en priorité. Vous recevrez un retour très rapidement de notre part.\n\nMerci pour votre patience, et encore désolé pour ce délai de traitement.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "commande_jagger",
       "topic_label": "Commande Jagger",
       "situation": "Commande Jagger",
@@ -978,14 +970,6 @@
       "example_count": 1
     },
     {
-      "topic": "re__commande__11731",
-      "topic_label": "Re: COMMANDE #11731",
-      "situation": "Re: COMMANDE #11731",
-      "response_template": "Bonjour Éloïse,\n\nRavie que vos Moc Jagger vous aient finalement conquise ! C'est exactement ce qui se passe avec le cuir et la semelle en liège, ils s'adaptent vite.\n\nProfitez-en bien !\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "re__ceci_est_un___",
       "topic_label": "Re: Ceci est un...",
       "situation": "Re: Ceci est un...",
@@ -1402,6 +1386,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__form_name_form_submitted_2026_05_29_13_07_14",
+      "topic_label": "Re: Re: Form name Form submitted 2026-05-29 13:07:14",
+      "situation": "Re: Re: Form name Form submitted 2026-05-29 13:07:14",
+      "response_template": "Bonjour Florian,\n\nAvec 28,4 cm de pied, vous correspondez à un **44** sur notre guide de tailles. C'est la pointure à commander pour votre Moc Jagger.\n\nLa procédure de retour du 45 vous a déjà été communiquée, vous pouvez l'expédier dès que vous êtes prêt. Dès réception et contrôle, l'avoir vous sera envoyé pour commander le 44.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__fw__commande__12087_confirm_e",
       "topic_label": "Re: Re: Fw: Commande #12087 confirmée",
       "situation": "Re: Re: Fw: Commande #12087 confirmée",
@@ -1639,14 +1631,6 @@
       "situation": "Un client doit passer une nouvelle commande en utilisant un code avoir, mais les frais de livraison ne sont pas couverts automatiquement. Le service client lui indique de passer la commande normalement et promet un remboursement manuel des frais de port.",
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre message.\n\nPouvez-vous essayer à nouveau ?\n\nPour les frais de livraison, voici comment procéder : passez votre commande normalement avec votre code avoir de [montant]€, et nous effectuerons le remboursement des frais de port manuellement dès que la commande sera validée de notre côté.\n\nCordialement,\n[Prénom conseiller] de Max Sauveur",
       "key_points": "Ton rassurant et clair. Préciser le montant de l'avoir. Engager explicitement le remboursement manuel des frais de port après validation de commande. Ne pas faire payer deux fois le client pour une erreur ou un retour.",
-      "example_count": 1
-    },
-    {
-      "topic": "renseignement_pointure_fisherman",
-      "topic_label": "Renseignement pointure fisherman",
-      "situation": "Renseignement pointure fisherman",
-      "response_template": "Bonjour Samy,\n\nAvec 27,2 cm, vous correspondez à une taille 43 sur notre guide.\n\nLe Fisherman chausse légèrement grand, donc le 43 devrait vous aller parfaitement. Si vous avez un pied plutôt fin, vous pouvez même envisager le 42.\nN'hésitez pas si vous avez d'autres questions !\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
       "example_count": 1
     },
     {
