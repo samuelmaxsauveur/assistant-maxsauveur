@@ -26,6 +26,14 @@
       "example_count": 1
     },
     {
+      "topic": "cloture_dossier_satisfaction_client",
+      "topic_label": "Clôture de dossier – client satisfait, échange de courtoisie",
+      "situation": "Un client exprime sa satisfaction ou remercie le service client suite à une interaction résolue. L'email ne nécessite pas d'action mais mérite une réponse courte et chaleureuse pour laisser une bonne impression et ouvrir la porte à de futures questions.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour ce retour, c'est apprécié.\n\nBonne commande à vous, et n'hésitez pas si vous avez des questions sur d'autres modèles de la collection.\n\n[Prénom agent] de Max Sauveur",
+      "key_points": "Réponse très courte et chaleureuse. Remercier sincèrement sans en faire trop. Inviter subtilement à explorer d'autres modèles. Aucune action supplémentaire requise.",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__max_sauveur___service_client",
       "topic_label": "Clôture de dossier – problème résolu (mocassins)",
       "situation": "Le client confirme que le problème est résolu et que le produit (mocassin) a bien été reçu et convient. Le service client conclut la conversation de manière chaleureuse.",
@@ -614,6 +622,14 @@
       "topic_label": "Form name Form submitted 2026-05-29 15:00:32",
       "situation": "Form name Form submitted 2026-05-29 15:00:32",
       "response_template": "Bonjour Hugo,\n\nMerci pour votre retour et le compliment sur les Moc Jagger !\n\nCe que vous décrivez est tout à fait normal pour une première paire de mocassins en cuir neuf. Voici comment interpréter vos sensations :\n\n**Le serrement sur les côtés**\nC'est classique sur un mocassin neuf. Le cuir et la semelle en liège sont encore rigides et vont s'assouplir avec le port pour se mouler progressivement à votre pied. Comptez quelques sorties avant d'atteindre le confort optimal. Ce n'est pas un signe que la taille est trop petite.\n\n**Le talon qui se décolle**\nC'est tout à fait normal sur un mocassin, et ce ne sera jamais complètement absent. Sans lacets, le maintien dépend uniquement du cou-de-pied. Un léger soulèvement du talon fait partie du chaussé d'un mocassin. Ce n'est pas un signe que la taille est trop grande.\n\n**Ce qui compte vraiment**\nLa longueur. Vos orteils ne touchent pas le bout : c'est bon signe. Mais ont-ils un espace raisonnable sans pour autant flotter ? Si votre pied glisse vers l'avant quand vous marchez (orteils qui viennent buter), la taille est trop grande. Si la longueur vous semble correcte, le 44 est très probablement votre bonne taille.\n\n**Les chaussettes**\nPour un mocassin, des chaussettes fines ou mi-chaussettes sont idéales. Des chaussettes épaisses vont accentuer le serrement sur les côtés, surtout sur une paire neuve. Portez-les d'abord avec des chaussettes fines pour laisser le cuir s'assouplir naturellement.\n\nEn résumé : si la longueur vous convient, continuez à porter la paire quelques fois avec des chaussettes fines. Le serrement latéral va disparaître progressivement.\n\nN'hésitez pas à revenir vers moi avec votre ressenti après quelques ports.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "form_name_form_submitted_2026_05_29_19_46_16",
+      "topic_label": "Form name Form submitted 2026-05-29 19:46:16",
+      "situation": "Form name Form submitted 2026-05-29 19:46:16",
+      "response_template": "Bonjour Thomas,\n\nRavi que le modèle vous plaise !\n\nAvant de lancer l'échange, une question qui peut vous éviter un aller-retour inutile : sur un mocassin, un léger excès de volume au premier essayage est parfois trompeur. Ce qui compte vraiment, c'est la longueur. Vos orteils ont-ils vraiment trop d'espace à l'avant ? Votre pied glisse-t-il vers l'avant quand vous marchez ?\n\nSi oui, l'échange s'impose. En revanche, si c'est surtout une sensation de serrement sur les côtés ou au niveau du cou-de-pied, le cuir et la semelle en liège vont s'assouplir et se mouler à votre pied avec le port.\n\nSi vous confirmez que la taille est trop petite en longueur, voici la procédure :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique  :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander la bonne taille.\n\nDites-moi comment se passe la longueur, je reste disponible.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -1924,10 +1940,10 @@
     {
       "topic": "echange_taille_mocassin_conseil_avant_retour",
       "topic_label": "Échange taille mocassin – conseil ressenti avant retour + procédure",
-      "situation": "Un client souhaite échanger son mocassin pour une taille inférieure (ex : 39 au lieu de 40). Le service client lui explique la procédure de retour tout en l'invitant à vérifier si l'échange est vraiment nécessaire, notamment en distinguant excès de longueur (justifie l'échange) et excès de volume (le cuir et la semelle liège s'assouplissent avec le port).",
-      "response_template": "Bonjour [Prénom],\n\nRavi que les [modèle] vous plaisent !\n\nConcernant l'échange vers le [taille], voici la procédure :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique (frais de retour à votre charge) :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander le [taille].\n\nAvant de vous lancer, un point rapide qui peut vous éviter un aller-retour inutile : sur un mocassin, un léger excès de volume au premier essayage est parfois trompeur. Ce qui compte vraiment, c'est la longueur. Vos orteils ont-ils vraiment trop d'espace à l'avant, ou votre pied glisse-t-il vers l'avant quand vous marchez ? Si c'est surtout une question de volume général, le cuir et la semelle en liège vont s'assouplir avec le port. En revanche, si la longueur est clairement trop grande, l'échange vers le [taille] s'impose.\n\nN'hésitez pas à me donner votre ressenti sur ce point, je reste disponible.\n\n[Prénom agent] de Max Sauveur",
-      "key_points": "Toujours distinguer problème de longueur (justifie échange) vs problème de volume (le cuir s'assouplit). Frais de retour à la charge du client. Adresse logistique : SSL, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau. Indiquer 'avoir' sur le bon de retour. Ne pas promettre d'échange en pop-up store ou boutique physique (pas de stock sur place).",
-      "example_count": 1
+      "situation": "Un client souhaite échanger son mocassin pour une taille inférieure ou supérieure. Avant de lancer la procédure, le service client vérifie si l'échange est vraiment nécessaire en posant des questions sur le ressenti (longueur vs volume), car le cuir et la semelle en liège s'assouplissent avec le port.",
+      "response_template": "Bonjour [Prénom],\n\nRavi que la paire vous plaise !\n\nAvant de lancer l'échange, une question qui peut vous éviter un aller-retour inutile : sur un mocassin, un léger excès de volume au premier essayage est parfois trompeur. Ce qui compte vraiment, c'est la longueur. Vos orteils ont-ils vraiment trop d'espace à l'avant, ou votre pied glisse-t-il vers l'avant quand vous marchez ? Si c'est surtout une sensation de volume général, le cuir et la semelle en liège vont s'assouplir et se mouler à votre pied avec le port.\n\nSi en revanche la chaussure est vraiment trop longue, voici la procédure pour l'échange vers le [taille souhaitée] :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander le [modèle + coloris] en [taille souhaitée].\n\nDites-moi comment se passe la longueur, je reste disponible.\n\n[Prénom agent] de Max Sauveur",
+      "key_points": "Toujours vérifier si l'échange est vraiment justifié avant de lancer la procédure. Distinguer sensation de volume (temporaire, s'améliore avec le port) vs longueur réelle (justifie l'échange). Fournir la procédure complète dès le premier email pour gagner du temps. L'avoir est émis après réception et contrôle du retour. Ton chaleureux et pédagogique.",
+      "example_count": 3
     },
     {
       "topic": "re__commande__11486___changement_de_taille",
