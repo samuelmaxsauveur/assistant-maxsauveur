@@ -58,6 +58,14 @@
       "example_count": 2
     },
     {
+      "topic": "commande__11615",
+      "topic_label": "Commande #11615",
+      "situation": "Commande #11615",
+      "response_template": "Bonjour Annabelle,\n\nRavi que vous ayez enfin reçu vos Moc Jagger !\n\nAvant de lancer la procédure d'échange, une question qui peut vous éviter un aller-retour inutile : sur un mocassin, un léger excès de volume au premier essayage est parfois trompeur. Ce qui compte vraiment, c'est la longueur. Vos orteils ont-ils vraiment trop d'espace à l'avant ? Votre pied glisse-t-il vers l'avant quand vous marchez ?\n\nJe vous pose la question car si c'est surtout une sensation de volume général, le cuir et la semelle en liège vont s'assouplir avec le port et se mouler à votre pied. En revanche, si la longueur est clairement trop grande, l'échange vers le 38 s'impose.\n\nSi vous confirmez que l'échange est nécessaire, voici la procédure :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander le Moc Jagger Noir en 38.\n\nDites-moi comment se passe la longueur, je reste disponible.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande__12059",
       "topic_label": "Commande #12059",
       "situation": "Commande #12059",
@@ -1812,10 +1820,10 @@
     {
       "topic": "echange_taille_depot_direct_impossible",
       "topic_label": "Échange de taille – dépôt en direct refusé, procédure retour en ligne uniquement",
-      "situation": "Un client souhaite déposer sa paire en mains propres (en boutique ou directement) pour effectuer un échange de taille. Max Sauveur n'ayant pas de boutique physique, il faut l'informer que la procédure se fait uniquement en ligne et par voie postale.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message.\n\nConcernant le dépôt en direct : nous n'avons pas de boutique physique, la vente et les retours se font uniquement en ligne. Il ne nous est donc pas possible de récupérer votre paire en mains propres, même à [Ville].\n\nPour l'échange vers le [Taille souhaitée], voici la procédure :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique (frais de retour à votre charge) :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander la [Modèle] en taille [Taille souhaitée].\n\nN'hésitez pas si vous avez des questions.\n\nJohn de Max Sauveur",
-      "key_points": "Rappeler clairement l'absence de boutique physique. Préciser que les frais de retour sont à la charge du client. Indiquer la taille souhaitée et le modèle concerné dans la réponse. L'avoir est émis après réception et contrôle du retour. Toujours inclure l'adresse logistique complète et le lien vers le bon de retour.",
-      "example_count": 1
+      "situation": "Un client souhaite déposer sa paire en mains propres à l'entrepôt logistique (ex : Les Pennes-Mirabeau) pour effectuer un retour ou un échange, parfois parce qu'il habite à proximité. L'entrepôt ne reçoit pas de visiteurs et le retour doit se faire uniquement par voie postale. Avant de lancer la procédure, le service client demande la raison du retour pour trouver une solution adaptée.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message.\n\nConcernant le dépôt en direct à l'entrepôt : l'adresse de [Ville] est bien celle de notre prestataire logistique, mais il s'agit d'un entrepôt qui ne reçoit pas de visiteurs. Il n'est donc malheureusement pas possible d'y déposer un colis en mains propres, même en habitant à proximité. Le retour se fait uniquement par voie postale.\n\nAvant que vous ne lanciez la procédure, pourriez-vous me préciser la raison de ce retour ? Selon ce que vous me dites, il est possible qu'on trouve une solution adaptée à votre situation.\n\n[Prénom de l'équipe] de Max Sauveur",
+      "key_points": "Ton direct mais bienveillant. Expliquer clairement que l'entrepôt n'est pas accessible au public, même pour les riverains. Toujours demander la raison du retour avant de lancer la procédure pour anticiper une solution sur-mesure. Ne pas fermer la porte à une alternative.",
+      "example_count": 2
     },
     {
       "topic": "echange_commande__12241",
