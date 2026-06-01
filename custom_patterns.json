@@ -1002,6 +1002,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__commande__12168",
+      "topic_label": "Re: Commande #12168",
+      "situation": "Re: Commande #12168",
+      "response_template": "Bonjour Florent,\n\nJe comprends votre surprise, et je vais vous expliquer honnêtement notre position.\n\nNous faisons le choix de vendre nos paires au prix juste, sans marge artificielle intégrée pour financer des retours gratuits. Concrètement, cela veut dire que nous n'ajoutons pas 20 ou 30€ au prix de chaque paire pour pouvoir afficher 'retours offerts' : nous préférons que nos prix restent accessibles. L'expédition aller est déjà à notre charge, et elle représente un coût réel que nous assumons pleinement.\n\nCela ne rend pas votre frustration moins légitime, et je comprends que ce soit une contrainte. C'est précisément pour cette raison que nous mettons un point d'honneur à conseiller en amont, pour éviter les allers-retours inutiles.\n\nPour vous aider à repartir dans les bonnes conditions, voici ce que je vous propose : dites-moi quelles tailles vous avez reçues (chaussures et ceinture) et ce que vous ressentez, je vous confirme les bonnes pointures avant que vous ne fassiez quoi que ce soit. Si vous retournez la paire et passez une nouvelle commande, nous prenons en charge les frais de livraison sur cette prochaine commande.\n\nNous ne voulons pas vous perdre sur un problème de taille, surtout si on peut l'éviter avec un bon conseil.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__12242_confirm_e",
       "topic_label": "Re: Commande #12242 confirmée",
       "situation": "Re: Commande #12242 confirmée",
