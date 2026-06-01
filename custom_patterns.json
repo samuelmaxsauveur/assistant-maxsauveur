@@ -1626,6 +1626,14 @@
       "example_count": 1
     },
     {
+      "topic": "renseignement_pointure_fisherman",
+      "topic_label": "Renseignement pointure fisherman",
+      "situation": "Renseignement pointure fisherman",
+      "response_template": "Bonjour Samy,\n\nAvec 27,2 cm, vous correspondez à une taille 43 sur notre guide.\n\nLe Fisherman chausse légèrement grand, donc le 43 devrait vous aller parfaitement. Si vous avez un pied plutôt fin, vous pouvez même envisager le 42.\nN'hésitez pas si vous avez d'autres questions !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "envoi_code_avoir",
       "topic_label": "Renvoi du code avoir après retour reçu",
       "situation": "Un client demande à recevoir à nouveau son code avoir suite à un retour déjà validé. Le code avait déjà été envoyé une première fois mais le client ne le retrouve pas ou souhaite confirmation. Le service client renvoie le code avec les conditions d'utilisation.",
