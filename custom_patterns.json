@@ -266,6 +266,14 @@
       "example_count": 1
     },
     {
+      "topic": "demande_d_aide_",
+      "topic_label": "Demande d'aide!",
+      "situation": "Demande d'aide!",
+      "response_template": "Bonjour Gilles,\n\nMerci pour ce message et pour vos encouragements, ça fait vraiment plaisir !\n\nOn va démêler tout ça ensemble.\n\n**Sur le Boat (Le Boat - Cuir Marron, 43) :**\nLe Boat chausse légèrement grand. Avec un pied large et un cou-de-pied fort, votre vraie taille chez nous est le 42, et non le 43. Voilà pourquoi la paire vous paraît trop grande.\n\n**Sur le Winston (Cuir Grainé Blanc, 44) :**\nLe Winston est un modèle qui chausse large, justement. On conseille systématiquement de prendre une demi-taille en dessous. Avec votre pointure habituelle en 44, il aurait fallu partir sur un 42 également.\n\n**Pour la procédure :**\nPour un retour depuis la Suisse, nous comprenons que les frais de port et les formalités douanières peuvent être un frein. Les retours restent à votre charge, c'est notre politique standard pour les échanges de taille. Voici le bon de retour à compléter : https://maxsauveur.com/pages/livraison-et-retour (cochez \"avoir\"). \n\nDites-moi si vous souhaitez qu'on affine encore le conseil avant de vous lancer.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "demande_de_retour_et_remboursement___mocassins_femme_taille_",
       "topic_label": "Demande de retour et remboursement – Mocassins femme taille 37",
       "situation": "Demande de retour et remboursement – Mocassins femme taille 37",
