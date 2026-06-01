@@ -1461,9 +1461,9 @@
       "topic": "re__une_commande__12009_en_retour",
       "topic_label": "Re: Une commande #12009 en retour",
       "situation": "Re: Une commande #12009 en retour",
-      "response_template": "Bonjour Kavi,\n\nNous procéderons à l'expédition de votre paire la semaine prochaine. Vous recevrez un email avec votre nouveau lien de suivi Chronopost dès que le colis sera parti.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Kavi,\n\nFinalement, notre atelier nous a confirmé qu'il est possible de remettre la paire en état pour la replacer en stock. Nous ne vous la renvoyons donc pas, et procédons à votre remboursement de 301,50 € sur votre moyen de paiement initial. Comptez quelques jours ouvrés pour que le montant apparaisse.\n\nN'hésitez pas si vous avez des questions.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 2
+      "example_count": 3
     },
     {
       "topic": "re__une_commande__12061_est_en_transit",
@@ -1528,6 +1528,14 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et pour nous avoir signalé la situation.\n\nNous avons bien pris note de votre retour pour la commande #[numéro]. Nous nous rapprochons de notre logistique pour confirmer la réception de [l'article] et vous revenons vers vous cette semaine avec une confirmation.\n\nMerci pour votre patience.\n\n[Prénom] de Max Sauveur",
       "key_points": "Ton rassurant et professionnel. Ne pas confirmer la réception tant qu'elle n'est pas vérifiée en interne. Donner un délai indicatif (cette semaine). Mentionner explicitement le numéro de commande et l'article concerné pour montrer que le dossier est bien suivi.",
       "example_count": 2
+    },
+    {
+      "topic": "retour_international_dpd_adresse_procedure",
+      "topic_label": "Retour depuis l'étranger (Belgique) via DPD – adresse et procédure",
+      "situation": "Un client situé hors de France (ex : Belgique) souhaite effectuer un retour via son propre transporteur (DPD). Il a besoin de l'adresse de retour complète, des instructions pour le bon de retour, et d'informations sur la suite (avoir ou échange de taille).",
+      "response_template": "Bonjour [Prénom],\n\nPour le retour depuis [pays] via DPD, voici les informations dont vous avez besoin :\n\n**Adresse de livraison :**\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\nFrance\n\n**Email :** hello@maxsauveur.com\n\nPour le numéro de mobile, il faut utiliser le numéro du service client, inscrit sur notre site internet.\n\nN'oubliez pas d'inclure le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\").\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander la bonne taille.\n\n[Ajouter si pertinent : précisions sur la taille recommandée selon le modèle et l'usage prévu (chaussettes fines, épaisses, pieds nus, etc.)]\n\n[Prénom] de Max Sauveur",
+      "key_points": "Fournir l'adresse SSL complète. Préciser que le numéro de mobile est celui du service client sur le site. Rappeler le lien bon de retour avec mention 'avoir'. Si échange de taille en jeu, apporter conseil circonstancié (ex : Moc Jagger liège se moule au pied, 42,5 vs 43 selon usage chaussettes). Ton chaleureux et proactif.",
+      "example_count": 1
     },
     {
       "topic": "retour_mocassins_jagger",
