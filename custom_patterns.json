@@ -1522,6 +1522,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__taille_conseill_e_pour_des_sandales_en_cuir",
+      "topic_label": "Re: Taille conseillée pour des sandales en cuir",
+      "situation": "Re: Taille conseillée pour des sandales en cuir",
+      "response_template": "Bonjour Victor,\n\nPas de problème pour l'échange vers le 42, c'est la bonne direction.\n\nConcernant le code de réduction, les codes à usage unique ne peuvent pas être réédités une fois utilisés. Cela dit, comme vous procédez à un retour pour un échange de taille, je vous recommande de passer par notre système d'avoir plutôt que de repasser une commande directement.\n\nVoici comment procéder :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous envoyons un avoir du montant que vous avez payé en ajoutant les -10%. Vous commanderez ainsi le 42 sans frais supplémentaires, ce qui remplacera la remise que vous ne pouvez plus utiliser.\n\nN'hésitez pas si vous avez des questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__une_commande__11763_est_en_transit",
       "topic_label": "Re: Une commande #11763 est en transit",
       "situation": "Re: Une commande #11763 est en transit",
@@ -1615,6 +1623,14 @@
       "situation": "Retour mocassins jagger",
       "response_template": "Bonjour Emile,\n\nRavi que le modèle vous plaise !\n\nAvant de lancer la procédure de retour, je voulais vous donner quelques éléments utiles sur le ressenti d'un mocassin neuf : au premier essayage, un mocassin en cuir chausse juste, c'est tout à fait normal. Le cuir et la semelle en liège s'assouplissent avec le port et se moulent progressivement au pied. Si la sensation est surtout un serrement sur les côtés ou au niveau du cou-de-pied, ça s'atténue naturellement après quelques sorties.\n\nCe qui compte vraiment, c'est la longueur : vos orteils touchent-ils le bout de la chaussure ? Votre pied glisse-t-il vers l'avant quand vous marchez ?\n\nSi oui, la taille est effectivement trop petite et l'échange s'impose. \n\nCe que nous pouvons faire : procéder à un retour pour avoir, et dès que le Moc Jagger revient en stock dans votre taille, vous pourrez utiliser votre avoir pour commander. L'avoir est valable 6 mois sur l'ensemble de la collection, ce qui vous laisse de la marge.\n\nSi vous souhaitez retourner la paire, voici la procédure :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique (frais de retour à votre charge) :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous générons votre avoir.\n\nDites-moi d'abord comment se passe la longueur, c'est le point clé pour savoir si l'échange est vraiment nécessaire.\n\nJohn de Max Sauveur",
       "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "retour_payant_politique_prix_juste_avec_geste_commercial",
+      "topic_label": "Retour payant – explication politique prix juste + frais offerts sur prochaine commande",
+      "situation": "Un client est surpris ou mécontent de devoir payer les frais de retour. Il a reçu une mauvaise taille (chaussures, ceinture) et s'attendait à un retour gratuit. Le service client doit expliquer la politique tarifaire sans retours offerts tout en proposant un geste commercial concret.",
+      "response_template": "Bonjour [Prénom],\n\nJe comprends votre surprise, et je vais vous expliquer honnêtement notre position.\n\nNous faisons le choix de vendre nos paires au prix juste, sans marge artificielle intégrée pour financer des retours gratuits. Concrètement, cela veut dire que nous n'ajoutons pas 20 ou 30€ au prix de chaque paire pour pouvoir afficher « retours offerts » : nous préférons que nos prix restent accessibles. L'expédition aller est déjà à notre charge, et elle représente un coût réel que nous assumons pleinement.\n\nCela ne rend pas votre frustration moins légitime, et je comprends que ce soit une contrainte. C'est précisément pour cette raison que nous mettons un point d'honneur à conseiller en amont, pour éviter les allers-retours inutiles.\n\nPour vous aider à repartir dans les bonnes conditions, voici ce que je vous propose : dites-moi quelles tailles vous avez reçues et ce que vous ressentez, je vous confirme les bonnes tailles avant que vous ne fassiez quoi que ce soit. Si vous retournez la paire et passez une nouvelle commande, nous prenons en charge les frais de livraison sur cette prochaine commande.\n\nNous ne voulons pas vous perdre sur un problème de taille, surtout si on peut l'éviter avec un bon conseil.\n\n[Prénom] de Max Sauveur",
+      "key_points": "Ton honnête et transparent, jamais défensif. Expliquer la logique économique (pas de marge cachée = pas de retours gratuits). Reconnaître la frustration sans la minimiser. Geste commercial systématique : frais de livraison offerts sur la prochaine commande. Proposer proactivement un conseil de taille avant tout retour pour éviter un nouvel aller-retour inutile.",
       "example_count": 1
     },
     {
