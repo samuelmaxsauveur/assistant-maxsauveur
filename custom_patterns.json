@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "arriv_e_des_moc_jagger__",
+      "topic_label": "Arrivée des Moc Jagger ?",
+      "situation": "Arrivée des Moc Jagger ?",
+      "response_template": "Bonjour Eliott,\n\nMerci pour votre message et pour vos mots très gentils sur notre travail, ça fait vraiment plaisir à lire.\n\nVotre interrogation est tout à fait légitime. Votre commande #11618 (Le Moc Jagger Pony Marron 41,5 + le kit d'entretien) est bien enregistrée et en cours de préparation de notre côté. \n\nNous allons interroger notre logistique et revenons rapidement vers vous.\n\nCordialement,\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "bug_code_promo_disparait_etape_connexion",
       "topic_label": "Bug code promo – disparition à l'étape de connexion/email",
       "situation": "Un client tente d'appliquer un code de réduction lors du passage de commande, mais le code disparaît au moment où il renseigne son email ou passe à l'étape de connexion. Le bug est lié à une interaction entre les codes et l'étape de connexion dans le système de paiement.",
