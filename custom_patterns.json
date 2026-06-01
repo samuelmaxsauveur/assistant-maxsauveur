@@ -1474,6 +1474,14 @@
       "example_count": 1
     },
     {
+      "topic": "remboursement_commande__18878",
+      "topic_label": "Remboursement commande #18878",
+      "situation": "Remboursement commande #18878",
+      "response_template": "Bonjour Jean-Baptiste,\n\nOui, le retour de votre commande #12172 a bien été réceptionné de notre côté, merci.\n\nNous revenons rapidement vers vous.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "remboursement_frais_port_avec_avoir",
       "topic_label": "Remboursement frais de port avec code avoir",
       "situation": "Un client doit passer une nouvelle commande en utilisant un code avoir, mais les frais de livraison ne sont pas couverts automatiquement. Le service client lui indique de passer la commande normalement et promet un remboursement manuel des frais de port.",
