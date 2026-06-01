@@ -122,6 +122,14 @@
       "example_count": 1
     },
     {
+      "topic": "commande_12068",
+      "topic_label": "Commande 12068",
+      "situation": "Commande 12068",
+      "response_template": "Bonjour Juliette,\n\nToutes nos excuses pour l'absence de retour suite à vos précédents messages, ce n'est pas dans nos habitudes.\n\nBonne nouvelle : nous confirmons bien la réception de votre ceinture à notre entrepôt. Votre demande de remboursement est enregistrée et nous la traitons en priorité. Vous recevrez un retour très rapidement de notre part.\n\nMerci pour votre patience, et encore désolé pour ce délai de traitement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande_jagger",
       "topic_label": "Commande Jagger",
       "situation": "Commande Jagger",
