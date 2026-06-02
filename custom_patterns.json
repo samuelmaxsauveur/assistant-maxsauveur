@@ -658,6 +658,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_06_02_11_59_38",
+      "topic_label": "Form name Form submitted 2026-06-02 11:59:38",
+      "situation": "Form name Form submitted 2026-06-02 11:59:38",
+      "response_template": "Bonjour Myriam,\n\nMerci pour votre message et pour nous avoir alertés.\n\nEn consultant votre lien de suivi, nous voyons effectivement que votre colis est en cours de retour vers nous. Cela arrive généralement lorsque le colis n'a pas été récupéré au point relais dans le délai imparti.\n\nNous n'avons pas encore davantage d'informations de notre côté, mais dès réception et contrôle du colis, nous revenons vers vous pour vous proposer une solution (réenvoi ou avoir).\n\nVotre lien de suivi si vous souhaitez suivre l'acheminement en retour : https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR631023949TS\n\nBonne journée à vous,\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fw__commande__12087_confirm_e",
       "topic_label": "Fw: Commande #12087 confirmée",
       "situation": "Fw: Commande #12087 confirmée",
