@@ -658,6 +658,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_06_02_10_47_38",
+      "topic_label": "Form name Form submitted 2026-06-02 10:47:38",
+      "situation": "Form name Form submitted 2026-06-02 10:47:38",
+      "response_template": "Bonjour Fabien,\n\nMerci pour votre message. Nous confirmons bien la réception de votre retour (Paul Mocassin Cuir Bordeaux 42.5) aux Pennes-Mirabeau.\n\nNous interrogeons notre logistique pour vous envoyer votre avoir dans les meilleurs délais et vous revenons avec des nouvelles cette semaine. Concernant votre code de réduction de 45€, nous regardons également ce que nous pouvons faire de notre côté.\n\nNous faisons le nécessaire pour que vous puissiez commander la bonne taille avant une éventuelle rupture de stock.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_06_02_11_59_38",
       "topic_label": "Form name Form submitted 2026-06-02 11:59:38",
       "situation": "Form name Form submitted 2026-06-02 11:59:38",
@@ -1574,14 +1582,6 @@
       "topic_label": "Re: Taille conseillée pour des sandales en cuir",
       "situation": "Re: Taille conseillée pour des sandales en cuir",
       "response_template": "Bonjour Victor,\n\nPas de problème pour l'échange vers le 42, c'est la bonne direction.\n\nConcernant le code de réduction, les codes à usage unique ne peuvent pas être réédités une fois utilisés. Cela dit, comme vous procédez à un retour pour un échange de taille, je vous recommande de passer par notre système d'avoir plutôt que de repasser une commande directement.\n\nVoici comment procéder :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous envoyons un avoir du montant que vous avez payé en ajoutant les -10%. Vous commanderez ainsi le 42 sans frais supplémentaires, ce qui remplacera la remise que vous ne pouvez plus utiliser.\n\nN'hésitez pas si vous avez des questions.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__taille_pour_chaussures",
-      "topic_label": "Re: Taille pour chaussures",
-      "situation": "Re: Taille pour chaussures",
-      "response_template": "Bonjour,\n\nOui, même logique avec 25,8 cm : en ajoutant 0,2 cm, vous arrivez à 26 cm, ce qui correspond également à un **40** sur notre guide.\n\nQuel modèle vous intéresse ? La recommandation finale dépend du modèle, certains chaussent grand, d'autres plus ajusté.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
