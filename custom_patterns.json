@@ -1610,6 +1610,14 @@
       "example_count": 2
     },
     {
+      "topic": "re__une_commande__11529_est_en_transit",
+      "topic_label": "Re: Une commande #11529 est en transit",
+      "situation": "Re: Une commande #11529 est en transit",
+      "response_template": "Bonjour Thibault,\n\nPas de problème, un échange vers le 41 est tout à fait possible.\n\nVoici comment ça fonctionne : nos échanges passent par un système d'avoir. Vous retournez le 41.5 à vos frais en remplissant le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\" comme raison). Dès réception et contrôle de la paire, nous vous envoyons un avoir du montant correspondant pour commander le 41.\n\nSi vous souhaitez aller vite et éviter toute rupture de stock, vous pouvez aussi commander le 41 dès maintenant et retourner le 41.5 en parallèle.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__une_commande__11718_est_en_transit",
       "topic_label": "Re: Une commande #11718 est en transit",
       "situation": "Re: Une commande #11718 est en transit",
