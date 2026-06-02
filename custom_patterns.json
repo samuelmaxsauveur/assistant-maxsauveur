@@ -1666,6 +1666,14 @@
       "example_count": 2
     },
     {
+      "topic": "re__pointure",
+      "topic_label": "Re: pointure",
+      "situation": "Re: pointure",
+      "response_template": "Bonsoir,\n\nOui, le 43 est tout à fait cohérent avec votre pointure sur la Fisherman, surtout si vous préférez un chaussant ajusté.\n\nBonne commande !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re___tat_de_l__change_pour_la_commande__11992",
       "topic_label": "Re: État de l'échange pour la commande #11992",
       "situation": "Re: État de l'échange pour la commande #11992",
