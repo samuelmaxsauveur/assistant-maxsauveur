@@ -1106,14 +1106,6 @@
       "example_count": 1
     },
     {
-      "topic": "re__derby_wood",
-      "topic_label": "Re: Derby Wood",
-      "situation": "Re: Derby Wood",
-      "response_template": "Bonsoir Paul,\n\nOui, vous avez bien raison de le mentionner. Si vous portez des semelles orthopédiques ou volumineuses, le 40 est effectivement encore plus adapté. Il vous donnera l'espace nécessaire pour les intégrer confortablement sans comprimer le pied.\n\nEn résumé : avec 26 cm de pied et des semelles, partez sur le 40.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "re__d_but_de_la_fabrication_de_vos_moc_jagger_et_point_livra",
       "topic_label": "Re: Début de la fabrication de vos Moc Jagger et point livraison",
       "situation": "Re: Début de la fabrication de vos Moc Jagger et point livraison",
@@ -1581,9 +1573,9 @@
       "topic": "re__retour_re_u___remboursement_en_cours",
       "topic_label": "Re: Retour reçu — remboursement en cours",
       "situation": "Re: Retour reçu — remboursement en cours",
-      "response_template": "Bonjour Yann,\n\nBien reçu, nous procédons au remboursement sur votre moyen de paiement initial. Comptez quelques jours ouvrés pour que la somme apparaisse.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Theo,\n\nMerci pour votre retour, c'est noté.\n\nAucun problème, nous allons procéder au remboursement de 335,00 EUR directement sur votre moyen de paiement d'origine. Comptez 5 à 10 jours ouvrés selon votre banque.\n\nBonne soirée,\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 8
+      "example_count": 9
     },
     {
       "topic": "re__statut_commande_et_changement_de_point_de_retrait",
