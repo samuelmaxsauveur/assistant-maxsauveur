@@ -1578,6 +1578,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__taille_pour_chaussures",
+      "topic_label": "Re: Taille pour chaussures",
+      "situation": "Re: Taille pour chaussures",
+      "response_template": "Bonjour,\n\nOui, même logique avec 25,8 cm : en ajoutant 0,2 cm, vous arrivez à 26 cm, ce qui correspond également à un **40** sur notre guide.\n\nQuel modèle vous intéresse ? La recommandation finale dépend du modèle, certains chaussent grand, d'autres plus ajusté.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__une_commande__11718_est_en_transit",
       "topic_label": "Re: Une commande #11718 est en transit",
       "situation": "Re: Une commande #11718 est en transit",
