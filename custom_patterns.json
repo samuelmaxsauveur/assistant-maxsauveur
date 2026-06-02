@@ -1754,6 +1754,14 @@
       "example_count": 1
     },
     {
+      "topic": "re___re__re__merci_pour_votre_message___quelques_information",
+      "topic_label": "Re : Re: Re: Merci pour votre message - Quelques informations utiles Re: Commande #11642 confirmée",
+      "situation": "Re : Re: Re: Merci pour votre message - Quelques informations utiles Re: Commande #11642 confirmée",
+      "response_template": "Bonjour Frédéric,\n\nMerci pour ce retour rapide et pour vos mots sur la paire, ça fait plaisir !\n\nPour la mise de côté du 42,5 : nous ne pouvons malheureusement pas réserver une pointure à l'avance. Dès réception et contrôle de votre retour, nous vérifierons la disponibilité et vous enverrons un avoir du montant de la chaussure (239€) pour repasser commande sur le site.\n\nConcernant les frais de réexpédition : oui, ils seront à votre charge via la nouvelle commande. Notre système fonctionne avec un avoir, donc vous repassez commande normalement sur le site, et les frais de livraison standard s'appliquent. Ce n'est pas ce que vous espériez sans doute, et on s'en excuse, mais c'est le fonctionnement de notre procédure d'échange.\n\nEn attendant, n'oubliez pas d'inclure le bon de retour (disponible sur maxsauveur.com/pages/livraison-et-retour, case \"avoir\") dans votre colis à l'adresse :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\nFrance\n\nOn vous tient informé dès réception.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "rupture_stock_avoir_majore_ou_remboursement",
       "topic_label": "Rupture de stock – Avoir majoré ou remboursement au choix",
       "situation": "Un client a commandé un modèle qui n'est plus disponible dans sa taille suite à une mauvaise synchronisation des stocks. Le service client ne peut pas honorer la commande et propose deux options : remboursement intégral ou avoir majoré avec livraison offerte.",
