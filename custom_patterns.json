@@ -658,6 +658,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_06_01_23_04_12",
+      "topic_label": "Form name Form submitted 2026-06-01 23:04:12",
+      "situation": "Form name Form submitted 2026-06-01 23:04:12",
+      "response_template": "Bonjour Maurice,\n\nAvec 28 cm de pied, votre taille est le 43, ce qui correspond à votre pointure habituelle.\n\nLe Fisherman daim chausse légèrement grand, donc votre 43 devrait être la bonne option. Si vous avez un pied plutôt fin, vous pouvez envisager de descendre au 42 mais en 43 vous serez bien calé.\n\nN'hésitez pas si vous avez d'autres questions !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_06_02_10_47_38",
       "topic_label": "Form name Form submitted 2026-06-02 10:47:38",
       "situation": "Form name Form submitted 2026-06-02 10:47:38",
@@ -1410,6 +1418,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__form_name_form_submitted_2026_05_28_13_58_14",
+      "topic_label": "Re: Re: Form name Form submitted 2026-05-28 13:58:14",
+      "situation": "Re: Re: Form name Form submitted 2026-05-28 13:58:14",
+      "response_template": "Bonjour Kevin,\n\nMerci pour votre relance. Nous venons d'interroger notre logistique concernant la réception de votre colis Colissimo 8X31235266404 et nous revenons vers vous dès que nous avons une confirmation de leur part.\n\nBonne journée à vous.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__fw__commande__12087_confirm_e",
       "topic_label": "Re: Re: Fw: Commande #12087 confirmée",
       "situation": "Re: Re: Fw: Commande #12087 confirmée",
@@ -1546,14 +1562,6 @@
       "example_count": 1
     },
     {
-      "topic": "re__retour_mocassins_jagger",
-      "topic_label": "Re: Retour mocassins jagger",
-      "situation": "Re: Retour mocassins jagger",
-      "response_template": "Bonjour Emile,\n\nPas de souci pour le délai, c'est tout à fait normal.\n\nMerci pour ce retour concret, c'est exactement ce qu'il fallait savoir. Si vous touchez au bout en marchant, la taille est effectivement trop petite et le retour s'impose.\n\nTout est déjà dans mon email précédent, mais pour résumer :\n\n1. Téléchargez et complétez le bon de retour sur maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, votre avoir est généré. Il sera valable 6 mois sur l'ensemble de la collection, ce qui vous laisse le temps de guetter un réassort ou de jeter un œil à nos autres modèles.\n\nBon retour, et n'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "re__retour_re_u___remboursement_en_cours",
       "topic_label": "Re: Retour reçu — remboursement en cours",
       "situation": "Re: Retour reçu — remboursement en cours",
@@ -1589,9 +1597,9 @@
       "topic": "re__taille_conseill_e_pour_des_sandales_en_cuir",
       "topic_label": "Re: Taille conseillée pour des sandales en cuir",
       "situation": "Re: Taille conseillée pour des sandales en cuir",
-      "response_template": "Bonjour Victor,\n\nPas de problème pour l'échange vers le 42, c'est la bonne direction.\n\nConcernant le code de réduction, les codes à usage unique ne peuvent pas être réédités une fois utilisés. Cela dit, comme vous procédez à un retour pour un échange de taille, je vous recommande de passer par notre système d'avoir plutôt que de repasser une commande directement.\n\nVoici comment procéder :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous envoyons un avoir du montant que vous avez payé en ajoutant les -10%. Vous commanderez ainsi le 42 sans frais supplémentaires, ce qui remplacera la remise que vous ne pouvez plus utiliser.\n\nN'hésitez pas si vous avez des questions.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Victor,\n\nOui, tout à fait. Une fois la paire en 43 retournée et contrôlée, nous vous enverrons un avoir du montant de votre commande, que vous pourrez utiliser pour commander le 42.\n\nComme indiqué dans mon précédent message, voici la procédure :\n\n1. Téléchargez et complétez le bon de retour ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à votre convenance \n\nDès réception, nous traitons l'avoir et vous pouvez repasser commande en 42.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 1
+      "example_count": 2
     },
     {
       "topic": "re__une_commande__11718_est_en_transit",
@@ -1758,6 +1766,14 @@
       "topic_label": "Re : Début de la fabrication de vos Moc Jagger et point livraison",
       "situation": "Re : Début de la fabrication de vos Moc Jagger et point livraison",
       "response_template": "Bonjour,\n\nMerci pour votre message et votre patience !\n\nVos Moc Jagger arrivent chez nous cette semaine, et nous prévoyons de les expédier dans la foulée. La livraison estimée se situe autour semaine prochaine, sous réserve que les ponts de fin mai ne viennent pas ralentir les transporteurs.\n\nDès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost pour suivre votre paire en temps réel.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re___re__re__merci_pour_votre_message___quelques_information",
+      "topic_label": "Re : Re: Re: Merci pour votre message - Quelques informations utiles Re: Commande #11642 confirmée",
+      "situation": "Re : Re: Re: Merci pour votre message - Quelques informations utiles Re: Commande #11642 confirmée",
+      "response_template": "Bonjour Frédéric,\n\nMerci pour ce retour rapide et pour vos mots sur la paire, ça fait plaisir !\n\nPour la mise de côté du 42,5 : nous ne pouvons malheureusement pas réserver une pointure à l'avance. Dès réception et contrôle de votre retour, nous vérifierons la disponibilité et vous enverrons un avoir du montant de la chaussure (239€) pour repasser commande sur le site.\n\nConcernant les frais de réexpédition : oui, ils seront à votre charge via la nouvelle commande. Notre système fonctionne avec un avoir, donc vous repassez commande normalement sur le site, et les frais de livraison standard s'appliquent. Ce n'est pas ce que vous espériez sans doute, et on s'en excuse, mais c'est le fonctionnement de notre procédure d'échange.\n\nEn attendant, n'oubliez pas d'inclure le bon de retour (disponible sur maxsauveur.com/pages/livraison-et-retour, case \"avoir\") dans votre colis à l'adresse :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\nFrance\n\nOn vous tient informé dès réception.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
