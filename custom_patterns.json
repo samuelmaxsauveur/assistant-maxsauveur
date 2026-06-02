@@ -682,6 +682,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_06_02_20_02_29",
+      "topic_label": "Form name Form submitted 2026-06-02 20:02:29",
+      "situation": "Form name Form submitted 2026-06-02 20:02:29",
+      "response_template": "Bonjour Simon,\n\nMerci pour votre message concernant votre précommande #11509 du Moc Jagger en 41.\n\nBonne nouvelle sur le principe : nous pouvons vous créer un avoir correspondant au prix exact que vous avez payé lors de votre précommande, ce qui vous permettrait de commander le 42,5 sans surcoût.\n\nEn revanche, pour le 42,5 en particulier, nous ne pouvons pas encore confirmer la disponibilité de cette pointure. Nous traitons actuellement les différentes demandes d'échange afin d'avoir une vision claire des stocks par taille. Nous vous revienrons vers vous dès que nous avons cette information, et nous ferons notre possible pour vous réserver un 42,5 si la taille est disponible.\n\nDès réception de votre paire retournée (avec le bon de retour disponible sur maxsauveur.com/pages/livraison-et-retour, mention \"avoir\"), nous activons l'avoir .\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_06_02_21_45_07",
       "topic_label": "Form name Form submitted 2026-06-02 21:45:07",
       "situation": "Form name Form submitted 2026-06-02 21:45:07",
@@ -1438,14 +1446,6 @@
       "topic_label": "Re: Re: Form name Form submitted 2026-05-15 14:33:16",
       "situation": "Re: Re: Form name Form submitted 2026-05-15 14:33:16",
       "response_template": "Bonjour Michael,\n\nBonne question ! Les deux ont raison, c'est une question de marge d'interprétation. Le 41 commence techniquement à 25,5 cm sur notre guide, et avec vos 25,8 cm + 0,2 cm de marge, vous êtes tout juste dans la fourchette haute du 41.\n\nBonne journée\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__re__form_name_form_submitted_2026_05_20_14_03_43",
-      "topic_label": "Re: Re: Form name Form submitted 2026-05-20 14:03:43",
-      "situation": "Re: Re: Form name Form submitted 2026-05-20 14:03:43",
-      "response_template": "Bonjour Clément,\n\nMerci pour votre patience. Nous interrogeons notre logistique pour savoir exactement où en est votre colis et à quelle date il sera récupéré. Ce type de vérification peut prendre quelques jours.\n\nNous revenons vers vous dès que nous avons une réponse concrète.\n\nCordialement,\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
