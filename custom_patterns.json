@@ -1098,6 +1098,14 @@
       "example_count": 2
     },
     {
+      "topic": "re__demande_d_aide_",
+      "topic_label": "Re: Demande d'aide!",
+      "situation": "Re: Demande d'aide!",
+      "response_template": "Bonjour Gilles,\n\nMerci pour ta réponse, je transmets la question à Samuel.\n\nMalheureusement, le bon de commande pour le Wood a déjà été envoyé à nos ateliers et nous ne pouvons plus intervenir sur celui-ci à ce stade.\n\nPour la Wood, quelle pointure aurais-tu souhaitée ? \n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__demande_de_pointure___fisherman",
       "topic_label": "Re: Demande de pointure / Fisherman",
       "situation": "Re: Demande de pointure / Fisherman",
