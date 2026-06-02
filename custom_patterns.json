@@ -1722,6 +1722,14 @@
       "example_count": 2
     },
     {
+      "topic": "retour_de_commande__11714",
+      "topic_label": "Retour de commande #11714",
+      "situation": "Retour de commande #11714",
+      "response_template": "Bonjour Adélie,\n\nBien reçu, merci pour votre message et pour avoir suivi la procédure de retour.\n\nNous sommes désolés que la pointure n'ait pas été la bonne, même en descendant d'une demi-taille. Le Moc Jagger peut en effet se montrer capricieux selon la morphologie du pied.\n\nNous traiterons votre demande dès réception du colis en entrepôt. Un point important avant de valider le remboursement : il s'agissait d'une précommande, je souhaitais simplement vérifier avec vous si votre bon de retour mentionne bien \"remboursement\" comme motif, afin que le traitement soit le plus rapide possible de notre côté.\n\nEn parallèle, une question simple : est-ce que le problème venait uniquement de la taille, ou est-ce que le style ou le cuir n'ont pas non plus totalement convaincu ? Je vous pose la question parce que si la pointure 39 vous intéresse (votre taille habituelle), nous pourrions vous proposer un avoir avec un geste commercial de notre côté et les frais de livraison offerts pour un échange, plutôt qu'un remboursement. Cela ne vous engage à rien, dites-moi simplement ce que vous préférez.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "retour_international_dpd_adresse_procedure",
       "topic_label": "Retour depuis l'étranger (Belgique) via DPD – adresse et procédure",
       "situation": "Un client situé hors de France (ex : Belgique) souhaite effectuer un retour via son propre transporteur (DPD). Il a besoin de l'adresse de retour complète, des instructions pour le bon de retour, et d'informations sur la suite (avoir ou échange de taille).",
