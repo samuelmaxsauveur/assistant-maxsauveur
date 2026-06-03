@@ -1605,9 +1605,9 @@
       "topic": "re__retour_re_u___remboursement_en_cours",
       "topic_label": "Re: Retour reçu — remboursement en cours",
       "situation": "Re: Retour reçu — remboursement en cours",
-      "response_template": "Bonjour Theo,\n\nMerci pour votre retour, c'est noté.\n\nAucun problème, nous allons procéder au remboursement de 335,00 EUR directement sur votre moyen de paiement d'origine. Comptez 5 à 10 jours ouvrés selon votre banque.\n\nBonne soirée,\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Juliette,\n\nParfait, c'est une bonne nouvelle pour nous : vous aimez la ceinture, il vous faut juste la bonne taille.\n\nVoici ce que je vous propose : plutôt que d'attendre le remboursement pour repasser commande, nous pouvons vous envoyer un avoir du montant de votre commande dès maintenant, avec les frais de port offerts sur votre prochaine commande. Cela vous permet de récupérer votre Carter en 95 sans délai supplémentaire.\n\nSi vous préférez attendre le remboursement sur votre compte bancaire avant de recommander, c'est tout à fait possible aussi. Dans ce cas, nous le traitons immédiatement.\n\nDites-moi simplement ce que vous préférez.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 9
+      "example_count": 10
     },
     {
       "topic": "re__re___re__re__merci_pour_votre_message___quelques_informa",
