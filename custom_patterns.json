@@ -1317,9 +1317,9 @@
       "topic": "re__max_sauveur___service_client",
       "topic_label": "Re: Max Sauveur — Service Client",
       "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Franck,\n\nMerci pour ce retour sincère, ça fait vraiment plaisir à lire. Et nous sommes ravis de vous compter parmi nos clients fidèles.\n\nC'est noté : nous procédons au remboursement de votre commande #12012 (Fisherman Sandale cuir grainé noir, taille 42).\n\nÀ très bientôt pour votre prochaine commande.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour David,\n\nNous avons contacté Chronopost de notre côté. Il s'avère que la livraison du 28 mai a échoué et que votre colis est actuellement en attente d'instructions pour organiser une nouvelle tentative.\n\nVoici votre lien de suivi pour accéder à l'état de votre colis en temps réel :\nhttps://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR630892775TS\n\nPour reprogrammer la livraison, le plus rapide est de contacter Chronopost directement. Ils pourront vous proposer un nouveau créneau ou un dépôt en point relais selon vos préférences.\n\nN'hésitez pas si vous avez le moindre souci.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 15
+      "example_count": 16
     },
     {
       "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
