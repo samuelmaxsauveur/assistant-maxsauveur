@@ -1309,9 +1309,9 @@
       "topic": "re__max_sauveur___service_client",
       "topic_label": "Re: Max Sauveur — Service Client",
       "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Franck,\n\nMerci pour ce retour sincère, ça fait vraiment plaisir à lire. Et nous sommes ravis de vous compter parmi nos clients fidèles.\n\nC'est noté : nous procédons au remboursement de votre commande #12012 (Fisherman Sandale cuir grainé noir, taille 42).\n\nÀ très bientôt pour votre prochaine commande.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Éric,\n\nConcernant le code avoir : le problème vient très probablement des astérisques qui encadraient le code dans notre email. Saisissez uniquement C38H6NYB3TEJ  sans les étoiles ni aucun autre caractère, et il fonctionnera normalement.\n\nSur la méthode de mesure : notre guide donne des repères, mais il reste des conseils. Les ceintures comportent plusieurs trous précisément pour s'adapter à des morphologies et des façons de porter différentes. Chaque client ajuste sa ceinture à sa propre position sur le pantalon, ce qui varie d'une personne à l'autre. Une mesure unique ne peut pas être universelle, et c'est pour cela que nous indiquons des fourchettes et non des tailles fixes. En prenant le 75, vous aurez effectivement de la marge des deux côtés.\n\nConcernant les frais de port : votre ceinture Jason avait été offerte intégralement lors de votre commande #11946, et les frais de livraison de cette commande avaient également été pris en charge. Nous ne pouvons pas les offrir une nouvelle fois sur ce retour.\n\nDès que vous passez votre commande en taille 75 avec le code C38H6NYB3TEJ, n'hésitez pas à nous revenir si vous rencontrez le moindre souci.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 15
+      "example_count": 14
     },
     {
       "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
@@ -1648,6 +1648,14 @@
       "response_template": "Bonjour Victor,\n\nOui, tout à fait. Une fois la paire en 43 retournée et contrôlée, nous vous enverrons un avoir du montant de votre commande, que vous pourrez utiliser pour commander le 42.\n\nComme indiqué dans mon précédent message, voici la procédure :\n\n1. Téléchargez et complétez le bon de retour ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à votre convenance \n\nDès réception, nous traitons l'avoir et vous pouvez repasser commande en 42.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 2
+    },
+    {
+      "topic": "re__taille_sandales",
+      "topic_label": "Re: Taille sandales",
+      "situation": "Re: Taille sandales",
+      "response_template": "Bonjour Jacques,\n\nTout à fait, c'est une situation compréhensible.\n\nVotre code QUESTIONNAIRE10 est valide, vous pouvez l'appliquer lors de votre commande pour les Fisherman noires en 41.\n\nBonne commande !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
     },
     {
       "topic": "re__une_commande__11529_est_en_transit",
