@@ -890,6 +890,14 @@
       "example_count": 1
     },
     {
+      "topic": "pointure_moc_jagger",
+      "topic_label": "Pointure moc jagger",
+      "situation": "Pointure moc jagger",
+      "response_template": "Bonjour Victor,\n\nMerci pour votre message !\n\nLa précommande du Moc Jagger n'est pas encore disponible à ce stade, mais nous allons mettre à jour les stocks très prochainement pour que vous puissiez passer commande. Je vous conseille de garder un œil sur la fiche produit, vous pourrez vous abonner à l'alerte disponibilité directement depuis celle-ci.\n\nConcernant la pointure, avec 29 cm de pied, votre taille sur le Moc Jagger serait le 45. Je sais que ça peut surprendre par rapport à votre 46 habituel, mais c'est tout à fait normal : les sneakers taillent beaucoup plus grand que les chaussures en cuir, et c'est pour ça que nous recommandons de ne jamais se baser sur ses pointures de sneakers.\n\nQuelques éléments à garder en tête pour le Moc Jagger :\n- Le cuir et la semelle en liège s'assouplissent avec le port et se moulent progressivement au pied.\n- Le mocassin peut sembler juste au premier essayage, c'est normal.\n- Si vous avez un cou-de-pied fort ou un pied large, n'hésitez pas à me le préciser, ça peut orienter vers la taille au-dessus.\n\nN'hésitez pas si vous avez d'autres questions d'ici là.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "pointure_pour_ma_commande_pass_e",
       "topic_label": "Pointure pour ma commande passée",
       "situation": "Pointure pour ma commande passée",
