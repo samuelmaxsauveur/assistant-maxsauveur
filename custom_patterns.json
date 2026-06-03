@@ -290,6 +290,14 @@
       "example_count": 1
     },
     {
+      "topic": "demande_de_prise_en_charge_sous_garantie___semelle_endommag_",
+      "topic_label": "Demande de prise en charge sous garantie — Semelle endommagée — Commande 8877",
+      "situation": "Demande de prise en charge sous garantie — Semelle endommagée — Commande 8877",
+      "response_template": "Bonjour Quentin,\n\nMerci pour votre message et pour vos retours très positifs sur la collection, c'est toujours agréable à lire.\n\nAprès examen de la photo jointe, ce que vous décrivez (semelle qui se déchire et se sépare à l'avant après quelques semaines d'utilisation normale) correspond bien à un problème de montage. Nous prenons donc en charge la réparation sans frais.\n\nVoici la procédure à suivre :\n\n1. Emballez soigneusement vos Paul Mocassin Cuir Noir 44.5.\n2. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour — indiquez comme raison : \"défaut fabrication\".\n3. Envoyez le colis à notre adresse logistique avec cette étiquette :\n\nhttps://wing-labelling-system.s3.eu-west-3.amazonaws.com/549146d6-4924-4a03-a1b7-297a86f83bcd/LABEL/2026-06-03/LABEL-5e52e3b2-5998-4383-a656-f47ee48d1f82-1780462498334-8R49899391745.pdf\n\n\nNous prenons en charge les frais de retour.\n\nDélai de traitement en atelier : comptez environ 6 à 8 semaines.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "demande_de_retour_et_remboursement___mocassins_femme_taille_",
       "topic_label": "Demande de retour et remboursement – Mocassins femme taille 37",
       "situation": "Demande de retour et remboursement – Mocassins femme taille 37",
