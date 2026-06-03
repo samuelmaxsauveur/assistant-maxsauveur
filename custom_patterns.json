@@ -1357,9 +1357,9 @@
       "topic": "re__max_sauveur___service_client",
       "topic_label": "Re: Max Sauveur — Service Client",
       "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour David,\n\nNous avons contacté Chronopost de notre côté. Il s'avère que la livraison du 28 mai a échoué et que votre colis est actuellement en attente d'instructions pour organiser une nouvelle tentative.\n\nVoici votre lien de suivi pour accéder à l'état de votre colis en temps réel :\nhttps://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR630892775TS\n\nPour reprogrammer la livraison, le plus rapide est de contacter Chronopost directement. Ils pourront vous proposer un nouveau créneau ou un dépôt en point relais selon vos préférences.\n\nN'hésitez pas si vous avez le moindre souci.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Quentin,\n\nVotre retour et la situation sont bien notés.\n\nMalheureusement, le modèle n'est plus disponible en taille 40 de notre côté non plus, donc nous ne pouvons pas vous proposer un échange sur cette référence.\n\nNous procédons au remboursement...\n\nCordialement \n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 16
+      "example_count": 17
     },
     {
       "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
