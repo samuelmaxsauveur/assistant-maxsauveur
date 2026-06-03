@@ -1018,6 +1018,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__re__re__re__re__demande_renseignements___pointure___",
+      "topic_label": "RE: Re: RE: RE: Re: RE: Demande renseignements - Pointure / pré-commande",
+      "situation": "RE: Re: RE: RE: Re: RE: Demande renseignements - Pointure / pré-commande",
+      "response_template": "Bonjour Christophe,\n\nJe viens de vérifier de notre côté : je ne retrouve pas encore de colis entrant correspondant à votre retour dans notre système. Cela dit, les délais postaux peuvent parfois prendre 5 à 7 jours ouvrés selon le mode d'envoi choisi. Parti le 27 mai, il devrait nous parvenir dans les prochains jours.\n\nAvez-vous un numéro de suivi de votre envoi ? Cela nous permettrait de localiser le colis plus précisément et de vous rassurer sur son acheminement.\n\nBien cordialement,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__ceci_est_un___",
       "topic_label": "Re: Ceci est un...",
       "situation": "Re: Ceci est un...",
