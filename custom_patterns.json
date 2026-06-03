@@ -1458,6 +1458,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__demande_d_aide_",
+      "topic_label": "Re: Re: Demande d'aide!",
+      "situation": "Re: Re: Demande d'aide!",
+      "response_template": "Bonjour Gilles,\n\nPour la Wood en marron, nous te conseillons le 43, ta pointure habituelle.\n\nN'hésite pas si tu as d'autres questions !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__fin_de_production_et_exp_ditions_de_vos_moc_jagger",
       "topic_label": "Re: Re: Fin de production et expéditions de vos Moc Jagger",
       "situation": "Re: Re: Fin de production et expéditions de vos Moc Jagger",
