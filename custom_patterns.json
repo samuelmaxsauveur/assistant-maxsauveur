@@ -1538,6 +1538,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__question_taille",
+      "topic_label": "Re: Question taille",
+      "situation": "Re: Question taille",
+      "response_template": "Bonjour Pierre-Louis,\n\nMerci pour ce retour après une vraie journée de port, c'est là qu'on voit ce qui se passe vraiment.\n\nVous avez raison de faire confiance à ce ressenti : si le talon sort après une journée complète, le 41.5 est effectivement un peu grand pour vous sur le Moc Jagger.\n\nPour la suite, on ne peut pas faire de retour sur une paire portée, c'est normal. En revanche, on ne va pas vous laisser vous débrouiller seul avec ça : passez commande sur le Moc Jagger en 41 et envoyez-nous votre numéro de commande. On vous appliquera une remise directement, pour que ça ne vous coûte pas plus cher que prévu.\n\nN'hésitez pas à nous revenir dès que c'est commandé.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__demande_renseignements___pointure___pr__commande",
       "topic_label": "Re: RE: Demande renseignements - Pointure / pré-commande",
       "situation": "Re: RE: Demande renseignements - Pointure / pré-commande",
