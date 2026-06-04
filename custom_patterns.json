@@ -706,6 +706,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_06_04_18_53_46",
+      "topic_label": "Form name Form submitted 2026-06-04 18:53:46",
+      "situation": "Form name Form submitted 2026-06-04 18:53:46",
+      "response_template": "Bonjour Sébastien,\n\nMerci pour votre message et pour avoir pris le temps de nous contacter.\n\nConcernant le pop-up parisien, il ne nous est malheureusement pas possible d'y gérer des échanges : le stock et la logistique du pop-up sont totalement indépendants de notre gestion en ligne. Tout échange passe obligatoirement par notre circuit habituel.\n\nVoici comment procéder :\n\n1. Téléchargez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour\n2. Indiquez comme raison : \"avoir\"\n3. Renvoyez la paire soigneusement emballée à notre adresse logistique : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\n\nDès réception et contrôle de la paire, nous vous enverrons un avoir du montant de votre commande (en intégrant votre remise précommande), valable 6 mois sur notre site, que vous pourrez utiliser pour commander le Moc Jagger en 39,5 ou 40.\n\nSi vous avez le moindre doute sur la pointure à choisir, n'hésitez pas à me donner la longueur exacte de votre pied en cm (méthode talon contre mur, je vous guide).\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fw__commande__12087_confirm_e",
       "topic_label": "Fw: Commande #12087 confirmée",
       "situation": "Fw: Commande #12087 confirmée",
