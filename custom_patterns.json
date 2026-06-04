@@ -1746,6 +1746,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__une_commande__12289_est_en_transit",
+      "topic_label": "Re: Une commande #12289 est en transit",
+      "situation": "Re: Une commande #12289 est en transit",
+      "response_template": "Bonjour Ramzi,\n\nMerci pour votre message.\n\nVotre commande #12289 a bien été expédiée le 28 mai en Chronopost Express. En consultant le suivi, nous constatons qu'une demande de mise à disposition en point relais a été enregistrée sur votre colis, ce qui explique pourquoi la livraison à domicile n'a pas eu lieu dans les délais habituels.\n\nCette demande étant initiée de votre côté (via SMS ou l'app Chronopost), nous vous invitons à contacter directement Chronopost pour finaliser la livraison ou récupérer votre colis au point relais concerné.\n\nVoici votre lien de suivi pour voir l'état en temps réel :\nhttps://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XN108404295JB\n\nN'hésitez pas à revenir vers nous si le problème persiste après avoir contacté Chronopost.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__votre_commande_max_sauveur___information_importante",
       "topic_label": "Re: Votre commande Max Sauveur — information importante",
       "situation": "Re: Votre commande Max Sauveur — information importante",
