@@ -74,6 +74,14 @@
       "example_count": 1
     },
     {
+      "topic": "colis___8r_49873_21343_8",
+      "topic_label": "Colis : 8R 49873 21343 8",
+      "situation": "Colis : 8R 49873 21343 8",
+      "response_template": "Bonjour Christophe,\n\nBonne nouvelle, votre colis est bien reçu de notre côté. Nous allons traiter votre échange rapidement et revenons vers vous dès qu'il est expédié.\n\nMerci pour votre patience et pour tous les éléments de suivi transmis.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "colis_bloque_intervention_expediteur_chronopost",
       "topic_label": "Colis bloqué – Ouverture dossier Chronopost en tant qu'expéditeur",
       "situation": "Un client signale que son colis est bloqué chez Chronopost. Chronopost a indiqué au client que c'est à l'expéditeur (Max Sauveur) d'intervenir pour débloquer la situation. Le service client ouvre un dossier auprès de Chronopost et promet un retour.",
