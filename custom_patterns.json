@@ -1250,6 +1250,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__derby_wood",
+      "topic_label": "Re: Derby Wood",
+      "situation": "Re: Derby Wood",
+      "response_template": "Bonjour Paul,\n\nMalheureusement oui, la fenêtre de précommande pour le Derby Wood est fermée à présent.\n\nLe mieux est de vous abonner à l'alerte pointure directement sur la fiche produit (bouton \"M'avertir\") pour être prévenu en priorité si une nouvelle session de précommande ouvre, en marron comme en noir.\n\nDésolé de ne pas pouvoir faire mieux cette fois-ci.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__d_but_de_la_fabrication_de_vos_moc_jagger_et_point_livra",
       "topic_label": "Re: Début de la fabrication de vos Moc Jagger et point livraison",
       "situation": "Re: Début de la fabrication de vos Moc Jagger et point livraison",
