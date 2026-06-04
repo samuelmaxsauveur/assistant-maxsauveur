@@ -1914,6 +1914,14 @@
       "example_count": 2
     },
     {
+      "topic": "retour_commande_12157",
+      "topic_label": "Retour commande 12157",
+      "situation": "Retour commande 12157",
+      "response_template": "Bonjour Louis,\n\nNous avons bien reçu votre paire de Peter A. Mocassin Cuir Noir en taille 45, merci de nous l'avoir retournée.\n\nSuite à votre signalement de défaut, nous avons examiné la situation. Votre paire ayant été portée, nous ne procéderons pas à un remboursement mais à une réparation, afin de corriger le défaut constaté et vous restituer une chaussure en parfait état.\n\nNous vous tiendrons informé dès que la paire est prise en charge par notre atelier et vous communiquerons les délais à ce moment-là.\n\nBonne journée,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "retour_de_commande__11714",
       "topic_label": "Retour de commande #11714",
       "situation": "Retour de commande #11714",
