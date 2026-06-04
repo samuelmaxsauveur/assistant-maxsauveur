@@ -746,6 +746,14 @@
       "example_count": 1
     },
     {
+      "topic": "fwd__commande__12382_confirm_e",
+      "topic_label": "Fwd: Commande #12382 confirmée",
+      "situation": "Fwd: Commande #12382 confirmée",
+      "response_template": "Bonjour Johann,\n\nC'est noté et c'est fait. Nous avons bien mis à jour votre adresse de livraison avec le numéro de rue :\n\nAvenue Eugène-Pittard 28, 1206 Genève, Suisse\n\nVotre commande #12382 (Fisherman cuir grainé noir, taille 43) sera expédiée à cette adresse via Colissimo Europe. Vous recevrez un lien de suivi dès l'expédition.\n\nBonne journée à vous.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fwd__conseil_pointure_pour_le_mocassin_paul",
       "topic_label": "Fwd: Conseil pointure pour le mocassin Paul",
       "situation": "Fwd: Conseil pointure pour le mocassin Paul",
