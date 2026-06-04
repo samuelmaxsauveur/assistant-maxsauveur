@@ -378,6 +378,14 @@
       "example_count": 2
     },
     {
+      "topic": "echange_mocassins_commande__11505",
+      "topic_label": "Echange mocassins commande #11505",
+      "situation": "Echange mocassins commande #11505",
+      "response_template": "Salut Xavier,\n\nPas de souci pour l'échange de pointure.\n\nUne précision importante sur le choix remboursement vs avoir, parce que ça fait une vraie différence dans ton cas.\n\nTu avais commandé en précommande à 239€. Si on traite ta demande en remboursement, tu seras librement remboursé, mais tu devras racheter le 43.5 au prix actuel du site, qui n'est plus le tarif précommande. Tu risques donc de payer plus cher pour la même paire.\n\nSi on bascule ta demande sur un avoir à la place, l'avoir sera généré et tu pourras l'utiliser directement pour commander le 43.5 en conservant le bénéfice de ton tarif précommande.\n\nMon conseil : opte pour l'avoir. Tu n'as rien à perdre et tu préserves ton prix d'origine. Dis-moi simplement si tu veux qu'on ajuste ça de notre côté, on s'en occupe.\n\nConcernant un endroit à Paris pour essayer, on n'a malheureusement plus de boutique physique, tout se passe uniquement en ligne. Ce que je peux te dire sur le 43.5 : le Moc Jagger chausse juste au démarrage, le cuir s'assouplit avec le port. Si tu mesures environ 28,5 à 29 cm de pied, le 444 est la bonne option. N'hésite pas à me donner ta mesure si tu veux qu'on valide ensemble avant de commander.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "echange_ou_retour",
       "topic_label": "Echange ou retour",
       "situation": "Echange ou retour",
