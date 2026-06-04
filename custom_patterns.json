@@ -938,6 +938,14 @@
       "example_count": 1
     },
     {
+      "topic": "pointure_fisherman_pour_26_2_cm",
+      "topic_label": "Pointure Fisherman pour 26,2 cm",
+      "situation": "Pointure Fisherman pour 26,2 cm",
+      "response_template": "Bonjour Christophe,\n\nAvec 26,2 cm de pied, la pointure recommandée pour la Fisherman est le **41**.\n\nSi vous avez un pied plutôt large, n'hésitez pas à me le signaler, je pourrai affiner le conseil.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "pointure_sandale_fisherman",
       "topic_label": "Pointure Sandale Fisherman",
       "situation": "Pointure Sandale Fisherman",
