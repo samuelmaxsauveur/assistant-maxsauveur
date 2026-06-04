@@ -946,6 +946,14 @@
       "example_count": 1
     },
     {
+      "topic": "pr_commande_moc_jagger___comment_changer_de_pointure_apr_s_r",
+      "topic_label": "Précommande Moc Jagger - Comment changer de pointure après reception? Commande #11465",
+      "situation": "Précommande Moc Jagger - Comment changer de pointure après reception? Commande #11465",
+      "response_template": "Bonjour Adrien,\n\nMerci pour votre message.\n\nPour les précommandes, les échanges de pointure fonctionnent via un avoir. Voici concrètement comment ça se passe :\n\n1. Vous nous retournez votre Moc Jagger 45 en suivant la procédure sur notre page retour : https://maxsauveur.com/pages/livraison-et-retour (cochez \"avoir\" comme motif). \n\n2. Dès réception et contrôle de la paire, nous vous envoyons un code avoir valable uniquement sur le Moc Jagger. Ce code sera calibré sur le prix affiché actuel (335€) de sorte que vous payiez exactement le même tarif que votre précommande (239€), frais de port inclus.\n\nConcernant la pointure : nous n'avons malheureusement pas de 44,5 disponible sur le Moc Jagger, uniquement du 44. Si votre pied mesure entre 27,5 et 28 cm, le 44 devrait bien vous convenir. N'hésitez pas à nous donner la longueur exacte de votre pied si vous avez un doute.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "quelle_pointure_prendre_",
       "topic_label": "Quelle pointure prendre?",
       "situation": "Quelle pointure prendre?",
