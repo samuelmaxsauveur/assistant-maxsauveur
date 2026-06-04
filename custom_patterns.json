@@ -314,6 +314,14 @@
       "example_count": 1
     },
     {
+      "topic": "demande_pointure_mocassin_peter_a_",
+      "topic_label": "Demande pointure mocassin Peter A.",
+      "situation": "Demande pointure mocassin Peter A.",
+      "response_template": "Bonjour Samuel,\n\nMerci pour votre message, ravi de vous retrouver !\n\nSur la pointure : le fait que le 42 vous touchait le bout sur la Chapman est une bonne indication. Cela dit, le mocassin Peter A. fonctionne un peu différemment des Chelsea boots. Comme il n'a pas de lacets, le maintien dépend uniquement du cou-de-pied, et le cuir (ici le daim) se moule progressivement au pied. Le modèle chausse juste au départ, c'est normal.\n\nAvec votre morphologie de pied, je vous conseillerais de rester sur le **43**. Descendre en 42 sur un mocassin risque d'être trop serré, surtout si votre pied est un peu large comme vous le mentionniez dans nos échanges précédents.\n\nSur la livraison : une commande passée avant mardi 11h est expédiée le mardi, après 11h elle part le jeudi. Comptez ensuite 3 à 5 jours ouvrés pour une livraison standard en point relais Chronopost.\n\nN'hésitez pas si vous avez d'autres questions !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "demande_renseignements___pointure___pr__commande",
       "topic_label": "Demande renseignements - Pointure / pré-commande",
       "situation": "Demande renseignements - Pointure / pré-commande",
@@ -718,6 +726,14 @@
       "topic_label": "Form name Form submitted 2026-06-02 21:45:07",
       "situation": "Form name Form submitted 2026-06-02 21:45:07",
       "response_template": "Bonjour Julien,\n\nL'avoir a déjà été généré et vous a été envoyé hier soir, vous avez dû recevoir notre email en même temps que vous nous écriviez !\n\nVoici le code pour rappel : **S31VQSP4HW9M**\n\nIl est valable 6 mois, usage unique, non cumulable. Vous pouvez l'utiliser dès maintenant pour commander votre Brogue Derby en 44.\n\nBeau mariage à venir !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "form_name_form_submitted_2026_06_03_22_50_47",
+      "topic_label": "Form name Form submitted 2026-06-03 22:50:47",
+      "situation": "Form name Form submitted 2026-06-03 22:50:47",
+      "response_template": "Bonjour Eugénie,\n\nMerci pour votre message.\n\nNous avons bien noté la situation. La commande #11557 enregistrée sur notre système correspond effectivement à un Moc Jagger en taille 37, c'est bien la taille qui a été sélectionnée et validée lors du passage de commande.\n\nNous comprenons que cela puisse être déconcertant, et nous souhaitons trouver une solution rapide pour vous.\n\nVoici ce que nous pouvons faire : vous retournez la paire dans son état d'origine (non portée, boîte intacte) et dès réception, nous vous envoyons un avoir du montant de votre commande, que vous pourrez utiliser pour commander le Moc Jagger en taille 42.\n\nPour procéder, il vous suffit de :\n1. Télécharger et compléter le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\" comme raison)\n2. Renvoyer la paire soigneusement emballée à notre adresse logistique : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDès réception et contrôle de la paire, nous traitons votre avoir rapidement.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -2141,9 +2157,9 @@
       "topic": "pointure",
       "topic_label": "pointure",
       "situation": "pointure",
-      "response_template": "Bonjour,\n\nAvec 28,5 cm de pied (28,7 cm avec la marge), vous êtes en **44** sur notre guide. La Fisherman chausse légèrement grand, ce qui explique le conseil de downsizer.\n\nEn pratique, tout dépend de vos préférences :\n\n- Le **43** pour un chaussant plus ajusté\n- Le **44** si vous aimez avoir un peu de marge, ce qui est tout à fait viable sur ce modèle grâce aux boucles de réglage qui permettent un ajustement précis du tour de pied et de cheville\n\nLes deux tailles fonctionnent à votre pointure, c'est vraiment une question de ressenti.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Olivier,\n\nMerci pour votre message !\n\nAvec 28,5 cm, vous correspondez à un 44.\n\nCela dit, le conseil peut varier légèrement selon le modèle qui vous intéresse. Si vous pouvez me préciser lequel vous regardez, je pourrai vous confirmer si c'est bien la pointure à prendre ou s'il vaut mieux ajuster d'une demi-taille.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
-      "example_count": 3
+      "example_count": 4
     },
     {
       "topic": "trouver_ma_pointure",
