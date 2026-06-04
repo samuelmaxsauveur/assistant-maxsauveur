@@ -738,6 +738,14 @@
       "example_count": 1
     },
     {
+      "topic": "fw__commande__12296_confirm_e",
+      "topic_label": "Fw: Commande #12296 confirmée",
+      "situation": "Fw: Commande #12296 confirmée",
+      "response_template": "Bonjour Adrien,\n\nMerci pour votre message.\n\nVoici comment fonctionne notre système : lorsqu'une commande contient à la fois un article disponible et un article en précommande, l'ensemble de la commande est mis en attente jusqu'à ce que le produit en précommande soit disponible. La Paul et la Wood étant dans le même panier, la Paul ne partira pas avant l'arrivée de la Wood.\n\nSi vous souhaitez recevoir votre Paul rapidement, la solution est de passer une commande distincte pour la Paul uniquement. Nous pourrons ainsi l'expédier sans attendre la fin de la précommande de la Wood.\n\nN'hésitez pas à nous confirmer si vous souhaitez procéder ainsi, et nous vous accompagnons pour la suite.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fwd__commande__11534",
       "topic_label": "Fwd: Commande #11534",
       "situation": "Fwd: Commande #11534",
