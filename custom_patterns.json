@@ -1986,14 +1986,6 @@
       "example_count": 2
     },
     {
-      "topic": "re___change_moc_jagger_noirs_42____42_5",
-      "topic_label": "Re: Échange Moc Jagger noirs 42 -> 42.5",
-      "situation": "Re: Échange Moc Jagger noirs 42 -> 42.5",
-      "response_template": "Bonjour Antoine,\n\nVotre retour est très clair, et votre expérience avec les souliers parle d'elle-même. Si la largeur est douloureuse au niveau de votre pied fort et qu'il n'y a aucune marge pour des chaussettes, l'échange vers le 42,5 est effectivement la bonne décision.\n\nConcernant le stock, je ne peux pas vous confirmer une disponibilité garantie, mais je vous conseille de lancer le retour maintenant et de nous le signaler à réception pour qu'on traite ça en priorité.\n\nLa procédure reste la même :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander le Moc Jagger Noir en 42,5.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "re___tat_de_l__change_pour_la_commande__11992",
       "topic_label": "Re: État de l'échange pour la commande #11992",
       "situation": "Re: État de l'échange pour la commande #11992",
@@ -2040,14 +2032,6 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et pour nous avoir signalé la situation.\n\nNous avons bien pris note de votre retour pour la commande #[numéro]. Nous nous rapprochons de notre logistique pour confirmer la réception de [l'article] et vous revenons vers vous cette semaine avec une confirmation.\n\nMerci pour votre patience.\n\n[Prénom] de Max Sauveur",
       "key_points": "Ton rassurant et professionnel. Ne pas confirmer la réception tant qu'elle n'est pas vérifiée en interne. Donner un délai indicatif (cette semaine). Mentionner explicitement le numéro de commande et l'article concerné pour montrer que le dossier est bien suivi.",
       "example_count": 2
-    },
-    {
-      "topic": "retour_commande__12161___ludovic_allegre",
-      "topic_label": "Retour commande #12161 - Ludovic ALLEGRE",
-      "situation": "Retour commande #12161 - Ludovic ALLEGRE",
-      "response_template": "Bonjour Ludovic,\n\nVotre retour est bien arrivé dans nos entrepôts. Nous allons procéder au contrôle de la paire et traiter votre demande dans les meilleurs délais, sous 10 jours ouvrés.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
     },
     {
       "topic": "retour_commande_12157",
@@ -2216,6 +2200,14 @@
       "response_template": "Bonjour [Prénom],\n\nVos Moc Jagger sont en cours de préparation dans notre entrepôt et l'expédition est prévue très prochainement. La livraison est estimée entre le [date début] et le [date fin], en point relais [NOM DU POINT RELAIS] à [Ville].\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez un email avec votre lien de suivi Chronopost.\n\n[Prénom de l'agent] de Max Sauveur",
       "key_points": "Ton rassurant et factuel. Indiquer la fenêtre de livraison estimée (2-3 jours). Préciser le nom exact du point relais et la ville. Mentionner que le lien de suivi Chronopost sera envoyé par email dès la prise en charge. Ne pas promettre une date exacte, seulement une fourchette.",
       "example_count": 3
+    },
+    {
+      "topic": "tr__commande__11496_confirm_e",
+      "topic_label": "TR: Commande #11496 confirmée",
+      "situation": "TR: Commande #11496 confirmée",
+      "response_template": "Bonjour Anh Lan,\n\nDésolé que la taille ne soit pas la bonne sur ce Moc Jagger.\n\nPour votre retour, voici la procédure :\n\n1. Téléchargez et complétez le bon de retour ici : **https://maxsauveur.com/pages/livraison-et-retour** (indiquez comme raison : \"avoir\" ou \"remboursement\" selon votre préférence)\n2. Emballez soigneusement la paire et joignez le bon dans le colis\n3. Envoyez à : **SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau**\n\nPour le mode d'envoi via La Poste, nous vous conseillons un **Colissimo avec suivi**, qui vous permettra de garder une preuve d'envoi et de suivre votre colis. Les frais de retour sont à votre charge, le Colissimo standard est la solution la plus simple et la plus économique.\n\nAvant de valider le retour, une petite question : avez-vous essayé de marcher un peu avec la paire ? Le Moc Jagger chausse effectivement juste au départ mais la semelle en liège et le cuir s'assouplissent assez vite avec le port. Si vous l'avez portée et qu'elle reste vraiment grande, le retour reste bien entendu possible.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
     },
     {
       "topic": "taille_sandale_fisher",
