@@ -1957,9 +1957,9 @@
       "topic": "re__une_commande__12289_est_en_transit",
       "topic_label": "Re: Une commande #12289 est en transit",
       "situation": "Re: Une commande #12289 est en transit",
-      "response_template": "Bonjour Ramzi,\n\nMerci pour votre message.\n\nVotre commande #12289 a bien été expédiée le 28 mai en Chronopost Express. En consultant le suivi, nous constatons qu'une demande de mise à disposition en point relais a été enregistrée sur votre colis, ce qui explique pourquoi la livraison à domicile n'a pas eu lieu dans les délais habituels.\n\nCette demande étant initiée de votre côté (via SMS ou l'app Chronopost), nous vous invitons à contacter directement Chronopost pour finaliser la livraison ou récupérer votre colis au point relais concerné.\n\nVoici votre lien de suivi pour voir l'état en temps réel :\nhttps://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XN108404295JB\n\nN'hésitez pas à revenir vers nous si le problème persiste après avoir contacté Chronopost.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Ramzi,\n\nMerci pour ce retour.\n\nCe que Chronopost vous explique est lié à un changement de procédure de leur côté : dès qu'une demande de modification est enregistrée sur un colis en transit (changement de point relais, reprogrammation de livraison, etc.), le colis sort du circuit de livraison standard et entre dans un processus différent. Cela prend mécaniquement plus de temps, car Chronopost doit réorienter le colis manuellement plutôt que de le laisser suivre son chemin initial.\n\nC'est exactement ce qui s'est passé ici, et c'est pour ça que le colis a stagné à Marseille avant de repartir vers Paris.\n\nNous suivons le dossier de notre côté. Revenez vers nous si d'ici 48h le suivi n'évolue toujours pas, on interviendra directement en tant qu'expéditeur auprès de Chronopost.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 1
+      "example_count": 2
     },
     {
       "topic": "re__votre_commande_max_sauveur___information_importante",
