@@ -1090,14 +1090,6 @@
       "example_count": 1
     },
     {
-      "topic": "re__pointure_fisherman_pour_26_2_cm",
-      "topic_label": "RE: Pointure Fisherman pour 26,2 cm",
-      "situation": "RE: Pointure Fisherman pour 26,2 cm",
-      "response_template": "Bonjour Christophe,\n\nMerci pour votre message.\n\nMalheureusement, nous ne pouvons pas réactiver ce code. Les codes générés par notre roue de la fortune sont créés à la volée et ne sont pas enregistrés dans notre système, ce qui rend toute réactivation impossible de notre côté.\n\nPar ailleurs, ces codes sont soumis à une condition de prix : ils s'appliquent uniquement sur des chaussures à partir de 150€. La Fisherman étant en dessous de ce seuil, le code n'aurait pas pu s'appliquer à votre commande, même s'il avait encore été valide.\n\nNous sommes désolés de ne pas pouvoir faire davantage sur ce point.\n\nSi vous avez d'autres questions sur la pointure ou le modèle, n'hésitez pas.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "re__question_sandale",
       "topic_label": "RE: Question sandale",
       "situation": "RE: Question sandale",
@@ -1382,6 +1374,14 @@
       "topic_label": "Re: Form name Form submitted 2026-05-24 20:36:03",
       "situation": "Re: Form name Form submitted 2026-05-24 20:36:03",
       "response_template": "Bonjour Karim,\n\nPour le Miller, le site conseille effectivement de prendre une taille en dessous, ce qui vous amènerait au **42**.\n\nMême logique que pour les autres modèles :\n\n- Sans semelles orthopédiques : **42**\n- Avec semelles orthopédiques : **43**\n\nVous connaissez maintenant la règle par cœur !\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__form_name_form_submitted_2026_05_26_12_05_58",
+      "topic_label": "Re: Form name Form submitted 2026-05-26 12:05:58",
+      "situation": "Re: Form name Form submitted 2026-05-26 12:05:58",
+      "response_template": "Bonjour Robin,\n\nMerci pour votre suivi et désolé pour ce délai qui s'étire plus que prévu.\n\nVotre commande est bien dans notre système et figure actuellement en statut \"En collecte\" de notre côté. Cela signifie qu'elle est préparée mais n'a pas encore été physiquement prise en charge par Colissimo. C'est pour cette raison que l'application Shop affiche \"en attente de détails\" : le transporteur n'a pas encore scanné le colis.\n\nLa livraison est estimée entre le 10 et le 20 juin. Dès que Colissimo prend en charge le colis, vous recevrez automatiquement un email de suivi avec votre numéro de tracking.\n\nEncore désolé pour cette attente sur une précommande qui a déjà pris du retard. Nous vous revenons dès que l'expédition est confirmée.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
