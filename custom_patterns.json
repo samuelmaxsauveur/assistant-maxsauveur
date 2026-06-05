@@ -1090,6 +1090,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__pointure_fisherman_pour_26_2_cm",
+      "topic_label": "RE: Pointure Fisherman pour 26,2 cm",
+      "situation": "RE: Pointure Fisherman pour 26,2 cm",
+      "response_template": "Bonjour Christophe,\n\nMerci pour votre message.\n\nMalheureusement, nous ne pouvons pas réactiver ce code. Les codes générés par notre roue de la fortune sont créés à la volée et ne sont pas enregistrés dans notre système, ce qui rend toute réactivation impossible de notre côté.\n\nPar ailleurs, ces codes sont soumis à une condition de prix : ils s'appliquent uniquement sur des chaussures à partir de 150€. La Fisherman étant en dessous de ce seuil, le code n'aurait pas pu s'appliquer à votre commande, même s'il avait encore été valide.\n\nNous sommes désolés de ne pas pouvoir faire davantage sur ce point.\n\nSi vous avez d'autres questions sur la pointure ou le modèle, n'hésitez pas.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__question_sandale",
       "topic_label": "RE: Question sandale",
       "situation": "RE: Question sandale",
