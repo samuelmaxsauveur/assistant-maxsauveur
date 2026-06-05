@@ -818,6 +818,14 @@
       "example_count": 1
     },
     {
+      "topic": "fwd__fwd__re__fwd__max_sauveur___service_client",
+      "topic_label": "Fwd: Fwd: Re: Fwd: Max Sauveur — Service Client",
+      "situation": "Fwd: Fwd: Re: Fwd: Max Sauveur — Service Client",
+      "response_template": "Bonjour Guillaume,\n\nMerci pour votre retour et désolé que le problème persiste.\n\nNous avons bien testé le code de notre côté, mais pour affiner l'investigation, j'aurais besoin d'une précision : avec quel email utilisez-vous le code ceinture au moment du paiement ? Il doit correspondre exactement à l'adresse email avec laquelle la commande d'origine a été passée, et le code n'est valable que sur les ceintures.\n\nPouvez-vous me confirmer l'adresse utilisée ? Cela nous permettra de cibler le problème rapidement.\n\nPar ailleurs, concernant le remboursement des frais de port de votre commande #12348 (9,75€), c'est bien noté, nous allons traiter ça de notre côté.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fwd__max_sauveur___service_client",
       "topic_label": "Fwd: Max Sauveur — Service Client",
       "situation": "Fwd: Max Sauveur — Service Client",
