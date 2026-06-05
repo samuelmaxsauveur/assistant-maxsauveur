@@ -1482,6 +1482,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__fw__commande__12296_confirm_e",
+      "topic_label": "Re: Fw: Commande #12296 confirmée",
+      "situation": "Re: Fw: Commande #12296 confirmée",
+      "response_template": "Bonsoir Adrien,\n\nParfait, voici ce que nous allons faire : nous remboursons la Paul (325,25€) sur votre commande #12296, qui ne contiendra plus que la Wood en précommande.\n\nDe votre côté, il vous suffit de repasser une nouvelle commande pour la Paul Mocassin Cuir Noir en 42, qui partira sans délai dès qu'elle sera préparée.\n\nLe remboursement sera effectué sur votre moyen de paiement initial sous quelques jours ouvrés.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__fwd__max_sauveur___service_client",
       "topic_label": "Re: Fwd: Max Sauveur — Service Client",
       "situation": "Re: Fwd: Max Sauveur — Service Client",
