@@ -1869,9 +1869,9 @@
       "topic": "re__retour_re_u___remboursement_en_cours",
       "topic_label": "Re: Retour reçu — remboursement en cours",
       "situation": "Re: Retour reçu — remboursement en cours",
-      "response_template": "Bonjour Pierre,\n\nMerci pour votre retour, c'est clair.\n\nNous procédons au remboursement de votre commande #12088 (335€) sur votre moyen de paiement initial. Comptez quelques jours ouvrés selon votre banque.\n\nSi un autre modèle retient votre attention à l'avenir, nous serons là.\n\nBonne journée,\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Juliette,\n\nSuper, c'est noté ! Voici votre code avoir à utiliser lors de votre prochaine commande :\n\n**RDWEF4VD018K**\n\nIl couvre le montant de votre Carter (189€). Pour les frais de port, nous les rembourserons directement une fois la commande passée, sous forme de geste commercial de notre côté. Donc pas d'inquiétude, vous ne paierez rien de plus.\n\nLa manipulation est simple : ajoutez votre Carter en taille 95 au panier, renseignez le code au moment du paiement, et validez. Revenez vers moi si le moindre souci se présente, je règle ça dans la foulée.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 11
+      "example_count": 12
     },
     {
       "topic": "re__re___re__re__merci_pour_votre_message___quelques_informa",
