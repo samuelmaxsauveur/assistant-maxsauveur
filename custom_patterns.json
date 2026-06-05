@@ -2162,6 +2162,14 @@
       "example_count": 1
     },
     {
+      "topic": "suite_commande__11654",
+      "topic_label": "Suite commande #11654",
+      "situation": "Suite commande #11654",
+      "response_template": "Bonjour Denis,\n\nRavi que la paire vous plaise visuellement ! Pour l'échange, malheureusement le pop-up ne sera pas en mesure de gérer ce type de demande : il fonctionne sur un stock distinct de notre circuit internet et ne pourra pas traiter votre retour sur place. La procédure classique est donc la bonne voie.\n\nVoici comment procéder :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez comme raison : \"avoir\").\n2. Renvoyez la paire, bien emballée, à notre adresse logistique : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau.\n3. Dès réception et contrôle, nous vous envoyons un avoir pour commander votre taille.\n\nConcernant la pointure : le Moc Jagger chausse juste au départ, c'est normal pour un mocassin en cuir épais sur semelle liège. La question clé est la longueur réelle de votre pied en cm. Si vous pouvez la mesurer (pied nu, talon contre un mur, au bout du gros orteil, +0,2 cm), je peux vous confirmer précisément si le 39 est le bon choix avant que vous ne commandiez.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__d_but_de_la_fabrication_de_vos_moc_jagger_et_poi",
       "topic_label": "Suivi livraison Moc Jagger – arrivée imminente et expédition prévue",
       "situation": "Un client relance sur la livraison de ses Moc Jagger en précommande. La paire est sur le point d'arriver en stock cette semaine, et l'expédition est prévue dans la foulée. Le client est prévenu d'un éventuel délai lié aux jours fériés.",
