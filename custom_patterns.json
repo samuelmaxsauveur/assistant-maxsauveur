@@ -1778,6 +1778,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__une_commande__9310_est_en_transit___d_faut",
+      "topic_label": "Re: Re: Une commande #9310 est en transit - Défaut",
+      "situation": "Re: Re: Une commande #9310 est en transit - Défaut",
+      "response_template": "Bonjour Fodile,\n\nDésolé pour l'attente et le manque de retour de notre part.\n\nVotre paire est bien en cours de réparation dans notre atelier et devrait vous être retournée prochainement. Nous reviendrons vers vous dès qu'elle est expédiée avec un lien de suivi.\n\nMerci pour votre patience.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re___tat_de_l__change_pour_la_commande__11992",
       "topic_label": "Re: Re: État de l'échange pour la commande #11992",
       "situation": "Re: Re: État de l'échange pour la commande #11992",
