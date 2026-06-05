@@ -882,6 +882,14 @@
       "example_count": 1
     },
     {
+      "topic": "mail_prix_stock_vs_pr_commane_pour__change",
+      "topic_label": "Mail prix stock vs précommane pour échange",
+      "situation": "quand un cleint demande si il va payer le prix stock quand il demande un avoir pour une précommande",
+      "response_template": "Bonjour Kevin,\n\nOui, tout à fait normal. Le Moc Jagger est passé en prix définitif maintenant que la phase de précommande est terminée. Le prix de 335€ correspond au tarif public standard du modèle.\n\nVotre avoir de 239€ (correspondant à votre commande initiale) reste bien valable pour votre prochain achat.\n\nBonne journée à vous.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "max_sauveur___service_client",
       "topic_label": "Max Sauveur — Service Client",
       "situation": "Max Sauveur — Service Client",
