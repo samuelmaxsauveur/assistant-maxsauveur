@@ -738,6 +738,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_06_03_08_54_48",
+      "topic_label": "Form name Form submitted 2026-06-03 08:54:48",
+      "situation": "Form name Form submitted 2026-06-03 08:54:48",
+      "response_template": "Bonjour Thomas,\n\nMerci pour votre message ! Bonne nouvelle : un réassort des Dakota en 45 est bien prévu pour l'hiver. Pour ne pas rater la disponibilité, vous pouvez vous abonner à l'alerte pointure directement sur la fiche produit, vous serez notifié dès que la taille revient en stock.\n\nCela dit, avant d'attendre l'hiver, j'aurais une question : quelle est la longueur exacte de votre pied en cm, mesurée nu, talon contre un mur ? Les Dakota chaussent légèrement grand, et nous avons actuellement le 44 en stock. Si votre pied s'y prête, ça pourrait être une option à envisager.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_06_03_22_50_47",
       "topic_label": "Form name Form submitted 2026-06-03 22:50:47",
       "situation": "Form name Form submitted 2026-06-03 22:50:47",
