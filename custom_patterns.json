@@ -2186,6 +2186,14 @@
       "example_count": 3
     },
     {
+      "topic": "client_demande_si_il_beneficiera_du_prix_preco_si_",
+      "topic_label": "client demande si il beneficiera du prix preco si echange",
+      "situation": "quand un cleint pose une questions sur le tarif précomande en cas d 'échange de pointure",
+      "response_template": "Bonjour Kevin,\n\nTout à fait normal ! Le Moc Jagger est désormais disponible en stock au prix de 335€.\n\nBonne nouvelle pour vous : votre avoir sera émis à hauteur de 335€, soit le prix actuel en stock. Cela vous permet de conserver pleinement l'avantage de votre précommande et de racheter le Moc Jagger sans débourser la différence.\n\nVotre avoir vous sera envoyé cette semaine. Il est valable uniquement sur le Moc Jagger.\n\nBonne journée à vous.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "demande_code_de_reduction_qui_fonctionne_pas",
       "topic_label": "demande code de reduction qui fonctionne pas",
       "situation": "quand un client demande pk son code ne fonctionne",
