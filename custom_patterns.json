@@ -90,6 +90,14 @@
       "example_count": 2
     },
     {
+      "topic": "commande__11704",
+      "topic_label": "Commande #11704",
+      "situation": "Commande #11704",
+      "response_template": "Bonjour Colas-Paul,\n\nMerci pour votre message. Nous sommes désolés que la taille ne soit pas la bonne.\n\nVotre remboursement est bien possible, la commande ayant été reçue récemment. Voici comment procéder :\n\nRendez-vous sur notre page de retour : **https://maxsauveur.com/pages/livraison-et-retour**\n\nTéléchargez et complétez le bon de retour en indiquant comme raison : \"demande de remboursement\". Emballez soigneusement les mocassins et envoyez-les à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau**\n\nLes frais de retour sont à votre charge. Dès réception et contrôle de la paire, nous traiterons votre remboursement.\n\n---\n\nAvant de valider tout ça, j'aurais une petite question si vous me le permettez : qu'est-ce qui n'a pas convenu exactement ? Le 42 trop grand, c'est courant sur le Moc Jagger qui chausse effectivement juste au départ, mais si vos pieds \"ne rentrent pas\", ça m'interroge un peu sur la direction à prendre.\n\nSi c'est plutôt une question de pointure, on peut vous envoyer un avoir du montant de votre commande avec les frais de port offerts pour commander la bonne taille, ce qui vous évite de patienter pour le remboursement puis recommander séparément.\n\nDites-moi ce que vous préférez, je m'en occupe.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande__12059",
       "topic_label": "Commande #12059",
       "situation": "Commande #12059",
@@ -1594,6 +1602,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__envoi_commande__12265",
+      "topic_label": "Re: Re: Envoi Commande #12265",
+      "situation": "Re: Re: Envoi Commande #12265",
+      "response_template": "Bonjour Simon,\n\nMerci pour ce retour précis, c'est utile pour bien vous orienter.\n\nAvec 28,5 cm de pied, le 44 est effectivement votre bonne pointure. C'est d'ailleurs exactement la taille que je porte pour le même gabarit de pied.\n\nCe que vous ressentez au premier essayage est tout à fait normal sur le Paul : le mocassin chausse juste au départ, et le cuir épais combiné à la semelle en liège demande quelques ports pour s'assouplir et se mouler à votre pied. Avec un cou-de-pied fort, cette sensation est encore plus marquée au début, mais elle disparaît rapidement.\n\nPasser en 45 serait clairement une taille de trop pour vous.\n\nDonnez-lui quelques sorties, vous allez voir la différence assez vite.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__fin_de_production_et_exp_ditions_de_vos_moc_jagger",
       "topic_label": "Re: Re: Fin de production et expéditions de vos Moc Jagger",
       "situation": "Re: Re: Fin de production et expéditions de vos Moc Jagger",
@@ -1797,9 +1813,9 @@
       "topic": "re__retour_re_u___remboursement_en_cours",
       "topic_label": "Re: Retour reçu — remboursement en cours",
       "situation": "Re: Retour reçu — remboursement en cours",
-      "response_template": "Bonjour Jean-Camille,\n\nMerci pour ce suivi.\n\nVotre paire a bien été réceptionnée et est déjà partie en atelier pour réparation. Le délai de traitement est d'environ 6 semaines à compter d'aujourd'hui. Nous vous contacterons dès qu'elle est prête à vous être renvoyée.\n\nDésolé pour l'absence de nouvelles entre-temps, ce n'est pas dans nos habitudes.\n\nJohn – Service Client – Max Sauveur",
+      "response_template": "Bonjour Pierre,\n\nMerci pour votre retour, c'est clair.\n\nNous procédons au remboursement de votre commande #12088 (335€) sur votre moyen de paiement initial. Comptez quelques jours ouvrés selon votre banque.\n\nSi un autre modèle retient votre attention à l'avenir, nous serons là.\n\nBonne journée,\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 12
+      "example_count": 11
     },
     {
       "topic": "re__re___re__re__merci_pour_votre_message___quelques_informa",
@@ -1885,9 +1901,9 @@
       "topic": "re__une_commande__12289_est_en_transit",
       "topic_label": "Re: Une commande #12289 est en transit",
       "situation": "Re: Une commande #12289 est en transit",
-      "response_template": "Bonjour Ramzi,\n\nMerci pour votre retour. Je comprends la situation et c'est effectivement problématique.\n\nCe qu'il se passe : une demande de mise à disposition a été enregistrée sur votre colis, ce qui a modifié les instructions de livraison initiales. Cette action est généralement déclenchée via un SMS Chronopost ou l'application mobile, en réponse à une notification de livraison. Une fois cette instruction enregistrée, Chronopost l'exécute automatiquement.\n\nDe notre côté, nous n'avons pas la main sur un colis déjà en transit avec une instruction modifiée. La seule solution rapide est de contacter directement Chronopost au 3631 dès maintenant pour :\n- Tenter de reprogrammer une livraison aujourd'hui ou demain,\n- Ou prolonger le délai de mise à disposition au point relais si vous avez quelqu'un qui peut récupérer le colis à votre place.\n\nVotre numéro de suivi : XN108404295JB\nLien de suivi : https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XN108404295JB\n\nN'hésitez pas à nous tenir informés si Chronopost ne peut rien faire, on verra ce qu'on peut faire de notre côté.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Ramzi,\n\nMerci pour votre message.\n\nVotre commande #12289 a bien été expédiée le 28 mai en Chronopost Express. En consultant le suivi, nous constatons qu'une demande de mise à disposition en point relais a été enregistrée sur votre colis, ce qui explique pourquoi la livraison à domicile n'a pas eu lieu dans les délais habituels.\n\nCette demande étant initiée de votre côté (via SMS ou l'app Chronopost), nous vous invitons à contacter directement Chronopost pour finaliser la livraison ou récupérer votre colis au point relais concerné.\n\nVoici votre lien de suivi pour voir l'état en temps réel :\nhttps://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XN108404295JB\n\nN'hésitez pas à revenir vers nous si le problème persiste après avoir contacté Chronopost.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 2
+      "example_count": 1
     },
     {
       "topic": "re__votre_commande_max_sauveur___information_importante",
