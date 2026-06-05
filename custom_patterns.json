@@ -1594,14 +1594,6 @@
       "example_count": 1
     },
     {
-      "topic": "re__re__envoi_commande__12265",
-      "topic_label": "Re: Re: Envoi Commande #12265",
-      "situation": "Re: Re: Envoi Commande #12265",
-      "response_template": "Bonjour Simon,\n\nMerci pour ce retour précis, c'est utile pour bien vous orienter.\n\nAvec 28,5 cm de pied, le 44 est effectivement votre bonne pointure. C'est d'ailleurs exactement la taille que je porte pour le même gabarit de pied.\n\nCe que vous ressentez au premier essayage est tout à fait normal sur le Paul : le mocassin chausse juste au départ, et le cuir épais combiné à la semelle en liège demande quelques ports pour s'assouplir et se mouler à votre pied. Avec un cou-de-pied fort, cette sensation est encore plus marquée au début, mais elle disparaît rapidement.\n\nPasser en 45 serait clairement une taille de trop pour vous.\n\nDonnez-lui quelques sorties, vous allez voir la différence assez vite.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "re__re__fin_de_production_et_exp_ditions_de_vos_moc_jagger",
       "topic_label": "Re: Re: Fin de production et expéditions de vos Moc Jagger",
       "situation": "Re: Re: Fin de production et expéditions de vos Moc Jagger",
@@ -1893,9 +1885,9 @@
       "topic": "re__une_commande__12289_est_en_transit",
       "topic_label": "Re: Une commande #12289 est en transit",
       "situation": "Re: Une commande #12289 est en transit",
-      "response_template": "Bonjour Ramzi,\n\nMerci pour votre message.\n\nVotre commande #12289 a bien été expédiée le 28 mai en Chronopost Express. En consultant le suivi, nous constatons qu'une demande de mise à disposition en point relais a été enregistrée sur votre colis, ce qui explique pourquoi la livraison à domicile n'a pas eu lieu dans les délais habituels.\n\nCette demande étant initiée de votre côté (via SMS ou l'app Chronopost), nous vous invitons à contacter directement Chronopost pour finaliser la livraison ou récupérer votre colis au point relais concerné.\n\nVoici votre lien de suivi pour voir l'état en temps réel :\nhttps://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XN108404295JB\n\nN'hésitez pas à revenir vers nous si le problème persiste après avoir contacté Chronopost.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Ramzi,\n\nMerci pour votre retour. Je comprends la situation et c'est effectivement problématique.\n\nCe qu'il se passe : une demande de mise à disposition a été enregistrée sur votre colis, ce qui a modifié les instructions de livraison initiales. Cette action est généralement déclenchée via un SMS Chronopost ou l'application mobile, en réponse à une notification de livraison. Une fois cette instruction enregistrée, Chronopost l'exécute automatiquement.\n\nDe notre côté, nous n'avons pas la main sur un colis déjà en transit avec une instruction modifiée. La seule solution rapide est de contacter directement Chronopost au 3631 dès maintenant pour :\n- Tenter de reprogrammer une livraison aujourd'hui ou demain,\n- Ou prolonger le délai de mise à disposition au point relais si vous avez quelqu'un qui peut récupérer le colis à votre place.\n\nVotre numéro de suivi : XN108404295JB\nLien de suivi : https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XN108404295JB\n\nN'hésitez pas à nous tenir informés si Chronopost ne peut rien faire, on verra ce qu'on peut faire de notre côté.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 1
+      "example_count": 2
     },
     {
       "topic": "re__votre_commande_max_sauveur___information_importante",
