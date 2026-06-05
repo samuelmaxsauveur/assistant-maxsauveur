@@ -2034,6 +2034,14 @@
       "example_count": 2
     },
     {
+      "topic": "retour_commande__12161___ludovic_allegre",
+      "topic_label": "Retour commande #12161 - Ludovic ALLEGRE",
+      "situation": "Retour commande #12161 - Ludovic ALLEGRE",
+      "response_template": "Bonjour Ludovic,\n\nVotre retour est bien arrivé dans nos entrepôts. Nous allons procéder au contrôle de la paire et traiter votre demande dans les meilleurs délais, sous 10 jours ouvrés.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "retour_commande_12157",
       "topic_label": "Retour commande 12157",
       "situation": "Retour commande 12157",
