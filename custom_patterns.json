@@ -1066,6 +1066,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__colis___8r_49873_21343_8",
+      "topic_label": "RE: Colis : 8R 49873 21343 8",
+      "situation": "RE: Colis : 8R 49873 21343 8",
+      "response_template": "Bonjour Christophe,\n\nNoté, nous expédions votre échange à l'adresse suivante :\n\n**Consigne Pickup, 19 Av. Gabriel Fauré, 35235 Thorigné-Fouillard**\n\nNous vous transmettrons le lien de suivi dès l'expédition.\n\nBonne journée à vous !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__form_name_form_submitted_2026_05_17_10_14_01",
       "topic_label": "RE: Form name Form submitted 2026-05-17 10:14:01",
       "situation": "RE: Form name Form submitted 2026-05-17 10:14:01",
