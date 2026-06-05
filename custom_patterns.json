@@ -1797,9 +1797,9 @@
       "topic": "re__retour_re_u___remboursement_en_cours",
       "topic_label": "Re: Retour reçu — remboursement en cours",
       "situation": "Re: Retour reçu — remboursement en cours",
-      "response_template": "Bonjour Pierre,\n\nMerci pour votre retour, c'est clair.\n\nNous procédons au remboursement de votre commande #12088 (335€) sur votre moyen de paiement initial. Comptez quelques jours ouvrés selon votre banque.\n\nSi un autre modèle retient votre attention à l'avenir, nous serons là.\n\nBonne journée,\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Jean-Camille,\n\nMerci pour ce suivi.\n\nVotre paire a bien été réceptionnée et est déjà partie en atelier pour réparation. Le délai de traitement est d'environ 6 semaines à compter d'aujourd'hui. Nous vous contacterons dès qu'elle est prête à vous être renvoyée.\n\nDésolé pour l'absence de nouvelles entre-temps, ce n'est pas dans nos habitudes.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
-      "example_count": 11
+      "example_count": 12
     },
     {
       "topic": "re__re___re__re__merci_pour_votre_message___quelques_informa",
