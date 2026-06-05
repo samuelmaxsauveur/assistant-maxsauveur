@@ -1885,9 +1885,9 @@
       "topic": "re__une_commande__12009_en_retour",
       "topic_label": "Re: Une commande #12009 en retour",
       "situation": "Re: Une commande #12009 en retour",
-      "response_template": "Bonjour Kavi,\n\nFinalement, notre atelier nous a confirmé qu'il est possible de remettre la paire en état pour la replacer en stock. Nous ne vous la renvoyons donc pas, et procédons à votre remboursement de 301,50 € sur votre moyen de paiement initial. Comptez quelques jours ouvrés pour que le montant apparaisse.\n\nN'hésitez pas si vous avez des questions.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Kavi,\n\nLe remboursement de 301,50 € a bien été initié de notre côté. Selon votre banque, comptez 3 à 5 jours ouvrés pour que le montant apparaisse sur votre relevé.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 3
+      "example_count": 4
     },
     {
       "topic": "re__une_commande__12061_est_en_transit",
