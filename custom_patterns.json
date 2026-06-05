@@ -2253,9 +2253,9 @@
       "topic": "pointure",
       "topic_label": "pointure",
       "situation": "pointure",
-      "response_template": "Bonjour Olivier,\n\nMerci pour votre message !\n\nAvec 28,5 cm, vous correspondez à un 44.\n\nCela dit, le conseil peut varier légèrement selon le modèle qui vous intéresse. Si vous pouvez me préciser lequel vous regardez, je pourrai vous confirmer si c'est bien la pointure à prendre ou s'il vaut mieux ajuster d'une demi-taille.\n\nJohn – Service Client – Max Sauveur",
+      "response_template": "Bonjour Olivier,\n\nBon réflexe de ne pas vous fier à vos Vans. Les sneakers en toile taillent souvent plus grand que le cuir, donc la comparaison n'est pas fiable.\n\nPour la Fisherman, le 43 est effectivement le bon choix. Sur une sandale en cuir sans système de fermeture ajustable, il vaut mieux avoir un cuir qui tient bien le pied plutôt qu'un cuir qui baille. Avec votre 44 en Vans, le 43 sera bien je pense.\n\nBonne commande !\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 4
+      "example_count": 5
     },
     {
       "topic": "trouver_ma_pointure",
