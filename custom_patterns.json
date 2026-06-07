@@ -2058,6 +2058,14 @@
       "example_count": 2
     },
     {
+      "topic": "retour_commande__11484",
+      "topic_label": "Retour commande #11484",
+      "situation": "Retour commande #11484",
+      "response_template": "Bonjour Charlotte,\n\nMerci pour votre message. Nous avons bien réceptionné votre retour et votre demande de remboursement est enregistrée.\n\nLe remboursement sera effectué dans un délai de 10 à 14 jours ouvrés sur le moyen de paiement utilisé lors de votre commande, dès validation du contrôle de la paire par notre équipe.\n\nN'hésitez pas à revenir vers nous si vous avez la moindre question.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "retour_commande__12161___ludovic_allegre",
       "topic_label": "Retour commande #12161 - Ludovic ALLEGRE",
       "situation": "Retour commande #12161 - Ludovic ALLEGRE",
