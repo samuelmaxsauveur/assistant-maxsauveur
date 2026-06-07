@@ -762,6 +762,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_06_07_11_52_40",
+      "topic_label": "Form name Form submitted 2026-06-07 11:52:40",
+      "situation": "Form name Form submitted 2026-06-07 11:52:40",
+      "response_template": "Bonjour Simon,\n\nMerci pour votre message.\n\nPour votre précommande du Moc Jagger en 41, voici les options disponibles :\n\n**Échange de taille (41 → 42 ou 42,5)**\nC'est tout à fait possible. Il vous suffira de retourner la paire à sa réception et nous vous enverrons un avoir pour commander la taille souhaitée. Notez que le Moc Jagger chausse juste au départ, donc si vous hésitez entre 42 et 42,5, le 42 devrait convenir dans la plupart des cas, sauf si vous avez un pied large ou un cou-de-pied fort.\n\n**Sur la valeur de l'avoir**\nL'avoir sera établi au prix que vous avez payé lors de votre précommande. C'est ce montant qui sera disponible pour commander la nouvelle taille.\n\n**Si vous préférez un remboursement**\nC'est également possible, dans le délai légal de 14 jours après réception de la commande.\n\nLa procédure dans tous les cas : rendez-vous sur https://maxsauveur.com/pages/livraison-et-retour pour télécharger le bon de retour, indiquez la raison (\"avoir\" ou \"remboursement\"), et envoyez la paire à notre adresse logistique.\n\nDites-moi si vous avez d'autres questions.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fw__commande__12087_confirm_e",
       "topic_label": "Fw: Commande #12087 confirmée",
       "situation": "Fw: Commande #12087 confirmée",
