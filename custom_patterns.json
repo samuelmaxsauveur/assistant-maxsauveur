@@ -1994,6 +1994,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__re__re__une_commande__9310_est_en_transit___d_faut",
+      "topic_label": "Re: Re: Re: Re: Une commande #9310 est en transit - Défaut",
+      "situation": "Re: Re: Re: Re: Une commande #9310 est en transit - Défaut",
+      "response_template": "Bonjour Fodile,\n\nMerci pour votre retour.\n\nNous comprenons la situation, et nous sommes sincèrement désolés que la chronologie des événements ne se soit pas bien coordonnée. Cela dit, notre position reste la même : la paire a été prise en charge, réparée, et est prête à vous être renvoyée depuis notre atelier. C'est ce que nous pouvions faire dans ce dossier, compte tenu de l'état des semelles constaté à réception.\n\nNous ne sommes pas en mesure d'accorder un avoir sur une paire portée dont l'usure des semelles est imputable à l'utilisation, et non à un défaut de fabrication.\n\nLa paire vous appartient et reste à votre disposition. Si vous souhaitez qu'on vous la renvoie, confirmez-nous simplement l'adresse de livraison et nous nous en occupons.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__retour_re_u___remboursement_en_cours",
       "topic_label": "Re: Re: Re: Retour reçu — remboursement en cours",
       "situation": "Re: Re: Re: Retour reçu — remboursement en cours",
