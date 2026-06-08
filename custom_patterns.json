@@ -762,6 +762,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_06_07_10_03_21",
+      "topic_label": "Form name Form submitted 2026-06-07 10:03:21",
+      "situation": "Form name Form submitted 2026-06-07 10:03:21",
+      "response_template": "Bonjour Damien,\n\nMerci pour ton message et toutes mes félicitations pour ton mariage !\n\nBonne nouvelle : ta commande #12386 (Jonas - Ceinture Western en Daim Marron) est bien une commande sur stock disponible, pas une précommande. Elle est actuellement en cours de collecte dans notre logistique et la livraison est estimée entre le 10 et le 12 juin en point relais COOP CLAVETTE à Clavette.\n\nTu seras donc largement livré avant le 27 juin, pas d'inquiétude de ce côté.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_06_07_11_52_40",
       "topic_label": "Form name Form submitted 2026-06-07 11:52:40",
       "situation": "Form name Form submitted 2026-06-07 11:52:40",
