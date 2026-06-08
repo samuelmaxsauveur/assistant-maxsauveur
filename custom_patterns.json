@@ -2450,6 +2450,14 @@
       "example_count": 1
     },
     {
+      "topic": "taille_chaussure___d_lai_livraison",
+      "topic_label": "Taille chaussure + délai livraison",
+      "situation": "Taille chaussure + délai livraison",
+      "response_template": "Bonjour Sean,\n\nMerci pour votre message et pour avoir pris le temps de mesurer votre pied, c'est exactement la bonne démarche.\n\n**Sur la pointure :**\n\nVotre confusion est tout à fait normale. Le comparatif avec Nike ou Veja n'est pas fiable ici : les sneakers intègrent un amorti et taillent généralement plus grand que les chaussures en cuir habillées. Ce n'est donc pas surprenant de faire du 43 en sneakers et un peu moins en chaussures de ville.\n\nAvec 27,5 cm de pied, notre guide vous orienterait vers un 42 (27,5 + 0,2 cm = 27,7 cm, ce qui correspond à un 42).\n\nCela dit, votre situation est particulière pour deux raisons :\n\n1. **Pieds larges** : le Paul est un mocassin sans lacets, donc le maintien dépend entièrement du cou-de-pied. Avec des pieds larges, descendre en dessous de votre vraie pointure n'est pas conseillé.\n\n2. **Semelles orthopédiques de 28 cm** : si vous prévoyez de les porter dans le Paul, prenez la pointure correspondant à la longueur de vos semelles, soit un **43**. La semelle orthopédique prend de la place à l'intérieur et peut rendre une chaussure trop juste, surtout avec des pieds larges.\n\nMa recommandation : **partez sur le 43 si vous portez vos semelles orthopédiques dans la chaussure**. Si vous les portez rarement, le 42 peut suffire, mais avec des pieds larges, le 43 reste le choix le plus sûr pour votre confort.\n\n**Sur les délais de livraison :**\n\nNous expédions deux fois par semaine : le mardi (pour les commandes passées avant 11h) et le jeudi. En livraison standard, comptez 3 à 5 jours ouvrés après expédition.\n\nSi vous commandez dans les prochains jours, vous recevrez votre paire en fin de semaine prochaine ou début de semaine suivante selon le jour exact de commande.\n\nN'hésitez pas si vous avez d'autres questions avant de vous lancer.\n\nJohn, Service Client, Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "taille_sandales",
       "topic_label": "Taille sandales",
       "situation": "Taille sandales",
