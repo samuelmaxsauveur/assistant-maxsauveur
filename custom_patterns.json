@@ -2402,6 +2402,14 @@
       "example_count": 3
     },
     {
+      "topic": "aide_pointure_peter_a",
+      "topic_label": "aide pointure Peter A",
+      "situation": "aide pointure Peter A",
+      "response_template": "Bonjour Nicolas,\n\nAvec 26,2 cm + 0,2 cm = 26,4 cm, votre tableau de tailles vous oriente effectivement vers un 40. C'est la pointure que je vous recommande pour le Peter A.\n\nUne précision importante : vos références actuelles (GH Bass Weejuns et Clarks en 41) sont des chaussures qui taillent généralement plus grand que nos mocassins en cuir. Ce n'est pas une bonne base de comparaison pour notre modèle.\n\nLe Peter A est un mocassin sans lacets, donc le maintien repose entièrement sur le cou-de-pied. Deux questions pour affiner :\n\n- Avez-vous un cou-de-pied plutôt plat ou plutôt fort ?\n- Vos pieds sont-ils fins, normaux ou larges ?\n\nSi votre cou-de-pied est fort ou vos pieds larges, le 40 reste le bon choix, voire le seul à envisager pour un bon maintien. Si au contraire vous avez un pied fin, le 40 conviendra parfaitement.\n\nEn résumé : partez sur le 40, c'est la taille logique au vu de votre mesure et du fait que le mocassin chausse juste au départ, puis le cuir et la semelle en liège s'assouplissent et se moulent au pied avec le port.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "client_demande_si_il_beneficiera_du_prix_preco_si_",
       "topic_label": "client demande si il beneficiera du prix preco si echange",
       "situation": "quand un cleint pose une questions sur le tarif précomande en cas d 'échange de pointure",
