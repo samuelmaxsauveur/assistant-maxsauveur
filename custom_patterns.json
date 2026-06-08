@@ -1453,9 +1453,9 @@
       "topic": "re__form_name_form_submitted_2026_05_28_11_24_47",
       "topic_label": "Re: Form name Form submitted 2026-05-28 11:24:47",
       "situation": "Re: Form name Form submitted 2026-05-28 11:24:47",
-      "response_template": "Bonjour Robin,\n\nMerci pour ce retour et pour le numéro de suivi, c'est parfait.\n\nNous prenons bonne note de l'expédition depuis la Suisse (CF129855905CH). Dès réception et contrôle de la paire, nous traiterons votre dossier.\n\nConcernant la suite : souhaitez-vous un remboursement ou préférez-vous un avoir pour commander un autre modèle ? Si un modèle vous fait de l'œil, nous pouvons vous proposer un avoir avec les frais de port offerts sur votre prochaine commande.\n\nDites-moi simplement votre préférence et nous nous en occupons dès réception du colis.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Robin,\n\nMerci pour le numéro de suivi, nous allons surveiller l'arrivée du colis (CF129855905CH).\n\nUne fois reçu et contrôlé, nous traiterons votre dossier. J'aurais cependant une question avant de finaliser : souhaitez-vous un remboursement ou préférez-vous un avoir pour commander la taille au-dessus ?\n\nSi vous optez pour l'avoir, nous pouvons y ajouter les frais de livraison offerts pour votre prochaine commande, ce qui pourrait simplifier les choses depuis la Suisse.\n\nDites-moi simplement votre préférence.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 1
+      "example_count": 2
     },
     {
       "topic": "re__form_name_form_submitted_2026_05_28_15_46_25",
@@ -1918,14 +1918,6 @@
       "topic_label": "Re: Statut commande et changement de point de retrait",
       "situation": "Re: Statut commande et changement de point de retrait",
       "response_template": "Bonjour Cédric,\n\nC'est fait, nous venons de modifier votre point relais de livraison dans notre système :\n\n**CARREFOUR CITY (6967Y)**\n22 avenue du Consul Général Nordling\n93190 Livry-Gargan\n\nNotez que cette modification n'apparaîtra pas dans votre email de confirmation initial, mais elle est bien prise en compte et sera visible sur votre lien de suivi dès l'expédition.\n\nVous recevrez un email avec votre lien de suivi Chronopost dès que votre colis sera pris en charge par le transporteur.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__suite_commande__11654",
-      "topic_label": "Re: Suite commande #11654",
-      "situation": "Re: Suite commande #11654",
-      "response_template": "Bonjour Denis,\n\nMerci pour ces informations précises.\n\nAvec 24,3 cm de pied (en ajoutant 0,2 cm selon notre méthode, on arrive à 24,5 cm), vous correspondez à un 39. Et le fait que vous puissiez glisser un index derrière votre talon dans le 40 confirme que le 40 est trop grand pour vous.\n\nLe 39 est donc la bonne taille à commander lors de votre échange.\n\nLa procédure est bien lancée de votre côté, parfait. Dès réception et contrôle de votre retour à notre logistique, nous vous enverrons un avoir pour commander votre 39.\n\nBonne journée à vous,\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
