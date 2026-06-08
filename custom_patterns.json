@@ -957,9 +957,9 @@
       "topic": "max_sauveur___service_client",
       "topic_label": "Max Sauveur — Service Client",
       "situation": "Max Sauveur — Service Client",
-      "response_template": "Bonjour,\n\nNous avons bien reçu votre Moc Jagger Cuir Noir et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème rencontré, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si c'est seulement une histoire de pointure, voici ce qu'on peut faire : nous vous envoyons un avoir de 335€ (soit le prix actuel hors précommande), avec les frais de livraison pris en charge pour cet échange.\n\nAutrement dit, vous repartez avec la bonne pointure sans débourser un centime de plus, et avec un peu de marge en poche.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Jean-François,\n\nNous avons bien reçu votre Moc Jagger Cuir Noir et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème rencontré, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ? On essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes, que vous soyez plutôt dans une recherche d'esthétique précise ou de confort au quotidien.\n\nSi c'est seulement une histoire de pointure, voici ce qu'on peut faire : nous vous envoyons un avoir de 335€ (soit le prix actuel du modèle), avec les frais de livraison pris en charge pour l'échange. Autrement dit, vous repartez avec la bonne pointure sans débourser un centime de plus, et avec un peu de marge en poche.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 32
+      "example_count": 33
     },
     {
       "topic": "moc_jagger___date_de_r_ception",
