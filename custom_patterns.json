@@ -770,6 +770,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_06_07_22_20_28",
+      "topic_label": "Form name Form submitted 2026-06-07 22:20:28",
+      "situation": "Form name Form submitted 2026-06-07 22:20:28",
+      "response_template": "Bonjour Adrien,\n\nMerci pour votre message.\n\nJe vois que vous avez finalement passé commande ce soir (la ceinture Western Marron est bien enregistrée). Pourriez-vous me préciser le code reçu par mail le 4 juin afin que je vérifie pourquoi il n'a pas fonctionné et ce que je peux faire pour vous ?\n\nJohn - Service Client - Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_06_08_08_36_40",
       "topic_label": "Form name Form submitted 2026-06-08 08:36:40",
       "situation": "Form name Form submitted 2026-06-08 08:36:40",
@@ -1642,14 +1650,6 @@
       "example_count": 1
     },
     {
-      "topic": "re__probl_me_taille_commande_moc_jagger__11467",
-      "topic_label": "Re: Problème taille commande Moc Jagger #11467",
-      "situation": "Re: Problème taille commande Moc Jagger #11467",
-      "response_template": "Bonjour Caroline,\n\nMerci pour cette mesure.\n\nAvec 25,5 cm, en ajoutant les 0,2 cm recommandés, vous êtes sur une pointure 39. C'est la taille que je vous conseille de prendre pour votre échange.\n\nPour rappel, le Moc Jagger chausse juste au début, le cuir et la semelle liège s'assouplissent progressivement avec le port. Un 39 devrait donc être parfaitement ajusté pour vous.\n\nVous pouvez procéder au retour quand vous le souhaitez :\n\nRendez-vous sur **https://maxsauveur.com/pages/livraison-et-retour**, téléchargez et complétez le bon de retour (raison : \"avoir\"), puis renvoyez la paire à :\n\n**SSL, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous générons un avoir pour commander votre 39.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "re__question_pointure",
       "topic_label": "Re: Question pointure",
       "situation": "Re: Question pointure",
@@ -1758,14 +1758,6 @@
       "topic_label": "Re: Re: Form name Form submitted 2026-05-25 15:43:47",
       "situation": "Re: Re: Form name Form submitted 2026-05-25 15:43:47",
       "response_template": "Bonjour Nicolas,\n\nMerci pour ces questions, je vais vous répondre point par point.\n\n**La couleur bordeaux de la Peter A.** : vous êtes honnêtement le premier client à nous faire cette remarque. Le bordeaux de la Peter A. est bien un bordeaux franc, pas un marron. Il est possible que l'éclairage ou le cuir grainé ait influencé votre perception à la réception.\n\n**Le Paul bordeaux** : c'est une bonne alternative, mais sachez que le bordeaux du Paul sera plus clair et plus vif que celui de la Peter A., car il s'agit d'un cuir lisse et non grainé. Les deux sont des bordeaux, mais le rendu sera différent.\n\n**Le code promo** : bonne nouvelle, nous pouvons effectivement le maintenir sur votre prochaine commande. Pour cela, il vous suffit de le mentionner sur votre bon de retour, et nous l'éditerons directement avec votre avoir.\n\nEn résumé : faites votre retour en indiquant la raison \"avoir\" et en précisant que vous souhaitez conserver votre code promo. Nous préparerons l'avoir correspondant dès réception de la paire.\n\nN'hésitez pas si vous avez d'autres questions avant de vous lancer.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__re__form_name_form_submitted_2026_05_28_11_24_47",
-      "topic_label": "Re: Re: Form name Form submitted 2026-05-28 11:24:47",
-      "situation": "Re: Re: Form name Form submitted 2026-05-28 11:24:47",
-      "response_template": "Bonjour Robin,\n\nMerci pour votre transparence et pour nous avoir retourné la paire.\n\nDès réception et contrôle du colis (CF129855905CH), nous procéderons au remboursement de votre paire (259,00 EUR). Les frais de livraison initiaux (19,00 EUR) ne sont en revanche pas remboursables selon notre politique.\n\nNous reviendrons vers vous dès que le colis est reçu et validé par notre équipe.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
