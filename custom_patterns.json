@@ -122,6 +122,14 @@
       "example_count": 1
     },
     {
+      "topic": "commande__12248",
+      "topic_label": "Commande #12248",
+      "situation": "Commande #12248",
+      "response_template": "Bonjour Charles-Antoine,\n\nMerci pour votre message et désolé pour ce délai, votre commande #12248 aurait effectivement dû partir la semaine dernière.\n\nVotre paire (Winston Mocassin Cuir Noir, 42) est en cours de préparation dans notre entrepôt. L'expédition est prévue cette semaine, et vous recevrez votre lien de suivi dès qu'elle sera prise en charge par Chronopost. La livraison est actuellement estimée entre le 10 et le 12 juin, en point relais La Poste Orgues de Flandre à Paris.\n\nNous nous excusons pour ce retard et restons disponibles si vous avez la moindre question d'ici là.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande__18878",
       "topic_label": "Commande #18878",
       "situation": "Commande #18878",
