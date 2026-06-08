@@ -1058,6 +1058,14 @@
       "example_count": 1
     },
     {
+      "topic": "pointure_mocassins",
+      "topic_label": "Pointure mocassins",
+      "situation": "Pointure mocassins",
+      "response_template": "Bonsoir Jonas,\n\nMerci pour votre message et pour avoir suivi notre méthode de mesure.\n\nPetite remarque sur votre prise de mesure : 28 cm correspondrait normalement à une pointure 44/45, donc il y a peut-être eu une légère imprécision au moment de mesurer. Pas d'inquiétude, ça arrive.\n\nConcernant vos sneakers en 45 : c'est un très mauvais indicateur pour les chaussures en cuir. Les sneakers taillent souvent bien plus grand, donc on ne peut pas s'y fier pour un mocassin.\n\nSur la base de vos infos, je vous conseillerais de partir sur un 43 ou un 44. Le mocassin Peter A chausse juste au départ, le cuir et la semelle en liège s'assouplissent et se moulent au pied avec les premiers ports, donc il ne faut pas prendre trop grand.\n\nSi vous avez un doute entre les deux, dites-moi si vous avez plutôt un pied fin ou large, et si votre cou-de-pied est fort ou standard, ça m'aidera à vous orienter plus précisément.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "pointure_pour_ma_commande_pass_e",
       "topic_label": "Pointure pour ma commande passée",
       "situation": "Pointure pour ma commande passée",
