@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SAV Réparations — Max Sauveur</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -68,12 +69,33 @@
         .form-label { font-size: 12px; font-weight: 600; color: #888; text-transform: uppercase; margin-bottom: 4px; display: block; }
         /* MOBILE */
         @media (max-width: 680px) {
+            header { padding: 10px 12px; gap: 8px; }
             header h1 { font-size: 14px; }
-            .card { padding: 12px; }
+            .header-links { gap: 6px; }
+            .header-links a { font-size: 12px; }
+            .header-links button { margin-left: 0 !important; padding: 7px 10px !important; font-size: 12px !important; }
+            .container { padding: 0 8px; margin-top: 12px; }
+            .card { padding: 12px; border-radius: 10px; }
+            .card-title { font-size: 14px; }
+            .card-meta { font-size: 12px; }
+            .card-body-text { font-size: 12px; max-height: 80px; }
             .manual-form .row2 { grid-template-columns: 1fr; }
-            .btn { padding: 11px 12px; font-size: 13px; flex: 1 1 auto; text-align: center; }
-            textarea { font-size: 15px; }
-            .container { padding: 0 8px; }
+            .manual-form { padding: 12px; }
+            .btn { padding: 12px 10px; font-size: 13px; flex: 1 1 auto; text-align: center; min-width: 0; }
+            .actions { gap: 6px; }
+            textarea { font-size: 16px; }
+            /* Modal plein écran sur mobile */
+            #outbound-modal > div {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: 100% !important;
+                max-height: 100% !important;
+                border-radius: 0 !important;
+                padding: 16px !important;
+            }
+            #outbound-modal {
+                align-items: flex-start !important;
+            }
         }
     </style>
 </head>

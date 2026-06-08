@@ -85,19 +85,25 @@
 
         /* MOBILE */
         @media (max-width: 680px) {
-            header h1 { font-size: 15px; }
-            .header-links { gap: 6px; }
-            header a { font-size: 13px; }
-            .card-body { grid-template-columns: 1fr; gap: 14px; padding: 12px; }
+            header { padding: 10px 12px; gap: 6px; }
+            header h1 { font-size: 14px; }
+            .header-links { gap: 5px; }
+            header a { font-size: 12px; }
+            .container { padding: 0 8px; margin-top: 12px; }
+            .card { border-radius: 10px; margin-bottom: 14px; }
+            .card-body { grid-template-columns: 1fr; gap: 12px; padding: 12px; }
             .card-header { padding: 12px; }
+            .card-header .subject { font-size: 14px; }
+            .card-header .meta { font-size: 12px; }
             .reply-section { grid-column: 1; }
-            .email-body { max-height: 180px; font-size: 13px; }
-            .order-box { font-size: 13px; }
-            textarea { min-height: 160px; font-size: 15px; }
-            .question-textarea { min-height: 60px; font-size: 15px; }
-            .btn { padding: 12px 14px; font-size: 14px; flex: 1 1 auto; text-align: center; }
+            .email-body { max-height: 150px; font-size: 13px; padding: 10px; }
+            .order-box { font-size: 13px; padding: 10px; }
+            .order-box .row { flex-wrap: wrap; }
+            textarea { min-height: 140px; font-size: 16px; }
+            .question-textarea { min-height: 60px; font-size: 16px; }
+            .btn { padding: 12px 10px; font-size: 13px; flex: 1 1 auto; text-align: center; min-width: 0; }
             .actions { gap: 6px; }
-            .container { padding: 0 8px; }
+            .section-title { font-size: 10px; }
         }
     </style>
 </head>
