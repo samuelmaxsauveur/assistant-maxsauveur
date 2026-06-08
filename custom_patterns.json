@@ -1978,6 +1978,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__re__une_commande__9310_est_en_transit___d_faut",
+      "topic_label": "Re: Re: Re: Une commande #9310 est en transit - Défaut",
+      "situation": "Re: Re: Re: Une commande #9310 est en transit - Défaut",
+      "response_template": "Bonjour Fodile,\n\nMerci pour votre message. Comme précisé dans nos échanges précédents, nous ne sommes pas en mesure d'accorder un avoir dans ce cas, la paire ayant été portée.\n\nBonne nouvelle en revanche : votre paire est prête à vous être renvoyée depuis notre atelier. Pourriez-vous nous confirmer l'adresse à laquelle vous souhaitez la recevoir ?\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__retour_re_u___remboursement_en_cours",
       "topic_label": "Re: Re: Retour reçu — remboursement en cours",
       "situation": "Re: Re: Retour reçu — remboursement en cours",
