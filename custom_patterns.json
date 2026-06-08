@@ -1034,6 +1034,14 @@
       "example_count": 1
     },
     {
+      "topic": "probl_me_paire_moc_jagger___absence_de_retour_sav_whatsapp",
+      "topic_label": "Problème paire Moc Jagger / Absence de retour SAV WhatsApp",
+      "situation": "Problème paire Moc Jagger / Absence de retour SAV WhatsApp",
+      "response_template": "Bonjour Alexandre,\n\nMerci pour votre message.\n\nConcerning la boutique pop-up du 11 au 17 juin, malheureusement il ne sera pas possible d'y déposer votre paire directement : la gestion du stock en boutique éphémère est indépendante de notre logistique SAV, et les retours ne peuvent pas y être traités.\n\nVoici la procédure à suivre :\n\n1. Rendez-vous sur notre page de retour : https://maxsauveur.com/pages/livraison-et-retour\n2. Téléchargez et complétez le bon de retour en indiquant comme raison : \"défaut fabrication\".\n3. Envoyez la paire à notre adresse logistique : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau.\n\nMerci\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "probl_me_taille_commande_moc_jagger__11467",
       "topic_label": "Problème taille commande Moc Jagger #11467",
       "situation": "Problème taille commande Moc Jagger #11467",
