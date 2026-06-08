@@ -1450,6 +1450,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__form_name_form_submitted_2026_05_28_11_24_47",
+      "topic_label": "Re: Form name Form submitted 2026-05-28 11:24:47",
+      "situation": "Re: Form name Form submitted 2026-05-28 11:24:47",
+      "response_template": "Bonjour Robin,\n\nMerci pour ce retour et pour le numéro de suivi, c'est parfait.\n\nNous prenons bonne note de l'expédition depuis la Suisse (CF129855905CH). Dès réception et contrôle de la paire, nous traiterons votre dossier.\n\nConcernant la suite : souhaitez-vous un remboursement ou préférez-vous un avoir pour commander un autre modèle ? Si un modèle vous fait de l'œil, nous pouvons vous proposer un avoir avec les frais de port offerts sur votre prochaine commande.\n\nDites-moi simplement votre préférence et nous nous en occupons dès réception du colis.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__form_name_form_submitted_2026_05_28_15_46_25",
       "topic_label": "Re: Form name Form submitted 2026-05-28 15:46:25",
       "situation": "Re: Form name Form submitted 2026-05-28 15:46:25",
