@@ -1194,6 +1194,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__remboursement_commande__18878",
+      "topic_label": "RE: Remboursement commande #18878",
+      "situation": "RE: Remboursement commande #18878",
+      "response_template": "Bonjour Jean-Baptiste,\n\nMerci pour votre relance.\n\nVotre retour a bien été réceptionné et le remboursement est en cours de traitement. Comme indiqué sur le bon de retour, le délai est de 10 jours ouvrés à compter de la date de réception. Vous devriez donc voir le remboursement arriver sur votre compte d'ici peu.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__ceci_est_un___",
       "topic_label": "Re: Ceci est un...",
       "situation": "Re: Ceci est un...",
