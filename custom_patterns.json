@@ -770,6 +770,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_06_08_08_36_40",
+      "topic_label": "Form name Form submitted 2026-06-08 08:36:40",
+      "situation": "Form name Form submitted 2026-06-08 08:36:40",
+      "response_template": "Bonjour,\n\nMerci pour votre message et pour la précision avec laquelle vous décrivez la situation.\n\nUn décollement de semelle à l'avant sur un Moc Paul, avec une utilisation normale et une rotation entre plusieurs paires, est effectivement un point qui mérite d'être examiné sérieusement.\n\nAvant toute chose, pourriez-vous nous envoyer quelques photos de la zone concernée ? Idéalement :\n- Une vue de face/côté montrant le décollement\n- Une vue de la semelle complète\n\nCela nous permettra d'évaluer s'il s'agit d'un défaut de fabrication couvert par notre garantie à vie sur les semelles, et de vous proposer la prise en charge adaptée.\n\nVous pouvez répondre directement à cet email avec vos photos.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fw__commande__12087_confirm_e",
       "topic_label": "Fw: Commande #12087 confirmée",
       "situation": "Fw: Commande #12087 confirmée",
