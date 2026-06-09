@@ -1402,6 +1402,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__demande_de_pointure",
+      "topic_label": "Re: Demande de pointure",
+      "situation": "Re: Demande de pointure",
+      "response_template": "Bonjour Jérémie,\n\nMerci pour la correction, c'est plus précis ainsi.\n\nAvec 29,6 cm, votre pointure chez Max Sauveur est le 45.\n\nCela dit, le conseil peut varier légèrement selon le modèle qui vous intéresse. Certains de nos modèles chaussent légèrement grand (comme nos derbies ou Chelsea boots), auquel cas un 44 peut suffire. D'autres, comme nos mocassins, chaussent plus juste au démarrage et s'assouplissent avec le port.\n\nQuel modèle avez-vous en tête ? Je pourrai vous donner un conseil plus précis.\n\nJohn - Service Client - Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__demande_de_pointure___fisherman",
       "topic_label": "Re: Demande de pointure / Fisherman",
       "situation": "Re: Demande de pointure / Fisherman",
