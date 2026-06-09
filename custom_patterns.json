@@ -818,6 +818,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_06_08_21_37_41",
+      "topic_label": "Form name Form submitted 2026-06-08 21:37:41",
+      "situation": "Form name Form submitted 2026-06-08 21:37:41",
+      "response_template": "Bonjour Alain,\n\nMerci pour votre message.\n\nJe vois que vous avez reçu votre commande #11687 (Le Moc Jagger Cuir Noir, taille 46). Nous ne pouvons pas faire d'échange direct, mais voici comment procéder pour obtenir un avoir et recommander dans la bonne taille :\n\n1. Rendez-vous sur notre page de retour : **https://maxsauveur.com/pages/livraison-et-retour**\n2. Téléchargez et complétez le bon de retour en indiquant comme motif : \"avoir\"\n3. Glissez le document dans le colis et retournez la paire à notre adresse logistique (indiquée sur la page)\n\n Dès réception et contrôle de la paire, nous vous enverrons un avoir d'une valeur de 258€, valable 6 mois sur notre site, que vous pourrez utiliser pour commander le 45.\n\nUne petite précision utile pour la taille : avec 29,3 cm de pied, le 45 est la bonne pointure sur le Moc Jagger, comme nous avions déjà conclu ensemble pour le Peter A. Le Moc Jagger chausse juste au début mais s'assouplit bien avec le port.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_06_09_08_40_54",
       "topic_label": "Form name Form submitted 2026-06-09 08:40:54",
       "situation": "Form name Form submitted 2026-06-09 08:40:54",
