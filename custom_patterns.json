@@ -1210,6 +1210,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "RE: Max Sauveur — Service Client",
+      "situation": "RE: Max Sauveur — Service Client",
+      "response_template": "Bonjour Madame Rapp,\n\nMerci pour ce retour honnête, c'est tout à fait compréhensible. Le Moc Jagger a effectivement une forme structurée qui peut paraître plus volumineuse sur certaines morphologies de pied.\n\nNous allons procéder à votre remboursement dès que possible. Vous serez notifiée par email dès qu'il sera traité.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 25
+    },
+    {
       "topic": "re__question_sandale",
       "topic_label": "RE: Question sandale",
       "situation": "RE: Question sandale",
@@ -1688,14 +1696,6 @@
       "response_template": "Bonjour Pierfranco,\n\nMerci pour votre confiance, c'est un beau premier achat à faire !\n\nPour répondre à vos questions sur la Fisherman :\n\nLa sandale chausse **grand**. Avec vos 27 cm de pied, le 42 est votre taille de référence sur notre guide. Par expérience, nos clients prennent cette pointure quand il chausse du 43.\n\nConcernant votre inquiétude sur le maintien : oui, les boucles de réglage permettent d'ajuster le tour de pied et de cheville avec précision, ce qui compense tout à fait le fait d'être légèrement entre deux tailles. Vous n'aurez pas la sensation de \"perdre\" la sandale.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande !\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Quentin,\n\nToutes mes excuses pour ce délai, le remboursement aurait dû être traité plus tôt.\n\nNous procédons à son émission immédiatement. Vous devriez le voir apparaître sur votre moyen de paiement d'origine sous 3 à 5 jours ouvrés selon votre banque.\n\nMerci pour votre patience.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 26
     },
     {
       "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
@@ -2206,6 +2206,14 @@
       "topic_label": "Re: Taille Sandale Fisher",
       "situation": "Re: Taille Sandale Fisher",
       "response_template": "Bonjour Chris,\n\nConcernant le talon qui se soulève : c'est tout à fait normal sur un mocassin. Sans lacets, le maintien dépend uniquement du cou-de-pied, et un léger soulèvement du talon ne signifie pas que la chaussure est trop grande. Ce qui compte vraiment, c'est la longueur : est-ce que vos orteils ont de la place à l'avant sans excès ? Est-ce que votre pied glisse vers l'avant quand vous marchez ?\n\nSi la longueur vous convient, le 42 est très probablement votre bonne taille sur ce modèle et l'échange ne s'impose pas forcément.\n\nSi en revanche vous sentez que la chaussure est vraiment trop longue ou que votre pied flotte à l'intérieur, voici la procédure pour l'échange :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique (frais de retour à votre charge) :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous enverrons un avoir pour commander la bonne taille.\n\nN'hésitez pas à me décrire votre ressenti en longueur, je pourrai vous confirmer si l'échange est vraiment nécessaire.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__taille_chaussure___d_lai_livraison",
+      "topic_label": "Re: Taille chaussure + délai livraison",
+      "situation": "Re: Taille chaussure + délai livraison",
+      "response_template": "Bonjour Sean,\n\nBonne question sur le maintien, c'est souvent la principale crainte avec un mocassin.\n\nLa réponse courte : le 43 tiendra bien sur votre pied, surtout avec vos pieds larges. Sur un mocassin, le maintien vient effectivement du cou-de-pied et de l'empiècement, pas de lacets. Avec des pieds larges, le cuir va se mettre en tension autour de votre pied et assurer un bon maintien. Ce n'est pas comme une chaussure trop grande qui \"flotte\".\n\nLe 42.5 existe bien dans notre gamme sur certains modèles, mais avec vos semelles orthopédiques de 28 cm, je vous déconseille de descendre en dessous du 43. Vous risqueriez de vous retrouver à l'étroit, ce qui serait bien pire que l'inverse.\n\nSur le Brogue Derby Bordeaux : c'est un modèle qui chausse légèrement grand, donc avec votre pied de 27,5 cm et vos semelles orthopédiques, le 43 serait aussi la bonne option ici. L'avantage par rapport au mocassin : il a des lacets, donc le maintien est encore plus ajusté et personnalisable selon votre pied.\n\nLes deux modèles sont très différents en termes de style : le Paul est plus casual et décontracté, le Brogue Derby est plus habillé. Tout dépend de l'usage que vous en ferez.\n\nN'hésitez pas si vous avez d'autres questions avant de commander.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
