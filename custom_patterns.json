@@ -1210,14 +1210,6 @@
       "example_count": 1
     },
     {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "RE: Max Sauveur — Service Client",
-      "situation": "RE: Max Sauveur — Service Client",
-      "response_template": "Bonjour Madame Rapp,\n\nMerci pour ce retour honnête, c'est tout à fait compréhensible. Le Moc Jagger a effectivement une forme structurée qui peut paraître plus volumineuse sur certaines morphologies de pied.\n\nNous allons procéder à votre remboursement dès que possible. Vous serez notifiée par email dès qu'il sera traité.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 25
-    },
-    {
       "topic": "re__question_sandale",
       "topic_label": "RE: Question sandale",
       "situation": "RE: Question sandale",
@@ -1302,6 +1294,14 @@
       "topic_label": "RE: TR: Commande #11496 confirmée",
       "situation": "RE: TR: Commande #11496 confirmée",
       "response_template": "Bonjour Anh Lan,\n\nMerci pour ce retour très clair. Si le talon se soulève et frotte à chaque pas, c'est effectivement un problème de taille et non d'assouplissement. Votre retour est tout à fait justifié.\n\nConcernant le pop-up, merci pour votre enthousiasme ! Malheureusement, le Moc Jagger ne figurera pas parmi la sélection, et les petites pointures féminines seront très peu représentées lors de cet événement. Je ne voudrais pas vous faire faire le déplacement pour rien.\n\nCe que je vous conseille : suivez nos communications sur les réseaux et par email, nous développons progressivement notre offre sur les petites pointures et vous serez ainsi informée en priorité des prochaines nouveautés.\n\nPour votre retour, la procédure reste la même :\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"remboursement\" ou \"avoir\" selon votre préférence)\n2. Emballez soigneusement la paire et joignez le bon dans le colis\n3. Envoyez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous traitons votre demande dans les plus brefs délais.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__commande__11585",
+      "topic_label": "Re: COMMANDE #11585",
+      "situation": "Re: COMMANDE #11585",
+      "response_template": "Bonjour Géraldine,\n\nMerci pour la vidéo, c'est utile de voir le comportement en conditions réelles.\n\nAprès visionnage, nous voudrions vous proposer un test avant de conclure quoi que ce soit : essayez d'ajouter une semelle d'ajustement au talon (type demi-semelle adhésive ou semelle de compensation talon, disponible en pharmacie ou en cordonnerie pour quelques euros). Ce type d'insert est précisément conçu pour combler ce jeu entre le talon et la tige, qui peut persister quelques ports supplémentaires sur un mocassin en cuir neuf.\n\nSi après ce test le problème reste identique, revenez vers nous avec vos retours et on réévaluera ensemble la situation.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -1688,6 +1688,14 @@
       "response_template": "Bonjour Pierfranco,\n\nMerci pour votre confiance, c'est un beau premier achat à faire !\n\nPour répondre à vos questions sur la Fisherman :\n\nLa sandale chausse **grand**. Avec vos 27 cm de pied, le 42 est votre taille de référence sur notre guide. Par expérience, nos clients prennent cette pointure quand il chausse du 43.\n\nConcernant votre inquiétude sur le maintien : oui, les boucles de réglage permettent d'ajuster le tour de pied et de cheville avec précision, ce qui compense tout à fait le fait d'être légèrement entre deux tailles. Vous n'aurez pas la sensation de \"perdre\" la sandale.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande !\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
+    },
+    {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Amandine,\n\nTrès bien, nous procédons au remboursement complet de votre commande dès que votre retour est contrôlé par notre équipe. Vous recevrez une confirmation par email.\n\nMerci pour votre confiance, et bonne continuation.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 24
     },
     {
       "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
