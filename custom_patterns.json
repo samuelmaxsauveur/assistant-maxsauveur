@@ -1685,9 +1685,9 @@
       "topic": "re__max_sauveur___service_client",
       "topic_label": "Re: Max Sauveur — Service Client",
       "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Elven,\n\nTrès bien, nous procédons au remboursement intégral de votre commande. Vous le recevrez sur votre moyen de paiement d'origine sous quelques jours ouvrés.\n\nMerci pour vos mots sur la paire, et désolé que la pointure n'ait pas été la bonne. Si vous repassez un jour dans la collection, n'hésitez pas à nous contacter avant de commander, on vous guidera.\n\nBelle journée à vous également.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Mathieu,\n\nMerci pour votre retour, c'est une raison tout à fait compréhensible.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 22
+      "example_count": 23
     },
     {
       "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
