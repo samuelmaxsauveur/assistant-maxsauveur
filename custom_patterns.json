@@ -1922,6 +1922,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__la_commande__12419_a__t__annul_e",
+      "topic_label": "Re: Re: La commande #12419 a été annulée",
+      "situation": "Re: Re: La commande #12419 a été annulée",
+      "response_template": "Bonjour Kevin,\n\nBonne nouvelle : nous venons de réactiver votre code 98KYQJTF4EW5, il est à nouveau utilisable.\n\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__lien_vers_la_commande__11707",
       "topic_label": "Re: Re: Lien vers la commande #11707",
       "situation": "Re: Re: Lien vers la commande #11707",
