@@ -2346,6 +2346,14 @@
       "example_count": 2
     },
     {
+      "topic": "retour_commande",
+      "topic_label": "Retour commande",
+      "situation": "Retour commande",
+      "response_template": "Bonjour Emilien,\n\nPas de souci, voici comment procéder pour votre retour.\n\nRendez-vous sur notre page de retour : **https://maxsauveur.com/pages/livraison-et-retour**\n\nTéléchargez et complétez le bon de retour en indiquant comme raison : \"avoir\" ou \"échange de taille\" selon ce que vous souhaitez. Emballez soigneusement vos Brogues Derby Marron 42, glissez le bon à l'intérieur, et envoyez le tout à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle de la paire, nous vous enverrons un avoir du montant de votre commande, valable 6 mois, pour commander la bonne taille.\n\nUne petite question au passage : avez-vous mesuré votre pied selon notre méthode (talon contre un mur, puis +0,2 cm) ? Selon ce résultat, je peux vous confirmer la taille à prendre pour éviter un deuxième aller-retour.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "retour_commande__11484",
       "topic_label": "Retour commande #11484",
       "situation": "Retour commande #11484",
