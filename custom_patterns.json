@@ -2154,6 +2154,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__suivez_la_production_de_vos_moc_jagger",
+      "topic_label": "Re: Suivez la production de vos Moc Jagger",
+      "situation": "Re: Suivez la production de vos Moc Jagger",
+      "response_template": "Bonjour Aurélie,\n\nMerci pour votre message. Votre Moc Jagger Pony Marron 41,5 est bien en cours de préparation de notre côté et l’expédition est estimée entre le 11 et le 13 juin.\n\nVotre colis sera expédié en Chrono2Shop et vous recevrez un email avec votre numéro de suivi dès qu'il part.\n\nDésolé pour l'attente, on est dans la dernière ligne droite.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 3
+    },
+    {
       "topic": "re__taille_sandale_fisher",
       "topic_label": "Re: Taille Sandale Fisher",
       "situation": "Re: Taille Sandale Fisher",
@@ -2456,14 +2464,6 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et désolé pour l'attente sur cette précommande.\n\nVos Moc Jagger arrivent chez nous cette semaine, et nous prévoyons de les expédier dans la foulée. La livraison est estimée à la semaine prochaine, sous réserve que les ponts de fin mai ne viennent pas ralentir les transporteurs.\n\nDès que votre colis est parti, vous recevrez un email avec votre lien de suivi Chronopost pour suivre votre paire en temps réel.\n\n[Prénom de l'équipe] de Max Sauveur",
       "key_points": "Ton rassurant et transparent. Mentionner l'arrivée en stock imminente + expédition rapide. Préciser le transporteur (Chronopost) et l'envoi automatique du lien de suivi. Anticiper les éventuels délais liés aux jours fériés si pertinent.",
       "example_count": 6
-    },
-    {
-      "topic": "re__suivez_la_production_de_vos_moc_jagger",
-      "topic_label": "Suivi livraison Moc Jagger – délai et lien de suivi",
-      "situation": "Un client relance sur la date de réception de ses Moc Jagger en précommande. Le service client lui communique une estimation de livraison précise, mentionne les éventuels aléas (jours fériés, transporteurs) et l'informe qu'un email avec lien de suivi Chronopost sera envoyé dès expédition.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et votre patience.\n\nVos Moc Jagger arrivent chez nous [délai arrivée entrepôt], et nous prévoyons de les expédier dans la foulée. La livraison estimée se situe autour du [date estimée], sous réserve que les jours fériés et les transporteurs ne viennent pas perturber l'acheminement.\n\nDès que votre colis sera parti, vous recevrez un email avec votre lien de suivi Chronopost pour localiser votre point relais et suivre votre paire en temps réel.\n\nOn fait au plus vite de notre côté.\n\n[Prénom conseiller] de Max Sauveur",
-      "key_points": "Remercier le client pour sa patience. Donner une fourchette de dates précise mais nuancée (mentionner les aléas potentiels). Rappeler systématiquement l'envoi automatique du lien de suivi Chronopost à l'expédition. Ton engagé et humain ('On fait au plus vite de notre côté').",
-      "example_count": 2
     },
     {
       "topic": "suivi_precommande_jagger_commande_mixte",
