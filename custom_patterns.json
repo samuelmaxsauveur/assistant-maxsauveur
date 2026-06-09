@@ -1818,6 +1818,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__demande_de_pointure",
+      "topic_label": "Re: Re: Demande de pointure",
+      "situation": "Re: Re: Demande de pointure",
+      "response_template": "Bonjour Jérémie,\n\nParfait, le Paul est un excellent choix !\n\nPour ce modèle, je vous conseille de prendre le **45**. Le mocassin Paul chausse juste au départ, c'est tout à fait normal : le cuir et la semelle en liège s'assouplissent progressivement avec le port et finissent par épouser parfaitement votre pied. Pas d'inquiétude donc si les premières fois il vous semble un peu serré.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn - Service Client - Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__envoi_commande__12265",
       "topic_label": "Re: Re: Envoi Commande #12265",
       "situation": "Re: Re: Envoi Commande #12265",
