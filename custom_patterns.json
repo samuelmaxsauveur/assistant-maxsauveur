@@ -1762,6 +1762,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__probl_me_paire_moc_jagger___absence_de_retour_sav_whatsa",
+      "topic_label": "Re: Problème paire Moc Jagger / Absence de retour SAV WhatsApp",
+      "situation": "Re: Problème paire Moc Jagger / Absence de retour SAV WhatsApp",
+      "response_template": "Bonjour Alexandre,\n\nTout à fait, si le défaut est avéré, nous prenons en charge le retour. Mais avant de générer une étiquette prépayée, nous avons besoin de photos claires de la paire afin de pouvoir évaluer la situation de notre côté.\n\nPourriez-vous nous envoyer quelques photos montrant le défaut constaté ? Dès réception et validation de notre part, nous vous communiquons la procédure pour le retour pris en charge.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__probl_me_taille_commande_moc_jagger__11467",
       "topic_label": "Re: Problème taille commande Moc Jagger #11467",
       "situation": "Re: Problème taille commande Moc Jagger #11467",
