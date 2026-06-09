@@ -2125,9 +2125,9 @@
       "topic": "re__retour_re_u___remboursement_en_cours",
       "topic_label": "Re: Retour reçu — remboursement en cours",
       "situation": "Re: Retour reçu — remboursement en cours",
-      "response_template": "Bonjour Théo,\n\nC'est avec plaisir ! L'échange est confirmé de notre côté. Nous vous expédions le Boat en taille 43 cette semaine, sans aucun frais de livraison supplémentaire.\n\nVous recevrez un email avec votre lien de suivi dès que le colis est parti.\n\nBon week-end à vous aussi !\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Mathieu,\n\nPas de souci, nous procédons au remboursement de votre commande #12175 (Peter A. Mocassin Cuir Noir, 42) dès maintenant. Comptez 5 à 10 jours ouvrés selon votre banque.\n\nEt si la curiosité vous reprend un jour pour les mocassins, n'hésitez pas à revenir vers nous, on saura vous guider sur la bonne taille.\n\nBonne continuation,\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 13
+      "example_count": 14
     },
     {
       "topic": "re__re___re__re__merci_pour_votre_message___quelques_informa",
