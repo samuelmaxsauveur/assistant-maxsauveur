@@ -1754,6 +1754,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__pointure_mocassins",
+      "topic_label": "Re: Pointure mocassins",
+      "situation": "Re: Pointure mocassins",
+      "response_template": "Bonjour Jonas,\n\nMerci pour cette précision. Avec un cou-de-pied fort, je vous conseille de prendre le 44 plutôt que le 43. Sur un mocassin sans lacets, le maintien dépend entièrement de l'ouverture, et un cou-de-pied fort a besoin d'un peu plus d'espace pour entrer confortablement dans la chaussure.\n\nLe 44 restera juste au départ (c'est la nature du modèle), puis s'assouplira avec les premiers ports.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__probl_me_taille_commande_moc_jagger__11467",
       "topic_label": "Re: Problème taille commande Moc Jagger #11467",
       "situation": "Re: Problème taille commande Moc Jagger #11467",
@@ -2344,14 +2352,6 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et pour nous avoir signalé la situation.\n\nNous avons bien pris note de votre retour pour la commande #[numéro]. Nous nous rapprochons de notre logistique pour confirmer la réception de [l'article] et vous revenons vers vous cette semaine avec une confirmation.\n\nMerci pour votre patience.\n\n[Prénom] de Max Sauveur",
       "key_points": "Ton rassurant et professionnel. Ne pas confirmer la réception tant qu'elle n'est pas vérifiée en interne. Donner un délai indicatif (cette semaine). Mentionner explicitement le numéro de commande et l'article concerné pour montrer que le dossier est bien suivi.",
       "example_count": 2
-    },
-    {
-      "topic": "retour_commande",
-      "topic_label": "Retour commande",
-      "situation": "Retour commande",
-      "response_template": "Bonjour Emilien,\n\nPas de souci, voici comment procéder pour votre retour.\n\nRendez-vous sur notre page de retour : **https://maxsauveur.com/pages/livraison-et-retour**\n\nTéléchargez et complétez le bon de retour en indiquant comme raison : \"avoir\" ou \"échange de taille\" selon ce que vous souhaitez. Emballez soigneusement vos Brogues Derby Marron 42, glissez le bon à l'intérieur, et envoyez le tout à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle de la paire, nous vous enverrons un avoir du montant de votre commande, valable 6 mois, pour commander la bonne taille.\n\nUne petite question au passage : avez-vous mesuré votre pied selon notre méthode (talon contre un mur, puis +0,2 cm) ? Selon ce résultat, je peux vous confirmer la taille à prendre pour éviter un deuxième aller-retour.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
     },
     {
       "topic": "retour_commande__11484",
