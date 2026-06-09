@@ -1210,6 +1210,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "RE: Max Sauveur — Service Client",
+      "situation": "RE: Max Sauveur — Service Client",
+      "response_template": "Bonjour Madame Rapp,\n\nMerci pour ce retour honnête, c'est tout à fait compréhensible. Le Moc Jagger a effectivement une forme structurée qui peut paraître plus volumineuse sur certaines morphologies de pied.\n\nNous allons procéder à votre remboursement dès que possible. Vous serez notifiée par email dès qu'il sera traité.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 25
+    },
+    {
       "topic": "re__question_sandale",
       "topic_label": "RE: Question sandale",
       "situation": "RE: Question sandale",
@@ -1680,14 +1688,6 @@
       "response_template": "Bonjour Pierfranco,\n\nMerci pour votre confiance, c'est un beau premier achat à faire !\n\nPour répondre à vos questions sur la Fisherman :\n\nLa sandale chausse **grand**. Avec vos 27 cm de pied, le 42 est votre taille de référence sur notre guide. Par expérience, nos clients prennent cette pointure quand il chausse du 43.\n\nConcernant votre inquiétude sur le maintien : oui, les boucles de réglage permettent d'ajuster le tour de pied et de cheville avec précision, ce qui compense tout à fait le fait d'être légèrement entre deux tailles. Vous n'aurez pas la sensation de \"perdre\" la sandale.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande !\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Amandine,\n\nTrès bien, nous procédons au remboursement complet de votre commande dès que votre retour est contrôlé par notre équipe. Vous recevrez une confirmation par email.\n\nMerci pour votre confiance, et bonne continuation.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 24
     },
     {
       "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
