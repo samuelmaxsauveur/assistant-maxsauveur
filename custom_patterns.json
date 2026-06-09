@@ -1669,9 +1669,9 @@
       "topic": "re__max_sauveur___service_client",
       "topic_label": "Re: Max Sauveur — Service Client",
       "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Landi,\n\nBonne nouvelle, nous avons bien le 43 en Moc Jagger Cuir Noir disponible et nous sommes ravis de pouvoir vous faire l'échange directement.\n\nAvant d'expédier, pouvez-vous confirmer que votre adresse de livraison est toujours la suivante ?\n\n4 Allée du Languedoc, 95140 Garges-lès-Gonesse\n\nDès votre confirmation, on prépare l'envoi.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Jean-François,\n\nMerci pour ce retour. Tout à fait compréhensible, et la situation est claire.\n\nNous procédons au remboursement sur votre moyen de paiement initial. Comptez 3 à 5 jours ouvrés pour que le virement apparaisse sur votre compte.\n\nN'hésitez pas si vous avez besoin de quoi que ce soit.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 20
+      "example_count": 21
     },
     {
       "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
@@ -1813,9 +1813,9 @@
       "topic": "re__re__fin_de_production_et_exp_ditions_de_vos_moc_jagger",
       "topic_label": "Re: Re: Fin de production et expéditions de vos Moc Jagger",
       "situation": "Re: Re: Fin de production et expéditions de vos Moc Jagger",
-      "response_template": "Bonjour Véronique,\n\nMerci pour votre relance, et je comprends tout à fait votre impatience, surtout avec une contrainte de départ en tête.\n\nNous revenons vers vous le plus vite possible avec une confirmation d'expédition et votre lien de suivi Chronopost dès que le colis est pris en charge par le transporteur.\n\nEncore désolé pour l'attente sur cette première commande, on fait le maximum pour que vous la receviez dans de bonnes conditions.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Alma,\n\nMerci pour votre patience.\n\n\nNous revenons vers vous dès que le colis est expédié avec votre lien de suivi Chronopost.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 1
+      "example_count": 2
     },
     {
       "topic": "re__re__form_name_form_submitted_2026_05_13_17_41_23",
@@ -2109,9 +2109,9 @@
       "topic": "re__retour_re_u___remboursement_en_cours",
       "topic_label": "Re: Retour reçu — remboursement en cours",
       "situation": "Re: Retour reçu — remboursement en cours",
-      "response_template": "Bonjour Ludovic,\n\nBien reçu, nous allons procéder au remboursement de vos 295€ sur votre moyen de paiement d'origine. Comptez 5 à 10 jours ouvrés selon votre banque.\n\nBonne soirée,\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Théo,\n\nC'est avec plaisir ! L'échange est confirmé de notre côté. Nous vous expédions le Boat en taille 43 cette semaine, sans aucun frais de livraison supplémentaire.\n\nVous recevrez un email avec votre lien de suivi dès que le colis est parti.\n\nBon week-end à vous aussi !\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 14
+      "example_count": 13
     },
     {
       "topic": "re__re___re__re__merci_pour_votre_message___quelques_informa",
