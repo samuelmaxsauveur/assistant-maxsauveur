@@ -818,6 +818,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_06_08_21_35_24",
+      "topic_label": "Form name Form submitted 2026-06-08 21:35:24",
+      "situation": "Form name Form submitted 2026-06-08 21:35:24",
+      "response_template": "Bonjour Hugo,\n\nMerci pour votre message et votre compréhension concernant le délai de réponse.\n\nBonne nouvelle : le Moc Jagger Noir est disponible en taille 43. Voici ce que je vous propose.\n\nPlutôt que de traiter directement votre remboursement, on peut organiser un échange vers le 43 dès réception et contrôle de votre retour. Concrètement :\n\n- On génère un avoir du montant de votre commande\n- Vous l'utilisez pour commander le Moc Jagger Noir 43\n\nSi vous préférez malgré tout le remboursement sur votre compte bancaire, c'est possible également, la commande ayant été passée dans les délais légaux.\n\nDites-moi simplement votre préférence, et on traite ça rapidement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_06_08_21_37_41",
       "topic_label": "Form name Form submitted 2026-06-08 21:37:41",
       "situation": "Form name Form submitted 2026-06-08 21:37:41",
