@@ -1685,9 +1685,9 @@
       "topic": "re__max_sauveur___service_client",
       "topic_label": "Re: Max Sauveur — Service Client",
       "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Mathieu,\n\nMerci pour votre retour, c'est une raison tout à fait compréhensible.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Amandine,\n\nTrès bien, nous procédons au remboursement complet de votre commande dès que votre retour est contrôlé par notre équipe. Vous recevrez une confirmation par email.\n\nMerci pour votre confiance, et bonne continuation.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
-      "example_count": 23
+      "example_count": 24
     },
     {
       "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
