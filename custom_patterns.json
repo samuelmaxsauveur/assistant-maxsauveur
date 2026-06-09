@@ -1669,9 +1669,9 @@
       "topic": "re__max_sauveur___service_client",
       "topic_label": "Re: Max Sauveur — Service Client",
       "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Maxence,\n\nBonne nouvelle : un réassort du Moc Jagger en 39 est prévu prochainement, nous allons mettre à jour les stocks.\n\nJe vous conseille d'activer l'alerte pointure directement sur la fiche produit pour être notifié dès que la taille est disponible. Vous serez ainsi parmi les premiers à pouvoir commander.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Landi,\n\nBonne nouvelle, nous avons bien le 43 en Moc Jagger Cuir Noir disponible et nous sommes ravis de pouvoir vous faire l'échange directement.\n\nAvant d'expédier, pouvez-vous confirmer que votre adresse de livraison est toujours la suivante ?\n\n4 Allée du Languedoc, 95140 Garges-lès-Gonesse\n\nDès votre confirmation, on prépare l'envoi.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 19
+      "example_count": 20
     },
     {
       "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
