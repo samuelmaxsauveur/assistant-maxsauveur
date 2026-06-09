@@ -1674,6 +1674,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__la_commande__12419_a__t__annul_e",
+      "topic_label": "Re: La commande #12419 a été annulée",
+      "situation": "Re: La commande #12419 a été annulée",
+      "response_template": "Bonjour Kevin,\n\nMerci pour votre message, et désolé pour l'annulation de la commande #12419.\n\nVoici pourquoi elle a été annulée : le code promotionnel 98KYQJTF4EW5 ne peut s'appliquer que sur une seule paire. Il n'est pas possible de l'utiliser deux fois dans la même commande, c'est pourquoi nous n'avons pas pu la valider telle quelle.\n\nPour procéder, voici ce que nous vous conseillons : passez deux commandes séparées. Sur la première, appliquez votre code de réduction sur la pointure de votre choix. Sur la seconde, la deuxième pointure sera au tarif habituel.\n\nUne fois les deux paires reçues, il vous suffira de renvoyer celle qui ne convient pas en suivant la procédure de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour. Dès réception et contrôle, nous traiterons votre remboursement.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__lien_vers_la_commande__11451",
       "topic_label": "Re: Lien vers la commande #11451",
       "situation": "Re: Lien vers la commande #11451",
