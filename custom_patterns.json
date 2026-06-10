@@ -426,6 +426,14 @@
       "example_count": 1
     },
     {
+      "topic": "embauchoirs_taille_diff_rente",
+      "topic_label": "Embauchoirs taille différente",
+      "situation": "Embauchoirs taille différente",
+      "response_template": "Bonjour Marie,\n\nMerci pour votre message, et ravi que les Moc Jagger vous plaisent !\n\nPas d'inquiétude concernant les embauchoirs : c'est tout à fait normal. Pour le Moc Jagger, nous fournissons volontairement des embauchoirs en taille 40 pour une pointure 39. L'objectif est qu'ils remplissent bien leur rôle : en étant légèrement plus grands, ils épousent parfaitement la forme intérieure de la chaussure et assurent une bonne absorption du cuir dans le temps.\n\nVous pouvez donc les utiliser sans souci, c'est exactement ce qu'il faut.\n\nBonne journée à vous !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "envoi_commande__12265",
       "topic_label": "Envoi Commande #12265",
       "situation": "Envoi Commande #12265",
