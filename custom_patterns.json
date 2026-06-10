@@ -1994,6 +1994,14 @@
       "example_count": 5
     },
     {
+      "topic": "re__re__merci_pour_votre_message___quelques_informations_uti",
+      "topic_label": "Re: Re: Merci pour votre message - Quelques informations utiles Re: Commande #11745 - demande de réexpédition",
+      "situation": "Re: Re: Merci pour votre message - Quelques informations utiles Re: Commande #11745 - demande de réexpédition",
+      "response_template": "Bonjour Aimy,\n\nMerci pour ce retour, et votre remarque est tout à fait légitime.\n\nPour être transparent : le délai de mise à disposition en point relais est fixé par Chrono2Shop, pas par nous. Nous n'avons malheureusement pas de levier pour l'allonger, et ce malgré nos échanges avec eux. C'est une contrainte de leur réseau que nous subissons aussi.\n\nCe que nous pouvons vous conseiller pour l'avenir : opter pour la livraison à domicile, qui offre beaucoup plus de flexibilité et évite ce type de situation.\n\nVoici ci-dessous le lien de paiement pour la nouvelle expédition : https://secure.payplug.com/pay/3QHurHf6qCnGDHBRtAsaRk\n\nCordialement,\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__pointure_deck___chaussures_bateau_cuir_marron_et__ch",
       "topic_label": "Re: Re: Pointure Deck - Chaussures Bateau Cuir Marron et échange ?",
       "situation": "Re: Re: Pointure Deck - Chaussures Bateau Cuir Marron et échange ?",
