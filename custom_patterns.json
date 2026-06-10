@@ -1707,11 +1707,11 @@
     },
     {
       "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
-      "topic_label": "Re: Merci pour votre message - Quelques informations utiles Re: Commande #11642 confirmée",
-      "situation": "Re: Merci pour votre message - Quelques informations utiles Re: Commande #11642 confirmée",
-      "response_template": "Bonjour Frédéric,\n\nPour le retour depuis la Belgique via DPD, voici les informations dont vous avez besoin :\n\n**Adresse de livraison :**\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\nFrance\n\n**Email :** hello@maxsauveur.com\n\nPour le numéro de mobile, il faut utiliser le numéro du service client, inscrit sur notre site internet.\n\nN'oubliez pas d'inclure le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\").\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander la bonne taille.\n\nSur la question du 42,5 vs 43 : je regarderai la disponibilité de notre côté dès que votre retour est lancé. Si le 42,5 est disponible, c'est effectivement la direction naturelle. Le 43 risque effectivement d'être un peu généreux.\n\nEt pour votre question sur les chaussettes : avec les Moc Jagger, la semelle en liège se moule au pied avec le port. Pieds nus en été, chaussettes fines en demi-saison, chaussettes légères en hiver sont tout à fait compatibles. Pour des chaussettes épaisses en laine, il vaut mieux prévoir un volume légèrement supplémentaire à la pointure, donc dans votre cas le 43 deviendrait pertinent si vous comptez les porter principalement en hiver avec des chaussettes épaisses.\n\nJohn de Max Sauveur",
+      "topic_label": "Re: Merci pour votre message - Quelques informations utiles Re: Commande #11745 - demande de réexpédition",
+      "situation": "Re: Merci pour votre message - Quelques informations utiles Re: Commande #11745 - demande de réexpédition",
+      "response_template": "Bonjour Aimy,\n\nMerci pour votre relance.\n\nNous avons bien reçu votre colis ce lundi en retour. Bonne nouvelle : nous pouvons prévoir une nouvelle expédition de votre paire dès jeudi.\n\nCependant, une précision importante sur les frais. Lorsqu'un colis n'est pas récupéré en point relais, Chrono2Shop impose un délai de 72h maximum pour que le marchand organise le retour vers l'expéditeur. Ce délai est fixé par Chrono2Shop, et non par nous. Passé ce délai, le colis est automatiquement retourné à l'expéditeur et une nouvelle expédition génère des frais que nous ne pouvons pas absorber.\n\nNous allons donc vous envoyer un lien de paiement pour couvrir les frais de cette nouvelle expédition. Dès réception de votre règlement, nous expédions la paire jeudi.\n\nPouvez-vous nous confirmer que l'adresse de livraison reste la même (point relais à Asnières-sur-Seine) ou nous indiquer une nouvelle adresse si vous souhaitez modifier le point de retrait ?\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 1
+      "example_count": 2
     },
     {
       "topic": "re__message_de_max_sauveur",
