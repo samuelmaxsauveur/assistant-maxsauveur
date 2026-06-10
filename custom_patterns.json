@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "annulation_commande",
+      "topic_label": "Annulation commande",
+      "situation": "Annulation commande",
+      "response_template": "Bonjour Jonas,\n\nBonne nouvelle, votre commande #12425 (Peter A. Mocassin Cuir Grainé Bordeaux, taille 44) n'a pas encore été expédiée. Nous pouvons tout à fait l'annuler.\n\nPourriez-vous nous préciser la raison de l'erreur ? S'agit-il d'une mauvaise taille, d'un mauvais modèle, ou souhaitez-vous simplement annuler définitivement ?\n\nCela nous permettra de traiter votre demande dans les meilleures conditions.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "arriv_e_des_moc_jagger__",
       "topic_label": "Arrivée des Moc Jagger ?",
       "situation": "Arrivée des Moc Jagger ?",
