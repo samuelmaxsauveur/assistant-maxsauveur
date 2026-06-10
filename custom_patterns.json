@@ -1733,9 +1733,9 @@
       "topic": "re__message_de_max_sauveur",
       "topic_label": "Re: Message de Max Sauveur",
       "situation": "Re: Message de Max Sauveur",
-      "response_template": "Bonjour Emrah,\n\nMalheureusement, les frais de livraison ne sont pas inclus dans l'avoir : celui-ci couvre uniquement le montant du produit retourné.\n\nPour passer votre commande, il vous suffira d'appliquer votre code GQG848PTZPY8 dans votre panier et de régler les frais de port séparément.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Laurian,\n\nMerci de nous avoir recontactés.\n\nL'avoir que nous vous avons transmis (code BZZDR2SKFRSF) correspond au montant de vos chaussures Fisherman, soit 149€. \n\nDeux points à vérifier de votre côté :\n\n1. Le code est utilisable uniquement sur des chaussures (pas sur les ceintures), ce qui explique probablement pourquoi il ne fonctionne pas si vous tentez de commander une ceinture.\n2. Assurez-vous d'utiliser l'adresse email liée à votre commande, soit legal.laurian@gmail.com, lors du passage de commande.\n\nSi après ces vérifications le code ne fonctionne toujours pas, n'hésitez pas à nous revenir et nous réglerons ça directement.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 1
+      "example_count": 2
     },
     {
       "topic": "re__mocassins_cuir__paul_",
