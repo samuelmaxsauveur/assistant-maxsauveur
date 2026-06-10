@@ -426,6 +426,14 @@
       "example_count": 1
     },
     {
+      "topic": "embauchoirs_taille_diff_rente",
+      "topic_label": "Embauchoirs taille différente",
+      "situation": "Embauchoirs taille différente",
+      "response_template": "Bonjour Marie,\n\nMerci pour votre message, et ravi que les Moc Jagger vous plaisent !\n\nPas d'inquiétude concernant les embauchoirs : c'est tout à fait normal. Pour le Moc Jagger, nous fournissons volontairement des embauchoirs en taille 40 pour une pointure 39. L'objectif est qu'ils remplissent bien leur rôle : en étant légèrement plus grands, ils épousent parfaitement la forme intérieure de la chaussure et assurent une bonne absorption du cuir dans le temps.\n\nVous pouvez donc les utiliser sans souci, c'est exactement ce qu'il faut.\n\nBonne journée à vous !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "envoi_commande__12265",
       "topic_label": "Envoi Commande #12265",
       "situation": "Envoi Commande #12265",
@@ -1682,6 +1690,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__form_name_form_submitted_2026_06_06_20_46_08",
+      "topic_label": "Re: Form name Form submitted 2026-06-06 20:46:08",
+      "situation": "Re: Form name Form submitted 2026-06-06 20:46:08",
+      "response_template": "Bonjour Jonathan,\n\nPas de souci pour les questions, c'est tout à fait normal pour une première paire de vrais mocassins !\n\nPetite précision importante pour vendredi : il n'y aura pas de Moc Jagger au pop-up, donc vous ne pourrez pas les essayer directement. En revanche, vous pourrez peut-être enfiler un modèle proche pour avoir une idée de votre pointure Max Sauveur.\n\nConcernant le stock : ce que vous voyez sur la fiche produit reflète bien ce qui est disponible. Le 41,5 n'est plus en stock en ce moment, mais il se pourrait que des retours arrivent la semaine prochaine. Je ne peux pas vous le garantir, mais si c'est le cas, la pointure redeviendrait disponible à la commande.\n\nSur le fond du sujet taille : votre pied gauche qui flottait dans le 42,5 est un signal clair. Avec 27 cm de pied, le 42 reste votre taille de référence. Le Moc Jagger chausse juste au départ et la semelle en liège se moule au pied avec le port, donc une légère impression de serré les premières fois est normale et attendue.\n\nMon conseil : si le 41,5 revient en stock la semaine prochaine, c'est probablement la taille à tenter. Sinon, le 42 est la taille logique.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__form_name_form_submitted_2026_06_08_08_36_40",
       "topic_label": "Re: Form name Form submitted 2026-06-08 08:36:40",
       "situation": "Re: Form name Form submitted 2026-06-08 08:36:40",
@@ -2405,9 +2421,9 @@
       "topic": "re__pointure",
       "topic_label": "Re: pointure",
       "situation": "Re: pointure",
-      "response_template": "Bonjour Michel,\n\nMerci pour la précision, et pour le sourire !\n\nSi le problème est bien que le petit orteil sort sur le côté (largeur plutôt que longueur), il y a une piste à tenter : descendre d'une demi-taille, soit le 40. Contre-intuitif, mais en réduisant légèrement la longueur, le pied remonte un peu dans la sandale et le débordement latéral peut disparaître.\n\nSi vous souhaitez tenter l'échange, voici comment procéder :\n\nRendez-vous sur notre page retour : https://maxsauveur.com/pages/livraison-et-retour\nTéléchargez le bon de retour, indiquez \"échange de taille\" comme raison, et renvoyez les sandales à l'adresse indiquée. Dès réception et contrôle, nous vous envoyons un avoir pour commander le 40.\n\nÇa reste une tentative, mais ça vaut le coup avant de renoncer à une paire que vous trouvez belle.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Michel,\n\nBonne question, et ça vaut la peine d'y réfléchir avant de tirer des conclusions.\n\nCe que vous décrivez (les petits orteils qui dépassent légèrement à la deuxième ouverture) peut avoir deux explications :\n\n**1. La largeur du pied, pas la longueur.** Si votre pied est plutôt large ou évasé à l'avant, les orteils peuvent déborder latéralement même avec la bonne taille en longueur. Dans ce cas, changer de taille ne résoudra rien, voire aggraverait les choses.\n\n**2. La taille.** Vous portez un 41, conformément à ma recommandation. Avec 27 cm de pied, c'est la bonne pointure en longueur sur la Fisherman.\n\nMa question avant de vous conseiller un échange : est-ce que les orteils dépassent sur le côté (largeur) ou vraiment en longueur au bout de la sandale ? Et les sangles sont-elles bien ajustées ?\n\nÇa m'aidera à vous orienter correctement.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 4
+      "example_count": 3
     },
     {
       "topic": "re___change_moc_jagger_noirs_42____42_5",
