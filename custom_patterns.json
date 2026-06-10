@@ -1106,6 +1106,14 @@
       "example_count": 1
     },
     {
+      "topic": "probl_me_avec_la_commande__12369",
+      "topic_label": "Problème avec la commande #12369",
+      "situation": "Problème avec la commande #12369",
+      "response_template": "Bonjour Nicolas,\n\nMerci pour votre message et désolé pour l'absence de nouvelles.\n\nNous rencontrons en ce moment un afflux exceptionnel de commandes, ce qui a allongé nos délais de traitement. Votre commande #12369 partira ce vendredi.\n\nVous recevrez un email de confirmation avec votre lien de suivi dès l'expédition effectuée.\n\nNous vous remercions pour votre patience.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "probl_me_commande_12106",
       "topic_label": "Problème commande 12106",
       "situation": "Problème commande 12106",
