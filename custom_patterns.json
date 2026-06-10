@@ -1434,6 +1434,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__commande_12313",
+      "topic_label": "Re: Commande 12313",
+      "situation": "Re: Commande 12313",
+      "response_template": "Bonjour Christophe,\n\nDésolé pour le délai de réponse.\n\nLa commande #12313 (Fisherman cuir grainé noir, taille 40) est bien livrée, donc le retour est tout à fait possible.\n\nVoici la procédure :\n\nRendez-vous sur notre page de retour : **https://maxsauveur.com/pages/livraison-et-retour**\n\nTéléchargez et complétez le bon de retour en indiquant comme raison : \"demande d'avoir\" ou \"échange de taille\". Glissez-le dans le colis avec la paire soigneusement emballée, et envoyez le tout à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques**\n**14 avenue Lamartine**\n**13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous enverrons un avoir pour commander la bonne taille.\n\nN'hésitez pas si vous avez un doute sur la pointure à choisir, on peut vous guider.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__conseil_de_pointure",
       "topic_label": "Re: Conseil de pointure",
       "situation": "Re: Conseil de pointure",
