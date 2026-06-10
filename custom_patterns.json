@@ -122,14 +122,6 @@
       "example_count": 1
     },
     {
-      "topic": "commande__12209",
-      "topic_label": "Commande #12209",
-      "situation": "Commande #12209",
-      "response_template": "Bonjour Gaëlle,\n\nMerci pour votre message et pour les justificatifs de retour transmis.\n\nVotre avoir pour la ceinture Jonas en taille 95 va être traité dans les prochains jours, dès que notre équipe logistique a validé le contrôle du retour. Vous recevrez un code promo par email, valable 6 mois sur notre site.\n\nConcernant la taille 105, si celle-ci est effectivement en rupture au moment où vous souhaitez commander, je vous conseille de vous abonner à l'alerte de réassort directement sur la fiche produit : vous serez notifiée dès qu'elle est de nouveau disponible. La taille 100 étant disponible, elle reste une option à considérer si votre morphologie s'y prête.\n\nN'hésitez pas à nous revenir si vous avez la moindre question sur votre avoir ou les disponibilités.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "commande__12248",
       "topic_label": "Commande #12248",
       "situation": "Commande #12248",
@@ -2543,6 +2535,14 @@
       "situation": "Un client a commandé un modèle dans une taille indisponible. Le modèle chausse légèrement juste, ce qui rend la taille supérieure une alternative viable. Le service client propose soit un remboursement, soit l'envoi de la taille au-dessus avec possibilité de retour.",
       "response_template": "Bonjour [Prénom],\n\nJe vous contacte au sujet de votre commande #[NUMÉRO], et je vous dois des excuses sincères pour ce que je vais vous annoncer.\n\nSuite à une mauvaise synchronisation de nos stocks, nous nous retrouvons dans l'impossibilité de vous expédier [MODÈLE] en taille [TAILLE]. Ce modèle n'est plus disponible dans cette pointure et nous ne pouvons pas honorer votre commande dans les conditions prévues. Je suis vraiment désolé pour cette situation, qui n'aurait pas dû arriver.\n\nPour vous, deux options :\n\n**Option 1 : Remboursement intégral**\nNous procédons au remboursement complet de votre commande sur votre moyen de paiement initial, dans les prochains jours.\n\n**Option 2 : Échange vers le [TAILLE SUPÉRIEURE]**\nLe [MODÈLE] chausse légèrement juste, ce qui signifie que le [TAILLE SUPÉRIEURE] reste une option tout à fait viable pour vous. Si vous souhaitez tenter cette taille, nous pouvons vous l'expédier directement, et si elle ne convient pas, vous aurez bien entendu la possibilité de la retourner.\n\nDites-moi simplement quelle option vous convient le mieux, et je m'en occupe immédiatement.\n\nEncore toutes mes excuses pour ce contretemps.\n\n[Prénom agent] de Max Sauveur",
       "key_points": "Ton : excuses sincères, solution proactive. À utiliser uniquement quand le modèle chausse juste et que la taille supérieure est disponible. Toujours garantir la possibilité de retour si la taille supérieure ne convient pas. Justifier la recommandation de la taille supérieure par le fit du modèle.",
+      "example_count": 1
+    },
+    {
+      "topic": "statut_commande___12375",
+      "topic_label": "Statut commande - 12375",
+      "situation": "Statut commande - 12375",
+      "response_template": "Bonjour Paul,\n\nMerci pour votre message.\n\nVotre commande #12375 est bien enregistrée et en cours de préparation. Elle sera expédiée vendredi, avec une expédition estimée entre le 12 et le 14 juin. Nous avons un flux de commandes plus important qu'à l'ordinaire en ce moment, ce qui explique ce délai un peu plus long.\n\nVous recevrez votre lien de suivi Chronopost dès l'expédition.\n\nJohn de Max Sauveur",
+      "key_points": "",
       "example_count": 1
     },
     {
