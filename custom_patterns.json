@@ -1773,9 +1773,9 @@
       "topic": "re__mocassins_cuir__paul_",
       "topic_label": "Re: Mocassins cuir (Paul)",
       "situation": "Re: Mocassins cuir (Paul)",
-      "response_template": "Bonsoir Corentin,\n\nMerci pour ce retour, et encore désolé pour ce désagrément sur une occasion aussi importante.\n\nVoici ce qu'on vous propose : dès réception du mocassin à notre entrepôt, on procède à un échange direct vers la taille 42 et on expédie en express pour maximiser les chances que vous l'ayez avant votre mariage. Envoyez-nous bien la preuve de dépôt lundi, comme vous le proposez, ça nous permettra de tout anticiper de notre côté.\n\nPour le retour, expédiez la paire (les deux chaussures, même celle intacte) à notre adresse logistique :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\nFrance\n\nIncluez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"défaut fabrication – échange 42\").\n\nDès que vous avez le numéro de suivi de votre envoi, transmettez-le nous pour qu'on suive ça de près et qu'on expédie le 42 dès l'arrivée en entrepôt.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Corentin,\n\nParfait, bonne nouvelle : votre retour est bien reçu de notre côté.\n\nAvant d'expédier la paire en 42 en express, pourriez-vous nous confirmer l'adresse de livraison ? Souhaitez-vous qu'on réexpédie à la même adresse que votre commande initiale (Extia Romania, Strada Occidentului 3, 010981 Bucharest) ou à une adresse différente ?\n\nDès que vous nous confirmez ça, on expédie sans attendre.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 3
+      "example_count": 4
     },
     {
       "topic": "re__mocassins_pour_mariage__t_",
