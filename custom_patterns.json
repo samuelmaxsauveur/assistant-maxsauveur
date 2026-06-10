@@ -122,6 +122,14 @@
       "example_count": 1
     },
     {
+      "topic": "commande__12209",
+      "topic_label": "Commande #12209",
+      "situation": "Commande #12209",
+      "response_template": "Bonjour Gaëlle,\n\nMerci pour votre message et pour les justificatifs de retour transmis.\n\nVotre avoir pour la ceinture Jonas en taille 95 va être traité dans les prochains jours, dès que notre équipe logistique a validé le contrôle du retour. Vous recevrez un code promo par email, valable 6 mois sur notre site.\n\nConcernant la taille 105, si celle-ci est effectivement en rupture au moment où vous souhaitez commander, je vous conseille de vous abonner à l'alerte de réassort directement sur la fiche produit : vous serez notifiée dès qu'elle est de nouveau disponible. La taille 100 étant disponible, elle reste une option à considérer si votre morphologie s'y prête.\n\nN'hésitez pas à nous revenir si vous avez la moindre question sur votre avoir ou les disponibilités.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande__12248",
       "topic_label": "Commande #12248",
       "situation": "Commande #12248",
