@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "aide_choix_de_pointure_mocassins_paul",
+      "topic_label": "Aide choix de pointure mocassins Paul",
+      "situation": "Aide choix de pointure mocassins Paul",
+      "response_template": "Bonjour Robin,\n\nMerci pour votre message et bienvenue dans l'univers des chaussures de ville !\n\nAvec 29,1 cm de pied (28,9 + 0,2), le 44 est votre pointure, et c'est d'ailleurs plus votre taille que le 43,5. Vous pouvez y aller sereinement.\n\nUne petite précision utile pour une première paire de mocassins : le Paul chausse juste au départ. C'est tout à fait normal, le cuir est épais et la semelle en liège se moule progressivement à votre pied avec le port. Après quelques utilisations, la paire s'assouplit et gagne vraiment en confort.\n\nBonne journée,\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "annulation_commande",
       "topic_label": "Annulation commande",
       "situation": "Annulation commande",
