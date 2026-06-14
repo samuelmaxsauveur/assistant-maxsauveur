@@ -170,6 +170,14 @@
       "example_count": 1
     },
     {
+      "topic": "commande_12420___d_lai_important_pour_le_26_juin",
+      "topic_label": "Commande 12420 - délai important pour le 26 juin",
+      "situation": "Commande 12420 - délai important pour le 26 juin",
+      "response_template": "Bonjour Jérémie,\n\nMerci pour votre message et toutes nos félicitations pour votre mariage !\n\nVotre commande #12420 (Paul Mocassin Cuir Marron, 45) est bien enregistrée et sera expédiée ce lundi en livraison express. Avec 1 à 2 jours ouvrés de délai, vous recevrez votre paire largement avant le 26 juin.\n\nDès l'expédition effectuée lundi, vous recevrez un email avec votre numéro de suivi Chronopost. Si ce n'est pas le cas, n'hésitez pas à nous revenir et nous vous le communiquons directement.\n\nBonne préparation pour le grand jour !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande_jagger",
       "topic_label": "Commande Jagger",
       "situation": "Commande Jagger",
