@@ -1877,9 +1877,9 @@
       "topic": "re__max_sauveur___service_client",
       "topic_label": "Re: Max Sauveur — Service Client",
       "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Anh Lan,\n\nPas de problème, nous validons votre remboursement dès réception et contrôle de la paire.\n\nVous avez effectivement raison, nous ne descendons pas en dessous du 37 pour le moment. Mais si jamais nous étendons notre offre aux petites pointures, vous serez parmi les premières à le savoir via nos communications.\n\nMerci pour votre confiance et bonne journée à vous !\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Quentin,\n\nVotre commande #12379 (Fisherman Sandale cuir grainé noir, taille 41) est bien enregistrée chez nous depuis le 3 juin. Elle est actuellement en cours de préparation de notre côté et n'a pas encore été expédiée.\n\nDès qu'elle part, vous recevrez un email avec votre lien de suivi. Je reviens vers vous si j'ai plus d'informations sur le délai exact.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
-      "example_count": 30
+      "example_count": 31
     },
     {
       "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
