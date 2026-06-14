@@ -2650,6 +2650,14 @@
       "example_count": 1
     },
     {
+      "topic": "retour_commande_11624",
+      "topic_label": "Retour commande 11624",
+      "situation": "Retour commande 11624",
+      "response_template": "Bonjour Mattia,\n\nNous confirmons bien la réception de votre retour.\n\nLe traitement de votre remboursement prend jusqu'à 10 jours ouvrés à compter de la réception. Tout sera réglé dans ce délai.\n\nN'hésitez pas à nous recontacter si vous n'avez pas de nouvelles d'ici là.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "retour_commande_12157",
       "topic_label": "Retour commande 12157",
       "situation": "Retour commande 12157",
