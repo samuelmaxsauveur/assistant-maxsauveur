@@ -2650,6 +2650,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__vous_avez_oubli__quelque_chose_je_crois___",
+      "topic_label": "Re: Vous avez oublié quelque chose je crois...",
+      "situation": "Re: Vous avez oublié quelque chose je crois...",
+      "response_template": "Bonjour Arnaud,\n\nMerci pour votre retour.\n\nJe vous ai indiqué hier que le seuil minimum était de 149€ sur le produit concerné. Si les Fisherman que vous avez dans votre panier sont en dessous de ce prix, le code ne peut pas s'appliquer, même si ce sont bien des chaussures.\n\nLa condition porte sur le prix de l'article lui-même, pas sur le total du panier.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__vous_avez_rencontr__un_probl_me__",
       "topic_label": "Re: Vous avez rencontré un problème ?",
       "situation": "Re: Vous avez rencontré un problème ?",
