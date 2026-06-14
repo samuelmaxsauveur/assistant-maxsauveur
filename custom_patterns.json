@@ -1314,6 +1314,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__remboursement_commande__18878",
+      "topic_label": "RE: RE: Remboursement commande #18878",
+      "situation": "RE: RE: Remboursement commande #18878",
+      "response_template": "Bonjour Jean-Baptiste,\n\nVous avez raison et nous vous présentons nos excuses pour ce délai dépassé.\n\nNous regardons cela immédiatement de notre côté et revenons vers vous dès que le remboursement est déclenché.\n\nMerci pour votre patience.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__echange_ou_retour",
       "topic_label": "RE: Re: Echange ou retour",
       "situation": "RE: Re: Echange ou retour",
@@ -2278,14 +2286,6 @@
       "topic_label": "Re: Re: Retour reçu — remboursement en cours",
       "situation": "Re: Re: Retour reçu — remboursement en cours",
       "response_template": "Bonjour Théo,\n\nBonne nouvelle : votre avoir vient d'être généré. Il est utilisable une seule fois, valable pendant 12 mois, et sur toute la collection chaussures.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n0N7P206P2GKR\n\nConcernant les frais de livraison : passez votre commande normalement avec ce code, et nous effectuons le remboursement des frais de port manuellement dès que la commande est validée de notre côté.\n\nUne carte cadeau de 35€ sera envoyée dans quelques minutes également.\n\nEt pour les Moc Jagger, on attendait justement votre retour : êtes-vous toujours intéressé ? Si oui, dites-nous votre pointure et on vous tient informé dès que le stock est disponible.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__re__suivez_la_production_de_vos_moc_jagger",
-      "topic_label": "Re: Re: Suivez la production de vos Moc Jagger",
-      "situation": "Re: Re: Suivez la production de vos Moc Jagger",
-      "response_template": "Bonjour Aurélie,\n\nPour changer de pointure, voici comment procéder : rendez-vous sur notre page de retour https://maxsauveur.com/pages/livraison-et-retour, téléchargez le bon de retour et cochez \"avoir\".\nRenvoyez la paire à votre charge à notre adresse logistique : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau.\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander votre Moc Jagger Pony Marron en 41.\n\nSi vous avez un doute, n'hésitez pas à me donner la longueur de votre pied en cm, je pourrai vous orienter avec plus de précision.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
