@@ -1821,9 +1821,9 @@
       "topic": "re__max_sauveur___service_client",
       "topic_label": "Re: Max Sauveur — Service Client",
       "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Landi,\n\nC'est noté, votre adresse est confirmée. La paire part cette semaine, nous vous enverrons le lien de suivi dès l'expédition.\n\nÀ très vite !\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Victor,\n\nPas de souci, c'est tout à fait compréhensible pour le timing ! J'espère que le mariage s'est bien passé malgré tout.\n\nPuisque vous n'avez plus besoin de l'échange de pointure, nous allons procéder au remboursement de votre commande. Vous le recevrez sur votre moyen de paiement initial sous quelques jours.\n\nBonne journée,\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 26
+      "example_count": 27
     },
     {
       "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
