@@ -890,6 +890,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_06_11_08_00_59",
+      "topic_label": "Form name Form submitted 2026-06-11 08:00:59",
+      "situation": "Form name Form submitted 2026-06-11 08:00:59",
+      "response_template": "Bonjour Quentin,\n\nMerci pour votre message.\n\nVotre commande #12398 (Fisherman cuir grainé noir, taille 41) passée le 5 juin est bien enregistrée et le paiement est confirmé de notre côté. Elle est actuellement en cours de préparation.\n\nNos expéditions ont lieu les mardis et jeudis. Votre commande devrait partir lors de la prochaine collecte. Vous recevrez un email avec votre lien de suivi dès qu'elle sera expédiée.\n\nN'hésitez pas à revenir vers nous si vous avez la moindre question d'ici là.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_06_11_08_22_00",
       "topic_label": "Form name Form submitted 2026-06-11 08:22:00",
       "situation": "Form name Form submitted 2026-06-11 08:22:00",
@@ -1118,6 +1126,14 @@
       "topic_label": "Mocassin 42,5",
       "situation": "Mocassin 42,5",
       "response_template": "Bonjour,\n\nMerci pour votre message.\n\nMalheureusement, les mocassins non doublés en 42,5 ne seront pas réassortis. Cette pointure n'est pas prévue dans les prochaines productions.\n\nBonne nouvelle cependant : nos mocassins non doublés chaussent large, ce qui signifie que le 42 est tout à fait viable pour vous. Si vous souhaitez en être sûr avant de commander, mesurez votre pied nu, talon contre un mur, en marquant le bout du gros orteil, et ajoutez 0,2 cm. Communiquez-moi ce chiffre et je vous confirme la taille idéale.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "mocassins_paul",
+      "topic_label": "Mocassins Paul",
+      "situation": "Mocassins Paul",
+      "response_template": "Bonjour Théophile,\n\nAvec 27,7 cm (0,2 cm inclus), vous correspondez à un 43. Le 43,5 pourrait fonctionner, mais je vous déconseille de prendre plus grand que nécessaire sur le Paul : il n'a pas de lacets, donc le maintien dépend entièrement du cou-de-pied. Si le vôtre est standard, restez sur le 43. Si vous avez un cou-de-pied fort ou un pied plutôt charnu, le 43,5 peut se justifier.\n\nUne précision utile : le Paul chausse juste au début, c'est tout à fait normal. Le cuir est épais et la semelle en liège se moule progressivement à votre pied. Il gagne vraiment en confort après quelques ports.\n\nConcernant la Suisse : la livraison est possible, mais oui, des frais de douane peuvent s'appliquer à l'entrée en Suisse. Ces frais dépendent de la valeur déclarée du colis et sont à votre charge, car ils sont perçus directement par les douanes suisses. Nous n'avons pas de contrôle sur leur montant, et nous ne pouvons pas les anticiper avec précision.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -1933,9 +1949,9 @@
       "topic": "re__message_de_max_sauveur",
       "topic_label": "Re: Message de Max Sauveur",
       "situation": "Re: Message de Max Sauveur",
-      "response_template": "Bonjour Laurian,\n\nMerci pour votre message et pour votre fidélité, c'est vraiment apprécié.\n\nMalheureusement, il ne nous est pas possible d'étendre cet avoir aux ceintures. Pour rappel, votre commande bénéficiait déjà d'une remise de 150€ sur la ceinture Jonas, ce qui explique que l'avoir généré sur les Fisherman soit réservé aux chaussures. Appliquer à nouveau cet avoir sur une ceinture reviendrait à cumuler deux avantages sur la même offre, ce que nous ne pouvons pas faire commercialement.\n\nL'avoir de 149€ (code BZZDR2SKFRSF) reste bien valable sur l'ensemble de nos chaussures si un modèle vous intéresse.\n\nJohn – Service Client – Max Sauveur",
+      "response_template": "Bonjour Laurian,\n\nMerci de nous avoir recontactés.\n\nL'avoir que nous vous avons transmis (code BZZDR2SKFRSF) correspond au montant de vos chaussures Fisherman, soit 149€. \n\nDeux points à vérifier de votre côté :\n\n1. Le code est utilisable uniquement sur des chaussures (pas sur les ceintures), ce qui explique probablement pourquoi il ne fonctionne pas si vous tentez de commander une ceinture.\n2. Assurez-vous d'utiliser l'adresse email liée à votre commande, soit legal.laurian@gmail.com, lors du passage de commande.\n\nSi après ces vérifications le code ne fonctionne toujours pas, n'hésitez pas à nous revenir et nous réglerons ça directement.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 3
+      "example_count": 2
     },
     {
       "topic": "re__mocassins_cuir__paul_",
