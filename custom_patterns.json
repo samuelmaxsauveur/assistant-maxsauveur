@@ -2562,6 +2562,14 @@
       "example_count": 11
     },
     {
+      "topic": "retour_moc_jagger",
+      "topic_label": "Retour Moc Jagger",
+      "situation": "Retour Moc Jagger",
+      "response_template": "Bonjour Eliott,\n\nMerci pour votre retour. Vous avez raison, les échanges directs ne sont pas possibles dans notre système, mais voici ce qu'on peut faire pour vous :\n\nUne fois la paire retournée, nous vous générerons un avoir d'une valeur de 335€ (soit le prix actuel du Moc Jagger Pony Marron), utilisable exclusivement sur ce modèle. Vous ne perdez donc pas votre avantage précommande, bien au contraire.\n\nPour le retour, voici la procédure :\n1. Rendez-vous sur https://maxsauveur.com/pages/livraison-et-retour pour télécharger le bon de retour\n2. Indiquez comme raison : \"demande d'avoir\"\n3. Renvoyez la paire à l'adresse indiquée sur le bon\n\nConcernant la pointure en dessous qui n'est plus disponible actuellement, je vous invite à activer l'alerte de réapprovisionnement directement sur la fiche produit du site car nous allons avoir des nouvelles pointures dans peu de temps. Vous serez notifié dès qu'elle sera de nouveau en stock, et votre avoir sera disponible pour en profiter.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_05_26_11_41_14",
       "topic_label": "Retour ceinture – confirmation de réception en cours (commande #12068)",
       "situation": "Un client signale qu'il a retourné un article (ici une ceinture) pour la commande #12068 et attend une confirmation de bonne réception de la part du service client. L'équipe doit vérifier auprès de la logistique avant de confirmer.",
