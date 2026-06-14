@@ -466,6 +466,14 @@
       "example_count": 1
     },
     {
+      "topic": "exp_dition_commande__12395",
+      "topic_label": "Expédition commande #12395",
+      "situation": "Expédition commande #12395",
+      "response_template": "Bonjour Baptiste,\n\nVotre commande #12395 (Peter A. Daim Marron, 42) a bien été réceptionnée par notre logistique et est actuellement en cours de préparation. Elle sera expédiée lors de la prochaine collecte.\n\nLa livraison est estimée entre le 16 et le 18 juin, en point relais Chrono2Shop à Paris (511CG).\n\nVous recevrez un email avec votre lien de suivi dès l'expédition.\n\nBonne journée,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_05_15_19_55_16",
       "topic_label": "Form name Form submitted 2026-05-15 19:55:16",
       "situation": "Form name Form submitted 2026-05-15 19:55:16",
