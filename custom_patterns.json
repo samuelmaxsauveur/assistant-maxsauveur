@@ -1877,9 +1877,9 @@
       "topic": "re__max_sauveur___service_client",
       "topic_label": "Re: Max Sauveur — Service Client",
       "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Quentin,\n\nVotre commande #12379 (Fisherman Sandale cuir grainé noir, taille 41) est bien enregistrée chez nous depuis le 3 juin. Elle est actuellement en cours de préparation de notre côté et n'a pas encore été expédiée.\n\nDès qu'elle part, vous recevrez un email avec votre lien de suivi. Je reviens vers vous si j'ai plus d'informations sur le délai exact.\n\nJohn – Service Client – Max Sauveur",
+      "response_template": "Bonjour Mekki,\n\nRavi que l'avoir fonctionne bien.\n\nLa livraison offerte sur votre première commande était liée à une offre promotionnelle active à ce moment-là. Les commandes passées avec un avoir suivent nos conditions tarifaires standard, qui incluent les frais de port habituels.\n\nNous ne sommes donc pas en mesure d'offrir la livraison sur cette nouvelle commande.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
-      "example_count": 31
+      "example_count": 32
     },
     {
       "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
