@@ -151,7 +151,7 @@
       "situation": "Commande #12393",
       "response_template": "Bonjour Hugo,\n\nMerci pour votre message et pour votre fidélité.\n\nVotre commande #12393 (Peter A. Mocassin Cuir Grainé Bordeaux, taille 42) est bien enregistrée et en cours de préparation. Nous avons eu un léger retard opérationnel cette semaine, et nous en sommes sincèrement désolés. Votre commande sera expédiée la semaine prochaine.\n\nDès l'expédition, vous recevrez votre lien de suivi Chronopost pour suivre l'acheminement vers votre point relais.\n\nEncore toutes nos excuses pour ce délai.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 1
+      "example_count": 2
     },
     {
       "topic": "commande__18878",
