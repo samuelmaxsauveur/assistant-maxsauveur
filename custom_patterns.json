@@ -1026,6 +1026,14 @@
       "example_count": 1
     },
     {
+      "topic": "help__",
+      "topic_label": "Help !",
+      "situation": "Help !",
+      "response_template": "Bonjour Gustave,\n\nMerci pour votre message, et désolé que la Deck noire en 46 ne soit plus disponible au pop-up !\n\nBonne nouvelle : nous pouvons vous en passer commande spécialement. Avant de la déclencher, nous voulions simplement confirmer avec vous que vous souhaitez bien le modèle Deck grainée noire en 46.\n\nUne chose importante à noter : étant donné qu'il s'agit d'une commande spécifique passée pour vous, le retour ne sera pas possible si la pointure ne vous convenait pas. Nous voulions vous le préciser en toute transparence avant de procéder.\n\nConfirmez-nous et nous nous occupons du reste !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "identification_de_la_pointure_id_ale_",
       "topic_label": "Identification de la pointure idéale.",
       "situation": "Identification de la pointure idéale.",
