@@ -66,6 +66,14 @@
       "example_count": 1
     },
     {
+      "topic": "code_promo_45_euros_ne_fonctionne_pas",
+      "topic_label": "Code promo 45 euros ne fonctionne pas",
+      "situation": "Code promo 45 euros ne fonctionne pas",
+      "response_template": "Bonjour,\n\nMerci pour votre message.\n\nLe code que vous avez obtenu via notre roue de la fortune est soumis à une condition indiquée dans nos CGV : le produit dans votre panier doit atteindre 149€ minimum pour que le code se déclenche.\n\nSi les Fisherman que vous souhaitez acheter sont en dessous de ce seuil, le code ne s'appliquera pas, quelle que soit la valeur totale de votre panier.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "code_roue_condition_prix_minimum",
       "topic_label": "Code promo – condition de prix minimum non remplie (produit ciblé, pas panier)",
       "situation": "Un client a obtenu un code de réduction (ex : roue de la fortune, code ceinture) et tente de l'appliquer sur un article ou en complétant son panier avec des accessoires pour atteindre le seuil. Le code ne fonctionne pas car la condition porte sur le prix de l'article ciblé lui-même, et non sur le total du panier. De plus, certains modèles à marge réduite sont explicitement exclus.",
