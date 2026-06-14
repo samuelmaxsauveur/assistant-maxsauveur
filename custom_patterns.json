@@ -58,14 +58,6 @@
       "example_count": 1
     },
     {
-      "topic": "re__re__re__max_sauveur___service_client",
-      "topic_label": "Clôture de dossier – problème résolu (mocassins)",
-      "situation": "Le client confirme que le problème est résolu et que le produit (mocassin) a bien été reçu et convient. Le service client conclut la conversation de manière chaleureuse.",
-      "response_template": "Ravie que tout soit rentré dans l'ordre et que [Prénom du destinataire / votre mari / vous] profite(z) de ses/vos [nom du produit] !\n\nBonne journée à vous.\n\n[Prénom] de Max Sauveur",
-      "key_points": "Ton chaleureux et concis. Pas de relance, pas d'action à suivre. Formulation personnalisée selon le contexte (mention du mari, du produit exact). Signature avec prénom + 'de Max Sauveur'.",
-      "example_count": 1
-    },
-    {
       "topic": "code_promo_45_euros_ne_fonctionne_pas",
       "topic_label": "Code promo 45 euros ne fonctionne pas",
       "situation": "Code promo 45 euros ne fonctionne pas",
@@ -2248,6 +2240,14 @@
       "response_template": "Bonjour Paul,\n\nMerci pour ce retour. Concernant le 43,5 : cette pointure n'existe pas sur la Fisherman, la taille au-dessus est directement le 43, et c'est celle-là qu'il vous faut.\n\nN'hésitez pas si vous avez des questions.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
+    },
+    {
+      "topic": "re__re__re__max_sauveur___service_client",
+      "topic_label": "Re: Re: Re: Max Sauveur — Service Client",
+      "situation": "Re: Re: Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour David,\n\nNous avons eu un retour de Chronopost : votre colis est en attente de nouvelles instructions de livraison de leur part.\n\nLe plus simple pour débloquer rapidement la situation est de les appeler directement au 09 69 39 13 91 en communiquant votre numéro de suivi XR630892775TS. Ils pourront convenir avec vous d'un nouveau créneau ou d'un dépôt en point relais selon votre préférence.\n\nN'hésitez pas à nous revenir si cela ne se débloque pas.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 2
     },
     {
       "topic": "re__re__re__re__commande_12164",
