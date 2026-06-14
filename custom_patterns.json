@@ -882,6 +882,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_06_13_16_17_33",
+      "topic_label": "Form name Form submitted 2026-06-13 16:17:33",
+      "situation": "Form name Form submitted 2026-06-13 16:17:33",
+      "response_template": "Bonjour Remy,\n\nMerci pour votre message et pour votre enthousiasme pour le Boat blanc cuir grainé !\n\nMalheureusement, ce modèle ne sera pas réassort cette année. Nous sommes sincèrement désolés de ne pas pouvoir vous donner une meilleure nouvelle.\n\nLe mieux que je puisse vous conseiller est de vous abonner à l'alerte pointure directement sur la fiche produit de notre site : vous serez ainsi parmi les premiers informés si le modèle revient dans votre taille.\n\nEncore désolé, et n'hésitez pas si vous avez d'autres questions.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fw__commande__12087_confirm_e",
       "topic_label": "Fw: Commande #12087 confirmée",
       "situation": "Fw: Commande #12087 confirmée",
