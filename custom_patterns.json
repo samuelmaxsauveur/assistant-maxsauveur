@@ -890,6 +890,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_06_11_08_22_00",
+      "topic_label": "Form name Form submitted 2026-06-11 08:22:00",
+      "situation": "Form name Form submitted 2026-06-11 08:22:00",
+      "response_template": "Bonjour Quentin,\n\nVotre commande #12379 (Fisherman Sandale cuir grainé noir, taille 41) a bien été réceptionnée par notre logistique et est en cours d'expédition via Chrono2Shop. La livraison est estimée entre le 16 et le 18 juin à votre point relais OLEA MARKET, 923A Rue de destination, Lyon 69007.\n\nVous recevrez un email de confirmation dès que le colis est scanné par Chronopost.\n\nPas d'inquiétude, tout roule de notre côté !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_06_11_15_42_13",
       "topic_label": "Form name Form submitted 2026-06-11 15:42:13",
       "situation": "Form name Form submitted 2026-06-11 15:42:13",
