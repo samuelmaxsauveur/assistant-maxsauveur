@@ -1490,6 +1490,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__commande__12209",
+      "topic_label": "Re: Commande #12209",
+      "situation": "Re: Commande #12209",
+      "response_template": "Bonjour Gaëlle,\n\nBonne nouvelle : votre avoir pour la ceinture Jonas taille 95 est en cours d'envoi aujourd'hui même. Vous recevrez le code promo par email dans la journée.\n\nVu la date d'anniversaire de votre mari le 19 juin, je vous conseille de commander dès réception du code afin d'être dans les délais.\n\nN'hésitez pas à nous revenir si vous ne recevez pas le code d'ici ce soir.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__12242_confirm_e",
       "topic_label": "Re: Commande #12242 confirmée",
       "situation": "Re: Commande #12242 confirmée",
