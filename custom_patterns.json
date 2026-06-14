@@ -898,6 +898,14 @@
       "example_count": 1
     },
     {
+      "topic": "fw__une_commande__12347_est_en_transit",
+      "topic_label": "Fw: Une commande #12347 est en transit",
+      "situation": "Fw: Une commande #12347 est en transit",
+      "response_template": "Bonjour Thomas,\n\nMerci pour votre message. Nous prenons bonne note de votre souhait de retourner la commande #12347 (Fisherman Sandale cuir grainé marron foncé, taille 43).\n\nAvant de valider le retour, j'aurais une question simple : qu'est-ce qui vous a amené à retourner la paire ? La taille, le style, ou autre chose ?\n\nC'est utile pour nous, et ça me permettra aussi de voir si une autre pièce de la collection pourrait mieux vous correspondre.\n\n=> Si c'est le cas, nous pourrions vous proposer un avoir de 174€ avec un geste de la maison en supplément, frais de livraison offerts pour un échange vers un autre modèle. Une façon de trouver la bonne pièce sans frais supplémentaires.\n\nDites-moi si vous préférez cette option ou si nous confirmons le retour et le remboursement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fwd__commande__11534",
       "topic_label": "Fwd: Commande #11534",
       "situation": "Fwd: Commande #11534",
@@ -1821,9 +1829,9 @@
       "topic": "re__max_sauveur___service_client",
       "topic_label": "Re: Max Sauveur — Service Client",
       "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Victor,\n\nPas de souci, c'est tout à fait compréhensible pour le timing ! J'espère que le mariage s'est bien passé malgré tout.\n\nPuisque vous n'avez plus besoin de l'échange de pointure, nous allons procéder au remboursement de votre commande. Vous le recevrez sur votre moyen de paiement initial sous quelques jours.\n\nBonne journée,\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Landi,\n\nC'est noté, votre adresse est confirmée. La paire part cette semaine, nous vous enverrons le lien de suivi dès l'expédition.\n\nÀ très vite !\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 27
+      "example_count": 26
     },
     {
       "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
