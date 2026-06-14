@@ -2402,6 +2402,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__une_commande__11718_est_en_transit",
+      "topic_label": "Re: Re: Une commande #11718 est en transit",
+      "situation": "Re: Re: Une commande #11718 est en transit",
+      "response_template": "Bonjour Hugo,\n\nMerci pour le retour. Nous allons organiser la réexpédition dès réception du colis dans notre entrepôt.\n\nPourriez-vous nous indiquer l'adresse ou le point relais Chronopost vers lequel vous souhaitez que nous le renvoyions ?\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__une_commande__11763_est_en_transit",
       "topic_label": "Re: Re: Une commande #11763 est en transit",
       "situation": "Re: Re: Une commande #11763 est en transit",
