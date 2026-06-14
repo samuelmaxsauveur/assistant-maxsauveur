@@ -1466,6 +1466,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__commande__12248",
+      "topic_label": "Re: Commande #12248",
+      "situation": "Re: Commande #12248",
+      "response_template": "Bonjour Charles-Antoine,\n\nMerci pour votre suivi, et désolé pour ce nouveau délai.\n\nD'après nos données logistiques, votre commande #12248 (Winston Mocassin Cuir Noir, 42) a bien été réceptionnée dans notre entrepôt et est programmée pour une expédition en Chrono2Shop. \n\nVous recevrez votre lien de suivi Chronopost dès que le colis sera pris en charge par le transporteur.\n\nJe comprends que ce délai dépasse ce qui était annoncé initialement, et je m'en excuse sincèrement. N'hésitez pas à me revenir si vous n'avez toujours pas de nouvelles d'ici le 18 juin.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande_11516_trop_grande",
       "topic_label": "Re: Commande 11516 trop grande",
       "situation": "Re: Commande 11516 trop grande",
