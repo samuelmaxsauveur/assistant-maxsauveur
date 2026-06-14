@@ -1002,6 +1002,14 @@
       "example_count": 2
     },
     {
+      "topic": "information_pointure_fisherman",
+      "topic_label": "Information pointure Fisherman",
+      "situation": "Information pointure Fisherman",
+      "response_template": "Bonjour Ludovic,\n\nMerci pour votre message et excellente semaine à vous aussi !\n\nLe Fisherman est un modèle qui chausse vraiment grand, plus que la moyenne. Avec un pied fin et une pointure habituelle de 43 en chaussures de ville (Heschung, Paraboots sont de très bonnes références pour se situer), nous vous conseillons de prendre un 42.\n\nVos 44 en sneakers ne sont pas une bonne base de comparaison pour ce type de chaussure, les baskets taillant généralement plus grand. C'est votre 43 en chaussures de ville qui est le point de départ, et le fait d'avoir le pied fin renforce encore la recommandation de descendre d'une taille.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "je_suis_perdu___sizing_mocassin_paul",
       "topic_label": "Je suis perdu ~ Sizing Mocassin Paul",
       "situation": "Je suis perdu ~ Sizing Mocassin Paul",
