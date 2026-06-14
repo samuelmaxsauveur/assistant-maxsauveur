@@ -2226,6 +2226,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__re__fw__commande__12087_confirm_e",
+      "topic_label": "Re: Re: Re: Fw: Commande #12087 confirmée",
+      "situation": "Re: Re: Re: Fw: Commande #12087 confirmée",
+      "response_template": "Bonjour Samy,\n\nLe remboursement de 335€ a bien été déclenché de notre côté. Selon votre banque, comptez 3 à 5 jours ouvrés pour que la somme apparaisse sur votre compte.\n\nN'hésitez pas à revenir vers nous si vous ne le voyez pas d'ici là.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__fwd__merci__et_un_rappel_important_",
       "topic_label": "Re: Re: Re: Fwd: Merci (et un rappel important)",
       "situation": "Re: Re: Re: Fwd: Merci (et un rappel important)",
