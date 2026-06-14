@@ -1026,14 +1026,6 @@
       "example_count": 1
     },
     {
-      "topic": "help__",
-      "topic_label": "Help !",
-      "situation": "Help !",
-      "response_template": "Bonjour Gustave,\n\nMerci pour votre message, et désolé que la Deck noire en 46 ne soit plus disponible au pop-up !\n\nBonne nouvelle : nous pouvons vous en passer commande spécialement. Avant de la déclencher, nous voulions simplement confirmer avec vous que vous souhaitez bien le modèle Deck grainée noire en 46.\n\nUne chose importante à noter : étant donné qu'il s'agit d'une commande spécifique passée pour vous, le retour ne sera pas possible si la pointure ne vous convenait pas. Nous voulions vous le préciser en toute transparence avant de procéder.\n\nConfirmez-nous et nous nous occupons du reste !\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "identification_de_la_pointure_id_ale_",
       "topic_label": "Identification de la pointure idéale.",
       "situation": "Identification de la pointure idéale.",
@@ -1326,6 +1318,14 @@
       "topic_label": "RE: Form name Form submitted 2026-05-21 15:34:36",
       "situation": "RE: Form name Form submitted 2026-05-21 15:34:36",
       "response_template": "Bonjour Jérémy,\n\nTout à fait, le 45 ne sera pas trop grand : la Derby Golf chausse légèrement plus ajusté que vos Deck, donc le 45 sur ce modèle correspond en réalité à un volume proche de votre 44 habituel. Vous ne serez pas dans une chaussure flottante.\n\nCela dit, si vous voyez que le 44,5 est disponible, cette taille peut également convenir. Les deux options sont viables, c'est vraiment une question de préférence : un peu plus de place avec le 45, ou un chaussant plus ajusté avec le 44,5.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__guide_taille",
+      "topic_label": "RE: Guide taille",
+      "situation": "RE: Guide taille",
+      "response_template": "Bonjour David,\n\nRavi que votre commande #12412 soit passée, vous avez bien fait de prendre les deux tailles pour être sûr. Dès que vous savez laquelle vous convient, n'hésitez pas à nous retourner l'autre via notre page de retour : https://maxsauveur.com/pages/livraison-et-retour\n\nConcernant la commande Manzi, je comprends la frustration de ne pas obtenir de réponse, mais je dois être honnête avec vous : bien que ce soit un modèle en partenariat avec Max Sauveur, c'est Manzi qui gère intégralement les ventes et le service après-vente de leur boutique. Nous n'avons pas accès à leurs commandes ni à leurs dossiers clients, et nous ne pouvons pas intervenir de notre côté.\n\nPour les relancer, voici quelques pistes si vous n'avez pas encore essayé :\n- Leur formulaire de contact sur manziandco.com\n- Leurs réseaux sociaux (Instagram notamment), où les réponses sont souvent plus rapides\n\nBonne réception pour vos Fisherman, et tenez-moi au courant pour le retour.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
