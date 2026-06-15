@@ -1282,6 +1282,14 @@
       "example_count": 1
     },
     {
+      "topic": "probl_me_livraison__12423",
+      "topic_label": "Problème livraison #12423",
+      "situation": "Problème livraison #12423",
+      "response_template": "Bonjour Anthony,\n\nMerci pour votre message.\n\nVotre commande #12423 (Fisherman daim marron, taille 44) est actuellement en cours de préparation et la livraison est estimée entre le 17 et le 19 juin.\n\nPour le point relais, pas de problème, nous pouvons modifier le point Chrono2Shop avant l'expédition. Pourriez-vous nous indiquer le point relais Chrono2Shop que vous souhaitez ? Vous pouvez en trouver un près de chez vous via ce lien : https://www.chronopost.fr/expeditionAvanceeSec/ounoustrouver.html\n\nDès que nous avons l'adresse complète du nouveau point, nous effectuons le changement.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "probl_me_paire_moc_jagger___absence_de_retour_sav_whatsapp",
       "topic_label": "Problème paire Moc Jagger / Absence de retour SAV WhatsApp",
       "situation": "Problème paire Moc Jagger / Absence de retour SAV WhatsApp",
