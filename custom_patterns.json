@@ -162,6 +162,14 @@
       "example_count": 2
     },
     {
+      "topic": "commande__12619",
+      "topic_label": "Commande #12619",
+      "situation": "Commande #12619",
+      "response_template": "Bonjour Matteo,\n\nMerci pour votre commande et vos mots très gentils sur nos ceintures !\n\nPour être honnête avec vous : la livraison à Genève d'ici vendredi de cette semaine est un délai très serré. Votre commande a été passée dimanche, et pour l'international (Suisse), le délai habituel est de 10 à 15 jours ouvrés une fois expédiée.\n\nMême avec une expédition dès mardi matin, il est malheureusement peu probable que la ceinture arrive à Genève avant vendredi.\n\nNous ne voulons pas vous promettre quelque chose que nous ne sommes pas certains de tenir, d'autant plus qu'une livraison express internationale sur ce délai reste soumise aux contraintes douanières et des transporteurs.\n\nNous allons prioriser votre expédition et faire de notre mieux, mais nous vous déconseillons de compter dessus pour votre mariage samedi afin d'éviter une déception de dernière minute.\n\nDès que votre commande est expédiée, nous vous transmettrons le lien de suivi pour que vous puissiez suivre l'acheminement en temps réel.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande__18878",
       "topic_label": "Commande #18878",
       "situation": "Commande #18878",
