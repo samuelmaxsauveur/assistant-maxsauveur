@@ -954,6 +954,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_06_15_14_58_34",
+      "topic_label": "Form name Form submitted 2026-06-15 14:58:34",
+      "situation": "Form name Form submitted 2026-06-15 14:58:34",
+      "response_template": "Bonjour Théo,\n\nNous avons bien réceptionné votre retour des Fisherman taille 40 (commande #12219).\n\nLe traitement des remboursements prend jusqu'à 14 jours ouvrés à compter de la réception du colis. Votre demande est en cours et vous recevrez le remboursement dans ce délai.\n\nN'hésitez pas à nous recontacter si vous n'avez rien reçu passé ce délai.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fw__commande__12087_confirm_e",
       "topic_label": "Fw: Commande #12087 confirmée",
       "situation": "Fw: Commande #12087 confirmée",
