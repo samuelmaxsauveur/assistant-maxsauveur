@@ -1578,6 +1578,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__commande__12431_confirm_e",
+      "topic_label": "Re: Commande #12431 confirmée",
+      "situation": "Re: Commande #12431 confirmée",
+      "response_template": "Bonjour Tanguy,\n\nMerci pour votre message. Votre commande #12431 (Jamie - Ceinture en Cuir Noir) est bien enregistrée et en cours de préparation.\n\nElle sera expédiée demain mardi 15 juin via Chronopost Express, avec une livraison estimée au 16 juin. Vous recevrez un lien de suivi dès que le colis sera pris en charge par le transporteur.\n\nVous devriez donc bien recevoir votre ceinture avant la fin de semaine.\n\nN'hésitez pas à revenir vers nous si besoin.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande_11516_trop_grande",
       "topic_label": "Re: Commande 11516 trop grande",
       "situation": "Re: Commande 11516 trop grande",
