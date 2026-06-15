@@ -954,14 +954,6 @@
       "example_count": 1
     },
     {
-      "topic": "form_name_form_submitted_2026_06_15_14_58_34",
-      "topic_label": "Form name Form submitted 2026-06-15 14:58:34",
-      "situation": "Form name Form submitted 2026-06-15 14:58:34",
-      "response_template": "Bonjour Théo,\n\nNous avons bien réceptionné votre retour des Fisherman taille 40 (commande #12219).\n\nLe traitement des remboursements prend jusqu'à 14 jours ouvrés à compter de la réception du colis. Votre demande est en cours et vous recevrez le remboursement dans ce délai.\n\nN'hésitez pas à nous recontacter si vous n'avez rien reçu passé ce délai.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "fw__commande__12087_confirm_e",
       "topic_label": "Fw: Commande #12087 confirmée",
       "situation": "Fw: Commande #12087 confirmée",
@@ -1262,14 +1254,6 @@
       "topic_label": "Pointure pour ma commande passée",
       "situation": "Pointure pour ma commande passée",
       "response_template": "Bonjour Julien,\n\nMerci pour ce retour enthousiaste sur vos Chelsea Chapman, et bravo d'avoir suivi la méthode de mesure à la lettre !\n\nPour répondre à votre question : avec 28 cm de pied, vous êtes effectivement dans la fourchette du 43. Le fait que le pied gauche soit parfait est rassurant.\n\nCe que vous ressentez sur le pied droit (orteils qui touchent le bout) est en partie lié à deux choses :\n\n**1. La forme à bout plus pointu**\nLes Chelsea ont une forme plus effilée que vos Paraboot ou Doc Martens, qui ont un bout arrondi et large. Ce n'est pas votre pied qui est trop grand, c'est simplement que les orteils se retrouvent positionnés différemment dans la chaussure. Ce ressenti s'atténue avec le port.\n\n**2. Le cuir neuf est rigide**\nLe cuir grainé de la Chapman est encore raide. Avec quelques ports, il va s'assouplir et la boîte à orteils va légèrement se détendre, ce qui libère de l'espace à l'avant.\n\nEn revanche, si la douleur est franche dès le départ (ongles qui frottent, grande douleur), n'hésitez pas à me le signaler rapidement, car vous êtes encore dans le délai de retour.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "pointure_pour_moc_paul_cuir_noir",
-      "topic_label": "Pointure pour moc Paul cuir noir",
-      "situation": "Pointure pour moc Paul cuir noir",
-      "response_template": "Bonjour Valentin,\n\nMerci pour votre message !\n\nPetite précision sur la méthode : la mesure doit se faire pied nu, sans chaussettes, pour être précise. En partant de votre pied fort (28,7 cm) et en ajoutant les 0,2 cm de confort recommandés, vous arrivez à 28,9 cm, ce qui correspond au 44.\n\nC'est donc le 44 que je vous conseille pour votre Paul en cuir noir.\n\nUne chose à savoir sur ce modèle : le Paul chausse juste au départ, c'est tout à fait normal. Le cuir est épais et la semelle en liège se moule au pied avec les premiers ports. Ne vous inquiétez pas si la chaussure vous semble ferme les premières fois, elle s'assouplit rapidement et gagne vraiment en confort avec le temps.\n\nBonne commande !\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -1578,14 +1562,6 @@
       "example_count": 1
     },
     {
-      "topic": "re__commande__12431_confirm_e",
-      "topic_label": "Re: Commande #12431 confirmée",
-      "situation": "Re: Commande #12431 confirmée",
-      "response_template": "Bonjour Tanguy,\n\nMerci pour votre message. Votre commande #12431 (Jamie - Ceinture en Cuir Noir) est bien enregistrée et en cours de préparation.\n\nElle sera expédiée demain mardi 15 juin via Chronopost Express, avec une livraison estimée au 16 juin. Vous recevrez un lien de suivi dès que le colis sera pris en charge par le transporteur.\n\nVous devriez donc bien recevoir votre ceinture avant la fin de semaine.\n\nN'hésitez pas à revenir vers nous si besoin.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "re__commande_11516_trop_grande",
       "topic_label": "Re: Commande 11516 trop grande",
       "situation": "Re: Commande 11516 trop grande",
@@ -1696,14 +1672,6 @@
       "response_template": "Bonjour Alma,\n\nMerci pour votre message et désolé pour ce manque de nouvelles.\n\nNous avons interrogé notre logistique concernant votre Moc Jagger (commande #11600) et revenons vers vous très rapidement avec une réponse précise sur le statut de votre expédition.\n\nMerci encore pour votre patience.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 5
-    },
-    {
-      "topic": "re__form_name_form_submitted_2025_12_30_16_47_02",
-      "topic_label": "Re: Form name Form submitted 2025-12-30 16:47:02",
-      "situation": "Re: Form name Form submitted 2025-12-30 16:47:02",
-      "response_template": "Bonjour Zoé,\n\nMerci pour votre message.\n\nVotre paire est bien entre les mains de notre atelier et la réparation ne devrait plus tarder. \n\nDès que la paire est prête, nous vous recontactons pour organiser la livraison au point relais Ashwika Market (622BA), comme la dernière fois.\n\nMerci pour votre patience.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
     },
     {
       "topic": "re__form_name_form_submitted_2026_05_14_18_05_44",
@@ -1893,9 +1861,9 @@
       "topic": "re__form_name_form_submitted_2026_06_08_21_35_24",
       "topic_label": "Re: Form name Form submitted 2026-06-08 21:35:24",
       "situation": "Re: Form name Form submitted 2026-06-08 21:35:24",
-      "response_template": "Bonjour Hugo,\n\nBonne question, et vous avez bien fait de nous écrire avant de passer commande.\n\nAvec 27,4 cm de pied (27,2 + 0,2), vous êtes effectivement sur un 43. C'est la bonne taille.\n\nConcernant les talons qui se décollaient en 43,5 : c'est lié à la forme du Moc Jagger, qui est naturellement large. En 43, vous aurez déjà bien moins ce phénomène. Et si vous sentez malgré tout un peu de jeu à l'arrière une fois rodé, une semelle d'ajustement (type semelle mousse fine) fonctionne très bien pour combler l'espace et maintenir le talon. C'est une solution simple et efficace pour les pieds larges sur ce modèle.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Hugo,\n\nMerci de nous avoir recontactés, et désolé pour la confusion. Le remboursement a été déclenché par erreur de notre côté, trop rapidement.\n\nBonne nouvelle : votre échange est bien en cours. Nous voyons dans notre système qu'une expédition a été préparée pour vous.\n\nL'échange vers le Moc Jagger Noir 43 est prêt à être envoyé.\n\nPour compenser le remboursement qui a été traité, nous vous demandons de bien vouloir repasser une commande en utilisant le code suivant : X1XAMGRCPH10, qui reproduit la réduction appliquée à votre commande d'origine.\n\nN'hésitez pas à me tenir informé si vous rencontrez le moindre souci avec le code ou la commande.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 3
+      "example_count": 2
     },
     {
       "topic": "re__form_name_form_submitted_2026_06_08_21_37_41",
@@ -1973,9 +1941,9 @@
       "topic": "re__max_sauveur___service_client",
       "topic_label": "Re: Max Sauveur — Service Client",
       "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Frédéric,\n\nC'est très simple : rendez-vous sur le site maxsauveur.com, ajoutez le Moc Jagger en 42,5 à votre panier, et saisissez le code **98KYQJTF4EW5** avant de valider. La réduction s'applique directement.\n\nLes frais de livraison standard s'appliquent à la commande, comme convenu.\n\nHâte que vous puissiez enfin les chausser !\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Mekki,\n\nRavi que l'avoir fonctionne bien.\n\nLa livraison offerte sur votre première commande était liée à une offre promotionnelle active à ce moment-là. Les commandes passées avec un avoir suivent nos conditions tarifaires standard, qui incluent les frais de port habituels.\n\nNous ne sommes donc pas en mesure d'offrir la livraison sur cette nouvelle commande.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
-      "example_count": 33
+      "example_count": 32
     },
     {
       "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
@@ -2390,6 +2358,14 @@
       "topic_label": "Re: Re: Re: Re: Form name Form submitted 2026-05-28 13:58:14",
       "situation": "Re: Re: Re: Re: Form name Form submitted 2026-05-28 13:58:14",
       "response_template": "Bonjour Kevin,\n\nTout à fait normal ! Le Moc Jagger est désormais disponible en stock au prix de 335€.\n\nBonne nouvelle pour vous : votre avoir sera émis à hauteur de 335€, soit le prix actuel en stock. Cela vous permet de conserver pleinement l'avantage de votre précommande et de racheter le Moc Jagger sans débourser la différence.\n\nVotre avoir vous sera envoyé cette semaine. Il est valable uniquement sur le Moc Jagger.\n\nBonne journée à vous.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__re__re__re__max_sauveur___service_client",
+      "topic_label": "Re: Re: Re: Re: Max Sauveur — Service Client",
+      "situation": "Re: Re: Re: Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour David,\n\nMerci pour ce retour détaillé.\n\nDe notre côté, nous confirmons que le colis XR630892775TS est bien expédié, mais le suivi indique qu'une instruction de livraison a effectivement été enregistrée le 14 juin, ce qui a redirigé votre colis. Nous n'avons pas donné cette instruction depuis Max Sauveur, il s'agit probablement d'une action automatique du système Chronopost.\n\nPour débloquer la situation et orienter le colis vers un point relais proche du 4 rue Martel 75010 Paris, voici la démarche la plus efficace : appelez à nouveau le 09 69 39 13 91, mais en demandant explicitement à parler à un conseiller humain (tapez 0 ou insistez pour ne pas rester sur le bot). Communiquez le numéro de suivi XR630892775TS et demandez-leur d'orienter votre colis vers un point relais Chrono2Shop dans le 75010.\n\nNotre marge d'action directe sur le routage d'un colis en cours d'acheminement est malheureusement limitée : c'est bien Chronopost qui a la main à ce stade. Mais si cela ne se débloque toujours pas après cet appel, revenez vers nous et nous ouvrirons un dossier officiel en tant qu'expéditeur.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
