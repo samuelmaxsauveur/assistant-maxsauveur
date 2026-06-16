@@ -1186,6 +1186,14 @@
       "example_count": 1
     },
     {
+      "topic": "paire_de_chaussures_bateaux_marron_achet_es_en_pop_up",
+      "topic_label": "Paire de chaussures bateaux marron achetées en pop up",
+      "situation": "Paire de chaussures bateaux marron achetées en pop up",
+      "response_template": "Bonjour Thomas,\n\nMerci pour votre message et pour vos mots très chaleureux sur le pop up, c'est vraiment agréable à lire !\n\nBonne nouvelle concernant les traces que vous avez remarquées : ce que vous voyez n'est pas un défaut structurel. Il s'agit simplement de résidus de colle visibles en surface, ce qui peut arriver sur des paires finies à la main. Cela se retire facilement et n'a aucune incidence sur la solidité de l'assemblage. La paire tiendra parfaitement dans le temps, soyez rassuré.\n\nDe plus la couture plateau que vous voyez est là pour maintenir le tout.\n\nVous pouvez porter vos bateaux l'esprit tranquille !\n\nN'hésitez pas à nous revenir si vous avez d'autres questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "paire_de_derby_golf",
       "topic_label": "Paire de derby golf",
       "situation": "Paire de derby golf",
