@@ -2594,6 +2594,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__suite_commande__11654",
+      "topic_label": "Re: Suite commande #11654",
+      "situation": "Re: Suite commande #11654",
+      "response_template": "Bonjour Denis,\n\nMerci pour votre message. Nous avons interrogé notre logistique pour vérifier la réception de votre retour et nous revenons vers vous dès que nous avons leur confirmation.\n\nBonne journée à vous,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__suite_message_avec_john_max_sauveur",
       "topic_label": "Re: Suite message avec John max sauveur",
       "situation": "Re: Suite message avec John max sauveur",
