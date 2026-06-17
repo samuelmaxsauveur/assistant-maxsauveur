@@ -2842,6 +2842,14 @@
       "example_count": 1
     },
     {
+      "topic": "retour_de_chaussures_mariage___paul",
+      "topic_label": "Retour de chaussures mariage - Paul",
+      "situation": "Retour de chaussures mariage - Paul",
+      "response_template": "Bonsoir Corentin,\n\nPas d'inquiétude, nous sommes désolés de ne pas vous avoir répondu plus tôt.\n\nVotre nouvelle paire a bien été préparée et expédiée.\n\nVous pouvez suivre votre colis ici : https://www.laposte.fr/outils/suivre-vos-envois?code=CB546671292FR\nCordialement,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "retour_de_commande__11714",
       "topic_label": "Retour de commande #11714",
       "situation": "Retour de commande #11714",
