@@ -2906,6 +2906,14 @@
       "example_count": 1
     },
     {
+      "topic": "re___re__re__max_sauveur___service_client",
+      "topic_label": "Re : Re: Re: Max Sauveur — Service Client",
+      "situation": "Re : Re: Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Frédéric,\n\nPas d'inquiétude, c'est une erreur d'affichage sur notre fiche produit. Le Moc Jagger est bien disponible et vous pouvez le commander directement, sans passer par la précommande.\n\nN'hésitez pas si vous avez le moindre souci au moment du passage de commande !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re___re__re__merci_pour_votre_message___quelques_information",
       "topic_label": "Re : Re: Re: Merci pour votre message - Quelques informations utiles Re: Commande #11642 confirmée",
       "situation": "Re : Re: Re: Merci pour votre message - Quelques informations utiles Re: Commande #11642 confirmée",
