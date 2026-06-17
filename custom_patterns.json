@@ -2882,6 +2882,14 @@
       "example_count": 17
     },
     {
+      "topic": "retour_",
+      "topic_label": "Retour.",
+      "situation": "Retour.",
+      "response_template": "Bonjour Clément,\n\nMerci pour votre message. Votre retour est bien en notre possession, pas d'inquiétude de ce côté.\n\nJe transmets l'information à notre équipe pour que le traitement soit lancé dans les meilleurs délais, et nous revenons vers vous dès que c'est fait.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re___d_but_de_la_fabrication_de_vos_moc_jagger_et_point_livr",
       "topic_label": "Re : Début de la fabrication de vos Moc Jagger et point livraison",
       "situation": "Re : Début de la fabrication de vos Moc Jagger et point livraison",
