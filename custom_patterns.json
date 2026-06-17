@@ -1402,6 +1402,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "RE: Max Sauveur — Service Client",
+      "situation": "RE: Max Sauveur — Service Client",
+      "response_template": "Bonjour Antoine,\n\nPas de souci, je comprends tout à fait votre raisonnement. Quand on n'est pas certain qu'une demi-taille en dessous règle le problème (notamment sur un pied fin avec un talon qui glisse), mieux vaut ne pas multiplier les allers-retours.\n\nVotre remboursement sera traité dès que nous aurons vérifié la réception et l'état de la paire. Comptez quelques jours ouvrés.\n\nMerci pour votre patience et pour avoir donné sa chance au Moc Jagger. Si un jour vous souhaitez retenter l'aventure avec nous, n'hésitez pas à nous contacter, on vous guidera sur la pointure.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 34
+    },
+    {
       "topic": "re__question_sandale",
       "topic_label": "RE: Question sandale",
       "situation": "RE: Question sandale",
@@ -1960,14 +1968,6 @@
       "response_template": "Bonjour Pierfranco,\n\nMerci pour votre confiance, c'est un beau premier achat à faire !\n\nPour répondre à vos questions sur la Fisherman :\n\nLa sandale chausse **grand**. Avec vos 27 cm de pied, le 42 est votre taille de référence sur notre guide. Par expérience, nos clients prennent cette pointure quand il chausse du 43.\n\nConcernant votre inquiétude sur le maintien : oui, les boucles de réglage permettent d'ajuster le tour de pied et de cheville avec précision, ce qui compense tout à fait le fait d'être légèrement entre deux tailles. Vous n'aurez pas la sensation de \"perdre\" la sandale.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande !\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Cyrille,\n\nMerci pour ce retour, et ravi que la taille 44 vous convienne mieux.\n\nSuite à l'accord de notre directeur, nous allons bien convertir votre avoir en remboursement de 335,00 EUR sur votre moyen de paiement initial. Comptez généralement 5 à 10 jours ouvrés pour que le virement apparaisse sur votre compte selon votre banque.\n\nExcellente journée à vous.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 33
     },
     {
       "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
