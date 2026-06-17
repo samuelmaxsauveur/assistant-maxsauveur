@@ -962,6 +962,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_06_16_19_01_17",
+      "topic_label": "Form name Form submitted 2026-06-16 19:01:17",
+      "situation": "Form name Form submitted 2026-06-16 19:01:17",
+      "response_template": "Bonjour Romain,\n\nLe remboursement a bien été lancé le 17 juin, comme indiqué dans notre précédent échange. Il devrait apparaître sur votre moyen de paiement d'origine dans les prochains jours ouvrés, selon les délais de votre banque.\n\nSi vous ne le voyez pas d'ici la fin de semaine, n'hésitez pas à nous le signaler.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_06_17_08_27_36",
       "topic_label": "Form name Form submitted 2026-06-17 08:27:36",
       "situation": "Form name Form submitted 2026-06-17 08:27:36",
