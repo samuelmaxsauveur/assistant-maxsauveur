@@ -1893,9 +1893,9 @@
       "topic": "re__form_name_form_submitted_2026_06_08_21_37_41",
       "topic_label": "Re: Form name Form submitted 2026-06-08 21:37:41",
       "situation": "Re: Form name Form submitted 2026-06-08 21:37:41",
-      "response_template": "Bonjour Alain,\n\nBonne nouvelle sur le réassort : nous attendons du stock cette semaine. En revanche, je ne peux pas vous confirmer avec certitude que le 45 sera inclus, donc je vous conseille de surveiller la fiche produit et d'activer l'alerte pointure directement dessus pour être prévenu dès qu'il repasse disponible.\n\nConcernant l'avoir : son montant sera de 335€, soit le prix actuel du Moc Jagger Noir. Cela vous permet de commander la bonne pointure au même prix que votre précommande, sans différence à régler. En contrepartie, cet avoir sera utilisable uniquement sur ce modèle (Moc Jagger Cuir Noir), de manière à vous conserver l'avantage.\n\nDès réception de votre retour, nous vous enverrons le code.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Alain,\n\nMerci pour le retour. Nous allons vérifier dès réception du colis et vous enverrons votre avoir de 335€ sur le Moc Jagger Cuir Noir dès que le contrôle est fait.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 2
+      "example_count": 3
     },
     {
       "topic": "re__form_name_form_submitted_2026_06_09_08_40_54",
@@ -1934,14 +1934,6 @@
       "topic_label": "Re: Fwd: Max Sauveur — Service Client",
       "situation": "Re: Fwd: Max Sauveur — Service Client",
       "response_template": "Bonjour Guillaume,\n\nMerci pour la capture d'écran.\n\nDe notre côté, les deux codes sont bien actifs et configurés pour fonctionner ensemble. Pour s'assurer que la procédure est correcte, voici comment procéder :\n\n1. Ajoutez votre article dans le panier\n2. Saisissez le premier code : CW8T1ABJQHVE  et validez\n3. Saisissez ensuite le second code : NC81K38PR3CG et validez\n\nLes deux remises doivent apparaître séparément dans le récapitulatif avant de finaliser la commande.\n\nSi l'erreur persiste, pouvez-vous me préciser à quelle étape le blocage se produit et quel message d'erreur s'affiche ? Cela nous permettra d'identifier exactement ce qui se passe.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__information_pointure_fisherman",
-      "topic_label": "Re: Information pointure Fisherman",
-      "situation": "Re: Information pointure Fisherman",
-      "response_template": "Bonjour Ludovic,\n\nAvec plaisir, bonne journée à vous également !\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
