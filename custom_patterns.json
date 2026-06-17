@@ -1938,6 +1938,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__information_pointure_fisherman",
+      "topic_label": "Re: Information pointure Fisherman",
+      "situation": "Re: Information pointure Fisherman",
+      "response_template": "Bonjour Ludovic,\n\nAvec plaisir, bonne journée à vous également !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__la_commande__12419_a__t__annul_e",
       "topic_label": "Re: La commande #12419 a été annulée",
       "situation": "Re: La commande #12419 a été annulée",
