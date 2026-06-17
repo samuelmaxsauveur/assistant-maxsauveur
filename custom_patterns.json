@@ -1122,6 +1122,14 @@
       "example_count": 1
     },
     {
+      "topic": "litige_remboursement_commande__12172",
+      "topic_label": "Litige remboursement commande #12172",
+      "situation": "Litige remboursement commande #12172",
+      "response_template": "Bonjour Jean-Baptiste,\n\nMerci pour votre message, et toutes mes excuses pour le délai de réponse.\n\nPour traiter votre contestation correctement, j'ai besoin de comprendre le contexte du remboursement. D'après nos échanges, vous avez commandé les Fisherman en daim marron en taille 42 (commande #11878), puis une taille 41 (commande #12172), cette dernière ayant bien été livrée le 20 mai.\n\nPourriez-vous me préciser :\n\n1. Quelle commande avez-vous retournée pour remboursement ?\n2. Quel montant avez-vous reçu, et quel montant attendiez-vous ?\n\nConcernant les frais d'expédition : notre politique prévoit effectivement le remboursement des frais de livraison en cas de rétractation dans le délai légal de 14 jours. \n\nCes précisions me permettront de vérifier ce qui a été appliqué et de corriger la situation si nécessaire.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "ma_pointure_id_ale_",
       "topic_label": "Ma pointure idéale?",
       "situation": "Ma pointure idéale?",
