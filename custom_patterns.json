@@ -962,6 +962,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_06_17_08_27_36",
+      "topic_label": "Form name Form submitted 2026-06-17 08:27:36",
+      "situation": "Form name Form submitted 2026-06-17 08:27:36",
+      "response_template": "Bonjour Clément,\n\nVotre retour est bien en notre possession, comme nous vous l'avions confirmé hier. Le remboursement est en cours de traitement et vous recevrez un retour de notre part dès que c'est finalisé.\n\nMerci pour votre patience.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fw__commande__12087_confirm_e",
       "topic_label": "Fw: Commande #12087 confirmée",
       "situation": "Fw: Commande #12087 confirmée",
