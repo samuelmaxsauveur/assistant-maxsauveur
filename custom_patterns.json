@@ -1690,6 +1690,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__commande_12420___d_lai_important_pour_le_26_juin",
+      "topic_label": "Re: Commande 12420 - délai important pour le 26 juin",
+      "situation": "Re: Commande 12420 - délai important pour le 26 juin",
+      "response_template": "Bonjour Jérémie,\n\nVotre commande a bien été expédiée, voici votre lien de suivi Chronopost :\n\nhttps://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XN118464903JB\n\nVous êtes bien dans les temps pour le 26 juin !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__conseil_de_pointure",
       "topic_label": "Re: Conseil de pointure",
       "situation": "Re: Conseil de pointure",
