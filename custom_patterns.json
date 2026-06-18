@@ -2618,6 +2618,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__renvoi_chaussures__roumanie_",
+      "topic_label": "Re: Re: renvoi chaussures (Roumanie)",
+      "situation": "Re: Re: renvoi chaussures (Roumanie)",
+      "response_template": "Bonjour Félix,\n\nAvec plaisir, c'est tout naturel !\n\nBonne journée à vous,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re___change_moc_jagger_noirs_42____42_5",
       "topic_label": "Re: Re: Échange Moc Jagger noirs 42 -> 42.5",
       "situation": "Re: Re: Échange Moc Jagger noirs 42 -> 42.5",
