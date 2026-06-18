@@ -2090,6 +2090,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__paire_de_chaussures_bateaux_marron_achet_es_en_pop_up",
+      "topic_label": "Re: Paire de chaussures bateaux marron achetées en pop up",
+      "situation": "Re: Paire de chaussures bateaux marron achetées en pop up",
+      "response_template": "Bonjour Thomas,\n\nMerci pour les photos annotées, c'est très utile.\n\nOui, c'est bien de cela que nous parlions. La structure que vous observez est liée au fait que vos bateaux sont fabriqués à la main. Ce process artisanal peut laisser apparaître des aspects visuels légèrement différents de ce qu'on trouve sur des modèles produits industriellement, notamment cette texture que vous décrivez. Ce n'est pas un défaut structurel, c'est simplement la signature d'une fabrication manuelle.\n\nCela dit, si vous constatiez le moindre problème avec cette paire dans le temps, nous ferons le nécessaire pour vous apporter une solution.\n\nPortez-les l'esprit tranquille !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__paire_de_derby_golf",
       "topic_label": "Re: Paire de derby golf",
       "situation": "Re: Paire de derby golf",
