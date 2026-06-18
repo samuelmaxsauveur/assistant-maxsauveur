@@ -2618,6 +2618,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__retour_commande_11624",
+      "topic_label": "Re: Retour commande 11624",
+      "situation": "Re: Retour commande 11624",
+      "response_template": "Bonjour Mattia,\n\nJe comprends votre impatience et je suis désolé pour ce délai supplémentaire.\n\nJe transmets votre demande à notre équipe pour vérifier l'état de votre remboursement et relancer le traitement si nécessaire. Nous revenons vers vous très rapidement.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__retour_offre_nouvelle_collection_2026_commande_11985",
       "topic_label": "Re: Retour offre nouvelle collection 2026 commande 11985",
       "situation": "Re: Retour offre nouvelle collection 2026 commande 11985",
