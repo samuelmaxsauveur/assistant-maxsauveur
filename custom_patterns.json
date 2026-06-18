@@ -114,6 +114,14 @@
       "example_count": 1
     },
     {
+      "topic": "commande__11581_probl_me_de_livraison",
+      "topic_label": "Commande #11581 problème de livraison",
+      "situation": "Commande #11581 problème de livraison",
+      "response_template": "Bonjour Myriam,\n\nMerci pour votre message et désolé pour ce désagrément avec la livraison initiale.\n\nBonne nouvelle, nous avons bien récupéré votre colis de notre côté. Nous sommes prêts à vous réexpédier votre Moc Jagger dès que possible.\n\nPour finaliser la réexpédition, nous avons besoin de deux choses de votre part :\n\n1. Le nom et l'adresse complète d'un nouveau point relais Chrono2Shop de votre choix. Vous pouvez en trouver un près de chez vous via ce lien : https://www.chronopost.fr/expeditionAvanceeSec/ounoustrouver.html\n\n2. Les frais de réexpédition sont à régler via ce lien sécurisé : https://secure.payplug.com/pay/3F1fFUV5mxztMRihOcwIhy\n\nDès réception de ces deux éléments, nous lançons l'expédition sans délai.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande__11704",
       "topic_label": "Commande #11704",
       "situation": "Commande #11704",
