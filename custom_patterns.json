@@ -978,6 +978,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_06_17_19_45_57",
+      "topic_label": "Form name Form submitted 2026-06-17 19:45:57",
+      "situation": "Form name Form submitted 2026-06-17 19:45:57",
+      "response_template": "Bonjour Shady,\n\nMerci pour votre message.\n\nPour vous aider efficacement, j'ai besoin d'un peu plus de détails sur cette remise de 45€ : comment l'avez-vous obtenue ? Via notre roue sur le site, un email promotionnel, ou autre chose ?\n\nVoici pourquoi c'est important : les codes ont des conditions d'application qui varient selon leur origine. Par exemple, certains codes s'appliquent uniquement si le produit lui-même dépasse un certain montant, et non le total du panier. D'autres ont une durée de validité courte.\n\nSi vous avez toujours le code sous la main, partagez-le moi, ainsi que le(s) produit(s) que vous souhaitez commander. Je regarderai ce qui bloque et je vous proposerai une solution.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_06_18_15_42_04",
       "topic_label": "Form name Form submitted 2026-06-18 15:42:04",
       "situation": "Form name Form submitted 2026-06-18 15:42:04",
