@@ -2898,6 +2898,14 @@
       "example_count": 1
     },
     {
+      "topic": "relance___commande_12420_toujours_sans_nouvelles",
+      "topic_label": "Relance - commande 12420 toujours sans nouvelles",
+      "situation": "Relance - commande 12420 toujours sans nouvelles",
+      "response_template": "Bonjour Jérémie,\n\nVotre commande #12420 (Paul Mocassin Cuir Marron, taille 45) a bien été expédiée. Voici votre lien de suivi Chronopost :\n\nhttps://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XN118464903JB\n\nD'après les données de suivi, le colis est indiqué comme livré. Pourriez-vous vérifier auprès de vos proches ou de votre boîte aux lettres si vous ne l'avez pas encore récupéré ? Il arrive que la mise à jour du statut précède légèrement la remise effective.\n\nSi vous ne trouvez rien, revenez vers moi et j'ouvre un dossier auprès de Chronopost sans délai.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "remboursement_commande__18878",
       "topic_label": "Remboursement commande #18878",
       "situation": "Remboursement commande #18878",
