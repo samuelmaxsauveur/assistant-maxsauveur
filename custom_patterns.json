@@ -2818,6 +2818,14 @@
       "example_count": 3
     },
     {
+      "topic": "re__renvoi_chaussures__roumanie_",
+      "topic_label": "Re: renvoi chaussures (Roumanie)",
+      "situation": "Re: renvoi chaussures (Roumanie)",
+      "response_template": "Bonjour Félix,\n\nMerci pour votre message et pour la confiance que vous accordez à Max Sauveur, c'est vraiment touchant de vous voir recommander nos produits à votre entourage !\n\nConcernant votre ami Corentin, nous lui avons déjà répondu directement et sa commande est bien prise en charge. Nous faisons au plus vite pour qu'il soit équipé avant son mariage.\n\nBonne journée à vous,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__taille_pour_paul___chaussures_mocassin_cuir_noir",
       "topic_label": "Re: taille pour Paul - Chaussures Mocassin Cuir Noir",
       "situation": "Re: taille pour Paul - Chaussures Mocassin Cuir Noir",
