@@ -1442,14 +1442,6 @@
       "example_count": 1
     },
     {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "RE: Max Sauveur — Service Client",
-      "situation": "RE: Max Sauveur — Service Client",
-      "response_template": "Bonjour Arthur,\n\nBonne nouvelle : pour vous permettre de conserver votre tarif de précommande, nous allons vous envoyer un avoir de 289€, soit le prix actuel du modèle.\n\nCela signifie que vous pourrez commander le Moc Jagger en 42 sans aucun surcoût par rapport à ce que vous avez initialement payé.\n\nNous générons ce nouveau code d'avoir dans les plus brefs délais et vous l'envoyons par retour d'email.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 38
-    },
-    {
       "topic": "re__question_sandale",
       "topic_label": "RE: Question sandale",
       "situation": "RE: Question sandale",
@@ -2008,6 +2000,14 @@
       "response_template": "Bonjour Pierfranco,\n\nMerci pour votre confiance, c'est un beau premier achat à faire !\n\nPour répondre à vos questions sur la Fisherman :\n\nLa sandale chausse **grand**. Avec vos 27 cm de pied, le 42 est votre taille de référence sur notre guide. Par expérience, nos clients prennent cette pointure quand il chausse du 43.\n\nConcernant votre inquiétude sur le maintien : oui, les boucles de réglage permettent d'ajuster le tour de pied et de cheville avec précision, ce qui compense tout à fait le fait d'être légèrement entre deux tailles. Vous n'aurez pas la sensation de \"perdre\" la sandale.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande !\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
+    },
+    {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Eugénie,\n\nDeux points à vérifier pour que le code fonctionne :\n\n1. Le code doit être utilisé avec l'adresse email liée à votre commande initiale : eugenie.boel@hotmail.com. Si vous êtes connectée avec un autre compte, cela peut bloquer l'application.\n\n2. Le code est utilisable exclusivement sur le Moc Jagger. Il ne fonctionnera pas sur un autre modèle.\n\nSi ces deux conditions sont réunies et que le message persiste, n'hésitez pas à me le signaler.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 39
     },
     {
       "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
