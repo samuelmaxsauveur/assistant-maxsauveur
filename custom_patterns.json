@@ -1154,6 +1154,14 @@
       "example_count": 1
     },
     {
+      "topic": "info_article",
+      "topic_label": "Info article",
+      "situation": "Info article",
+      "response_template": "Bonjour Charles,\n\nBonne observation ! La ceinture Jonas présente effectivement une largeur variable selon l'emplacement :\n\n- 2 cm au niveau de la boucle et du bout\n- 2,5 cm sur la partie centrale\n\nC'est une caractéristique de coupe propre au style western, qui lui donne ce galbe particulier. La description sur le site fait référence à la largeur aux extrémités.\n\nN'hésitez pas si vous avez d'autres questions !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "information_boutique",
       "topic_label": "Information boutique – vente en ligne uniquement",
       "situation": "Un client cherche à savoir si Max Sauveur possède une boutique physique, notamment à Paris. Il souhaite peut-être essayer des produits ou se renseigner en personne avant de commander.",
