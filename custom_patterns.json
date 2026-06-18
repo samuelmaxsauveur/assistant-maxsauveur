@@ -2130,6 +2130,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__guide_taille",
+      "topic_label": "Re: RE: Guide taille",
+      "situation": "Re: RE: Guide taille",
+      "response_template": "Bonjour David,\n\nMerci pour ce retour. La commande a bien été livrée en un seul colis. Nous attendons un réassort du 44 pour pouvoir vous l'expédier dans un second temps.\n\nEn attendant, est-ce que le 43 vous convient ? Si c'est le cas, nous pouvons simplement vous rembourser le 44 dès que vous nous le confirmez. Si vous préférez attendre la réception du 44 pour faire votre choix, nous pouvons aussi procéder ainsi.\n\nDites-moi simplement ce qui vous arrange le mieux.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__re__re__demande_renseignements___pointure___pr__",
       "topic_label": "Re: RE: RE: Re: RE: Demande renseignements - Pointure / pré-commande",
       "situation": "Re: RE: RE: Re: RE: Demande renseignements - Pointure / pré-commande",
