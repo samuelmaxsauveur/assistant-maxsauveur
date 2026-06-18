@@ -978,6 +978,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_06_18_11_08_43",
+      "topic_label": "Form name Form submitted 2026-06-18 11:08:43",
+      "situation": "Form name Form submitted 2026-06-18 11:08:43",
+      "response_template": "Bonjour Kevin,\n\nMerci pour votre message et toutes nos excuses pour ce désagrément.\n\nLes embauchoirs n'étaient pas disponibles au moment de l'expédition de vos mocassins. Ils vous seront envoyés dans un second colis la semaine prochaine, vous n'avez donc rien à commander de votre côté.\n\nEncore désolés pour ce décalage, et merci pour votre patience.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_06_18_15_42_04",
       "topic_label": "Form name Form submitted 2026-06-18 15:42:04",
       "situation": "Form name Form submitted 2026-06-18 15:42:04",
@@ -1440,6 +1448,14 @@
       "response_template": "Bonjour Jean-Baptiste,\n\nMerci pour ces précisions, elles me permettent de faire le point correctement.\n\nLe remboursement de 149,00€ que vous avez reçu correspond au montant des chaussures seules, sans les frais de livraison initiaux (158,75€ total, dont 9,75€ de frais d'expédition).\n\n\nLe solde restant à vous rembourser est donc de 9,75€. Nous allons régulariser cela rapidement.\n\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
+    },
+    {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "RE: Max Sauveur — Service Client",
+      "situation": "RE: Max Sauveur — Service Client",
+      "response_template": "Bonjour Arthur,\n\nBonne nouvelle : pour vous permettre de conserver votre tarif de précommande, nous allons vous envoyer un avoir de 289€, soit le prix actuel du modèle.\n\nCela signifie que vous pourrez commander le Moc Jagger en 42 sans aucun surcoût par rapport à ce que vous avez initialement payé.\n\nNous générons ce nouveau code d'avoir dans les plus brefs délais et vous l'envoyons par retour d'email.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 38
     },
     {
       "topic": "re__question_sandale",
@@ -2000,14 +2016,6 @@
       "response_template": "Bonjour Pierfranco,\n\nMerci pour votre confiance, c'est un beau premier achat à faire !\n\nPour répondre à vos questions sur la Fisherman :\n\nLa sandale chausse **grand**. Avec vos 27 cm de pied, le 42 est votre taille de référence sur notre guide. Par expérience, nos clients prennent cette pointure quand il chausse du 43.\n\nConcernant votre inquiétude sur le maintien : oui, les boucles de réglage permettent d'ajuster le tour de pied et de cheville avec précision, ce qui compense tout à fait le fait d'être légèrement entre deux tailles. Vous n'aurez pas la sensation de \"perdre\" la sandale.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande !\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Eugénie,\n\nDeux points à vérifier pour que le code fonctionne :\n\n1. Le code doit être utilisé avec l'adresse email liée à votre commande initiale : eugenie.boel@hotmail.com. Si vous êtes connectée avec un autre compte, cela peut bloquer l'application.\n\n2. Le code est utilisable exclusivement sur le Moc Jagger. Il ne fonctionnera pas sur un autre modèle.\n\nSi ces deux conditions sont réunies et que le message persiste, n'hésitez pas à me le signaler.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 39
     },
     {
       "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
@@ -2622,14 +2630,6 @@
       "topic_label": "Re: Retour commande 11624",
       "situation": "Re: Retour commande 11624",
       "response_template": "Bonjour Mattia,\n\nJe comprends votre impatience et je suis désolé pour ce délai supplémentaire.\n\nJe transmets votre demande à notre équipe pour vérifier l'état de votre remboursement et relancer le traitement si nécessaire. Nous revenons vers vous très rapidement.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__retour_de_chaussures_mariage___paul",
-      "topic_label": "Re: Retour de chaussures mariage - Paul",
-      "situation": "Re: Retour de chaussures mariage - Paul",
-      "response_template": "Bonjour Corentin,\n\nAvec plaisir ! On est ravis de contribuer à ce grand jour.\n\nVotre paire en 42 est en route, vous recevrez les mises à jour via le lien de suivi transmis hier. Tout devrait être là dans les temps.\n\nBeau mariage à vous !\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
