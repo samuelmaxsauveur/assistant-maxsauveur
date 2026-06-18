@@ -978,14 +978,6 @@
       "example_count": 1
     },
     {
-      "topic": "form_name_form_submitted_2026_06_18_11_08_43",
-      "topic_label": "Form name Form submitted 2026-06-18 11:08:43",
-      "situation": "Form name Form submitted 2026-06-18 11:08:43",
-      "response_template": "Bonjour Kevin,\n\nMerci pour votre message et toutes nos excuses pour ce désagrément.\n\nLes embauchoirs n'étaient pas disponibles au moment de l'expédition de vos mocassins. Ils vous seront envoyés dans un second colis la semaine prochaine, vous n'avez donc rien à commander de votre côté.\n\nEncore désolés pour ce décalage, et merci pour votre patience.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "form_name_form_submitted_2026_06_18_15_42_04",
       "topic_label": "Form name Form submitted 2026-06-18 15:42:04",
       "situation": "Form name Form submitted 2026-06-18 15:42:04",
@@ -1448,14 +1440,6 @@
       "response_template": "Bonjour Jean-Baptiste,\n\nMerci pour ces précisions, elles me permettent de faire le point correctement.\n\nLe remboursement de 149,00€ que vous avez reçu correspond au montant des chaussures seules, sans les frais de livraison initiaux (158,75€ total, dont 9,75€ de frais d'expédition).\n\n\nLe solde restant à vous rembourser est donc de 9,75€. Nous allons régulariser cela rapidement.\n\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "RE: Max Sauveur — Service Client",
-      "situation": "RE: Max Sauveur — Service Client",
-      "response_template": "Bonjour Arthur,\n\nBonne nouvelle : pour vous permettre de conserver votre tarif de précommande, nous allons vous envoyer un avoir de 289€, soit le prix actuel du modèle.\n\nCela signifie que vous pourrez commander le Moc Jagger en 42 sans aucun surcoût par rapport à ce que vous avez initialement payé.\n\nNous générons ce nouveau code d'avoir dans les plus brefs délais et vous l'envoyons par retour d'email.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 38
     },
     {
       "topic": "re__question_sandale",
@@ -2016,6 +2000,14 @@
       "response_template": "Bonjour Pierfranco,\n\nMerci pour votre confiance, c'est un beau premier achat à faire !\n\nPour répondre à vos questions sur la Fisherman :\n\nLa sandale chausse **grand**. Avec vos 27 cm de pied, le 42 est votre taille de référence sur notre guide. Par expérience, nos clients prennent cette pointure quand il chausse du 43.\n\nConcernant votre inquiétude sur le maintien : oui, les boucles de réglage permettent d'ajuster le tour de pied et de cheville avec précision, ce qui compense tout à fait le fait d'être légèrement entre deux tailles. Vous n'aurez pas la sensation de \"perdre\" la sandale.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande !\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
+    },
+    {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Eugénie,\n\nDeux points à vérifier pour que le code fonctionne :\n\n1. Le code doit être utilisé avec l'adresse email liée à votre commande initiale : eugenie.boel@hotmail.com. Si vous êtes connectée avec un autre compte, cela peut bloquer l'application.\n\n2. Le code est utilisable exclusivement sur le Moc Jagger. Il ne fonctionnera pas sur un autre modèle.\n\nSi ces deux conditions sont réunies et que le message persiste, n'hésitez pas à me le signaler.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 39
     },
     {
       "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
@@ -2634,6 +2626,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__retour_de_chaussures_mariage___paul",
+      "topic_label": "Re: Retour de chaussures mariage - Paul",
+      "situation": "Re: Retour de chaussures mariage - Paul",
+      "response_template": "Bonjour Corentin,\n\nAvec plaisir ! On est ravis de contribuer à ce grand jour.\n\nVotre paire en 42 est en route, vous recevrez les mises à jour via le lien de suivi transmis hier. Tout devrait être là dans les temps.\n\nBeau mariage à vous !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__retour_offre_nouvelle_collection_2026_commande_11985",
       "topic_label": "Re: Retour offre nouvelle collection 2026 commande 11985",
       "situation": "Re: Retour offre nouvelle collection 2026 commande 11985",
@@ -2664,6 +2664,14 @@
       "response_template": "Bonjour Frédéric,\n\nJe comprends la frustration après 3 mois d'attente, et je ne minimise pas ça.\n\nMais soyons clairs sur un point : quand nous évoquons un stock d'échanges dans nos communications, cela concerne les pointures entières. Les demi-pointures comme le 42,5 ne sont pas commandées en stock d'échange standard. On peut en récupérer via des retours clients, mais nous ne pouvons pas en garantir la disponibilité ni les délais. Ce n'est pas un manque de sérieux, c'est une réalité logistique sur laquelle nous n'avons pas la main.\n\nCe que nous pouvons faire concrètement :\n\nDès réception et contrôle de votre retour, nous vous envoyons un avoir, valable 6 mois.\n\nEn attendant un éventuel retour de 42,5, vous pouvez aussi envisager le 43. Le Moc Jagger chausse juste au départ, mais si vous avez un pied plutôt fin et un cou-de-pied standard, le 43 avec une semelle liège qui se moule au pied peut très bien fonctionner. C'est une option à ne pas écarter.\n\nDites-moi comment vous souhaitez procéder.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 3
+    },
+    {
+      "topic": "re__sandales_fisherman",
+      "topic_label": "Re: Sandales Fisherman",
+      "situation": "Re: Sandales Fisherman",
+      "response_template": "Bonjour Léo,\n\nTout à fait bonne question, et je vais être direct avec vous : le réassort en 41 est vraiment incertain. Plutôt que de retourner la paire pour un avoir qui risque d'expirer sans que le 41 revienne en stock, je vous conseille de demander le remboursement directement.\n\nVous êtes encore dans le délai légal de 14 jours, donc pas de problème de ce côté.\n\nVoici comment procéder :\n\n1. Rendez-vous sur notre page de retour : https://maxsauveur.com/pages/livraison-et-retour\n2. Téléchargez et complétez le bon de retour en cochant \"remboursement\".\n3. Renvoyez la paire à vos frais à notre adresse logistique (indiquée sur le bon).\n4. Dès réception et contrôle, nous procéderons au remboursement du montant payé hors livraison (134,10€).\n\nEt gardez bien l'alerte sur le 41, si jamais une paire remonte, vous serez le premier notifié.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
     },
     {
       "topic": "re__statut_commande_et_changement_de_point_de_retrait",
