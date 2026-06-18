@@ -2994,6 +2994,14 @@
       "example_count": 1
     },
     {
+      "topic": "retour_commande____12351",
+      "topic_label": "Retour commande : #12351",
+      "situation": "Retour commande : #12351",
+      "response_template": "Bonjour Charles,\n\nMerci pour votre message. Nous avons bien réceptionné votre retour et votre dossier est en cours de traitement de notre côté.\n\nNous revenons vers vous très rapidement dès que votre avoir est généré.\n\nCordialement,\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "retour_de_chaussures_mariage___paul",
       "topic_label": "Retour de chaussures mariage - Paul",
       "situation": "Retour de chaussures mariage - Paul",
