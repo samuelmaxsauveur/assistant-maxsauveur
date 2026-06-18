@@ -2005,9 +2005,9 @@
       "topic": "re__max_sauveur___service_client",
       "topic_label": "Re: Max Sauveur — Service Client",
       "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Eugénie,\n\nDeux points à vérifier pour que le code fonctionne :\n\n1. Le code doit être utilisé avec l'adresse email liée à votre commande initiale : eugenie.boel@hotmail.com. Si vous êtes connectée avec un autre compte, cela peut bloquer l'application.\n\n2. Le code est utilisable exclusivement sur le Moc Jagger. Il ne fonctionnera pas sur un autre modèle.\n\nSi ces deux conditions sont réunies et que le message persiste, n'hésitez pas à me le signaler.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Lola,\n\nMerci pour ce retour honnête et pour le compliment sur la qualité, ça fait plaisir à entendre !\n\nPas de souci, nous procédons au remboursement.\n\nVous recevrez une confirmation par email une fois le remboursement effectué sur votre moyen de paiement initial.\n\nBonne journée à vous,\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 39
+      "example_count": 40
     },
     {
       "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
