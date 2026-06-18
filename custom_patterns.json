@@ -2634,6 +2634,14 @@
       "example_count": 15
     },
     {
+      "topic": "re__re___re__re__max_sauveur___service_client",
+      "topic_label": "Re: Re : Re: Re: Max Sauveur — Service Client",
+      "situation": "Re: Re : Re: Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Frédéric,\n\nMerci pour le retour, on va régler ça.\n\nCe message d'erreur apparaît généralement dans deux cas :\n\n1. L'email utilisé au moment de la commande n'est pas le bon. Le code est lié à votre adresse fpvergez@yahoo.fr, il faut impérativement vous connecter ou passer commande avec cette adresse exacte.\n\n2. Le code n'est valable que sur le Moc Jagger et ne peut pas être combiné avec une autre réduction. Si un autre code est déjà appliqué dans votre panier, celui-ci ne fonctionnera pas.\n\nPourriez-vous vérifier ces deux points et réessayer ? Si le problème persiste malgré ça, faites-le moi savoir et on trouvera une solution.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re___re__re__merci_pour_votre_message___quelques_informa",
       "topic_label": "Re: Re : Re: Re: Merci pour votre message - Quelques informations utiles Re: Commande #11642 confirmée",
       "situation": "Re: Re : Re: Re: Merci pour votre message - Quelques informations utiles Re: Commande #11642 confirmée",
