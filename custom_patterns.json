@@ -3018,6 +3018,14 @@
       "example_count": 1
     },
     {
+      "topic": "sandales_fisherman",
+      "topic_label": "Sandales Fisherman",
+      "situation": "Sandales Fisherman",
+      "response_template": "Bonjour Léo,\n\nMerci pour votre retour et pour vos mots sur la Fisherman, ça fait vraiment plaisir !\n\nConcernant le 41 : malheureusement, aucun réassort n'est prévu pour le moment. Nous ne sommes pas en mesure de vous réserver une paire non plus. La meilleure solution est de vous abonner à l'alerte de restockage directement sur la fiche produit du 41 : vous serez notifié dès qu'une paire sera à nouveau disponible (via un retour client, par exemple).\n\nPour l'échange, voici comment procéder dès que le 41 sera disponible :\n\n1. Rendez-vous sur notre page de retour : https://maxsauveur.com/pages/livraison-et-retour\n2. Téléchargez et complétez le bon de retour en cochant \"avoir\".\n3. Renvoyez la paire à vos frais à notre adresse logistique (indiquée sur le bon).\n4. Dès réception et contrôle, nous vous enverrons un avoir  (montant payé hors livraison), valable 6 mois sur notre site, exclusivement sur la Fisherman.\n\nÀ réception de l'avoir, il ne vous restera plus qu'à l'utiliser dès que le 41 sera de retour en stock.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "statut_commande___12375",
       "topic_label": "Statut commande - 12375",
       "situation": "Statut commande - 12375",
