@@ -1426,6 +1426,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__litige_remboursement_commande__12172",
+      "topic_label": "RE: Litige remboursement commande #12172",
+      "situation": "RE: Litige remboursement commande #12172",
+      "response_template": "Bonjour Jean-Baptiste,\n\nMerci pour ces précisions, elles me permettent de faire le point correctement.\n\nLe remboursement de 149,00€ que vous avez reçu correspond au montant des chaussures seules, sans les frais de livraison initiaux (158,75€ total, dont 9,75€ de frais d'expédition).\n\n\nLe solde restant à vous rembourser est donc de 9,75€. Nous allons régulariser cela rapidement.\n\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__max_sauveur___service_client",
       "topic_label": "RE: Max Sauveur — Service Client",
       "situation": "RE: Max Sauveur — Service Client",
