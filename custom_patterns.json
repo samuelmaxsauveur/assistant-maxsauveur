@@ -2034,6 +2034,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__help__",
+      "topic_label": "Re: Help !",
+      "situation": "Re: Help !",
+      "response_template": "Bonsoir Gustave,\n\nParfait, nous notons bien : Deck cuir grainé noir en 46, et nous vous appliquons les conditions tarifaires du pop-up.\n\nPetit rappel important : comme indiqué précédemment, étant donné qu'il s'agit d'une commande passée spécifiquement pour vous, aucun retour ne sera possible sur cette paire. Les conditions tarifaires du pop-up s'appliquent dans ce cadre.\n\nBonne soirée,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__la_commande__12419_a__t__annul_e",
       "topic_label": "Re: La commande #12419 a été annulée",
       "situation": "Re: La commande #12419 a été annulée",
