@@ -2474,14 +2474,6 @@
       "example_count": 2
     },
     {
-      "topic": "re__re__re__merci_pour_votre_message___quelques_informations",
-      "topic_label": "Re: Re: Re: Merci pour votre message - Quelques informations utiles Re: Commande #11745 - demande de réexpédition",
-      "situation": "Re: Re: Re: Merci pour votre message - Quelques informations utiles Re: Commande #11745 - demande de réexpédition",
-      "response_template": "Bonjour Aimy,\n\nRavie que les Moc Jagger vous plaisent !\n\nPour répondre directement à votre question : l'avoir sera généré au montant affiché sur la fiche produit actuellement. Vous pourrez donc commander la taille inférieure, vous profiterez quand même de votre avantage précommande.\n\nConcernant le colis endommagé à la réception, merci pour les photos. C'est effectivement dommage, mais l'essentiel est que la paire soit intacte. Pour le retour, vous pouvez tout à fait renforcer l'emballage comme vous le prévoyez.\n\nVoici la procédure pour l'échange :\n\n1. Téléchargez le bon de retour sur maxsauveur.com/pages/livraison-et-retour et indiquez \"demande d'avoir\" comme raison\n2. Emballez soigneusement la paire et envoyez-la à : **SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau**\n3. Dès réception et contrôle de la paire, nous vous envoyons votre avoir pour commander le 39\n\nAvant de procéder, une petite précision utile : le Moc Jagger chausse juste au départ, le cuir est épais et la semelle en liège se moule progressivement au pied. Si vous les avez essayées quelques minutes seulement, il est possible que la sensation \"trop grand\" s'atténue avec le port. \n\nCordialement\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "re__re__re__re__commande_12164",
       "topic_label": "Re: Re: Re: Re: Commande 12164",
       "situation": "Re: Re: Re: Re: Commande 12164",
@@ -2869,9 +2861,9 @@
       "topic": "re__votre_commande_max_sauveur___information_importante",
       "topic_label": "Re: Votre commande Max Sauveur — information importante",
       "situation": "Re: Votre commande Max Sauveur — information importante",
-      "response_template": "Bonjour Dylan,\n\nVous avez tout à fait raison de le signaler, et je m'en excuse. Nous souhaitions vous proposer le Paul Cuir Marron en 43. Il s'agit du même modèle, mais dans une finition cuir lisse plutôt que grainée.\n\nConcernant la taille 42 : vous avez raison, c'est nous qui vous avions conseillé le 43 il y a quelques semaines. Ne revenons pas là-dessus.\n\nDeux options claires :\n\n1. Vous souhaitez le Paul en cuir lisse marron (taille 43) : nous l'expédions sans délai.\n2. Vous préférez rester sur le grainé marron et ne pas faire de compromis sur la finition : nous procédons au remboursement intégral de vos 335€.\n\nDites-nous simplement ce que vous préférez.\n\nEncore toutes nos excuses pour la confusion.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Thibaut,\n\nMerci pour ces précisions.\n\nAvec 26,5 cm et un pied fin, le 42 peut être adapté. Et en regardant votre historique chez nous, je vois que vous avez déjà commandé et gardé plusieurs Paul en 42, ce qui confirme que cette pointure vous convient sur ce modèle.\n\nJe vous propose donc de vous expédier le Paul Mocassin Cuir Pony Vache Marron Noir en 42. Dites-moi si vous souhaitez qu'on parte sur cette option, et nous l'expédions rapidement.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 4
+      "example_count": 5
     },
     {
       "topic": "re__vous_avez_oubli__quelque_chose_je_crois___",
