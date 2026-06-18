@@ -162,6 +162,14 @@
       "example_count": 1
     },
     {
+      "topic": "commande__12390",
+      "topic_label": "Commande #12390",
+      "situation": "Commande #12390",
+      "response_template": "Bonjour Thibault,\n\nVotre commande #12390 est en réalité déjà partie et même livrée ! Vous pouvez retrouver votre Fisherman en cuir grainé noir via le lien de suivi Chronopost :\n\nhttps://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR644039766TS\n\nSi vous n'avez pas récupéré le colis, pensez à vérifier auprès de votre point relais.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande__12393",
       "topic_label": "Commande #12393",
       "situation": "Commande #12393",
