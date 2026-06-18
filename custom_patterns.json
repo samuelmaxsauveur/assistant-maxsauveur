@@ -978,6 +978,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_06_18_15_42_04",
+      "topic_label": "Form name Form submitted 2026-06-18 15:42:04",
+      "situation": "Form name Form submitted 2026-06-18 15:42:04",
+      "response_template": "Bonjour Mathieu,\n\nMerci pour votre message, et ravi que vous souhaitiez repasser commande !\n\nConcernant la semelle décollée, avant tout retour de notre part, pourriez-vous nous envoyer quelques photos de la zone concernée ? Cela nous permettra d'évaluer la situation et de voir ce qu'on peut faire pour vous.\n\nJe note également que votre paire a été commandée en décembre 2022, soit il y a environ 3 ans et demi. Pouvez-vous nous confirmer depuis quand vous la portez exactement, et dans quelles conditions ?\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fw__commande__12087_confirm_e",
       "topic_label": "Fw: Commande #12087 confirmée",
       "situation": "Fw: Commande #12087 confirmée",
