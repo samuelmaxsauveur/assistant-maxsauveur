@@ -2474,6 +2474,14 @@
       "example_count": 2
     },
     {
+      "topic": "re__re__re__merci_pour_votre_message___quelques_informations",
+      "topic_label": "Re: Re: Re: Merci pour votre message - Quelques informations utiles Re: Commande #11745 - demande de réexpédition",
+      "situation": "Re: Re: Re: Merci pour votre message - Quelques informations utiles Re: Commande #11745 - demande de réexpédition",
+      "response_template": "Bonjour Aimy,\n\nRavie que les Moc Jagger vous plaisent !\n\nPour répondre directement à votre question : l'avoir sera généré au montant affiché sur la fiche produit actuellement. Vous pourrez donc commander la taille inférieure, vous profiterez quand même de votre avantage précommande.\n\nConcernant le colis endommagé à la réception, merci pour les photos. C'est effectivement dommage, mais l'essentiel est que la paire soit intacte. Pour le retour, vous pouvez tout à fait renforcer l'emballage comme vous le prévoyez.\n\nVoici la procédure pour l'échange :\n\n1. Téléchargez le bon de retour sur maxsauveur.com/pages/livraison-et-retour et indiquez \"demande d'avoir\" comme raison\n2. Emballez soigneusement la paire et envoyez-la à : **SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau**\n3. Dès réception et contrôle de la paire, nous vous envoyons votre avoir pour commander le 39\n\nAvant de procéder, une petite précision utile : le Moc Jagger chausse juste au départ, le cuir est épais et la semelle en liège se moule progressivement au pied. Si vous les avez essayées quelques minutes seulement, il est possible que la sensation \"trop grand\" s'atténue avec le port. \n\nCordialement\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__re__commande_12164",
       "topic_label": "Re: Re: Re: Re: Commande 12164",
       "situation": "Re: Re: Re: Re: Commande 12164",
