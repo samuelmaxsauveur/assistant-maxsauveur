@@ -3242,6 +3242,14 @@
       "example_count": 5
     },
     {
+      "topic": "pointures",
+      "topic_label": "pointures",
+      "situation": "pointures",
+      "response_template": "Bonjour Corentin,\n\nMerci pour votre message et pour avoir pris le temps de mesurer correctement.\n\nAvec 27,7 cm, voici ce que je vous recommande :\n\n- **Peter A. (mocassin daim marron)** : le 42 est la bonne taille. Bonne nouvelle, c'est exactement ce que vous avez commandé. Petite précision utile : le mocassin chausse juste au départ, c'est tout à fait normal avec un cuir épais. Il s'assouplit et se moule à votre pied après quelques ports.\n\n- **Fisherman (semelle cuir grainé noir)** : ce modèle chausse légèrement grand, et avec votre mesure je vous aurais plutôt orienté vers un 41. Vous avez commandé un 42, ce qui pourrait faire un peu trop.\n\nCordialement\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "trouver_ma_pointure",
       "topic_label": "trouver ma pointure",
       "situation": "trouver ma pointure",
