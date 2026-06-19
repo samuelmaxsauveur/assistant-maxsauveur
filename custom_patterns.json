@@ -1090,6 +1090,14 @@
       "example_count": 1
     },
     {
+      "topic": "fwd__commande__12370",
+      "topic_label": "Fwd: Commande #12370",
+      "situation": "Fwd: Commande #12370",
+      "response_template": "Bonjour Jean-Michel,\n\nMerci pour votre message et désolé pour cette erreur de notre part. Vous avez bien reçu un modèle différent de celui commandé, c'est une erreur d'expédition et nous en prenons l'entière responsabilité.\n\nVoici la marche à suivre pour que nous puissions vous envoyer la bonne paire rapidement :\n\n1. Imprimez votre étiquette de retour prépayée ici (frais pris en charge par nous) : https://wing-labelling-system.s3.eu-west-3.amazonaws.com/52d660c3-ca88-4c89-8407-47cb6498562c/LABEL/2026-06-09/LABEL-5a7614dc-6ae3-4e94-a4f8-6b9e85652876-1781005290406-CB544206735FR.pdf\n\n2. Remplissez le bon de retour disponible sur notre site (mention \"erreur d'expédition\") : https://maxsauveur.com/pages/livraison-et-retour\n\n3. Glissez le bon dans le colis avec la paire et déposez-le dans un point relais Colissimo.\n\nDès réception de votre retour, nous expédions la bonne paire sans délai.\n\nEncore toutes nos excuses pour ce désagrément, Jean-Michel.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fwd__commande__12382_confirm_e",
       "topic_label": "Fwd: Commande #12382 confirmée",
       "situation": "Fwd: Commande #12382 confirmée",
