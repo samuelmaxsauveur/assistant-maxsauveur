@@ -1026,14 +1026,6 @@
       "example_count": 1
     },
     {
-      "topic": "form_name_form_submitted_2026_06_19_12_07_50",
-      "topic_label": "Form name Form submitted 2026-06-19 12:07:50",
-      "situation": "Form name Form submitted 2026-06-19 12:07:50",
-      "response_template": "Bonjour Christophe,\n\nMerci pour votre message.\n\nNous confirmons la bonne réception de votre retour. Le traitement du remboursement est en cours et sera effectué dans les meilleurs délais.\n\nConcernant vos deux mails des 8 et 10 juin : chaque message reçu déclenche automatiquement un email de notre part qui récapitule notre politique de retour et les démarches à suivre. Vous avez d'ailleurs indiqué avoir trouvé les informations sur notre site, ce qui est la bonne direction.\n\nNous sommes désolés si l'attente vous a semblé longue. Le remboursement sera bien effectué, vous en serez informé dès que c'est traité.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "form_name_form_submitted_2026_06_19_13_52_19",
       "topic_label": "Form name Form submitted 2026-06-19 13:52:19",
       "situation": "Form name Form submitted 2026-06-19 13:52:19",
@@ -1094,14 +1086,6 @@
       "topic_label": "Fwd: Commande #12280 confirmée",
       "situation": "Fwd: Commande #12280 confirmée",
       "response_template": "Hi Luca,\n\nYour order #12280 (Le Boat, size 44) has been packed and is on its way to you via Colissimo Europe.\n\nHere is your tracking link:\nhttps://www.laposte.fr/outils/suivre-vos-envois?code=CB535839187FR\n\nDelivery is estimated between June 6 and June 16 to your Milan address.\n\nDon't hesitate to reach out if you have any questions.\n\nJohn – Customer Service – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "fwd__commande__12370",
-      "topic_label": "Fwd: Commande #12370",
-      "situation": "Fwd: Commande #12370",
-      "response_template": "Bonjour Jean-Michel,\n\nMerci pour votre message et désolé pour cette erreur de notre part. Vous avez bien reçu un modèle différent de celui commandé, c'est une erreur d'expédition et nous en prenons l'entière responsabilité.\n\nVoici la marche à suivre pour que nous puissions vous envoyer la bonne paire rapidement :\n\n1. Imprimez votre étiquette de retour prépayée ici (frais pris en charge par nous) : https://wing-labelling-system.s3.eu-west-3.amazonaws.com/52d660c3-ca88-4c89-8407-47cb6498562c/LABEL/2026-06-09/LABEL-5a7614dc-6ae3-4e94-a4f8-6b9e85652876-1781005290406-CB544206735FR.pdf\n\n2. Remplissez le bon de retour disponible sur notre site (mention \"erreur d'expédition\") : https://maxsauveur.com/pages/livraison-et-retour\n\n3. Glissez le bon dans le colis avec la paire et déposez-le dans un point relais Colissimo.\n\nDès réception de votre retour, nous expédions la bonne paire sans délai.\n\nEncore toutes nos excuses pour ce désagrément, Jean-Michel.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -1614,14 +1598,6 @@
       "topic_label": "RE: TR: Commande #11496 confirmée",
       "situation": "RE: TR: Commande #11496 confirmée",
       "response_template": "Bonjour Anh Lan,\n\nMerci pour ce retour très clair. Si le talon se soulève et frotte à chaque pas, c'est effectivement un problème de taille et non d'assouplissement. Votre retour est tout à fait justifié.\n\nConcernant le pop-up, merci pour votre enthousiasme ! Malheureusement, le Moc Jagger ne figurera pas parmi la sélection, et les petites pointures féminines seront très peu représentées lors de cet événement. Je ne voudrais pas vous faire faire le déplacement pour rien.\n\nCe que je vous conseille : suivez nos communications sur les réseaux et par email, nous développons progressivement notre offre sur les petites pointures et vous serez ainsi informée en priorité des prochaines nouveautés.\n\nPour votre retour, la procédure reste la même :\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"remboursement\" ou \"avoir\" selon votre préférence)\n2. Emballez soigneusement la paire et joignez le bon dans le colis\n3. Envoyez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous traitons votre demande dans les plus brefs délais.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re_",
-      "topic_label": "Re:",
-      "situation": "Re:",
-      "response_template": "Bonjour Lucas,\n\nMerci pour votre bonne humeur dans cette situation, c'est appréciable !\n\nSi jamais vous souhaitez recommander une paire pour le mariage ou pour plus tard, on sera heureux de vous faire un geste commercial. N'hésitez pas à nous écrire directement, on s'occupera de vous.\n\nBon mariage !\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -2941,9 +2917,9 @@
       "topic": "re__votre_commande_max_sauveur___information_importante",
       "topic_label": "Re: Votre commande Max Sauveur — information importante",
       "situation": "Re: Votre commande Max Sauveur — information importante",
-      "response_template": "Bonjour Thibaut,\n\nC'est noté, nous expédions votre Paul Mocassin Cuir Pony Vache Marron Noir en 42 lundi prochain. Vous recevrez un email avec votre lien de suivi dès l'expédition.\n\nBonne journée à vous !\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Dylan,\n\nParfait, c'est noté. Votre Paul Cuir Lisse Marron en 43 part lundi.\n\nVous recevrez un email de confirmation d'expédition avec le lien de suivi dès que le colis est pris en charge.\n\nBonne soirée,\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 6
+      "example_count": 7
     },
     {
       "topic": "re__vous_avez_oubli__quelque_chose_je_crois___",
