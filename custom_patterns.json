@@ -1026,6 +1026,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_06_19_12_07_50",
+      "topic_label": "Form name Form submitted 2026-06-19 12:07:50",
+      "situation": "Form name Form submitted 2026-06-19 12:07:50",
+      "response_template": "Bonjour Christophe,\n\nMerci pour votre message.\n\nNous confirmons la bonne réception de votre retour. Le traitement du remboursement est en cours et sera effectué dans les meilleurs délais.\n\nConcernant vos deux mails des 8 et 10 juin : chaque message reçu déclenche automatiquement un email de notre part qui récapitule notre politique de retour et les démarches à suivre. Vous avez d'ailleurs indiqué avoir trouvé les informations sur notre site, ce qui est la bonne direction.\n\nNous sommes désolés si l'attente vous a semblé longue. Le remboursement sera bien effectué, vous en serez informé dès que c'est traité.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_06_19_13_52_19",
       "topic_label": "Form name Form submitted 2026-06-19 13:52:19",
       "situation": "Form name Form submitted 2026-06-19 13:52:19",
