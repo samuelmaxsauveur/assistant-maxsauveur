@@ -1026,6 +1026,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_06_19_13_52_19",
+      "topic_label": "Form name Form submitted 2026-06-19 13:52:19",
+      "situation": "Form name Form submitted 2026-06-19 13:52:19",
+      "response_template": "Bonjour Guillaume,\n\nMerci pour votre message.\n\nVotre commande #12414 (Fisherman + Peter A. taille 44) a bien été expédiée depuis la France le 8 juin. Vous pouvez suivre l'acheminement ici : https://www.laposte.fr/outils/suivre-vos-envois?code=CB546624765FR\n\nConcernant les frais de £142 demandés par Royal Mail : il s'agit de droits de douane et de TVA britanniques. Depuis le Brexit, toute commande en provenance de l'Union européenne vers le Royaume-Uni est soumise à ces frais à l'entrée sur le territoire. Ce sont des taxes gouvernementales que nous ne pouvons ni anticiper ni prendre en charge de notre côté, elles sont entièrement à la charge du destinataire.\n\nPour recevoir votre colis, vous devrez régler ces frais directement via le lien Royal Mail que vous avez reçu. Une fois le paiement effectué, votre colis vous sera livré.\n\nDésolé de ne pas pouvoir faire plus sur ce point, c'est une contrainte liée à la réglementation douanière britannique.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_06_19_14_36_44",
       "topic_label": "Form name Form submitted 2026-06-19 14:36:44",
       "situation": "Form name Form submitted 2026-06-19 14:36:44",
