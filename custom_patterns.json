@@ -1618,6 +1618,14 @@
       "example_count": 1
     },
     {
+      "topic": "re_",
+      "topic_label": "Re:",
+      "situation": "Re:",
+      "response_template": "Bonjour Lucas,\n\nMerci pour votre bonne humeur dans cette situation, c'est appréciable !\n\nSi jamais vous souhaitez recommander une paire pour le mariage ou pour plus tard, on sera heureux de vous faire un geste commercial. N'hésitez pas à nous écrire directement, on s'occupera de vous.\n\nBon mariage !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__ceci_est_un___",
       "topic_label": "Re: Ceci est un...",
       "situation": "Re: Ceci est un...",
