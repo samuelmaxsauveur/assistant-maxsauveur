@@ -330,6 +330,14 @@
       "example_count": 2
     },
     {
+      "topic": "conseil_taille___boots_wayne",
+      "topic_label": "Conseil taille – Boots Wayne",
+      "situation": "Conseil taille – Boots Wayne",
+      "response_template": "Bonjour Thomas,\n\nMerci pour votre message et pour avoir pris le temps de bien mesurer votre pied.\n\nAvec 27,5 cm (soit environ 27,7 cm avec la chaussette), votre pointure naturelle se situe plutôt autour du 43. Le 44 risque effectivement d'être trop grand, et la phrase que vous avez repérée sur notre site va dans ce sens : mieux vaut prendre juste que trop grand, surtout sur un modèle fermé à lacets comme le Wayne.\n\nNous n'avons pas de 43,5 sur ce modèle, donc c'est le 43 qu'il vous faudrait.\n\nBonne nouvelle côté stock : un réassort est prévu début octobre. Votre commande n'est pas encore expédiée, nous pouvons donc l'annuler maintenant si vous le souhaitez, et vous repasserez commande dès que le 43 sera disponible en octobre.\n\nDites-moi si vous voulez qu'on procède à l'annulation.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "conseil_taille___sandales_fisherman",
       "topic_label": "Conseil taille – Sandales Fisherman selon mesure en cm",
       "situation": "Un client fournit la mesure de son pied en centimètres et demande quelle taille prendre pour la sandale Fisherman. Le service client lui indique la taille correspondant au guide, puis recommande une taille en dessous car le modèle chausse légèrement grand.",
