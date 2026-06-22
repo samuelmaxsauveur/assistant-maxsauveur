@@ -731,7 +731,18 @@ def save_pattern():
     )
     from routes_sav import _save_patterns_to_github
     from concurrent.futures import ThreadPoolExecutor
-    ThreadPoolExecutor(max_workers=1).submit(_save_patterns_to_github)
+    def _regen_doc():
+        all_p = database.get_response_patterns()
+        doc = claude_ai.generate_daily_patterns_document(all_p)
+        if doc:
+            database.upsert_response_pattern(
+                topic='_daily_doc',
+                topic_label='Document des réponses types (mis à jour chaque soir)',
+                situation='Document de référence consolidé de toutes les réponses types',
+                response_template=doc, key_points=''
+            )
+        _save_patterns_to_github()
+    ThreadPoolExecutor(max_workers=1).submit(_regen_doc)
     return jsonify({'success': True})
 
 

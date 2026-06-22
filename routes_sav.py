@@ -258,7 +258,7 @@ def outbound_generate():
 
 
 def _daily_pattern_extraction():
-    """Tourne une fois par jour max : généralise les emails envoyés en patterns réutilisables."""
+    """Tourne une fois par jour max : généralise les emails envoyés en patterns réutilisables et génère le document type."""
     try:
         from datetime import datetime as _dt
         today = _dt.utcnow().strftime("%Y-%m-%d")
@@ -276,8 +276,18 @@ def _daily_pattern_extraction():
                 key_points=p.get('key_points', '')
             )
         database.mark_pattern_extraction_done()
-        if patterns:
-            _save_patterns_to_github()
+        # Génère le document type consolidé à partir de TOUS les patterns accumulés
+        all_patterns = database.get_response_patterns()
+        daily_doc = claude_ai.generate_daily_patterns_document(all_patterns)
+        if daily_doc:
+            database.upsert_response_pattern(
+                topic='_daily_doc',
+                topic_label='Document des réponses types (mis à jour chaque soir)',
+                situation='Document de référence consolidé de toutes les réponses types',
+                response_template=daily_doc,
+                key_points=''
+            )
+        _save_patterns_to_github()
     except Exception as ex:
         print(f"[KB] Daily extraction error: {ex}")
 

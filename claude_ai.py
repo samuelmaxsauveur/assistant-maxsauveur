@@ -37,8 +37,23 @@ ACCÈS AUX OUTILS :
 {KNOWLEDGE_BASE}"""
 
 
-def get_system_prompt():
-    """Build SYSTEM_PROMPT dynamically, injecting summaries and saved processes."""
+def _select_relevant_patterns(email_text, patterns, top_n=12):
+    """Select the most relevant patterns based on keyword overlap with the email."""
+    if not email_text or not patterns:
+        return patterns[:top_n]
+    email_words = set(re.findall(r'\w+', email_text.lower()))
+    scored = []
+    for p in patterns:
+        pattern_text = f"{p['topic_label']} {p['situation']} {p['response_template']}".lower()
+        pattern_words = set(re.findall(r'\w+', pattern_text))
+        score = len(email_words & pattern_words)
+        scored.append((score, p))
+    scored.sort(key=lambda x: x[0], reverse=True)
+    return [p for _, p in scored[:top_n]]
+
+
+def get_system_prompt(email_context=''):
+    """Build SYSTEM_PROMPT dynamically, injecting summaries, processes and relevant patterns."""
     try:
         import database
         extra = ""
@@ -54,10 +69,17 @@ def get_system_prompt():
                 extra += f"\n[{p['name']}] (déclencheur : {p['trigger']})\n{p['steps']}\n"
         patterns = database.get_response_patterns()
         if patterns:
-            extra += "\n\n--- RÉPONSES VALIDÉES (apprises de tes vrais emails) ---\n"
-            extra += "Quand la situation du client ressemble à l'une de ces fiches, utilise la réponse type comme base.\n"
-            for p in patterns[:20]:  # 20 plus récents
-                extra += f"\n[{p['topic_label']}]\nSituation : {p['situation'][:300]}\nRéponse type :\n{p['response_template'][:600]}\n"
+            # Inject daily doc first if it exists
+            daily_doc = next((p for p in patterns if p.get('topic') == '_daily_doc'), None)
+            if daily_doc:
+                extra += f"\n\n--- DOCUMENT DES RÉPONSES TYPES (mis à jour chaque soir) ---\n{daily_doc['response_template']}\n"
+            # Then inject top relevant individual patterns
+            non_meta = [p for p in patterns if not p.get('topic', '').startswith('_')]
+            selected = _select_relevant_patterns(email_context, non_meta, top_n=10)
+            if selected:
+                extra += "\n\n--- FICHES RÉPONSES INDIVIDUELLES (les plus pertinentes) ---\n"
+                for p in selected:
+                    extra += f"\n[{p['topic_label']}]\nSituation : {p['situation'][:300]}\nRéponse type :\n{p['response_template'][:600]}\n"
         if extra:
             return BASE_SYSTEM_PROMPT + extra
     except Exception:
@@ -156,7 +178,7 @@ INSTRUCTIONS :
 4. Le JSON needs_info est réservé UNIQUEMENT aux cas où une décision commerciale est impossible sans l'avis de Samuel (ex : accorder un geste commercial exceptionnel, savoir si une garantie s'applique dans un cas limite). Utilise-le avec parcimonie.
 5. Si le statut de livraison Shopify est disponible dans le contexte, utilise-le directement sans poser de question."""
     return _call_claude(
-        system=get_system_prompt(),
+        system=get_system_prompt(email_context=f"{email_subject} {email_body}"),
         messages=[{"role": "user", "content": prompt}]
     )
 
@@ -249,7 +271,7 @@ Réponds en JSON strict avec exactement ces deux champs :
 Réponds UNIQUEMENT avec le JSON, rien d'autre."""
 
     raw = _call_claude(
-        system=get_system_prompt(),
+        system=get_system_prompt(email_context=f"{email_subject} {email_body}"),
         messages=[{"role": "user", "content": prompt}],
         max_tokens=1500
     )
@@ -312,6 +334,46 @@ Ce résumé servira de référence pour répondre aux futurs emails."""
     return message.content[0].text
 
 
+def generate_daily_patterns_document(all_patterns):
+    """
+    At end of day, generate a consolidated structured document of ALL response types
+    accumulated to date. Saved as _daily_doc pattern for use the next day.
+    """
+    if not all_patterns:
+        return None
+    patterns_text = ""
+    for p in all_patterns:
+        if p.get('topic', '').startswith('_'):
+            continue
+        patterns_text += f"\n[{p['topic_label']}]\nSituation : {p['situation'][:200]}\nRéponse type :\n{p['response_template'][:500]}\n---\n"
+
+    prompt = f"""Tu es l'assistant service client de Max Sauveur (lunettes de soleil).
+Voici toutes les fiches de réponses types accumulées à ce jour :
+{patterns_text}
+
+Génère un DOCUMENT DE RÉFÉRENCE structuré qui regroupe et organise ces fiches.
+Format attendu (markdown simple) :
+
+# Document des réponses types — Max Sauveur
+
+## [Catégorie 1] (ex: Livraison & Suivi)
+### [Type de situation]
+**Quand :** description de la situation
+**Réponse type :** le modèle de réponse
+
+## [Catégorie 2] (ex: Retours & SAV)
+...
+
+Règles :
+- Regroupe les fiches similaires en catégories logiques
+- Conserve les formulations clés validées
+- Remplace les noms propres par [Prénom], les numéros par [N° commande]
+- Maximum 800 mots
+- Réponds UNIQUEMENT avec le document, aucun texte autour"""
+
+    return _call_haiku(messages=[{"role": "user", "content": prompt}], max_tokens=1200)
+
+
 def extract_response_patterns(sent_emails, existing_patterns):
     """
     Analyze today's sent emails and return a list of patterns to upsert.
@@ -355,8 +417,7 @@ Règles :
 - Maximum 5 fiches par appel
 - Réponds UNIQUEMENT avec le JSON, aucun texte autour"""
 
-    message = _call_haiku(messages=[{"role": "user", "content": prompt}], max_tokens=2000)
-    raw = message.content[0].text.strip()
+    raw = _call_haiku(messages=[{"role": "user", "content": prompt}], max_tokens=2000).strip()
     # Extract JSON array from response
     import re as _re
     match = _re.search(r'\[.*\]', raw, _re.DOTALL)
@@ -504,7 +565,7 @@ Sois clair mais humain, jamais froid. Utilise "vous".
 Signe : John – Service Client – Max Sauveur
 Réponds uniquement avec le corps du mail, rien d'autre."""
     return _call_claude(
-        system=get_system_prompt(),
+        system=get_system_prompt(email_context=f"{reason} {email_body}"),
         messages=[{"role": "user", "content": prompt}]
     )
 
@@ -603,7 +664,7 @@ Client : {customer_name} ({customer_email}){order_context}{type_context}{templat
 {instruction}
 Réponds uniquement avec le corps de l'email, rien d'autre."""
     return _call_claude(
-        system=get_system_prompt(),
+        system=get_system_prompt(email_context=f"{customer_name} {user_draft}"),
         messages=[{"role": "user", "content": prompt}],
         max_tokens=800
     )
