@@ -1706,6 +1706,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__commande__12370",
+      "topic_label": "Re: Commande #12370",
+      "situation": "Re: Commande #12370",
+      "response_template": "Bonjour Jean-Michel,\n\nToutes nos excuses pour la confusion. Voici votre nouvelle étiquette de retour prépayée, celle-ci est bien la bonne :\n\nhttps://wing-labelling-system.s3.eu-west-3.amazonaws.com/52d660c3-ca88-4c89-8407-47cb6498562c/LABEL/2026-06-19/LABEL-5a7614dc-6ae3-4e94-a4f8-6b9e85652876-1781881742962-7R00505903455.pdf\n\nImprimez-la, glissez le bon de retour (mention \"erreur d'expédition\") dans le colis, et déposez le tout dans un point relais Colissimo. Dès réception, nous vous expédions la bonne paire sans délai.\n\nEncore désolé pour ce contretemps.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande_11516_trop_grande",
       "topic_label": "Re: Commande 11516 trop grande",
       "situation": "Re: Commande 11516 trop grande",
