@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__derni_re_chance_pour_finaliser_votre_commande",
+      "topic_label": "Re: DERNIÈRE CHANCE pour finaliser votre commande",
+      "situation": "Re: DERNIÈRE CHANCE pour finaliser votre commande",
+      "response_template": "Bonjour Vincent,\n\nMerci pour votre message et pour avoir pris le temps de mesurer votre pied !\n\nAvec 25,9 cm (+ 0,2 cm de marge = 26,1 cm), vous correspondez bien à un 40 sur notre guide des tailles.\n\nLe Peter A a une particularité importante : il est conçu sans doublure intérieure, ce qui le rend légèrement plus grand que nos autres modèles. Prendre un 40 est donc tout à fait cohérent ici, et c'est la taille que je vous recommande.\n\nN'hésitez pas si vous avez d'autres questions avant de vous lancer.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "retour",
       "topic_label": "Retour",
       "situation": "Retour",
