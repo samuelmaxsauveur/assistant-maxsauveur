@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__pointure_fisherman",
+      "topic_label": "Re: pointure Fisherman",
+      "situation": "Re: pointure Fisherman",
+      "response_template": "Bonjour Franck,\n\nPour le moment, nous n'avons pas de réassort prévu sur la Fisherman en noir en 41. Il arrive ponctuellement qu'une paire revienne suite à un retour client, mais nous ne pouvons pas nous engager sur une date.\n\nLe mieux est de vous abonner à l'alerte directement sur la fiche produit : vous serez notifié en priorité si la taille repasse en stock.\n\nN'hésitez pas si vous avez d'autres questions !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
