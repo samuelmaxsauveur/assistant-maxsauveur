@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_06_22_14_06_42",
+      "topic_label": "Form name Form submitted 2026-06-22 14:06:42",
+      "situation": "Form name Form submitted 2026-06-22 14:06:42",
+      "response_template": "Hi Johan,\n\nYes, we ship to Belgium! You can place your order directly on our website and select your delivery address in Antwerp at checkout.\n\nDelivery typically takes 10 to 15 business days. Feel free to reach out if you have any questions before ordering.\n\nJohn – Customer Service – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
