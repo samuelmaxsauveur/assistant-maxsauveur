@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__12291_confirm_e",
+      "topic_label": "Re: Commande #12291 confirmée",
+      "situation": "Re: Commande #12291 confirmée",
+      "response_template": "Bonjour Jules,\n\nMerci pour votre message, et désolé pour ce manque de communication de notre côté.\n\nNous avons fait le point avec notre logistique et voici la situation : suite à une erreur de synchronisation de nos stocks, nous ne sommes malheureusement pas en mesure de vous expédier la Peter A. en taille 43.\n\nCela dit, nous avons potentiellement du stock disponible en 42, et je voulais vous en parler directement avant de valider quoi que ce soit : la Peter A. chausse légèrement grand, et le 42 conviendrait très probablement à un pied de 43 habituel. \n\nSouhaitez-vous qu'on vérifie la disponibilité du 42 et qu'on vous l'expédie cette semaine ? Ou préférez-vous qu'on annule la commande et qu'on vous rembourse intégralement ?\n\nDites-nous simplement ce que vous souhaitez, on s'en occupe rapidement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
