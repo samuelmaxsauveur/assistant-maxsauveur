@@ -2170,6 +2170,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__on_commence_fort__",
+      "topic_label": "Re: On commence fort !",
+      "situation": "Re: On commence fort !",
+      "response_template": "Bonjour William,\n\nMerci pour votre message, et bienvenue dans la famille !\n\nLe code METSTOIBIEN est en fait un cadeau de bienvenue envoyé automatiquement après un premier achat. C'est parce que vous avez passé votre commande #12659 que vous l'avez reçu, il ne peut donc pas s'appliquer à cette même commande.\n\nIl est destiné à être utilisé sur une prochaine commande ou à partager avec un ami qui souhaite se faire plaisir sur notre site (valable 7 jours à partir de la réception de l'email).\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__paire_de_cody",
       "topic_label": "Re: Paire de Cody",
       "situation": "Re: Paire de Cody",
