@@ -3050,6 +3050,14 @@
       "example_count": 1
     },
     {
+      "topic": "remboursement",
+      "topic_label": "Remboursement",
+      "situation": "Remboursement",
+      "response_template": "Bonjour Pierre,\n\nMerci pour votre retour. Vous avez tout à fait raison, la ceinture Jonas (189€) n'a pas été prise en compte dans le remboursement initial.\n\nNous nous en occupons immédiatement et vous confirmons que le remboursement complémentaire de 189€ sera traité dans les plus brefs délais.\n\nEncore désolé pour l'omission, et merci de l'avoir signalé.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "remboursement_commande__18878",
       "topic_label": "Remboursement commande #18878",
       "situation": "Remboursement commande #18878",
