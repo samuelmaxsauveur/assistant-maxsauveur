@@ -3378,6 +3378,14 @@
       "example_count": 5
     },
     {
+      "topic": "pointure_fisherman",
+      "topic_label": "pointure Fisherman",
+      "situation": "pointure Fisherman",
+      "response_template": "Bonjour Franck,\n\nMerci pour votre message !\n\nAvec votre Springsteen en 41,5, le Fisherman chausse dans le même esprit, légèrement grand. Je vous conseille donc de prendre un 41.\n\nSi votre cou-de-pied est particulièrement fort, le 41 reste la bonne option pour bénéficier d'un bon maintien. Si vous avez un cou-de-pied plus fin, idem, le 41 sera parfait.\n\nN'hésitez pas si vous avez d'autres questions !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "pointures",
       "topic_label": "pointures",
       "situation": "pointures",
