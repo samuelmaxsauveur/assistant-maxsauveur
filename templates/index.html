@@ -335,31 +335,29 @@ async function generateResponse(id) {
     const question = (document.getElementById('question-' + id)?.value || '').trim();
     btn.textContent = 'Génération...';
     btn.disabled = true;
+    const safeFetch = async (url, body) => {
+        const controller = new AbortController();
+        const tid = setTimeout(() => controller.abort(), 55000);
+        try {
+            const res = await fetch(url, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body), signal: controller.signal });
+            clearTimeout(tid);
+            const text = await res.text();
+            try { return JSON.parse(text); } catch(e) { throw new Error('server_error'); }
+        } catch(e) { clearTimeout(tid); throw e; }
+    };
     try {
         if (question) {
             // Comment present: use /ask so the comment is taken into account
             if (!chatHistory[id]) chatHistory[id] = [];
-            const res = await fetch('/ask', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({...emailData[id], question, previous_exchanges: chatHistory[id]})
-            });
-            const data = await res.json();
+            const data = await safeFetch('/ask', {...emailData[id], question, previous_exchanges: chatHistory[id]});
             if (data.updated_draft) textarea.value = data.updated_draft;
             if (data.samuel_answer) {
-                const answer = data.samuel_answer;
-                appendChat(id, question, answer);
-                chatHistory[id].push({question, claude_answer: answer});
-                // Keep instruction in field — don't clear
+                appendChat(id, question, data.samuel_answer);
+                chatHistory[id].push({question, claude_answer: data.samuel_answer});
             }
         } else {
             // No comment: regenerate from scratch
-            const res = await fetch('/generate', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(emailData[id])
-            });
-            const data = await res.json();
+            const data = await safeFetch('/generate', emailData[id]);
             if (data.questions && data.questions.length > 0) {
                 showQuestions(id, data.questions);
             } else if (data.response) {
@@ -368,7 +366,10 @@ async function generateResponse(id) {
             }
         }
     } catch(e) {
-        textarea.value = 'Erreur. Réessaie.';
+        const msg = e.name === 'AbortError' || e.message === 'server_error'
+            ? '⚠️ Le serveur a mis trop longtemps à répondre. Réessaie dans quelques secondes.'
+            : '⚠️ Erreur réseau. Vérifie ta connexion.';
+        textarea.value = msg;
     }
     btn.textContent = 'Régénérer';
     btn.disabled = false;
@@ -394,21 +395,34 @@ async function askClaude(id) {
     if (btn) { btn.textContent = 'En cours...'; btn.disabled = true; }
     if (!chatHistory[id]) chatHistory[id] = [];
     try {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 55000);
         const res = await fetch('/ask', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({...emailData[id], question, previous_exchanges: chatHistory[id]})
+            body: JSON.stringify({...emailData[id], question, previous_exchanges: chatHistory[id]}),
+            signal: controller.signal
         });
-        const data = await res.json();
+        clearTimeout(timeout);
+        const text = await res.text();
+        let data;
+        try { data = JSON.parse(text); }
+        catch(e) {
+            appendChat(id, question, '❌ Le serveur a mis trop longtemps à répondre. Réessaie dans quelques secondes.');
+            if (btn) { btn.textContent = 'Demander'; btn.disabled = false; }
+            return;
+        }
         const answer = data.samuel_answer || '(brouillon mis à jour)';
         appendChat(id, question, answer);
         chatHistory[id].push({question, claude_answer: answer});
-        // Keep the question visible — do NOT clear so instructions stay accessible
         if (data.updated_draft) {
             document.getElementById('textarea-' + id).value = data.updated_draft;
         }
     } catch(e) {
-        appendChat(id, question, '❌ Erreur : ' + e.message);
+        const msg = e.name === 'AbortError'
+            ? '❌ Temps dépassé. Réessaie dans quelques secondes.'
+            : '❌ Erreur réseau. Vérifie ta connexion et réessaie.';
+        appendChat(id, question, msg);
     }
     if (btn) { btn.textContent = 'Demander'; btn.disabled = false; }
 }
