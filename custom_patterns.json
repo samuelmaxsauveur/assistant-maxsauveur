@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Xavier,\n\nNous venons d'effectuer un ajustement de notre côté. Pourriez-vous réessayer d'appliquer le code Z9A7YCDZWC86 dans votre panier ?\n\nSi le problème persiste, dites-le moi et j'investigate plus en détail.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 47
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -88,14 +96,6 @@
       "response_template": "Bonjour [Prénom],\n\nLe retour a bien été réceptionné et votre remboursement sera traité sous 5 à 10 jours ouvrés, selon les délais de votre banque.\n\nCordialement,\nJohn de Max Sauveur",
       "key_points": "Ton : courtois et rassurant. Engagements : délai clair (5-10 jours ouvrés) + mention des délais bancaires. Formule polite de clôture avec signature du prénom + marque.",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Julie,\n\nLe retour a bien été réceptionné et votre remboursement sera traité sous 5 à 10 jours ouvrés, selon les délais de votre banque.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 46
     },
     {
       "topic": "re__conseil_taille___boots_wayne",
