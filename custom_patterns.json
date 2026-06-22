@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__conseil_taille___boots_wayne",
+      "topic_label": "Re: Conseil taille – Boots Wayne",
+      "situation": "Re: Conseil taille – Boots Wayne",
+      "response_template": "Bonjour Thomas,\n\nMalheureusement, la commande a été expédiée avant que nous puissions l'annuler. Le colis est en route vers votre point relais (PRESSE LIBRAIRIE NGUYEN, 21 rue de l'Aude, 75014 Paris), avec une livraison estimée entre le 24 et le 26 juin.\n\nVous pouvez suivre votre colis ici : https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR648136587TS\n\nDésolé pour ce contre-temps.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
