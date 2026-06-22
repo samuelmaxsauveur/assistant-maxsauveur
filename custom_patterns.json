@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Julie,\n\nLe retour a bien été réceptionné et votre remboursement sera traité sous 5 à 10 jours ouvrés, selon les délais de votre banque.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 46
+    },
+    {
       "topic": "re__conseil_taille___boots_wayne",
       "topic_label": "Re: Conseil taille – Boots Wayne",
       "situation": "Re: Conseil taille – Boots Wayne",
@@ -2192,14 +2200,6 @@
       "response_template": "Bonjour Pierfranco,\n\nMerci pour votre confiance, c'est un beau premier achat à faire !\n\nPour répondre à vos questions sur la Fisherman :\n\nLa sandale chausse **grand**. Avec vos 27 cm de pied, le 42 est votre taille de référence sur notre guide. Par expérience, nos clients prennent cette pointure quand il chausse du 43.\n\nConcernant votre inquiétude sur le maintien : oui, les boucles de réglage permettent d'ajuster le tour de pied et de cheville avec précision, ce qui compense tout à fait le fait d'être légèrement entre deux tailles. Vous n'aurez pas la sensation de \"perdre\" la sandale.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande !\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Xavier,\n\nNous venons de faire une modification de notre côté pour que le code fonctionne correctement sur votre commande.\n\nVous pouvez retenter dès maintenant avec le code **Z9A7YCDZWC86** dans votre panier. N'hésitez pas à nous revenir si vous rencontrez encore un problème.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 45
     },
     {
       "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
