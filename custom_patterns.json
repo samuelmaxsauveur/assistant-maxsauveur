@@ -1042,6 +1042,14 @@
       "example_count": 1
     },
     {
+      "topic": "form_name_form_submitted_2026_06_20_17_38_08",
+      "topic_label": "Form name Form submitted 2026-06-20 17:38:08",
+      "situation": "Form name Form submitted 2026-06-20 17:38:08",
+      "response_template": "Salut Nicolas,\n\nOn a déjà répondu à votre question hier, mais en résumé : le retour est bien réceptionné depuis le 16/06, et le délai de traitement est de 14 jours ouvrés, soit aux alentours du 7 juillet. Vous recevrez une confirmation par email dès que le remboursement est déclenché.\n\nPas d'inquiétude donc, tout suit son cours.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fw__commande__12087_confirm_e",
       "topic_label": "Fw: Commande #12087 confirmée",
       "situation": "Fw: Commande #12087 confirmée",
