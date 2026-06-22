@@ -54,10 +54,10 @@ def get_system_prompt():
                 extra += f"\n[{p['name']}] (déclencheur : {p['trigger']})\n{p['steps']}\n"
         patterns = database.get_response_patterns()
         if patterns:
-            extra += "\n\n--- RÉPONSES VALIDÉES (apprises des emails envoyés) ---\n"
-            extra += "Ces fiches sont extraites des vraies réponses envoyées aux clients. Inspire-toi en priorité de ces formulations.\n"
-            for p in patterns[:15]:  # Max 15 patterns pour limiter les tokens
-                extra += f"\n[{p['topic_label']}]\nSituation : {p['situation'][:200]}\nRéponse type : {p['response_template'][:400]}\n"
+            extra += "\n\n--- RÉPONSES VALIDÉES (apprises de tes vrais emails) ---\n"
+            extra += "Quand la situation du client ressemble à l'une de ces fiches, utilise la réponse type comme base.\n"
+            for p in patterns[:20]:  # 20 plus récents
+                extra += f"\n[{p['topic_label']}]\nSituation : {p['situation'][:300]}\nRéponse type :\n{p['response_template'][:600]}\n"
         if extra:
             return BASE_SYSTEM_PROMPT + extra
     except Exception:
@@ -355,12 +355,7 @@ Règles :
 - Maximum 5 fiches par appel
 - Réponds UNIQUEMENT avec le JSON, aucun texte autour"""
 
-    client = anthropic.Anthropic(api_key=os.getenv('ANTHROPIC_API_KEY'))
-    message = client.messages.create(
-        model="claude-sonnet-4-6",
-        max_tokens=2000,
-        messages=[{"role": "user", "content": prompt}]
-    )
+    message = _call_haiku(messages=[{"role": "user", "content": prompt}], max_tokens=2000)
     raw = message.content[0].text.strip()
     # Extract JSON array from response
     import re as _re

@@ -609,9 +609,10 @@ def send_ajax():
         source='reply',
         thread_id=data.get('thread_id')
     )
-    # Pattern déjà sauvegardé directement dans log_sent_email — sync GitHub en background
+    # Sync GitHub + extraction quotidienne en background
     from concurrent.futures import ThreadPoolExecutor
-    from routes_sav import _save_patterns_to_github
+    from routes_sav import _save_patterns_to_github, _daily_pattern_extraction
+    ThreadPoolExecutor(max_workers=1).submit(_daily_pattern_extraction)
     ThreadPoolExecutor(max_workers=1).submit(_save_patterns_to_github)
     return jsonify({'success': True})
 

@@ -274,13 +274,41 @@ def get_today_sent_emails():
 
 
 def get_response_patterns():
-    """Return all response patterns ordered by topic."""
+    """Return all response patterns, most recently updated first."""
     conn = get_connection()
     try:
         cursor = conn.execute(
-            "SELECT * FROM response_patterns ORDER BY topic_label ASC"
+            "SELECT * FROM response_patterns WHERE topic != '_last_extraction' ORDER BY last_updated DESC"
         )
         return [dict(row) for row in cursor.fetchall()]
+    finally:
+        conn.close()
+
+
+def get_last_pattern_extraction_date():
+    """Return the date of the last extract_response_patterns run."""
+    conn = get_connection()
+    try:
+        row = conn.execute(
+            "SELECT last_updated FROM response_patterns WHERE topic = '_last_extraction'"
+        ).fetchone()
+        return row['last_updated'][:10] if row else None
+    finally:
+        conn.close()
+
+
+def mark_pattern_extraction_done():
+    """Record today as the last extraction date."""
+    now = datetime.utcnow().isoformat()
+    conn = get_connection()
+    try:
+        conn.execute(
+            """INSERT OR REPLACE INTO response_patterns
+               (topic, topic_label, situation, response_template, key_points, example_count, last_updated, created_at)
+               VALUES ('_last_extraction', '_last_extraction', '', '', '', 0, ?, ?)""",
+            (now, now)
+        )
+        conn.commit()
     finally:
         conn.close()
 

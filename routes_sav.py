@@ -257,6 +257,31 @@ def outbound_generate():
     return jsonify({'draft': draft})
 
 
+def _daily_pattern_extraction():
+    """Tourne une fois par jour max : généralise les emails envoyés en patterns réutilisables."""
+    try:
+        from datetime import datetime as _dt
+        today = _dt.utcnow().strftime("%Y-%m-%d")
+        if database.get_last_pattern_extraction_date() == today:
+            return  # Déjà fait aujourd'hui
+        sent = database.get_today_sent_emails()
+        if not sent:
+            return
+        existing = database.get_response_patterns()
+        patterns = claude_ai.extract_response_patterns(sent, existing)
+        for p in patterns:
+            database.upsert_response_pattern(
+                topic=p['topic'], topic_label=p['topic_label'],
+                situation=p['situation'], response_template=p['response_template'],
+                key_points=p.get('key_points', '')
+            )
+        database.mark_pattern_extraction_done()
+        if patterns:
+            _save_patterns_to_github()
+    except Exception as ex:
+        print(f"[KB] Daily extraction error: {ex}")
+
+
 def _save_patterns_to_github():
     """Dump all response_patterns from SQLite to custom_patterns.json via GitHub API."""
     import requests as req_lib, json as _json, base64, os
@@ -363,8 +388,9 @@ def outbound_send():
             body=body,
             source='outbound'
         )
-        # Pattern déjà sauvegardé directement dans log_sent_email — sync GitHub en background
+        # Sync GitHub + extraction quotidienne en background
         from concurrent.futures import ThreadPoolExecutor
+        ThreadPoolExecutor(max_workers=1).submit(_daily_pattern_extraction)
         ThreadPoolExecutor(max_workers=1).submit(_save_patterns_to_github)
         return jsonify({'success': True})
     except Exception as e:
