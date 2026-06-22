@@ -2101,9 +2101,9 @@
       "topic": "re__max_sauveur___service_client",
       "topic_label": "Re: Max Sauveur — Service Client",
       "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Blanche,\n\nMerci pour votre retour.\n\nLe remboursement sera traité dans les prochains jours ouvrés, directement sur votre mode de paiement initial. Comptez généralement 5 à 10 jours ouvrés selon votre banque.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Xavier,\n\nNous venons de faire une modification de notre côté pour que le code fonctionne correctement sur votre commande.\n\nVous pouvez retenter dès maintenant avec le code **Z9A7YCDZWC86** dans votre panier. N'hésitez pas à nous revenir si vous rencontrez encore un problème.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 44
+      "example_count": 45
     },
     {
       "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
