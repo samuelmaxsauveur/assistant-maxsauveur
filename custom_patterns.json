@@ -2834,6 +2834,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__retour_ou__change_commande__11695",
+      "topic_label": "Re: Retour ou échange commande #11695",
+      "situation": "Re: Retour ou échange commande #11695",
+      "response_template": "Bonjour Idriss,\n\nMerci pour le retour, et ravi que les petits sacs en velours vous aient plu, c'est un détail qui fait la différence !\n\nTout est en ordre de votre côté. Vous n'avez plus qu'à envoyer le colis à notre logistique et nous nous occupons du reste dès réception.\n\nBon envoi, et à très vite pour votre prochain Moc Jagger dans la bonne taille !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__retour_re_u___remboursement_en_cours",
       "topic_label": "Re: Retour reçu — remboursement en cours",
       "situation": "Re: Retour reçu — remboursement en cours",
