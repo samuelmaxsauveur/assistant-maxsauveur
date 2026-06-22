@@ -3130,6 +3130,14 @@
       "example_count": 1
     },
     {
+      "topic": "retour_ou__change_commande__11695",
+      "topic_label": "Retour ou échange commande #11695",
+      "situation": "Retour ou échange commande #11695",
+      "response_template": "Bonjour Idriss,\n\nMerci pour votre message, et ravi que vous n'ayez pas porté la paire en extérieur, cela facilitera le retour.\n\nPas de problème, nous pouvons tout à fait organiser cela. Voici comment ça fonctionne de notre côté : l'échange direct n'est pas possible dans notre système, mais on passe par un avoir que vous utilisez pour repasser commande dans la taille et la couleur de votre choix.\n\nVoici la procédure :\n\n1. Emballez soigneusement le Moc Jagger (dans la boîte d'origine si possible)\n2. Téléchargez et imprimez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"échange de taille\" comme motif)\n3. Envoyez la paire à notre adresse logistique : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDès réception et contrôle de la paire, nous vous enverrons un avoir de 289€, valable 6 mois sur notre site, que vous pourrez utiliser pour commander la taille au-dessus (41) dans la couleur de votre choix.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "retour_payant_politique_prix_juste_avec_geste_commercial",
       "topic_label": "Retour payant – explication politique prix juste + frais offerts sur prochaine commande",
       "situation": "Un client est surpris ou mécontent de devoir payer les frais de retour. Il a reçu une mauvaise taille (chaussures, ceinture) et s'attendait à un retour gratuit. Le service client doit expliquer la politique tarifaire sans retours offerts tout en proposant un geste commercial concret.",
