@@ -337,6 +337,12 @@
 </div>
 
 <script>
+async function safeJson(res) {
+    const text = await res.text();
+    try { return JSON.parse(text); }
+    catch(e) { throw new Error('server_error'); }
+}
+
 // Case data for JS actions
 const caseData = {
     {% for case in cases %}
@@ -368,7 +374,7 @@ async function autoAnalyze(caseId) {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(caseData[caseId])
         });
-        const data = await res.json();
+        const data = await safeJson(res);
         const el = document.getElementById('analysis-' + caseId);
         if (data.questions_for_samuel && data.questions_for_samuel.length > 0) {
             el.classList.add('has-questions');
@@ -404,7 +410,7 @@ async function sendCompose(caseId, customerEmail, subject, threadId, btn) {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({case_id: caseId, customer_email: customerEmail, subject: 'Re: ' + subject, body, thread_id: threadId})
     });
-    const data = await res.json();
+    const data = await safeJson(res);
     const resultEl = document.getElementById('result-' + caseId);
     resultEl.style.display = 'block';
     resultEl.className = data.success ? 'result-msg result-ok' : 'result-msg result-err';
@@ -422,7 +428,7 @@ async function suggestCompose(caseId, btn) {
         body: JSON.stringify({...caseData[caseId], suggest_message: context})
     });
     // Use the analysis to pre-fill a suggested message
-    const data = await res.json();
+    const data = await safeJson(res);
     const questions = data.questions_for_samuel || [];
     if (questions.length > 0) {
         textarea.value = `Bonjour ${caseData[caseId].customer_name},\n\nAfin de traiter votre demande au mieux, pourriez-vous nous préciser :\n${questions.map((q,i) => `${i+1}. ${q}`).join('\n')}\n\nMerci d'avance.\n\nJohn – Service Client – Max Sauveur`;
@@ -438,7 +444,7 @@ async function approveCase(caseId, btn) {
         method: 'POST', headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(caseData[caseId])
     });
-    const data = await res.json();
+    const data = await safeJson(res);
     const resultEl = document.getElementById('result-' + caseId);
     resultEl.style.display = 'block';
     if (data.success) {
@@ -461,7 +467,7 @@ async function generateRejection(caseId, btn) {
         method: 'POST', headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({...caseData[caseId], reason})
     });
-    const data = await res.json();
+    const data = await safeJson(res);
     const draftEl = document.getElementById('draft-' + caseId);
     draftEl.style.display = 'block';
     document.getElementById('draft-text-' + caseId).value = data.draft;
@@ -475,7 +481,7 @@ async function sendRejection(caseId, customerEmail, subject, threadId, btn) {
         method: 'POST', headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({case_id: caseId, customer_email: customerEmail, subject, body, thread_id: threadId})
     });
-    const data = await res.json();
+    const data = await safeJson(res);
     const resultEl = document.getElementById('result-' + caseId);
     resultEl.style.display = 'block';
     resultEl.className = data.success ? 'result-msg result-ok' : 'result-msg result-err';
@@ -490,7 +496,7 @@ async function checkStatus(caseId, orderNumber, btn) {
         method: 'POST', headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({case_id: caseId, order_number: orderNumber})
     });
-    const data = await res.json();
+    const data = await safeJson(res);
     const el = document.getElementById('status-result-' + caseId);
     el.innerHTML = data.found
         ? `<span style="background:#e6f9ee;color:#1a7a3e;padding:4px 12px;border-radius:20px;font-size:13px;">Statut : <strong>${data.status}</strong></span>`
@@ -525,7 +531,7 @@ async function createCase(emailId, threadId, senderEmail, senderRaw, subject, bo
             subject, email_body: body, order_number: orderNumber || null
         })
     });
-    const data = await res.json();
+    const data = await safeJson(res);
     if (data.success) { btn.textContent = '✅ Créé...'; setTimeout(() => location.reload(), 800); }
     else { btn.textContent = '❌ Erreur'; btn.disabled = false; }
 }
@@ -573,7 +579,7 @@ async function outboundSearch() {
         method: 'POST', headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({query})
     });
-    const data = await res.json();
+    const data = await safeJson(res);
     if (!data.found) {
         document.getElementById('ob-search-result').textContent = 'Aucun client trouvé.';
         return;
@@ -602,7 +608,7 @@ async function outboundSearch() {
 async function loadOutboundTemplates() {
     try {
         const res = await fetch('/sav/outbound/templates');
-        outboundTemplatesStatus = await res.json();
+        outboundTemplatesStatus = await safeJson(res);
         // Inject custom saved templates into dropdown
         const sel = document.getElementById('ob-type');
         // Remove previously injected custom options
@@ -638,7 +644,7 @@ async function outboundSaveAsNew(btn) {
         method: 'POST', headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({subject_type: slug, body, label})
     });
-    const data = await res.json();
+    const data = await safeJson(res);
     if (data.success) {
         btn.textContent = '✅ Sauvegardé';
         // Add to dropdown immediately
@@ -671,7 +677,7 @@ async function persistTemplate(btn) {
         method: 'POST', headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({subject_type: slug})
     });
-    const data = await res.json();
+    const data = await safeJson(res);
     if (data.success) {
         btn.textContent = '✅ Permanent !'; btn.style.background = '#15803d';
     } else {
@@ -689,7 +695,7 @@ async function outboundSaveTemplate(btn) {
         method: 'POST', headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({subject_type: type, body})
     });
-    const data = await res.json();
+    const data = await safeJson(res);
     if (data.success) {
         outboundTemplatesStatus[type] = true;
         document.getElementById('ob-template-badge').style.display = 'inline';
@@ -747,7 +753,7 @@ async function outboundGenerate(btn) {
             previous_draft: previousDraft,
         })
     });
-    const data = await res.json();
+    const data = await safeJson(res);
     document.getElementById('ob-draft-text').value = data.draft || '';
     document.getElementById('ob-subject').value = OUTBOUND_SUBJECTS[type] || 'Max Sauveur — Service Client';
     document.getElementById('ob-draft-preview').style.display = 'block';
@@ -771,7 +777,7 @@ async function outboundSend(btn) {
         method: 'POST', headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({customer_email: outboundCustomer.email, subject, body})
     });
-    const data = await res.json();
+    const data = await safeJson(res);
     const resultEl = document.getElementById('ob-result');
     resultEl.style.display = 'block';
     resultEl.className = data.success ? 'result-msg result-ok' : 'result-msg result-err';
@@ -798,7 +804,7 @@ async function createManualCase(btn) {
             order_number: order || null
         })
     });
-    const data = await res.json();
+    const data = await safeJson(res);
     const resultEl = document.getElementById('result-manual');
     resultEl.style.display = 'block';
     if (data.success) {

@@ -271,6 +271,13 @@
     </div>
 
 <script>
+// Helper global : parse JSON sans crasher si Railway renvoie une erreur texte
+async function safeJson(res) {
+    const text = await res.text();
+    try { return JSON.parse(text); }
+    catch(e) { throw new Error('server_error'); }
+}
+
 // Gestion changement relais
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.relay-btn').forEach(btn => {
@@ -294,7 +301,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     customer_name: customerName
                 })
             });
-            const data = await res.json();
+            const data = await safeJson(res);
 
             if (data.success) {
                 this.textContent = '✅ Relais modifié — email envoyé à Samuel';
@@ -440,7 +447,7 @@ async function saveProcess(id) {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({label: name, situation, response_template: draft})
     });
-    const data = await res.json();
+    const data = await safeJson(res);
     if (data.success) {
         const btn = document.querySelector('button[onclick="saveProcess(\'' + id + '\')"]');
         if (btn) { btn.textContent = '✅ Enregistré'; setTimeout(() => { btn.textContent = '💾 Enregistrer comme process'; }, 3000); }
@@ -468,7 +475,7 @@ async function generateOne(id) {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(emailData[id])
         });
-        const data = await res.json();
+        const data = await safeJson(res);
         if (data.questions && data.questions.length > 0) {
             showQuestions(id, data.questions);
         } else if (data.response) {
@@ -536,7 +543,7 @@ async function sendReturnLabel(id) {
                     email_body: d.body
                 })
             });
-            const data = await res.json();
+            const data = await safeJson(res);
             if (data.success) {
                 // Put draft in textarea for review
                 const textarea = document.getElementById('textarea-' + id);
@@ -578,7 +585,7 @@ async function sendReturnLabel(id) {
                 order_number: d.order ? d.order.number : ''
             })
         });
-        const data = await res.json();
+        const data = await safeJson(res);
         if (data.success) {
             btn.textContent = data.label_attached ? '✅ Envoyé avec étiquette' : '✅ Envoyé (sans étiquette)';
             btn.style.background = '#16a34a';
@@ -605,7 +612,7 @@ async function lookupWing(id, orderNum) {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({order_number: orderNum})
         });
-        const data = await res.json();
+        const data = await safeJson(res);
         resultDiv.style.display = 'block';
         if (data.success) {
             const repair = data.data.repair || '';
@@ -643,7 +650,7 @@ async function triggerCheck() {
     btn.textContent = 'Vérification...';
     btn.disabled = true;
     const res = await fetch('/trigger-check', {method: 'POST'});
-    const data = await res.json();
+    const data = await safeJson(res);
     btn.textContent = data.status === 'done' ? '✅ Fait — rafraîchis la page' : '❌ Erreur';
     setTimeout(() => { btn.textContent = '🔄 Vérifier nouveaux emails'; btn.disabled = false; }, 3000);
 }

@@ -144,6 +144,11 @@
 </div>
 
 <script>
+async function safeJson(res) {
+    const text = await res.text();
+    try { return JSON.parse(text); }
+    catch(e) { throw new Error('server_error'); }
+}
 const CASE_ID = {{ case.id }};
 
 async function updateStatus(newStatus, btn) {
@@ -159,7 +164,7 @@ async function updateStatus(newStatus, btn) {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({case_id: CASE_ID, new_status: newStatus, note, notify})
     });
-    const data = await res.json();
+    const data = await safeJson(res);
     const resultEl = document.getElementById('update-result');
     resultEl.style.display = 'block';
     if (data.success) {
