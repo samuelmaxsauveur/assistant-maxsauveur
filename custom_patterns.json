@@ -2746,6 +2746,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__sandales_fisherman",
+      "topic_label": "Re: Re: Sandales Fisherman",
+      "situation": "Re: Re: Sandales Fisherman",
+      "response_template": "Bonjour Léo,\n\nQuelle belle coïncidence, ravi que le 41 soit revenu juste à temps !\n\nPour répondre à votre question : oui, dans le cas d'un échange via avoir, vous auriez effectivement payé les frais de port à chaque étape (retour à vos frais + nouvelle commande avec frais de livraison). Il n'y a pas de prise en charge automatique des frais dans ce cas de figure.\n\nEn revanche, puisque vous avez bien géré les choses en demandant le remboursement directement et en repassant commande de votre côté, il n'y a pas de frais supplémentaires à compenser. Vous avez payé les frais de retour et les frais de livraison de la nouvelle commande #12666, ce qui est tout à fait normal dans ce type de situation.\n\nVotre remboursement de 134,10€ (hors frais de port initiaux) sera traité dès réception et contrôle de la paire 42.\n\nBon weekend à vous aussi !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__suivez_la_production_de_vos_moc_jagger",
       "topic_label": "Re: Re: Suivez la production de vos Moc Jagger",
       "situation": "Re: Re: Suivez la production de vos Moc Jagger",
