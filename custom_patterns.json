@@ -2170,14 +2170,6 @@
       "example_count": 1
     },
     {
-      "topic": "re__on_commence_fort__",
-      "topic_label": "Re: On commence fort !",
-      "situation": "Re: On commence fort !",
-      "response_template": "Bonjour William,\n\nMerci pour votre message, et bienvenue dans la famille !\n\nLe code METSTOIBIEN est en fait un cadeau de bienvenue envoyé automatiquement après un premier achat. C'est parce que vous avez passé votre commande #12659 que vous l'avez reçu, il ne peut donc pas s'appliquer à cette même commande.\n\nIl est destiné à être utilisé sur une prochaine commande ou à partager avec un ami qui souhaite se faire plaisir sur notre site (valable 7 jours à partir de la réception de l'email).\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "re__paire_de_cody",
       "topic_label": "Re: Paire de Cody",
       "situation": "Re: Paire de Cody",
@@ -2650,6 +2642,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__re__re__re__re__re__fin_de_production_et_exp_ditions_de_",
+      "topic_label": "Re: Re: Re: Re: Re: Re: Fin de production et expéditions de vos Moc Jagger",
+      "situation": "Re: Re: Re: Re: Re: Re: Fin de production et expéditions de vos Moc Jagger",
+      "response_template": "Bonjour Alma,\n\nParfait, merci pour la notification ! Nous vous confirmerons dès réception du colis.\n\nPour rappel, une fois que nous l'aurons reçu et contrôlé, nous vous expédierons en une seule livraison : les Moc Jagger 38, les deux paires d'embauchoirs, ainsi que vos Derby Wood (quand elle arrivera après la précommande).\n\nConcernant le remboursement des chaussettes, nous vous rapprocherons également à ce moment-là.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__re__re__re__sizing_fisherman",
       "topic_label": "Re: Re: Re: Re: Re: Re: Sizing fisherman",
       "situation": "Re: Re: Re: Re: Re: Re: Sizing fisherman",
@@ -2830,14 +2830,6 @@
       "topic_label": "Re: Retour offre nouvelle collection 2026 commande 11985",
       "situation": "Re: Retour offre nouvelle collection 2026 commande 11985",
       "response_template": "Bonjour Guillaume,\n\nMerci pour votre message et ravi que la ceinture vous aille parfaitement !\n\nPour répondre à vos deux questions :\n\n**Sur le remboursement :** Oui, si le 43 ne vous convient pas, vous pourrez prétendre à un remboursement dans la mesure où vous êtes dans les délais légaux de 14 jours après réception. Pas d'inquiétude de ce côté.\n\n**Sur les frais de retour :** Nous comprenons votre situation et la frustration de ces allers-retours successifs. Malheureusement, nous ne pouvons pas prendre en charge les frais de retour dans ce cas. Nous avons très peu de marge de manœuvre : les coûts logistiques d'un troisième aller-retour ne sont tout simplement pas viables pour nous. Nous en sommes sincèrement désolés.\n\nDès réception, nous traiterons votre remboursement.\n\nOn croise les doigts pour que le 43 soit la bonne !\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__retour_ou__change_commande__11695",
-      "topic_label": "Re: Retour ou échange commande #11695",
-      "situation": "Re: Retour ou échange commande #11695",
-      "response_template": "Bonjour Idriss,\n\nMerci pour le retour, et ravi que les petits sacs en velours vous aient plu, c'est un détail qui fait la différence !\n\nTout est en ordre de votre côté. Vous n'avez plus qu'à envoyer le colis à notre logistique et nous nous occupons du reste dès réception.\n\nBon envoi, et à très vite pour votre prochain Moc Jagger dans la bonne taille !\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
