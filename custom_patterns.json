@@ -3090,6 +3090,14 @@
       "example_count": 1
     },
     {
+      "topic": "retour_commande_11610",
+      "topic_label": "Retour commande 11610",
+      "situation": "Retour commande 11610",
+      "response_template": "Bonjour Anne,\n\nMerci pour votre message et désolé pour ce délai de traitement.\n\nNous avons bien reçu votre colis, mais il n'y avait malheureusement pas de bon de retour à l'intérieur. Sans ce document, il nous est impossible d'identifier l'expéditeur et d'associer le colis à votre commande, ce qui explique que votre dossier n'ait pas encore été traité.\n\nNous avons maintenant fait le lien avec votre commande #11610, et nous sommes prêts à régler cela rapidement. Voici les options que nous vous proposons :\n\n1. Un échange pour la bonne taille (sans frais de livraison de notre part) + un bon cadeau de 30€ offert sur un prochain achat.\n\n2. Une carte cadeau valable sur l'ensemble de notre site, d'une valeur égale à votre commande + 30€ offerts, si vous souhaitez découvrir un autre modèle.\n\n3. Un remboursement simple sur votre moyen de paiement d'origine.\n\nDites-nous simplement quelle option vous convient le mieux et nous traitons cela sans délai.\n\nEncore désolé pour la gêne occasionnée.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "retour_commande_11624",
       "topic_label": "Retour commande 11624",
       "situation": "Retour commande 11624",
