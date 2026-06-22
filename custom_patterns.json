@@ -2082,6 +2082,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__fwd__commande__12528_confirm_e",
+      "topic_label": "Re: Fwd: Commande #12528 confirmée",
+      "situation": "Re: Fwd: Commande #12528 confirmée",
+      "response_template": "Bonjour Stéphanie,\n\nMerci pour ces précisions.\n\nPour être transparent avec vous : notre position sur l'application rétroactive d'un code reste la même, et ce n'est pas quelque chose que nous faisons en règle générale. Ce n'est pas une question de mauvaise volonté, c'est simplement une règle que nous appliquons de façon cohérente pour tous nos clients.\n\nCe que je peux faire, en revanche, c'est remonter votre cas à notre équipe pour voir si une solution est envisageable au vu de la situation. Je vous reviens avec une réponse dans les prochains jours.\n\nPar ailleurs, votre commande a bien été livrée selon notre système. Si ce n'est pas le cas de votre côté, n'hésitez pas à me le signaler.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__fwd__max_sauveur___service_client",
       "topic_label": "Re: Fwd: Max Sauveur — Service Client",
       "situation": "Re: Fwd: Max Sauveur — Service Client",
