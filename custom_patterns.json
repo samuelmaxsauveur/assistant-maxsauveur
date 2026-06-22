@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__form_name_form_submitted_2026_06_18_20_21_09",
+      "topic_label": "Re: Form name Form submitted 2026-06-18 20:21:09",
+      "situation": "Re: Form name Form submitted 2026-06-18 20:21:09",
+      "response_template": "Bonjour Nicolas,\n\nMerci pour ce retour, c'est gentil ! Très heureux que la commande soit passée sans accroc.\n\nBelle journée à vous,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__max_sauveur___service_client",
       "topic_label": "Re: Max Sauveur — Service Client",
       "situation": "Re: Max Sauveur — Service Client",
