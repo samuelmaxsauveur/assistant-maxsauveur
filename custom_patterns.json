@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "retour",
+      "topic_label": "Retour",
+      "situation": "Retour",
+      "response_template": "Bonjour Olivier,\n\nNous ne fournissons pas de bon de retour prépayé : c'est vous qui organisez le renvoi à vos frais.\n\nVoici la procédure :\n\n1. Téléchargez et complétez le bon de retour disponible ici : **https://maxsauveur.com/pages/livraison-et-retour** (indiquez la raison : remboursement ou avoir)\n2. Emballez soigneusement la Fisherman\n3. Expédiez à : **SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous traiterons votre demande.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__re__fwd__commande__12528_confirm_e",
+      "topic_label": "Re: Re: Fwd: Commande #12528 confirmée",
+      "situation": "Re: Re: Fwd: Commande #12528 confirmée",
+      "response_template": "Bonjour Stéphanie,\n\nRavie de l'apprendre, c'est un plaisir ! Les Fisherman sont un très beau choix.\n\nPour vous remercier de votre patience et de votre confiance, voici un petit cadeau de notre part : un code de 20€ sur votre prochaine commande, valable jusqu'au 31 juillet.\n\nCode : MG27M07004AT\n\nN'hésitez pas à en profiter si l'envie vous prend de craquer pour une autre pièce.\n\nBonne continuation à vous deux !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
