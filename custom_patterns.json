@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__re__re__max_sauveur___service_client",
+      "topic_label": "Re: Re: Re: Re: Re: Max Sauveur — Service Client",
+      "situation": "Re: Re: Re: Re: Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour David,\n\nRavi que les mocassins vous soient enfin parvenus, même si la nouvelle sur la taille est décevante.\n\nMalheureusement, le Paul Daim Léopard n'est plus disponible en 44 en stock. En revanche, nous avons le modèle Boat (chaussure bateau) dans le même esprit léopard, si cela peut vous intéresser.\n\nSi ce modèle ne vous convient pas, voici la procédure pour nous retourner la paire :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour\n2. Emballez soigneusement la paire et expédiez-la à notre adresse logistique (frais de retour à votre charge) :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception, nous traitons votre dossier dans les meilleurs délais.\n\nDites-moi si le modèle Boat Léopard vous tente ou si vous préférez procéder au retour.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "aide_choix_de_pointure_mocassins_paul",
       "topic_label": "Aide choix de pointure mocassins Paul",
       "situation": "Aide choix de pointure mocassins Paul",
