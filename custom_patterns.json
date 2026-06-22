@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_06_22_11_11_55",
+      "topic_label": "Form name Form submitted 2026-06-22 11:11:55",
+      "situation": "Form name Form submitted 2026-06-22 11:11:55",
+      "response_template": "Bonjour Clara,\n\nPas d'inquiétude, c'est tout à fait normal. Nous traitons les retours entrants dans un délai pouvant aller jusqu'à 14 jours ouvrés. Vous recevrez un email dès que votre dossier sera traité.\n\nN'hésitez pas à nous recontacter si vous n'avez pas de nouvelles d'ici là.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "rupture_stock_echange_taille_alternative",
+      "topic_label": "Rupture de stock – Proposition de taille alternative avec conseil produit",
+      "situation": "Un client a commandé un article dans une taille qui n'est plus disponible suite à une erreur de synchronisation des stocks. Le modèle chausse légèrement grand, ce qui rend une taille inférieure viable en alternative.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message, et désolé pour ce manque de communication de notre côté.\n\nNous avons fait le point avec notre logistique et voici la situation : suite à une erreur de synchronisation de nos stocks, nous ne sommes malheureusement pas en mesure de vous expédier le [Modèle] en taille [Taille commandée].\n\nCela dit, nous avons potentiellement du stock disponible en [Taille alternative], et je voulais vous en parler directement avant de valider quoi que ce soit : le [Modèle] chausse légèrement grand, et le [Taille alternative] conviendrait très probablement à un pied de [Taille commandée] habituel.\n\nSouhaitez-vous qu'on vérifie la disponibilité du [Taille alternative] et qu'on vous l'expédie cette semaine ? Ou préférez-vous qu'on annule la commande et qu'on vous rembourse intégralement ?\n\nDites-nous simplement ce que vous souhaitez, on s'en occupe rapidement.\n\nCordialement,\nJohn de Max Sauveur",
+      "key_points": "Ton : direct et transparent sur le problème, responsable (reconnaissance du manque de communication). Engagement : vérification rapide et expédition sous une semaine. Points clés : expliquer le chausse du modèle pour justifier l'alternative proposée, donner deux options claires au client (accepter la taille alternative ou remboursement intégral), personnaliser avec le nom du modèle et les tailles spécifiques.",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__12291_confirm_e",
       "topic_label": "Re: Commande #12291 confirmée",
       "situation": "Re: Commande #12291 confirmée",
