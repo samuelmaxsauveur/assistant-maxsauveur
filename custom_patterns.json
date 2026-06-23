@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_06_23_18_44_22",
+      "topic_label": "Form name Form submitted 2026-06-23 18:44:22",
+      "situation": "Form name Form submitted 2026-06-23 18:44:22",
+      "response_template": "Bonjour Iliasse,\n\nMerci pour votre message.\n\nNous vous avons envoyé un email ce jour à 12h21 avec les informations concernant votre retour. L'avez-vous bien reçu ? Si vous ne le trouvez pas, pensez à vérifier vos dossiers spams ou indésirables, il s'y trouve peut-être.\n\nN'hésitez pas à nous revenir si vous ne le retrouvez pas, nous ferons le nécessaire.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
