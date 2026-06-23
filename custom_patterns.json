@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "max_sauveur___service_client",
+      "topic_label": "Max Sauveur — Service Client",
+      "situation": "Max Sauveur — Service Client",
+      "response_template": "Bonjour Iliasse,\n\nNous avons bien reçu votre Moc Jagger Cuir Noir et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si un autre modèle vous fait de l'œil, on peut vous proposer un avoir de 324€ (soit 25€ offerts par la maison) et on prend en charge les frais de livraison pour le nouvel envoi.\n\n=> Si c'est simplement un souci de pointure, on prend en charge l'échange directement : on vous renvoie la bonne taille, vous conservez votre tarif, et on y ajoute un code promo de 25€.\n\nDans les deux cas, aucun frais supplémentaire de votre côté, avec un avantage en plus.\n\nDites-moi simplement si vous préférez l'une de ces options ou si nous validons le remboursement initial sur votre compte.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 66
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -16,14 +24,6 @@
       "response_template": "Bonjour [Prénom],\n\nNous avons bien reçu votre [Modèle] [Couleur] et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de [raison du retour], est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes.\n\n=> Si un autre modèle vous fait de l'œil, on peut vous proposer un avoir de [montant] (soit [bénéfice] offerts par la maison) et on prend en charge les frais de livraison pour le nouvel envoi.\n\n=> Si c'est simplement un souci de pointure, on prend en charge l'échange directement : on vous renvoie la bonne taille, vous conservez le tarif précommande, et on y ajoute un code promo de [montant].\n\nDans les deux cas, aucun frais supplémentaire de votre côté, avec un avantage en plus.\n\nDites-moi simplement si vous préférez l'une de ces options ou si nous validons le remboursement initial sur votre compte.\n\n[Prénom] de Max Sauveur",
       "key_points": "Ton bienveillant et curieux pour comprendre les attentes du client. Proposer d'emblée 2-3 options alternatives avant le remboursement simple. Mettre en avant les avantages commerciaux (avoir majoré, frais offerts, code promo). Clarifier qu'il n'y a aucun coût supplémentaire. Laisser le client choisir sans pression.",
       "example_count": 2
-    },
-    {
-      "topic": "max_sauveur___service_client",
-      "topic_label": "Max Sauveur — Service Client",
-      "situation": "Max Sauveur — Service Client",
-      "response_template": "Bonjour Colas-Paul,\n\nNous avons bien reçu votre Moc Jagger Cuir Noir et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si un autre modèle vous fait de l'œil, on peut vous proposer un avoir de 324€ (soit 25€ offerts par la maison) et on prend en charge les frais de livraison pour le nouvel envoi.\n\n=> Si c'est simplement un souci de pointure, on prend en charge l'échange directement : on vous renvoie la bonne taille, vous conservez le tarif précommande, et on y ajoute un code promo de 25€.\n\nDans les deux cas, aucun frais supplémentaire de votre côté, avec un avantage en plus.\n\nDites-moi simplement si vous préférez l'une de ces options ou si nous validons le remboursement initial sur votre compte.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 65
     },
     {
       "topic": "avoir_genere_instructions_utilisation",
