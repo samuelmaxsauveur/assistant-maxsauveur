@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Canelle,\n\nMerci pour ce retour sincère, et vraiment ravie que le travail de la paire vous ait plu, même si la forme n'était pas la bonne pour votre pied. C'est exactement le type de feedback qui nous aide à avancer.\n\nVotre remboursement est en cours de traitement. Vous le recevrez sur votre moyen de paiement initial dans les prochains jours.\n\nEt pour la suite, n'hésitez pas à garder un œil sur nos nouvelles sorties. On travaille régulièrement sur de nouveaux modèles, certains avec des formes plus ajustées qui pourraient mieux vous correspondre.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 50
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -120,14 +128,6 @@
       "response_template": "Bonjour [Prénom],\n\nC'est noté !\n\nDe notre côté, nous avons toujours votre adresse et votre point relais [Nom du point relais] ([Adresse]). Est-ce que c'est toujours bon pour la livraison ? Si oui, on a tout ce qu'il faut et on prépare l'envoi dans la foulée.\n\nBon weekend à vous !\n\n[Nom] de Max Sauveur",
       "key_points": "Ton amical et positif, confirmation de l'adresse existante dans le système, engagement à préparer l'envoi immédiatement une fois confirmé, signature personnalisée avec nom du conseiller",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Hello Xavier,\n\nC'est noté !\n\nDe notre côté, nous avons toujours votre adresse et votre point relais Chrono2Shop (4 Villa Marcel Lods, 75019 Paris). Est-ce que c'est toujours bon pour la livraison du 43.5 ? Si oui, on a tout ce qu'il faut et on prépare l'envoi dans la foulée.\n\nBon weekend à vous !\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 49
     },
     {
       "topic": "verification_reception_colis_logistique",
