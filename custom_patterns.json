@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_06_22_21_47_11",
+      "topic_label": "Form name Form submitted 2026-06-22 21:47:11",
+      "situation": "Form name Form submitted 2026-06-22 21:47:11",
+      "response_template": "Bonjour Denis,\n\nMerci pour votre message. Nous avons bien pris note de votre retour et nous nous rapprochons de notre équipe logistique pour vérifier la réception de votre colis.\n\nNous revenons vers vous avec une réponse concrète d'ici la fin de la semaine.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__form_name_form_submitted_2026_06_18_20_21_09",
       "topic_label": "Re: Form name Form submitted 2026-06-18 20:21:09",
       "situation": "Re: Form name Form submitted 2026-06-18 20:21:09",
