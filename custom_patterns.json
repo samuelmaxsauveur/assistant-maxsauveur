@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_06_23_21_13_30",
+      "topic_label": "Form name Form submitted 2026-06-23 21:13:30",
+      "situation": "Form name Form submitted 2026-06-23 21:13:30",
+      "response_template": "Bonjour Julien,\n\nMerci pour votre message et pour avoir pris le temps de mesurer votre pied avec autant de soin !\n\nBonne nouvelle sur la méthode : pour des sandales, vous avez tout à fait raison de mesurer sans chaussette. Votre mesure de référence est donc 25,9 cm + 0,2 cm = 26,1 cm.\n\nAvec 26,1 cm, vous êtes en **41** sur notre guide. Les Fisherman chaussant légèrement grand, je vous conseille de prendre le **40**.\n\nConcernant votre code de réduction : il est applicable pour un panier minimum de 149€. Les sandales étant en dessous de ce seuil, le code ne sera malheureusement pas utilisable sur cette commande. Je suis désolé de ne pas pouvoir vous annoncer mieux.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__taille_moc_winston",
       "topic_label": "Re: Taille moc Winston",
       "situation": "Re: Taille moc Winston",
