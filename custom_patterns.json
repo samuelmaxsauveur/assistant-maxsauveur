@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__retour_commande____12351",
+      "topic_label": "Re: Retour commande : #12351",
+      "situation": "Re: Retour commande : #12351",
+      "response_template": "Bonjour Charles,\n\nBonne nouvelle : votre avoir est en cours de génération et vous le recevrez cette semaine.\n\nÀ très bientôt,\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "retour_receptionne_avoir_en_cours",
+      "topic_label": "Retour reçu – Avoir en cours de génération",
+      "situation": "Un client a initié un retour de produit et celui-ci a bien été réceptionné par Max Sauveur. Le client attend la confirmation de la génération de son code avoir.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour le suivi. Nous confirmons bien la réception de votre retour le [DATE].\n\nL'avoir sera émis sous 4 à 5 jours ouvrés maximum, dès contrôle de la paire par notre équipe. Vous recevrez un email avec votre code dès qu'il sera généré.\n\nN'hésitez pas si vous avez d'autres questions d'ici là.\n\nCordialement,\nJohn de Max Sauveur",
+      "key_points": "Ton rassurant et précis. Délai clair : 4-5 jours ouvrés. Promesse : email avec code avoir. Invitation à poser des questions. Signature personnalisée avec prénom du SAV.",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__th_o_taupin_commande__11645_demande_d__change_de",
       "topic_label": "Re: Re: Re: Théo Taupin Commande #11645 Demande d’échange des moc jagger pony hair",
       "situation": "Re: Re: Re: Théo Taupin Commande #11645 Demande d’échange des moc jagger pony hair",
