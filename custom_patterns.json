@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Denis,\n\nTrès bien, c'est noté. On comprend tout à fait, la sandale c'est un style à part entière qui ne convient pas à tout le monde.\n\nNous procédons au remboursement de votre commande. Vous le retrouverez sur votre compte dans un délai de 5 à 10 jours ouvrés selon votre banque.\n\nAu plaisir de vous retrouver sur le site prochainement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 51
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -16,14 +24,6 @@
       "response_template": "Bonjour [Prénom],\n\nBien reçu, nous procédons au remboursement de votre commande. Vous le retrouverez sur votre compte dans un délai de 5 à 10 jours ouvrés selon votre banque.\n\nMerci pour votre confiance, et n'hésitez pas à revenir vers nous si vous avez la moindre question.\n\n[Signature]",
       "key_points": "Ton : courtois et rassurant. Délai clair : 5-10 jours ouvrés (variable selon la banque du client). Important : préciser que le délai dépend de l'établissement bancaire. Formule de fermeture accueillante avec ouverture à nouvelles questions.",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Boris,\n\nBien reçu, nous procédons au remboursement de votre commande. Vous le retrouverez sur votre compte dans un délai de 5 à 10 jours ouvrés selon votre banque.\n\nMerci pour votre confiance, et n'hésitez pas à revenir vers nous si vous avez la moindre question.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 50
     },
     {
       "topic": "code_promo_condition_panier_minimum_non_remplie",
