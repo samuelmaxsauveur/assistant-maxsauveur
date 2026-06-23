@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__taille_moc_winston",
+      "topic_label": "Re: Taille moc Winston",
+      "situation": "Re: Taille moc Winston",
+      "response_template": "Bonjour,\n\nOui, même logique pour les Peter A. : avec 28 cm de pied, le 42 est votre taille.\n\nUne petite précision utile : si vous avez un cou-de-pied fort, le 43 sera plus confortable sur un mocassin, car sans lacets le maintien dépend entièrement de cette zone. Si votre cou-de-pied est normal, restez sur le 42.\n\nPour la Fisherman, même chose, le modèle chausse grand, donc le 42 s'impose également.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
