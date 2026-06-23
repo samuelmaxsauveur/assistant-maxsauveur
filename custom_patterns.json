@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "max_sauveur___service_client",
+      "topic_label": "Max Sauveur — Service Client",
+      "situation": "Max Sauveur — Service Client",
+      "response_template": "Bonjour Denis,\n\nNous avons bien reçu vos Fisherman et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si un autre modèle vous fait de l'œil, on peut vous proposer une solution plus simple : nous vous envoyons un avoir d'une valeur de 174€ (soit 25€ offerts par la maison) et nous prenons en charge les frais de livraison pour cet échange. Cela vous permet de trouver la pièce idéale sans aucun frais supplémentaire.\n\n=> Si c'est seulement un problème de pointure, on s'occupe de l'échange gratuitement et on vous ajoute en plus une carte cadeau de 25€.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 68
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -16,14 +24,6 @@
       "response_template": "Bonjour [Prénom],\n\nNous avons bien reçu votre [Produit] et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si un autre modèle vous fait de l'œil, on peut vous proposer un avoir de [MONTANT]€ (soit [GAIN]€ offerts par la maison) et on prend en charge les frais de livraison pour le nouvel envoi.\n\n=> Si c'est simplement un souci de pointure, on prend en charge l'échange directement : on vous renvoie la bonne taille, vous conservez le tarif payé, et on y ajoute un code promo de [MONTANT]€.\n\nDans les deux cas, aucun frais supplémentaire de votre côté, avec un avantage en plus.\n\nDites-moi simplement si vous préférez l'une de ces options ou si nous validons le remboursement initial sur votre compte.\n\nCordialement,\nJohn de Max Sauveur",
       "key_points": "Ton bienveillant et proactif. Montrer de la curiosité sur le motif du retour (au-delà de la taille). Proposer systématiquement des alternatives avec majorité commerciale (avoir augmenté + frais de port offerts OU échange + code promo). Laisser le client choisir entre les options ou le remboursement initial. Aucun frais client. Engagement fort : majorité commerciale = geste de fidélité.",
       "example_count": 3
-    },
-    {
-      "topic": "max_sauveur___service_client",
-      "topic_label": "Max Sauveur — Service Client",
-      "situation": "Max Sauveur — Service Client",
-      "response_template": "Bonjour Canelle,\n\nNous avons bien reçu votre Moc Jagger Cuir Noir et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si un autre modèle vous fait de l'œil, on peut vous proposer un avoir de 324€ (soit 35€ offerts par la maison) et on prend en charge les frais de livraison pour le nouvel envoi.\n\n=> Si c'est simplement un souci de pointure, on prend en charge l'échange directement : on vous renvoie la bonne taille, vous conservez le tarif payé, et on y ajoute un code promo de 35€.\n\nDans les deux cas, aucun frais supplémentaire de votre côté, avec un avantage en plus.\n\nDites-moi simplement si vous préférez l'une de ces options ou si nous validons le remboursement initial sur votre compte.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 67
     },
     {
       "topic": "avoir_genere_instructions_utilisation",
