@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Clément,\n\nPas de problème, nous lançons le remboursement de votre commande #12196 (Peter A. Mocassin Cuir Noir 44). Vous devriez le voir apparaître sur votre compte sous 5 à 10 jours ouvrés selon votre banque.\n\nProfitez bien de votre nouvelle paire !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 48
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -32,14 +40,6 @@
       "response_template": "Bonjour Nicolas,\n\nMerci pour ce retour, c'est gentil ! Très heureux que la commande soit passée sans accroc.\n\nBelle journée à vous,\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Xavier,\n\nNous venons d'effectuer un ajustement de notre côté. Pourriez-vous réessayer d'appliquer le code Z9A7YCDZWC86 dans votre panier ?\n\nSi le problème persiste, dites-le moi et j'investigate plus en détail.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 47
     },
     {
       "topic": "conseil_pointure_peter_a_mesure_cm",
