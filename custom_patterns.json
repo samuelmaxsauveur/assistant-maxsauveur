@@ -5,9 +5,9 @@
       "topic": "re__max_sauveur___service_client",
       "topic_label": "Re: Max Sauveur — Service Client",
       "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Michel,\n\nTrès bien, nous allons procéder au remboursement de votre commande #12306 (Fisherman Cuir Grainé Noir, 41).\n\nLe remboursement sera traité dans les prochains jours et crédité sur votre moyen de paiement d'origine.\n\nBonne continuation, Michel.\n\nJohn – Service Client – Max Sauveur",
+      "response_template": "Bonjour Boris,\n\nBien reçu, nous procédons au remboursement de votre commande. Vous le retrouverez sur votre compte dans un délai de 5 à 10 jours ouvrés selon votre banque.\n\nMerci pour votre confiance, et n'hésitez pas à revenir vers nous si vous avez la moindre question.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 51
+      "example_count": 50
     },
     {
       "topic": "_daily_doc",
