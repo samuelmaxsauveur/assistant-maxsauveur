@@ -2,298 +2,10 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
-      "topic": "_daily_doc",
-      "topic_label": "Document des réponses types (mis à jour chaque soir)",
-      "situation": "Document de référence consolidé de toutes les réponses types",
-      "response_template": "# Document des réponses types — Max Sauveur\n\n## Conseil de Pointure\n\n### Mesure en cm vers taille EU\n**Quand :** Un client fournit la mesure de son pied en cm et demande sa pointure.\n**Réponse type :** Avec [X] cm de pied, vous êtes en **[taille EU]** sur notre guide. Pour vous orienter vers la bonne taille, quel modèle avez-vous en tête ? Certains chaussent légèrement grand, d'autres plus ajusté.\n\n### Fisherman — chausse grand\n**Quand :** Client demande la taille pour la Fisherman en donnant sa mesure.\n**Réponse type :** Avec [X] cm de pied, vous êtes en **[taille guide]** sur notre guide. La Fisherman chausse légèrement grand, donc je vous recommande le **[taille inférieure]**.\n\n### Mocassins (Paul, Jagger, Peter A.) — chaussent juste\n**Quand :** Client demande la taille pour un mocassin en cuir.\n**Réponse type :** Avec [X] cm de pied, vous êtes en **[taille]** sur notre guide. Le mocassin chausse juste au départ : le cuir et la semelle en liège s'assouplissent avec le port et se moulent progressivement au pied.\n\n### Comparaison entre modèles\n**Quand :** Client connaît sa taille sur un modèle et demande pour un autre.\n**Réponse type :** Le [modèle A] chausse [caractéristique]. Le [modèle B] a un patron différent et chausse [caractéristique]. Je vous recommande donc le **[taille]**.\n\n---\n\n## Livraison & Suivi de Commande\n\n### Modification de point relais\n**Quand :** Client souhaite changer son point relais avant expédition.\n**Réponse type :** C'est fait, nous venons de modifier votre point relais. Cette modification n'apparaîtra pas dans l'email initial, mais elle est bien prise en compte et visible sur votre lien de suivi dès l'expédition.\n\n### Commande en cours de préparation\n**Quand :** Client s'interroge sur le statut de sa commande.\n**Réponse type :** Votre commande est en cours de préparation et sera expédiée très prochainement. La livraison est estimée entre le [date] et [date], en point relais [nom]. Vous recevrez un email avec votre lien de suivi Chronopost dès l'expédition.\n\n### Précommande Moc Jagger — arrivée imminente\n**Quand :** Client en précommande relance sur la date de livraison.\n**Réponse type :** Vos Moc Jagger arrivent chez nous cette semaine et nous prévoyons de les expédier dans la foulée. La livraison est estimée la semaine prochaine, sous réserve que les ponts ne ralentissent pas les transporteurs.\n\n### Colis bloqué en transit\n**Quand :** Client signale que son colis est bloqué chez le transporteur.\n**Réponse type :** Nous ouvrons un dossier auprès de Chronopost dès maintenant pour débloquer la situation. Nous revenons vers vous dès que nous avons un retour concret de leur part.\n\n---\n\n## Retours & Remboursement\n\n### Procédure retour (standard)\n**Quand :** Client demande comment retourner un article.\n**Réponse type :** \n1. Téléchargez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour\n2. Indiquez la raison (remboursement ou avoir)\n3. Expédiez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nLes frais de retour sont à votre charge.\n\n### Retour reçu — remboursement en cours\n**Quand :** Le retour a été réceptionné et le remboursement est validé.\n**Réponse type :** Votre retour a bien été réceptionné et votre remboursement sera traité sous 5 à 10 jours ouvrés, selon les délais de votre banque.\n\n### Avoir généré — utilisation\n**Quand :** Un avoir a été créé pour le client.\n**Réponse type :** Voici votre code avoir : **[CODE]**. Il est utilisable une seule fois, non cumulable",
-      "key_points": "",
-      "example_count": 24
-    },
-    {
-      "topic": "remboursement_retour_en_cours_avec_code_promo",
-      "topic_label": "Remboursement retour en cours + gestion code promo pour prochaine commande",
-      "situation": "Un client a retourné un produit qui est en cours de remboursement. En parallèle, le service client souhaite lui proposer une réduction pour sa prochaine commande pour compenser et fidéliser.",
-      "response_template": "Bonjour [Prénom],\n\nRavi d'apprendre que vous êtes satisfait de nos [produits], et content que ce soit simplement une question de [détail spécifique]!\n\nPour votre prochain achat, voici ce que je peux faire : je vous génère un code de réduction de [montant]€ valable sur votre prochaine commande de [catégorie produit] sur maxsauveur.com.\n\nEn parallèle, le remboursement de votre [produit] (commande #[numéro]) est bien en cours de traitement. Vous le recevrez sur votre compte dans 5 à 10 jours ouvrés selon votre banque.\n\nDites-moi si cette remise de [montant]€ vous convient et je vous envoie le code dans la foulée.\n\nCordialement,\nJohn de Max Sauveur",
-      "key_points": "Ton bienveillant et rassurant. Valider la satisfaction du client avant de proposer la compensation. Être précis sur le délai de remboursement (5-10j ouvrés). Proposer un code promo cohérent avec le produit retourné. Demander confirmation avant envoi du code. Signature personnalisée avec nom de l'agent.",
-      "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Damien,\n\nRavi d'apprendre que vous êtes satisfait de nos ceintures, et content que ce soit simplement une question de taille !\n\nPour votre prochain achat, voici ce que je peux faire : je vous génère un code de réduction de **20€** valable sur votre prochaine commande de ceinture sur maxsauveur.com.\n\nEn parallèle, le remboursement de votre Jonas en daim marron (commande #12429) est bien en cours de traitement. Vous le recevrez sur votre compte dans 5 à 10 jours ouvrés selon votre banque.\n\nDites-moi si cette remise de 20€ vous convient et je vous envoie le code dans la foulée.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 52
-    },
-    {
-      "topic": "retour_receptionne_remboursement_valide",
-      "topic_label": "Retour reçu – Remboursement validé et en cours de traitement",
-      "situation": "Un client a initié un retour de produit, celui-ci a bien été réceptionné en entrepôt, et le service client valide le remboursement. Le client attend la confirmation du virement.",
-      "response_template": "Bonjour [Prénom],\n\nCompris, merci pour la précision. [Contexte spécifique du problème constaté et validation que ce n'est pas un problème de taille/échange possible].\n\nVotre remboursement est validé. Nous le traitons dès que le colis est contrôlé en entrepôt. Comptez quelques jours ouvrés après réception.\n\nÀ bientôt,\n\nJohn de Max Sauveur",
-      "key_points": "Ton : professionnel et rassurant. Validation claire du remboursement. Délai réaliste communiqué (quelques jours ouvrés après réception). Signature personnalisée avec prénom du conseiller. Clôture courtoise.",
-      "example_count": 1
-    },
-    {
-      "topic": "code_promo_condition_panier_minimum_non_remplie",
-      "topic_label": "Code promo – condition de panier minimum non remplie",
-      "situation": "Un client dispose d'un code de réduction avec un seuil minimum (ex: 149€) mais souhaite l'appliquer sur un article en dessous de ce montant (ex: sandales moins chères). Le code ne peut pas être utilisé.",
-      "response_template": "Concernant votre code de réduction : il est applicable pour un panier minimum de [montant minimum]€. [Article/Produits] étant en dessous de ce seuil, le code ne sera malheureusement pas utilisable sur cette commande. Je suis désolé de ne pas pouvoir vous annoncer mieux.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.",
-      "key_points": "Expliquer clairement la condition du code (montant minimum). Reconnaître la déception du client avec empathie (« Je suis désolé »). Ne pas proposer de contournement ou d'exception. Rester disponible pour d'autres questions. Ton honnête et direct.",
-      "example_count": 1
-    },
-    {
-      "topic": "conseil_pointure_fisherman_mesure_cm_chaussant_grand",
-      "topic_label": "Conseil pointure Fisherman – mesure en cm avec recommandation taille inférieure (chausse grand)",
-      "situation": "Un client fournit la mesure de son pied en centimètres pour la sandale Fisherman et demande sa pointure. Le client a mesuré correctement sans chaussette. La Fisherman chausse légèrement grand, ce qui nécessite une recommandation adaptée.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et pour avoir pris le temps de mesurer votre pied avec autant de soin !\n\nBonne nouvelle sur la méthode : pour des sandales, vous avez tout à fait raison de mesurer sans chaussette. Votre mesure de référence est donc [mesure] cm + 0,2 cm = [total] cm.\n\nAvec [total] cm, vous êtes en [taille guide] sur notre guide. Les Fisherman chaussant légèrement grand, je vous conseille de prendre le [taille inférieure].\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nCordialement,\nJohn de Max Sauveur",
-      "key_points": "Valider la méthode de mesure (sans chaussette pour sandales). Ajouter 0,2 cm à la mesure brute. Consulter le guide des tailles. Recommander une taille inférieure pour Fisherman qui chausse grand. Ton bienveillant et rassurant. Invitation à poser d'autres questions.",
-      "example_count": 1
-    },
-    {
-      "topic": "form_name_form_submitted_2026_06_23_21_13_30",
-      "topic_label": "Form name Form submitted 2026-06-23 21:13:30",
-      "situation": "Form name Form submitted 2026-06-23 21:13:30",
-      "response_template": "Bonjour Julien,\n\nMerci pour votre message et pour avoir pris le temps de mesurer votre pied avec autant de soin !\n\nBonne nouvelle sur la méthode : pour des sandales, vous avez tout à fait raison de mesurer sans chaussette. Votre mesure de référence est donc 25,9 cm + 0,2 cm = 26,1 cm.\n\nAvec 26,1 cm, vous êtes en **41** sur notre guide. Les Fisherman chaussant légèrement grand, je vous conseille de prendre le **40**.\n\nConcernant votre code de réduction : il est applicable pour un panier minimum de 149€. Les sandales étant en dessous de ce seuil, le code ne sera malheureusement pas utilisable sur cette commande. Je suis désolé de ne pas pouvoir vous annoncer mieux.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__taille_moc_winston",
-      "topic_label": "Re: Taille moc Winston",
-      "situation": "Re: Taille moc Winston",
-      "response_template": "Bonjour,\n\nOui, même logique pour les Peter A. : avec 28 cm de pied, le 42 est votre taille.\n\nUne petite précision utile : si vous avez un cou-de-pied fort, le 43 sera plus confortable sur un mocassin, car sans lacets le maintien dépend entièrement de cette zone. Si votre cou-de-pied est normal, restez sur le 42.\n\nPour la Fisherman, même chose, le modèle chausse grand, donc le 42 s'impose également.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "retour_en_cours_confirmation_reception",
-      "topic_label": "Retour en cours – Confirmation de réception",
-      "situation": "Un client a initié un retour de produit et demande des informations sur son statut. Le service client a envoyé un email de confirmation avec les détails du retour, mais le client ne l'a pas reçu ou cherche à le localiser.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message.\n\nNous vous avons envoyé un email ce jour à [HEURE] avec les informations concernant votre retour. L'avez-vous bien reçu ? Si vous ne le trouvez pas, pensez à vérifier vos dossiers spams ou indésirables, il s'y trouve peut-être.\n\nN'hésitez pas à nous revenir si vous ne le retrouvez pas, nous ferons le nécessaire.\n\nCordialement,\n[Nom] – Service Client – Max Sauveur",
-      "key_points": "Ton : courtois et rassurant. S'assurer que le client a bien reçu l'email précédent. Vérifier les spams en priorité. Proposer une relance immédiate si nécessaire. Utiliser le prénom du client.",
-      "example_count": 1
-    },
-    {
-      "topic": "form_name_form_submitted_2026_06_23_18_44_22",
-      "topic_label": "Form name Form submitted 2026-06-23 18:44:22",
-      "situation": "Form name Form submitted 2026-06-23 18:44:22",
-      "response_template": "Bonjour Iliasse,\n\nMerci pour votre message.\n\nNous vous avons envoyé un email ce jour à 12h21 avec les informations concernant votre retour. L'avez-vous bien reçu ? Si vous ne le trouvez pas, pensez à vérifier vos dossiers spams ou indésirables, il s'y trouve peut-être.\n\nN'hésitez pas à nous revenir si vous ne le retrouvez pas, nous ferons le nécessaire.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "retour_receptionne_proposition_echange_ou_remboursement_avec_majorite",
-      "topic_label": "Retour reçu – Proposition d'échange ou remboursement avec majorité commerciale",
-      "situation": "Un client a retourné un produit et Max Sauveur a bien réceptionné le colis. Le service client propose deux options attrayantes : soit un échange vers un autre modèle avec avoir majoré + frais de port offerts, soit le remboursement initial. L'objectif est de transformer le retour en opportunité de vente croisée tout en reconnaissant le désagrément.",
-      "response_template": "Bonjour [Prénom],\n\nNous avons bien reçu votre [Produit] et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de [raison du retour], est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si un autre modèle vous fait de l'œil, on peut vous proposer un avoir de [montant avec majorité] (soit [montant majorité] offerts par la maison) et on prend en charge les frais de livraison pour le nouvel envoi.\n\n=> Si c'est simplement un souci de [raison], on prend en charge l'échange directement : on vous renvoie la bonne [élément], vous conservez votre tarif, et on y ajoute un code promo de [montant].\n\nDans les deux cas, aucun frais supplémentaire de votre côté, avec un avantage en plus.\n\nDites-moi simplement si vous préférez l'une de ces options ou si nous validons le remboursement initial sur votre compte.\n\nCordialement,\nJohn de Max Sauveur",
-      "key_points": "Ton : bienveillant, curieux, orienté solution. Stratégie : transformer le retour en opportunité d'échange vers un autre produit. Engagements : majorité commerciale visible (35€+ offerts), frais de port gratuits, ou code promo. Formulation clé : « Par simple curiosité » et « on peut vous proposer » (ton consultative). Toujours proposer deux chemins clairs avec avantages dans les deux cas. Finir ouvert : laisser le client choisir l'option ou valider le remboursement.",
-      "example_count": 1
-    },
-    {
-      "topic": "max_sauveur___service_client",
-      "topic_label": "Max Sauveur — Service Client",
-      "situation": "Max Sauveur — Service Client",
-      "response_template": "Bonjour Clara,\n\nNous avons bien reçu votre Moc Jagger Cuir Pony Marron et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si un autre modèle vous fait de l'œil, on peut vous proposer un avoir de 324€ (soit 35€ offerts par la maison) et on prend en charge les frais de livraison pour le nouvel envoi.\n\n=> Si c'est simplement un souci de pointure, on prend en charge l'échange directement : on vous renvoie la bonne taille, vous conservez votre tarif, et on y ajoute un code promo de 35€.\n\nDans les deux cas, aucun frais supplémentaire de votre côté, avec un avantage en plus.\n\nDites-moi simplement si vous préférez l'une de ces options ou si nous validons le remboursement initial sur votre compte.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 79
-    },
-    {
-      "topic": "avoir_genere_instructions_utilisation",
-      "topic_label": "Avoir généré — Instructions d'utilisation",
-      "situation": "Un client a initié un retour de produit ou demandé un avoir, et Max Sauveur a généré le code avoir. Le client doit recevoir les instructions claires sur comment utiliser son code.",
-      "response_template": "Bonjour [Prénom],\n\nSuite à votre demande, nous venons de générer votre avoir. Il est utilisable une seule fois, non cumulable avec d'autres codes ou promotions, et valable pendant 6 mois.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n**[CODE_AVOIR]**\n\nSi vous avez la moindre question, je reste disponible.\n\nCordialement,\nJohn de Max Sauveur",
-      "key_points": "Ton courtois et direct. Rappeler les conditions : une seule utilisation, non cumulable, validité 6 mois. Fournir le code en évidence. Rester disponible pour questions.",
-      "example_count": 3
-    },
-    {
-      "topic": "retour_receptionne_proposition_echange_ou_remboursement",
-      "topic_label": "Retour reçu – Proposition d'échange ou remboursement avec majorité commerciale",
-      "situation": "Un client a retourné un produit (ex: Moc Jagger) et Max Sauveur a bien réceptionné le colis. Le service client propose au client de choisir entre un remboursement ou un échange vers un autre modèle, avec une majorité commerciale (avoir majoré ou frais offerts).",
-      "response_template": "Bonjour [Prénom],\n\nNous avons bien reçu votre [Produit] et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de [raison initiale], est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si un autre modèle vous fait de l'œil, on peut vous proposer un avoir de [montant] (soit [différence] offerts par la maison) et on prend en charge les frais de livraison pour le nouvel envoi.\n\n=> Si c'est simplement un souci de pointure, on prend en charge l'échange directement : on vous renvoie la bonne taille, vous conservez le tarif précommande, et on y ajoute un code promo de [montant].\n\nDans les deux cas, aucun frais supplémentaire de votre côté, avec un avantage en plus.\n\nDites-moi simplement si vous préférez l'une de ces options ou si nous validons le remboursement initial sur votre compte.\n\nCordialement,\nJohn de Max Sauveur",
-      "key_points": "Ton bienveillant et curieux (« par simple curiosité »), approche consultative. Proposer systématiquement une majorité commerciale (frais offerts + avoir majoré ou code promo) pour convertir un retour en échange. Clarifier les deux scénarios distincts (changement de modèle vs changement de taille). Laisser l'initiative au client sans pression. Signature personnalisée (prénom du SAV).",
-      "example_count": 7
-    },
-    {
-      "topic": "re__retour_commande____12351",
-      "topic_label": "Re: Retour commande : #12351",
-      "situation": "Re: Retour commande : #12351",
-      "response_template": "Bonjour Charles,\n\nBonne nouvelle : votre avoir est en cours de génération et vous le recevrez cette semaine.\n\nÀ très bientôt,\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "retour_receptionne_avoir_en_cours",
-      "topic_label": "Retour reçu – Avoir en cours de génération",
-      "situation": "Un client a initié un retour de produit et celui-ci a bien été réceptionné par Max Sauveur. Le client attend la confirmation de la génération de son code avoir.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour le suivi. Nous confirmons bien la réception de votre retour le [DATE].\n\nL'avoir sera émis sous 4 à 5 jours ouvrés maximum, dès contrôle de la paire par notre équipe. Vous recevrez un email avec votre code dès qu'il sera généré.\n\nN'hésitez pas si vous avez d'autres questions d'ici là.\n\nCordialement,\nJohn de Max Sauveur",
-      "key_points": "Ton rassurant et précis. Délai clair : 4-5 jours ouvrés. Promesse : email avec code avoir. Invitation à poser des questions. Signature personnalisée avec prénom du SAV.",
-      "example_count": 1
-    },
-    {
-      "topic": "re__re__re__th_o_taupin_commande__11645_demande_d__change_de",
-      "topic_label": "Re: Re: Re: Théo Taupin Commande #11645 Demande d’échange des moc jagger pony hair",
-      "situation": "Re: Re: Re: Théo Taupin Commande #11645 Demande d’échange des moc jagger pony hair",
-      "response_template": "Bonjour Théo,\n\nMerci pour le suivi. Nous confirmons bien la réception de votre retour le 18/06.\n\nL'avoir sera émis sous 4 à 5 jours ouvrés maximum, dès contrôle de la paire par notre équipe. Vous recevrez un email avec votre code dès qu'il sera généré.\n\nN'hésitez pas si vous avez d'autres questions d'ici là.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "confirmation_adresse_livraison_point_relais",
-      "topic_label": "Confirmation d'adresse de livraison avant expédition",
-      "situation": "Un client a passé commande et le service client souhaite confirmer l'adresse de livraison (notamment le point relais) avant de préparer et d'expédier le colis.",
-      "response_template": "Bonjour [Prénom],\n\nC'est noté !\n\nDe notre côté, nous avons toujours votre adresse et votre point relais [Nom du point relais] ([Adresse]). Est-ce que c'est toujours bon pour la livraison ? Si oui, on a tout ce qu'il faut et on prépare l'envoi dans la foulée.\n\nBon weekend à vous !\n\n[Nom] de Max Sauveur",
-      "key_points": "Ton amical et positif, confirmation de l'adresse existante dans le système, engagement à préparer l'envoi immédiatement une fois confirmé, signature personnalisée avec nom du conseiller",
-      "example_count": 1
-    },
-    {
-      "topic": "verification_reception_colis_logistique",
-      "topic_label": "Vérification de la réception d'un colis avec l'équipe logistique",
-      "situation": "Un client signale une préoccupation concernant la réception de son colis et demande une confirmation. Le service client doit vérifier auprès de l'équipe logistique pour apporter une réponse concrète.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message. Nous avons bien pris note de votre retour et nous nous rapprochons de notre équipe logistique pour vérifier la réception de votre colis.\n\nNous revenons vers vous avec une réponse concrète d'ici la fin de la semaine.\n\nCordialement,\nJohn de Max Sauveur",
-      "key_points": "Ton : professionnel et rassurant. Engagements : vérification concrète auprès de la logistique + délai de réponse clair (fin de semaine). Important : montrer que la demande est prise au sérieux en confirmant l'escalade interne.",
-      "example_count": 1
-    },
-    {
-      "topic": "form_name_form_submitted_2026_06_22_21_47_11",
-      "topic_label": "Form name Form submitted 2026-06-22 21:47:11",
-      "situation": "Form name Form submitted 2026-06-22 21:47:11",
-      "response_template": "Bonjour Denis,\n\nMerci pour votre message. Nous avons bien pris note de votre retour et nous nous rapprochons de notre équipe logistique pour vérifier la réception de votre colis.\n\nNous revenons vers vous avec une réponse concrète d'ici la fin de la semaine.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__form_name_form_submitted_2026_06_18_20_21_09",
-      "topic_label": "Re: Form name Form submitted 2026-06-18 20:21:09",
-      "situation": "Re: Form name Form submitted 2026-06-18 20:21:09",
-      "response_template": "Bonjour Nicolas,\n\nMerci pour ce retour, c'est gentil ! Très heureux que la commande soit passée sans accroc.\n\nBelle journée à vous,\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "conseil_pointure_peter_a_mesure_cm",
-      "topic_label": "Conseil pointure Peter A – mesure en cm avec marge incluse",
-      "situation": "Un client fournit la mesure de son pied en centimètres (avec marge déjà incluse) et demande quelle taille commander pour le mocassin Peter A. Il a pris le temps de bien mesurer son pied.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et pour avoir pris le temps de mesurer votre pied !\n\nAvec [mesure] cm (+ [marge] cm de marge = [total] cm), vous correspondez bien à un [taille] sur notre guide des tailles.\n\nLe [Modèle] a une particularité importante : il est conçu sans doublure intérieure, ce qui le rend légèrement plus grand que nos autres modèles. Prendre un [taille] est donc tout à fait cohérent ici, et c'est la taille que je vous recommande.\n\nN'hésitez pas si vous avez d'autres questions avant de vous lancer.\n\n[Prénom] – Service Client – Max Sauveur",
-      "key_points": "Ton : bienveillant, reconnaissant de l'effort de mesure. Valoriser la précision du client. Expliquer les spécificités du modèle (absence de doublure = chausse plus grand). Recommandation claire et rassurante. Ouverture pour questions supplémentaires.",
-      "example_count": 1
-    },
-    {
-      "topic": "re__derni_re_chance_pour_finaliser_votre_commande",
-      "topic_label": "Re: DERNIÈRE CHANCE pour finaliser votre commande",
-      "situation": "Re: DERNIÈRE CHANCE pour finaliser votre commande",
-      "response_template": "Bonjour Vincent,\n\nMerci pour votre message et pour avoir pris le temps de mesurer votre pied !\n\nAvec 25,9 cm (+ 0,2 cm de marge = 26,1 cm), vous correspondez bien à un 40 sur notre guide des tailles.\n\nLe Peter A a une particularité importante : il est conçu sans doublure intérieure, ce qui le rend légèrement plus grand que nos autres modèles. Prendre un 40 est donc tout à fait cohérent ici, et c'est la taille que je vous recommande.\n\nN'hésitez pas si vous avez d'autres questions avant de vous lancer.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "retour",
-      "topic_label": "Retour",
-      "situation": "Retour",
-      "response_template": "Bonjour Olivier,\n\nNous ne fournissons pas de bon de retour prépayé : c'est vous qui organisez le renvoi à vos frais.\n\nVoici la procédure :\n\n1. Téléchargez et complétez le bon de retour disponible ici : **https://maxsauveur.com/pages/livraison-et-retour** (indiquez la raison : remboursement ou avoir)\n2. Emballez soigneusement la Fisherman\n3. Expédiez à : **SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous traiterons votre demande.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__re__fwd__commande__12528_confirm_e",
-      "topic_label": "Re: Re: Fwd: Commande #12528 confirmée",
-      "situation": "Re: Re: Fwd: Commande #12528 confirmée",
-      "response_template": "Bonjour Stéphanie,\n\nRavie de l'apprendre, c'est un plaisir ! Les Fisherman sont un très beau choix.\n\nPour vous remercier de votre patience et de votre confiance, voici un petit cadeau de notre part : un code de 20€ sur votre prochaine commande, valable jusqu'au 31 juillet.\n\nCode : MG27M07004AT\n\nN'hésitez pas à en profiter si l'envie vous prend de craquer pour une autre pièce.\n\nBonne continuation à vous deux !\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "rupture_stock_sandale_fisherman_41_noir",
-      "topic_label": "Rupture de stock – Alerte disponibilité sans date confirmée",
-      "situation": "Un client recherche un modèle en rupture de stock (ex: Fisherman taille 41 noir) et demande quand il sera à nouveau disponible. Il n'existe pas de date de réassort confirmée, mais Max Sauveur peut proposer une alerte email.",
-      "response_template": "Bonjour [Prénom],\n\nPour le moment, nous n'avons pas de réassort prévu sur la [Modèle] en [Couleur] en [Taille]. Il arrive ponctuellement qu'une paire revienne suite à un retour client, mais nous ne pouvons pas nous engager sur une date.\n\nLe mieux est de vous abonner à l'alerte directement sur la fiche produit : vous serez notifié en priorité si la taille repasse en stock.\n\nN'hésitez pas si vous avez d'autres questions !\n\n[Prénom du conseiller] – Service Client – Max Sauveur",
-      "key_points": "Ton transparent et honnête sur l'incertitude. Proposer l'alerte dispo comme solution concrète. Ne pas promettre de délai. Rester poli et disponible pour d'autres questions.",
-      "example_count": 1
-    },
-    {
-      "topic": "re__pointure_fisherman",
-      "topic_label": "Re: pointure Fisherman",
-      "situation": "Re: pointure Fisherman",
-      "response_template": "Bonjour Franck,\n\nPour le moment, nous n'avons pas de réassort prévu sur la Fisherman en noir en 41. Il arrive ponctuellement qu'une paire revienne suite à un retour client, mais nous ne pouvons pas nous engager sur une date.\n\nLe mieux est de vous abonner à l'alerte directement sur la fiche produit : vous serez notifié en priorité si la taille repasse en stock.\n\nN'hésitez pas si vous avez d'autres questions !\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "form_name_form_submitted_2026_06_22_11_11_55",
-      "topic_label": "Form name Form submitted 2026-06-22 11:11:55",
-      "situation": "Form name Form submitted 2026-06-22 11:11:55",
-      "response_template": "Bonjour Clara,\n\nPas d'inquiétude, c'est tout à fait normal. Nous traitons les retours entrants dans un délai pouvant aller jusqu'à 14 jours ouvrés. Vous recevrez un email dès que votre dossier sera traité.\n\nN'hésitez pas à nous recontacter si vous n'avez pas de nouvelles d'ici là.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "rupture_stock_echange_taille_alternative",
-      "topic_label": "Rupture de stock – Proposition de taille alternative avec conseil produit",
-      "situation": "Un client a commandé un article dans une taille qui n'est plus disponible suite à une erreur de synchronisation des stocks. Le modèle chausse légèrement grand, ce qui rend une taille inférieure viable en alternative.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message, et désolé pour ce manque de communication de notre côté.\n\nNous avons fait le point avec notre logistique et voici la situation : suite à une erreur de synchronisation de nos stocks, nous ne sommes malheureusement pas en mesure de vous expédier le [Modèle] en taille [Taille commandée].\n\nCela dit, nous avons potentiellement du stock disponible en [Taille alternative], et je voulais vous en parler directement avant de valider quoi que ce soit : le [Modèle] chausse légèrement grand, et le [Taille alternative] conviendrait très probablement à un pied de [Taille commandée] habituel.\n\nSouhaitez-vous qu'on vérifie la disponibilité du [Taille alternative] et qu'on vous l'expédie cette semaine ? Ou préférez-vous qu'on annule la commande et qu'on vous rembourse intégralement ?\n\nDites-nous simplement ce que vous souhaitez, on s'en occupe rapidement.\n\nCordialement,\nJohn de Max Sauveur",
-      "key_points": "Ton : direct et transparent sur le problème, responsable (reconnaissance du manque de communication). Engagement : vérification rapide et expédition sous une semaine. Points clés : expliquer le chausse du modèle pour justifier l'alternative proposée, donner deux options claires au client (accepter la taille alternative ou remboursement intégral), personnaliser avec le nom du modèle et les tailles spécifiques.",
-      "example_count": 1
-    },
-    {
-      "topic": "re__commande__12291_confirm_e",
-      "topic_label": "Re: Commande #12291 confirmée",
-      "situation": "Re: Commande #12291 confirmée",
-      "response_template": "Bonjour Jules,\n\nMerci pour votre message, et désolé pour ce manque de communication de notre côté.\n\nNous avons fait le point avec notre logistique et voici la situation : suite à une erreur de synchronisation de nos stocks, nous ne sommes malheureusement pas en mesure de vous expédier la Peter A. en taille 43.\n\nCela dit, nous avons potentiellement du stock disponible en 42, et je voulais vous en parler directement avant de valider quoi que ce soit : la Peter A. chausse légèrement grand, et le 42 conviendrait très probablement à un pied de 43 habituel. \n\nSouhaitez-vous qu'on vérifie la disponibilité du 42 et qu'on vous l'expédie cette semaine ? Ou préférez-vous qu'on annule la commande et qu'on vous rembourse intégralement ?\n\nDites-nous simplement ce que vous souhaitez, on s'en occupe rapidement.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "retour_receptionne_remboursement_en_cours",
-      "topic_label": "Retour reçu – Remboursement en cours",
-      "situation": "Un client a initié un retour de produit et celui-ci a bien été réceptionné par Max Sauveur. Le client attend la confirmation que son remboursement sera traité.",
-      "response_template": "Bonjour [Prénom],\n\nLe retour a bien été réceptionné et votre remboursement sera traité sous 5 à 10 jours ouvrés, selon les délais de votre banque.\n\nCordialement,\nJohn de Max Sauveur",
-      "key_points": "Ton : courtois et rassurant. Engagements : délai clair (5-10 jours ouvrés) + mention des délais bancaires. Formule polite de clôture avec signature du prénom + marque.",
-      "example_count": 1
-    },
-    {
-      "topic": "re__conseil_taille___boots_wayne",
-      "topic_label": "Re: Conseil taille – Boots Wayne",
-      "situation": "Re: Conseil taille – Boots Wayne",
-      "response_template": "Bonjour Thomas,\n\nMalheureusement, la commande a été expédiée avant que nous puissions l'annuler. Le colis est en route vers votre point relais (PRESSE LIBRAIRIE NGUYEN, 21 rue de l'Aude, 75014 Paris), avec une livraison estimée entre le 24 et le 26 juin.\n\nVous pouvez suivre votre colis ici : https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR648136587TS\n\nDésolé pour ce contre-temps.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "form_name_form_submitted_2026_06_22_13_03_33",
-      "topic_label": "Form name Form submitted 2026-06-22 13:03:33",
-      "situation": "Form name Form submitted 2026-06-22 13:03:33",
-      "response_template": "Bonjour Arthur,\n\nNous avons bien noté que votre colis est en cours de retour vers nous suite à la non-récupération dans les délais impartis au point relais.\n\nDans ce cas de figure, notre politique ne permet pas de procéder à un remboursement. Nous pouvons en revanche vous proposer :\n\n- Un avoir du montant de votre commande (valable 6 mois sur notre site), pour recommander quand vous le souhaitez.\n- Un réenvoi de la ceinture à une nouvelle adresse ou un nouveau point relais, dès réception du colis de notre côté.\n\nDites-moi quelle option vous convient le mieux et nous nous en occupons rapidement.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "livraison_belgique_delai",
-      "topic_label": "Livraison en Belgique – Délais et procédure",
-      "situation": "Un client situé en Belgique demande si Max Sauveur livre dans son pays et quel est le délai de livraison. C'est une question logistique simple sans problème de commande existante.",
-      "response_template": "Bonjour [Prénom],\n\nOui, nous livrons en Belgique ! Vous pouvez passer votre commande directement sur notre site et sélectionner votre adresse de livraison en Belgique à la validation.\n\nLa livraison prend généralement 10 à 15 jours ouvrables.\n\nN'hésitez pas à nous contacter si vous avez d'autres questions avant de commander.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
-      "key_points": "Ton rassurant et accueillant ; clarté sur les délais (10-15 jours ouvrables) ; invitation à poser d'autres questions ; signature claire avec rôle et marque.",
-      "example_count": 1
-    },
-    {
-      "topic": "form_name_form_submitted_2026_06_22_14_06_42",
-      "topic_label": "Form name Form submitted 2026-06-22 14:06:42",
-      "situation": "Form name Form submitted 2026-06-22 14:06:42",
-      "response_template": "Hi Johan,\n\nYes, we ship to Belgium! You can place your order directly on our website and select your delivery address in Antwerp at checkout.\n\nDelivery typically takes 10 to 15 business days. Feel free to reach out if you have any questions before ordering.\n\nJohn – Customer Service – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "retour_taille_indisponible_stock_mocassin_paul",
-      "topic_label": "Retour pour mauvaise taille – Modèle en rupture de stock",
-      "situation": "Un client a reçu un mocassin Paul dans une taille qui ne lui convient pas et souhaite un échange. Malheureusement, le modèle n'est plus disponible dans la taille désirée en stock. On lui propose une alternative ou on lui explique la procédure de retour pour un avoir.",
-      "response_template": "Bonjour [Prénom],\n\nRavi que les mocassins vous soient enfin parvenus, même si la nouvelle sur la taille est décevante.\n\nMalheureusement, le [Modèle] n'est plus disponible en [taille] en stock. En revanche, nous avons le modèle [Alternative] dans le même esprit [caractéristique], si cela peut vous intéresser.\n\nSi ce modèle ne vous convient pas, voici la procédure pour nous retourner la paire :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour\n2. Emballez soigneusement la paire et expédiez-la à notre adresse logistique (frais de retour à votre charge) :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception, nous traitons votre dossier dans les meilleurs délais.\n\nDites-moi si le modèle [Alternative] vous tente ou si vous préférez procéder au retour.\n\nCordialement,\nJohn de Max Sauveur",
-      "key_points": "Ton : empathique (« ravi que... même si décevant »). Proposer une alternative dans le même esprit avant de proposer le retour. Frais de retour à la charge du client. Procédure claire avec lien et adresse. Engagements : traitement rapide à réception.",
-      "example_count": 1
-    },
-    {
-      "topic": "re__re__re__re__re__max_sauveur___service_client",
-      "topic_label": "Re: Re: Re: Re: Re: Max Sauveur — Service Client",
-      "situation": "Re: Re: Re: Re: Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour David,\n\nRavi que les mocassins vous soient enfin parvenus, même si la nouvelle sur la taille est décevante.\n\nMalheureusement, le Paul Daim Léopard n'est plus disponible en 44 en stock. En revanche, nous avons le modèle Boat (chaussure bateau) dans le même esprit léopard, si cela peut vous intéresser.\n\nSi ce modèle ne vous convient pas, voici la procédure pour nous retourner la paire :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour\n2. Emballez soigneusement la paire et expédiez-la à notre adresse logistique (frais de retour à votre charge) :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception, nous traitons votre dossier dans les meilleurs délais.\n\nDites-moi si le modèle Boat Léopard vous tente ou si vous préférez procéder au retour.\n\nJohn de Max Sauveur",
+      "topic": "form_name_form_submitted_2026_06_24_13_09_18",
+      "topic_label": "Form name Form submitted 2026-06-24 13:09:18",
+      "situation": "Form name Form submitted 2026-06-24 13:09:18",
+      "response_template": "Bonjour Olivier,\n\nMerci pour votre retour et désolé pour la confusion.\n\nIl n'y a pas de code ou de numéro de dossier à attendre de notre part avant d'effectuer le retour. Voici comment procéder :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour\n\n2. Indiquez sur le bon les références suivantes :\n   - Liam - Ceinture Cuir Noir - 90\n   - Jonas - Ceinture Western en Cuir de veau Marron - 90\n\n3. Précisez la raison du retour (avoir ou remboursement selon votre souhait).\n\n4. Envoyez le ou les articles à notre adresse logistique :\n   SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nConcernant le conditionnement : si la Liam vous a été livrée dans un écrin sans blister, vous pouvez la retourner dans cet écrin, c'est suffisant. L'emballage de retour doit simplement protéger l'article.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -1546,6 +1258,14 @@
       "example_count": 1
     },
     {
+      "topic": "max_sauveur___service_client",
+      "topic_label": "Max Sauveur — Service Client",
+      "situation": "Max Sauveur — Service Client",
+      "response_template": "Bonjour Mattéo,\n\nSuite à votre demande, nous venons de générer votre avoir. Il est utilisable une seule fois, non cumulable avec d'autres codes ou promotions, et valable pendant 6 mois.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n**47WD5WB3PQ97**\n\nSi vous avez la moindre question, je reste disponible.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 61
+    },
+    {
       "topic": "moc_jagger___date_de_r_ception",
       "topic_label": "Moc Jagger - Date de réception",
       "situation": "Moc Jagger - Date de réception",
@@ -2424,6 +2144,14 @@
       "response_template": "Bonjour Pierfranco,\n\nMerci pour votre confiance, c'est un beau premier achat à faire !\n\nPour répondre à vos questions sur la Fisherman :\n\nLa sandale chausse **grand**. Avec vos 27 cm de pied, le 42 est votre taille de référence sur notre guide. Par expérience, nos clients prennent cette pointure quand il chausse du 43.\n\nConcernant votre inquiétude sur le maintien : oui, les boucles de réglage permettent d'ajuster le tour de pied et de cheville avec précision, ce qui compense tout à fait le fait d'être légèrement entre deux tailles. Vous n'aurez pas la sensation de \"perdre\" la sandale.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande !\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
+    },
+    {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Xavier,\n\nNous venons de faire une modification de notre côté pour que le code fonctionne correctement sur votre commande.\n\nVous pouvez retenter dès maintenant avec le code **Z9A7YCDZWC86** dans votre panier. N'hésitez pas à nous revenir si vous rencontrez encore un problème.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 45
     },
     {
       "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
