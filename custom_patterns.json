@@ -7,7 +7,7 @@
       "situation": "Max Sauveur — Service Client",
       "response_template": "Bonjour Bastien,\n\nVotre paire de Paul Mocassin Cuir Noir est passée entre les mains de notre atelier et la réparation est désormais terminée. Votre paire est prête à être renvoyée.\n\nPour procéder à l'expédition, j'aurais besoin de votre confirmation sur une chose : souhaitez-vous recevoir votre colis à l'adresse de votre commande d'origine, ou préférez-vous une livraison vers un point relais Chrono2Shop différent ?\n\nSi vous optez pour un point relais, indiquez-moi simplement l'adresse complète du point souhaité et je m'en occupe.\n\nDès que j'ai votre retour, on expédie sans attendre.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 64
+      "example_count": 65
     },
     {
       "topic": "_daily_doc",
