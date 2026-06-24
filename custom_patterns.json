@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "max_sauveur___service_client",
+      "topic_label": "Max Sauveur — Service Client",
+      "situation": "Max Sauveur — Service Client",
+      "response_template": "Bonjour Jean-Camille,\n\nVotre paire de Springsteen Daim Beige est passée entre les mains de notre atelier et la réparation est désormais terminée. Votre paire est prête à être renvoyée.\n\nPour procéder à l'expédition, j'aurais besoin de votre confirmation sur une chose : souhaitez-vous recevoir votre colis à l'adresse de votre commande d'origine, ou préférez-vous une livraison vers un point relais Chrono2Shop différent ?\n\nSi vous optez pour un point relais, indiquez-moi simplement l'adresse complète du point souhaité et je m'en occupe.\n\nDès que j'ai votre retour, on expédie sans attendre.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 63
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -32,14 +40,6 @@
       "response_template": "Bonjour [Prénom],\n\nSuite à votre demande, nous venons de générer votre avoir. Il est utilisable une seule fois, non cumulable avec d'autres codes ou promotions, et valable pendant 6 mois.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n**[CODE_AVOIR]**\n\nSi vous avez la moindre question, je reste disponible.\n\nCordialement,\nJohn de Max Sauveur",
       "key_points": "Ton professionnel et courtois ; préciser les conditions d'utilisation (une seule fois, non cumulable, validité 6 mois) ; formater le code en gras pour visibilité ; rester disponible pour questions ; signature avec prénom et marque",
       "example_count": 1
-    },
-    {
-      "topic": "max_sauveur___service_client",
-      "topic_label": "Max Sauveur — Service Client",
-      "situation": "Max Sauveur — Service Client",
-      "response_template": "Bonjour Charles,\n\nSuite à votre demande, nous venons de générer votre avoir. Il est utilisable une seule fois, non cumulable avec d'autres codes ou promotions, et valable pendant 6 mois.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n**PAR36HPT2YH3**\n\nSi vous avez la moindre question, je reste disponible.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 62
     },
     {
       "topic": "form_name_form_submitted_2026_06_24_13_09_18",
