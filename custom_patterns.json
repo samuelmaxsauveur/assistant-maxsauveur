@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "max_sauveur___service_client",
+      "topic_label": "Max Sauveur — Service Client",
+      "situation": "Max Sauveur — Service Client",
+      "response_template": "Bonjour Charles,\n\nSuite à votre demande, nous venons de générer votre avoir. Il est utilisable une seule fois, non cumulable avec d'autres codes ou promotions, et valable pendant 6 mois.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n**PAR36HPT2YH3**\n\nSi vous avez la moindre question, je reste disponible.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 62
+    },
+    {
       "topic": "form_name_form_submitted_2026_06_24_13_09_18",
       "topic_label": "Form name Form submitted 2026-06-24 13:09:18",
       "situation": "Form name Form submitted 2026-06-24 13:09:18",
@@ -1256,14 +1264,6 @@
       "response_template": "Bonjour Kevin,\n\nOui, tout à fait normal. Le Moc Jagger est passé en prix définitif maintenant que la phase de précommande est terminée. Le prix de 335€ correspond au tarif public standard du modèle.\n\nVotre avoir de 239€ (correspondant à votre commande initiale) reste bien valable pour votre prochain achat.\n\nBonne journée à vous.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "max_sauveur___service_client",
-      "topic_label": "Max Sauveur — Service Client",
-      "situation": "Max Sauveur — Service Client",
-      "response_template": "Bonjour Mattéo,\n\nSuite à votre demande, nous venons de générer votre avoir. Il est utilisable une seule fois, non cumulable avec d'autres codes ou promotions, et valable pendant 6 mois.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n**47WD5WB3PQ97**\n\nSi vous avez la moindre question, je reste disponible.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 61
     },
     {
       "topic": "moc_jagger___date_de_r_ception",
