@@ -5,9 +5,9 @@
       "topic": "max_sauveur___service_client",
       "topic_label": "Max Sauveur — Service Client",
       "situation": "Max Sauveur — Service Client",
-      "response_template": "Bonjour Bastien,\n\nVotre paire de Paul Mocassin Cuir Noir est passée entre les mains de notre atelier et la réparation est désormais terminée. Votre paire est prête à être renvoyée.\n\nPour procéder à l'expédition, j'aurais besoin de votre confirmation sur une chose : souhaitez-vous recevoir votre colis à l'adresse de votre commande d'origine, ou préférez-vous une livraison vers un point relais Chrono2Shop différent ?\n\nSi vous optez pour un point relais, indiquez-moi simplement l'adresse complète du point souhaité et je m'en occupe.\n\nDès que j'ai votre retour, on expédie sans attendre.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Myriam,\n\nNous avons récemment reçu votre colis en retour expéditeur : il semble que le Moc Jagger Cuir Noir (38) n'ait pas pu être récupéré au point relais dans les délais impartis.\n\nPas de panique, la paire est bien chez nous et nous avons plusieurs options pour vous :\n\n**1. Renvoyer la commande**\nNous pouvons réexpédier la paire à l'adresse de votre choix. Des frais de port seront à régler pour ce second envoi.\n\n**2. Recevoir un avoir**\nNous vous créons un avoir du montant de votre commande, valable 6 mois sur notre site, que vous pouvez utiliser quand vous le souhaitez.\n\n**3. Être remboursée**\nUn remboursement reste possible, mais conformément à nos CGV, une retenue de 18€ sera appliquée pour couvrir les frais de traitement liés au retour non réclamé.\n\nDites-moi simplement quelle option vous convient et je m'en occupe dans la foulée. Si vous optez pour la réexpédition, envoyez-moi également l'adresse souhaitée.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 65
+      "example_count": 66
     },
     {
       "topic": "_daily_doc",
