@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "max_sauveur___service_client",
+      "topic_label": "Max Sauveur — Service Client",
+      "situation": "Max Sauveur — Service Client",
+      "response_template": "Bonjour Charles,\n\nNous avons récemment reçu votre colis en retour expéditeur : il semble que le Moc Jagger Cuir Pony Marron (43) n'ait pas pu être récupéré au point relais dans les délais impartis.\n\nPas de panique, la paire est bien chez nous et nous avons plusieurs options pour vous :\n\n**1. Renvoyer la commande**\nNous pouvons réexpédier la paire à l'adresse de votre choix. Des frais de port seront à régler pour ce second envoi.\n\n**2. Recevoir un avoir**\nNous vous créons un avoir du montant de votre commande, valable 6 mois sur notre site, que vous pouvez utiliser quand vous le souhaitez.\n\n**3. Être remboursé**\nUn remboursement reste possible, mais conformément à nos CGV, une retenue de 18€ sera appliquée pour couvrir les frais de traitement liés au retour non réclamé.\n\nDites-moi simplement quelle option vous convient et je m'en occupe dans la foulée. Si vous optez pour la réexpédition, envoyez-moi également l'adresse souhaitée.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 68
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -16,14 +24,6 @@
       "response_template": "Bonjour [Prénom],\n\nNous avons récemment reçu votre colis en retour expéditeur : il semble que [les articles] n'aient pas pu être récupérés au point relais dans les délais impartis.\n\nPas de panique, les paires sont bien chez nous et nous avons plusieurs options pour vous :\n\n**1. Renvoyer la commande**\nNous pouvons réexpédier les paires à l'adresse de votre choix. Des frais de port seront à régler pour ce second envoi.\n\n**2. Recevoir un avoir**\nNous vous créons un avoir du montant de votre commande, valable 6 mois sur notre site, que vous pouvez utiliser quand vous le souhaitez.\n\n**3. Être remboursé**\nUn remboursement reste possible, mais conformément à nos CGV, une retenue de 18€ sera appliquée pour couvrir les frais de traitement liés au retour non réclamé.\n\nDites-moi simplement quelle option vous convient et je m'en occupe dans la foulée. Si vous optez pour la réexpédition, envoyez-moi également l'adresse souhaitée.\n\nCordialement,\nJohn de Max Sauveur",
       "key_points": "Ton rassurant et solution-orienté. Trois options claires proposées. Frais de retrait de 18€ pour remboursement (conformité CGV). Délai de réaction rapide attendu. Pas de culpabilité du client mise en avant.",
       "example_count": 1
-    },
-    {
-      "topic": "max_sauveur___service_client",
-      "topic_label": "Max Sauveur — Service Client",
-      "situation": "Max Sauveur — Service Client",
-      "response_template": "Bonjour Corentin,\n\nNous avons récemment reçu votre colis en retour expéditeur : il semble que la Fisherman Cuir Grainé Noir (42) et le Peter A. Mocassin Daim Marron (42) n'aient pas pu être récupérés au point relais dans les délais impartis.\n\nPas de panique, les paires sont bien chez nous et nous avons plusieurs options pour vous :\n\n**1. Renvoyer la commande**\nNous pouvons réexpédier les paires à l'adresse de votre choix. Des frais de port seront à régler pour ce second envoi.\n\n**2. Recevoir un avoir**\nNous vous créons un avoir du montant de votre commande, valable 6 mois sur notre site, que vous pouvez utiliser quand vous le souhaitez.\n\n**3. Être remboursé**\nUn remboursement reste possible, mais conformément à nos CGV, une retenue de 18€ sera appliquée pour couvrir les frais de traitement liés au retour non réclamé.\n\nDites-moi simplement quelle option vous convient et je m'en occupe dans la foulée. Si vous optez pour la réexpédition, envoyez-moi également l'adresse souhaitée.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 67
     },
     {
       "topic": "reparation_atelier_confirmation_livraison",
