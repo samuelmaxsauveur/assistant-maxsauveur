@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "max_sauveur___service_client",
+      "topic_label": "Max Sauveur — Service Client",
+      "situation": "Max Sauveur — Service Client",
+      "response_template": "Bonjour Charles,\n\nNous avons récemment reçu votre colis en retour expéditeur : il semble que les Cody - Chaussures Derby Montagne Cuir Marron (44) n'aient pas pu être récupérées au point relais dans les délais impartis.\n\nPas de panique, la paire est bien chez nous et nous avons plusieurs options pour vous :\n\n**1. Renvoyer la commande**\nNous pouvons réexpédier la paire à l'adresse de votre choix. Des frais de port seront à régler pour ce second envoi.\n\n**2. Recevoir un avoir**\nNous vous créons un avoir du montant de votre commande, valable 6 mois sur notre site, que vous pouvez utiliser quand vous le souhaitez.\n\n**3. Être remboursé**\nUn remboursement reste possible, mais conformément à nos CGV, une retenue de 18€ sera appliquée pour couvrir les frais de traitement liés au retour non réclamé.\n\nDites-moi simplement quelle option vous convient et je m'en occupe dans la foulée. Si vous optez pour la réexpédition, envoyez-moi également l'adresse souhaitée.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 67
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -16,14 +24,6 @@
       "response_template": "Bonjour [Prénom],\n\nNous avons récemment reçu votre colis en retour expéditeur : il semble que le [Produit] [Détail] n'ait pas pu être récupéré au point relais dans les délais impartis.\n\nPas de panique, la paire est bien chez nous et nous avons plusieurs options pour vous :\n\n**1. Renvoyer la commande**\nNous pouvons réexpédier la paire à l'adresse de votre choix. Des frais de port seront à régler pour ce second envoi.\n\n**2. Recevoir un avoir**\nNous vous créons un avoir du montant de votre commande, valable 6 mois sur notre site, que vous pouvez utiliser quand vous le souhaitez.\n\n**3. Être remboursée**\nUn remboursement reste possible, mais conformément à nos CGV, une retenue de 18€ sera appliquée pour couvrir les frais de traitement liés au retour non réclamé.\n\nDites-moi simplement quelle option vous convient et je m'en occupe dans la foulée. Si vous optez pour la réexpédition, envoyez-moi également l'adresse souhaitée.",
       "key_points": "Ton rassurant et proactif. Trois options claires proposées. Transparence sur les frais (18€ pour remboursement). Invite le client à choisir rapidement. Formulation positive : 'Pas de panique, la paire est bien chez nous'.",
       "example_count": 1
-    },
-    {
-      "topic": "max_sauveur___service_client",
-      "topic_label": "Max Sauveur — Service Client",
-      "situation": "Max Sauveur — Service Client",
-      "response_template": "Bonjour Myriam,\n\nNous avons récemment reçu votre colis en retour expéditeur : il semble que le Moc Jagger Cuir Noir (38) n'ait pas pu être récupéré au point relais dans les délais impartis.\n\nPas de panique, la paire est bien chez nous et nous avons plusieurs options pour vous :\n\n**1. Renvoyer la commande**\nNous pouvons réexpédier la paire à l'adresse de votre choix. Des frais de port seront à régler pour ce second envoi.\n\n**2. Recevoir un avoir**\nNous vous créons un avoir du montant de votre commande, valable 6 mois sur notre site, que vous pouvez utiliser quand vous le souhaitez.\n\n**3. Être remboursée**\nUn remboursement reste possible, mais conformément à nos CGV, une retenue de 18€ sera appliquée pour couvrir les frais de traitement liés au retour non réclamé.\n\nDites-moi simplement quelle option vous convient et je m'en occupe dans la foulée. Si vous optez pour la réexpédition, envoyez-moi également l'adresse souhaitée.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 66
     },
     {
       "topic": "reparation_atelier_confirmation_livraison",
