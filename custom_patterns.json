@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "retour_re_u____change_en_cours",
+      "topic_label": "Retour reçu — échange en cours",
+      "situation": "Retour reçu — échange en cours",
+      "response_template": "Bonjour Alexandre,\n\nNous avons bien reçu votre colis retour pour vos Chaussures Bateau Cuir Marron (Le Boat) en 43, commande #12230. Merci pour ça.\n\nEn revanche, il n'y avait pas de bon de retour dans le colis. Pas de panique, ça arrive, mais j'aurais besoin de quelques précisions pour traiter votre demande correctement.\n\nSouhaitez-vous un **remboursement** ou un **échange** ?\n\nSi vous optez pour un **échange de taille**, nous pouvons vous générer un avoir de **169,00 EUR** (soit 149,00 EUR + 20,00 EUR offerts par la maison) pour commander directement la bonne pointure ou un autre modèle de votre choix sur le site.\n\nSi vous préférez un **remboursement**, nous le traitons dès réception de votre confirmation.\n\nDites-moi simplement ce que vous souhaitez et on s'en occupe sans délai.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
