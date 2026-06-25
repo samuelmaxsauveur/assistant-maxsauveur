@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re_",
+      "topic_label": "Re:",
+      "situation": "Re:",
+      "response_template": "Bonjour Antonin,\n\nSur le fond, les conditions de la roue sont bien indiquées sur la page et dans nos CGV : le code ne s'applique pas sur les modèles en dessous de 150€, et Le Boat est également exclu nominativement. Ce n'est pas une règle ajoutée après coup, c'est une contrainte économique réelle : sur un modèle à 149€, nos marges sont déjà très réduites, et une remise de 45€ n'est tout simplement pas viable pour nous.\n\nPour le code questionnaire10, je vous invite à l'essayer directement sur la fiche produit qui vous intéresse. \n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
