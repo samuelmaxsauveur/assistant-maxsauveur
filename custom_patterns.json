@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__demande_renseignements___pointure___pr__commande",
+      "topic_label": "RE: Demande renseignements - Pointure / pré-commande",
+      "situation": "RE: Demande renseignements - Pointure / pré-commande",
+      "response_template": "Bonjour Christophe,\n\nMalheureusement, nous n'avons pas de réassort prévu en 40 pour la Fisherman à ce stade. Je ne voudrais pas vous donner une date qui ne serait pas fiable.\n\nLe mieux est d'activer l'alerte pointure directement sur la fiche produit du site : vous serez notifié par email dès qu'un 40 serait à nouveau disponible.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
