@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Charles,\n\nC'est bien noté, nous enregistrons votre demande de remboursement.\n\nCompte tenu du retour non réclamé au point relais, un montant de 18€ de frais de traitement sera déduit conformément à nos CGV, soit un remboursement de 280,00 EUR.\n\nLe remboursement sera effectué dans un délai d'environ 14 jours ouvrés sur votre moyen de paiement d'origine.\n\nBonne continuation,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 47
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -16,14 +24,6 @@
       "response_template": "Merci pour ces précisions, c'est utile.\n\nPour la paire en [taille 1], pas de problème, on traite votre remboursement.\n\nSur la [taille 2] : vous évoquez une semelle commando EVA déjà écrasée et limée en quelques jours. C'est franchement inhabituel de notre côté, car cette semelle est justement reconnue pour sa souplesse et sa bonne résistance à l'usure. On n'a pas eu ce type de retour jusqu'ici.\n\nAvant d'aller plus loin, pourriez-vous nous envoyer quelques photos des zones concernées ? Cela nous permettra d'évaluer concrètement ce que vous observez.",
       "key_points": "Ton factuel et honnête. Reconnaître l'inhabitualité du signalement. Demander des preuves visuelles avant toute décision. Séparer clairement les deux paires et leurs situations respectives.",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Nicolas,\n\nMerci pour ces précisions, c'est utile.\n\nPour la paire en 41, pas de problème, on traite votre remboursement.\n\nSur la 42 : vous évoquez une semelle commando EVA déjà écrasée et limée en quelques jours. C'est franchement inhabituel de notre côté, car cette semelle est justement reconnue pour sa souplesse et sa bonne résistance à l'usure. On n'a pas eu ce type de retour jusqu'ici.\n\nAvant d'aller plus loin, pourriez-vous nous envoyer quelques photos des zones concernées ? Cela nous permettra d'évaluer concrètement ce que vous observez ?",
-      "key_points": "",
-      "example_count": 46
     },
     {
       "topic": "re__form_name_form_submitted_2026_06_18_22_10_46",
