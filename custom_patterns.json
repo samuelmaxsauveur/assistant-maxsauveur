@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__re__re__re__re__fin_de_production_et_exp_ditions",
+      "topic_label": "Re: Re: Re: Re: Re: Re: Re: Fin de production et expéditions de vos Moc Jagger",
+      "situation": "Re: Re: Re: Re: Re: Re: Re: Fin de production et expéditions de vos Moc Jagger",
+      "response_template": "Bonjour Alma,\n\nBien noté, nous vous confirmerons dès réception de votre colis.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "code_promo_condition_prix_minimum_exclusion_modele",
+      "topic_label": "Code promo – condition de prix minimum et exclusion nominative de modèle",
+      "situation": "Un client a obtenu un code de réduction (ex: roue de la fortune) et tente de l'appliquer sur un article qui ne respecte pas les conditions : soit le prix est inférieur au seuil minimum (150€), soit le modèle est exclus nominativement (ex: Le Boat). Le client conteste cette restriction.",
+      "response_template": "Bonjour [Prénom],\n\nSur le fond, les conditions du code sont bien indiquées sur la page produit et dans nos CGV : le code ne s'applique pas sur les modèles en dessous de 150€, et [Modèle exclu] est également exclu nominativement. Ce n'est pas une règle ajoutée après coup, c'est une contrainte économique réelle : sur un modèle à 149€, nos marges sont déjà très réduites, et une remise de cette ampleur n'est tout simplement pas viable pour nous.\n\nPour tester le code sur un autre produit, je vous invite à l'essayer directement sur la fiche produit qui vous intéresse.\n\nCordialement,\nJohn de Max Sauveur",
+      "key_points": "Ton factuel et transparent – justifier par la marge commerciale, pas par l'arbitraire. Rappeler que les conditions sont écrites dans les CGV. Proposer au client de tester sur un article éligible. Pas de dérogation possible.",
+      "example_count": 1
+    },
+    {
       "topic": "re_",
       "topic_label": "Re:",
       "situation": "Re:",
