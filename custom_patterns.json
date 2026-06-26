@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__re__re__re__re__re__fin_de_production_et_exp_dit",
+      "topic_label": "Re: Re: Re: Re: Re: Re: Re: Re: Fin de production et expéditions de vos Moc Jagger",
+      "situation": "Re: Re: Re: Re: Re: Re: Re: Re: Fin de production et expéditions de vos Moc Jagger",
+      "response_template": "Bonjour Alma,\n\nMerci pour la confirmation. Nous avons bien reçu votre colis retour et nous allons traiter l'échange dans les meilleurs délais.\n\nVous recevrez un email dès que votre nouvelle commande est expédiée.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re___re__r_assort_moc_paul_noire_46",
       "topic_label": "Re : Re: Réassort Moc Paul noire 46",
       "situation": "Re : Re: Réassort Moc Paul noire 46",
