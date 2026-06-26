@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Corentin,\n\nPour vous les faire parvenir avant le week-end prochain, je vous recommande l'envoi en express. Voici le lien pour régler les frais de port :\n👉 https://secure.payplug.com/pay/xL8OF1ww2TmCH7RgEtwpW\n\nUne fois le paiement effectué, pourriez-vous me confirmer une adresse de livraison à domicile ? Cela nous permettra d'assurer la livraison dans les délais, sans dépendre d'un point relais cette fois.\n\nDès réception de ces deux éléments, on expédie dans la foulée, si possible aujourd'hui si le paiement est effectué avant 10h00.\n\nMerci\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 50
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -32,14 +40,6 @@
       "response_template": "Bonjour [Prénom],\n\nC'est noté, voici votre code avoir d'un montant de [MONTANT]€, valable 6 mois sur notre site :\n\n**[CODE_AVOIR]**\n\nIl est utilisable directement au moment du paiement, en une seule fois, sur maxsauveur.com.\n\nBonne soirée à vous,\n\n[Nom] de Max Sauveur",
       "key_points": "Ton : professionnel et bienveillant. Montant précis du code. Code en majuscules et clairement visible. Préciser 6 mois de validité. Indiquer utilisation en une seule fois au paiement. Clôturer avec formule courtoise.",
       "example_count": 2
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Aimy,\n\nC'est noté, voici votre code avoir d'un montant de 239€, valable 6 mois sur notre site :\n\n**W8S58PRAV3CJ**\n\nIl est utilisable directement au moment du paiement, en une seule fois, sur maxsauveur.com.\n\nBonne soirée à vous,\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 49
     },
     {
       "topic": "retour_non_reclame_point_relais_reexpedition",
