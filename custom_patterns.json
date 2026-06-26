@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "question_exp_dition_commande",
+      "topic_label": "Question expédition commande",
+      "situation": "Question expédition commande",
+      "response_template": "Bonjour Pierre-Louis,\n\nToutes nos excuses pour ce retard : votre commande #12413 (Le Moc Jagger Cuir Noir, 41) n'avait pas correctement remonté à notre logistique. C'est corrigé, et votre paire sera expédiée demain.\n\nVous recevrez un email avec votre lien de suivi Chronopost dès qu'elle sera prise en charge par le transporteur. La livraison est estimée entre le 28 et le 30 juin en point relais Picture Store Metz.\n\nEncore désolé pour ce couac, et merci pour votre patience !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "erreur_synchronisation_stock_rupture_imprevue",
+      "topic_label": "Erreur de synchronisation stock – Pointure affichée disponible mais rupture réelle",
+      "situation": "Un client commande une pointure affichée disponible en ligne, mais à cause d'un problème de synchronisation informatique entre la boutique et les stocks réels, la pointure n'est plus en stock. Le client reçoit une notification d'erreur après sa commande.",
+      "response_template": "Bonjour [Prénom],\n\nVotre déception est tout à fait légitime, et je ne vais pas chercher à la minimiser. Cette erreur vient d'un problème de synchronisation informatique entre notre boutique et nos stocks réels : la pointure s'affichait disponible alors qu'elle ne l'était plus. Ce n'est pas une erreur humaine au sens classique, mais le résultat est le même pour vous, et c'est frustrant, surtout pour une première commande.\n\nConcernant le réassort : honnêtement, je ne peux pas vous promettre un retour rapide. Ces délais dépendent des retours clients et du réapprovisionnement, et je préfère ne pas vous donner une date que je ne peux pas garantir.\n\nCe que nous pouvons faire concrètement :\n\n**Option 1 : Un modèle alternatif**\nNous avons des alternatives disponibles. Même silhouette ou caractéristiques similaires. Si cela vous tente, nous avons le stock.\n\n**Option 2 : Un autre modèle de votre choix**\nSi vous avez une autre paire en tête sur notre site, dites-le moi et on trouve la meilleure solution.\n\n**Option 3 : Un remboursement intégral**\nSi vous préférez ne pas attendre et ne pas faire de compromis, nous procédons au remboursement complet sans aucun délai.\n\nQuelle option vous convient le mieux ?\n\nCordialement,\nJohn de Max Sauveur",
+      "key_points": "• Reconnaître la légitimité de la frustration sans minimiser\n• Expliquer techniquement le problème (synchronisation informatique) sans rejeter la faute sur le client\n• Ne PAS promettre de date de réassort incertaine – préférer l'honnêteté\n• Proposer 3 options claires et concrètes (alternative, autre choix, remboursement)\n• Ton transparent et respectueux, formulation constructive ('ce que nous pouvons faire concrètement')",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande_12626",
       "topic_label": "Re: Commande 12626",
       "situation": "Re: Commande 12626",
