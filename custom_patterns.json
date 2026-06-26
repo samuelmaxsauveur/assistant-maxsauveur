@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Hugo,\n\nToutes mes excuses pour la confusion : nous avions bien indiqué dans nos échanges précédents une réexpédition sans frais, et c'est ce que nous allons faire. Aucun frais ne vous sera demandé.\n\nNous allons réexpédier votre Moc Jagger Cuir Noir (43) vers le point relais La Poste, Place de la paix, 92150 Suresnes, dès que la paire sera de retour dans notre entrepôt. Vous recevrez un lien de suivi dès l'expédition.\n\nAvant d'envoyer, une petite question : êtes-vous certain de votre pointure en 43 ? Le Moc Jagger chausse large, et c'est le bon moment pour ajuster si vous avez le moindre doute.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 51
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -16,14 +24,6 @@
       "response_template": "Bonjour [Prénom],\n\nPour vous les faire parvenir avant [date], je vous recommande l'envoi en express. Voici le lien pour régler les frais de port :\n👉 [lien_paiement_payplug]\n\nUne fois le paiement effectué, pourriez-vous me confirmer une adresse de livraison à domicile ? Cela nous permettra d'assurer la livraison dans les délais, sans dépendre d'un point relais.\n\nDès réception de ces deux éléments, on expédie dans la foulée, si possible [jour/horaire] si le paiement est effectué avant [heure].\n\nMerci\n\n[Prénom] de Max Sauveur",
       "key_points": "Ton professionnel et efficace. Expédition conditionnée par deux éléments : paiement + adresse de livraison. Lien de paiement sécurisé (Payplug). Engagement sur délai d'expédition clair (même jour si avant 10h00). Priorité à la livraison à domicile plutôt qu'au point relais pour respecter les délais.",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Corentin,\n\nPour vous les faire parvenir avant le week-end prochain, je vous recommande l'envoi en express. Voici le lien pour régler les frais de port :\n👉 https://secure.payplug.com/pay/xL8OF1ww2TmCH7RgEtwpW\n\nUne fois le paiement effectué, pourriez-vous me confirmer une adresse de livraison à domicile ? Cela nous permettra d'assurer la livraison dans les délais, sans dépendre d'un point relais cette fois.\n\nDès réception de ces deux éléments, on expédie dans la foulée, si possible aujourd'hui si le paiement est effectué avant 10h00.\n\nMerci\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 50
     },
     {
       "topic": "avoir_hors_delai_retour_avec_conseil_pointure",
