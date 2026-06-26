@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Clément,\n\nJe vous lis et je comprends votre frustration, elle est légitime. Permettez-moi d'être transparent sur ce qui s'est passé.\n\nLorsque nous avons constaté que votre colis avait été dirigé vers un point relais différent de celui prévu, nous avons immédiatement ouvert une réclamation auprès de Chronopost pour qu'ils corrigent la situation. Malheureusement, malgré notre intervention, Chronopost n'a pas pu traiter ce dossier dans les délais et le colis nous est revenu. Ce n'est pas la réponse que nous attendions d'eux, et nous en sommes sincèrement désolés.\n\nPour être honnête : en choisissant la livraison en point relais Chrono2Shop, Chronopost se réserve contractuellement le droit d'orienter vers un point relais alternatif si le premier n'est pas disponible. Ce n'est pas une décision que nous prenons, c'est leur politique. Cela ne rend pas la situation plus acceptable pour vous, et nous aurions préféré qu'ils gèrent mieux leur part du travail.\n\nVoici ce que nous proposons pour clore ce dossier : nous vous réexpédions votre ceinture immédiatement, avec une participation de 5€ de votre côté pour les frais d'envoi (nous prenons le reste à notre charge). Donnez-nous simplement confirmation de l'adresse de livraison souhaitée, et nous nous occupons de tout.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 48
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -64,14 +72,6 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour ces précisions. Effectivement, entre une [matière 1] et une [matière 2], de légères variations de rendu peuvent exister en fonction de la matière, sans que cela constitue un changement de gabarit. Cela dit, on entend votre ressenti.\n\nN'hésitez pas si vous avez la moindre question.\n\nCordialement,\nJohn de Max Sauveur",
       "key_points": "Reconnaître que les variations de rendu entre matières sont normales et attendues. Valider le ressenti du client tout en rassurant sur la qualité. Ton empathique et rassurant.",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Christophe,\n\nMerci pour ces précisions. Effectivement, entre une sandale en daim et une sandale en cuir grainé, de légères variations de rendu peuvent exister en fonction de la matière, sans que cela constitue un changement de gabarit. Cela dit, on entend votre ressenti.\nN'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 47
     },
     {
       "topic": "form_name_form_submitted_2026_06_25_18_39_56",
