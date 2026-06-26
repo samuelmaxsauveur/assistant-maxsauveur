@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__max_sauveur___service_client",
+      "topic_label": "Re: Re: Max Sauveur — Service Client",
+      "situation": "Re: Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Xavier,\n\nNous avons effectué un nouvel ajustement de notre côté, le code est maintenant bien configuré pour le porte-carte.\n\nPouvez-vous réessayer d'appliquer le code Z9A7YCDZWC86 ? Cela devrait fonctionner cette fois.\n\nN'hésitez pas à me dire si vous rencontrez encore un problème.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 8
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -2672,14 +2680,6 @@
       "response_template": "Bonjour Arthur,\n\nPas d'inquiétude, le colis partira cette semaine de notre entrepôt.\n\nDès que le colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi Chronopost.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re__re__max_sauveur___service_client",
-      "topic_label": "Re: Re: Max Sauveur — Service Client",
-      "situation": "Re: Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Mattéo,\n\nNous avons modifié votre avoir pour qu'il soit utilisable sur les chaussures ET les embauchoirs, comme dans votre commande initiale.\n\nCordialement\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 7
     },
     {
       "topic": "re__re__merci_pour_votre_message___quelques_informations_uti",
