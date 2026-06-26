@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Benjamin,\n\nPas de problème, nous allons vous réexpédier la paire par Chrono2shop au même point relais que votre commande initiale (notre logistique est basée à Marseille, donc un chauffeur serait compliqué de notre côté !)\n\nPour régler les frais de réexpédition, voici le lien de paiement : https://secure.payplug.com/pay/33WfPmx33OvwMTp4bxjF1C\n\nUne question avant d'expédier : le Moc Jagger chausse très grand. Souhaitez-vous garder le 43,5 ou préférez-vous passer en 42,5, voire en 42 ? Si vous souhaitez changer de taille, on peut ajuster sans problème avant l'envoi.\n\nDites-moi simplement votre choix et je lance l'expédition dès réception du paiement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 52
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -40,14 +48,6 @@
       "response_template": "Bonjour [Prénom],\n\nToutes mes excuses pour la confusion : nous avions bien indiqué dans nos échanges précédents une réexpédition sans frais, et c'est ce que nous allons faire. Aucun frais ne vous sera demandé.\n\nNous allons réexpédier votre [Modèle] [Pointure] vers [Point relais] dès que la paire sera de retour dans notre entrepôt. Vous recevrez un lien de suivi dès l'expédition.\n\n[Question de confirmation si appropriée, ex: pointure]\n\nCordialement,\nJohn de Max Sauveur",
       "key_points": "Ton : apologétique mais rassurant. Confirmer explicitement l'absence de frais. Proposer un lien de suivi. Vérifier les détails (pointure, adresse) avant expédition. Montrer la proactivité du service client.",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Hugo,\n\nToutes mes excuses pour la confusion : nous avions bien indiqué dans nos échanges précédents une réexpédition sans frais, et c'est ce que nous allons faire. Aucun frais ne vous sera demandé.\n\nNous allons réexpédier votre Moc Jagger Cuir Noir (43) vers le point relais La Poste, Place de la paix, 92150 Suresnes, dès que la paire sera de retour dans notre entrepôt. Vous recevrez un lien de suivi dès l'expédition.\n\nAvant d'envoyer, une petite question : êtes-vous certain de votre pointure en 43 ? Le Moc Jagger chausse large, et c'est le bon moment pour ajuster si vous avez le moindre doute.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 51
     },
     {
       "topic": "expedition_express_frais_port_paiement",
