@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Christophe,\n\nMerci pour ces précisions. Effectivement, entre une sandale en daim et une sandale en cuir grainé, de légères variations de rendu peuvent exister en fonction de la matière, sans que cela constitue un changement de gabarit. Cela dit, on entend votre ressenti.\nN'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 47
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -32,14 +40,6 @@
       "response_template": "Bonjour Julien,\n\nMalheureusement, nous n'avons pas de réassort prévu sur le Moc Paul noir en 46 à ce stade. Je ne voudrais pas vous donner une date qui ne serait pas fiable.\n\nCela dit, si vous cherchez un mocassin en noir en 46, notre Moc Jagger est disponible dans cette taille en ce moment. C'est un modèle avec un très beau tombé, qui pourrait vous convenir.\n\nSi vous souhaitez rester alerté en priorité pour le Moc Paul, vous pouvez activer l'alerte pointure directement sur la fiche produit : vous serez notifié dès qu'un 46 est de nouveau disponible.\n\nN'hésitez pas si vous avez des questions.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Nicolas,\n\nMerci pour ces précisions, c'est utile.\n\nPour la paire en 41, pas de problème, on traite votre remboursement.\n\nSur la 42 : vous évoquez une semelle commando EVA déjà écrasée et limée en quelques jours. C'est franchement inhabituel de notre côté, car cette semelle est justement reconnue pour sa souplesse et sa bonne résistance à l'usure. On n'a pas eu ce type de retour jusqu'ici.\n\nAvant d'aller plus loin, pourriez-vous nous envoyer quelques photos des zones concernées ? Cela nous permettra d'évaluer concrètement ce que vous observez ?",
-      "key_points": "",
-      "example_count": 46
     },
     {
       "topic": "re__form_name_form_submitted_2026_06_18_22_10_46",
