@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_06_25_18_39_56",
+      "topic_label": "Form name Form submitted 2026-06-25 18:39:56",
+      "situation": "Form name Form submitted 2026-06-25 18:39:56",
+      "response_template": "Bonjour,\n\nBonne nouvelle : votre retour est bien arrivé chez nous, merci pour la diligence.\n\nNous reviendrons vers vous sous 14 jours ouvrés pour la suite du traitement. Nous vous tiendrons informé dès que c'est fait.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "r_assort_moc_paul_noire_46",
       "topic_label": "Réassort Moc Paul noire 46",
       "situation": "Réassort Moc Paul noire 46",
