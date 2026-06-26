@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_06_24_16_23_07",
+      "topic_label": "Form name Form submitted 2026-06-24 16:23:07",
+      "situation": "Form name Form submitted 2026-06-24 16:23:07",
+      "response_template": "Bonjour Mathis,\n\nMerci pour votre message.\n\nVotre commande #11744 est hors délais pour un retour.\n\nNous pouvons en revanche vous proposer un avoir correspondant au prix du Moc Jagger (289€), que vous pourrez utiliser pour commander la taille en dessous.\n\nPour procéder, voici comment faire :\n\n1. Rendez-vous sur notre page de retour : https://maxsauveur.com/pages/livraison-et-retour\n2. Téléchargez et complétez le bon de retour en indiquant comme motif : \"avoir\"\n3. Glissez le document dans le colis et renvoyez uniquement la paire de mocassins à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle de la paire, nous vous enverrons un code avoir valable 6 mois sur notre site.\n\nUne question sur la taille : quelle pointure souhaitez-vous essayer cette fois ? Si vous me donnez la longueur de votre pied en cm, je peux vous orienter précisément, le Moc Jagger chaussant large au départ et pouvant parfois surprendre.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
