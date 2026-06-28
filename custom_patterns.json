@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Corentin,\n\nParfait, le paiement est bien reçu, merci.\n\nVotre adresse de livraison est enregistrée :\n\n**Corentin Ferchaud, chez M. Xavier Davenet, 21 allée du Gwantenn, 35320 Crevin**\n\nLa collecte est prévue le 29 juin, avec une livraison estimée entre le 30 juin et le 1er juillet. Vous recevrez un email de suivi dès l'expédition.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 55
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -56,14 +64,6 @@
       "response_template": "Bonjour [Prénom],\n\nRavi de confirmer que le premier remboursement est bien parti.\n\nPour la commande #[NUMÉRO] ([DESCRIPTION], [MONTANT]) : nous vérifions de notre côté si le remboursement a bien été déclenché suite à la réception de votre colis retour le [DATE]. Je vous confirme le statut dans les plus brefs délais.\n\n[Prénom] – Service Client – Max Sauveur",
       "key_points": "Ton rassurant et factuel. Confirmer les remboursements déjà traités. Indiquer clairement que la vérification est en cours pour les remboursements en attente. S'engager sur un délai de confirmation rapide (« plus brefs délais »). Inclure les détails de la commande (numéro, description, montant) et la date de réception du retour pour clarifier le dossier.",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Benjamin,\n\nParfait, dès réception du paiement nous ajustons la taille et expédions un Moc Jagger Cuir Noir en 43.\n\nÀ très vite !\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 54
     },
     {
       "topic": "re__re___re__re__retour_re_u___remboursement_en_cours",
