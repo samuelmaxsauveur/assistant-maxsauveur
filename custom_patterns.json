@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_06_27_11_06_18",
+      "topic_label": "Form name Form submitted 2026-06-27 11:06:18",
+      "situation": "Form name Form submitted 2026-06-27 11:06:18",
+      "response_template": "Bonjour,\n\nBonne nouvelle pour vous : nos mocassins ont été conçus sans semelle de confort intégrée. Nous avons fait le choix d'y placer uniquement une fine demi-semelle de propreté en cuir, justement pour laisser la place aux clients qui portent leurs propres semelles orthopédiques.\n\nPour que vos semelles s'y logent confortablement, je vous recommande de prendre une taille au-dessus de votre pointure habituelle.\n\nN'hésitez pas si vous avez d'autres questions !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
