@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__pointure_fisherman",
+      "topic_label": "Re: Pointure Fisherman",
+      "situation": "Re: Pointure Fisherman",
+      "response_template": "Bonjour Charlotte,\n\nMalheureusement, je n'ai pas de date ferme à vous communiquer. Nos collections sont produites en quantités limitées et certaines pointures ne reviennent pas systématiquement.\n\nCe que je vous conseille : rendez-vous sur la fiche produit et activez l'alerte de disponibilité pour votre pointure. Vous serez notifiée dès qu'elle revient en stock, si c'est le cas.\n\nhttps://maxsauveur.com/products/fisherman-sandale-en-cuir-graine-marron-fonce\n\nBonne journée à vous,\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "resolution_rapide_satisfaction_client",
+      "topic_label": "Résolution rapide et satisfaction client confirmée",
+      "situation": "Un client a signalé un problème (erreur d'adresse, défaut, etc.) et celui-ci a été résolu rapidement. Le client confirme sa satisfaction et la conversation peut être clôturée positivement.",
+      "response_template": "Bonsoir [Prénom],\n\nParfait, ravi que tout soit rentré dans l'ordre aussi rapidement !\n\nBonne fin de soirée à vous également.\n\nJohn de Max Sauveur",
+      "key_points": "Ton chaleureux et bref • Confirmation de la satisfaction • Pas de détails techniques inutiles • Signature claire avec prénom du conseiller • Formule de politesse personnalisée • Clôture positive de la conversation",
+      "example_count": 1
+    },
+    {
       "topic": "re__erreur_d_adresse_sur_ma_commande_12725",
       "topic_label": "Re: Erreur d'adresse sur ma commande 12725",
       "situation": "Re: Erreur d'adresse sur ma commande 12725",
