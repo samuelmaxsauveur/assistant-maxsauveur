@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Bastien,\n\nPas de souci pour le délai, les indésirables ont la fâcheuse habitude de faire ça !\n\nC'est noté pour l'adresse de livraison : **6b rue de la Mairie, 37260 Villeperdue**. Nous expédions vos Paul Mocassin Cuir Noir sans attendre.\n\nBonne journée à vous,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 53
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -128,14 +136,6 @@
       "response_template": "Bonjour [Prénom],\n\nPas de problème, nous allons vous réexpédier la paire par [Transporteur] au même point relais que votre commande initiale (notre logistique est basée à Marseille, donc un chauffeur serait compliqué de notre côté !).\n\nPour régler les frais de réexpédition, voici le lien de paiement : [LIEN_PAIEMENT]\n\nUne question avant d'expédier : le [Modèle] chausse très grand. Souhaitez-vous garder la [pointure actuelle] ou préférez-vous passer en [taille inférieure], voire en [autre taille] ? Si vous souhaitez changer de taille, on peut ajuster sans problème avant l'envoi.\n\nDites-moi simplement votre choix et je lance l'expédition dès réception du paiement.\n\nCordialement,\nJohn de Max Sauveur",
       "key_points": "Ton : courtois et proactif. Engagement : réexpédition garantie via transporteur fiable. Point clé : poser la question de la pointure AVANT expédition pour éviter un nouvel échange (le modèle chausse large). Frais : à charge du client (lien PayPlug). Logistique basée à Marseille, pas de livraison directe par chauffeur.",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Benjamin,\n\nPas de problème, nous allons vous réexpédier la paire par Chrono2shop au même point relais que votre commande initiale (notre logistique est basée à Marseille, donc un chauffeur serait compliqué de notre côté !)\n\nPour régler les frais de réexpédition, voici le lien de paiement : https://secure.payplug.com/pay/33WfPmx33OvwMTp4bxjF1C\n\nUne question avant d'expédier : le Moc Jagger chausse très grand. Souhaitez-vous garder le 43,5 ou préférez-vous passer en 42,5, voire en 42 ? Si vous souhaitez changer de taille, on peut ajuster sans problème avant l'envoi.\n\nDites-moi simplement votre choix et je lance l'expédition dès réception du paiement.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 52
     },
     {
       "topic": "question_exp_dition_commande",
