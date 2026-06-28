@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__max_sauveur___service_client",
+      "topic_label": "Re: Re: Max Sauveur — Service Client",
+      "situation": "Re: Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Hugo,\n\nParfait, merci pour la confirmation !\n\nLe Moc Jagger chausse effectivement assez large, et descendre d'une taille (43) depuis votre 44 habituel est le bon choix. Vous devriez être bien dedans.\n\nNous allons procéder à la réexpédition vers le point relais La Poste, Place de la paix, 92150 Suresnes dès que la paire sera de retour dans notre entrepôt. Vous recevrez votre lien de suivi dès l'expédition.\n\nBonne journée à vous,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 9
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -160,14 +168,6 @@
       "response_template": "Bonjour [Prénom],\n\nNous avons effectué un nouvel ajustement de notre côté, le code est maintenant bien configuré pour le porte-carte.\n\nPouvez-vous réessayer d'appliquer le code [CODE_PROMO] ? Cela devrait fonctionner cette fois.\n\nN'hésitez pas à me dire si vous rencontrez encore un problème.\n\nCordialement,\nJohn de Max Sauveur",
       "key_points": "Ton : professionnel et rassurant. Engagement : correction technique confirmée. Point clé : inviter le client à retester immédiatement après la correction. Formulation positive (« Cela devrait fonctionner cette fois »). Invitation à relancer si problème persiste.",
       "example_count": 1
-    },
-    {
-      "topic": "re__re__max_sauveur___service_client",
-      "topic_label": "Re: Re: Max Sauveur — Service Client",
-      "situation": "Re: Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Xavier,\n\nNous avons effectué un nouvel ajustement de notre côté, le code est maintenant bien configuré pour le porte-carte.\n\nPouvez-vous réessayer d'appliquer le code Z9A7YCDZWC86 ? Cela devrait fonctionner cette fois.\n\nN'hésitez pas à me dire si vous rencontrez encore un problème.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 8
     },
     {
       "topic": "reexpedition_avec_frais_client_et_conseil_pointure",
