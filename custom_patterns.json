@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "pointure_sandale_fisherman",
+      "topic_label": "Pointure sandale fisherman",
+      "situation": "Pointure sandale fisherman",
+      "response_template": "Bonjour Morgan,\n\nAvec 27,01 cm de pied, vous êtes en **42** sur notre guide.\n\nLa Fisherman chausse légèrement grand, donc je vous recommande de prendre le **41**. Les boucles de réglage permettent en plus un ajustement précis au niveau du tour de pied et de la cheville, ce qui est un vrai avantage pour un maintien optimal.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -1838,14 +1846,6 @@
       "topic_label": "Pointure Fisherman pour 26,2 cm",
       "situation": "Pointure Fisherman pour 26,2 cm",
       "response_template": "Bonjour Christophe,\n\nAvec 26,2 cm de pied, la pointure recommandée pour la Fisherman est le **41**.\n\nSi vous avez un pied plutôt large, n'hésitez pas à me le signaler, je pourrai affiner le conseil.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "pointure_sandale_fisherman",
-      "topic_label": "Pointure Sandale Fisherman",
-      "situation": "Pointure Sandale Fisherman",
-      "response_template": "Bonjour Quentin,\n\nAvec 27 cm de pied, vous correspondez à un 42 (qui couvre généralement les pieds entre 26,5 et 27,2 cm environ). Le 43 serait trop grand pour vous.\n\nPour votre pied fin, bonne nouvelle : la Fisherman est réglable grâce à ses boucles, ce qui permet un ajustement précis sur le tour de pied et de cheville. Pas d'inquiétude de ce côté-là.\n\nJe vous recommande donc le 42 sans hésitation.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
