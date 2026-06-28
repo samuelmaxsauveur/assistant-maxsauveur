@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__retour_pre_commande_mocassin____11461",
+      "topic_label": "Re: Retour pre commande mocassin - #11461",
+      "situation": "Re: Retour pre commande mocassin - #11461",
+      "response_template": "Bonjour Benjamin,\n\nMerci de votre relance.\n\nPour procéder à l'échange vers la taille au-dessus, voici la démarche :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\" comme motif)\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle de la paire, nous vous enverrons un avoir de 289€ valable 6 mois sur notre site, que vous pourrez utiliser pour commander le Moc Jagger en 42.\n\nMerci,\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
