@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__11581_probl_me_de_livraison",
+      "topic_label": "Re: Commande #11581 problème de livraison",
+      "situation": "Re: Commande #11581 problème de livraison",
+      "response_template": "Bonjour Myriam,\n\nMerci pour ces captures d'écran et pour ces précisions.\n\nNous comprenons votre frustration et nous avons bien examiné la situation. Voici ce qui s'est passé : lorsqu'un point relais Chrono2Shop n'est pas en mesure de réceptionner un colis (fermeture temporaire, capacité atteinte, etc.), Chronopost applique ses propres conditions générales et redirige automatiquement le colis vers un autre point relais ou le retourne à l'expéditeur. Ce mécanisme est entièrement géré par Chronopost et totalement indépendant de notre volonté. Nous n'avons aucun moyen d'agir sur ces décisions de routage.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
