@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__12715_confirm_e",
+      "topic_label": "Re: Commande #12715 confirmée",
+      "situation": "Re: Commande #12715 confirmée",
+      "response_template": "Bonjour Laurent,\n\nPas de souci, nous venons de modifier votre commande : la Fisherman sera bien expédiée en taille 43.\n\nVotre colis partira le 29 juin en livraison express à votre adresse de L'Aigle. Vous recevrez un lien de suivi Chronopost dès l'expédition.\n\nN'hésitez pas si vous avez d'autres questions !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_06_27_11_06_18",
       "topic_label": "Form name Form submitted 2026-06-27 11:06:18",
       "situation": "Form name Form submitted 2026-06-27 11:06:18",
