@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "probl_me_mocassins",
+      "topic_label": "Problème mocassins",
+      "situation": "Problème mocassins",
+      "response_template": "Bonjour Myles,\n\nMerci pour votre message et pour les photos jointes.\n\nAprès moins de 5 ports, ce type de défaut n'est effectivement pas normal. Nous prenons en charge le retour et la réparation.\n\nVoici la procédure :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"défaut fabrication\").\n2. Imprimez l'étiquette de retour prépayée ci-dessous et collez-la sur le colis :\nhttps://wing-labelling-system.s3.eu-west-3.amazonaws.com/549146d6-4924-4a03-a1b7-297a86f83bcd/LABEL/2026-06-28/LABEL-ff53cd0a-8a50-4f1a-ad02-9004d63a5ce6-1782675590511-6A06960463978.pdf\n3. Emballez soigneusement la paire et déposez le colis dans un point relais Chronopost.\n\nDès réception, la paire est envoyée à notre atelier pour réparation. Comptez 8 à 12 semaines de délai atelier, je préfère être transparent là-dessus (le mois d'août l'atelier est fermé).\n\nN'hésitez pas si vous avez la moindre question, et transmettez toutes nos excuses à votre compagne.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
