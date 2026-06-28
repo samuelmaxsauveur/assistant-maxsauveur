@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__max_sauveur___service_client",
+      "topic_label": "Re: Re: Max Sauveur — Service Client",
+      "situation": "Re: Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Aimy,\n\nToutes nos excuses pour la confusion sur le montant de l'avoir. Vous avez tout à fait raison, et nous honorons l'engagement pris par notre équipe lors de vos échanges précédents.\n\nVoici votre nouveau code avoir d'un montant de 289€, valable 6 mois sur notre site :\n\n98KYQJTF4EW5\n\nLe code précédent (W8S58PRAV3CJ) est désormais annulé. Celui-ci est utilisable directement au moment du paiement, en une seule fois, sur maxsauveur.com.\n\nEncore désolé pour ce désagrément.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 10
+    },
+    {
+      "topic": "modification_commande_taille_avant_expedition",
+      "topic_label": "Modification de taille avant expédition",
+      "situation": "Un client contacte le service après avoir passé commande pour demander un changement de taille avant que le colis ne soit expédié. La commande n'a pas encore quitté l'entrepôt.",
+      "response_template": "Bonjour [Prénom],\n\nPas de souci, nous venons de modifier votre commande : [Modèle] sera bien expédiée en taille [Taille].\n\nVotre colis partira le [Date] en livraison [Type livraison] à votre adresse de [Ville]. Vous recevrez un lien de suivi [Transporteur] dès l'expédition.\n\nN'hésitez pas si vous avez d'autres questions !\n\n[Prénom] – Service Client – Max Sauveur",
+      "key_points": "Ton rassurant et efficace. Confirmation claire de la modification effectuée. Récapitulatif des détails d'expédition (date, mode, adresse, suivi). Ouverture pour questions supplémentaires. Signature personnalisée avec prénom agent.",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__12715_confirm_e",
       "topic_label": "Re: Commande #12715 confirmée",
       "situation": "Re: Commande #12715 confirmée",
@@ -32,14 +48,6 @@
       "response_template": "Bonjour [Prénom],\n\nParfait, merci pour la confirmation !\n\nLe [Modèle] chausse effectivement assez large, et descendre d'une taille ([taille_proposée]) depuis votre [taille_actuelle] habituelle est le bon choix. Vous devriez être bien dedans.\n\nNous allons procéder à la réexpédition vers le point relais La Poste, [Adresse], dès que la paire sera de retour dans notre entrepôt. Vous recevrez votre lien de suivi dès l'expédition.\n\nBonne journée à vous,\n\n[Signature]",
       "key_points": "Confirmer la pertinence de la nouvelle taille proposée ; mentionner les caractéristiques de chausse du modèle ; préciser le point relais de livraison ; assurer un suivi avec lien de tracking ; ton professionnel et rassurant.",
       "example_count": 1
-    },
-    {
-      "topic": "re__re__max_sauveur___service_client",
-      "topic_label": "Re: Re: Max Sauveur — Service Client",
-      "situation": "Re: Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Hugo,\n\nParfait, merci pour la confirmation !\n\nLe Moc Jagger chausse effectivement assez large, et descendre d'une taille (43) depuis votre 44 habituel est le bon choix. Vous devriez être bien dedans.\n\nNous allons procéder à la réexpédition vers le point relais La Poste, Place de la paix, 92150 Suresnes dès que la paire sera de retour dans notre entrepôt. Vous recevrez votre lien de suivi dès l'expédition.\n\nBonne journée à vous,\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 9
     },
     {
       "topic": "re__pointure_fisherman",
