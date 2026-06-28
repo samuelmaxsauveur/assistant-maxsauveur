@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__retour_moc_jagger",
+      "topic_label": "Re: Retour Moc Jagger",
+      "situation": "Re: Retour Moc Jagger",
+      "response_template": "Bonjour Eliott,\n\nMerci pour ce message et pour ne pas avoir utilisé le code en attendant.\n\nConcernant l'avoir, je reviens vers vous sur deux points :\n\n**Sur le kit d'entretien :** De notre côté, nous n'avons pas encore réceptionné le kit d'entretien dans notre logistique. Pouvez-vous nous confirmer que vous l'avez bien inclus dans votre colis de retour ? Si oui, avez-vous un justificatif d'envoi (numéro de suivi ou reçu La Poste) ? Cela nous permettra de vérifier avec notre équipe logistique.\n\n**Sur l'avantage précommande :** L'email précédent vous avait bien indiqué un avoir à hauteur du prix actuel du Moc Jagger (335€ à l'époque). Nous confirmons cet engagement. Une fois la réception du kit vérifiée, nous ajusterons le code en conséquence pour coller au bon montant total.\n\nDès que vous nous avez confirmé l'envoi du kit, on fait le point et on vous revient rapidement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
