@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "erreur_d_adresse_sur_ma_commande_12725",
+      "topic_label": "Erreur d'adresse sur ma commande 12725",
+      "situation": "Erreur d'adresse sur ma commande 12725",
+      "response_template": "Bonsoir,\n\nMerci pour votre message et pour avoir signalé l'erreur rapidement.\n\nMalheureusement, nous ne sommes pas en mesure de modifier l'adresse de livraison directement sur une commande en cours. La solution la plus simple est d'annuler votre commande #12725 et de vous laisser en repasser une nouvelle avec votre adresse actuelle (6 rue Anselme Payen, 75015 Paris), ce qui vous permettra de choisir un point relais dans votre quartier.\n\nNous procédons à l'annulation de votre commande dès maintenant. Le remboursement sera effectif sous 3 à 5 jours ouvrés selon votre banque.\n\nN'hésitez pas à nous revenir si vous avez la moindre question.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
