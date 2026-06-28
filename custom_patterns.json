@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__12708_confirm_e",
+      "topic_label": "Re: Commande #12708 confirmée",
+      "situation": "Re: Commande #12708 confirmée",
+      "response_template": "Bonjour Jessica,\n\nLa commande #12708 affiche un statut \"remboursé\" de notre côté, ce qui indique qu'elle a bien été annulée. Vous devriez voir le remboursement de 158,75€ apparaître sur votre moyen de paiement dans les prochains jours ouvrés.\n\nN'hésitez pas à revenir vers nous si vous avez besoin de quoi que ce soit.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "retour_recu_remboursement_en_cours_verification",
+      "topic_label": "Retour reçu – Vérification remboursement en cours",
+      "situation": "Un client a retourné une commande et a reçu une confirmation partielle de remboursement. Il relance pour connaître le statut du second remboursement qui était en vérification.",
+      "response_template": "Bonjour [Prénom],\n\nRavi de confirmer que le premier remboursement est bien parti.\n\nPour la commande #[NUMÉRO] ([DESCRIPTION], [MONTANT]) : nous vérifions de notre côté si le remboursement a bien été déclenché suite à la réception de votre colis retour le [DATE]. Je vous confirme le statut dans les plus brefs délais.\n\n[Prénom] – Service Client – Max Sauveur",
+      "key_points": "Ton rassurant et factuel. Confirmer les remboursements déjà traités. Indiquer clairement que la vérification est en cours pour les remboursements en attente. S'engager sur un délai de confirmation rapide (« plus brefs délais »). Inclure les détails de la commande (numéro, description, montant) et la date de réception du retour pour clarifier le dossier.",
+      "example_count": 1
+    },
+    {
       "topic": "re__max_sauveur___service_client",
       "topic_label": "Re: Max Sauveur — Service Client",
       "situation": "Re: Max Sauveur — Service Client",
