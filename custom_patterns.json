@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "question_taille",
+      "topic_label": "question taille",
+      "situation": "question taille",
+      "response_template": "Bonjour Alain,\n\nMerci pour votre message et votre intérêt pour le Brogue Derby Cuir Gras Marron.\n\nAvec 26,4 cm de pied, en ajoutant les 0,2 cm de marge recommandés, vous vous situez à 26,6 cm. Sur notre guide, cela vous oriente vers un 40.\n\nPrécision importante sur ce modèle : le Brogue Derby chausse légèrement grand. Le 40 devrait donc vous correspondre parfaitement.\n\nCela dit, si vous hésitez ou avez un pied légèrement plus large, vous pouvez également opter pour le 41 avec une semelle d'ajustement à l'intérieur pour affiner le maintien.\n\nN'hésitez pas si vous avez d'autres questions avant de commander.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 3
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -1776,14 +1784,6 @@
       "response_template": "Bonjour Adrien,\n\nMerci pour votre message et pour vous y prendre à l'avance cette fois !\n\nMauvaise nouvelle concernant la sandale en daim : pas de réassort prévu cette année sur ce coloris. Vraiment désolé, vous avez à nouveau raté le créneau d'une courte tête.\n\nCela dit, la Fisherman en cuir grainé est une très belle alternative, et elle est toujours disponible.\n\nPour la pointure : avec vos 25,2 cm, vous êtes en 40 sur notre guide, mais la Fisherman chausse légèrement grand. Je vous recommande donc le 39. Vos passages occasionnels en 39 confirment que vous êtes bien entre les deux tailles, et là le 39 sera le bon choix pour ce modèle.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "question_taille",
-      "topic_label": "Question taille",
-      "situation": "Question taille",
-      "response_template": "Bonjour Pierre-Louis,\n\nBonne nouvelle pour la rassurer sur votre situation, ce que vous décrivez avec le Moc Jagger est tout à fait normal et plutôt encourageant.\n\nLe pied droit bien serré sans passage de doigt derrière le talon, c'est exactement ce qu'on cherche à l'essayage. Le pied gauche avec un tout petit jeu en poussant le pied vers l'avant, c'est du grand classique : les deux pieds ne sont presque jamais identiques, et un léger écart entre les deux est tout à fait habituel.\n\nSur votre crainte que ça s'élargisse trop : le Moc Jagger s'assouplit avec le port, c'est vrai, mais il gagne surtout en souplesse et en confort, il ne \"lâche\" pas de manière significative. Le cuir et la semelle en liège vont se mouler à votre pied, pas se déformer au point de perdre le maintien.\n\nCe qui me rassure aussi dans votre cas : vous avez eu les Paul en 42 et ils étaient trop grands. Vous êtes donc probablement dans la bonne taille avec ce 41.5. Si vous étiez passé en 41, le risque de compression sur le pied droit (qui est déjà bien ajusté) aurait été réel.\n\nMon conseil : portez-les quelques semaines avant de prendre une décision. Le ressenti à l'essayage sur une paire neuve est souvent trompeur, surtout sur un mocassin cuir.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 2
     },
     {
       "topic": "re__avoir___code",
