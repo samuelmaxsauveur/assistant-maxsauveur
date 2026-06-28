@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Benjamin,\n\nParfait, dès réception du paiement nous ajustons la taille et expédions un Moc Jagger Cuir Noir en 43.\n\nÀ très vite !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 54
+    },
+    {
+      "topic": "re__re___re__re__retour_re_u___remboursement_en_cours",
+      "topic_label": "Re: Re : Re: Re: Retour reçu — remboursement en cours",
+      "situation": "Re: Re : Re: Re: Retour reçu — remboursement en cours",
+      "response_template": "Bonjour Thibault,\n\nRavi de confirmer que le premier remboursement est bien parti.\n\nPour la commande #11529 (Moc Jagger Cuir Noir 41,5, 248,75€) : nous vérifions de notre côté si le remboursement a bien été déclenché suite à la réception de votre colis retour le 5 juin. Je vous confirme le statut dans les plus brefs délais.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -88,14 +104,6 @@
       "response_template": "Bonjour [Prénom],\n\nPas de souci pour le délai, les indésirables ont la fâcheuse habitude de faire ça !\n\nC'est noté pour l'adresse de livraison : [NOUVELLE_ADRESSE]. Nous expédions votre [PRODUIT] sans attendre.\n\nBonne journée à vous,\n\nJohn de Max Sauveur",
       "key_points": "Ton rassurant et léger - Confirmation claire de la nouvelle adresse - Assurance d'une expédition immédiate - Signature personnalisée du service client",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Bastien,\n\nPas de souci pour le délai, les indésirables ont la fâcheuse habitude de faire ça !\n\nC'est noté pour l'adresse de livraison : **6b rue de la Mairie, 37260 Villeperdue**. Nous expédions vos Paul Mocassin Cuir Noir sans attendre.\n\nBonne journée à vous,\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 53
     },
     {
       "topic": "conseil_pointure_fisherman_mesure_cm_avec_marge",
