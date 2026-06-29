@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "fishermann",
+      "topic_label": "Fishermann",
+      "situation": "Fishermann",
+      "response_template": "Bonjour Gabriel,\n\nAvec 29,5 cm de pied, votre taille de référence est le 45 sur notre guide.\n\nLa Fisherman chausse légèrement grand, mais dans votre cas, c'est justement votre taille : restez sur le 45, pas besoin de monter en 46. Les boucles de réglage vous permettront d'affiner le maintien au niveau du tour de pied et de la cheville.\n\nN'hésitez pas si vous avez d'autres questions !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
