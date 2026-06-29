@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__re__re___change_moc_jagger_noirs_42____42_5",
+      "topic_label": "Re: Re: Re: Re: Re: Échange Moc Jagger noirs 42 -> 42.5",
+      "situation": "Re: Re: Re: Re: Re: Échange Moc Jagger noirs 42 -> 42.5",
+      "response_template": "Bonjour Antoine,\n\nParfait, merci pour la confirmation. Dès réception du 43, nous vous émettrons un avoir pour commander le 42,5.\n\nÀ très bientôt,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
