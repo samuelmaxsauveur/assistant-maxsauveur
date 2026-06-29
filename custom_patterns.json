@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re_",
+      "topic_label": "Re: Re:",
+      "situation": "Re: Re:",
+      "response_template": "Bonjour Lucas,\n\nAvec plaisir, c'est le minimum pour vous remercier de votre bonne humeur dans tout ça !\n\nVoici un code promo de 25€ offerts pour votre prochaine commande : **FP8YP6RR5D47**\n\nIl vous suffit de l'appliquer au moment du paiement. N'hésitez pas si vous avez des questions sur les modèles ou les tailles, on est là.\n\nBon mariage à vous !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
