@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__re__re__re__re__commande_12164",
+      "topic_label": "Re: Re: Re: Re: Re: Re: Re: Commande 12164",
+      "situation": "Re: Re: Re: Re: Re: Re: Re: Commande 12164",
+      "response_template": "Bonjour,\n\nVotre RIB est bien reçu, merci.\n\nLe virement de 11,19€ sera effectué cette semaine. Ce mode de remboursement prend un peu plus de temps qu'un remboursement sur carte, nous vous remercions de votre patience.\n\nBonne journée,\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "conseil_pointure_cuir_rigide_assouplissement",
+      "topic_label": "Conseil pointure – Cuir rigide au départ avec assouplissement progressif",
+      "situation": "Un client reçoit des chaussures en cuir neuf qui serrent légèrement (compression au-dessus du pied/languette) mais se demande si c'est normal. Il hésite entre garder sa taille ou commander une taille supérieure.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour ce retour détaillé, c'est exactement ce qu'il faut pour bien vous orienter.\n\nDeux éléments importants à considérer :\n\n**Sur la compression au-dessus du pied (languette) :** c'est tout à fait normal sur une chaussure neuve en cuir. Le cuir épais est rigide au départ et peut serrer sur le dessus du pied. Avec le port, il s'assouplit et se moule progressivement à votre morphologie. Ce phénomène s'atténue généralement après quelques sorties.\n\n**Sur la longueur (orteils qui touchent le bout) :** c'est le point qui m'interpelle davantage. Si les orteils touchent le bout dès le départ, le risque est que ça devienne inconfortable une fois le cuir ramolli car les chaussures se font à la largeur, pas à la longueur. Dans ce cas, une taille supérieure serait plus adaptée.\n\n**Conseil pratique :** essayez-les par temps frais (en fin de journée ou par température plus basse), car les pieds gonflent légèrement avec la chaleur. Ça vous donnera une meilleure indication du ressenti réel.\n\nSi après deux ou trois essais la longueur reste vraiment trop juste et inconfortable, on peut organiser un échange. Il vous suffira de nous faire signe et on vous expliquera la procédure.\n\nBonne journée,\n[Prénom] de Max Sauveur",
+      "key_points": "Ton rassurant et pédagogique. Distinguer clairement la compression normale (assouplissement) de la longueur insuffisante (problème). Proposer l'échange sans frais en cas de mauvaise longueur. Conseiller de tester en conditions réelles (temps frais) avant de décider. Engagements : échange possible si longueur trop juste après essais.",
+      "example_count": 1
+    },
+    {
       "topic": "re__votre_commande_max_sauveur___information_importante",
       "topic_label": "Re: Votre commande Max Sauveur — information importante",
       "situation": "Re: Votre commande Max Sauveur — information importante",
