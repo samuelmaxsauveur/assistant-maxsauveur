@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__re__form_name_form_submitted_2026_05_25_15_43_47",
+      "topic_label": "Re: Re: Re: Re: Form name Form submitted 2026-05-25 15:43:47",
+      "situation": "Re: Re: Re: Re: Form name Form submitted 2026-05-25 15:43:47",
+      "response_template": "Bonjour Nicolas,\n\nQuel plaisir de lire ça ! Ravi que la paire soit arrivée à temps et surtout qu'elle soit à votre taille.\n\nProfitez bien du mariage !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "echange_avec_frais_port_rembourses",
+      "topic_label": "Échange de taille – Remboursement des frais de port en deux expéditions",
+      "situation": "Un client effectue un échange de taille et doit supporter deux expéditions (retour + renvoi). Le client demande la prise en charge des frais de livraison supplémentaires liés à cette procédure d'échange.",
+      "response_template": "Bonjour [Prénom],\n\nC'est tout à fait compréhensible, deux expéditions sur un échange c'est effectivement un coût non prévu.\n\nNous ne pouvons pas intégrer les frais de port directement dans le code avoir, mais voici comment on procède : dès que vous passez votre commande avec le code [CODE_AVOIR], revenez-nous avec votre numéro de commande et nous vous remboursons les frais de livraison directement, sans que vous ayez à faire quoi que ce soit de plus.\n\nN'hésitez pas à nous écrire dès que c'est fait.\n\nCordialement,\nJohn de Max Sauveur",
+      "key_points": "Ton : empathique et compréhensif face aux frais supplémentaires. Engagement : remboursement des frais de port en deux temps (après que le client passe sa commande avec l'avoir). Processus clair : client utilise son code avoir → relance avec numéro de commande → remboursement appliqué sans effort supplémentaire. Valorise la facilité de la démarche.",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__max_sauveur___service_client",
       "topic_label": "Re: Re: Re: Max Sauveur — Service Client",
       "situation": "Re: Re: Re: Max Sauveur — Service Client",
