@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__votre_commande_max_sauveur___information_importante",
+      "topic_label": "Re: Votre commande Max Sauveur — information importante",
+      "situation": "Re: Votre commande Max Sauveur — information importante",
+      "response_template": "Bonjour Dylan,\n\nMerci pour ce retour détaillé, c'est exactement ce qu'il faut pour bien vous orienter.\n\nDeux éléments importants à considérer :\n\n**Sur la compression au-dessus du pied (languette) :** c'est tout à fait normal sur un mocassin neuf en cuir. Le cuir épais est rigide au départ et peut serrer sur le dessus du pied. Avec le port, il s'assouplit et se moule progressivement à votre morphologie. Ce phénomène s'atténue généralement après quelques sorties.\n\n**Sur la longueur (orteils qui touchent le bout) :** c'est le point qui m'interpelle davantage. Si les orteils touchent le bout dès le départ, le risque est que ça devienne inconfortable une fois le cuir ramolli car les mocassins se font à la largeur, pas à la longueur. Dans ce cas, le 44 serait plus adapté.\n\nUn conseil pratique : essayez-les par temps frais (en fin de journée ou par température plus basse), car les pieds gonflent légèrement avec la chaleur. Ça vous donnera une meilleure indication du ressenti réel.\n\nSi après deux ou trois essais la longueur reste vraiment trop juste et inconfortable, on peut organiser un échange en 44. Il vous suffira de nous faire signe et on vous expliquera la procédure.\n\nBonne journée,\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 8
+    },
+    {
       "topic": "re__retour_moc_jagger",
       "topic_label": "Re: Retour Moc Jagger",
       "situation": "Re: Retour Moc Jagger",
@@ -3520,14 +3528,6 @@
       "response_template": "Bonjour Ramzi,\n\nMerci pour ce retour.\n\nCe que Chronopost vous explique est lié à un changement de procédure de leur côté : dès qu'une demande de modification est enregistrée sur un colis en transit (changement de point relais, reprogrammation de livraison, etc.), le colis sort du circuit de livraison standard et entre dans un processus différent. Cela prend mécaniquement plus de temps, car Chronopost doit réorienter le colis manuellement plutôt que de le laisser suivre son chemin initial.\n\nC'est exactement ce qui s'est passé ici, et c'est pour ça que le colis a stagné à Marseille avant de repartir vers Paris.\n\nNous suivons le dossier de notre côté. Revenez vers nous si d'ici 48h le suivi n'évolue toujours pas, on interviendra directement en tant qu'expéditeur auprès de Chronopost.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 2
-    },
-    {
-      "topic": "re__votre_commande_max_sauveur___information_importante",
-      "topic_label": "Re: Votre commande Max Sauveur — information importante",
-      "situation": "Re: Votre commande Max Sauveur — information importante",
-      "response_template": "Bonjour Dylan,\n\nParfait, c'est noté. Votre Paul Cuir Lisse Marron en 43 part lundi.\n\nVous recevrez un email de confirmation d'expédition avec le lien de suivi dès que le colis est pris en charge.\n\nBonne soirée,\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 7
     },
     {
       "topic": "re__vous_avez_oubli__quelque_chose_je_crois___",
