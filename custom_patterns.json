@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "RE: Max Sauveur — Service Client",
+      "situation": "RE: Max Sauveur — Service Client",
+      "response_template": "Bonjour Mathieu,\n\nToutes mes excuses pour ce silence, votre message du 15 juin est passé entre les mailles.\n\nAvec un pied de 24,5 cm, vous êtes effectivement en **taille 37** sur notre guide des tailles. C'est cohérent avec votre paire de canvas en 39 si elle chausse grand, mais le Moc Jagger a un gabarit différent.\n\nC’est pour cette raison que cela dépendra aussi de votre ressenti dans les 39. Si c’était trop large alors le 37 peut aller. Sinon un 38 pourra convenir également.\n\nComme promis dans notre précédent échange, on prend en charge l'échange directement. Voici comment procéder :\n\n1. Rendez-vous sur **https://maxsauveur.com/pages/livraison-et-retour** pour télécharger le bon de retour\n2. Indiquez comme motif : \"échange de taille / avoir\"\n3. Renvoyez le Moc Jagger Cuir Noir à : **SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau**\n\nCordialement \n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 57
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -168,14 +176,6 @@
       "response_template": "Bonjour [Prénom],\n\nBonne question sur [la semelle/le confort/la comparaison], et je comprends l'hésitation avec votre vécu sur [le modèle antérieur].\n\n**Sur le confort des deux modèles :** [les deux ont la même semelle intérieur en liège, donc le confort et le poids sont quasi identiques. Il n'y a pas de différence notable de ce côté-là, vous ne serez pas déçu sur ce critère, que vous choisissiez l'un ou l'autre].\n\n**Sur votre pointure :** avec [mesure] cm, vous êtes clairement sur du [taille]. Votre expérience avec le [modèle] en [taille] qui était trop petit confirme que c'est bien votre taille. [Précision sur le modèle comparatif si applicable : \"La [modèle] taille grand, c'est vrai, mais dans votre cas avec [mesure] cm de pied, descendre en dessous du [taille] serait risqué. Je vous recommande de rester en [taille].\"]\n\n**Sur [le point spécifique du client]:** [réponse adaptée avec délai et contexte].\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\n[Prénom] de Max Sauveur",
       "key_points": "Ton : rassurant, précis et pédagogue. Valider l'expérience antérieure du client pour renforcer la confiance. Être honnête sur les contraintes (délais serrés, stocks limités). Recommander la prudence plutôt que l'aventure. Offrir du contexte sur les délais d'expédition si pertinent. Signature avec prénom du conseiller.",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Iliasse,\n\nBien reçu, nous procédons au remboursement de votre commande dans les meilleurs délais. Vous recevrez une confirmation dès que ce sera effectué.\n\nBonne continuation,\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 56
     },
     {
       "topic": "re__re___re__r_assort_moc_paul_noire_46",
