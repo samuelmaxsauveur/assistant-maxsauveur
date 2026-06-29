@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "retour_produit",
+      "topic_label": "Retour produit",
+      "situation": "Retour produit",
+      "response_template": "Bonjour Nicolas,\n\nPas d'inquiétude, votre retour est bien arrivé chez nous le 22 juin, nous l'avons bien réceptionné.\n\nComme indiqué sur le bon de retour, le traitement des demandes entrantes prend jusqu'à 14 jours. Vous recevrez un email de confirmation dès que votre dossier est traité.\n\nMerci pour votre patience.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "usure_semelle_cuir_usage_normal_non_defaut",
+      "topic_label": "Usure de semelle cuir après usage normal – non couvert par garantie",
+      "situation": "Un client signale une usure visible sur le talon de ses chaussures après seulement quelques ports. Il pense qu'il s'agit d'un défaut de fabrication, mais l'examen montre que l'usure est liée à la façon de marcher et à l'appui sur le talon, particulièrement courant avec les semelles cuir.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre retour et pour avoir joint les photos.\n\nJe comprends la déception, surtout après seulement [nombre] ports. Cela dit, après examen de la situation, l'usure que vous observez sur le talon est liée à la manière dont la semelle frotte sur la surface : certains sols, certaines façons de marcher ou un appui marqué sur le talon peuvent accélérer significativement cette usure, en particulier sur une semelle cuir. Il ne s'agit malheureusement pas d'un défaut de fabrication.\n\nJe suis sincèrement désolé de ne pas pouvoir faire davantage dans cette situation.\n\nCordialement,\n[Votre nom] de Max Sauveur",
+      "key_points": "Ton : empathique mais ferme. Clarifier que l'usure de semelle cuir est normale et liée à l'usage (pas un défaut). Ne pas offrir de retour/échange. Montrer que les photos ont été examinées. Reconnaître la déception du client tout en étant transparent sur les limites de la couverture.",
+      "example_count": 1
+    },
+    {
       "topic": "re__une_commande__12270_est_en_transit",
       "topic_label": "Re: Une commande #12270 est en transit",
       "situation": "Re: Une commande #12270 est en transit",
