@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "chaussures_dakota",
+      "topic_label": "Chaussures Dakota",
+      "situation": "Chaussures Dakota",
+      "response_template": "Bonjour Colin,\n\nMerci pour ces précisions très utiles sur votre pied et votre expérience avec les Springsteen.\n\nVoici ce que je peux vous dire sur la Dakota :\n\nLa Dakota chausse plus ajusté que la Springsteen. Votre expérience avec le 40 Springsteen (trop long d'environ 1 cm, légèrement serré en largeur) est en fait un très bon indicateur : avec un pied de 24,7 cm et un profil fin, le 40 en Dakota devrait vous convenir. Vous retrouverez un fit plus snug, sans l'excès de longueur que vous ressentez sur la Springsteen.\n\nConcernant le réassort en 39 : je n'ai pas de date confirmée pour le moment. Si vous souhaitez être notifié dès qu'une disponibilité revient sur cette taille, vous pouvez vous abonner à l'alerte directement sur la fiche produit.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
