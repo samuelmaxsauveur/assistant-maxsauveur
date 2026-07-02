@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re___j_1____lire_avant_de_commander",
+      "topic_label": "Re: (J-1) À lire avant de commander",
+      "situation": "Re: (J-1) À lire avant de commander",
+      "response_template": "Hello,\n\nMerci pour tous ces détails, c'est exactement ce qu'il faut pour bien t'orienter !\n\nAvec un pied large et tes références (Morjas en 40, Loding en 40.5), le 40 est clairement ta bonne taille sur la Peter. La forme est assez ajustée au cou-de-pied, et avec un pied large, descendre en dessous ne serait pas une bonne idée.\n\nMauvaise nouvelle en revanche : le 40 est actuellement sold out, et on n'a pas de réassort prévu pour le moment. Je te conseille d'activer l'alerte pointure directement sur la fiche produit, tu seras notifié en priorité si ça revient.\n\nSi entre-temps tu veux jeter un œil à d'autres modèles, n'hésite pas à revenir vers moi avec tes questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
