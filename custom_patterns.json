@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "demande_d_information_sur_une_pointure",
+      "topic_label": "Demande d'information sur une pointure",
+      "situation": "Demande d'information sur une pointure",
+      "response_template": "Bonjour François,\n\nMerci pour votre message.\n\nSur le réassort en 40 et 41 pour la Fisherman grainé noir, je n'ai pas de date confirmée à vous donner pour le moment. Ces tailles dépendent des retours et du réapprovisionnement, et je préfère ne pas vous avancer une date que je ne peux pas garantir.\n\nCe que je vous recommande : activez l'alerte pointure directement sur la fiche produit (bouton \"M'avertir\" sur la taille souhaitée). Vous serez notifié dès qu'elle repasse en stock, sans avoir à revenir vérifier régulièrement.\n\nSur votre pointure : si vous faites habituellement du 41/42 en chaussures de ville, la méthode la plus fiable reste de mesurer votre pied nu, talon contre un mur, et d'ajouter 0,2 cm. La Fisherman chaussant grand, le 40 ou le 41 pourrait effectivement être votre bonne taille selon votre mesure réelle.\n\nN'hésitez pas si vous souhaitez que je vous aide à affiner en me donnant la longueur de votre pied.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
