@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_06_30_19_34_16",
+      "topic_label": "Form name Form submitted 2026-06-30 19:34:16",
+      "situation": "Form name Form submitted 2026-06-30 19:34:16",
+      "response_template": "Bonjour Christophe,\n\nMerci pour votre message concernant votre commande #12155 (Peter A. Cuir Grainé Bordeaux, 40).\n\nPourriez-vous nous envoyer quelques photos des deux chaussures en montrant bien les zones décollées ? Cela nous permettra de valider et de prendre en charge la réparation.\n\nUne fois les photos reçues, nous vous donnons la marche à suivre.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
