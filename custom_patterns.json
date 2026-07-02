@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__re__form_name_form_submitted_2026_05_28_11_24_47",
+      "topic_label": "Re: Re: Re: Re: Form name Form submitted 2026-05-28 11:24:47",
+      "situation": "Re: Re: Re: Re: Form name Form submitted 2026-05-28 11:24:47",
+      "response_template": "Bonjour Robin,\n\nMerci pour votre suivi détaillé et vos démarches auprès de Colissimo.\n\nVoici notre numéro EORI : FR89186501600028. Vous pouvez le communiquer au Centre d'Expertise International de La Poste pour tenter la régularisation.\n\nDe notre côté, nous avons également ouvert une réclamation auprès de Colissimo pour essayer de faire avancer le dossier en parallèle.\n\nNous vous tiendrons informé dès que nous avons un retour concret. N'hésitez pas à nous partager également toute réponse du CEI de votre côté afin que nous puissions coordonner nos actions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__sav_brogues",
       "topic_label": "Re: SAV brogues",
       "situation": "Re: SAV brogues",
