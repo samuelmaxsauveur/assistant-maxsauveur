@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Jonathan,\n\nPas de souci pour le délai de réponse, et ravi d'apprendre que le 41,5 est parfait ! C'est une belle issue finalement.\n\nPour l'avoir de 324€, voici les conditions :\n\n- Valable 1 an à compter d'aujourd'hui\n- Utilisable en plusieurs fois (il prend la forme d'une carte cadeau)\n\nVous avez donc tout le temps de trouver le bon modèle cet automne ou cet hiver, sans précipitation.\n\nJe génère votre carte cadeau et vous la transmets dans la foulée.\n\nBonne journée à vous,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 59
+    },
+    {
       "topic": "re__re__form_name_form_submitted_2026_06_23_09_52_02",
       "topic_label": "Re: Re: Form name Form submitted 2026-06-23 09:52:02",
       "situation": "Re: Re: Form name Form submitted 2026-06-23 09:52:02",
@@ -56,14 +64,6 @@
       "response_template": "Bonjour Aimy,\n\nC'est tout à fait compréhensible, deux expéditions sur un échange c'est effectivement un coût non prévu.\n\nNous ne pouvons pas intégrer les frais de port directement dans le code avoir, mais voici comment on procède : dès que vous passez votre commande avec le code 98KYQJTF4EW5, revenez-nous avec votre numéro de commande et nous vous remboursons les frais de livraison directement, sans que vous ayez à faire quoi que ce soit de plus.\n\nN'hésitez pas à nous écrire dès que c'est fait.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 3
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Alain,\n\nParfait, je suis ravi que tout soit rentré dans l'ordre ! Votre Moc Jagger en 45 est d'ailleurs déjà expédié depuis hier, vous devriez le recevoir d'ici le 1er au 3 juillet.\n\nVous pouvez suivre votre colis ici : https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR652491920TS\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 58
     },
     {
       "topic": "echange_taille_avec_guide_pointure_confirmation",
