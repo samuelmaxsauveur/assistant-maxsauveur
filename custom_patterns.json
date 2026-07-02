@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re___re__re___re__re__re___re__re__retour_re_u___rembourseme",
+      "topic_label": "Re : Re: Re : Re: Re: Re : Re: Re: Retour reçu — remboursement en cours",
+      "situation": "Re : Re: Re : Re: Re: Re : Re: Re: Retour reçu — remboursement en cours",
+      "response_template": "Bonjour Thibault,\n\nAvec plaisir, et merci à vous. À bientôt !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_07_02_12_08_14",
       "topic_label": "Form name Form submitted 2026-07-02 12:08:14",
       "situation": "Form name Form submitted 2026-07-02 12:08:14",
