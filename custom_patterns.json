@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__12609_confirm_e",
+      "topic_label": "Re: Commande #12609 confirmée",
+      "situation": "Re: Commande #12609 confirmée",
+      "response_template": "Bonjour Chris,\n\nMerci pour votre message.\n\nNous n'avons pas encore réceptionné votre colis de retour à ce stade. Les délais d'acheminement depuis la Belgique peuvent varier, donc il est possible qu'il soit encore en transit.\n\nCela dit, nous vous conseillons vivement, pour vos prochains envois, de toujours utiliser un mode d'expédition avec numéro de suivi. Sans traçabilité, il nous est impossible de localiser un colis en cas de problème, et la responsabilité en cas de perte repose entièrement sur l'expéditeur.\n\nNous restons attentifs à la réception et vous tiendrons informé dès que le colis sera pris en charge par notre équipe logistique.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
