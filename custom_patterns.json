@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re___12423",
+      "topic_label": "Re: #12423",
+      "situation": "Re: #12423",
+      "response_template": "Bonjour Anthony,\n\nBonne question, et je comprends l'hésitation.\n\nCe que vous décrivez (le petit orteil qui sort ou frôle le bord lors de la marche) indique effectivement que la chaussure est trop longue pour votre pied. La Fisherman chausse légèrement grand, ce qui renforce ce phénomène.\n\nLe fait que vous vous sentiez bien dans le 44 en terme de confort général peut s'expliquer par la largeur de votre pied ou votre cou-de-pied, mais si le petit orteil dépasse visuellement, c'est un signal que la longueur est excessive.\n\nJe vous recommande donc de passer au **43**.\n\nPour procéder à l'échange, la marche à suivre reste celle de mon précédent message : retour au 44 avec le bon de retour (motif \"avoir\"), et dès réception nous vous envoyons un code pour commander le 43.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
