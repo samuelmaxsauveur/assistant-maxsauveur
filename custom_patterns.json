@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_07_02_12_47_31",
+      "topic_label": "Form name Form submitted 2026-07-02 12:47:31",
+      "situation": "Form name Form submitted 2026-07-02 12:47:31",
+      "response_template": "Bonjour Aurélien,\n\nMerci pour votre message !\n\nBonne nouvelle pour la Wayne : un réassort est prévu fin octobre. Je vous recommande de vous abonner à l'alerte de disponibilité directement sur la fiche produit, vous serez notifié dès que votre pointure sera de nouveau en stock.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__chaussures_dakota",
       "topic_label": "Re: Chaussures Dakota",
       "situation": "Re: Chaussures Dakota",
