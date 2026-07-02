@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__conseil_pointure",
+      "topic_label": "Re: Conseil pointure",
+      "situation": "Re: Conseil pointure",
+      "response_template": "Bonjour Joseph,\n\nVous avez tout à fait raison, et je m'en excuse : le Deck a bien des lacets. C'est une erreur dans mon précédent email.\n\nLes lacets permettent d'ajuster le maintien selon votre cou-de-pied, donc vous pouvez serrer selon votre confort. Le 43 reste la bonne pointure pour vous avec 28,2 cm de pied.\n\nDésolé pour la confusion, et n'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
