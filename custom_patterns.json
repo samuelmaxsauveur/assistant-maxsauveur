@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_07_01_16_17_48",
+      "topic_label": "Form name Form submitted 2026-07-01 16:17:48",
+      "situation": "Form name Form submitted 2026-07-01 16:17:48",
+      "response_template": "Bonjour Damien,\n\nToutes nos excuses pour l'attente.\n\nVoici votre code avoir, valable 8 mois sur maxsauveur.com :\n\n**ME7V0BAB48T8**\n\nUtilisable en une seule fois au moment du paiement.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__form_name_form_submitted_2026_06_08_21_35_24",
       "topic_label": "Re: Form name Form submitted 2026-06-08 21:35:24",
       "situation": "Re: Form name Form submitted 2026-06-08 21:35:24",
