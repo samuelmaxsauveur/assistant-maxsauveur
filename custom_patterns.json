@@ -2,12 +2,20 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
-      "topic": "re__conseil_pointure",
-      "topic_label": "Re: Conseil pointure",
-      "situation": "Re: Conseil pointure",
-      "response_template": "Bonjour Joseph,\n\nVous avez tout à fait raison, et je m'en excuse : le Deck a bien des lacets. C'est une erreur dans mon précédent email.\n\nLes lacets permettent d'ajuster le maintien selon votre cou-de-pied, donc vous pouvez serrer selon votre confort. Le 43 reste la bonne pointure pour vous avec 28,2 cm de pied.\n\nDésolé pour la confusion, et n'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn – Service Client – Max Sauveur",
+      "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
+      "topic_label": "Re: Merci pour votre message - Quelques informations utiles Re: Max Sauveur — Service Client",
+      "situation": "Re: Merci pour votre message - Quelques informations utiles Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Charles,\n\nBonne nouvelle : le remboursement de votre commande #11583 a bien été effectué de notre côté. Selon les délais bancaires habituels, il devrait apparaître sur votre compte dans les 3 à 5 jours ouvrés si ce n'est pas déjà le cas.\n\nN'hésitez pas à nous revenir si vous ne le voyez pas d'ici là.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
-      "example_count": 1
+      "example_count": 3
+    },
+    {
+      "topic": "re__conseil_pointure",
+      "topic_label": "Correction d'erreur conseil pointure avec confirmation",
+      "situation": "Le service client a commis une erreur dans un conseil de pointure précédent (ex: oubli de détail produit). Le client relève l'erreur poliment. Le service client doit reconnaître son erreur, corriger l'information et réaffirmer le bon conseil.",
+      "response_template": "Bonjour [Prénom],\n\nVous avez tout à fait raison, et je m'en excuse : [produit] a bien [caractéristique oubliée]. C'est une erreur dans mon précédent email.\n\n[Explication fonctionnelle du détail]. Le [taille] reste la bonne pointure pour vous avec [mesure] cm de pied.\n\nDésolé pour la confusion, et n'hésitez pas si vous avez d'autres questions avant de passer commande.\n\n[Prénom] – Service Client – Max Sauveur",
+      "key_points": "Reconnaître l'erreur de manière directe et humble (« Vous avez raison », « je m'en excuse »), corriger immédiatement l'information erronée, réaffirmer le conseil de taille avec les éléments mesurables (cm), inviter le client à poser d'autres questions, signer avec son prénom et le rôle.",
+      "example_count": 2
     },
     {
       "topic": "_daily_doc",
@@ -3032,14 +3040,6 @@
       "response_template": "Bonjour Pierfranco,\n\nMerci pour votre confiance, c'est un beau premier achat à faire !\n\nPour répondre à vos questions sur la Fisherman :\n\nLa sandale chausse **grand**. Avec vos 27 cm de pied, le 42 est votre taille de référence sur notre guide. Par expérience, nos clients prennent cette pointure quand il chausse du 43.\n\nConcernant votre inquiétude sur le maintien : oui, les boucles de réglage permettent d'ajuster le tour de pied et de cheville avec précision, ce qui compense tout à fait le fait d'être légèrement entre deux tailles. Vous n'aurez pas la sensation de \"perdre\" la sandale.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande !\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
-      "topic_label": "Re: Merci pour votre message - Quelques informations utiles Re: Commande #11745 - demande de réexpédition",
-      "situation": "Re: Merci pour votre message - Quelques informations utiles Re: Commande #11745 - demande de réexpédition",
-      "response_template": "Bonjour Aimy,\n\nMerci pour votre relance.\n\nNous avons bien reçu votre colis ce lundi en retour. Bonne nouvelle : nous pouvons prévoir une nouvelle expédition de votre paire dès jeudi.\n\nCependant, une précision importante sur les frais. Lorsqu'un colis n'est pas récupéré en point relais, Chrono2Shop impose un délai de 72h maximum pour que le marchand organise le retour vers l'expéditeur. Ce délai est fixé par Chrono2Shop, et non par nous. Passé ce délai, le colis est automatiquement retourné à l'expéditeur et une nouvelle expédition génère des frais que nous ne pouvons pas absorber.\n\nNous allons donc vous envoyer un lien de paiement pour couvrir les frais de cette nouvelle expédition. Dès réception de votre règlement, nous expédions la paire jeudi.\n\nPouvez-vous nous confirmer que l'adresse de livraison reste la même (point relais à Asnières-sur-Seine) ou nous indiquer une nouvelle adresse si vous souhaitez modifier le point de retrait ?\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 2
     },
     {
       "topic": "re__message_de_max_sauveur",
