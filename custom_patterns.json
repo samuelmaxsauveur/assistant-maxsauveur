@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__retour_article",
+      "topic_label": "Re: Retour Article",
+      "situation": "Re: Retour Article",
+      "response_template": "Bonjour Steve,\n\nJe reviens vers vous concernant votre retour du Moc Jagger Cuir Noir en 39 (commande #12674).\n\nDe notre côté, je n'ai pas encore de confirmation de réception du colis avec le numéro de suivi Colissimo que vous mentionnez. Je vous invite à vérifier le statut de votre envoi directement sur le site de La Poste avec le numéro 8J02262446145 pour vous assurer qu'il est bien en transit ou livré à notre entrepôt.\n\nDès réception et contrôle de la paire, nous traitons votre dossier et revenons vers vous rapidement.\n\nAvant de finaliser le remboursement, j'aurais une question simple : qu'est-ce qui vous a amené à retourner les Moc Jagger ? Problème de taille, de confort, ou autre chose ? Cela nous aide à mieux vous orienter, et si un autre modèle vous convient mieux, on peut vous faire une proposition intéressante plutôt qu'un simple remboursement.\n\nN'hésitez pas à revenir vers nous si vous avez des questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "conseil_pointure_dakota_vs_springsteen_fit_ajuste",
+      "topic_label": "Conseil pointure Dakota – comparaison fit ajusté vs Springsteen",
+      "situation": "Un client connaît sa pointure sur un modèle existant (Springsteen) avec détails précis (longueur, ressenti) et demande quel pointure prendre sur un autre modèle (Dakota) qui chausse plus ajusté. Le client a une mesure précise de son pied et une expérience utilisateur détaillée.",
+      "response_template": "Bonjour [Prénom],\n\nPour clarifier : le modèle [Nouveau Modèle] ne propose pas une semelle intérieure plus courte que [Modèle Actuel] à taille équivalente. Les mesures d'insole sont globalement similaires.\n\nCe que je voulais dire, c'est que [Nouveau Modèle] chausse plus \"snug\", c'est-à-dire que le volume général de la chaussure est plus ajusté, notamment dans la tige et la forme. Résultat : même si la longueur de semelle est comparable, le ressenti au port est moins \"large\" que sur [Modèle Actuel].\n\nCompte tenu de votre pied de [mesure] cm et du fait que votre [Modèle Actuel] en [taille] vous semble trop longue d'environ [écart] cm, le [taille] en [Nouveau Modèle] devrait en réalité bien vous convenir, précisément parce que le fit plus ajusté compensera cet excès de longueur que vous ressentez.\n\nN'hésitez pas si vous avez d'autres questions.",
+      "key_points": "Ton : pédagogue et rassurant. Expliquer la différence entre 'longueur de semelle' et 'volume général/fit'. Mettre en avant la compensation du fit ajusté pour rassurer le client sur une taille identique qui semblerait paradoxale. Références précises aux chiffres du client (mesure, écart ressenti).",
+      "example_count": 1
+    },
+    {
       "topic": "re__chaussures_dakota",
       "topic_label": "Re: Chaussures Dakota",
       "situation": "Re: Chaussures Dakota",
