@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Caroline,\n\nMerci pour votre retour, et bonne nouvelle : le Moc Jagger Cuir Pony Marron est bien disponible en 39 !\n\nSi vous le souhaitez, on peut procéder à un échange direct : vous renvoyez le 40, et on vous expédie le 39 avec un code promo de 35€ offert. Aucun frais supplémentaire de votre côté.\n\nSi vous préférez malgré tout un remboursement, pas de problème.\n\nDites-moi simplement quelle option vous convient.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 61
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -216,14 +224,6 @@
       "response_template": "Bonjour Dylan,\n\nBien reçu, et merci d'avoir testé la paire comme convenu. Si les orteils touchent toujours le bout après plusieurs ports, l'échange en 44 est la bonne décision, surtout avec un mariage en août à l'horizon.\n\nVoici la procédure :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle de la paire, nous vous enverrons un avoir pour commander le Paul en 44. Notez que les échanges se font via avoir, pas en direct, donc pensez à commander dès réception du code pour ne pas manquer le stock.\n\nN'hésitez pas si vous avez des questions.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 9
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Hugo,\n\nMerci pour ce retour, c'est clair. Si votre talon se retire de la chaussure pendant le mouvement, la paire est effectivement trop grande pour vous.\n\nJe vous conseille de descendre en 42.\n\nVoici la procédure pour l'échange :\n\n1. Téléchargez et complétez le bon de retour ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous enverrons un avoir du montant de votre commande pour commander le 42.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 60
     },
     {
       "topic": "avoir_genere_carte_cadeau_validee",
