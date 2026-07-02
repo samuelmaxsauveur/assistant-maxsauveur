@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__form_name_form_submitted_2026_06_30_19_34_16",
+      "topic_label": "Re: Form name Form submitted 2026-06-30 19:34:16",
+      "situation": "Re: Form name Form submitted 2026-06-30 19:34:16",
+      "response_template": "Bonjour Christophe,\n\nMerci pour les photos, c'est très clair.\n\nNous prenons en charge la réparation intégralement.\n\nVoici comment procéder :\n\n1. Emballez soigneusement vos chaussures\n2. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez comme raison : \"défaut fabrication\")\n3. Collez l'étiquette de retour prépayée ci-dessous sur votre colis (les frais de retour sont à notre charge) :\n\n👉 https://wing-labelling-system.s3.eu-west-3.amazonaws.com/52d660c3-ca88-4c89-8407-47cb6498562c/LABEL/2026-07-02/LABEL-85b2ba71-8222-4b29-a883-2865b7aa4601-1782983439316-8R50062255160.pdf\n\nUne fois la paire reçue par notre atelier, comptez 6 à 8 semaines pour la réparation. Nous vous tiendrons informé dès qu'elle est en route pour vous.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__re__re__form_name_form_submitted_2026_05_28_11_2",
       "topic_label": "Re: Re: Re: Re: Re: Form name Form submitted 2026-05-28 11:24:47",
       "situation": "Re: Re: Re: Re: Re: Form name Form submitted 2026-05-28 11:24:47",
