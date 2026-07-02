@@ -2,12 +2,20 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
-      "topic": "re___re__re__re___re__re__retour_re_u___remboursement_en_cou",
-      "topic_label": "Re : Re: Re: Re : Re: Re: Retour reçu — remboursement en cours",
-      "situation": "Re : Re: Re: Re : Re: Re: Retour reçu — remboursement en cours",
-      "response_template": "Bonjour Thibault,\n\nLe remboursement de votre commande #11529 (Moc Jagger Cuir Noir 41,5 — 248,75€) a bien été déclenché de notre côté. Comptez quelques jours ouvrés pour que la somme apparaisse sur votre compte selon votre banque.\n\nN'hésitez pas à nous contacter si vous ne le voyez pas d'ici la fin de semaine.\n\nJohn – Service Client – Max Sauveur",
+      "topic": "re__re__re__re__th_o_taupin_commande__11645_demande_d__chang",
+      "topic_label": "Re: Re: Re: Re: Théo Taupin Commande #11645 Demande d’échange des moc jagger pony hair",
+      "situation": "Re: Re: Re: Re: Théo Taupin Commande #11645 Demande d’échange des moc jagger pony hair",
+      "response_template": "Bonjour Théo,\n\nMerci pour votre suivi. L'avoir vous sera envoyé aujourd'hui.\n\nVous recevrez votre code directement par email, n'hésitez pas à vérifier vos spams si vous ne le voyez pas dans la journée.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
+    },
+    {
+      "topic": "re__form_name_form_submitted_2026_06_08_21_35_24",
+      "topic_label": "Re: Form name Form submitted 2026-06-08 21:35:24",
+      "situation": "Re: Form name Form submitted 2026-06-08 21:35:24",
+      "response_template": "Bonjour Hugo,\n\nMerci pour votre suivi. Nous venons de confirmer la réception de votre retour et nous nous occupons de votre dossier cette semaine.\n\nNous allons vous envoyer un avoir que vous pourrez utiliser directement pour commander votre Moc Jagger en 42,5.\n\nVous le recevrez par email dans les prochains jours.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 6
     },
     {
       "topic": "_daily_doc",
@@ -2760,14 +2768,6 @@
       "response_template": "Bonjour,\n\nMerci pour les photos, c'est très clair.\n\nAprès examen, ce décollement de semelle est bien couvert par notre garantie à vie sur les semelles. Nous prenons en charge la réparation intégralement.\n\nVoici la procédure pour nous retourner la paire :\n\n1. Emballez soigneusement vos deux mocassins\n2. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez comme raison : \"défaut fabrication\")\n3. Collez l'étiquette de retour prépayée ci-dessous sur votre colis (nous prenons en charge les frais de retour) :\n\n👉 https://wing-labelling-system.s3.eu-west-3.amazonaws.com/549146d6-4924-4a03-a1b7-297a86f83bcd/LABEL/2026-06-10/LABEL-9f46e051-14b9-4c08-9bc3-79ab0e7d65b7-1781086007786-6A06771337253.pdf\n\nUne fois le colis reçu, il sera transmis à notre atelier. Comptez 6 à 8 semaines pour la réparation.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re__form_name_form_submitted_2026_06_08_21_35_24",
-      "topic_label": "Re: Form name Form submitted 2026-06-08 21:35:24",
-      "situation": "Re: Form name Form submitted 2026-06-08 21:35:24",
-      "response_template": "Bonjour Hugo,\n\nVous avez tout à fait raison de le souligner, et je comprends votre incompréhension.\n\nEn relisant notre échange du 9 juin, nous vous avons effectivement confirmé qu'un remboursement bancaire était possible tant que vous renvoyiez le colis dans les 14 jours suivant la réception. C'est ce que nous vous avons dit, et nous nous y tenons.\n\nLa commande #12635 (Moc Jagger Noir 43) a été livrée le 16 juin. Vous êtes donc bien dans le délai légal de 14 jours. Si vous souhaitez retourner la paire pour un remboursement sur votre compte bancaire, c'est possible.\n\nPour procéder, voici comment faire :\n\nRendez-vous sur notre page de retour : https://maxsauveur.com/pages/livraison-et-retour, téléchargez et complétez le bon de retour en cochant \"remboursement\", et envoyez la paire à notre adresse logistique : SSL, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau. \n\nDès réception et contrôle de la paire, nous procéderons au remboursement sur votre compte bancaire.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 5
     },
     {
       "topic": "re__form_name_form_submitted_2026_06_08_21_37_41",
