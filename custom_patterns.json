@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_07_01_10_58_12",
+      "topic_label": "Form name Form submitted 2026-07-01 10:58:12",
+      "situation": "Form name Form submitted 2026-07-01 10:58:12",
+      "response_template": "Bonjour Loïc,\n\nMerci pour votre message. Nous confirmons bien avoir réceptionné votre colis avec les deux articles retournés (Le Boat Marron 42 et le Paul Noir 42).\n\nLe traitement des retours prend jusqu'à 14 jours ouvrés à compter de la réception. Votre dossier est bien en cours et vous recevrez une confirmation dès qu'il sera traité.\n\nN'hésitez pas à revenir vers nous si vous n'avez pas de nouvelles d'ici là.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
