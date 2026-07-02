@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__form_name_form_submitted_2026_06_23_09_52_02",
+      "topic_label": "Re: Re: Form name Form submitted 2026-06-23 09:52:02",
+      "situation": "Re: Re: Form name Form submitted 2026-06-23 09:52:02",
+      "response_template": "Bonjour Benjamin,\n\nMerci pour ce retour précis. Si vos orteils touchent le bout de la chaussure, c'est effectivement trop petit et il vous faudra prendre un 42.\n\nPour la procédure de retour, voici comment procéder :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"remboursement\" comme motif)\n2. Glissez-le dans le colis avec la paire bien emballée\n3. Renvoyez à : SSL – 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDès réception et contrôle de la paire, nous procédons à votre remboursement.\n\nEt si vous souhaitez repasser commande directement en 42, n'hésitez pas, la paire est disponible sur le site.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
