@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Hugo,\n\nMerci pour ce retour, c'est clair. Si votre talon se retire de la chaussure pendant le mouvement, la paire est effectivement trop grande pour vous.\n\nJe vous conseille de descendre en 42.\n\nVoici la procédure pour l'échange :\n\n1. Téléchargez et complétez le bon de retour ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous enverrons un avoir du montant de votre commande pour commander le 42.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 60
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -16,14 +24,6 @@
       "response_template": "Bonjour [Prénom],\n\nPas de souci pour [référence situation], et ravi d'apprendre que [résolution positive] ! C'est une belle issue finalement.\n\nPour l'avoir de [montant]€, voici les conditions :\n\n- Valable [durée] à compter d'aujourd'hui\n- Utilisable en plusieurs fois (il prend la forme d'une carte cadeau)\n\nVous avez donc tout le temps de trouver le bon modèle [période suggérée], sans précipitation.\n\nJe génère votre carte cadeau et vous la transmets dans la foulée.\n\nBonne journée à vous,\n\n[Prénom] de Max Sauveur",
       "key_points": "Ton : rassurant et positif. Préciser explicitement les conditions (durée de validité, utilisation fractionnée). Mentionner que c'est une 'belle issue' pour valoriser la résolution. Générer et envoyer rapidement le code. Format carte cadeau plutôt que remboursement.",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Jonathan,\n\nPas de souci pour le délai de réponse, et ravi d'apprendre que le 41,5 est parfait ! C'est une belle issue finalement.\n\nPour l'avoir de 324€, voici les conditions :\n\n- Valable 1 an à compter d'aujourd'hui\n- Utilisable en plusieurs fois (il prend la forme d'une carte cadeau)\n\nVous avez donc tout le temps de trouver le bon modèle cet automne ou cet hiver, sans précipitation.\n\nJe génère votre carte cadeau et vous la transmets dans la foulée.\n\nBonne journée à vous,\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 59
     },
     {
       "topic": "re__re__form_name_form_submitted_2026_06_23_09_52_02",
