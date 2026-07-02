@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "renseignement_taille_chaussure",
+      "topic_label": "Renseignement taille chaussure",
+      "situation": "Renseignement taille chaussure",
+      "response_template": "Bonjour Pierre,\n\nAvec 28,7 cm, vous êtes en taille 44 sur notre guide. Le Moc Paul chausse juste au démarrage, le temps que le cuir et la semelle en liège se mettent en forme, donc je vous confirme le 44 sans hésitation.\n\nConcernant le Blucher : bonne nouvelle, un réassort est prévu fin octobre. C'est effectivement un très beau modèle, vous avez l'œil !\n\nBonne exploration des offres VIP demain.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
