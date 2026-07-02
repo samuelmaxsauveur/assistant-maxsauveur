@@ -2,28 +2,12 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
-      "topic": "form_name_form_submitted_2026_07_02_12_47_31",
-      "topic_label": "Form name Form submitted 2026-07-02 12:47:31",
-      "situation": "Form name Form submitted 2026-07-02 12:47:31",
-      "response_template": "Bonjour Aurélien,\n\nMerci pour votre message !\n\nBonne nouvelle pour la Wayne : un réassort est prévu fin octobre. Je vous recommande de vous abonner à l'alerte de disponibilité directement sur la fiche produit, vous serez notifié dès que votre pointure sera de nouveau en stock.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn – Service Client – Max Sauveur",
+      "topic": "re__form_name_form_submitted_2026_06_08_21_35_24",
+      "topic_label": "Re: Form name Form submitted 2026-06-08 21:35:24",
+      "situation": "Re: Form name Form submitted 2026-06-08 21:35:24",
+      "response_template": "Bonjour Hugo,\n\nVous avez tout à fait raison, et je vous présente mes excuses pour cette confusion dans notre dernier email. Un remboursement avait bien été validé lors de nos échanges précédents, pas un avoir.\n\nNous allons traiter le remboursement du montant de votre commande dès cette semaine. Comptez 3 à 5 jours ouvrés pour que la somme apparaisse sur votre compte selon votre banque.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__chaussures_dakota",
-      "topic_label": "Re: Chaussures Dakota",
-      "situation": "Re: Chaussures Dakota",
-      "response_template": "Bonjour Colin,\n\nAvec plaisir, bonne journée à vous également !\n\nN'hésitez pas à revenir vers nous si vous avez la moindre question une fois vos Dakota reçues.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 2
-    },
-    {
-      "topic": "renseignement_taille_chaussure",
-      "topic_label": "Renseignement taille chaussure",
-      "situation": "Renseignement taille chaussure",
-      "response_template": "Bonjour Pierre,\n\nAvec 28,7 cm, vous êtes en taille 44 sur notre guide. Le Moc Paul chausse juste au démarrage, le temps que le cuir et la semelle en liège se mettent en forme, donc je vous confirme le 44 sans hésitation.\n\nConcernant le Blucher : bonne nouvelle, un réassort est prévu fin octobre. C'est effectivement un très beau modèle, vous avez l'œil !\n\nBonne exploration des offres VIP demain.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
+      "example_count": 7
     },
     {
       "topic": "_daily_doc",
@@ -146,6 +130,14 @@
       "example_count": 1
     },
     {
+      "topic": "re__chaussures_dakota",
+      "topic_label": "Re: Chaussures Dakota",
+      "situation": "Re: Chaussures Dakota",
+      "response_template": "Bonjour Colin,\n\nPour clarifier : non, je ne dis pas que la semelle intérieure de la Dakota est plus courte que celle de la Springsteen pour la même taille. Les mesures d'insole sont globalement similaires à taille équivalente.\n\nCe que je voulais dire, c'est que la Dakota chausse plus \"snug\", c'est-à-dire que le volume général de la chaussure est plus ajusté, notamment dans la tige et la forme. Résultat : même si la longueur de semelle est comparable, le ressenti au port est moins \"large\" que sur la Springsteen.\n\nCompte tenu de votre pied de 24,7 cm et du fait que votre Springsteen en 40 vous semble trop longue d'environ 1 cm, le 40 en Dakota devrait en réalité bien vous convenir, précisément parce que le fit plus ajusté compensera cet excès de longueur que vous ressentez.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "probleme_douane_colissimo_eori_regularisation",
       "topic_label": "Colis bloqué aux douanes – Fourniture du numéro EORI et réclamation",
       "situation": "Un client a un colis bloqué aux douanes via Colissimo et demande comment le débloquer. Max Sauveur doit fournir son numéro EORI et ouvrir une réclamation en parallèle auprès de Colissimo pour accélérer la régularisation.",
@@ -232,14 +224,6 @@
       "response_template": "Bonjour Théo,\n\nMerci pour votre suivi. L'avoir vous sera envoyé aujourd'hui.\n\nVous recevrez votre code directement par email, n'hésitez pas à vérifier vos spams si vous ne le voyez pas dans la journée.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re__form_name_form_submitted_2026_06_08_21_35_24",
-      "topic_label": "Re: Form name Form submitted 2026-06-08 21:35:24",
-      "situation": "Re: Form name Form submitted 2026-06-08 21:35:24",
-      "response_template": "Bonjour Hugo,\n\nMerci pour votre suivi. Nous venons de confirmer la réception de votre retour et nous nous occupons de votre dossier cette semaine.\n\nNous allons vous envoyer un avoir que vous pourrez utiliser directement pour commander votre Moc Jagger en 42,5.\n\nVous le recevrez par email dans les prochains jours.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 6
     },
     {
       "topic": "re__votre_commande_max_sauveur___information_importante",
