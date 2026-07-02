@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__sav_brogues",
+      "topic_label": "Re: SAV brogues",
+      "situation": "Re: SAV brogues",
+      "response_template": "Bonjour Emilien,\n\nParfait, c'est le bon moment pour procéder à la réparation.\n\nVoici la procédure :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"réparation talon\")\n2. Emballez soigneusement vos brogues avec le bon à l'intérieur\n3. Utilisez l'étiquette prépayée ci-dessous pour l'envoi (frais à notre charge) :\n\nhttps://wing-labelling-system.s3.eu-west-3.amazonaws.com/549146d6-4924-4a03-a1b7-297a86f83bcd/LABEL/2026-07-02/LABEL-7ebd9f00-5a48-410a-b55e-2c90e50daa67-1782981801762-6A07021751478.pdf\n\nCompte tenu des fermetures d'atelier en août, estimez le retour de votre paire réparée pour fin septembre.\n\nCordialement\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_06_30_19_34_16",
       "topic_label": "Form name Form submitted 2026-06-30 19:34:16",
       "situation": "Form name Form submitted 2026-06-30 19:34:16",
