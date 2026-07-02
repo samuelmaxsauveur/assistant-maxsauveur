@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__retour_moc_jagger",
+      "topic_label": "Re: Re: Retour Moc Jagger",
+      "situation": "Re: Re: Retour Moc Jagger",
+      "response_template": "Bonjour Eliott,\n\nMerci pour ce justificatif, c'est parfait. Nous confirmons bien la réception de votre colis contenant les Moc Jagger et le kit d'entretien.\n\nNous avons procédé à la génération de votre avoir d'un montant de 368€, valable 6 mois sur notre site pour l'achat d'une moc Jagger. Il sera à usage unique et non cumulable avec d'autres codes.\n\nVous recevrez ce code par email d'ici peu. N'hésitez pas si vous avez la moindre question.\n\nBonne journée,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
