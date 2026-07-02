@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_06_30_23_51_24",
+      "topic_label": "Form name Form submitted 2026-06-30 23:51:24",
+      "situation": "Form name Form submitted 2026-06-30 23:51:24",
+      "response_template": "Bonjour Santos,\n\nMerci pour votre message.\n\nMalheureusement, nous n'avons pas de réassort prévu en taille 40 pour les sandales cet été. Je vous conseille de vous abonner à l'alerte pointure directement sur la fiche produit sur notre site, ce sera le moyen le plus rapide d'être prévenu si la situation change.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re___12423",
       "topic_label": "Re: #12423",
       "situation": "Re: #12423",
