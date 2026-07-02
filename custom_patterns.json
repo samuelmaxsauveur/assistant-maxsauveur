@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__form_name_form_submitted_2026_06_30_19_34_16",
+      "topic_label": "Re: Re: Form name Form submitted 2026-06-30 19:34:16",
+      "situation": "Re: Re: Form name Form submitted 2026-06-30 19:34:16",
+      "response_template": "Bonjour Christophe,\n\nCela dit, je veux être transparent avec vous : l'atelier ferme en août, et nous ne pouvons pas garantir un délai plus court que ce qui vous a été annoncé. Nous ferons notre possible pour accélérer le traitement de votre paire dès réception, mais je ne veux pas vous promettre quelque chose que nous ne pourrions pas tenir.\n\nCe que nous prenons en charge intégralement, c'est le retour, la réparation, et le renvoi. Il s'agit d'un défaut de fabrication, et nous assumons notre responsabilité à 100 % sur ce point.\n\nConcernant votre inquiétude sur d'éventuels défauts futurs : nos réparations sont effectuées par notre atelier partenaire au Portugal, avec le même niveau d'exigence que la fabrication d'origine et cela sur la totalité de la coutur. Si un autre défaut devait apparaître après réparation, nous le traiterions de la même façon.\n\nDès que votre paire est reçue et prise en charge par l'atelier, nous vous en informons, et nous vous prévenons dès qu'elle repart vers vous.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
