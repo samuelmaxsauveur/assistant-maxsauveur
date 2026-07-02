@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__chaussures_dakota",
+      "topic_label": "Re: Chaussures Dakota",
+      "situation": "Re: Chaussures Dakota",
+      "response_template": "Bonjour Colin,\n\nPour clarifier : non, je ne dis pas que la semelle intérieure de la Dakota est plus courte que celle de la Springsteen pour la même taille. Les mesures d'insole sont globalement similaires à taille équivalente.\n\nCe que je voulais dire, c'est que la Dakota chausse plus \"snug\", c'est-à-dire que le volume général de la chaussure est plus ajusté, notamment dans la tige et la forme. Résultat : même si la longueur de semelle est comparable, le ressenti au port est moins \"large\" que sur la Springsteen.\n\nCompte tenu de votre pied de 24,7 cm et du fait que votre Springsteen en 40 vous semble trop longue d'environ 1 cm, le 40 en Dakota devrait en réalité bien vous convenir, précisément parce que le fit plus ajusté compensera cet excès de longueur que vous ressentez.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
