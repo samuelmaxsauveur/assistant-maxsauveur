@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__chaussures_dakota",
+      "topic_label": "Re: Chaussures Dakota",
+      "situation": "Re: Chaussures Dakota",
+      "response_template": "Bonjour Colin,\n\nAvec plaisir, bonne journée à vous également !\n\nN'hésitez pas à revenir vers nous si vous avez la moindre question une fois vos Dakota reçues.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "renseignement_taille_chaussure",
       "topic_label": "Renseignement taille chaussure",
       "situation": "Renseignement taille chaussure",
@@ -127,14 +135,6 @@
       "situation": "Un client connaît sa pointure sur un modèle existant (Springsteen) avec détails précis (longueur, ressenti) et demande quel pointure prendre sur un autre modèle (Dakota) qui chausse plus ajusté. Le client a une mesure précise de son pied et une expérience utilisateur détaillée.",
       "response_template": "Bonjour [Prénom],\n\nPour clarifier : le modèle [Nouveau Modèle] ne propose pas une semelle intérieure plus courte que [Modèle Actuel] à taille équivalente. Les mesures d'insole sont globalement similaires.\n\nCe que je voulais dire, c'est que [Nouveau Modèle] chausse plus \"snug\", c'est-à-dire que le volume général de la chaussure est plus ajusté, notamment dans la tige et la forme. Résultat : même si la longueur de semelle est comparable, le ressenti au port est moins \"large\" que sur [Modèle Actuel].\n\nCompte tenu de votre pied de [mesure] cm et du fait que votre [Modèle Actuel] en [taille] vous semble trop longue d'environ [écart] cm, le [taille] en [Nouveau Modèle] devrait en réalité bien vous convenir, précisément parce que le fit plus ajusté compensera cet excès de longueur que vous ressentez.\n\nN'hésitez pas si vous avez d'autres questions.",
       "key_points": "Ton : pédagogue et rassurant. Expliquer la différence entre 'longueur de semelle' et 'volume général/fit'. Mettre en avant la compensation du fit ajusté pour rassurer le client sur une taille identique qui semblerait paradoxale. Références précises aux chiffres du client (mesure, écart ressenti).",
-      "example_count": 1
-    },
-    {
-      "topic": "re__chaussures_dakota",
-      "topic_label": "Re: Chaussures Dakota",
-      "situation": "Re: Chaussures Dakota",
-      "response_template": "Bonjour Colin,\n\nPour clarifier : non, je ne dis pas que la semelle intérieure de la Dakota est plus courte que celle de la Springsteen pour la même taille. Les mesures d'insole sont globalement similaires à taille équivalente.\n\nCe que je voulais dire, c'est que la Dakota chausse plus \"snug\", c'est-à-dire que le volume général de la chaussure est plus ajusté, notamment dans la tige et la forme. Résultat : même si la longueur de semelle est comparable, le ressenti au port est moins \"large\" que sur la Springsteen.\n\nCompte tenu de votre pied de 24,7 cm et du fait que votre Springsteen en 40 vous semble trop longue d'environ 1 cm, le 40 en Dakota devrait en réalité bien vous convenir, précisément parce que le fit plus ajusté compensera cet excès de longueur que vous ressentez.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn de Max Sauveur",
-      "key_points": "",
       "example_count": 1
     },
     {
