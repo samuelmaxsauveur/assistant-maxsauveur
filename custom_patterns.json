@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Caroline,\n\nPas de souci, nous allons procéder au remboursement de votre commande #11467.\n\nVous recevrez le virement sur votre moyen de paiement d'origine dans les prochains jours.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 62
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -160,14 +168,6 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre retour, et bonne nouvelle : le [Modèle] [Couleur] est bien disponible en [Taille] !\n\nSi vous le souhaitez, on peut procéder à un échange direct : vous renvoyez le [Taille actuelle], et on vous expédie le [Taille souhaitée] avec un code promo de [Montant]€ offert. Aucun frais supplémentaire de votre côté.\n\nSi vous préférez malgré tout un remboursement, pas de problème.\n\nDites-moi simplement quelle option vous convient.\n\nCordialement,\n[Prénom] de Max Sauveur",
       "key_points": "- Ton positif et rassurant (« bonne nouvelle »)\n- Proposer l'échange direct en priorité (sans frais)\n- Ajouter un code promo comme geste commercial\n- Offrir une alternative (remboursement) si préférence\n- Donner le choix au client\n- Formuler clairement « aucun frais supplémentaire »",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Caroline,\n\nMerci pour votre retour, et bonne nouvelle : le Moc Jagger Cuir Pony Marron est bien disponible en 39 !\n\nSi vous le souhaitez, on peut procéder à un échange direct : vous renvoyez le 40, et on vous expédie le 39 avec un code promo de 35€ offert. Aucun frais supplémentaire de votre côté.\n\nSi vous préférez malgré tout un remboursement, pas de problème.\n\nDites-moi simplement quelle option vous convient.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 61
     },
     {
       "topic": "re__merci_pour_votre_message___quelques_informations_utiles_",
