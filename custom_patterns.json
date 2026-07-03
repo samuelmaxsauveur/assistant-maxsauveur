@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__form_name_form_submitted_2026_06_30_19_34_16",
+      "topic_label": "Re: Re: Re: Form name Form submitted 2026-06-30 19:34:16",
+      "situation": "Re: Re: Re: Form name Form submitted 2026-06-30 19:34:16",
+      "response_template": "Bonjour Christophe,\n\nVoici la situation telle qu'elle est : nous assumons pleinement le défaut de fabrication et nous prenons en charge la réparation intégralement. Mais nous ne pouvons pas raccourcir les délais de l'atelier, ni contourner la fermeture d'août. Ce n'est pas une question de volonté, c'est simplement la réalité de notre chaîne de production.\n\nCe que nous vous proposons concrètement : portez la paire cet été. Si le défaut ne s'aggrave pas de façon majeure à l'usage, vous pouvez nous la retourner à la rentrée, et nous la faisons réparer dès la réouverture de l'atelier.\n\nSi vous préférez ne pas la porter dans cet état et ne souhaitez pas attendre la réparation, nous ne disposons malheureusement pas d'autre solution à vous proposer dans ce dossier.\n\nNous restons disponibles pour organiser le retour dès que vous le souhaitez.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
