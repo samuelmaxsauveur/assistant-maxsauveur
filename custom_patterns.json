@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_07_02_16_56_00",
+      "topic_label": "Form name Form submitted 2026-07-02 16:56:00",
+      "situation": "Form name Form submitted 2026-07-02 16:56:00",
+      "response_template": "Bonjour Mourad,\n\nMerci pour votre message. Voici ce qui s'est passé : votre commande #12667 a bien été expédiée le 19 juin, mais le transporteur nous a signalé une anomalie sur l'adresse de livraison, ce qui a conduit au retour automatique du colis. La paire vous est malheureusement revenue en entrepôt, et le modèle Le Boat cuir marron en 43 n'est plus disponible en stock à ce jour.\n\nNous sommes sincèrement désolés pour ce contretemps, qui n'aurait pas dû se produire.\n\nVoici ce que nous pouvons vous proposer :\n\n- Si le **Le Boat cuir marine en 43** vous convient, nous pouvons vous l'expédier immédiatement avec les frais de livraison offerts.\n- Si vous préférez un autre modèle de notre collection, nous ferons de même : échange vers le modèle de votre choix, livraison offerte.\n- Si aucune alternative ne vous convient, nous procéderons bien sûr au remboursement intégral de votre commande.\n\nDites-nous simplement ce que vous souhaitez et nous nous occupons du reste dans les plus brefs délais.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
