@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re___j_4__la_s_lection_se_d_voile",
+      "topic_label": "Re: (J-4) La sélection se dévoile",
+      "situation": "Re: (J-4) La sélection se dévoile",
+      "response_template": "Bonjour,\n\nMerci pour ces infos !\n\nAvec 28 cm de pied, voici mes recommandations selon les modèles :\n\n**Moc Paul :** prends le **43,5**. Le Paul chausse juste au départ, le cuir et la semelle en liège s'assouplissent progressivement avec le port. Mieux vaut partir avec un peu de confort dès le début.\n\n**Penny Loafer et Horsebit :** prends le **43** sur ces deux modèles.\n\nComme tu commandes depuis l'étranger, n'hésite pas si tu as le moindre doute avant de valider ton panier !\n\nBonne soirée,\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
