@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__max_sauveur___service_client",
+      "topic_label": "Re: Re: Max Sauveur — Service Client",
+      "situation": "Re: Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Clément,\n\nMerci pour votre confirmation, on clôt ça proprement.\n\nPetite précision sur l'adresse : Godot et Fils n'est pas référencé comme point relais Chrono2Shop. Nous avons sélectionné le point relais le plus proche qui l'est, soit :\n\nKiosque de Neuilly\n153 avenue Charles de Gaulle\n92200 Neuilly sur Seine\n\nCela vous convient ?\n\nDès réception de votre règlement de 5€, nous réexpédions immédiatement.\n\nVoici le lien de paiement sécurisé : https://secure.payplug.com/pay/5BLn7rzpFoC2uh6S0qfNNl\n\nCordialement,\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 12
+    },
+    {
       "topic": "demande_d_information_sur_une_pointure",
       "topic_label": "Demande d'information sur une pointure",
       "situation": "Demande d'information sur une pointure",
@@ -64,14 +72,6 @@
       "response_template": "Bonjour [Prénom],\n\nBonne question. Voici comment ça fonctionne : votre avoir sera généré au montant que vous avez payé lors de la précommande. Vous bénéficierez donc du même prix de précommande sur la nouvelle paire, même si le prix affiché sur le site est aujourd'hui plus élevé.\n\nLa seule chose à régler sera les frais de port pour l'envoi de la nouvelle paire.\n\nPour le reste, la procédure reste la même : retournez votre paire actuelle avec le bon de retour à l'adresse logistique, et on s'occupe de tout dès réception.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
       "key_points": "Ton : clair et rassurant | Engagement clé : prix précommande maintenu (avantage client) | Frais : client paie uniquement les frais de port du nouvel envoi | Procédure : retour postal classique avec bon de retour | Formulation importante : 'Vous bénéficierez donc du même prix de précommande'",
       "example_count": 1
-    },
-    {
-      "topic": "re__re__max_sauveur___service_client",
-      "topic_label": "Re: Re: Max Sauveur — Service Client",
-      "situation": "Re: Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Hugo,\n\nBonne question. Voici comment ça fonctionne : votre avoir sera généré au montant que vous avez payé lors de la précommande. Vous bénéficierez donc du même prix de précommande sur la nouvelle paire, même si le prix affiché sur le site est aujourd'hui plus élevé.\n\nLa seule chose à régler sera les frais de port pour l'envoi du 42.\n\nPour le reste, la procédure reste la même : retournez le 43 avec le bon de retour à l'adresse logistique, et on s'occupe de tout dès réception.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 11
     },
     {
       "topic": "retour_recu_remboursement_confirmation_finale",
