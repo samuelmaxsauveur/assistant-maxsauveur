@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "question_taille",
+      "topic_label": "Question taille",
+      "situation": "Question taille",
+      "response_template": "Hello Allan,\n\nPas de souci pour la question en retard !\n\nVotre raisonnement se tient, mais ne vous laissez pas trop guider par la logique de conversion entre modèles. Ce qui compte vraiment, c'est ce que vous savez de votre pied : 28 cm, avant-pied large, et des Brogues en 43 qui vous vont très bien.\n\nPour le Penny Loafer, restez sur le 43. Le mocassin a une forme différente des Brogues, et avec un avant-pied large, descendre en 42.5 serait risqué. Le cuir et la semelle en liège s'assouplissent avec le port, donc si ça chausse juste au début, c'est normal et ça se règle après quelques utilisations.\n\nBonne commande !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 4
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -832,14 +840,6 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et votre intérêt pour le Brogue Derby Cuir Gras [Couleur].\n\nAvec [mesure] cm de pied, en ajoutant les 0,2 cm de marge recommandés, vous vous situez à [total] cm. Sur notre guide, cela vous oriente vers un [taille_standard].\n\nPrécision importante sur ce modèle : le Brogue Derby chausse légèrement grand. Le [taille_standard] devrait donc vous correspondre parfaitement.\n\nCela dit, si vous hésitez ou avez un pied légèrement plus large, vous pouvez également opter pour le [taille_sup] avec une semelle d'ajustement à l'intérieur pour affiner le maintien.\n\nN'hésitez pas si vous avez d'autres questions avant de commander.\n\n[Signature]",
       "key_points": "Toujours mentionner que le Derby chausse légèrement grand. Proposer une semelle d'ajustement comme alternative pour les pieds larges. Souligner que la taille standard devrait convenir. Ton rassurant et informatif.",
       "example_count": 1
-    },
-    {
-      "topic": "question_taille",
-      "topic_label": "question taille",
-      "situation": "question taille",
-      "response_template": "Bonjour Alain,\n\nMerci pour votre message et votre intérêt pour le Brogue Derby Cuir Gras Marron.\n\nAvec 26,4 cm de pied, en ajoutant les 0,2 cm de marge recommandés, vous vous situez à 26,6 cm. Sur notre guide, cela vous oriente vers un 40.\n\nPrécision importante sur ce modèle : le Brogue Derby chausse légèrement grand. Le 40 devrait donc vous correspondre parfaitement.\n\nCela dit, si vous hésitez ou avez un pied légèrement plus large, vous pouvez également opter pour le 41 avec une semelle d'ajustement à l'intérieur pour affiner le maintien.\n\nN'hésitez pas si vous avez d'autres questions avant de commander.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 3
     },
     {
       "topic": "erreur_adresse_livraison_commande_en_cours",
