@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "renseignements_moc_jagger",
+      "topic_label": "Renseignements moc jagger",
+      "situation": "Renseignements moc jagger",
+      "response_template": "Bonjour,\n\nMerci pour votre message !\n\nAvec 27,2 cm de pied, vous êtes théoriquement sur du 42 selon notre guide. Mais le Moc Jagger chausse particulièrement grand, donc il faut descendre.\n\nDeux options selon votre confort prioritaire :\n\n- **41** : la longueur sera bien ajustée pour votre mesure. Option à privilégier si vous tolérez un chaussant un peu snug au départ.\n- **41,5** : une demi-pointure au-dessus, qui peut mieux convenir à votre cou-de-pied fort et large pour ne pas vous sentir comprimé sur les côtés.\n\nSur la question du cou-de-pied fort : le Moc Jagger est un mocassin sans lacets, donc le maintien repose entièrement sur le cou-de-pied. Un cou-de-pied fort est généralement un avantage sur ce type de modèle, car il assure un meilleur maintien. En revanche, si vos pieds sont aussi larges, le 41,5 sera plus confortable que le 41.\n\nEn résumé, si votre pied est vraiment large, je vous orienterais vers le **41,5**. Si c'est surtout le cou-de-pied qui est fort mais que la largeur reste standard, le **41** devrait très bien fonctionner.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
