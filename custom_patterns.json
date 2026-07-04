@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "max_sauveur___service_client",
+      "topic_label": "Max Sauveur — Service Client",
+      "situation": "Max Sauveur — Service Client",
+      "response_template": "Bonjour Pierre,\n\nNous avons bien reçu vos Fisherman et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le daim, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si un autre modèle vous fait de l'œil, on peut vous proposer une solution plus simple : nous vous envoyons un avoir d'une valeur de 174€ (soit 25€ offerts par la maison) et nous prenons en charge les frais de livraison pour cet échange. Cela vous permet de trouver la pièce idéale sans aucun frais supplémentaire.\n\n=> Si c'est seulement un problème de pointure, on s'occupe de l'échange gratuitement et on vous ajoute en plus une carte cadeau de 25€.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 69
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -1112,14 +1120,6 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre message.\n\nIl y a en réalité deux raisons pour lesquelles le code ne fonctionne pas dans votre cas.\n\nPremièrement, les conditions complètes de l'offre précisent que le code est exclu sur certains modèles spécifiques, dont le modèle '[Nom du modèle]'. Cette exclusion s'applique indépendamment du prix affiché.\n\nDeuxièmement, le seuil minimum indiqué dans les conditions officielles est de [montant]€ hors accessoires, et non [montant affiché]€. La formulation affichée sur la page peut prêter à confusion, mais le seuil de déclenchement du code est bien fixé à [montant]€ dans les conditions spécifiques de l'offre.\n\nLe [Nom du modèle] est donc exclu à double titre : par son prix ([prix]€, en dessous du seuil de [montant]€) et par son exclusion nominative dans les conditions.\n\nJe suis désolé pour la confusion que la formulation de la page a pu générer. Le code restera malheureusement invalide sur ce modèle.",
       "key_points": "Ton : courtois et explicatif, reconnaître la confusion possible. Deux raisons cumulatives : exclusion nominative (indépendante du prix) + seuil minimum non atteint. Distinction importante entre le libellé marketing et les conditions officielles. Absence de solution de contournement proposée – le code ne peut pas être appliqué.",
       "example_count": 1
-    },
-    {
-      "topic": "max_sauveur___service_client",
-      "topic_label": "Max Sauveur — Service Client",
-      "situation": "Max Sauveur — Service Client",
-      "response_template": "Bonjour Charles,\n\nNous avons récemment reçu votre colis en retour expéditeur : il semble que le Moc Jagger Cuir Pony Marron (43) n'ait pas pu être récupéré au point relais dans les délais impartis.\n\nPas de panique, la paire est bien chez nous et nous avons plusieurs options pour vous :\n\n**1. Renvoyer la commande**\nNous pouvons réexpédier la paire à l'adresse de votre choix. Des frais de port seront à régler pour ce second envoi.\n\n**2. Recevoir un avoir**\nNous vous créons un avoir du montant de votre commande, valable 6 mois sur notre site, que vous pouvez utiliser quand vous le souhaitez.\n\n**3. Être remboursé**\nUn remboursement reste possible, mais conformément à nos CGV, une retenue de 18€ sera appliquée pour couvrir les frais de traitement liés au retour non réclamé.\n\nDites-moi simplement quelle option vous convient et je m'en occupe dans la foulée. Si vous optez pour la réexpédition, envoyez-moi également l'adresse souhaitée.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 68
     },
     {
       "topic": "retour_non_reclame_colis_expediteur",
