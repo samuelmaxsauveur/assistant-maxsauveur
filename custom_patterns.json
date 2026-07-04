@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "final_countdown___commande_de_plusieurs_pi_ces",
+      "topic_label": "Final Countdown : commande de plusieurs pièces",
+      "situation": "Final Countdown : commande de plusieurs pièces",
+      "response_template": "Bonjour Fabien,\n\nJe comprends que cette étape puisse sembler intimidante, mais je vais te rassurer : Alma est une solution de paiement française, ultra-réglementée, et le fait qu'elle s'appuie sur Stripe renforce encore sa sécurité. Pour être concret, Alma et Stripe affichent tous les deux un taux de fraude inférieur à celui de PayPal, et leurs protocoles de protection contre les cyberattaques sont parmi les plus robustes du marché. C'est précisément pour ça qu'on les a choisis.\n\nCe que tu perçois comme une autorisation d'accès prolongée à ton compte est en réalité un processus de vérification d'identité bancaire encadré réglementairement (la directive DSP2), qui ne donne à aucun moment un accès opérationnel à ton compte. C'est une lecture en lecture seule, temporaire, strictement encadrée par la loi européenne.\n\nSi tu préfères tout de même une alternative, tu peux utiliser Shop Pay( je ne crois pas que cela gère le paiement en plusieurs fois...) au moment du paiement : c'est également une solution extrêmement sécurisée, simple d'utilisation, et qui te permettra de finaliser ta commande sereinement.\n\nN'hésite pas si tu as d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
