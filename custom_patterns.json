@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "retour_re_u___remboursement_en_cours",
+      "topic_label": "Retour reçu — remboursement en cours",
+      "situation": "Retour reçu — remboursement en cours",
+      "response_template": "Bonjour Everton,\n\nNous avons bien reçu votre Paul Mocassin Cuir Noir et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si un autre modèle vous fait de l'œil, on peut vous proposer une solution plus simple : nous vous envoyons un avoir d'une valeur de 370€ (soit 35€ offerts par la maison) et nous prenons en charge les frais de livraison pour cet échange. Cela vous permet de trouver la pièce idéale sans aucun frais supplémentaire.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 18
+    },
+    {
       "topic": "max_sauveur___service_client",
       "topic_label": "Max Sauveur — Service Client",
       "situation": "Max Sauveur — Service Client",
@@ -4336,14 +4344,6 @@
       "response_template": "Bonjour [Prénom],\n\nRavi que la proposition vous intéresse.\n\nJe génère votre avoir de [Montant]€ et vous le transmets dans les prochaines heures sous forme de carte cadeau. Attention toutefois, après l'édition de cette carte cadeau, seul un échange pour un autre modèle sera possible.\n\nJ'attends votre confirmation.\n\nBonne journée,\n[Prénom] de Max Sauveur",
       "key_points": "Toujours demander une confirmation explicite du client AVANT d'émettre la carte cadeau. Mentionner clairement l'irréversibilité : une fois la carte cadeau générée, remboursement impossible, uniquement un échange. Préciser le montant de l'avoir et le délai d'envoi (dans les prochaines heures).",
       "example_count": 15
-    },
-    {
-      "topic": "retour_re_u___remboursement_en_cours",
-      "topic_label": "Retour reçu — remboursement en cours",
-      "situation": "Retour reçu — remboursement en cours",
-      "response_template": "Bonjour Julien,\n\nNous avons bien reçu vos Brogues Derby Cuir Marron et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si un autre modèle vous fait de l'œil, on peut vous proposer une solution plus simple : nous vous envoyons un avoir d'une valeur de 370€ (soit 35€ offerts par la maison) et nous prenons en charge les frais de livraison pour cet échange. Cela vous permet de trouver la pièce idéale sans aucun frais supplémentaire.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 17
     },
     {
       "topic": "retour_",
