@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "max_sauveur___service_client",
+      "topic_label": "Max Sauveur — Service Client",
+      "situation": "Max Sauveur — Service Client",
+      "response_template": "Bonjour Alma,\n\nSuite à votre demande, nous venons de générer votre avoir. Il est utilisable une seule fois, non cumulable avec d'autres codes ou promotions, et valable pendant 6 mois.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n**PFKFE4XSV0VX**\n\nSi vous avez la moindre question, je reste disponible.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 75
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -16,14 +24,6 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et pour votre retour concernant votre commande #[numéro].\n\nJe vous confirme que nous avons bien reçu votre demande. Cependant, la livraison de votre commande ayant été effectuée le [date], le délai légal de 14 jours pour un retour est malheureusement dépassé. Nous ne pouvons donc pas procéder à un remboursement direct sur votre moyen de paiement.\n\nEn revanche, nous souhaitons trouver une solution pour vous, et nous allons vous envoyer un avoir d'un montant de [montant]€, valable 6 mois sur notre site. Cela vous permettra de le réutiliser quand vous le souhaitez sur un autre modèle ou une autre taille.\n\nDès réception de votre avoir, vous pourrez passer commande directement sur maxsauveur.com.\n\nN'hésitez pas si vous avez des questions ou si vous souhaitez un conseil sur un modèle, je suis là.\n\n[Prénom] de Max Sauveur",
       "key_points": "Ton empathique et commercial : on refuse le remboursement mais on propose une alternative attractive (avoir avec durée de validité). Clarifier la raison (dépassement délai légal). Valoriser l'avoir comme solution de remplacement. Offrir une aide supplémentaire sur le prochain achat.",
       "example_count": 1
-    },
-    {
-      "topic": "max_sauveur___service_client",
-      "topic_label": "Max Sauveur — Service Client",
-      "situation": "Max Sauveur — Service Client",
-      "response_template": "Bonjour Adnane,\n\nMerci pour votre message et pour votre retour concernant votre commande #12252.\n\nJe vous confirme que nous avons bien reçu votre demande. Cependant, la livraison de votre commande ayant été effectuée le 25 juin, le délai légal de 14 jours pour un retour est malheureusement dépassé. Nous ne pouvons donc pas procéder à un remboursement direct sur votre moyen de paiement.\n\nEn revanche, nous souhaitons trouver une solution pour vous, et nous allons vous envoyer un avoir d'un montant de 309€, valable 6 mois sur notre site. Cela vous permettra de le réutiliser quand vous le souhaitez sur un autre modèle ou une autre taille.\n\nDès réception de votre avoir, vous pourrez passer commande directement sur maxsauveur.com.\n\nN'hésitez pas si vous avez des questions ou si vous souhaitez un conseil sur un modèle, je suis là.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 74
     },
     {
       "topic": "retour_recu_remboursement_avec_alternatives_echange",
