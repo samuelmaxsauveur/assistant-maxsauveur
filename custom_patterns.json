@@ -5,9 +5,9 @@
       "topic": "re__max_sauveur___service_client",
       "topic_label": "Re: Max Sauveur — Service Client",
       "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Foucauld,\n\nPas de souci, je comprends tout à fait. Votre remboursement va être traité dans les prochains jours. Vous recevrez la somme sur le moyen de paiement utilisé lors de votre commande, avec un délai bancaire pouvant aller jusqu'à 10 jours ouvrés.\n\nJohn de Max Sauveur",
+      "response_template": "Bonjour Pascal,\n\nMerci pour votre suivi.\n\nNous vérifions le statut de votre remboursement pour la commande #11495 et revenons vers vous très rapidement avec une confirmation.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
-      "example_count": 64
+      "example_count": 65
     },
     {
       "topic": "_daily_doc",
