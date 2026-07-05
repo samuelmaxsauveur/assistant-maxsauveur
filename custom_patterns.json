@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__avoir___code",
+      "topic_label": "RE: RE: Avoir / code",
+      "situation": "RE: RE: Avoir / code",
+      "response_template": "Bonjour Florian,\n\nBonne nouvelle de notre côté : nous venons de corriger le problème sur votre code avoir. Vous pouvez retenter avec le même code :\n\n**4VSFFZYA3CS6**\n\nN'hésitez pas à nous revenir si vous rencontrez encore une difficulté lors de la saisie.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "conseil_pointure_chelsea_chapman_mesure_cm",
+      "topic_label": "Conseil pointure Chelsea Chapman – mesure en cm avec assouplissement cuir",
+      "situation": "Un client fournit la mesure précise de son pied en cm (avec marge recommandée incluse) et demande sa pointure pour le modèle Chelsea Chapman. Il a également une expérience antérieure sur d'autres modèles (mocassins) pour valider le choix.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour ce message bien préparé, c'est exactement le genre d'info qui permet de vous orienter avec précision.\n\nAvec [mesure en cm], notre guide vous place en **[pointure]**, et c'est la taille que je vous recommande pour la Chelsea Chapman.\n\nQuelques points pour vous rassurer dans votre choix :\n\n- La Chapman chausse ajusté, ce qui colle parfaitement à votre profil : vous êtes habituellement en [pointure] pour les mocassins, donc vous avez le bon réflexe.\n- Votre référence [autre modèle] en [autre taille] n'est pas à prendre en compte ici, les chaussures de ville et les [type de chaussure] ont des gabarits très différents.\n- Le cuir grainé s'assouplit progressivement avec le port, donc si la chaussure vous semble un tout petit peu ferme les premiers jours, c'est tout à fait normal.\n\nLe **[pointure]** est votre taille, foncez sans hésiter.\n\nN'hésitez pas si vous avez d'autres questions.\n\nCordialement,\nJohn, Service Client, Max Sauveur",
+      "key_points": "Ton rassurant et précis. Valider le choix en le reliant à l'expérience antérieure du client. Mentionner l'assouplissement naturel du cuir pour normaliser une sensation légèrement ferme au départ. Encourager le client à agir sans hésiter. Signature avec prénom pour humaniser.",
+      "example_count": 1
+    },
+    {
       "topic": "trouver_ma_pointure",
       "topic_label": "Trouver ma pointure",
       "situation": "Trouver ma pointure",
