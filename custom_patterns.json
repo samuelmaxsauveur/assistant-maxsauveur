@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__form_name_form_submitted_2026_07_02_16_56_00",
+      "topic_label": "Re: Form name Form submitted 2026-07-02 16:56:00",
+      "situation": "Re: Form name Form submitted 2026-07-02 16:56:00",
+      "response_template": "Bonjour Mourad,\n\nBien compris, nous procédons au remboursement intégral de votre commande #12667 (158,75€). Vous recevrez le virement sur votre moyen de paiement d'origine sous 5 à 10 jours ouvrés selon votre banque.\n\nEncore désolé pour ce qui s'est passé avec la livraison, ce n'était vraiment pas le service que vous méritiez.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
