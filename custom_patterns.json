@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__retour_article",
+      "topic_label": "Re: Retour Article",
+      "situation": "Re: Retour Article",
+      "response_template": "Bonjour Steve,\n\nMerci pour la confirmation. Nous avons bien vérifié de notre côté, le colis est bien arrivé à notre entrepôt.\n\nNous sommes prêts à traiter votre dossier. Souhaitez-vous :\n\n- Un **remboursement** de 289,00€ sur votre moyen de paiement initial (comptez 3 à 5 jours ouvrés).\n- Un **avoir** du même montant, valable 6 mois sur notre site, si vous souhaitez repartir sur un autre modèle.\n\nDites-nous simplement votre préférence et nous traitons ça dans la journée.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
+      "topic": "retour_colis_point_relais_verification_stock",
+      "topic_label": "Retour colis au point relais – Vérification stock et options",
+      "situation": "Un client signale que son colis contenant un article commandé est revenu d'un point relais (dysfonctionnement du point relais, non-réclamation, etc.). Max Sauveur doit vérifier si le colis est bien revenu en entrepôt et proposer des solutions (réexpédition, avoir, ou combination avec une nouvelle commande).",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message. Nous sommes désolés pour ce contretemps avec le point relais.\n\nNous allons vérifier de notre côté si votre colis contenant le [modèle] [pointure] est bien revenu dans notre entrepôt. Dès que nous avons la confirmation, nous revenons vers vous avec les options disponibles (réexpédition, avoir, ou combinaison avec votre nouvelle commande si cela est faisable).\n\nNous vous tenons informé très rapidement.\n\n[Prénom] – Service Client – Max Sauveur",
+      "key_points": "Ton rassurant et proactif ; validation rapide en back-office indispensable ; proposer plusieurs solutions (réexpédition, avoir, combinaison) ; engagement de délai court ('très rapidement')",
+      "example_count": 1
+    },
+    {
       "topic": "commande__11703",
       "topic_label": "Commande #11703",
       "situation": "Commande #11703",
@@ -462,14 +478,6 @@
       "topic_label": "Moc Jagger",
       "situation": "Moc Jagger",
       "response_template": "Bonjour Luc,\n\nAvec 24,7 cm de pied (vos 24,5 cm + la marge de 0,2 cm), je vous recommande le 38 pour la Moc Jagger. Le modèle chausse légèrement grand, donc c'est la pointure à privilégier pour un bon maintien.\n\nBonne journée à vous !\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__retour_article",
-      "topic_label": "Re: Retour Article",
-      "situation": "Re: Retour Article",
-      "response_template": "Bonjour Steve,\n\nJe reviens vers vous concernant votre retour du Moc Jagger Cuir Noir en 39 (commande #12674).\n\nDe notre côté, je n'ai pas encore de confirmation de réception du colis avec le numéro de suivi Colissimo que vous mentionnez. Je vous invite à vérifier le statut de votre envoi directement sur le site de La Poste avec le numéro 8J02262446145 pour vous assurer qu'il est bien en transit ou livré à notre entrepôt.\n\nDès réception et contrôle de la paire, nous traitons votre dossier et revenons vers vous rapidement.\n\nAvant de finaliser le remboursement, j'aurais une question simple : qu'est-ce qui vous a amené à retourner les Moc Jagger ? Problème de taille, de confort, ou autre chose ? Cela nous aide à mieux vous orienter, et si un autre modèle vous convient mieux, on peut vous faire une proposition intéressante plutôt qu'un simple remboursement.\n\nN'hésitez pas à revenir vers nous si vous avez des questions.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
