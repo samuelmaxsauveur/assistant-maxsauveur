@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "trouver_ma_pointure",
+      "topic_label": "Trouver ma pointure",
+      "situation": "Trouver ma pointure",
+      "response_template": "Bonjour Théo,\n\nMerci pour ce message bien préparé, c'est exactement le genre d'info qui permet de vous orienter avec précision.\n\nAvec 27,1 cm (26,9 + 0,2 cm), notre guide vous place en **42**, et c'est la taille que je vous recommande pour la Chelsea Chapman.\n\nQuelques points pour vous rassurer dans votre choix :\n\n- La Chapman chausse ajusté, ce qui colle parfaitement à votre profil : vous êtes habituellement en 42 pour les mocassins, donc vous avez le bon réflexe.\n- Votre référence sneakers en 42,5 / 43 n'est pas à prendre en compte ici, les chaussures de ville et les sneakers ont des gabarits très différents.\n- Le cuir grainé s'assouplit progressivement avec le port, donc si la chaussure vous semble un tout petit peu ferme les premiers jours, c'est tout à fait normal.\n\nLe **42** est votre taille, foncez sans hésiter.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn, Service Client, Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -4582,14 +4590,6 @@
       "topic_label": "pointures",
       "situation": "pointures",
       "response_template": "Bonjour Corentin,\n\nMerci pour votre message et pour avoir pris le temps de mesurer correctement.\n\nAvec 27,7 cm, voici ce que je vous recommande :\n\n- **Peter A. (mocassin daim marron)** : le 42 est la bonne taille. Bonne nouvelle, c'est exactement ce que vous avez commandé. Petite précision utile : le mocassin chausse juste au départ, c'est tout à fait normal avec un cuir épais. Il s'assouplit et se moule à votre pied après quelques ports.\n\n- **Fisherman (semelle cuir grainé noir)** : ce modèle chausse légèrement grand, et avec votre mesure je vous aurais plutôt orienté vers un 41. Vous avez commandé un 42, ce qui pourrait faire un peu trop.\n\nCordialement\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "trouver_ma_pointure",
-      "topic_label": "trouver ma pointure",
-      "situation": "trouver ma pointure",
-      "response_template": "Bonjour Fabrice,\n\nAvec 25 cm de pied, vous êtes en *40*. La Wood chausse plus ajusté que beaucoup de modèles, je vous recommande donc de rester sur le **40**.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
