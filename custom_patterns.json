@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__form_name_form_submitted_2026_07_04_15_00_10",
+      "topic_label": "Re: Form name Form submitted 2026-07-04 15:00:10",
+      "situation": "Re: Form name Form submitted 2026-07-04 15:00:10",
+      "response_template": "Bonjour Benoît,\n\nMerci pour les photos, nous les avons bien reçues.\n\nAfin de traiter votre dossier correctement, pourriez-vous nous indiquer le numéro de votre commande de précommande (vous le trouverez dans l'email de confirmation reçu à l'époque) ? Nous avons besoin de l'identifier dans notre système.\n\nDe notre côté, nous allons transmettre vos photos à notre atelier pour qu'ils puissent analyser la situation et déterminer si cela relève d'un défaut ou d'une usure liée à l'usage.\n\nNous revenons vers vous dès que nous avons leur retour.\n\nBonne journée,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
