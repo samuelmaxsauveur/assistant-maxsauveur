@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "commande__11703",
+      "topic_label": "Commande #11703",
+      "situation": "Commande #11703",
+      "response_template": "Bonjour Vlad,\n\nMerci pour votre message. Nous sommes désolés pour ce contretemps avec le point relais.\n\nNous allons vérifier de notre côté si votre colis contenant le Moc Jagger 41.5 est bien revenu dans notre entrepôt. Dès que nous avons la confirmation, nous revenons vers vous avec les options disponibles (réexpédition, avoir, ou combinaison avec votre nouvelle commande si cela est faisable).\n\nNous vous tenons informé très rapidement.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
