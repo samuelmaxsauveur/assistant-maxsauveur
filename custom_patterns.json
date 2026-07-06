@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "recherche_de_stock_cadeau_brogues",
+      "topic_label": "Recherche de stock cadeau brogues",
+      "situation": "Recherche de stock cadeau brogues",
+      "response_template": "Bonjour Lunielle,\n\nQuel beau projet de cadeau, et quel beau message ! Merci de nous faire confiance pour marquer cet anniversaire.\n\nBonne nouvelle sur le stock : le Brogue Derby Cuir Gras Marron chausse très grand, ce qui change la donne pour votre partenaire. En 46 habituel, nous recommandons généralement de prendre un 45, voire un 44 selon la morphologie du pied. Et justement, ces deux pointures sont disponibles chez nous en ce moment.\n\nVoici comment je vous conseille de procéder :\n\nSi vous connaissez la longueur exacte de son pied en centimètres (mesure talon jusqu'au bout du gros orteil, pied nu), je peux vous indiquer précisément la bonne pointure. Sinon, le plus sûr est de partir sur un 45, et si jamais l'ajustement n'est pas parfait, on s'occupe de l'échange sans difficulté.\n\nN'hésitez pas à me donner la mesure si vous l'avez, et je vous guide directement vers la bonne taille pour que ce cadeau soit parfait.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__retour_article",
       "topic_label": "Re: Retour Article",
       "situation": "Re: Retour Article",
