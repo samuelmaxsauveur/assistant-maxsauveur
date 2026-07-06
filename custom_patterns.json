@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__c_est_ouvert___la_wood___239_",
+      "topic_label": "Re: Re: C'est ouvert ! la Wood à 239€",
+      "situation": "Re: Re: C'est ouvert ! la Wood à 239€",
+      "response_template": "Bonjour Donatelle,\n\nMerci pour ce message et pour votre fidélité, ça fait vraiment plaisir de lire ça !\n\nOn est ravis que la précommande des deux Wood soit passée, vous avez bien fait de prendre les deux coloris.\n\nConcernant le Moc Jagger, je comprends tout à fait votre frustration, et je vous remercie d'avoir pris le temps de tout nous expliquer avec autant de détails. Vous avez bien fait de ne pas tenter le cordonnier si trois professionnels vous l'ont déconseillé.\n\nVoici la réalité de notre côté, en toute transparence :\n\nNous ne pouvons reprendre une paire pour la revendre en ligne que si elle est dans un état strictement neuf, non portée, avec sa boîte d'origine. Un client qui commande en ligne s'attend à recevoir une paire neuve, ce qui est tout à fait légitime. Si vous nous confirmez que la paire n'a jamais été portée et est dans son état d'origine, nous pouvons tout à fait organiser un retour et vous générer un avoir du montant payé.\n\nAlternativement, si vous souhaitez conserver le Moc Jagger 37 en attendant de voir si votre pied s'y adapte avec le temps (certains cuirs s'assouplissent significativement), nous pouvons envisager un geste commercial sous forme de remise, sous réserve que ça ait du sens pour vous.\n\nPour organiser le retour si vous optez pour cette solution :\n1. Téléchargez le bon de retour ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire dans sa boîte d'origine\n3. Expédiez à notre adresse logistique (frais de retour à votre charge) :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDites-moi ce que vous préférez, et on s'organise en conséquence.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__re__re__re__max_sauveur___service_client",
       "topic_label": "Re: Re: Re: Re: Re: Re: Max Sauveur — Service Client",
       "situation": "Re: Re: Re: Re: Re: Re: Max Sauveur — Service Client",
