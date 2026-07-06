@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__probl_me_semelle_loggers_boots",
+      "topic_label": "Re: Re: Problème semelle Loggers Boots",
+      "situation": "Re: Re: Problème semelle Loggers Boots",
+      "response_template": "Bonjour Arthur,\n\nVos Logger Boots ont bien été réparées et seront expédiées cette semaine.\n\nDès que votre colis est pris en charge par le transporteur, nous vous enverrons le numéro de suivi pour que vous puissiez suivre son acheminement.\n\nBonne journée,\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
