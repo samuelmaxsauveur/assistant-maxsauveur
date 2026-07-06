@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__retour_article",
+      "topic_label": "Re: Retour Article",
+      "situation": "Re: Retour Article",
+      "response_template": "Bonjour Steve,\n\nParfait, c'est noté. Nous allons procéder au remboursement de 289,00€ sur votre moyen de paiement initial. Comptez 3 à 5 jours ouvrés pour que la somme apparaisse sur votre compte.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 3
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -40,14 +48,6 @@
       "response_template": "Bonjour Mourad,\n\nBien compris, nous procédons au remboursement intégral de votre commande #12667 (158,75€). Vous recevrez le virement sur votre moyen de paiement d'origine sous 5 à 10 jours ouvrés selon votre banque.\n\nEncore désolé pour ce qui s'est passé avec la livraison, ce n'était vraiment pas le service que vous méritiez.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re__retour_article",
-      "topic_label": "Re: Retour Article",
-      "situation": "Re: Retour Article",
-      "response_template": "Bonjour Steve,\n\nMerci pour la confirmation. Nous avons bien vérifié de notre côté, le colis est bien arrivé à notre entrepôt.\n\nNous sommes prêts à traiter votre dossier. Souhaitez-vous :\n\n- Un **remboursement** de 289,00€ sur votre moyen de paiement initial (comptez 3 à 5 jours ouvrés).\n- Un **avoir** du même montant, valable 6 mois sur notre site, si vous souhaitez repartir sur un autre modèle.\n\nDites-nous simplement votre préférence et nous traitons ça dans la journée.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 2
     },
     {
       "topic": "retour_colis_point_relais_verification_stock",
