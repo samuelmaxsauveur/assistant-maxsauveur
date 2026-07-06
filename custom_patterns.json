@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "question_taille",
+      "topic_label": "Question taille",
+      "situation": "Question taille",
+      "response_template": "Bonjour,\n\nMerci pour votre message !\n\nAvec 26 cm de pied, vous êtes en **41** sur notre guide. Voici mes recommandations pour chaque modèle :\n\n**Springsteen en cuir gras marron :** ce modèle chausse légèrement grand, le **41** est la bonne taille pour vous.\n\n**Deck en cuir bordeaux :** même situation, la Deck chausse également légèrement grand. Le **41** vous conviendra parfaitement.\n\nBonne continuation et n'hésitez pas si vous avez d'autres questions.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 5
+    },
+    {
+      "topic": "retour_moc_jagger_non_porte_avoir_ou_remise",
+      "topic_label": "Retour Moc Jagger non porté – Proposition avoir ou remise commerciale",
+      "situation": "Un client a reçu des Moc Jagger qui ne conviennent pas (problème de pointure ou d'ajustement) mais n'a pas porté la paire. Il demande un retour ou une solution. Max Sauveur propose deux options : soit un retour avec avoir si la paire est neuve et en état d'origine, soit une remise commerciale s'il préfère conserver la paire en attendant une possible adaptation du cuir.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour ce message et votre fidélité.\n\nJe comprends tout à fait votre frustration concernant les Moc Jagger. Vous avez eu raison de suivre les conseils des professionnels.\n\nVoici nos deux options :\n\n**Option 1 : Retour avec avoir**\nNous pouvons reprendre la paire pour la revendre en ligne uniquement si elle est strictement neuve, non portée, avec sa boîte d'origine. Nous générerions un avoir du montant payé.\n\nPour organiser le retour :\n1. Téléchargez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement dans la boîte d'origine\n3. Expédiez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau (frais de retour à votre charge)\n\n**Option 2 : Remise commerciale**\nSi vous souhaitez conserver les Moc Jagger en attendant de voir si votre pied s'y adapte avec le temps (le cuir s'assouplit significativement), nous pouvons envisager une remise commerciale.\n\nDites-moi votre préférence et on s'organise en conséquence.\n\nCordialement,\nJohn de Max Sauveur",
+      "key_points": "Ton : empathique et transparent | Deux solutions claires : retour avec avoir (strict respect condition neuve/boîte) ou remise si conservation | Cuir s'assouplit avec le temps : argument clé | Frais de retour à charge client | Laisser le choix au client | Procédure simple et claire",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__c_est_ouvert___la_wood___239_",
       "topic_label": "Re: Re: C'est ouvert ! la Wood à 239€",
       "situation": "Re: Re: C'est ouvert ! la Wood à 239€",
@@ -400,14 +416,6 @@
       "response_template": "Bonjour [Prénom],\n\nPas de souci pour la question en retard !\n\nVotre raisonnement se tient, mais ne vous laissez pas trop guider par la logique de conversion entre modèles. Ce qui compte vraiment, c'est ce que vous savez de votre pied : [mesure en cm], avant-pied large, et des [modèle connu] en [pointure] qui vous vont très bien.\n\nPour le [nouveau modèle], restez sur le [pointure recommandée]. Le [modèle] a une forme différente des [modèle de référence], et avec un avant-pied large, descendre en [pointure inférieure] serait risqué. Le cuir et la semelle s'assouplissent avec le port, donc si ça chausse juste au début, c'est normal et ça se règle après quelques utilisations.\n\nBonne commande !\n\n[Prénom] – Service Client – Max Sauveur",
       "key_points": "- Valoriser l'expertise du client sur sa pointure réelle plutôt que la conversion théorique\n- Justifier le maintien de la taille recommandée en fonction de la morphologie (avant-pied large)\n- Rassurer sur l'assouplissement naturel du cuir au port\n- Ton bienveillant et pragmatique, sans sur-expliquer\n- Ne pas hésiter à recommander la taille juste même si elle semble 'grande'",
       "example_count": 1
-    },
-    {
-      "topic": "question_taille",
-      "topic_label": "Question taille",
-      "situation": "Question taille",
-      "response_template": "Hello Allan,\n\nPas de souci pour la question en retard !\n\nVotre raisonnement se tient, mais ne vous laissez pas trop guider par la logique de conversion entre modèles. Ce qui compte vraiment, c'est ce que vous savez de votre pied : 28 cm, avant-pied large, et des Brogues en 43 qui vous vont très bien.\n\nPour le Penny Loafer, restez sur le 43. Le mocassin a une forme différente des Brogues, et avec un avant-pied large, descendre en 42.5 serait risqué. Le cuir et la semelle en liège s'assouplissent avec le port, donc si ça chausse juste au début, c'est normal et ça se règle après quelques utilisations.\n\nBonne commande !\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 4
     },
     {
       "topic": "retour_automatique_rupture_stock_avec_alternatives",
