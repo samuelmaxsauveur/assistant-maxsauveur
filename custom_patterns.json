@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__demande_de_prise_en_charge_sous_garantie___semelle_endom",
+      "topic_label": "Re: Demande de prise en charge sous garantie — Semelle endommagée — Commande 8877",
+      "situation": "Re: Demande de prise en charge sous garantie — Semelle endommagée — Commande 8877",
+      "response_template": "Bonjour Quentin,\n\nMerci pour votre message.\n\nNous revenons vers vous cette semaine avec une confirmation de prise en charge. Comptez environ 14 jours de traitement à réception avant que votre paire ne soit envoyée en atelier.\n\nN'hésitez pas si vous avez d'autres questions d'ici là.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
