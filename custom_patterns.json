@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__max_sauveur___service_client",
+      "topic_label": "Re: Re: Max Sauveur — Service Client",
+      "situation": "Re: Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Florian,\n\nMerci pour votre message. Je comprends votre demande concernant les autres articles du colis.\n\nEn consultant votre commande, voici ce que nous avons reçu lors de votre retour. Pourriez-vous me confirmer précisément quels articles vous avez inclus dans votre colis retour ? Votre commande contenait en effet, en plus du Moc Jagger :\n\n- Cirage à la cire d'abeille (Marron)\n- Cirage à la cire d'abeille (Noir)\n- Embauchoirs bois de cèdre (41)\n\nDès que notre équipe logistique confirme la réception de ces articles, nous procéderons au remboursement correspondant. Je reviendrai vers vous dès que j'ai une confirmation de notre côté.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 13
+    },
+    {
+      "topic": "prise_en_charge_garantie_semelle_endommagee",
+      "topic_label": "Prise en charge garantie - Semelle endommagée",
+      "situation": "Un client signale une semelle endommagée sur sa paire et demande une prise en charge sous garantie. Le service client valide la demande et informe le client du délai de traitement en atelier.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message.\n\nNous revenons vers vous cette semaine avec une confirmation de prise en charge. Comptez environ 14 jours de traitement à réception avant que votre paire ne soit envoyée en atelier.\n\nN'hésitez pas si vous avez d'autres questions d'ici là.\n\nCordialement,\nJohn de Max Sauveur",
+      "key_points": "Ton professionnel et rassurant. Engagement : confirmation dans la semaine + délai précis de 14 jours. Invite le client à poser d'autres questions. Formulation transparente sur les délais.",
+      "example_count": 1
+    },
+    {
       "topic": "re__demande_de_prise_en_charge_sous_garantie___semelle_endom",
       "topic_label": "Re: Demande de prise en charge sous garantie — Semelle endommagée — Commande 8877",
       "situation": "Re: Demande de prise en charge sous garantie — Semelle endommagée — Commande 8877",
@@ -320,14 +336,6 @@
       "response_template": "Bonjour Géraldine,\n\nMerci pour ce retour sur vos mesures.\n\nVous avez raison, avec 23,7 cm vous êtes en bas de la fourchette pour un 37. Cela dit, la mesure seule ne suffit pas à conclure que la chaussure est trop grande : sur un mocassin en cuir neuf, le jeu ressenti (notamment au talon) est souvent lié à la rigidité du cuir, pas à la pointure.\n\nAvant de tirer une conclusion, la vraie question est : avez-vous eu l'occasion de tester avec une petite semelle d'ajustement au talon, comme nous vous le suggérions ? Et comment est votre ressenti général en portant la chaussure quelques minutes ? Le pied glisse-t-il vraiment, ou est-ce plutôt un léger jeu qui reste inconfortable ?\n\nVotre retour nous permettra de vous orienter vers la meilleure solution.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re__re__max_sauveur___service_client",
-      "topic_label": "Re: Re: Max Sauveur — Service Client",
-      "situation": "Re: Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Clément,\n\nMerci pour votre confirmation, on clôt ça proprement.\n\nPetite précision sur l'adresse : Godot et Fils n'est pas référencé comme point relais Chrono2Shop. Nous avons sélectionné le point relais le plus proche qui l'est, soit :\n\nKiosque de Neuilly\n153 avenue Charles de Gaulle\n92200 Neuilly sur Seine\n\nCela vous convient ?\n\nDès réception de votre règlement de 5€, nous réexpédions immédiatement.\n\nVoici le lien de paiement sécurisé : https://secure.payplug.com/pay/5BLn7rzpFoC2uh6S0qfNNl\n\nCordialement,\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 12
     },
     {
       "topic": "demande_d_information_sur_une_pointure",
