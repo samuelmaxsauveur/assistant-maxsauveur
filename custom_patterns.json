@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "annulation_commande__12737",
+      "topic_label": "Annulation Commande #12737",
+      "situation": "Annulation Commande #12737",
+      "response_template": "Bonjour Grégoire,\n\nMerci pour votre message rapide.\n\nMalheureusement, votre commande #12737 a déjà été prise en charge par notre logistique et confiée au transporteur Chronopost. Nous faisons notre maximum pour tenter une annulation avant la prise en charge physique du colis, et nous revenons vers vous très rapidement pour vous confirmer si c'est possible.\n\nNous vous tiendrons informé dans les plus brefs délais.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
