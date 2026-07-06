@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__pour_vous",
+      "topic_label": "Re: Pour vous",
+      "situation": "Re: Pour vous",
+      "response_template": "Bonjour Jean-Nicolas,\n\nMerci pour votre retour et pour avoir pris le temps de répondre au questionnaire !\n\nJe suis désolé pour ce désagrément avec le code QUESTIONNAIRE10. Pourriez-vous me préciser sur quel(s) modèle(s) vous souhaitiez l'utiliser ?\n\nJe vous pose la question car le code ne s'applique pas à certaines catégories : les articles déjà en promotion, les chaussures bateaux et les sandales. Si votre sélection entre dans l'une de ces catégories, cela expliquerait pourquoi le code ne fonctionne pas, et je pourrai vous orienter vers une solution adaptée.\n\nDès que vous m'avez confirmé le modèle, je fais le point et reviens vers vous rapidement.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
