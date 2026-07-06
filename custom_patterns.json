@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__re__re__re__max_sauveur___service_client",
+      "topic_label": "Re: Re: Re: Re: Re: Re: Max Sauveur — Service Client",
+      "situation": "Re: Re: Re: Re: Re: Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour David,\n\nParfait, merci pour ce retour. Pas de problème pour l'absence.\n\nUn point important à noter : la paire a été livrée le 25 mai, et le délai légal de retour est de 14 jours à compter de la réception. Nous sommes donc au-delà de ce délai. Nous restons toutefois ouverts à traiter votre dossier, mais il est impératif que nous recevions le colis rapidement, dans les prochains jours.\n\nDès réception et contrôle de la paire, nous reviendrons vers vous pour la suite.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
