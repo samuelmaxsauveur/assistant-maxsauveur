@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__recherche_de_stock_cadeau_brogues",
+      "topic_label": "Re: Recherche de stock cadeau brogues",
+      "situation": "Re: Recherche de stock cadeau brogues",
+      "response_template": "Bonjour Lunielle,\n\nJe comprends votre déception, et je suis sincèrement navré de ne pas avoir mieux cerné la situation dès le départ.\n\nPour vous répondre directement : oui, le Brogue Derby Cuir Gras Marron en 46 est bien en rupture de stock sur notre site, et nous n'avons pas de paire disponible en réserve non postée.\n\nCe que je peux vous proposer :\n\nActivez l'alerte de réassort directement sur la fiche produit du modèle. Si une paire en 46 revient en stock (retour client, réassort ciblé), vous serez notifiée immédiatement.\n\nJe ne peux pas vous promettre de date ni garantir qu'un 46 reviendra, mais c'est la meilleure façon de ne rien manquer si cela se produit.\n\nEncore désolé de ne pas avoir pu vous apporter la réponse que vous espériez pour ce beau cadeau.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
