@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "annulation_commande_12723",
+      "topic_label": "Annulation Commande 12723",
+      "situation": "Annulation Commande 12723",
+      "response_template": "Bonjour Thibaut,\n\nMerci pour votre message.\n\nMalheureusement, votre commande a déjà été prise en charge par le transporteur et il ne nous est plus possible de l'intercepter pour l'annuler.\n\nVoici ce que nous vous conseillons : à la réception du colis au point relais Consigne La Poste Pickup de Boulogne-Billancourt, vous pouvez simplement refuser le colis. Il nous sera automatiquement retourné et nous procéderons au remboursement dès réception (compter 2 à 3 semaines le temps que le colis soit retourné).\n\nSi vous le récupérez malgré tout, pas de problème : vous pourrez nous le retourner via le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
