@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__12291_confirm_e",
+      "topic_label": "Re: Commande #12291 confirmée",
+      "situation": "Re: Commande #12291 confirmée",
+      "response_template": "Bonjour Jules,\n\nMerci pour ce retour. Le délai depuis notre message du 23 juin est effectivement plus long que prévu, et votre hypothèse sur la carte expirée est tout à fait plausible : techniquement, un remboursement vers une carte expirée peut être bloqué ou redirigé selon les banques.\n\nDe notre côté, le remboursement a bien été initié. Je vous conseille de contacter votre banque en leur précisant qu'un remboursement de 268,75€ devait arriver depuis fin juin, et de leur indiquer que votre carte a changé entre-temps. Ils pourront vérifier si le montant est en attente et vous indiquer la marche à suivre pour le récupérer sur votre nouveau moyen de paiement.\n\nSi votre banque vous confirme qu'il n'y a aucun mouvement de leur côté, revenez vers moi et je ferai une vérification approfondie de notre côté pour débloquer la situation.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "annulation_commande__12737",
       "topic_label": "Annulation Commande #12737",
       "situation": "Annulation Commande #12737",
