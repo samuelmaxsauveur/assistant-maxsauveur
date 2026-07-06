@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_07_06_09_11_59",
+      "topic_label": "Form name Form submitted 2026-07-06 09:11:59",
+      "situation": "Form name Form submitted 2026-07-06 09:11:59",
+      "response_template": "Bonjour Romane,\n\nMerci pour votre message et quelle belle idée de cadeau !\n\nConcernant la correspondance : une taille 8 Paraboot équivaut à un 42 EU. Cela dit, le Moc Jagger chausse assez grand, et nous vous recommandons de prendre un 40 pour cette personne.\n\nSi jamais la taille ne convient pas parfaitement, pas d'inquiétude : nous gérons les échanges sans problème. Il suffira de nous retourner la paire et nous créerons un avoir pour commander la taille adaptée.\n\nN'hésitez pas si vous avez d'autres questions !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
