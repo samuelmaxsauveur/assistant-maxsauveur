@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "commande_12809",
+      "topic_label": "Commande 12809",
+      "situation": "Commande 12809",
+      "response_template": "Bonjour Gilles,\n\nMerci pour votre message.\n\nVotre commande #12809 a déjà été expédiée, ce qui nous empêche de la modifier ou de l'annuler à ce stade. Nous ne pouvons pas non plus appliquer rétroactivement un tarif promotionnel sur une commande passée avant le début des promotions.\n\nVoici ce que nous pouvons faire : vous pouvez passer une nouvelle commande dès maintenant au prix soldé de 229€, puis retourner la première paire à réception. Les frais de retour restent à votre charge selon notre politique habituelle, mais l'écart de prix entre les deux commandes sera bien en votre faveur.\n\nPour suivre votre colis en cours, voici le lien : https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR657503390TS\n\nLivraison estimée entre le 8 et le 10 juillet. Pour le retour, le bon de retour est disponible ici : https://maxsauveur.com/pages/livraison-et-retour\n\nRestez disponible si vous avez la moindre question.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
