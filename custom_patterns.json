@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "pointure___fisherman",
+      "topic_label": "Pointure - fisherman",
+      "situation": "Pointure - fisherman",
+      "response_template": "Bonjour Loïc,\n\nAvec 28 cm de pied, vous êtes en **43** sur notre guide. La Fisherman chausse légèrement grand, donc je vous recommande de prendre le **42**. Les boucles de réglage permettent en plus un ajustement précis au niveau du tour de pied et de la cheville.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "rupture_stock_reassort_impossible_alerte_dispo",
+      "topic_label": "Rupture de stock définitive – Activation alerte disponibilité",
+      "situation": "Un client recherche un produit dans une taille spécifique qui n'est plus disponible sur le site. Le client souhaite savoir si un réassort est prévu ou si le produit est définitivement en rupture. Max Sauveur doit clarifier la situation et proposer l'activation d'une alerte.",
+      "response_template": "Bonjour [Prénom],\n\nJe comprends votre déception, et je suis sincèrement navré de ne pas avoir mieux cerné la situation dès le départ.\n\nPour vous répondre directement : oui, le [Modèle] en [taille] est bien en rupture de stock sur notre site, et nous n'avons pas de paire disponible en réserve non postée.\n\nCe que je peux vous proposer :\n\n**Activez l'alerte de réassort** directement sur la fiche produit du modèle. Si une paire en [taille] revient en stock (retour client, réassort ciblé), vous serez notifiée immédiatement.\n\nJe ne peux pas vous promettre de date ni garantir qu'une [taille] reviendra, mais c'est la meilleure façon de ne rien manquer si cela se produit.\n\nEncore désolé de ne pas avoir pu vous apporter la réponse que vous espériez.\n\nCordialement,\nMax Sauveur",
+      "key_points": "Ton empathique et honnête – Pas de fausse promesse de date de réassort – Proposer la solution d'activation d'alerte comme meilleure alternative – Reconnaître les limites plutôt que de donner de faux espoirs – Signer du nom de la marque",
+      "example_count": 1
+    },
+    {
       "topic": "re__recherche_de_stock_cadeau_brogues",
       "topic_label": "Re: Recherche de stock cadeau brogues",
       "situation": "Re: Recherche de stock cadeau brogues",
