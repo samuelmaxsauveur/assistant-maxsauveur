@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Nicolas,\n\nMerci pour ce retour, c'est utile à entendre. On comprend tout à fait que cette sensation de poids puisse décevoir quand on ne s'y attend pas.\n\nPas de problème, nous allons traiter votre remboursement. Vous recevrez la confirmation dès que c'est fait.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 67
+    },
+    {
+      "topic": "code_promo_exclusions_articles_remises",
+      "topic_label": "Code promo non applicable sur articles en promotion",
+      "situation": "Un client possède un code promotionnel (ex: QUESTIONNAIRE10) et souhaite l'appliquer sur des articles déjà en promotion/remise. Le code ne fonctionne pas car il comporte des exclusions inhérentes aux articles remisés.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour ces précisions !\n\nMalheureusement, les articles [Article1], [Article2] et [Article3] sont actuellement en promotion sur notre site, et le code [CODE] ne s'applique pas aux articles déjà remisés. C'est une condition inhérente au code, je ne peux pas y déroger.\n\nEn revanche, bonne nouvelle de notre côté : si vous commandez ces [nombre] paires ensemble, nous pouvons vous offrir [compensation/avantage]. C'est notre façon de marquer le coup pour une commande de cette envergure.\n\nN'hésitez pas si vous avez d'autres questions avant de finaliser.\n\nCordialement,\n[Signature]",
+      "key_points": "Ton : empathique mais ferme sur la règle. Explication claire de l'exclusion. Proposition systématique d'une alternative commerciale (embauchoirs, cadeau, etc.) pour compenser et maintenir la satisfaction client. Ne jamais contourner les conditions du code promo.",
+      "example_count": 1
+    },
+    {
       "topic": "fwd__re__pour_vous",
       "topic_label": "Fwd: Re: Pour vous",
       "situation": "Fwd: Re: Pour vous",
@@ -48,14 +64,6 @@
       "response_template": "Bonjour,\n\nMerci pour votre message.\n\nAvec votre [Modèle actuel] en [Pointure actuelle] qui est parfaitement ajusté, je vous recommande le [Pointure supérieure] pour les [Modèle boots].\n\nLa raison : une boots se porte avec une chaussette plus épaisse qu'un mocassin, et il faut un peu d'espace pour que le pied soit à l'aise sur la durée. Le [Pointure actuelle] serait trop juste dans ce contexte.\n\nN'hésitez pas si vous avez d'autres questions avant de commander.\n\nCordialement,\n[Nom] – Service Client – Max Sauveur",
       "key_points": "Ton : professionnel et rassurant. Explication logique de l'ajustement (+0,5 à +1 taille pour boots). Engagement : disponibilité pour questions supplémentaires. Formulation clé : 'un peu d'espace pour que le pied soit à l'aise sur la durée'.",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Clara,\n\nToutes nos excuses pour le délai. Votre remboursement est bien en cours de traitement de notre côté, nous nous en occupons aujourd'hui même.\n\nVous devriez le voir apparaître sur votre compte dans les 3 à 5 jours ouvrés selon votre banque.\n\nN'hésitez pas à revenir vers nous si vous ne le recevez pas d'ici là.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 66
     },
     {
       "topic": "form_name_form_submitted_2026_07_07_08_45_13",
