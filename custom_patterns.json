@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "votre_commande_max_sauveur___information_importante",
+      "topic_label": "Votre commande Max Sauveur — information importante",
+      "situation": "Votre commande Max Sauveur — information importante",
+      "response_template": "Bonjour Alexandre,\n\nMerci pour votre commande, et sincèrement désolé de vous contacter avec une mauvaise nouvelle.\n\nSuite à une mauvaise synchronisation de nos stocks, nous ne sommes pas en mesure de vous expédier le Moc Jagger en cuir noir en taille 42 que vous avez commandé. Cette situation n'aurait pas dû se produire, et nous vous en présentons toutes nos excuses.\n\nPour ne pas bloquer votre commande plus longtemps, voici ce que nous pouvons vous proposer :\n\nLe Moc Jagger chausse particulièrement grand, ce qui fait que les tailles 41 ou 41,5 peuvent tout à fait convenir à un pied de 42 habituel. Si l'une de ces deux tailles vous intéresse, nous adaptons votre commande et l'expédions sans délai supplémentaire.\n\nSi en revanche aucune de ces options ne vous convient, nous procéderons bien sûr à un remboursement partiel correspondant au Moc Jagger, et le reste de votre commande (le Paul en 43 et la ceinture Liam) sera expédié normalement.\n\nDites-nous simplement ce que vous préférez et nous nous en occupons immédiatement.\n\nEncore une fois, nous sommes vraiment désolés pour cette situation qui n'aurait pas dû arriver.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 10
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -16,14 +24,6 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre commande, et sincèrement désolé de vous contacter avec une mauvaise nouvelle.\n\nSuite à une mauvaise synchronisation de nos stocks, nous ne sommes pas en mesure de vous expédier le [MODÈLE] en [COULEUR/MATIÈRE] en [TAILLE] que vous avez commandé. Cette situation n'aurait pas dû se produire, et nous en sommes vraiment désolés.\n\nPour ne pas bloquer votre commande plus longtemps, voici ce que nous pouvons vous proposer :\n\nNous avons le [MODÈLE] en [COULEUR/MATIÈRE] disponible en [TAILLE ALTERNATIVE]. Si vous souhaitez partir sur cette taille, je vous conseille de garder à l'esprit que [CARACTÉRISTIQUE DU PRODUIT - ex : le mocassin chausse juste au départ, le cuir et la semelle en liège s'assouplissent progressivement avec le port]. Si vous avez un pied plutôt fin ou que vous êtes entre deux pointures, cette taille peut tout à fait convenir.\n\nSi en revanche cette taille ne vous convient pas, nous vous proposons bien entendu un remboursement intégral du montant correspondant à l'article.\n\nDites-nous simplement votre choix et nous expédions dans la foulée.\n\nEncore toutes nos excuses pour ce contretemps.\n\nCordialement,\nJohn de Max Sauveur",
       "key_points": "Ton : sincère et apologétique. Engagements : proposition immédiate d'alternatives ou remboursement intégral. Conseil prudent sur les caractéristiques du produit (assouplissement, ajustement). Montrer qu'on comprend les implications (pointure serrée, pied fin). Clarifier le choix et s'engager à expédier rapidement. Formulation clé : 'Cette situation n'aurait pas dû se produire' pour prendre la responsabilité.",
       "example_count": 1
-    },
-    {
-      "topic": "votre_commande_max_sauveur___information_importante",
-      "topic_label": "Votre commande Max Sauveur — information importante",
-      "situation": "Votre commande Max Sauveur — information importante",
-      "response_template": "Bonjour Thibaut,\n\nMerci pour votre commande, et sincèrement désolé de vous contacter avec une mauvaise nouvelle.\n\nSuite à une mauvaise synchronisation de nos stocks, nous ne sommes pas en mesure de vous expédier le mocassin Peter A. en daim marron en 42 que vous avez commandé. Cette situation n'aurait pas dû se produire, et nous en sommes vraiment désolés.\n\nPour ne pas bloquer votre commande plus longtemps, voici ce que nous pouvons vous proposer :\n\nNous avons le **Peter A. en daim marron disponible en 43**. Si vous souhaitez partir sur cette taille, je vous conseille de garder à l'esprit que le mocassin chausse juste au départ, le cuir et la semelle en liège s'assouplissent progressivement avec le port. Si vous avez un pied plutôt fin ou que vous êtes entre deux pointures, le 43 peut tout à fait convenir.\n\nSi en revanche le 43 ne vous convient pas, nous vous proposons bien entendu un **remboursement intégral** du montant correspondant à l'article.\n\nDites-nous simplement votre choix et nous expédions dans la foulée.\n\nEncore toutes nos excuses pour ce contretemps.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 9
     },
     {
       "topic": "erreur_synchronisation_stock_rupture_imprevue_alternatives",
