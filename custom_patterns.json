@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "retour",
+      "topic_label": "Retour",
+      "situation": "Retour",
+      "response_template": "Bonjour Shady,\n\nMerci pour votre message.\n\nConcernant votre commande (#12828, Le Boat en 43), elle a bien été expédiée et est en route vers votre adresse à Veigy-Foncenex. Livraison estimée entre le 8 et le 10 juillet. Vous pouvez suivre votre colis ici : https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR657512873TS\n\nPour la commande de votre amie Raghad (le 42), je n'ai pas ses informations de commande de mon côté. Pour que nous puissions traiter son retour, il faudrait qu'elle nous contacte directement depuis l'adresse email utilisée lors de sa commande, en nous précisant son numéro de commande. Cela nous permettra de vérifier le statut de sa livraison et de lui communiquer la procédure de retour.\n\nEn attendant, voici la procédure standard pour qu'elle puisse s'y préparer :\n\n1. Télécharger et compléter le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquer \"avoir\" ou \"remboursement\" comme raison)\n2. Emballer soigneusement la paire avec le bon à l'intérieur\n3. Expédier à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nLes frais de retour sont à sa charge. Dès réception et contrôle, nous traiterons sa demande.\n\nN'hésitez pas à nous revenir si vous avez d'autres questions.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
