@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "choix_de_pointure",
+      "topic_label": "Choix de Pointure",
+      "situation": "Choix de Pointure",
+      "response_template": "Bonjour Maxime,\n\nMerci pour votre message et pour avoir suivi notre méthode de mesure.\n\nAvec 30,2 cm, vous seriez théoriquement sur du 46. Malheureusement, notre mocassin Paul ne dépasse pas le 45, c'est la taille maximale disponible pour ce modèle.\n\nSi vous souhaitez tenter le 45, sachez que le Paul chausse juste au départ, le cuir et la semelle en liège s'assouplissant progressivement avec le port pour se mouler au pied. Avec un pied aussi long, il y a cependant un risque que la paire reste inconfortable, et je préfère être honnête avec vous plutôt que de vous encourager à commander sans cette précision.\n\nN'hésitez pas si vous avez d'autres questions, je reste disponible pour vous aider.\n\nJohn - Service Client - Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
