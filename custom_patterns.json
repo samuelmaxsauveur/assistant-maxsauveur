@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__th_o_taupin_commande__11645_demande_d__change_des_moc_ja",
+      "topic_label": "Re: Théo Taupin Commande #11645 Demande d’échange des moc jagger pony hair",
+      "situation": "Re: Théo Taupin Commande #11645 Demande d’échange des moc jagger pony hair",
+      "response_template": "Bonjour Théo,\n\nMerci pour votre retour.\n\nConcernant le 42,5, il n'y a pas de réassort prévu dans cette taille pour le moment. La bonne nouvelle, c'est que la différence entre le 42,5 et le 42 est vraiment minime sur ce modèle, et le 42 devrait vous convenir parfaitement.\n\nJe vous recommande donc de commander directement le 42 avec votre avoir **98KYQJTF4EW5**.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_07_06_18_19_50",
       "topic_label": "Form name Form submitted 2026-07-06 18:19:50",
       "situation": "Form name Form submitted 2026-07-06 18:19:50",
