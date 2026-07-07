@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "guide_pointure",
+      "topic_label": "Guide pointure",
+      "situation": "Guide pointure",
+      "response_template": "Bonjour,\n\nAvec 24,5 cm de pied, vous êtes en **39** sur notre guide.\n\nPour affiner le conseil, quel modèle vous intéresse ? Certains chaussent légèrement grand, d'autres plus ajusté, et la recommandation peut changer selon la paire visée.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__th_o_taupin_commande__11645_demande_d__change_des_mo",
       "topic_label": "Re: Re: Théo Taupin Commande #11645 Demande d’échange des moc jagger pony hair",
       "situation": "Re: Re: Théo Taupin Commande #11645 Demande d’échange des moc jagger pony hair",
