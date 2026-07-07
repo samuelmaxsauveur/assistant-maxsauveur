@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__votre_commande_max_sauveur___information_importante",
+      "topic_label": "Re: Votre commande Max Sauveur — information importante",
+      "situation": "Re: Votre commande Max Sauveur — information importante",
+      "response_template": "Bonjour Pierre,\n\nC'est noté, nous procédons à l'annulation de votre commande #12830 et au remboursement intégral du montant réglé. Comptez 3 à 5 jours ouvrés pour que le virement apparaisse sur votre compte selon votre banque.\n\nEncore toutes mes excuses pour ce contretemps.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 12
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -136,14 +144,6 @@
       "response_template": "Bonjour [Prénom],\n\nPas de problème, nous allons procéder au remboursement intégral de votre commande #[NUMÉRO] dans les plus brefs délais. Vous recevrez le montant sur votre moyen de paiement d'origine sous quelques jours ouvrés.\n\nEncore toutes nos excuses pour ce contretemps.\n\nCordialement,\nJohn de Max Sauveur",
       "key_points": "Ton rassurant et empathique. Engagements clairs : remboursement intégral, délai de quelques jours ouvrés. Présenter les excuses de manière sincère. Utiliser le numéro de commande pour personnaliser la réponse.",
       "example_count": 1
-    },
-    {
-      "topic": "re__votre_commande_max_sauveur___information_importante",
-      "topic_label": "Re: Votre commande Max Sauveur — information importante",
-      "situation": "Re: Votre commande Max Sauveur — information importante",
-      "response_template": "Bonjour Thibaut,\n\nPas de problème, nous allons procéder au remboursement intégral de votre commande #12723 dans les plus brefs délais. Vous recevrez le montant sur votre moyen de paiement d'origine sous quelques jours ouvrés.\n\nEncore toutes nos excuses pour ce contretemps.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 11
     },
     {
       "topic": "erreur_synchronisation_stock_rupture_imprevue_alternatives",
