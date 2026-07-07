@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_07_07_10_51_11",
+      "topic_label": "Form name Form submitted 2026-07-07 10:51:11",
+      "situation": "Form name Form submitted 2026-07-07 10:51:11",
+      "response_template": "Bonjour Safi,\n\nMerci pour votre message !\n\nAvec 24 cm de pied, notre guide vous place théoriquement en 38. Mais le Moc Jagger chausse particulièrement grand, il faut donc descendre d'une taille : je vous recommande le **37**.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
