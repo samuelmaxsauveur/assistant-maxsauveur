@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "votre_commande_max_sauveur___information_importante",
+      "topic_label": "Votre commande Max Sauveur — information importante",
+      "situation": "Votre commande Max Sauveur — information importante",
+      "response_template": "Bonjour Mélaine,\n\nMerci pour votre commande #12775, nous sommes vraiment désolés de vous contacter avec une mauvaise nouvelle.\n\nSuite à une mauvaise synchronisation de nos stocks, nous ne sommes pas en mesure de vous expédier la Fisherman en cuir grainé marron foncé en 43 que vous avez commandée. Cette situation n'aurait pas dû se produire, et nous en sommes sincèrement désolés.\n\nPour ne pas bloquer l'expédition de votre commande, voici deux alternatives que nous pouvons vous proposer en remplacement :\n\n- La **Fisherman en cuir grainé noir, taille 43**, disponible immédiatement\n- Le **Le Daim marron, taille 43**, également disponible\n\nSi aucune de ces options ne vous convient, nous procéderons bien sûr au remboursement intégral de la Fisherman marron foncé, et le reste de votre commande (le mocassin Peter A. et la ceinture Jonas) sera expédié sans délai.\n\nDites-nous simplement quelle option vous préférez, nous nous occupons du reste dans la foulée.\n\nEncore toutes nos excuses pour ce contretemps.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 8
+    },
+    {
       "topic": "re__max_sauveur___service_client",
       "topic_label": "Re: Max Sauveur — Service Client",
       "situation": "Re: Max Sauveur — Service Client",
@@ -4904,14 +4912,6 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et ravi d'apprendre que vous appréciez la qualité de la commande dans l'ensemble !\n\nConcernant la trace visible sur [zone concernée] : nos [produits concernés] sont [description matière], une matière naturelle qui peut présenter des marques de gras, des variations de teinte ou des légères irrégularités. Cela fait partie des caractéristiques de cette peau et n'est pas considéré comme un défaut de fabrication.\n\nCela dit, si vous souhaitez que nous jetions un œil à l'atelier pour confirmer qu'il ne s'agit pas d'autre chose, n'hésitez pas à nous retourner [le produit]. On regardera ça de près et on reviendra vers vous avec une réponse claire.\n\nJohn de Max Sauveur",
       "key_points": "Commencer par valoriser la satisfaction générale du client. Expliquer pédagogiquement la caractéristique de la matière naturelle (cuir de chèvre : marques de gras, variations de teinte, irrégularités). Ne pas fermer la porte : proposer le retour à l'atelier pour vérification si le client a un doute. Ton bienveillant et transparent. Ne pas statuer définitivement sans avoir vu le produit si un doute subsiste.",
       "example_count": 1
-    },
-    {
-      "topic": "votre_commande_max_sauveur___information_importante",
-      "topic_label": "Votre commande Max Sauveur — information importante",
-      "situation": "Votre commande Max Sauveur — information importante",
-      "response_template": "Bonjour Dylan,\n\nMerci pour votre commande et votre confiance envers Max Sauveur.\n\nMalheureusement, suite à une mauvaise synchronisation de nos stocks, nous ne sommes pas en mesure de vous expédier le Paul Mocassin Cuir Grainé Marron en taille 43. Nous en sommes sincèrement désolés, ce n'est pas le niveau de service que nous voulons vous offrir.\n\nVoici ce que nous pouvons faire pour vous :\n\nNous avons ce modèle disponible en **taille 42**. Le Paul peut chausser légèrement grand chez certains clients, donc selon votre morphologie, le 42 peut tout à fait fonctionner. Si vous souhaitez qu'on vous guide sur ce point, dites-nous simplement la longueur de votre pied en centimètres (talon contre un mur, bout du gros orteil, et on ajoute 0,2 cm) et on vous dit si ça vaut le coup de tenter.\n\nSi le 42 ne vous convient pas, nous pouvons également vous proposer le **Paul Mocassin Cuir Grainé Marron**, si ce coloris vous intéresse.\n\nEt bien sûr, si aucune de ces options ne vous convient, nous procéderons à un remboursement intégral de votre commande, sans la moindre condition.\n\nDites-nous simplement ce que vous préférez et nous nous occupons du reste dans les plus brefs délais.\n\nEncore toutes nos excuses pour cette situation.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 7
     },
     {
       "topic": "aide_pointure_peter_a",
