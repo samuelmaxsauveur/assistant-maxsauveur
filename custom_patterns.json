@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "votre_commande_max_sauveur___information_importante",
+      "topic_label": "Votre commande Max Sauveur — information importante",
+      "situation": "Votre commande Max Sauveur — information importante",
+      "response_template": "Bonjour Amédée,\n\nMerci pour votre commande, nous sommes vraiment désolés de vous contacter avec une mauvaise nouvelle.\n\nSuite à une mauvaise synchronisation de nos stocks, nous ne sommes pas en mesure de vous expédier la Peter A. en cuir noir en 43 que vous avez commandée. Cette situation n'aurait pas dû se produire, et nous en sommes sincèrement désolés.\n\nVoici ce que nous pouvons vous proposer en remplacement :\n\nLa **Peter A. en daim marron, taille 43**, disponible immédiatement. C'est le même modèle, même pointure, dans un coloris très polyvalent qui fonctionne aussi bien avec une tenue casual qu'habillée. Si vous souhaitez vous faire une idée, la fiche produit est disponible sur notre site.\n\nSi ce remplacement ne vous convient pas, nous procéderons bien sûr à un remboursement complet de votre commande.\n\nDites-nous simplement ce que vous préférez, nous nous occupons du reste dans les meilleurs délais.\n\nEncore toutes nos excuses pour ce contretemps,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 9
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -16,14 +24,6 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre commande #[NUMÉRO], nous sommes vraiment désolés de vous contacter avec une mauvaise nouvelle.\n\nSuite à une mauvaise synchronisation de nos stocks, nous ne sommes pas en mesure de vous expédier le [ARTICLE] en [COULEUR/TAILLE] que vous avez commandé. Cette situation n'aurait pas dû se produire, et nous en sommes sincèrement désolés.\n\nPour ne pas bloquer l'expédition de votre commande, voici deux alternatives que nous pouvons vous proposer en remplacement :\n\n- [ALTERNATIVE 1 : description complète]\n- [ALTERNATIVE 2 : description complète]\n\nSi aucune de ces options ne vous convient, nous procéderons bien sûr au remboursement intégral de [ARTICLE], et le reste de votre commande sera expédié sans délai.\n\nDites-nous simplement quelle option vous préférez, nous nous occupons du reste dans la foulée.\n\nEncore toutes nos excuses pour ce contretemps.\n\nCordialement,\n[Signature]",
       "key_points": "Ton : sincères excuses dès le début • Expliquer clairement le problème (mauvaise synchronisation) • Proposer 2-3 alternatives précises et immédiatement disponibles • Offrir le remboursement intégral comme option • Assurer que le reste de la commande ne sera pas impacté • Demander confirmation rapide du choix • Traiter rapidement une fois confirmé",
       "example_count": 1
-    },
-    {
-      "topic": "votre_commande_max_sauveur___information_importante",
-      "topic_label": "Votre commande Max Sauveur — information importante",
-      "situation": "Votre commande Max Sauveur — information importante",
-      "response_template": "Bonjour Mélaine,\n\nMerci pour votre commande #12775, nous sommes vraiment désolés de vous contacter avec une mauvaise nouvelle.\n\nSuite à une mauvaise synchronisation de nos stocks, nous ne sommes pas en mesure de vous expédier la Fisherman en cuir grainé marron foncé en 43 que vous avez commandée. Cette situation n'aurait pas dû se produire, et nous en sommes sincèrement désolés.\n\nPour ne pas bloquer l'expédition de votre commande, voici deux alternatives que nous pouvons vous proposer en remplacement :\n\n- La **Fisherman en cuir grainé noir, taille 43**, disponible immédiatement\n- Le **Le Daim marron, taille 43**, également disponible\n\nSi aucune de ces options ne vous convient, nous procéderons bien sûr au remboursement intégral de la Fisherman marron foncé, et le reste de votre commande (le mocassin Peter A. et la ceinture Jonas) sera expédié sans délai.\n\nDites-nous simplement quelle option vous préférez, nous nous occupons du reste dans la foulée.\n\nEncore toutes nos excuses pour ce contretemps.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 8
     },
     {
       "topic": "re__max_sauveur___service_client",
