@@ -2,20 +2,12 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
-      "topic": "form_name_form_submitted_2026_07_07_21_39_29",
-      "topic_label": "Form name Form submitted 2026-07-07 21:39:29",
-      "situation": "Form name Form submitted 2026-07-07 21:39:29",
-      "response_template": "Bonjour Thomas,\n\nMerci pour votre retour, et ravi que la paire vous plaise visuellement !\n\nConcernant le 44,5 : ni réassort ni précommande n'est prévu pour la Dakota pour le moment. Je ne veux pas vous donner de faux espoirs sur ce point.\n\nCela dit, avant de vous lancer dans un retour, un élément important à prendre en compte : la Dakota est en cuir, et le cuir se détend avec le port. Un 44 qui serre légèrement aujourd'hui va progressivement s'assouplir et s'adapter à votre pied. C'est tout à fait normal sur les premières sorties, et beaucoup de clients nous confirment que le confort s'installe rapidement.\n\nÀ vous de voir si vous préférez tenter quelques sorties supplémentaires avant de décider. Si vous maintenez votre retour, voici la procédure :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\" comme motif)\n2. Glissez le bon dans le colis soigneusement emballé\n3. Expédiez à : SSL – 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous enverrons un avoir du montant de votre commande, valable 6 mois.\n\nJohn – Service Client – Max Sauveur",
+      "topic": "re__votre_commande_max_sauveur___information_importante",
+      "topic_label": "Re: Votre commande Max Sauveur — information importante",
+      "situation": "Re: Votre commande Max Sauveur — information importante",
+      "response_template": "Bonjour Jean,\n\nJe vous comprends, et cette frustration est tout à fait légitime. \n\nJe procède au remboursement complet du montant de votre commande #12734. Vous devriez le voir apparaître sur votre moyen de paiement d'origine sous 5 à 10 jours ouvrés.\n\nNous prenons note de ce problème récurrent sur la Fisherman en 42, et nous ferons le nécessaire pour qu'il ne se reproduise plus.\n\nEncore toutes mes excuses, Jean.\n\nJohn de Max Sauveur",
       "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "retour",
-      "topic_label": "Retour",
-      "situation": "Retour",
-      "response_template": "Bonjour Shady,\n\nMerci pour votre message.\n\nConcernant votre commande (#12828, Le Boat en 43), elle a bien été expédiée et est en route vers votre adresse à Veigy-Foncenex. Livraison estimée entre le 8 et le 10 juillet. Vous pouvez suivre votre colis ici : https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR657512873TS\n\nPour la commande de votre amie Raghad (le 42), je n'ai pas ses informations de commande de mon côté. Pour que nous puissions traiter son retour, il faudrait qu'elle nous contacte directement depuis l'adresse email utilisée lors de sa commande, en nous précisant son numéro de commande. Cela nous permettra de vérifier le statut de sa livraison et de lui communiquer la procédure de retour.\n\nEn attendant, voici la procédure standard pour qu'elle puisse s'y préparer :\n\n1. Télécharger et compléter le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquer \"avoir\" ou \"remboursement\" comme raison)\n2. Emballer soigneusement la paire avec le bon à l'intérieur\n3. Expédier à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nLes frais de retour sont à sa charge. Dès réception et contrôle, nous traiterons sa demande.\n\nN'hésitez pas à nous revenir si vous avez d'autres questions.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
+      "example_count": 12
     },
     {
       "topic": "_daily_doc",
@@ -120,14 +112,6 @@
       "response_template": "Bonjour [Prénom],\n\nPas de problème, nous allons procéder au remboursement intégral de votre commande #[NUMÉRO] dans les plus brefs délais. Vous recevrez le montant sur votre moyen de paiement d'origine sous quelques jours ouvrés.\n\nEncore toutes nos excuses pour ce contretemps.\n\nCordialement,\nJohn de Max Sauveur",
       "key_points": "Ton rassurant et empathique. Engagements clairs : remboursement intégral, délai de quelques jours ouvrés. Présenter les excuses de manière sincère. Utiliser le numéro de commande pour personnaliser la réponse.",
       "example_count": 1
-    },
-    {
-      "topic": "re__votre_commande_max_sauveur___information_importante",
-      "topic_label": "Re: Votre commande Max Sauveur — information importante",
-      "situation": "Re: Votre commande Max Sauveur — information importante",
-      "response_template": "Bonjour Thibaut,\n\nPas de problème, nous allons procéder au remboursement intégral de votre commande #12723 dans les plus brefs délais. Vous recevrez le montant sur votre moyen de paiement d'origine sous quelques jours ouvrés.\n\nEncore toutes nos excuses pour ce contretemps.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 11
     },
     {
       "topic": "erreur_synchronisation_stock_rupture_imprevue_alternatives",
