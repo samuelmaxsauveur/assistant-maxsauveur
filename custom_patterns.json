@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__votre_commande_max_sauveur___information_importante",
+      "topic_label": "Re: Votre commande Max Sauveur — information importante",
+      "situation": "Re: Votre commande Max Sauveur — information importante",
+      "response_template": "Bonjour Dylan,\n\nMerci d'avoir renvoyé la paire, et merci aussi de nous avoir partagé votre ressenti aussi franchement. C'est important pour nous.\n\nQuelques points en réponse à vos remarques :\n\nConcernant les conseils pointure : nos recommandations sont données de bonne foi, avec les informations dont nous disposons au moment de l'échange. Mais un mocassin reste une chaussure particulière, sans lacets, dont le rendu final dépend beaucoup de la morphologie du pied (longueur, largeur, cou-de-pied...). Nous essayons de conseiller au mieux, mais nous ne pouvons pas toujours anticiper comment une paire va se comporter sur un pied spécifique. Ce n'est pas une excuse, c'est simplement la réalité de ce type de produit. Si nous ne donnions aucun conseil, vous seriez seul face à votre choix, ce qui n'est pas non plus l'idéal.\n\nCela dit, nous entendons votre frustration, et voici ce que nous allons faire :\n\n- Nous mettons un Paul en 44 de côté pour vous dès réception de votre colis retour.\n- Nous prenons en charge les frais de réexpédition de l'échange, vous n'aurez rien à payer pour recevoir le 44.\n\nVous avez donc la garantie d'obtenir votre paire en 44, et sans frais supplémentaires de notre côté.\n\nDès réception et contrôle du retour, nous faisons l'échange directement, vous n'aurez rien à faire.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 10
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -864,14 +872,6 @@
       "response_template": "Bonjour Hugo,\n\nMerci pour votre suivi. Nous venons de confirmer la réception de votre retour et nous nous occupons de votre dossier cette semaine.\n\nNous allons vous envoyer un avoir que vous pourrez utiliser directement pour commander votre Moc Jagger en 42,5.\n\nVous le recevrez par email dans les prochains jours.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 6
-    },
-    {
-      "topic": "re__votre_commande_max_sauveur___information_importante",
-      "topic_label": "Re: Votre commande Max Sauveur — information importante",
-      "situation": "Re: Votre commande Max Sauveur — information importante",
-      "response_template": "Bonjour Dylan,\n\nBien reçu, et merci d'avoir testé la paire comme convenu. Si les orteils touchent toujours le bout après plusieurs ports, l'échange en 44 est la bonne décision, surtout avec un mariage en août à l'horizon.\n\nVoici la procédure :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle de la paire, nous vous enverrons un avoir pour commander le Paul en 44. Notez que les échanges se font via avoir, pas en direct, donc pensez à commander dès réception du code pour ne pas manquer le stock.\n\nN'hésitez pas si vous avez des questions.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 9
     },
     {
       "topic": "avoir_genere_carte_cadeau_validee",
