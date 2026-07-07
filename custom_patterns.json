@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_07_07_08_45_13",
+      "topic_label": "Form name Form submitted 2026-07-07 08:45:13",
+      "situation": "Form name Form submitted 2026-07-07 08:45:13",
+      "response_template": "Bonjour,\n\nMerci pour votre message.\n\nAvec votre Paul en 43,5 qui est parfaitement ajusté, je vous recommande le 44 pour les Powell.\n\nLa raison : une boots se porte avec une chaussette plus épaisse qu'un mocassin, et il faut un peu d'espace pour que le pied soit à l'aise sur la durée. Le 43,5 serait trop juste dans ce contexte.\n\nN'hésitez pas si vous avez d'autres questions avant de commander.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__12878_confirm_e",
       "topic_label": "Re: Commande #12878 confirmée",
       "situation": "Re: Commande #12878 confirmée",
