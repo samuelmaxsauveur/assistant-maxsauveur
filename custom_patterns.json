@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_07_06_18_19_50",
+      "topic_label": "Form name Form submitted 2026-07-06 18:19:50",
+      "situation": "Form name Form submitted 2026-07-06 18:19:50",
+      "response_template": "Bonjour Clément,\n\nMerci pour ce message et pour votre fidélité depuis votre découverte de la marque, ça fait vraiment plaisir à lire.\n\nSur la taille, vous avez déjà votre réponse : le **42** est fait pour vous. On ne change pas.\n\nPour l'idée de pop-up store à Lyon, c'est une suggestion qu'on note avec grand intérêt. Le format éphémère parisien a en effet très bien fonctionné, et les retours de clients comme vous qui souhaitent découvrir les paires en vrai sont précieux pour orienter nos projets à venir. Je ne peux rien promettre, mais votre message est le bienvenu.\n\nN'hésitez pas si vous avez d'autres questions avant de vous lancer.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
