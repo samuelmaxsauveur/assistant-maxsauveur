@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_07_07_13_53_37",
+      "topic_label": "Form name Form submitted 2026-07-07 13:53:37",
+      "situation": "Form name Form submitted 2026-07-07 13:53:37",
+      "response_template": "Bonjour Lucas,\n\nMerci pour votre message.\n\nPour vous confirmer : le Final Countdown se termine le 10 juillet. Le bandeau indiquant 'du 3 au 7 juillet' correspond à la phase de lancement, mais la promotion court bien jusqu'au 10 juillet dans sa version complète.\n\nConcernant la nouveauté mentionnée dans notre dernier email, je ne suis pas en mesure de vous confirmer les détails à ce stade. Si vous souhaitez attendre d'en savoir plus avant de commander, vous avez jusqu'au 10 juillet pour le faire sans risquer de manquer la promotion.\n\nN'hésitez pas à revenir vers moi si vous avez d'autres questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
