@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Clara,\n\nToutes nos excuses pour le délai. Votre remboursement est bien en cours de traitement de notre côté, nous nous en occupons aujourd'hui même.\n\nVous devriez le voir apparaître sur votre compte dans les 3 à 5 jours ouvrés selon votre banque.\n\nN'hésitez pas à revenir vers nous si vous ne le recevez pas d'ici là.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 66
+    },
+    {
       "topic": "form_name_form_submitted_2026_07_07_08_45_13",
       "topic_label": "Form name Form submitted 2026-07-07 08:45:13",
       "situation": "Form name Form submitted 2026-07-07 08:45:13",
@@ -288,14 +296,6 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre suivi.\n\nNous vérifions le statut de votre remboursement pour la commande #[NUMERO] et revenons vers vous très rapidement avec une confirmation.\n\nCordialement,\n[Prénom] – Service Client – Max Sauveur",
       "key_points": "Ton : professionnel et rassurant. Engagement : confirmation rapide sans délai précis. Ne donner que le strict minimum pour maintenir la confiance. Formulation positive avec 'très rapidement'.",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Pascal,\n\nMerci pour votre suivi.\n\nNous vérifions le statut de votre remboursement pour la commande #11495 et revenons vers vous très rapidement avec une confirmation.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 65
     },
     {
       "topic": "defaut_fabrication_analyse_photos_atelier",
