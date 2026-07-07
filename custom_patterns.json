@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "d_ception_sur_mod_le_brogues_sable",
+      "topic_label": "Déception sur modèle brogues sable",
+      "situation": "Déception sur modèle brogues sable",
+      "response_template": "Bonjour Thomas,\n\nMerci pour ce message détaillé, et pour votre fidélité depuis 2022, c'est vraiment apprécié.\n\nJe comprends votre déception. Pour être transparent avec vous : le patronage des Brogues a effectivement évolué depuis votre première paire. C'est une décision que nous avons prise pour faire évoluer la ligne, avec un bout plus arrondi et un profil différent. Ce n'est pas un défaut, mais un changement de design assumé. Je comprends tout à fait que ce nouveau profil ne corresponde pas à ce que vous aimiez dans l'ancienne version.\n\nConcernant le cuir gras des Springsteen, les évolutions de cuir reflètent également des choix de collection, et les préférences en la matière sont bien sûr personnelles.\n\nPour les Brogues Cuir Gras Marron en 42.5, je vois que la commande #12854 a bien été livrée. Si vous souhaitez retourner la paire, voici la procédure :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour\n2. Indiquez le motif (remboursement ou avoir)\n3. Emballez soigneusement et envoyez à :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nEncore merci pour votre retour sincère, c'est le genre de feedback qui compte pour nous.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
