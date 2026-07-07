@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "commande_12796",
+      "topic_label": "Commande 12796",
+      "situation": "Commande 12796",
+      "response_template": "Bonjour Sélèna,\n\nPas d'inquiétude pour ça. Nous notons votre situation et nous ferons preuve de flexibilité : si la pointure ne convient pas à votre retour, nous pourrons vous proposer un échange de taille ou un avoir à utiliser sur le site.\n\nPrenez le temps d'essayer la paire tranquillement et revenez vers nous si besoin.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
