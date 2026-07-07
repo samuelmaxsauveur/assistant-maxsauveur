@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__th_o_taupin_commande__11645_demande_d__change_des_mo",
+      "topic_label": "Re: Re: Théo Taupin Commande #11645 Demande d’échange des moc jagger pony hair",
+      "situation": "Re: Re: Théo Taupin Commande #11645 Demande d’échange des moc jagger pony hair",
+      "response_template": "Bonjour Théo,\n\nMerci pour ce retour. Le problème avec l'avoir vient très probablement de l'adresse email utilisée lors du passage de commande.\n\nNous voyons en effet plusieurs adresses email associées à votre compte. Pour que le code fonctionne, il faut être connecté (ou commander) avec l'adresse email exactement liée à votre commande #11645 de Moc Jagger.\n\nPourriez-vous vérifier quelle adresse email vous avez utilisée lors de cette commande ? Vous pouvez la retrouver dans l'email de confirmation que vous avez reçu à l'époque. Une fois connecté avec la bonne adresse, le code 98KYQJTF4EW5 devrait fonctionner sans problème.\n\nN'hésitez pas à revenir vers nous si le problème persiste.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -4470,14 +4478,6 @@
       "topic_label": "Re: Re: Suivez la production de vos Moc Jagger",
       "situation": "Re: Re: Suivez la production de vos Moc Jagger",
       "response_template": "Bonjour Aurélie,\n\nPour changer de pointure, voici comment procéder : rendez-vous sur notre page de retour https://maxsauveur.com/pages/livraison-et-retour, téléchargez le bon de retour et cochez \"avoir\".\nRenvoyez la paire à votre charge à notre adresse logistique : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau.\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander votre Moc Jagger Pony Marron en 41.\n\nSi vous avez un doute, n'hésitez pas à me donner la longueur de votre pied en cm, je pourrai vous orienter avec plus de précision.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__re__th_o_taupin_commande__11645_demande_d__change_des_mo",
-      "topic_label": "Re: Re: Théo Taupin Commande #11645 Demande d’échange des moc jagger pony hair",
-      "situation": "Re: Re: Théo Taupin Commande #11645 Demande d’échange des moc jagger pony hair",
-      "response_template": "Bonjour Théo,\n\nRavi que la paire soit bien arrivée !\n\nPour l'échange de taille, voici la procédure :\n\n1. Rendez-vous sur notre page de retour : **https://maxsauveur.com/pages/livraison-et-retour**\n2. Téléchargez et complétez le bon de retour en indiquant comme raison : \"avoir\"\n3. Emballez soigneusement la paire et envoyez-la à notre adresse logistique : **SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau**\n4. Les frais de retour sont à votre charge\n\nDès réception et contrôle de la paire, nous vous enverrons un avoir correspondant au montant du prix actuel, que vous pourrez utiliser pour commander le 42,5 sans frais supplémentaire.\n\nCordialement,\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
