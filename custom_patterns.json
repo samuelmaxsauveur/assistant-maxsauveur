@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__choix_de_pointure",
+      "topic_label": "Re: Choix de Pointure",
+      "situation": "Re: Choix de Pointure",
+      "response_template": "Bonjour Maxime,\n\nBonne observation ! Le conseil sur le site s'applique à la majorité des clients qui ont un pied standard et qui risqueraient de se retrouver trop grand en prenant leur taille habituelle.\n\nDans votre cas, avec 30,2 cm de pied, vous êtes théoriquement sur du 46. Le fait que la Jagger chausse très grand signifie qu'un 46 devrait vous aller parfaitement, sans risque d'être trop à l'étroit comme sur le Paul.\n\nMa recommandation : tentez le 46 en Moc Jagger. C'est votre taille naturelle, et le modèle a suffisamment d'espace pour que ce soit confortable dès le premier port.\n\nN'hésitez pas si vous avez d'autres questions !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "guide_pointure",
       "topic_label": "Guide pointure",
       "situation": "Guide pointure",
