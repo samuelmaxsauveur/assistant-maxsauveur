@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__une_commande__12812_est_en_transit",
+      "topic_label": "Re: Re: Une commande #12812 est en transit",
+      "situation": "Re: Re: Une commande #12812 est en transit",
+      "response_template": "Bonjour Gustave,\n\nPas de souci, on peut tout à fait procéder au remboursement.\n\nUne chose importante à noter : pour traiter le remboursement complet de votre commande, il faudra retourner les deux articles ensemble, le Boat et la ceinture Jamie, dans le même colis. Sans les deux articles, nous ne pouvons pas rembourser la commande intégralement.\n\nVoici la procédure :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"remboursement\")\n2. Emballez soigneusement les deux articles avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique  :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous traitons le remboursement sous 10 jours ouvrés.\n\nEt si d'ici là vous repérez un modèle qui vous tente, on peut aussi basculer vers un avoir à la place du remboursement, le choix vous appartient.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
