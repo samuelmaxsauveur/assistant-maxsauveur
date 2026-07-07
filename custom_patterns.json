@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__12878_confirm_e",
+      "topic_label": "Re: Commande #12878 confirmée",
+      "situation": "Re: Commande #12878 confirmée",
+      "response_template": "Bonjour Edouard,\n\nMerci pour votre message, et pas de souci pour la vérification, c'est toujours une bonne réflexe !\n\nAvec 29,7 cm de pied (29,5 + 0,2 cm), vous êtes effectivement sur du 44 sur notre guide. La Fisherman chausse légèrement grand, ce qui est aussi favorable pour un pied un peu large. Le 44 est donc le bon choix, vous n'avez pas à vous inquiéter.\n\nVotre commande est actuellement en cours de préparation, avec une livraison estimée entre le 9 et le 11 juillet à votre point relais (Kiosque de Paris 7015B).\n\nBonne réception !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
