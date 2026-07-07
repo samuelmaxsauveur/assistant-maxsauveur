@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_07_07_21_39_29",
+      "topic_label": "Form name Form submitted 2026-07-07 21:39:29",
+      "situation": "Form name Form submitted 2026-07-07 21:39:29",
+      "response_template": "Bonjour Thomas,\n\nMerci pour votre retour, et ravi que la paire vous plaise visuellement !\n\nConcernant le 44,5 : ni réassort ni précommande n'est prévu pour la Dakota pour le moment. Je ne veux pas vous donner de faux espoirs sur ce point.\n\nCela dit, avant de vous lancer dans un retour, un élément important à prendre en compte : la Dakota est en cuir, et le cuir se détend avec le port. Un 44 qui serre légèrement aujourd'hui va progressivement s'assouplir et s'adapter à votre pied. C'est tout à fait normal sur les premières sorties, et beaucoup de clients nous confirment que le confort s'installe rapidement.\n\nÀ vous de voir si vous préférez tenter quelques sorties supplémentaires avant de décider. Si vous maintenez votre retour, voici la procédure :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\" comme motif)\n2. Glissez le bon dans le colis soigneusement emballé\n3. Expédiez à : SSL – 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous enverrons un avoir du montant de votre commande, valable 6 mois.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "retour",
       "topic_label": "Retour",
       "situation": "Retour",
