@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "max_sauveur___service_client",
+      "topic_label": "Max Sauveur — Service Client",
+      "situation": "Max Sauveur — Service Client",
+      "response_template": "Bonjour Benjamin,\n\nNous avons bien reçu vos Le Boat et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si un autre modèle vous fait de l'œil, on peut vous proposer une solution plus simple : nous vous envoyons un avoir d'une valeur de 174€ (soit 25€ offerts par la maison) et nous prenons en charge les frais de livraison pour cet échange. Cela vous permet de trouver la pièce idéale sans aucun frais supplémentaire.\n\n=> Si c'est seulement un problème de pointure, on s'occupe de l'échange gratuitement et on vous ajoute en plus une carte cadeau de 25€.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 81
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -16,14 +24,6 @@
       "response_template": "Bonjour [Prénom],\n\nNous avons bien reçu votre [article] et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ? On essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes.\n\n=> Si un autre modèle vous fait de l'œil, on peut vous proposer une solution plus simple : nous vous envoyons un avoir d'une valeur de [montant original + bonus] (soit [bonus]€ offerts par la maison) et nous prenons en charge les frais de livraison pour cet échange. Cela vous permet de trouver la pièce idéale sans aucun frais supplémentaire.\n\n=> Si c'est seulement un problème de pointure, on s'occupe de l'échange gratuitement et on vous ajoute en plus une carte cadeau de [montant]€.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte.\n\nCordialement,\n[Nom du service client] de Max Sauveur",
       "key_points": "Ton : empathique et constructif, cherchant à comprendre au-delà du problème apparent. Engagements : avoir majoré + frais de port offerts en cas d'échange vers un autre modèle, OU échange gratuit + carte cadeau si c'est juste une question de taille. Formulation clé : proposer une alternative avant de valider le remboursement, avec reconnaissance du bouche-à-oreille positif ('25€ offerts par la maison').",
       "example_count": 1
-    },
-    {
-      "topic": "max_sauveur___service_client",
-      "topic_label": "Max Sauveur — Service Client",
-      "situation": "Max Sauveur — Service Client",
-      "response_template": "Bonjour Niko,\n\nNous avons bien reçu vos Le Boat et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si un autre modèle vous fait de l'œil, on peut vous proposer une solution plus simple : nous vous envoyons un avoir d'une valeur de 174€ (soit 25€ offerts par la maison) et nous prenons en charge les frais de livraison pour cet échange. Cela vous permet de trouver la pièce idéale sans aucun frais supplémentaire.\n\n=> Si c'est seulement un problème de pointure, on s'occupe de l'échange gratuitement et on vous ajoute en plus une carte cadeau de 25€.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 80
     },
     {
       "topic": "avoir_genere_conditions_utilisation",
