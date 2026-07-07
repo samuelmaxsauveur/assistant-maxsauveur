@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__c_est_ouvert___la_wood___239_",
+      "topic_label": "Re: Re: Re: C'est ouvert ! la Wood à 239€",
+      "situation": "Re: Re: Re: C'est ouvert ! la Wood à 239€",
+      "response_template": "Bonjour Donatelle,\n\nParfait, c'est tout bon de notre côté.\n\nDès réception de la paire en état neuf et dans sa boîte d'origine, nous vous générerons un avoir du montant payé, valable 6 mois sur notre site.\n\nPour rappel, voici l'adresse d'expédition :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nN'oubliez pas d'indiquer \"avoir\" sur le bon de retour. Bonne expédition, et n'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__votre_commande_max_sauveur___information_importante",
       "topic_label": "Re: Votre commande Max Sauveur — information importante",
       "situation": "Re: Votre commande Max Sauveur — information importante",
