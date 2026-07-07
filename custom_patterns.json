@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_07_07_14_42_07",
+      "topic_label": "Form name Form submitted 2026-07-07 14:42:07",
+      "situation": "Form name Form submitted 2026-07-07 14:42:07",
+      "response_template": "Bonjour Paul,\n\nMerci pour votre message et désolé pour l'attente.\n\n Le traitement des retours prend jusqu'à 14 jours ouvrés, mais nous devrions être en mesure de vous faire un retour cette semaine.\n\nN'hésitez pas à nous recontacter si vous n'avez pas de nouvelles d'ici vendredi.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
