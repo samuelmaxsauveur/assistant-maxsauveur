@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "fwd__re__pour_vous",
+      "topic_label": "Fwd: Re: Pour vous",
+      "situation": "Fwd: Re: Pour vous",
+      "response_template": "Bonjour Jean-Nicolas,\n\nMerci pour ces précisions !\n\nMalheureusement, le Wayne, le Logger et le Powell sont actuellement en promotion sur notre site, et le code QUESTIONNAIRE10 ne s'applique pas aux articles déjà remisés. C'est une condition inhérente au code, je ne peux pas y déroger.\n\nEn revanche, bonne nouvelle de notre côté : si vous commandez ces 3 paires ensemble, nous pouvons vous offrir une paire d'embauchoirs. C'est notre façon de marquer le coup pour une commande de cette envergure.\n\nN'hésitez pas si vous avez d'autres questions avant de finaliser.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "choix_de_pointure",
       "topic_label": "Choix de Pointure",
       "situation": "Choix de Pointure",
