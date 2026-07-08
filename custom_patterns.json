@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__12686_confirm_e",
+      "topic_label": "Re: Commande #12686 confirmée",
+      "situation": "Re: Commande #12686 confirmée",
+      "response_template": "Bonjour Hugo,\n\nMerci pour votre message, et je comprends tout à fait votre impatience.\n\nVotre commande #12686 (Fisherman en cuir grainé noir, taille 40) a bien été enregistrée et réglée. Cependant, nous constatons que l'expédition n'a pas encore eu lieu, ce qui n'est pas normal compte tenu du délai écoulé. Nous nous renseignons auprès de notre équipe logistique pour comprendre ce qui s'est passé et nous revenons vers vous très rapidement avec une mise à jour.\n\nToutes nos excuses pour le délai, nous faisons le nécessaire pour débloquer la situation dans les meilleurs délais.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
