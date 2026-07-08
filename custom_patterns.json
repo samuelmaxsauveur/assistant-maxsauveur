@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__th_o_taupin_commande__11645_demande_d__change_de",
+      "topic_label": "Re: Re: Re: Théo Taupin Commande #11645 Demande d’échange des moc jagger pony hair",
+      "situation": "Re: Re: Re: Théo Taupin Commande #11645 Demande d’échange des moc jagger pony hair",
+      "response_template": "Bonjour Théo,\n\nMerci pour ces précisions.\n\nMalheureusement, un avoir ayant déjà été généré sur votre commande #11645, nous ne sommes plus en mesure de procéder à un remboursement sur votre moyen de paiement initial. C'est la procédure dès lors qu'un avoir a été émis.\n\nEn revanche, bonne nouvelle sur le code : nous avons mis à jour l'adresse email associée au code 98KYQJTF4EW5 pour qu'il fonctionne avec votre adresse personnelle (theo.taupin@gmail.com). Vous pourrez ainsi l'utiliser directement depuis cette adresse pour passer votre prochaine commande.\n\nCordialement,\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
