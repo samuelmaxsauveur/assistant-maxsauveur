@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_07_08_14_30_17",
+      "topic_label": "Form name Form submitted 2026-07-08 14:30:17",
+      "situation": "Form name Form submitted 2026-07-08 14:30:17",
+      "response_template": "Bonjour Fabio,\n\nMerci pour votre message. Le Boat chausse effectivement légèrement grand, c'est une information indiquée en rouge directement sur la fiche produit.\n\nPas de problème pour organiser le retour. Voici comment procéder :\n\n1. Rendez-vous sur notre page de retour : https://maxsauveur.com/pages/livraison-et-retour\n2. Téléchargez et complétez le bon de retour en indiquant comme motif : \"avoir\"\n3. Emballez soigneusement la paire dans sa boîte d'origine et envoyez-la à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle de la paire, nous vous générons un avoir de 109€ (valable 6 mois) pour commander la taille en dessous.\n\nN'hésitez pas si vous avez une question.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
