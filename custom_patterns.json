@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Foucauld,\n\nNous allons vérifier la date de votre notification de rétractation pour confirmer que le délai est respecté, et dans ce cas, nous procédons au remboursement des 9,75€ dans les plus brefs délais.\n\nJe reviens vers vous rapidement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 69
+    },
+    {
+      "topic": "retour_article_rupture_stock_remboursement_partiel",
+      "topic_label": "Retour article en rupture de stock avec remboursement partiel",
+      "situation": "Un client a commandé plusieurs articles dont un est en rupture de stock imprévisible. Le service retire l'article indisponible de la commande et procède à un remboursement partiel. Les autres articles de la commande restent maintenus avec les promotions appliquées.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre compréhension, et je comprends tout à fait la déception, surtout en ayant commandé aussi tôt.\n\nOn prend bonne note : on retire le [Produit] de votre commande et on procède au remboursement partiel de [Montant]€ sur votre moyen de paiement initial. Comptez 3 à 5 jours ouvrés selon votre banque.\n\nBonne nouvelle sur [Article secondaire], pour nous excuser de ce problème, la remise appliquée sur [Article] reste bien en place, aucun changement de ce côté.\n\nVotre commande avec [Articles maintenus] est déjà en cours de collecte et sera expédiée très prochainement. Livraison estimée autour du [Date].\n\nEncore désolé pour ce couac sur le [Produit].\n\n[Signature]",
+      "key_points": "Ton empathique et compréhensif face à la déception client. Clarifier immédiatement les actions : retrait du produit, montant exact du remboursement, délai bancaire (3-5 jours ouvrés). Maintenir les avantages commerciaux (remises/promotions) sur les articles conservés pour dédommager partiellement. Communiquer les délais de livraison réalistes. Toujours s'excuser explicitement du problème.",
+      "example_count": 1
+    },
+    {
       "topic": "re__votre_commande_max_sauveur___information_importante",
       "topic_label": "Re: Votre commande Max Sauveur — information importante",
       "situation": "Re: Votre commande Max Sauveur — information importante",
@@ -280,14 +296,6 @@
       "response_template": "Bonjour Paul,\n\nMerci pour votre commande et votre confiance.\n\nJe vous contacte car suite à une mauvaise synchronisation de nos stocks, nous ne sommes malheureusement pas en mesure de vous expédier la Fisherman en cuir grainé marron foncé en taille 42, qui est indisponible à ce jour. Je m'en excuse sincèrement, c'est une situation qui n'aurait pas dû se produire.\n\nPour ne pas bloquer le reste de votre commande, voici ce que nous vous proposons à la place :\n\nLa **Fisherman en cuir grainé daim marron, taille 43** ou la **Fisherman en cuir grainé noir, taille 43** sont toutes les deux disponibles immédiatement.\n\nSi l'une de ces deux options vous convient, dites-le-moi et nous expédions le tout sans délai.\n\nSi vous préférez ne pas prendre de substitution, nous procéderons à un remboursement partiel du montant correspondant à cet article.\n\nDans tous les cas, le reste de votre commande (la Fisherman grainé noir en 43, la ceinture Kayce et la ceinture Liam) sera expédié dès que nous aurons votre retour.\n\nN'hésitez pas à revenir vers moi, je reste disponible.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 11
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Mathieu,\n\nToutes mes excuses pour ces silences répétés.\n\nVotre retour du Moc Jagger 39 est bien arrivé. Compte tenu de votre ressenti (le pied qui manquait de se perdre en route), le 37 semble effectivement être la bonne pointure pour vous.\n\nJe génère votre avoir pour commander le Moc Jagger en 37. Vous recevrez le code par email d'ici peu.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 68
     },
     {
       "topic": "rupture_stock_reassort_impossible_conseil_taille_alternative",
