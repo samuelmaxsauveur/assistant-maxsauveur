@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "retour_commande_12732",
+      "topic_label": "Retour commande 12732",
+      "situation": "Retour commande 12732",
+      "response_template": "Bonjour Mateusz,\n\nNous avons bien reçu votre message concernant la commande #12732 (Le Boat en 42).\n\nComme vous l'indiquez, le colis n'a pas pu être récupéré au point relais dans les délais et nous a été retourné. Dans ce cas, des frais liés au colis non récupéré seront déduits du remboursement.\n\nLe remboursement sera traité dans un délai d'environ 1 mois.\n\nVous n'avez aucune démarche supplémentaire à effectuer de votre côté, nous gérons le retour depuis notre logistique.\n\nN'hésitez pas à nous contacter si vous avez des questions.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__re__re__re__form_name_form_submitted_2026_05_28_",
       "topic_label": "Re: Re: Re: Re: Re: Re: Form name Form submitted 2026-05-28 11:24:47",
       "situation": "Re: Re: Re: Re: Re: Re: Form name Form submitted 2026-05-28 11:24:47",
