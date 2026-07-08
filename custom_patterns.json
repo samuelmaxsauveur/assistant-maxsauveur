@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "retour_commande__12757",
+      "topic_label": "Retour Commande #12757",
+      "situation": "Retour Commande #12757",
+      "response_template": "Bonjour Fabio,\n\nNous avons bien envoyé la procédure de retour dans notre réponse précédente, mais je vois qu'elle a été coupée ! Voici le récapitulatif complet :\n\n1. Rendez-vous sur notre page de retour : https://maxsauveur.com/pages/livraison-et-retour\n2. Téléchargez et complétez le bon de retour en indiquant comme motif : \"avoir\"\n3. Emballez soigneusement la paire dans sa boîte d'origine et envoyez-la à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle de la paire, nous vous envoyons un avoir du montant de votre commande pour commander la bonne taille.\n\nN'hésitez pas si vous avez la moindre question !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
