@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__votre_commande_max_sauveur___information_importante",
+      "topic_label": "Re: Votre commande Max Sauveur — information importante",
+      "situation": "Re: Votre commande Max Sauveur — information importante",
+      "response_template": "Bonjour Alexandre,\n\nMerci pour votre compréhension, et je comprends tout à fait la déception, surtout en ayant commandé aussi tôt.\n\nOn prend bonne note : on retire le Moc Jagger de votre commande et on procède au remboursement partiel de 179€ sur votre moyen de paiement initial. Comptez 3 à 5 jours ouvrés selon votre banque.\n\nBonne nouvelle sur la ceinture, pour nous excuser de ce problème, la remise appliquée sur la Liam reste bien en place, aucun changement de ce côté.\n\nVotre commande avec le Paul en 43 et la ceinture Liam est déjà en cours de collecte et sera expédiée très prochainement. Livraison estimée autour du 9 juillet.\n\nEncore désolé pour ce couac sur le Jagger.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 13
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -128,14 +136,6 @@
       "response_template": "Bonjour Donatelle,\n\nParfait, c'est tout bon de notre côté.\n\nDès réception de la paire en état neuf et dans sa boîte d'origine, nous vous générerons un avoir du montant payé, valable 6 mois sur notre site.\n\nPour rappel, voici l'adresse d'expédition :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nN'oubliez pas d'indiquer \"avoir\" sur le bon de retour. Bonne expédition, et n'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re__votre_commande_max_sauveur___information_importante",
-      "topic_label": "Re: Votre commande Max Sauveur — information importante",
-      "situation": "Re: Votre commande Max Sauveur — information importante",
-      "response_template": "Bonjour Pierre,\n\nC'est noté, nous procédons à l'annulation de votre commande #12830 et au remboursement intégral du montant réglé. Comptez 3 à 5 jours ouvrés pour que le virement apparaisse sur votre compte selon votre banque.\n\nEncore toutes mes excuses pour ce contretemps.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 12
     },
     {
       "topic": "annulation_commande_apres_expedition_refus_point_relais",
