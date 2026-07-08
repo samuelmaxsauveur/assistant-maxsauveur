@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__retour_commande__12757",
+      "topic_label": "Re: Retour Commande #12757",
+      "situation": "Re: Retour Commande #12757",
+      "response_template": "Bonjour Fabio,\n\nBonne question. Si le modèle n'est plus disponible dans la taille souhaitée au moment où vous passez votre nouvelle commande, l'avoir reste valable 6 mois sur l'ensemble de notre site. Vous pouvez l'utiliser sur n'importe quel autre modèle de votre choix.\n\nUne chose à garder en tête : si vous souhaitez absolument Le Boat et que votre taille est encore disponible aujourd'hui, je vous conseille de passer la commande maintenant pour ne pas risquer de la voir partir. L'avoir généré lors de votre retour remboursera cette seconde commande dès que nous aurons reçu et contrôlé la paire.\n\nN'hésitez pas si vous avez d'autres questions !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
