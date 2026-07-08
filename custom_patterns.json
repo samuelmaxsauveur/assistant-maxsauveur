@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Antoine,\n\nConcernant les frais de port : ils ne sont pas inclus dans l'avoir, ils seront donc à régler en complément lors de votre prochaine commande.\n\nPour votre question sur la sélection de la paire : le Moc Jagger en 42,5 n'est malheureusement plus disponible en stock pour le moment, ce qui explique que vous ne puissiez pas l'ajouter au panier.\n\nVotre avoir 98KYQJTF4EW5 reste bien valide 6 mois, vous pourrez l'utiliser si la pointure revient ou sur un autre modèle de la collection.\n\nJe reste disponible si vous avez d'autres questions.\n\n\nCordialement,\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 71
+    },
+    {
       "topic": "re__re__re__re__re__re__re__form_name_form_submitted_2026_05",
       "topic_label": "Re: Re: Re: Re: Re: Re: Re: Form name Form submitted 2026-05-28 11:24:47",
       "situation": "Re: Re: Re: Re: Re: Re: Re: Form name Form submitted 2026-05-28 11:24:47",
@@ -88,14 +96,6 @@
       "response_template": "Bonjour Hugo,\n\nMerci pour votre message, et je comprends tout à fait votre impatience.\n\nVotre commande #12686 (Fisherman en cuir grainé noir, taille 40) a bien été enregistrée et réglée. Cependant, nous constatons que l'expédition n'a pas encore eu lieu, ce qui n'est pas normal compte tenu du délai écoulé. Nous nous renseignons auprès de notre équipe logistique pour comprendre ce qui s'est passé et nous revenons vers vous très rapidement avec une mise à jour.\n\nToutes nos excuses pour le délai, nous faisons le nécessaire pour débloquer la situation dans les meilleurs délais.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Adélie,\n\nJe vous présente toutes mes excuses pour cette attente et pour la relance restée sans réponse.\n\nVotre colis a bien été réceptionné et votre demande de remboursement est enregistrée. Je transmets votre dossier en priorité à notre équipe pour que le remboursement soit traité dans les meilleurs délais sur votre mode de paiement initial.\n\nVous recevrez une confirmation dès que c'est fait.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 70
     },
     {
       "topic": "retour_boat_chausse_grand_avoir",
