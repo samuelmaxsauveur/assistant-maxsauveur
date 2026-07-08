@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__re__re__re__form_name_form_submitted_2026_05_28_",
+      "topic_label": "Re: Re: Re: Re: Re: Re: Form name Form submitted 2026-05-28 11:24:47",
+      "situation": "Re: Re: Re: Re: Re: Re: Form name Form submitted 2026-05-28 11:24:47",
+      "response_template": "Bonjour Robin,\n\nMerci pour cette confirmation, et ravi que le colis vous soit parvenu sans encombre.\n\nVoici comment procéder pour finaliser ce dossier : retournez-nous la paire à l'adresse suivante :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nJoignez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour en indiquant « échange de taille ».\n\nDès réception et contrôle de la paire, nous ferons le nécessaire pour l'échange, sous réserve que la pointure souhaitée soit disponible. Justement, quelle taille ciblez-vous pour la Peter A. ?\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
