@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "d_faut_chaussure",
+      "topic_label": "Défaut chaussure",
+      "situation": "Défaut chaussure",
+      "response_template": "Bonjour Victor,\n\nUne semelle qui se décolle après seulement trois ports, c'est clairement un défaut de fabrication. On prend ça en charge sans hésitation.\n\nVoici la procédure pour nous retourner la paire :\n\n1. Imprimez l'étiquette de retour prépayée ci-dessous (le transport est à notre charge) : https://wing-labelling-system.s3.eu-west-3.amazonaws.com/52d660c3-ca88-4c89-8407-47cb6498562c/LABEL/2026-07-08/LABEL-491619b5-011e-4f2d-b11b-b0dc48ce7b5d-1783521847276-8R50072620606.pdf\n\n2. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (mentionnez \"défaut fabrication\" comme raison)\n\n3. Emballez soigneusement la paire et déposez le colis en point relais avec l'étiquette imprimée.\n\nAdresse de destination :\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nUne fois le colis reçu et contrôlé par notre atelier, la réparation sera effectuée dans un délai de 6 à 8 semaines. Je sais que ce délai peut sembler long, mais c'est le temps nécessaire pour un travail soigné.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re___12423",
       "topic_label": "Re: #12423",
       "situation": "Re: #12423",
