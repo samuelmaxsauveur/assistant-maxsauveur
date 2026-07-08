@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Adélie,\n\nJe vous présente toutes mes excuses pour cette attente et pour la relance restée sans réponse.\n\nVotre colis a bien été réceptionné et votre demande de remboursement est enregistrée. Je transmets votre dossier en priorité à notre équipe pour que le remboursement soit traité dans les meilleurs délais sur votre mode de paiement initial.\n\nVous recevrez une confirmation dès que c'est fait.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 70
+    },
+    {
+      "topic": "retour_boat_chausse_grand_avoir",
+      "topic_label": "Retour Le Boat chausse grand – Génération d'avoir",
+      "situation": "Un client a reçu des chaussures Le Boat qui chaussent légèrement grand (information présente sur la fiche produit en rouge). Il souhaite retourner la paire pour obtenir un avoir et commander la taille en dessous.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message. Le Boat chausse effectivement légèrement grand, c'est une information indiquée en rouge directement sur la fiche produit.\n\nPas de problème pour organiser le retour. Voici comment procéder :\n\n1. Rendez-vous sur notre page de retour : https://maxsauveur.com/pages/livraison-et-retour\n2. Téléchargez et complétez le bon de retour en indiquant comme motif : \"avoir\"\n3. Emballez soigneusement la paire dans sa boîte d'origine et envoyez-la à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle de la paire, nous vous générons un avoir de [montant]€ (valable 6 mois) pour commander la taille en dessous.\n\nN'hésitez pas si vous avez une question.\n\n[Prénom] – Service Client – Max Sauveur",
+      "key_points": "Ton : courtois et rassurant. Engagements clés : délai de génération d'avoir après vérification (jusqu'à 14 jours), avoir valable 6 mois, adresse logistique précise fournie. Important : rappeler que l'information de chausse grand est visible sur la fiche produit en rouge. Formulation : utiliser 'pas de problème pour organiser le retour' pour la bienveillance.",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_07_08_14_30_17",
       "topic_label": "Form name Form submitted 2026-07-08 14:30:17",
       "situation": "Form name Form submitted 2026-07-08 14:30:17",
@@ -32,14 +48,6 @@
       "response_template": "Bonjour Thomas,\n\nBonne nouvelle sur ce point : ce n'est pas la longueur qui va changer, mais la rigidité du cuir de l'empeigne. En s'assouplissant avec le port, il donnera plus de liberté à votre pied, et la sensation de contact avec le bout deviendra bien moins perceptible, voire disparaîtra complètement. C'est vraiment propre à ce type de cuir épais au départ.\n\nBref, ce que vous ressentez aujourd'hui ne reflète pas ce que sera le confort de la chaussure après quelques sorties.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Foucauld,\n\nNous allons vérifier la date de votre notification de rétractation pour confirmer que le délai est respecté, et dans ce cas, nous procédons au remboursement des 9,75€ dans les plus brefs délais.\n\nJe reviens vers vous rapidement.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 69
     },
     {
       "topic": "retour_article_rupture_stock_remboursement_partiel",
