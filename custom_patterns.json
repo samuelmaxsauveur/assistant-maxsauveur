@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__form_name_form_submitted_2026_07_07_21_39_29",
+      "topic_label": "Re: Form name Form submitted 2026-07-07 21:39:29",
+      "situation": "Re: Form name Form submitted 2026-07-07 21:39:29",
+      "response_template": "Bonjour Thomas,\n\nBonne nouvelle sur ce point : ce n'est pas la longueur qui va changer, mais la rigidité du cuir de l'empeigne. En s'assouplissant avec le port, il donnera plus de liberté à votre pied, et la sensation de contact avec le bout deviendra bien moins perceptible, voire disparaîtra complètement. C'est vraiment propre à ce type de cuir épais au départ.\n\nBref, ce que vous ressentez aujourd'hui ne reflète pas ce que sera le confort de la chaussure après quelques sorties.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__max_sauveur___service_client",
       "topic_label": "Re: Max Sauveur — Service Client",
       "situation": "Re: Max Sauveur — Service Client",
