@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__re__re__re__re__form_name_form_submitted_2026_05",
+      "topic_label": "Re: Re: Re: Re: Re: Re: Re: Form name Form submitted 2026-05-28 11:24:47",
+      "situation": "Re: Re: Re: Re: Re: Re: Re: Form name Form submitted 2026-05-28 11:24:47",
+      "response_template": "Bonjour Robin,\n\nMerci pour votre message.\n\nJe comprends votre frustration face à cette situation, mais je dois être clair sur notre position.\n\nNos conditions de retour sont explicites : les frais de retour sont à la charge de l'expéditeur, qui en reste responsable jusqu'à réception effective chez nous. Cela s'applique quelle que soit la destination d'origine.\n\nConcernant le blocage douanier et les frais que vous mentionnez : ce type de situation relève entièrement de la responsabilité de l'expéditeur. Le numéro EORI est une information publique, disponible en ligne, que tout expéditeur peut retrouver facilement avant d'effectuer une expédition internationale. Nous n'avons jamais eu à le communiquer pour des retours en provenance de Suisse ou d'autres pays, et nous ne pouvons pas être tenus responsables d'un blocage lié à des démarches douanières que nous n'avons pas à gérer.\n\nNous ne prendrons donc pas en charge ces frais supplémentaires.\n\nCe que nous faisons en revanche, et c'est déjà un geste de notre part : nous acceptons votre retour alors que vous êtes hors délai légal de rétention. Une fois la paire réceptionnée et contrôlée dans son état d'origine, nous procéderons au remboursement du prix des chaussures (259,00 EUR). Les frais de livraison initiaux ne sont pas remboursables.\n\nPour procéder, emballez soigneusement la paire et envoyez-la à notre adresse logistique :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nJoignez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour en indiquant comme motif « remboursement ».\n\nCordialement \n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
