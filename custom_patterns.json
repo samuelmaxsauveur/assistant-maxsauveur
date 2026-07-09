@@ -2,10 +2,10 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
-      "topic": "re__guide_pointure",
-      "topic_label": "Re: Guide pointure",
-      "situation": "Re: Guide pointure",
-      "response_template": "Bonjour,\n\nMerci pour la précision ! Pour les Blucher Derby Cuir, ce modèle chausse légèrement petit. Avec 24,5 cm de pied, je vous recommande donc le **40** plutôt que le 39.\n\nN'hésitez pas si vous avez d'autres questions avant de commander.\n\nJohn de Max Sauveur",
+      "topic": "pr_commande_wood",
+      "topic_label": "Précommande Wood",
+      "situation": "Précommande Wood",
+      "response_template": "Bonjour,\n\nMerci pour votre message concernant votre commande #12343.\n\nVotre Wood Derby Golf Cuir Marron est bien en cours de fabrication et tout se déroule comme prévu. La livraison est attendue pour fin juillet.\n\nDès que la paire est expédiée, vous recevrez un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
