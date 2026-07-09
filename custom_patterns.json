@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "_change_commande_12759",
+      "topic_label": "Échange commande 12759",
+      "situation": "Échange commande 12759",
+      "response_template": "Bonjour Corentin,\n\nMerci pour votre message. Votre réflexe est le bon : si vous craignez que le 40 parte avant la réception de votre retour, commandez le 40 dès maintenant et retournez le 41 en demandant un remboursement. C'est tout à fait possible puisque la commande vient d'être livrée.\n\nPetite précision utile pour la suite : le Moc Jagger est effectivement signalé comme chaussant grand directement sur la fiche produit (en rouge, à côté du tableau de pointures), ce qui explique le décalage avec vos Peter A. Le guide de pointures est le même entre les modèles, mais chaque modèle a ses spécificités de forme.\n\nPour le retour du 41, voici la procédure :\n1. Téléchargez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour\n2. Indiquez comme motif : \"demande de remboursement\"\n3. Envoyez la paire à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDès réception et contrôle du colis, nous procéderons au remboursement du Moc Jagger.\n\n\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
