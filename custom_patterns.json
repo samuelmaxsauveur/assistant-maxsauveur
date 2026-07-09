@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__renseignements_commande",
+      "topic_label": "Re: Renseignements commande",
+      "situation": "Re: Renseignements commande",
+      "response_template": "Bonjour Jason,\n\nNos garanties, accessibles sur notre site, précisent clairement à l'article 8 : « Les offres promotionnelles et codes de réduction ne sont pas cumulables. » Cette règle s'applique à l'ensemble des commandes, sans exception.\n\nVotre commande incluait un code de réduction appliqué sur des produits déjà en promotion. Nous ne pouvons pas valider ce type de cumul, indépendamment du fait que le site l'ait techniquement accepté au moment de la commande. L'annulation est donc justifiée et conforme.\n\nVos codes sont en revanche utilisables sur tout produit vendu à prix normal sur notre site.\n\nConcernant le remboursement : il a été déclenché de notre côté. Si vous ne voyez rien apparaître, cela peut prendre 3 à 5 jours ouvrés selon votre banque. Si ce délai est dépassé, revenez vers nous et nous vérifierons avec notre prestataire de paiement.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
