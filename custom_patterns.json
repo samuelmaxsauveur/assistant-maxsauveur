@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "tr__commande__12844_confirm_e",
+      "topic_label": "TR: Commande #12844 confirmée",
+      "situation": "TR: Commande #12844 confirmée",
+      "response_template": "Bonjour Nathalie, bonjour Olivier,\n\nPas de souci, voici la procédure pour nous retourner les Brogues Derby Daim Marron Noisette (43) :\n\n1. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\" comme raison)\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nConcernant le statut \"en attente de livraison\" sur votre compte, pas d'inquiétude, c'est simplement un décalage d'affichage côté interface. De notre côté, nous voyons bien que votre commande a été livrée le 5 juillet.\n\nUne question : souhaitez-vous un échange vers une autre pointure ? Si c'est le cas, on s'occupe de tout, le retour et l'expédition de la nouvelle paire sont à notre charge. Dites-nous simplement quelle pointure vous cible et on vérifie la disponibilité.\n\nDès réception et contrôle de la paire, nous vous enverrons un avoir pour commander la bonne taille.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
