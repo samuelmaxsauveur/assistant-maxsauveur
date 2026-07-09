@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "pointure",
+      "topic_label": "Pointure",
+      "situation": "Pointure",
+      "response_template": "Bonjour Amary,\n\nAvec 28,6 cm de pied (marge déjà incluse), vous correspondez à un **44** sur notre guide.\n\nLes boucles de réglage permettent en plus un ajustement précis au niveau du tour de pied et de la cheville, ce qui est un vrai avantage pour un maintien optimal.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 6
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -5416,14 +5424,6 @@
       "response_template": "Bonjour Victor,\n\nMerci pour votre message et le compliment sur les sandales !\n\nLes codes de réduction ont généralement des conditions d'application spécifiques : certains ne sont valables que sur des catégories précises, d'autres ont une date d'expiration ou un montant minimum de commande. Sans connaître les codes exacts que vous avez tenté d'utiliser, il m'est difficile de vous dire précisément pourquoi ils ne fonctionnent pas.\n\nPouvez-vous me préciser :\n- Le ou les codes que vous avez essayés\n- Le modèle de sandale concerné et le montant de votre panier\n\nAvec ces informations, je pourrai vérifier ce qui bloque et vous donner une réponse claire.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "pointure",
-      "topic_label": "pointure",
-      "situation": "pointure",
-      "response_template": "Bonjour Olivier,\n\nBon réflexe de ne pas vous fier à vos Vans. Les sneakers en toile taillent souvent plus grand que le cuir, donc la comparaison n'est pas fiable.\n\nPour la Fisherman, le 43 est effectivement le bon choix. Sur une sandale en cuir sans système de fermeture ajustable, il vaut mieux avoir un cuir qui tient bien le pied plutôt qu'un cuir qui baille. Avec votre 44 en Vans, le 43 sera bien je pense.\n\nBonne commande !\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 5
     },
     {
       "topic": "pointure_fisherman",
