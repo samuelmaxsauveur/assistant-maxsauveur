@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__max_sauveur___service_client",
+      "topic_label": "Re: Re: Max Sauveur — Service Client",
+      "situation": "Re: Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Antoine,\n\nVous avez tout à fait raison, et je m'en excuse.\n\nVoici ce qui a été convenu : une fois votre commande passée avec votre avoir 98KYQJTF4EW5, nous vous remboursons les frais de livraison Chrono2Shop dès validation de celle-ci. Aucune avance à faire de votre côté, on régularise dans la foulée.\n\nDès que vous avez passé commande, n'hésitez pas à nous le signaler pour qu'on puisse procéder rapidement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 14
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -840,14 +848,6 @@
       "response_template": "Bonjour Grégoire,\n\nMerci pour votre message rapide.\n\nMalheureusement, votre commande #12737 a déjà été prise en charge par notre logistique et confiée au transporteur Chronopost. Nous faisons notre maximum pour tenter une annulation avant la prise en charge physique du colis, et nous revenons vers vous très rapidement pour vous confirmer si c'est possible.\n\nNous vous tiendrons informé dans les plus brefs délais.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re__re__max_sauveur___service_client",
-      "topic_label": "Re: Re: Max Sauveur — Service Client",
-      "situation": "Re: Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Florian,\n\nMerci pour votre message. Je comprends votre demande concernant les autres articles du colis.\n\nEn consultant votre commande, voici ce que nous avons reçu lors de votre retour. Pourriez-vous me confirmer précisément quels articles vous avez inclus dans votre colis retour ? Votre commande contenait en effet, en plus du Moc Jagger :\n\n- Cirage à la cire d'abeille (Marron)\n- Cirage à la cire d'abeille (Noir)\n- Embauchoirs bois de cèdre (41)\n\nDès que notre équipe logistique confirme la réception de ces articles, nous procéderons au remboursement correspondant. Je reviendrai vers vous dès que j'ai une confirmation de notre côté.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 13
     },
     {
       "topic": "prise_en_charge_garantie_semelle_endommagee",
