@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__pr_commande_wood",
+      "topic_label": "Re: Précommande Wood",
+      "situation": "Re: Précommande Wood",
+      "response_template": "Bonjour Jason,\n\nMalheureusement, l'annulation n'est pas possible à ce stade. Votre Wood Derby Golf Cuir Marron est une précommande et la production de votre paire a déjà été engagée, ce qui nous empêche de revenir en arrière.\n\nVous devrez attendre la livraison, prévue pour fin juillet, puis effectuer un retour si la paire ne vous convient pas. La procédure sera simple : un bon de retour disponible sur maxsauveur.com/pages/livraison-et-retour, et nous traiterons votre dossier dès réception.\n\nN'hésitez pas si vous avez d'autres questions d'ici là.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
