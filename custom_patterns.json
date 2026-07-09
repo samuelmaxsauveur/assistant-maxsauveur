@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__guide_pointure",
+      "topic_label": "Re: Guide pointure",
+      "situation": "Re: Guide pointure",
+      "response_template": "Bonjour,\n\nMerci pour la précision ! Pour les Blucher Derby Cuir, ce modèle chausse légèrement petit. Avec 24,5 cm de pied, je vous recommande donc le **40** plutôt que le 39.\n\nN'hésitez pas si vous avez d'autres questions avant de commander.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
