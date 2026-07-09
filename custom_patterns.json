@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__12345_confirm_e",
+      "topic_label": "Re: Commande #12345 confirmée",
+      "situation": "Re: Commande #12345 confirmée",
+      "response_template": "Bonjour François,\n\nPas de problème, on s'occupe du changement de ce côté. La Fisherman en 43 sera bien dans votre commande.\n\nBonne réception !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
