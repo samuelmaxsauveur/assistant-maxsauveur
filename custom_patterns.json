@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "votre_commande_max_sauveur___information_importante",
+      "topic_label": "Votre commande Max Sauveur — information importante",
+      "situation": "Votre commande Max Sauveur — information importante",
+      "response_template": "Bonjour Cédric,\n\nMerci pour votre commande du Moc Jagger en Cuir Noir, taille 41.5.\n\nJe vous contacte car suite à une mauvaise synchronisation de nos stocks, nous ne sommes malheureusement pas en mesure de vous expédier ce modèle dans cette taille pour le moment. Je suis vraiment désolé pour cette situation, elle n'aurait pas dû arriver.\n\nVoici les options qui s'offrent à vous :\n\n**Option 1 — Un autre modèle avec 25% offerts**\nSi un autre modèle vous attire, comme le Paul Mocassin par exemple (également en cuir, avec une semelle en liège qui se moule au pied avec le temps), nous vous offrons 25% sur son prix pour compenser la gêne occasionnée. Il vous suffit de me dire lequel vous intéresse et je m'occupe de tout.\n\n**Option 2 — Patienter quelques jours**\nNous attendons potentiellement des retours clients dans les prochains jours, ce qui pourrait libérer un 41.5. Si vous êtes patient et que ce modèle est vraiment celui qu'il vous faut, c'est une option envisageable.\n\n**Option 3 — La taille 40 pourrait aussi fonctionner**\nPetite précision utile : le Moc Jagger chausse assez grand. Si vous n'avez pas encore testé ce modèle, un 40 pourrait tout à fait convenir à votre pied. Avez-vous mesuré votre pied en cm récemment ? Cela nous permettrait de confirmer si le 40 est une option viable pour vous, auquel cas nous pouvons vous l'envoyer sans attendre.\n\nDites-moi ce qui vous convient le mieux, je reste disponible pour avancer rapidement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 12
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -648,14 +656,6 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre commande et votre confiance.\n\nJe vous contacte car suite à une mauvaise synchronisation de nos stocks, nous ne sommes malheureusement pas en mesure de vous expédier [Article] en [Taille/Couleur], qui est indisponible à ce jour. Je m'en excuse sincèrement, c'est une situation qui n'aurait pas dû se produire.\n\nPour ne pas bloquer le reste de votre commande, voici ce que nous vous proposons à la place :\n\n- [Alternative 1 : Modèle/Couleur/Taille disponible immédiatement]\n- [Alternative 2 : Modèle/Couleur/Taille disponible immédiatement]\n\nSi l'une de ces deux options vous convient, dites-le-moi et nous expédions le tout sans délai.\n\nSi vous préférez ne pas prendre de substitution, nous procéderons à un remboursement partiel du montant correspondant à cet article.\n\nDans tous les cas, le reste de votre commande sera expédié dès que nous aurons votre retour.\n\nN'hésitez pas à revenir vers moi, je reste disponible.",
       "key_points": "Ton : sincère, professionnel, avec excuses. Proposer DEUX alternatives viables + option remboursement partiel. Préciser que le reste de la commande est bloqué en attente de réponse. Rappeler disponibilité immédiate des alternatives. Signature personnalisée du service client.",
       "example_count": 2
-    },
-    {
-      "topic": "votre_commande_max_sauveur___information_importante",
-      "topic_label": "Votre commande Max Sauveur — information importante",
-      "situation": "Votre commande Max Sauveur — information importante",
-      "response_template": "Bonjour Paul,\n\nMerci pour votre commande et votre confiance.\n\nJe vous contacte car suite à une mauvaise synchronisation de nos stocks, nous ne sommes malheureusement pas en mesure de vous expédier la Fisherman en cuir grainé marron foncé en taille 42, qui est indisponible à ce jour. Je m'en excuse sincèrement, c'est une situation qui n'aurait pas dû se produire.\n\nPour ne pas bloquer le reste de votre commande, voici ce que nous vous proposons à la place :\n\nLa **Fisherman en cuir grainé daim marron, taille 43** ou la **Fisherman en cuir grainé noir, taille 43** sont toutes les deux disponibles immédiatement.\n\nSi l'une de ces deux options vous convient, dites-le-moi et nous expédions le tout sans délai.\n\nSi vous préférez ne pas prendre de substitution, nous procéderons à un remboursement partiel du montant correspondant à cet article.\n\nDans tous les cas, le reste de votre commande (la Fisherman grainé noir en 43, la ceinture Kayce et la ceinture Liam) sera expédié dès que nous aurons votre retour.\n\nN'hésitez pas à revenir vers moi, je reste disponible.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 11
     },
     {
       "topic": "rupture_stock_reassort_impossible_conseil_taille_alternative",
