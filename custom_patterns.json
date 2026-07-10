@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_07_10_11_06_12",
+      "topic_label": "Form name Form submitted 2026-07-10 11:06:12",
+      "situation": "Form name Form submitted 2026-07-10 11:06:12",
+      "response_template": "Bonjour Julien,\n\nMerci pour votre message et votre retour sur les numéros de téléphone, c'est une information importante.\n\nPourriez-vous me préciser où vous avez trouvé ces numéros (sur notre site, une autre page, un moteur de recherche ?) et lesquels exactement vous avez composés ? Quel est le numéro qui vous a redirigé vers cette dame ? Nous sommes actuellement en train de changer de ligne téléphonique, ce qui peut expliquer certains dysfonctionnements, et votre retour nous aide à identifier précisément ce qui circule encore et qu'il faut corriger.\n\nConcernant votre question sur la pointure des Springsteen, je comprends que ce soit un peu déroutant. Voici comment lire notre recommandation : quand on dit que le Springsteen chausse légèrement grand, cela signifie qu'il faut rester sur sa pointure habituelle de chaussures de ville, voire descendre d'une demi-taille, plutôt que de suivre le guide de mesure au centimètre près.\n\nEn 41.5 habituel en chaussures de ville, je vous recommande de rester sur du **41.5**, ou éventuellement de prendre du **41** si vous avez un pied plutôt fin. Si votre pied est standard ou légèrement large, le 41.5 est la valeur sûre.\n\nPour affiner encore, pourriez-vous me donner la longueur de votre pied en cm (pied nu, talon contre un mur, on mesure jusqu'au bout du gros orteil) ? Cela me permettra de vous confirmer la taille avec certitude.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
