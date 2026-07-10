@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__votre_commande_max_sauveur___information_importante",
+      "topic_label": "Re: Votre commande Max Sauveur — information importante",
+      "situation": "Re: Votre commande Max Sauveur — information importante",
+      "response_template": "Bonjour Dylan,\n\nMerci pour votre message.\n\nNous avons bien noté la réception de votre retour de notre côté. Nous sommes en train d'interroger notre logistique pour confirmer que tout est bien enregistré, et nous revenons vers vous la semaine prochaine avec une confirmation.\n\nSi le contrôle se passe bien, nous prévoyons d'expédier votre Paul en 44 la semaine prochaine, à la même adresse que votre commande initiale (33 Rue du Hameau, 75015 Paris). Prévenez-nous si vous souhaitez une adresse différente.\n\nVous recevrez un email avec votre numéro de suivi dès l'expédition.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 14
+    },
+    {
+      "topic": "conseil_pointure_paul_cou_de_pied_haut_assouplissement",
+      "topic_label": "Conseil pointure Paul – cou-de-pied haut avec assouplissement cuir",
+      "situation": "Un client avec un cou-de-pied haut demande conseil sur la taille à prendre pour le mocassin Paul. Il connaît sa mesure exacte de pied et souhaite des précisions sur l'ajustement initial et l'assouplissement du cuir.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour ces précisions, elles sont exactement ce qu'il faut pour bien vous conseiller.\n\nAvec [mesure] cm de pied ([indication pied référence]), vous êtes en **taille [taille guide]** sur notre guide.\n\nLe Paul chausse juste au départ, c'est vrai, mais il s'assouplit progressivement avec le port : le cuir gagne en souplesse et la semelle en liège se moule au pied. Quelques sorties suffisent généralement pour atteindre le confort optimal.\n\nSur votre point clé, le cou-de-pied [caractéristique] : c'est justement là que le Paul a un avantage sur un mocassin classique. La barrette sur le côté donne une vraie flexibilité à l'ouverture, ce qui facilite l'entrée du pied et accommode mieux les cous-de-pied [caractéristique] qu'un mocassin à empeigne rigide.\n\nMa recommandation : **la taille [taille recommandée]**. Avec vos [mesure] cm de pied et un cou-de-pied [caractéristique], descendre en dessous serait risqué. La taille [taille recommandée] vous donnera la longueur juste et la flexibilité fera le reste pour le cou-de-pied.\n\nUne chose à garder à l'esprit : si à réception la longueur vous convient mais que le serrement persiste après quelques ports, n'hésitez pas à revenir vers nous.",
+      "key_points": "Ton : conseilleur, rassurant sur l'assouplissement normal du cuir. Engagements : reconnaissance de la caractéristique morphologique du client et mise en avant des avantages du modèle Paul. Formulations clés : 'assouplissement progressif', 'flexibilité de l'ouverture', 'quelques sorties suffisent', 'longueur juste'. Écoute du client sur son ressenti après réception.",
+      "example_count": 1
+    },
+    {
       "topic": "mocassin_cuir_noir",
       "topic_label": "Mocassin Cuir Noir",
       "situation": "Mocassin Cuir Noir",
@@ -464,14 +480,6 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre compréhension, et je comprends tout à fait la déception, surtout en ayant commandé aussi tôt.\n\nOn prend bonne note : on retire le [Produit] de votre commande et on procède au remboursement partiel de [Montant]€ sur votre moyen de paiement initial. Comptez 3 à 5 jours ouvrés selon votre banque.\n\nBonne nouvelle sur [Article secondaire], pour nous excuser de ce problème, la remise appliquée sur [Article] reste bien en place, aucun changement de ce côté.\n\nVotre commande avec [Articles maintenus] est déjà en cours de collecte et sera expédiée très prochainement. Livraison estimée autour du [Date].\n\nEncore désolé pour ce couac sur le [Produit].\n\n[Signature]",
       "key_points": "Ton empathique et compréhensif face à la déception client. Clarifier immédiatement les actions : retrait du produit, montant exact du remboursement, délai bancaire (3-5 jours ouvrés). Maintenir les avantages commerciaux (remises/promotions) sur les articles conservés pour dédommager partiellement. Communiquer les délais de livraison réalistes. Toujours s'excuser explicitement du problème.",
       "example_count": 1
-    },
-    {
-      "topic": "re__votre_commande_max_sauveur___information_importante",
-      "topic_label": "Re: Votre commande Max Sauveur — information importante",
-      "situation": "Re: Votre commande Max Sauveur — information importante",
-      "response_template": "Bonjour Alexandre,\n\nMerci pour votre compréhension, et je comprends tout à fait la déception, surtout en ayant commandé aussi tôt.\n\nOn prend bonne note : on retire le Moc Jagger de votre commande et on procède au remboursement partiel de 179€ sur votre moyen de paiement initial. Comptez 3 à 5 jours ouvrés selon votre banque.\n\nBonne nouvelle sur la ceinture, pour nous excuser de ce problème, la remise appliquée sur la Liam reste bien en place, aucun changement de ce côté.\n\nVotre commande avec le Paul en 43 et la ceinture Liam est déjà en cours de collecte et sera expédiée très prochainement. Livraison estimée autour du 9 juillet.\n\nEncore désolé pour ce couac sur le Jagger.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 13
     },
     {
       "topic": "retour_le_boat_remboursement_avec_options_echange",
