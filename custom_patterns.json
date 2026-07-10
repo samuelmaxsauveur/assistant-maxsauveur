@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__form_name_form_submitted_2026_07_10_11_06_12",
+      "topic_label": "Re: Form name Form submitted 2026-07-10 11:06:12",
+      "situation": "Re: Form name Form submitted 2026-07-10 11:06:12",
+      "response_template": "Bonjour Julien,\n\nMerci pour ces précisions, c'est très utile sur les deux points.\n\n**Sur les numéros de téléphone :** Je transmets immédiatement l'information à notre équipe. Le 09 86 32 95 07 et le +33 6 02 48 25 57 dans la rubrique Contact, avec une redirection vers une personne tierce depuis deux ans, c'est clairement un problème que nous devons corriger. Merci d'avoir pris le temps de nous le signaler.\n\nEn tenant compte de tout ça et de votre pointure habituelle en 41,5, ma recommandation est de rester sur le **41,5**. C'est la taille la plus cohérente avec vos habitudes et la plus sûre dans votre cas.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
