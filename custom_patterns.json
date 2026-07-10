@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "max_sauveur___service_client",
+      "topic_label": "Max Sauveur — Service Client",
+      "situation": "Max Sauveur — Service Client",
+      "response_template": "Bonjour Arthur,\n\nVos Logger Boots sont passées entre les mains de notre atelier et la réparation est désormais terminée. Votre paire est prête à être renvoyée.\n\nPour procéder à l'expédition, j'aurais besoin de votre confirmation sur une chose : souhaitez-vous recevoir votre colis à l'adresse de votre commande d'origine, ou préférez-vous une livraison vers un point relais Chrono2Shop différent ?\n\nSi vous optez pour un point relais, indiquez-moi simplement l'adresse complète du point souhaité et je m'en occupe.\n\nDès que j'ai votre retour, on expédie sans attendre.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 82
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -416,14 +424,6 @@
       "response_template": "Bonjour [Prénom],\n\nNous avons bien reçu vos [Article] et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes.\n\n=> Si un autre modèle vous fait de l'œil, on peut vous proposer une solution plus simple : nous vous envoyons un avoir d'une valeur de [montant original + majoration] et nous prenons en charge les frais de livraison pour cet échange. Cela vous permet de trouver la pièce idéale sans aucun frais supplémentaire.\n\n=> Si c'est seulement un problème de pointure, on s'occupe de l'échange gratuitement et on vous ajoute en plus une carte cadeau de [montant].\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte.\n\nCordialement,\n[Signature]",
       "key_points": "Ton : bienveillant et proactif. Reconnaître le retour reçu d'emblée. Poser des questions pour comprendre au-delà de la taille (style, matière, confort). Proposer 2-3 options claires avec avantages chiffrés (avoir majoré + frais offerts OU remboursement OU avoir + carte cadeau). Laisser le client choisir. Utiliser 'on' pour créer proximité.",
       "example_count": 1
-    },
-    {
-      "topic": "max_sauveur___service_client",
-      "topic_label": "Max Sauveur — Service Client",
-      "situation": "Max Sauveur — Service Client",
-      "response_template": "Bonjour Grégory,\n\nNous avons bien reçu vos Le Boat et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si un autre modèle vous fait de l'œil, on peut vous proposer une solution plus simple : nous vous envoyons un avoir d'une valeur de 174€ (soit 25€ offerts par la maison) et nous prenons en charge les frais de livraison pour cet échange. Cela vous permet de trouver la pièce idéale sans aucun frais supplémentaire.\n\n=> Si c'est seulement un problème de pointure, on s'occupe de l'échange gratuitement et on vous ajoute en plus une carte cadeau de 25€.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 81
     },
     {
       "topic": "avoir_genere_conditions_utilisation",
