@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "mocassin_cuir_noir",
+      "topic_label": "Mocassin Cuir Noir",
+      "situation": "Mocassin Cuir Noir",
+      "response_template": "Bonjour Michel,\n\nMerci pour ces précisions, elles sont exactement ce qu'il faut pour bien vous conseiller.\n\nAvec 26 cm de pied (votre pied gauche, le plus long, qui fait référence), vous êtes en **taille 40** sur notre guide.\n\nLe Paul chausse juste au départ, c'est vrai, mais il s'assouplit progressivement avec le port : le cuir gagne en souplesse et la semelle en liège se moule au pied. Quelques sorties suffisent généralement pour atteindre le confort optimal.\n\nSur votre point clé, le cou-de-pied haut : c'est justement là que le Paul a un avantage sur un mocassin classique. La barette sur le côté donne une vraie flexibilité à l'ouverture, ce qui facilite l'entrée du pied et accommode mieux les cous-de-pied hauts qu'un mocassin à empeigne rigide.\n\nMa recommandation : **le 41**. Avec vos 26 cm de pied et un cou-de-pied fort, descendre en dessous serait risqué. Le 41 vous donnera la longueur juste et l'élastique fera le reste pour le cou-de-pied.\n\nUne chose à garder en tête : si à réception la longueur vous convient mais que le serrement persiste après quelques ports, n'hésitez pas à revenir vers nous.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
