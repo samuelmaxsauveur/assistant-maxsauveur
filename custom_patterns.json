@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "commande__12695",
+      "topic_label": "Commande #12695",
+      "situation": "Commande #12695",
+      "response_template": "Bonjour Camille,\n\nMerci pour les photos et pour nous avoir contactés aussi rapidement.\n\nUne languette qui se décolle dès le premier port, c'est clairement un défaut de fabrication. On prend en charge le retour et la réparation sans aucun frais pour vous.\n\nVoici la procédure à suivre :\n\n1. Imprimez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour et indiquez comme motif \"défaut fabrication\".\n2. Imprimez également l'étiquette prépayée ci-dessous et collez-la sur le colis : https://wing-labelling-system.s3.eu-west-3.amazonaws.com/52d660c3-ca88-4c89-8407-47cb6498562c/LABEL/2026-07-10/LABEL-fd82c49d-f264-4d43-9924-8d0fc1892c75-1783681396684-8R50078307150.pdf\n3. Glissez le bon de retour à l'intérieur du colis, puis déposez-le en point relais Chronopost.\n\nDès réception par notre atelier, nous procédons à la réparation. Comptez 6 à 8 semaines pour le passage en atelier, nous vous tenons informée.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
