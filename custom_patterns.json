@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "max_sauveur___service_client",
+      "topic_label": "Max Sauveur — Service Client",
+      "situation": "Max Sauveur — Service Client",
+      "response_template": "Bonjour Zoé,\n\nVos Dakota Chelsea Boots Cuir Noir sont passées entre les mains de notre atelier et la réparation est désormais terminée. Votre paire est prête à être renvoyée.\n\nPour procéder à l'expédition, j'aurais besoin de votre confirmation sur une chose : souhaitez-vous recevoir votre colis à l'adresse de votre commande d'origine, ou préférez-vous une livraison vers un point relais Chrono2Shop différent ?\n\nSi vous optez pour un point relais, indiquez-moi simplement l'adresse complète du point souhaité et je m'en occupe.\n\nDès que j'ai votre retour, on expédie sans attendre.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 83
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -16,14 +24,6 @@
       "response_template": "Bonjour [Prénom],\n\nVos Logger Boots sont passées entre les mains de notre atelier et la réparation est désormais terminée. Votre paire est prête à être renvoyée.\n\nPour procéder à l'expédition, j'aurais besoin de votre confirmation sur une chose : souhaitez-vous recevoir votre colis à l'adresse de votre commande d'origine, ou préférez-vous une livraison vers un point relais Chrono2Shop différent ?\n\nSi vous optez pour un point relais, indiquez-moi simplement l'adresse complète du point souhaité et je m'en occupe.\n\nDès que j'ai votre retour, on expédie sans attendre.\n\nCordialement,\nJohn de Max Sauveur",
       "key_points": "Ton : professionnel et bienveillant. Engagement : réparation complétée et prête à l'expédition immédiate. Demander confirmation du choix de livraison (adresse originale ou point relais) avant expédition. Formulation importante : 'j'aurais besoin de votre confirmation', 'dès que j'ai votre retour, on expédie sans attendre' pour rassurer le client.",
       "example_count": 1
-    },
-    {
-      "topic": "max_sauveur___service_client",
-      "topic_label": "Max Sauveur — Service Client",
-      "situation": "Max Sauveur — Service Client",
-      "response_template": "Bonjour Arthur,\n\nVos Logger Boots sont passées entre les mains de notre atelier et la réparation est désormais terminée. Votre paire est prête à être renvoyée.\n\nPour procéder à l'expédition, j'aurais besoin de votre confirmation sur une chose : souhaitez-vous recevoir votre colis à l'adresse de votre commande d'origine, ou préférez-vous une livraison vers un point relais Chrono2Shop différent ?\n\nSi vous optez pour un point relais, indiquez-moi simplement l'adresse complète du point souhaité et je m'en occupe.\n\nDès que j'ai votre retour, on expédie sans attendre.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 82
     },
     {
       "topic": "rupture_stock_pointure_indisponible_alternatives_proposees",
