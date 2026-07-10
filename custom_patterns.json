@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "remise_combinee_offre_speciale_justification",
+      "topic_label": "Justification d'une remise combinée et clarification des conditions d'éligibilité",
+      "situation": "Un client demande pourquoi une remise (ex : ceinture) a été maintenue alors qu'il a changé de modèle de chaussures. Le client remet en question la logique de l'offre. Le service doit clarifier que c'était un geste commercial, pas une application automatique des règles.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour ce retour, et je comprends tout à fait la logique de votre raisonnement.\n\nPermettez-moi de clarifier un point : la remise sur [article] était une offre combinée spécifiquement liée à l'achat de certains modèles de [catégorie] éligibles, et le [nouveau modèle] ne faisait pas partie de ces modèles. Concrètement, si nous avions appliqué les règles strictement, la remise sur [article] n'aurait pas pu être maintenue avec le [nouveau modèle] dans votre commande.\n\nOn a fait le choix de la maintenir quand même, justement parce que le problème de stock sur le [modèle initial] ne venait pas de vous. C'est donc bien un geste de notre part, pas une conséquence automatique de la situation.\n\nVotre commande est expédiée et en route vers vous. Vous pouvez suivre la livraison ici : [lien suivi]\n\nBonne réception !",
+      "key_points": "Ton : transparent et pédagogue. Reconnaître la logique client. Expliquer clairement que c'est un geste commercial (pas une règle). Valoriser la bonne volonté de Max Sauveur. Assurer le client sur l'expédition en cours.",
+      "example_count": 1
+    },
+    {
+      "topic": "re__re__votre_commande_max_sauveur___information_importante",
+      "topic_label": "Re: Re: Votre commande Max Sauveur — information importante",
+      "situation": "Re: Re: Votre commande Max Sauveur — information importante",
+      "response_template": "Bonjour Alexandre,\n\nMerci pour ce retour, et je comprends tout à fait la logique de votre raisonnement.\n\nPermettez-moi de clarifier un point : la remise sur la ceinture Liam était une offre combinée spécifiquement liée à l'achat de certains modèles de chaussures éligibles, et le Paul ne faisait pas partie de ces modèles. Concrètement, si nous avions appliqué les règles strictement, la remise sur la ceinture n'aurait pas pu être maintenue avec le Paul dans votre commande.\n\nOn a fait le choix de la maintenir quand même, justement parce que le problème de stock sur le Jagger ne venait pas de vous. C'est donc bien un geste de notre part, pas une conséquence automatique de la situation.\n\nVotre commande est expédiée et en route vers vous. Vous pouvez suivre la livraison ici : https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XN135049214JB\n\nBonne réception !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re___re__form_name_form_submitted_2026_06_24_13_09_18",
       "topic_label": "Re : Re: Form name Form submitted 2026-06-24 13:09:18",
       "situation": "Re : Re: Form name Form submitted 2026-06-24 13:09:18",
