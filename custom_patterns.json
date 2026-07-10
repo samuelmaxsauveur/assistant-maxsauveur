@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re___re__form_name_form_submitted_2026_06_24_13_09_18",
+      "topic_label": "Re : Re: Form name Form submitted 2026-06-24 13:09:18",
+      "situation": "Re : Re: Form name Form submitted 2026-06-24 13:09:18",
+      "response_template": "Bonjour Olivier,\n\nMerci pour ce suivi.\n\nNous avons bien réceptionné votre retour dans notre entrepôt. Le remboursement est en cours de traitement et nous mettons tout en œuvre pour aller vite. Comptez jusqu'à 14 jours ouvrés à partir du 29 juin pour que le montant soit crédité sur votre moyen de paiement d'origine.\n\nDès que le remboursement est déclenché de notre côté, vous en serez informé.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
