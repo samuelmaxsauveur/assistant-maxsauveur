@@ -2,6 +2,30 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "semelles_deck_d_coll_es",
+      "topic_label": "Semelles Deck décollées",
+      "situation": "Semelles Deck décollées",
+      "response_template": "Bonjour Henri,\n\nMerci pour votre message, et ravi que vos Deck vous aient accompagné aussi bien depuis 2 ans !\n\nUne semelle qui se décolle peut effectivement arriver, et c'est tout à fait réparable. Pour évaluer la situation et voir ce qu'on peut faire pour vous, pourriez-vous nous envoyer quelques photos de la zone décollée sur les deux semelles ?\n\nCela nous permettra de mieux vous orienter.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "rupture_stock_pointure_attente_possible",
+      "topic_label": "Rupture de stock avec possibilité d'attente ou alternatives",
+      "situation": "Un client demande une pointure spécifique (ex: Moc Jagger 42.5) qui n'est pas en stock. Le service doit proposer soit d'attendre un retour client imminent, soit d'utiliser un avoir sur un autre modèle.",
+      "response_template": "Bonjour [Prénom],\n\nPour le [Modèle] en [Pointure], nous n'avons malheureusement plus cette pointure en stock pour le moment.\n\nDeux options s'offrent à vous :\n\n1. **Patienter quelques jours** : un retour client est possible et pourrait libérer cette pointure très prochainement. Je vous préviens dès que c'est disponible.\n\n2. **Utiliser votre avoir [CODE_AVOIR]** sur un autre modèle de votre choix sur notre site.\n\nDites-moi ce que vous préférez et on s'organise en conséquence.\n\nCordialement,\nJohn de Max Sauveur",
+      "key_points": "Ton rassurant et proactif. Proposer deux options claires (attendre vs utiliser avoir). Engagement à informer rapidement si réassort. Valoriser la flexibilité du client.",
+      "example_count": 1
+    },
+    {
+      "topic": "re__re__re__max_sauveur___service_client",
+      "topic_label": "Re: Re: Re: Max Sauveur — Service Client",
+      "situation": "Re: Re: Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Antoine,\n\nPour le Moc Jagger en 42.5, nous n'avons malheureusement plus cette pointure en stock pour le moment.\n\nDeux options s'offrent à vous :\n\n1. **Patienter quelques jours** : un retour client est possible et pourrait libérer un 42.5 très prochainement. Je vous préviens dès que c'est disponible.\n\n2. **Utiliser votre avoir 98KYQJTF4EW5 sur un autre modèle** de votre choix sur notre site.\n\nDites-moi ce que vous préférez et on s'organise en conséquence.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 4
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -1648,14 +1672,6 @@
       "response_template": "Bonjour [Prénom],\n\nC'est tout à fait compréhensible, deux expéditions sur un échange c'est effectivement un coût non prévu.\n\nNous ne pouvons pas intégrer les frais de port directement dans le code avoir, mais voici comment on procède : dès que vous passez votre commande avec le code [CODE_AVOIR], revenez-nous avec votre numéro de commande et nous vous remboursons les frais de livraison directement, sans que vous ayez à faire quoi que ce soit de plus.\n\nN'hésitez pas à nous écrire dès que c'est fait.\n\nCordialement,\nJohn de Max Sauveur",
       "key_points": "Ton : empathique et compréhensif face aux frais supplémentaires. Engagement : remboursement des frais de port en deux temps (après que le client passe sa commande avec l'avoir). Processus clair : client utilise son code avoir → relance avec numéro de commande → remboursement appliqué sans effort supplémentaire. Valorise la facilité de la démarche.",
       "example_count": 1
-    },
-    {
-      "topic": "re__re__re__max_sauveur___service_client",
-      "topic_label": "Re: Re: Re: Max Sauveur — Service Client",
-      "situation": "Re: Re: Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Aimy,\n\nC'est tout à fait compréhensible, deux expéditions sur un échange c'est effectivement un coût non prévu.\n\nNous ne pouvons pas intégrer les frais de port directement dans le code avoir, mais voici comment on procède : dès que vous passez votre commande avec le code 98KYQJTF4EW5, revenez-nous avec votre numéro de commande et nous vous remboursons les frais de livraison directement, sans que vous ayez à faire quoi que ce soit de plus.\n\nN'hésitez pas à nous écrire dès que c'est fait.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 3
     },
     {
       "topic": "echange_taille_avec_guide_pointure_confirmation",
