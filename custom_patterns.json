@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__commande__12345_confirm_e",
+      "topic_label": "Re: Re: Re: Commande #12345 confirmée",
+      "situation": "Re: Re: Re: Commande #12345 confirmée",
+      "response_template": "Bonjour François,\n\nParfait, merci pour votre retour !\n\nDès que vous aurez passé votre nouvelle commande pour la Fisherman au tarif promotionnel, envoyez-nous simplement le numéro de commande correspondant. Nous ferons le nécessaire pour procéder au remboursement au moment de l'expédition de votre commande actuelle.\n\nBonne journée,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
