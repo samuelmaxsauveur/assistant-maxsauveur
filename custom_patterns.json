@@ -2,6 +2,30 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__retour_commande__12757",
+      "topic_label": "Re: Re: Re: Retour Commande #12757",
+      "situation": "Re: Re: Re: Retour Commande #12757",
+      "response_template": "Bonjour Fabio,\n\nPas de problème, nous prenons note de votre changement de décision.\n\nDès réception et contrôle de votre Boat dans notre entrepôt, nous procéderons au remboursement sur votre moyen de paiement initial. Comptez 3 à 5 jours ouvrés pour que le virement apparaisse sur votre compte selon votre banque.\n\nBonne journée,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "conseil_pointure_habitude_confirmation",
+      "topic_label": "Confirmation de pointure habituelle pour recommandation de taille",
+      "situation": "Un client connaît sa pointure habituelle confirmée et le service doit valider cette information pour recommander la bonne taille à commander, en prenant en compte les spécificités du modèle.",
+      "response_template": "Bonjour [Prénom],\n\nEn tenant compte de votre pointure habituelle en [taille], ma recommandation est de rester sur le **[taille]**. C'est la taille la plus cohérente avec vos habitudes et la plus sûre dans votre cas.\n\nCordialement,\nJohn de Max Sauveur",
+      "key_points": "Valider l'information fournie par le client. Faire une recommandation claire et justifiée. Rassurer en soulignant la cohérence avec les habitudes du client. Ton expert et confiant. Utiliser le gras pour mettre en évidence la taille recommandée.",
+      "example_count": 1
+    },
+    {
+      "topic": "verification_numero_telephone_contact_correction",
+      "topic_label": "Vérification et correction des numéros de téléphone",
+      "situation": "Un client signale que les numéros de téléphone affichés sur le site ou trouvés ailleurs ne fonctionnent pas ou le redirigent vers une personne tierce. Le client fait part de problèmes de contact précis avec des numéros défaillants depuis longtemps.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour ces précisions, c'est très utile.\n\nSur les numéros de téléphone : Je transmets immédiatement l'information à notre équipe. Les numéros signalés et le problème de redirection vers une personne tierce depuis deux ans constituent clairement un problème que nous devons corriger. Merci d'avoir pris le temps de nous le signaler.\n\nNous mettrons à jour nos coordonnées en priorité.\n\nCordialement,\nJohn de Max Sauveur",
+      "key_points": "Remercier le client pour la précision et l'utilité de son signalement. Transmettre immédiatement à l'équipe concernée. Reconnaître le problème comme légitime et urgent. Ton professionnel et efficace. Engagement clair sur la transmission et correction.",
+      "example_count": 1
+    },
+    {
       "topic": "re__form_name_form_submitted_2026_07_10_11_06_12",
       "topic_label": "Re: Form name Form submitted 2026-07-10 11:06:12",
       "situation": "Re: Form name Form submitted 2026-07-10 11:06:12",
