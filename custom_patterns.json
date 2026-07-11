@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_07_10_22_56_44",
+      "topic_label": "Form name Form submitted 2026-07-10 22:56:44",
+      "situation": "Form name Form submitted 2026-07-10 22:56:44",
+      "response_template": "Bonjour Quentin,\n\nNous sommes en train de nous renseigner auprès de notre équipe logistique pour faire le point sur l'avancement du traitement et nous revenons vers vous très prochainement.\n\nCordialement\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
