@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "retour_commande__12875",
+      "topic_label": "retour commande #12875",
+      "situation": "retour commande #12875",
+      "response_template": "Bonjour Alain,\n\nMerci pour votre message et pour nous avoir transmis le numéro de suivi de votre retour.\n\nNous avons bien enregistré votre demande de remboursement pour les deux paires. Dès réception et contrôle du colis, nous traiterons le remboursement.\n\nJe me permets tout de même de vous partager un retour sur la Deck, car c'est un conseil qu'on donne systématiquement à nos clients : ce modèle est conçu pour chausser ajusté sur les côtés au départ. C'est voulu. Le cuir est naturel et se détend avec le port, c'est précisément ce qui garantit un bon maintien et un chaussant qui se personnalise à votre pied avec le temps. Un Deck trop large dès le début ne se remettra jamais bien en forme. C'est dommage que l'information ne soit pas arrivée à temps.\n\nPour la Boots, n'hésitez pas si vous souhaitez une taille inférieur avant la foin de l'offre.\n\nN'hésitez pas si vous avez des questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__re__commande__12345_confirm_e",
       "topic_label": "Re: Re: Re: Re: Commande #12345 confirmée",
       "situation": "Re: Re: Re: Re: Commande #12345 confirmée",
