@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__votre_commande_max_sauveur___information_importante",
+      "topic_label": "Re: Votre commande Max Sauveur — information importante",
+      "situation": "Re: Votre commande Max Sauveur — information importante",
+      "response_template": "Bonjour Cédric,\n\nParfait, merci pour cette mesure ! Avec 26,2 cm (soit 26,4 cm en ajoutant la marge recommandée), vous êtes en taille 40 sur notre guide. Et comme le Moc Jagger chausse assez grand, le 40 est bien la bonne pointure pour vous. C'est une excellente nouvelle.\n\nJe peux donc vous expédier le Moc Jagger en Cuir Noir en taille 40 sans attendre. Confirmez-moi simplement que c'est ce que vous souhaitez et je m'en occupe immédiatement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 15
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -240,14 +248,6 @@
       "response_template": "Bonjour Camille,\n\nMerci pour les photos et pour nous avoir contactés aussi rapidement.\n\nUne languette qui se décolle dès le premier port, c'est clairement un défaut de fabrication. On prend en charge le retour et la réparation sans aucun frais pour vous.\n\nVoici la procédure à suivre :\n\n1. Imprimez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour et indiquez comme motif \"défaut fabrication\".\n2. Imprimez également l'étiquette prépayée ci-dessous et collez-la sur le colis : https://wing-labelling-system.s3.eu-west-3.amazonaws.com/52d660c3-ca88-4c89-8407-47cb6498562c/LABEL/2026-07-10/LABEL-fd82c49d-f264-4d43-9924-8d0fc1892c75-1783681396684-8R50078307150.pdf\n3. Glissez le bon de retour à l'intérieur du colis, puis déposez-le en point relais Chronopost.\n\nDès réception par notre atelier, nous procédons à la réparation. Comptez 6 à 8 semaines pour le passage en atelier, nous vous tenons informée.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re__votre_commande_max_sauveur___information_importante",
-      "topic_label": "Re: Votre commande Max Sauveur — information importante",
-      "situation": "Re: Votre commande Max Sauveur — information importante",
-      "response_template": "Bonjour Dylan,\n\nMerci pour votre message.\n\nNous avons bien noté la réception de votre retour de notre côté. Nous sommes en train d'interroger notre logistique pour confirmer que tout est bien enregistré, et nous revenons vers vous la semaine prochaine avec une confirmation.\n\nSi le contrôle se passe bien, nous prévoyons d'expédier votre Paul en 44 la semaine prochaine, à la même adresse que votre commande initiale (33 Rue du Hameau, 75015 Paris). Prévenez-nous si vous souhaitez une adresse différente.\n\nVous recevrez un email avec votre numéro de suivi dès l'expédition.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 14
     },
     {
       "topic": "conseil_pointure_paul_cou_de_pied_haut_assouplissement",
