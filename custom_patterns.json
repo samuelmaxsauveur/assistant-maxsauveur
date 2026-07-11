@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__form_name_form_submitted_2026_07_02_16_56_00",
+      "topic_label": "Re: Re: Form name Form submitted 2026-07-02 16:56:00",
+      "situation": "Re: Re: Form name Form submitted 2026-07-02 16:56:00",
+      "response_template": "Bonjour Mourad,\n\nVous avez tout à fait raison, et je vous présente mes excuses pour cet écart.\n\nNous avons bien remboursé le montant du produit (149€) mais les frais de livraison (9,75€) n'ont pas été inclus dans le virement initial. C'est une erreur de notre part, et nous procédons immédiatement au remboursement complémentaire de 9,75€ sur votre moyen de paiement d'origine.\n\nVous devriez le voir apparaître sous 5 à 10 jours ouvrés selon votre banque.\n\nEncore désolé pour ce désagrément.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
