@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__re__votre_commande_max_sauveur___information_imp",
+      "topic_label": "Re: Re: Re: Re: Votre commande Max Sauveur — information importante",
+      "situation": "Re: Re: Re: Re: Votre commande Max Sauveur — information importante",
+      "response_template": "Bonjour Alexandre,\n\nMerci pour les photos, elles sont très utiles.\n\nEn les regardant, nous voyons que le cuir présente déjà des plis visibles au niveau du cou-de-pied. C'est un point important : si vous nous retournez la paire (que ce soit le 43 ou le 43,5), l'état de la chaussure sera évalué à réception par notre équipe avant toute décision de remboursement ou d'échange. Nous ne pouvons pas nous engager à l'avance sur un remboursement si la paire présente des traces d'usure, quel que soit le contexte des essais.\n\nSur la sensation d'engourdissement au petit orteil : c'est un signal que votre pied est serré. Si après quelques minutes de port en intérieur la gêne est franche, il est possible que le 43 soit trop juste pour votre pied. Un essai en 43,5 peut effectivement avoir du sens pour comparer.\n\nSi vous souhaitez commander le 43,5, vous pouvez le faire directement sur le site. Pour le retour de la paire qui ne convient pas, la procédure est la suivante : téléchargez le bon de retour sur maxsauveur.com/pages/livraison-et-retour, emballez soigneusement la paire avec le bon à l'intérieur, et envoyez-la à notre adresse logistique :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception, notre équipe évaluera l'état de la paire et reviendra vers vous.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__votre_commande_max_sauveur___information_importante",
       "topic_label": "Re: Votre commande Max Sauveur — information importante",
       "situation": "Re: Votre commande Max Sauveur — information importante",
