@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re___12423",
+      "topic_label": "Re: #12423",
+      "situation": "Re: #12423",
+      "response_template": "Bonjour Anthony,\n\nMerci pour votre retour, et je comprends la frustration d'avoir essayé deux tailles sans trouver la bonne.\n\nSoyons directs avec vous : le Fisherman est l'un de nos modèles les plus portés, avec plus de 3 000 paires vendues en trois ans. Les retours de ce type, liés à la forme de l'orteil ou à la longueur du modèle, restent extrêmement rares. Cela nous amène à penser que la morphologie de votre pied, notamment la forme de votre orteil, ne correspond tout simplement pas à la forme de ce modèle spécifique. Ce n'est pas une critique, chaque pied est différent, mais certains modèles ne conviennent pas à toutes les morphologies, et c'est visiblement le cas ici.\n\nConcernant les frais de retour : notre politique est effectivement que les retours sont à la charge du client, sauf erreur de notre part. Ce point est indiqué sur notre site avant commande.\n\nPour la paire en 43 (commande #12904), voici la procédure de retour :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez « remboursement »)\n2. Emballez soigneusement la paire et expédiez-la à :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous procéderons au remboursement  sur votre moyen de paiement d'origine sous 3 à 5 jours ouvrés.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 3
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -512,14 +520,6 @@
       "response_template": "Bonjour Victor,\n\nUne semelle qui se décolle après seulement trois ports, c'est clairement un défaut de fabrication. On prend ça en charge sans hésitation.\n\nVoici la procédure pour nous retourner la paire :\n\n1. Imprimez l'étiquette de retour prépayée ci-dessous (le transport est à notre charge) : https://wing-labelling-system.s3.eu-west-3.amazonaws.com/52d660c3-ca88-4c89-8407-47cb6498562c/LABEL/2026-07-08/LABEL-491619b5-011e-4f2d-b11b-b0dc48ce7b5d-1783521847276-8R50072620606.pdf\n\n2. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (mentionnez \"défaut fabrication\" comme raison)\n\n3. Emballez soigneusement la paire et déposez le colis en point relais avec l'étiquette imprimée.\n\nAdresse de destination :\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nUne fois le colis reçu et contrôlé par notre atelier, la réparation sera effectuée dans un délai de 6 à 8 semaines. Je sais que ce délai peut sembler long, mais c'est le temps nécessaire pour un travail soigné.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re___12423",
-      "topic_label": "Re: #12423",
-      "situation": "Re: #12423",
-      "response_template": "Bonjour Anthony,\n\nMerci pour votre message. Malheureusement, nous n'avons plus de boutique physique, la vente se fait uniquement en ligne. Il n'est donc pas possible de déposer les chaussures ni de repartir avec une nouvelle paire en main propre.\n\nPar ailleurs, je vois que vous avez déjà passé une commande pour le 43 (commande #12904). Si c'est bien le cas, il vous suffit de nous retourner le 44 via la procédure habituelle :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la paire et envoyez-la à notre adresse logistique :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous créditons l'avoir correspondant.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 2
     },
     {
       "topic": "rupture_stock_pointure_indisponible_remontee",
