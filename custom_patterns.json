@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__une_commande__12900_est_en_transit",
+      "topic_label": "Re: Une commande #12900 est en transit",
+      "situation": "Re: Une commande #12900 est en transit",
+      "response_template": "Bonjour Étienne,\n\nMerci pour votre retour, ravi que le colis soit bien arrivé.\n\nPour retourner votre Fisherman en 44, voici la procédure :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la sandale avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous enverrons un avoir valable 6 mois sur notre site.\n\nConcernant le réassort du 43 : je n'ai pas de date ferme à vous communiquer pour l'instant. Je vous conseille d'activer l'alerte de disponibilité directement sur la fiche produit, vous serez notifié dès que la taille revient en stock.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
