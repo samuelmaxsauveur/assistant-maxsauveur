@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__re__max_sauveur___service_client",
+      "topic_label": "Re: Re: Re: Re: Max Sauveur — Service Client",
+      "situation": "Re: Re: Re: Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Antoine,\n\nPas de souci du tout, c'est noté. Je vous préviens dès qu'un 42,5 se libère.\n\nEt si finalement rien n'est disponible, un remboursement ne posera aucun problème.\n\nÀ très vite,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -4894,14 +4902,6 @@
       "topic_label": "Re: Re: Re: Re: Form name Form submitted 2026-05-28 13:58:14",
       "situation": "Re: Re: Re: Re: Form name Form submitted 2026-05-28 13:58:14",
       "response_template": "Bonjour Kevin,\n\nTout à fait normal ! Le Moc Jagger est désormais disponible en stock au prix de 335€.\n\nBonne nouvelle pour vous : votre avoir sera émis à hauteur de 335€, soit le prix actuel en stock. Cela vous permet de conserver pleinement l'avantage de votre précommande et de racheter le Moc Jagger sans débourser la différence.\n\nVotre avoir vous sera envoyé cette semaine. Il est valable uniquement sur le Moc Jagger.\n\nBonne journée à vous.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__re__re__re__max_sauveur___service_client",
-      "topic_label": "Re: Re: Re: Re: Max Sauveur — Service Client",
-      "situation": "Re: Re: Re: Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour David,\n\nMerci pour ce retour détaillé.\n\nDe notre côté, nous confirmons que le colis XR630892775TS est bien expédié, mais le suivi indique qu'une instruction de livraison a effectivement été enregistrée le 14 juin, ce qui a redirigé votre colis. Nous n'avons pas donné cette instruction depuis Max Sauveur, il s'agit probablement d'une action automatique du système Chronopost.\n\nPour débloquer la situation et orienter le colis vers un point relais proche du 4 rue Martel 75010 Paris, voici la démarche la plus efficace : appelez à nouveau le 09 69 39 13 91, mais en demandant explicitement à parler à un conseiller humain (tapez 0 ou insistez pour ne pas rester sur le bot). Communiquez le numéro de suivi XR630892775TS et demandez-leur d'orienter votre colis vers un point relais Chrono2Shop dans le 75010.\n\nNotre marge d'action directe sur le routage d'un colis en cours d'acheminement est malheureusement limitée : c'est bien Chronopost qui a la main à ce stade. Mais si cela ne se débloque toujours pas après cet appel, revenez vers nous et nous ouvrirons un dossier officiel en tant qu'expéditeur.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
