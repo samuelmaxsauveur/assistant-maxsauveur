@@ -2,6 +2,30 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "pointue_sandale_fisherman",
+      "topic_label": "Pointue sandale Fisherman",
+      "situation": "Pointue sandale Fisherman",
+      "response_template": "Hello Adrien,\n\nMerci pour votre message et pour avoir pris le soin de mesurer votre pied !\n\nAvec 28,5 cm (votre mesure + marge), vous êtes bien positionné sur du 44. Le fait qu'il reste de l'espace n'est pas un problème sur une sandale Fisherman, puisque la boucle de serrage permet d'ajuster le maintien précisément. Vous n'avez donc pas besoin d'être serré en longueur pour avoir une bonne tenue au pied.\n\nLe 44 restant est la bonne option pour vous.\n\nBonne commande !\n\nJohn - Service Client - Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "retour_commande_remboursement_accepte",
+      "topic_label": "Retour de commande avec remboursement accepté",
+      "situation": "Un client a initié un retour avec numéro de suivi fourni et demande une confirmation du traitement. Max Sauveur a bien enregistré la demande de remboursement et attend la réception du colis pour valider.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et pour nous avoir transmis le numéro de suivi de votre retour.\n\nNous avons bien enregistré votre demande de remboursement. Dès réception et contrôle du colis, nous traiterons le remboursement.\n\nN'hésitez pas si vous avez des questions.\n\nCordialement,\nJohn de Max Sauveur",
+      "key_points": "Confirmation de réception du numéro de suivi. Assurer le client que la demande est enregistrée. Indiquer le processus : réception → contrôle → remboursement. Ton rassurant et professionnel. Laisser la porte ouverte pour des questions.",
+      "example_count": 1
+    },
+    {
+      "topic": "conseil_deck_cuir_detente_naturelle",
+      "topic_label": "Conseil Deck – Cuir qui se détend naturellement avec le port",
+      "situation": "Un client retourne des chaussures Deck car elles semblent trop ajustées au départ. Max Sauveur doit expliquer que ce modèle est volontairement conçu avec un chaussant serré initial et que le cuir naturel se détend progressivement avec l'usage.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message. Je me permets de vous partager un conseil important sur la Deck : ce modèle est volontairement conçu pour chausser ajusté sur les côtés au départ. C'est voulu. Le cuir est naturel et se détend avec le port, c'est précisément ce qui garantit un bon maintien et un chaussant qui se personnalise à votre pied avec le temps. Un Deck trop large dès le début ne se remettra jamais bien en forme.\n\nC'est dommage que cette information ne soit pas arrivée à temps, mais cette caractéristique est essentielle pour la qualité et la durabilité du produit.\n\nN'hésitez pas si vous avez d'autres questions.\n\nCordialement,\nJohn de Max Sauveur",
+      "key_points": "Ton pédagogue et explicatif. Justifier pourquoi le chaussant serré est une caractéristique volontaire et positive. Mentionner le matériau naturel et l'adaptation personnalisée. Exprimer un regret que l'info n'ait pas été communiquée avant. Ne pas proposer automatiquement un remboursement mais valider la demande client au préalable.",
+      "example_count": 1
+    },
+    {
       "topic": "retour_commande__12875",
       "topic_label": "retour commande #12875",
       "situation": "retour commande #12875",
