@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__form_name_form_submitted_2026_06_08_08_36_40",
+      "topic_label": "Re: Re: Form name Form submitted 2026-06-08 08:36:40",
+      "situation": "Re: Re: Form name Form submitted 2026-06-08 08:36:40",
+      "response_template": "Bonjour,\n\nNous avons bien reçu votre paire et elle a été transmise à notre atelier pour réparation.\n\nNous espérons un retour pour mi-août. Nous allons relancer l'atelier dans les prochains jours pour faire un point sur l'avancement et vous tiendrons informé dès que nous avons une confirmation.\n\nN'hésitez pas si vous avez d'autres questions d'ici là.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
