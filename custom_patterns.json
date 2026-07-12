@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__une_commande__12900_est_en_transit",
+      "topic_label": "Re: Une commande #12900 est en transit",
+      "situation": "Re: Une commande #12900 est en transit",
+      "response_template": "Bonjour Étienne,\n\nNous avons bien reçu votre retour, merci.\n\nLa procédure reste la même que celle partagée précédemment : bon de retour complété (motif \"avoir\"), paire emballée soigneusement, envoi à notre adresse logistique à Les Pennes-Mirabeau.\n\nSur le réassort du 43 : je n'ai pas de date ferme à vous communiquer pour le moment. Je vous recommande d'activer l'alerte de disponibilité directement sur la fiche produit du Fisherman en 43, vous serez notifié dès qu'il sera de retour.\n\nEn attendant, si vous souhaitez que nous émettions un avoir dès réception de votre retour, il sera valable 6 mois, ce qui vous laisse le temps de patienter le réassort.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -127,14 +135,6 @@
       "situation": "Un client a reçu une sandale Fisherman dans une taille qui ne convient pas et souhaite la retourner. Il demande comment procéder et quelle compensation il recevra.",
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre retour, ravi que le colis soit bien arrivé.\n\nPour retourner votre Fisherman en [taille], voici la procédure :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la sandale avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous enverrons un avoir valable 6 mois sur notre site.\n\nConcernant le réassort du [taille] : je n'ai pas de date ferme à vous communiquer pour l'instant. Je vous conseille d'activer l'alerte de disponibilité directement sur la fiche produit, vous serez notifié dès que la taille revient en stock.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
       "key_points": "Ton : amical et prévenant. Engagement clé : avoir valable 6 mois. Points importants : préciser l'adresse logistique exacte, mentionner l'alerte de disponibilité comme alternative à l'attente, bien indiquer que l'avoir est généré après réception ET contrôle du colis.",
-      "example_count": 1
-    },
-    {
-      "topic": "re__une_commande__12900_est_en_transit",
-      "topic_label": "Re: Une commande #12900 est en transit",
-      "situation": "Re: Une commande #12900 est en transit",
-      "response_template": "Bonjour Étienne,\n\nMerci pour votre retour, ravi que le colis soit bien arrivé.\n\nPour retourner votre Fisherman en 44, voici la procédure :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez \"avoir\")\n2. Emballez soigneusement la sandale avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau**\n\nDès réception et contrôle, nous vous enverrons un avoir valable 6 mois sur notre site.\n\nConcernant le réassort du 43 : je n'ai pas de date ferme à vous communiquer pour l'instant. Je vous conseille d'activer l'alerte de disponibilité directement sur la fiche produit, vous serez notifié dès que la taille revient en stock.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
       "example_count": 1
     },
     {
