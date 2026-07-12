@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "commande__12807______articles_manquants",
+      "topic_label": "Commande #12807  ::  Articles manquants",
+      "situation": "Commande #12807  ::  Articles manquants",
+      "response_template": "Bonjour Julien,\n\nMerci pour votre message et les photos jointes.\n\nNous nous excusons pour cet oubli à la préparation. Nous avons bien pris en compte votre signalement et les 3 embauchoirs manquants sont d'ores et déjà en cours d'expédition vers votre point relais habituel à Aubervilliers. La livraison est estimée entre le 14 et le 16 juillet.\n\nNous vous tiendrons informé dès qu'un numéro de suivi est disponible.\n\nEncore désolé pour la gêne occasionnée, et merci de votre patience.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
