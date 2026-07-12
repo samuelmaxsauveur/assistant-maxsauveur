@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Zoé,\n\nC'est noté ! Nous venons de mettre à jour l'adresse de livraison avec le point relais suivant :\n\nAshiwa Market, 192 Rue de Tolbiac, 75013 Paris\n\nVos Dakota Chelsea Boots Cuir Noir sont prêtes à partir et seront expédiées très prochainement. Vous recevrez un email avec votre lien de suivi dès que le colis sera pris en charge par Chronopost.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 72
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -648,14 +656,6 @@
       "response_template": "Bonjour [Prénom],\n\nConcernant les frais de port : ils ne sont pas inclus dans l'avoir, ils seront donc à régler en complément lors de votre prochaine commande.\n\nVotre avoir [CODE_AVOIR] reste bien valide 6 mois, vous pourrez l'utiliser si la pointure revient ou sur un autre modèle de la collection.\n\nJe reste disponible si vous avez d'autres questions.\n\nCordialement,\nJohn de Max Sauveur",
       "key_points": "Clarifier que les frais de port ne sont jamais inclus dans un avoir généré. Rappeler la validité 6 mois de l'avoir et sa flexibilité d'utilisation. Ton professionnel et rassurant.",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Antoine,\n\nConcernant les frais de port : ils ne sont pas inclus dans l'avoir, ils seront donc à régler en complément lors de votre prochaine commande.\n\nPour votre question sur la sélection de la paire : le Moc Jagger en 42,5 n'est malheureusement plus disponible en stock pour le moment, ce qui explique que vous ne puissiez pas l'ajouter au panier.\n\nVotre avoir 98KYQJTF4EW5 reste bien valide 6 mois, vous pourrez l'utiliser si la pointure revient ou sur un autre modèle de la collection.\n\nJe reste disponible si vous avez d'autres questions.\n\n\nCordialement,\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 71
     },
     {
       "topic": "re__re__re__re__re__re__re__form_name_form_submitted_2026_05",
