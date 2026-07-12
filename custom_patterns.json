@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_07_11_09_54_09",
+      "topic_label": "Form name Form submitted 2026-07-11 09:54:09",
+      "situation": "Form name Form submitted 2026-07-11 09:54:09",
+      "response_template": "Bonjour Julien,\n\nComme convenu, voici votre étiquette de retour prépayée :\n👉 https://wing-labelling-system.s3.eu-west-3.amazonaws.com/52d660c3-ca88-4c89-8407-47cb6498562c/LABEL/2026-07-12/LABEL-d5fde068-4836-4ce6-8a59-a3b4f0503de8-1783863140536-8R50079583485.pdf\n\nImprimez-la et collez-la sur le colis. \n\nPensez également à glisser le bon de retour à l'intérieur (disponible ici : https://maxsauveur.com/pages/livraison-et-retour), en indiquant comme motif \"échange de taille\".\n\nDès réception de la paire, nous vous prévenons dès que le 42 sera disponible pour que vous puissiez repasser commande.\n\nBonne journée,\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__mocassin_cuir_noir",
       "topic_label": "Re: Mocassin Cuir Noir",
       "situation": "Re: Mocassin Cuir Noir",
