@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__re__re__votre_commande_max_sauveur___information",
+      "topic_label": "Re: Re: Re: Re: Re: Votre commande Max Sauveur — information importante",
+      "situation": "Re: Re: Re: Re: Re: Votre commande Max Sauveur — information importante",
+      "response_template": "Bonjour Alexandre,\n\nMerci pour ce récapitulatif, il est utile d'avoir la chronologie en tête.\n\nJe tiens cependant à clarifier un point important, car il y a une interprétation dans votre message qui ne reflète pas exactement ce qui s'est passé.\n\nNous vous avons suggéré d'essayer la chaussure à nouveau pour évaluer si la gêne persistait. Cela ne nécessite pas de porter la chaussure dehors, ni de l'utiliser au-delà d'un essai soigneux en intérieur. Un essai à la maison, sur parquet ou moquette, ne laisse pas de traces sur le cuir. Les plis visibles sur les photos que vous nous avez envoyées sont apparus dans le cadre de vos essais, et nous ne sommes pas en mesure de savoir à quel moment précis ils sont apparus, ni dans quelles conditions.\n\nNotre position reste la même et elle est simple : nous évaluerons la paire à réception. Si elle est dans un état compatible avec un retour (pas de traces d'usure extérieure, semelle propre, cuir non abîmé au-delà du pli naturel du premier essai), nous traiterons la demande d'avoir normalement. Si l'état révèle une usure plus avancée, cela entrera en compte dans notre décision.\n\nNous n'avons pas motivé une utilisation qui aurait endommagé la chaussure, et nous ne pouvons pas accepter de prendre en charge un retour dans lequel notre responsabilité serait engagée sur ce point.\n\nEnvoyez-nous la paire, notre équipe l'examinera à réception et reviendra vers vous avec une réponse claire.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
