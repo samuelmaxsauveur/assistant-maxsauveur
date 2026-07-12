@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "demande_d_aide_pour_pointure_mod_le_mod_le_deck_bateau_cuir_",
+      "topic_label": "Demande d'aide pour pointure modèle modèle Deck-bateau cuir pony",
+      "situation": "Demande d'aide pour pointure modèle modèle Deck-bateau cuir pony",
+      "response_template": "Bonjour Sacha,\n\nBonne nouvelle pour votre raisonnement, il est parfaitement juste ! Avec 27,4 cm (27,2 + 0,2), vous êtes bien en **41,5** sur notre guide, et c'est la taille que je vous recommande pour le Deck.\n\nSur vos semelles orthopédiques, voici ce qui se passe probablement : vos Mephisto intègrent une chambre de compensation sous la semelle amovible d'origine, ce qui permet d'accueillir une semelle orthopédique plus volumineuse sans monter en pointure. C'est une conception spécifique à certaines marques de confort, pas universelle.\n\nPour le Deck chez nous, la question est donc : est-ce que votre semelle orthopédique (format 45, soit 29 cm) entre physiquement dans une chaussure bateau en 41,5 ? Honnêtement, c'est peu probable sans modification, car la longueur intérieure d'un 41,5 est conçue pour un pied de 27,5 cm, pas pour accueillir une semelle de 29 cm.\n\nQuelques options concrètes :\n\n- **Si vous portez le Deck sans semelle orthopédique** : le 41,5 est la bonne taille, sans hésitation.\n- **Si vous avez besoin de vos semelles orthopédiques** : il vous faudrait envisager un 43 ou 44 pour créer la place nécessaire, mais à ce stade la chaussure sera trop grande pour votre pied sans la semelle et le résultat sera inconfortable.\n\nMa question directe : portez-vous vos semelles orthopédiques en permanence, même avec des chaussures de ville, ou uniquement dans vos Mephisto de marche quotidienne ?\n\nSelon votre réponse, je peux vous orienter avec précision.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
