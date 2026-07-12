@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "restock_sandales",
+      "topic_label": "Restock sandales",
+      "situation": "Restock sandales",
+      "response_template": "Bonjour Hugo,\n\nMerci pour votre message.\n\nMalheureusement, nous n'avons pas de réassort prévu sur les sandales Fisherman pour le moment. Si la situation devait changer, le moyen le plus rapide d'être prévenu reste l'alerte pointure directement sur la fiche produit de notre site.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande__12807______articles_manquants",
       "topic_label": "Commande #12807  ::  Articles manquants",
       "situation": "Commande #12807  ::  Articles manquants",
