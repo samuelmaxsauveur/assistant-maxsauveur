@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__mocassin_cuir_noir",
+      "topic_label": "Re: Mocassin Cuir Noir",
+      "situation": "Re: Mocassin Cuir Noir",
+      "response_template": "Bonjour Michel,\n\nBonne nouvelle pour votre commande : elle est prête et dans la prochaine collecte. Vous devriez recevoir votre email de suivi très prochainement, avec une livraison estimée entre le 14 et le 16 juillet à votre point relais de Genas.\n\nPour la ceinture noire, deux options selon votre style :\n\n- La Jonas cuir noir : sobre, classique, elle s'accorde parfaitement avec vos mocassins au quotidien.\n- La Jessie cuir noir : plus originale avec sa boucle néo-western, pour ceux qui aiment un détail qui fait la différence.\n\nLes deux sont de belle facture, tout dépend du look que vous cherchez !\n\nBon week-end et bonnes vacances à vous.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -206,14 +214,6 @@
       "topic_label": "Form name Form submitted 2026-07-10 14:36:02",
       "situation": "Form name Form submitted 2026-07-10 14:36:02",
       "response_template": "Bonjour,\n\nMerci pour votre message et pour nous avoir prévenus rapidement.\n\nJe suis sincèrement désolé pour la présentation à la réception : une boîte abîmée, du papier froissé et une marque sur le cuir, c'est clairement en dessous de ce qu'on attend pour un cadeau.\n\nSur la marque de cuir : le cuir est une matière naturelle qui peut marquer lors du transport, notamment si le colis a été malmené. Dans la plupart des cas, un simple coup de chiffon doux suffit à atténuer ce type de trace. Cela dit, si après examen la marque est plus profonde, nous trouverons une solution.\n\nVous avez bien fait de laisser le destinataire décider. Si un retour est envisagé, voici comment procéder :\n\nRendez-vous sur notre page de retour : **https://maxsauveur.com/pages/livraison-et-retour**\n\nTéléchargez le bon de retour, indiquez la raison, et envoyez la paire à notre adresse logistique :\n\n**SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau**\n\nN'hésitez pas à revenir vers nous ce soir ou demain pour nous dire ce que vous souhaitez faire. Nous ferons en sorte de trouver la meilleure solution, que ce soit un échange ou un avoir.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__mocassin_cuir_noir",
-      "topic_label": "Re: Mocassin Cuir Noir",
-      "situation": "Re: Mocassin Cuir Noir",
-      "response_template": "Bonjour Michel,\n\nParfait, votre commande est bien enregistrée et vous avez fait le bon choix avec le 41.\n\nVous recevrez un email de confirmation avec votre lien de suivi dès l'expédition de votre colis.\n\nN'hésitez pas à revenir vers nous si vous avez la moindre question à réception.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
