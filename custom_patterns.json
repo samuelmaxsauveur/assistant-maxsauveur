@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "retour_suite_erreur_de_pointure___commande__12791",
+      "topic_label": "Retour suite erreur de pointure - Commande #12791",
+      "situation": "Retour suite erreur de pointure - Commande #12791",
+      "response_template": "Bonjour Théo,\n\nMerci pour ce retour enthousiaste sur la Jesse et le Peter A. !\n\nJe réponds à vos deux questions :\n\n**1. La ceinture Jesse et votre remboursement/avoir**\n\nBonne nouvelle sur ce point : vous pouvez tout à fait conserver la ceinture et ne retourner que les chaussures. En revanche, la remise de 94,50€ que vous avez obtenue était conditionnée à l'achat d'une paire de chaussures. Si vous retournez les chaussures, l'avoir sera calculé sur le montant réellement payé pour celles-ci, soit **219,00€**. La ceinture reste à 94,50€ (prix payé après remise), ce qui est très bien.\n\nPour procéder au retour :\n1. Téléchargez le bon de retour ici : https://maxsauveur.com/pages/livraison-et-retour\n2. Indiquez le motif : \"avoir\" ou \"remboursement\" (à vous de choisir)\n3. Envoyez la paire à notre logistique : SSL – 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\n\n**2. Pointure pour le Moc Paul**\n\nAvec 27,5 cm de pied, vous êtes normalement sur du 43. Cela dit, vous portez vos Brogues en 44, ce qui suggère que votre pied est peut-être un peu plus large ou que vous avez un fort cou-de-pied. Le Paul chausse juste au départ (cuir ferme, sans lacets), et avec votre profil, je vous conseille de partir sur un **44,5**, voire un **45** si vous avez un cou-de-pied marqué. Cela vous donnera le confort nécessaire, sachant que le cuir et la semelle en liège se moulera à votre pied avec le port.\n\nN'hésitez pas si vous avez d'autres questions !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
