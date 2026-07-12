@@ -2,10 +2,10 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
-      "topic": "restock_sandales",
-      "topic_label": "Restock sandales",
-      "situation": "Restock sandales",
-      "response_template": "Bonjour Hugo,\n\nMerci pour votre message.\n\nMalheureusement, nous n'avons pas de réassort prévu sur les sandales Fisherman pour le moment. Si la situation devait changer, le moyen le plus rapide d'être prévenu reste l'alerte pointure directement sur la fiche produit de notre site.\n\nJohn de Max Sauveur",
+      "topic": "commande__12855",
+      "topic_label": "Commande #12855",
+      "situation": "Commande #12855",
+      "response_template": "Bonjour Wilfrid,\n\nMerci pour votre retour, on comprend tout à fait la situation et on va s'en occuper.\n\nVoici l'étiquette prépayée pour nous renvoyer la paire :\n👉 https://wing-labelling-system.s3.eu-west-3.amazonaws.com/52d660c3-ca88-4c89-8407-47cb6498562c/LABEL/2026-07-12/LABEL-d2fe9a20-d21b-4892-860c-03db300fba52-1783861151460-8R50079976485.pdf\n\nInstructions pour le retour :\n1. Imprimez et collez l'étiquette sur le colis (bien emballer la paire dans sa boîte).\n2. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour\n3. Sur le bon de retour, indiquez clairement que vous souhaitez un échange en taille 42, pour que nous puissions en mettre une de côté si un retour arrive.\n4. Déposez le colis dans un point Chronopost.\n\nConcernant le 42 : nous n'avons pas de visibilité précise sur la date de réassort, mais dès qu'un exemplaire est disponible via un retour, nous ferons le nécessaire pour vous le réserver en priorité.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
