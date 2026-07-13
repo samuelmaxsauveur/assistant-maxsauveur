@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__demande_de_retour___commande__12781",
+      "topic_label": "Re: Demande de retour – Commande #12781",
+      "situation": "Re: Demande de retour – Commande #12781",
+      "response_template": "Bonjour Ben,\n\nMerci pour votre message, et je comprends la frustration de ne pas réussir à enfiler une paire qu'on attendait avec impatience.\n\nPetite précision importante : votre commande #12781 est bien en taille 41, qui est justement la pointure que vous aviez essayée au pop-up et qui vous convenait. Il ne s'agit donc pas d'une erreur de taille.\n\nCe que vous ressentez vient très probablement de la rigidité du daim neuf. Sans lacets, l'ouverture d'un mocassin est fixe, et le daim est particulièrement ferme au début, ce qui rend l'enfilage difficile les premières fois.\n\nMon conseil avant d'envisager un retour : essayez avec un chausse-pied. Ça change vraiment tout pour enfiler un mocassin en cuir ou daim neuf, et dans votre cas c'est d'autant plus pertinent que vous avez déjà essayé ce modèle en 41 et qu'il vous allait.\n\nSi après avoir essayé avec un chausse-pied vous souhaitez quand même procéder au retour, voici la procédure :\n\n1. Téléchargez le bon de retour ici : https://maxsauveur.com/pages/livraison-et-retour (cochez \"avoir\")\n2. Emballez soigneusement la paire et envoyez-la à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n3. Dès réception et contrôle, nous vous enverrons un avoir du montant payé pour les chaussures, valable 6 mois sur notre site\n\nN'hésitez pas à me dire comment ça se passe avec le chausse-pied !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
