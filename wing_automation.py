@@ -377,20 +377,22 @@ def generate_return_label(order_number):
             page.screenshot(path="/tmp/wing_label_debug.png")
             raise Exception(f"Order {order_number} not found in Wing table")
 
-        # Intercept all network responses to capture PDF URL
-        pdf_url_holder = []
+        # Intercept S3 label URLs from all network responses
+        s3_url_holder = []
 
-        def on_response(response):
+        def on_s3_response(response):
             try:
                 url = response.url
                 ct = response.headers.get('content-type', '')
-                if response.status == 200 and ('pdf' in ct.lower() or url.lower().endswith('.pdf') or 'label' in url.lower() or 'etiquette' in url.lower()):
-                    print(f"[Wing] PDF response intercepted: {url} ({ct})")
-                    pdf_url_holder.append(url)
+                if ('wing-labelling-system.s3' in url or
+                        ('s3' in url and 'LABEL' in url.upper()) or
+                        'pdf' in ct.lower() or url.lower().endswith('.pdf')):
+                    print(f"[Wing] S3/PDF intercepted: {url}")
+                    s3_url_holder.append(url)
             except Exception:
                 pass
 
-        page.on('response', on_response)
+        page.on('response', on_s3_response)
 
         # Step 1: click checkbox
         print(f"[Wing] Clicking checkbox...")
@@ -411,58 +413,58 @@ def generate_return_label(order_number):
                 first_td.click(force=True)
         time.sleep(1)
 
-        # Step 2: click Affranchissement in bottom action bar
-        print(f"[Wing] Waiting for Affranchissement...")
-        try:
-            page.wait_for_selector('text=Affranchissement', timeout=6000)
-        except Exception:
-            page.screenshot(path="/tmp/wing_label_debug.png")
-            raise Exception("Affranchissement not visible after checkbox click")
-        page.locator('text=Affranchissement').click()
-        time.sleep(1)
-
-        # Step 3: click "Créer et générer" (or Réimprimer if label already exists)
-        option_to_click = None
-        for option in ['Créer et générer', 'Réimprimer', 'Télécharger', 'imprimer']:
-            if page.locator(f'text={option}').count() > 0:
-                option_to_click = option
-                break
-        if not option_to_click:
-            page.screenshot(path="/tmp/wing_label_debug.png")
-            raise Exception("Aucune option d'étiquette trouvée dans Affranchissement")
-        print(f"[Wing] Clicking '{option_to_click}'...")
-        page.locator(f'text={option_to_click}').first.click()
-        time.sleep(3)
-
-        # Step 4: wait for "Télécharger les étiquettes" and intercept the S3 URL
+        # Step 2: click the label action button — Wing now shows it directly in the action bar
+        # Priority order: direct button > Affranchissement submenu
         label_url = None
-        s3_url_holder = []
+        direct_options = [
+            'Créer et générer l\'étiquette retour',
+            'Réimprimer l\'étiquette retour',
+            'Créer et générer',
+            'Réimprimer',
+        ]
+        direct_clicked = False
+        for opt in direct_options:
+            loc = page.locator(f'text={opt}')
+            if loc.count() > 0:
+                print(f"[Wing] Clicking direct action bar button: '{opt}'...")
+                loc.first.click()
+                direct_clicked = True
+                time.sleep(4)
+                break
 
-        def on_response(response):
+        if not direct_clicked:
+            # Fallback: Affranchissement submenu
+            print(f"[Wing] Direct button not found, trying Affranchissement submenu...")
             try:
-                url = response.url
-                if 'wing-labelling-system.s3' in url or ('s3' in url and 'LABEL' in url):
-                    print(f"[Wing] S3 URL intercepted: {url}")
-                    s3_url_holder.append(url)
-            except Exception:
-                pass
+                page.wait_for_selector('text=Affranchissement', timeout=6000)
+                page.locator('text=Affranchissement').click()
+                time.sleep(1)
+                for opt in ['Créer et générer', 'Réimprimer', 'Télécharger']:
+                    if page.locator(f'text={opt}').count() > 0:
+                        print(f"[Wing] Submenu: clicking '{opt}'...")
+                        page.locator(f'text={opt}').first.click()
+                        time.sleep(4)
+                        break
+            except Exception as e:
+                page.screenshot(path="/tmp/wing_label_debug.png")
+                raise Exception(f"Aucun bouton d'étiquette trouvé: {e}")
 
-        page.on('response', on_response)
+        # Step 3: try clicking "Télécharger les étiquettes" if it appears
+        for download_text in ['Télécharger les étiquettes', 'Télécharger']:
+            loc = page.locator(f'text={download_text}')
+            if loc.count() > 0:
+                print(f"[Wing] Clicking '{download_text}'...")
+                loc.first.click()
+                time.sleep(4)
+                break
+        else:
+            time.sleep(4)  # wait anyway for network interception
 
-        print(f"[Wing] Waiting for 'Télécharger les étiquettes'...")
-        try:
-            page.wait_for_selector('text=Télécharger les étiquettes', timeout=10000)
-            print(f"[Wing] Found 'Télécharger les étiquettes', clicking...")
-            page.locator('text=Télécharger les étiquettes').first.click()
-            time.sleep(5)
-        except Exception as e:
-            print(f"[Wing] 'Télécharger les étiquettes' not found: {e}")
-
-        # Search for S3 URL in intercepted responses or page HTML
+        # Step 4: search for S3 URL in intercepted responses or page HTML
         if not s3_url_holder:
-            import re
+            import re as _re
             page_html = page.content()
-            matches = re.findall(r'https://wing-labelling-system\.s3[^\s"\'<>]+', page_html)
+            matches = _re.findall(r'https://wing-labelling-system\.s3[^\s"\'<>]+', page_html)
             if matches:
                 s3_url_holder.extend(matches)
                 print(f"[Wing] S3 URLs in HTML: {matches}")
@@ -473,7 +475,7 @@ def generate_return_label(order_number):
 
         if not label_url:
             page.screenshot(path="/tmp/wing_label_debug.png")
-            print(f"[Wing] Page state: {page.inner_text('body')[:600]}")
+            print(f"[Wing] Page state: {page.inner_text('body')[:800]}")
             raise Exception("URL étiquette non trouvée")
 
         context.close()
