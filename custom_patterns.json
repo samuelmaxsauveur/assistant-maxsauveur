@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__demande_de_retour___commande__12781",
+      "topic_label": "Re: Re: Demande de retour – Commande #12781",
+      "situation": "Re: Re: Demande de retour – Commande #12781",
+      "response_template": "Bonjour Ben,\n\nBonne initiative d'essayer avec un chausse-pied, ça fait souvent toute la différence sur un mocassin en daim neuf.\n\nPour répondre à votre question : la commande #12781 comprend deux articles (les Peter A. et la ceinture Jonas). Si vous retournez uniquement les mocassins, l'avoir sera calculé sur le montant payé pour ceux-ci.\n\nJe vais vérifier le détail de la répartition des montants et reviens vers vous avec le chiffre exact. En attendant, testez le chausse-pied et tenez-moi au courant !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
