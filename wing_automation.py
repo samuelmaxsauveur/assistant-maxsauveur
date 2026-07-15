@@ -413,52 +413,33 @@ def generate_return_label(order_number):
                 first_td.click(force=True)
         time.sleep(1)
 
-        # Step 2: click the label action button — Wing now shows it directly in the action bar
-        # Priority order: direct button > Affranchissement submenu
+        # Step 2: Affranchissement → sous-menu → Créer et générer l'étiquette retour
         label_url = None
-        direct_options = [
-            'Créer et générer l\'étiquette retour',
-            'Réimprimer l\'étiquette retour',
-            'Créer et générer',
-            'Réimprimer',
-        ]
-        direct_clicked = False
-        for opt in direct_options:
-            loc = page.locator(f'text={opt}')
-            if loc.count() > 0:
-                print(f"[Wing] Clicking direct action bar button: '{opt}'...")
-                loc.first.click()
-                direct_clicked = True
-                time.sleep(4)
-                break
+        print(f"[Wing] Waiting for Affranchissement...")
+        try:
+            page.wait_for_selector('text=Affranchissement', timeout=6000)
+        except Exception:
+            page.screenshot(path="/tmp/wing_label_debug.png")
+            raise Exception("Affranchissement not visible after checkbox click")
+        page.locator('text=Affranchissement').click()
+        time.sleep(1)
 
-        if not direct_clicked:
-            # Fallback: Affranchissement submenu
-            print(f"[Wing] Direct button not found, trying Affranchissement submenu...")
-            try:
-                page.wait_for_selector('text=Affranchissement', timeout=6000)
-                page.locator('text=Affranchissement').click()
-                time.sleep(1)
-                for opt in ['Créer et générer', 'Réimprimer', 'Télécharger']:
-                    if page.locator(f'text={opt}').count() > 0:
-                        print(f"[Wing] Submenu: clicking '{opt}'...")
-                        page.locator(f'text={opt}').first.click()
-                        time.sleep(4)
-                        break
-            except Exception as e:
-                page.screenshot(path="/tmp/wing_label_debug.png")
-                raise Exception(f"Aucun bouton d'étiquette trouvé: {e}")
-
-        # Step 3: try clicking "Télécharger les étiquettes" if it appears
-        for download_text in ['Télécharger les étiquettes', 'Télécharger']:
-            loc = page.locator(f'text={download_text}')
-            if loc.count() > 0:
-                print(f"[Wing] Clicking '{download_text}'...")
-                loc.first.click()
-                time.sleep(4)
+        # Step 3: click the label option in the submenu
+        option_to_click = None
+        for opt in ["Créer et générer l'étiquette retour", 'Créer et générer', 'Réimprimer']:
+            if page.locator(f'text={opt}').count() > 0:
+                option_to_click = opt
                 break
-        else:
-            time.sleep(4)  # wait anyway for network interception
+        if not option_to_click:
+            page.screenshot(path="/tmp/wing_label_debug.png")
+            print(f"[Wing] Submenu body: {page.inner_text('body')[:600]}")
+            raise Exception("Aucune option d'étiquette trouvée dans Affranchissement")
+        print(f"[Wing] Clicking '{option_to_click}'...")
+        page.locator(f'text={option_to_click}').first.click()
+
+        # Step 4: wait for network to return S3 URL (no button to click — label is generated server-side)
+        print(f"[Wing] Waiting for S3 URL from network...")
+        time.sleep(8)  # give Wing time to generate and serve the label
 
         # Step 4: search for S3 URL in intercepted responses or page HTML
         if not s3_url_holder:
