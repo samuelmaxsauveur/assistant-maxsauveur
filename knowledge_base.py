@@ -44,8 +44,10 @@ KNOWLEDGE_BASE = """
 ## PROCÉDURES SAV
 
 ### Retours & Échanges
-- Retour par le CLIENT à ses frais (sauf défaut de fabrication ou erreur de préparation)
+- Retour par le CLIENT à ses frais (sauf défaut de fabrication ou erreur de préparation = mauvais produit envoyé)
 - Pas d'étiquette de retour fournie sauf erreur de notre part
+- JAMAIS de prise en charge des frais de retour pour : mauvaise taille choisie, conseil pointure, modèle qui ne convient pas, préférence personnelle
+- Un conseil pointure de notre part n'est pas une erreur de préparation — le client reste seul responsable de son choix de taille
 - Bon de retour disponible : https://maxsauveur.com/pages/livraison-et-retour
 - Indiquer sur le bon : raison du retour ("demande d'avoir", "défaut fabrication", etc.)
 - Délai légal remboursement : 14 jours après réception. Au-delà → avoir ou échange uniquement
