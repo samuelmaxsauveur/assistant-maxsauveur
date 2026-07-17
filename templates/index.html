@@ -531,6 +531,8 @@ async function sendReturnLabel(id) {
 
     // Step 1: not yet prepared — start async job then poll
     if (!_labelIds[id]) {
+        if (btn.dataset.running === '1') return; // prevent double-click
+        btn.dataset.running = '1';
         btn.textContent = '⏳ Génération étiquette Wing...';
         btn.disabled = true;
         try {

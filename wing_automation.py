@@ -434,12 +434,12 @@ def generate_return_label(order_number):
             page.screenshot(path="/tmp/wing_label_debug.png")
             print(f"[Wing] Submenu body: {page.inner_text('body')[:600]}")
             raise Exception("Aucune option d'étiquette trouvée dans Affranchissement")
-        print(f"[Wing] Clicking '{option_to_click}'...")
-        page.locator(f'text={option_to_click}').first.click()
+        print(f"[Wing] Clicking '{option_to_click}' (no_wait_after)...")
+        page.locator(f'text={option_to_click}').first.click(no_wait_after=True)
 
-        # Step 4: wait for network to return S3 URL (no button to click — label is generated server-side)
+        # Step 4: wait for S3 URL — the click triggers server-side generation, no navigation to wait for
         print(f"[Wing] Waiting for S3 URL from network...")
-        time.sleep(8)  # give Wing time to generate and serve the label
+        time.sleep(12)  # give Wing enough time to generate and return the label URL
 
         # Step 4: search for S3 URL in intercepted responses or page HTML
         if not s3_url_holder:
