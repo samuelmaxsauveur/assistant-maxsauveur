@@ -653,30 +653,55 @@ http://localhost:8080
 
 import tempfile, base64
 
-_label_store = {}  # temp storage: label_id -> {bytes, filename}
+_label_store = {}   # temp storage: label_id -> {bytes, filename}
+_label_jobs  = {}   # async jobs:  job_id  -> {status, result}
+
+def _run_label_job(job_id, customer_name, order_number, email_body):
+    """Background thread: generate Wing label + draft, store in _label_jobs."""
+    try:
+        label_url = None
+        if order_number:
+            print(f"[Label] Starting Wing Playwright for #{order_number}...")
+            label_url = wing_automation.generate_return_label(order_number)
+            print(f"[Label] Got URL: {label_url}")
+        draft = claude_ai.generate_sav_approval_email(customer_name, order_number, email_body, label_url=label_url)
+        _label_jobs[job_id] = {
+            'status': 'done',
+            'success': True,
+            'label_attached': bool(label_url),
+            'label_url': label_url,
+            'draft': draft,
+        }
+    except Exception as e:
+        print(f"[Label] Job {job_id} error: {e}")
+        _label_jobs[job_id] = {'status': 'error', 'success': False, 'error': str(e)}
+
 
 @app.route('/prepare-return-label', methods=['POST'])
 def prepare_return_label():
-    """Fetch Wing return label and return draft preview — does NOT send yet."""
-    import uuid
+    """Start async Wing label generation — returns job_id immediately."""
+    import uuid, threading
     data = request.json or {}
-    customer_name = data.get('customer_name', '')
-    order_number = data.get('order_number', '').replace('#', '')
-    email_body = data.get('email_body', '')
+    job_id = str(uuid.uuid4())
+    _label_jobs[job_id] = {'status': 'pending'}
+    t = threading.Thread(
+        target=_run_label_job,
+        args=(job_id, data.get('customer_name', ''),
+              data.get('order_number', '').replace('#', ''),
+              data.get('email_body', '')),
+        daemon=True
+    )
+    t.start()
+    return jsonify({'job_id': job_id, 'status': 'pending'})
 
-    # Generate return label from Wing — returns URL string
-    label_url = None
-    if order_number:
-        try:
-            print(f"[Label] API returned None, trying Playwright...")
-            label_url = wing_automation.generate_return_label(order_number)
-            print(f"[Label] Got URL: {label_url}")
-        except Exception as e:
-            print(f"Wing label error: {e}")
 
-    # Generate SAV draft (include label URL in email if available)
-    draft = claude_ai.generate_sav_approval_email(customer_name, order_number, email_body, label_url=label_url)
-    return jsonify({'success': True, 'label_attached': bool(label_url), 'label_url': label_url, 'draft': draft})
+@app.route('/label-job-status/<job_id>')
+def label_job_status(job_id):
+    """Poll endpoint: returns job status + result when ready."""
+    job = _label_jobs.get(job_id)
+    if not job:
+        return jsonify({'status': 'error', 'error': 'Job introuvable'})
+    return jsonify(job)
 
 
 @app.route('/send-return-label', methods=['POST'])

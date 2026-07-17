@@ -529,12 +529,13 @@ async function sendReturnLabel(id) {
     const d = emailData[id];
     if (!d) return;
 
-    // Step 1: not yet prepared — fetch label + draft preview
+    // Step 1: not yet prepared — start async job then poll
     if (!_labelIds[id]) {
-        btn.textContent = '⏳ Récupération étiquette Wing...';
+        btn.textContent = '⏳ Génération étiquette Wing...';
         btn.disabled = true;
         try {
-            const res = await fetch('/prepare-return-label', {
+            // Start the job (returns immediately)
+            const startRes = await fetch('/prepare-return-label', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -543,23 +544,50 @@ async function sendReturnLabel(id) {
                     email_body: d.body
                 })
             });
-            const data = await safeJson(res);
-            if (data.success) {
-                // Put draft in textarea for review
+            const startData = await safeJson(startRes);
+            const jobId = startData.job_id;
+            if (!jobId) throw new Error('Pas de job_id');
+
+            // Poll every 4s until done (max 3 minutes)
+            let attempts = 0;
+            const maxAttempts = 45;
+            const result = await new Promise((resolve, reject) => {
+                const interval = setInterval(async () => {
+                    attempts++;
+                    const dots = '.'.repeat((attempts % 3) + 1);
+                    btn.textContent = `⏳ Wing en cours${dots}`;
+                    try {
+                        const pollRes = await fetch(`/label-job-status/${jobId}`);
+                        const job = await safeJson(pollRes);
+                        if (job.status === 'done' || job.status === 'error') {
+                            clearInterval(interval);
+                            resolve(job);
+                        } else if (attempts >= maxAttempts) {
+                            clearInterval(interval);
+                            reject(new Error('Timeout'));
+                        }
+                    } catch(e) {
+                        clearInterval(interval);
+                        reject(e);
+                    }
+                }, 4000);
+            });
+
+            if (result.success) {
                 const textarea = document.getElementById('textarea-' + id);
-                if (textarea) textarea.value = data.draft;
-                _labelIds[id] = data.label_id || 'none';
-                btn.textContent = data.label_attached
+                if (textarea) textarea.value = result.draft;
+                _labelIds[id] = result.label_url || 'none';
+                btn.textContent = result.label_attached
                     ? '✅ Étiquette prête — cliquer pour envoyer'
                     : '⚠️ Sans étiquette — cliquer pour envoyer';
-                btn.style.background = data.label_attached ? '#16a34a' : '#b45309';
+                btn.style.background = result.label_attached ? '#16a34a' : '#b45309';
                 btn.style.color = 'white';
             } else {
                 btn.textContent = '❌ Erreur Wing';
                 btn.style.background = '#dc2626';
             }
         } catch(e) {
-            btn.textContent = '❌ Erreur réseau';
+            btn.textContent = '❌ Erreur / timeout';
             btn.style.background = '#dc2626';
         }
         btn.disabled = false;
