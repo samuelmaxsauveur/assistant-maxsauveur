@@ -436,10 +436,32 @@ def generate_return_label(order_number):
             raise Exception("Aucune option d'étiquette trouvée dans Affranchissement")
         print(f"[Wing] Clicking '{option_to_click}' (no_wait_after)...")
         page.locator(f'text={option_to_click}').first.click(no_wait_after=True)
+        time.sleep(2)
 
-        # Step 4: wait for S3 URL — the click triggers server-side generation, no navigation to wait for
+        # Step 4: select pickup/depot if Wing shows a location submenu
+        # Wing requires selecting a depot (e.g. "Aix-Pickup", "Paris-Commines") before generating the label
+        depot_keywords = ['Pickup', 'Commines', 'Aix', 'Paris', 'Lyon', 'Bordeaux', 'Marseille', 'Entrepôt', 'Dépôt']
+        depot_clicked = False
+        for kw in depot_keywords:
+            loc = page.locator(f'text={kw}')
+            if loc.count() > 0:
+                print(f"[Wing] Selecting depot: '{kw}'...")
+                loc.first.click(no_wait_after=True)
+                depot_clicked = True
+                time.sleep(2)
+                break
+        if depot_clicked:
+            # After depot selection, click confirm/generate if a button appears
+            for confirm_text in ['Générer', 'Valider', 'Confirmer', 'OK']:
+                if page.locator(f'text={confirm_text}').count() > 0:
+                    print(f"[Wing] Confirming with '{confirm_text}'...")
+                    page.locator(f'text={confirm_text}').first.click(no_wait_after=True)
+                    time.sleep(2)
+                    break
+
+        # Step 5: wait for S3 URL from network interception
         print(f"[Wing] Waiting for S3 URL from network...")
-        time.sleep(12)  # give Wing enough time to generate and return the label URL
+        time.sleep(10)  # give Wing enough time to generate and return the label URL
 
         # Step 4: search for S3 URL in intercepted responses or page HTML
         if not s3_url_holder:
