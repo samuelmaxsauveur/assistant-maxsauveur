@@ -459,9 +459,16 @@ def generate_return_label(order_number):
                     time.sleep(2)
                     break
 
-        # Step 5: wait for S3 URL from network interception
-        print(f"[Wing] Waiting for S3 URL from network...")
-        time.sleep(10)  # give Wing enough time to generate and return the label URL
+        # Step 5: click "Télécharger les étiquettes" which appears after generation
+        print(f"[Wing] Waiting for 'Télécharger les étiquettes'...")
+        try:
+            page.wait_for_selector('text=Télécharger les étiquettes', timeout=15000)
+            print(f"[Wing] Clicking 'Télécharger les étiquettes'...")
+            page.locator('text=Télécharger les étiquettes').first.click(no_wait_after=True)
+            time.sleep(8)
+        except Exception as e:
+            print(f"[Wing] 'Télécharger les étiquettes' not found: {e}, waiting anyway...")
+            time.sleep(5)
 
         # Step 4: search for S3 URL in intercepted responses or page HTML
         if not s3_url_holder:
