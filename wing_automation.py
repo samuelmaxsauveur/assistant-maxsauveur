@@ -438,18 +438,18 @@ def generate_return_label(order_number):
         page.locator(f'text={option_to_click}').first.click(no_wait_after=True)
         time.sleep(2)
 
-        # Step 4: select pickup/depot if Wing shows a location submenu
-        # Wing requires selecting a depot (e.g. "Aix-Pickup", "Paris-Commines") before generating the label
-        depot_keywords = ['Pickup', 'Commines', 'Aix', 'Paris', 'Lyon', 'Bordeaux', 'Marseille', 'Entrepôt', 'Dépôt']
+        # Step 4: select "Aix- Pickup" depot (always use this one)
         depot_clicked = False
-        for kw in depot_keywords:
-            loc = page.locator(f'text={kw}')
+        for aix_text in ['Aix- Pickup', 'Aix-Pickup', 'Aix']:
+            loc = page.locator(f'text={aix_text}')
             if loc.count() > 0:
-                print(f"[Wing] Selecting depot: '{kw}'...")
+                print(f"[Wing] Selecting depot: '{aix_text}'...")
                 loc.first.click(no_wait_after=True)
                 depot_clicked = True
                 time.sleep(2)
                 break
+        if not depot_clicked:
+            print(f"[Wing] Aix-Pickup not found in submenu")
         if depot_clicked:
             # After depot selection, click confirm/generate if a button appears
             for confirm_text in ['Générer', 'Valider', 'Confirmer', 'OK']:
