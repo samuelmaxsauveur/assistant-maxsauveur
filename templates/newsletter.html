@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Newsletter — Max Sauveur</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f5; color: #333; }
+
+        header { background: #111; color: white; padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; }
+        header h1 { font-size: 17px; font-weight: 600; }
+        header a { color: #aaa; text-decoration: none; font-size: 14px; }
+        header a:hover { color: white; }
+
+        .container { max-width: 620px; margin: 32px auto; padding: 0 16px 80px; }
+
+        .card { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+        h2 { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+        .subtitle { font-size: 13px; color: #888; margin-bottom: 24px; line-height: 1.5; }
+
+        label { display: block; font-size: 13px; font-weight: 600; color: #555; margin-bottom: 6px; margin-top: 16px; }
+        label:first-of-type { margin-top: 0; }
+        input, textarea { width: 100%; padding: 10px 14px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; font-family: inherit; outline: none; transition: border 0.15s; }
+        input:focus, textarea:focus { border-color: #111; }
+        textarea { resize: vertical; min-height: 60px; }
+
+        .hint { font-size: 12px; color: #aaa; margin-top: 4px; }
+
+        .preview-box { background: #f9f9f9; border-radius: 8px; padding: 12px 16px; margin-top: 16px; font-size: 13px; display: none; }
+        .preview-box .row { display: flex; justify-content: space-between; margin-bottom: 4px; }
+        .preview-box .label { color: #888; }
+        .preview-box .value { font-weight: 500; }
+
+        .btn { display: block; width: 100%; padding: 13px; background: #111; color: white; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 20px; transition: opacity 0.15s; }
+        .btn:hover { opacity: 0.85; }
+        .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+        .result { margin-top: 20px; border-radius: 8px; padding: 16px; font-size: 14px; display: none; }
+        .result.success { background: #e6f9ee; color: #1a7a3e; }
+        .result.error { background: #fff0f0; color: #c0392b; }
+        .result a { color: inherit; font-weight: 600; }
+
+        .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid #fff; border-top-color: transparent; border-radius: 50%; animation: spin 0.6s linear infinite; vertical-align: middle; margin-right: 6px; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .format-aide { background: #f9f9f9; border-radius: 8px; padding: 14px 16px; margin-top: 24px; font-size: 13px; }
+        .format-aide h3 { font-size: 13px; font-weight: 600; margin-bottom: 10px; color: #555; }
+        .format-aide code { background: #eee; border-radius: 4px; padding: 1px 6px; font-size: 12px; font-family: monospace; }
+        .format-aide li { margin-bottom: 6px; color: #666; list-style: none; padding-left: 4px; }
+        .format-aide li::before { content: "→ "; color: #aaa; }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Max Sauveur — Newsletter</h1>
+    <a href="/">← SAV</a>
+</header>
+
+<div class="container">
+    <div class="card">
+        <h2>Pousser une newsletter vers Klaviyo</h2>
+        <p class="subtitle">Colle l'URL de ton Google Doc (partagé en "Tout le monde avec le lien"), remplis les infos et clique sur Envoyer.</p>
+
+        <label>URL du Google Doc</label>
+        <input type="url" id="doc-url" placeholder="https://docs.google.com/document/d/..." autocomplete="off">
+
+        <div class="preview-box" id="preview-box">
+            <div class="row"><span class="label">Blocs détectés</span><span class="value" id="p-blocs">—</span></div>
+            <div class="row"><span class="label">Types</span><span class="value" id="p-types">—</span></div>
+        </div>
+
+        <label>Objet de l'email</label>
+        <input type="text" id="sujet" placeholder="Rempli automatiquement si [Objet] dans le doc">
+        <p class="hint">Ou écris [Objet] Ton sujet directement dans le Google Doc (en Titre 3)</p>
+
+        <label>Pré-header <span style="font-weight:400;color:#aaa;">(optionnel)</span></label>
+        <input type="text" id="preheader" placeholder="Aperçu affiché dans la boîte mail...">
+
+        <label>Nom interne de la campagne <span style="font-weight:400;color:#aaa;">(optionnel)</span></label>
+        <input type="text" id="nom" placeholder="Laisse vide → [DRAFT] Objet">
+
+        <button class="btn" id="btn-push" onclick="pushNewsletter()">Créer le brouillon Klaviyo</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <div class="format-aide">
+        <h3>Format du Google Doc</h3>
+        <ul>
+            <li><code>[Objet] Ton sujet</code> en Titre 3 → sujet de la campagne</li>
+            <li>Titre 1 / Titre 2 → blocs titre Georgia</li>
+            <li>Texte normal → bloc texte (paragraphes groupés)</li>
+            <li><code>[PHOTO]</code> → bloc image vide</li>
+            <li><code>[BOUTON : Texte : https://...]</code> → bouton rouge + lien</li>
+            <li><code>---</code> → séparateur</li>
+            <li>Gras, italique, couleurs → conservés dans Klaviyo</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+let _previewTimer = null;
+
+document.getElementById('doc-url').addEventListener('input', function() {
+    clearTimeout(_previewTimer);
+    _previewTimer = setTimeout(() => previewDoc(this.value), 800);
+});
+
+async function previewDoc(url) {
+    if (!url.includes('docs.google.com')) return;
+    const box = document.getElementById('preview-box');
+    try {
+        const r = await fetch('/newsletter/preview', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ doc_url: url })
+        });
+        const data = await r.json();
+        if (data.error) { box.style.display = 'none'; return; }
+        document.getElementById('p-blocs').textContent = data.nb_blocs;
+        document.getElementById('p-types').textContent = data.types.join(' · ');
+        if (data.subject) document.getElementById('sujet').value = data.subject;
+        box.style.display = 'block';
+    } catch(e) {
+        box.style.display = 'none';
+    }
+}
+
+async function pushNewsletter() {
+    const btn     = document.getElementById('btn-push');
+    const result  = document.getElementById('result');
+    const doc_url = document.getElementById('doc-url').value.trim();
+    const sujet   = document.getElementById('sujet').value.trim();
+
+    if (!doc_url) { alert('Colle l\'URL du Google Doc.'); return; }
+    if (!sujet)   { alert('Remplis le sujet de l\'email.'); return; }
+
+    btn.disabled  = true;
+    btn.innerHTML = '<span class="spinner"></span>Création en cours...';
+    result.style.display = 'none';
+
+    try {
+        const r = await fetch('/newsletter/push', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                doc_url,
+                sujet,
+                preheader: document.getElementById('preheader').value.trim(),
+                nom:       document.getElementById('nom').value.trim()
+            })
+        });
+        const data = await r.json();
+        if (data.error) {
+            result.className = 'result error';
+            result.innerHTML = '❌ ' + data.error;
+        } else {
+            result.className = 'result success';
+            result.innerHTML = `✅ Brouillon créé (${data.nb_blocs} blocs) — <a href="${data.campaign_url}" target="_blank">Ouvrir dans Klaviyo →</a>`;
+        }
+        result.style.display = 'block';
+    } catch(e) {
+        result.className = 'result error';
+        result.innerHTML = '❌ Erreur réseau.';
+        result.style.display = 'block';
+    }
+
+    btn.disabled  = false;
+    btn.innerHTML = 'Créer le brouillon Klaviyo';
+}
+</script>
+</body>
+</html>
