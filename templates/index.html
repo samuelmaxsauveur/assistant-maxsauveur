@@ -83,6 +83,20 @@
         /* CHAT */
         .chat-box { display:none; background:#f9f9f9; border-radius:8px; padding:12px; margin-bottom:10px; max-height:280px; overflow-y:auto; font-size:13px; line-height:1.6; }
 
+        /* THREAD */
+        .thread-box { display:none; border:1px solid #e5e7eb; border-radius:8px; overflow:hidden; margin-top:10px; }
+        .thread-msg { padding:10px 14px; font-size:13px; line-height:1.6; border-bottom:1px solid #f0f0f0; }
+        .thread-msg:last-child { border-bottom:none; }
+        .thread-msg.received { background:#f9f9f9; }
+        .thread-msg.sent { background:#f0f7ff; }
+        .tm-meta { font-size:11px; color:#888; margin-bottom:4px; }
+        .tm-body { color:#444; white-space:pre-wrap; }
+
+        /* SCHEDULE */
+        .schedule-form { display:none; margin-top:8px; background:#fffbea; border:1px solid #f59e0b; border-radius:8px; padding:12px; }
+        .schedule-form label { font-size:13px; color:#92400e; display:block; margin-bottom:6px; font-weight:600; }
+        .schedule-form input[type="datetime-local"] { border:1px solid #d97706; border-radius:6px; padding:6px 10px; font-size:13px; font-family:inherit; }
+
         /* MOBILE */
         @media (max-width: 680px) {
             header { padding: 10px 12px; gap: 6px; }
@@ -149,6 +163,8 @@
                     <div>
                         <div class="section-title">Email reçu</div>
                         <div class="email-body">{{ item.email.body }}</div>
+                        <button type="button" class="btn btn-secondary" style="margin-top:8px; font-size:13px;" onclick="viewThread('{{ item.email.thread_id }}', this)">💬 Voir la conversation</button>
+                        <div class="thread-box" id="thread-{{ item.email.thread_id }}"></div>
                     </div>
                     <div>
                         <div class="section-title">Commande associée</div>
@@ -242,7 +258,15 @@
                                 {% endif %}
                                 <button type="button" class="btn btn-secondary" onclick="sendReturnLabel('{{ item.email.id }}')" id="return-label-btn-{{ item.email.id }}" style="background:#f59e0b;color:white;">📦 Étiquette retour</button>
                                 <button type="button" class="btn btn-primary" onclick="sendEmail('{{ item.email.id }}')">Envoyer ✓</button>
+                                <button type="button" class="btn btn-secondary" onclick="toggleSchedule('{{ item.email.id }}')">📅 Différer</button>
                                 <button type="button" class="btn btn-secondary" onclick="this.closest('.card').remove()">Ignorer</button>
+                            </div>
+                            <div class="schedule-form" id="schedule-{{ item.email.id }}">
+                                <label>Envoyer le :</label>
+                                <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+                                    <input type="datetime-local" id="schedule-dt-{{ item.email.id }}">
+                                    <button type="button" class="btn btn-primary" onclick="scheduleEmail('{{ item.email.id }}')">Programmer ✓</button>
+                                </div>
                             </div>
                         </div>
                         <div style="margin-top:20px; border-top: 1px solid #f0f0f0; padding-top:16px;">
@@ -672,6 +696,83 @@ async function lookupWing(id, orderNum) {
         resultDiv.textContent = '❌ Erreur réseau : ' + e.message;
     }
     btn.textContent = '🔍 Chercher dans Wing';
+    btn.disabled = false;
+}
+
+function toggleSchedule(id) {
+    const form = document.getElementById('schedule-' + id);
+    if (!form) return;
+    form.style.display = form.style.display === 'block' ? 'none' : 'block';
+}
+
+async function scheduleEmail(id) {
+    const form = document.querySelector(`.send-form[data-emailid="${id}"]`);
+    const body = document.getElementById('textarea-' + id).value.trim();
+    const dt = document.getElementById('schedule-dt-' + id).value;
+    if (!body) { alert('La réponse est vide.'); return; }
+    if (!dt) { alert('Choisis une date et heure.'); return; }
+    const btn = document.querySelector(`#schedule-${id} .btn-primary`);
+    btn.textContent = 'Envoi programmé...';
+    btn.disabled = true;
+    try {
+        const res = await fetch('/sav/outbound/schedule', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                to_email: form.dataset.to,
+                subject: form.dataset.subject,
+                body,
+                send_at: dt,
+                thread_id: form.dataset.thread
+            })
+        });
+        const data = await safeJson(res);
+        if (data.success) {
+            btn.textContent = '✅ Programmé';
+            btn.style.background = '#16a34a';
+            setTimeout(() => {
+                const card = form.closest('.card');
+                if (card) { card.style.opacity='0'; card.style.transition='opacity 0.3s'; setTimeout(()=>card.remove(),300); }
+            }, 1500);
+        } else {
+            btn.textContent = '❌ Erreur';
+            btn.disabled = false;
+        }
+    } catch(e) {
+        btn.textContent = '❌ Erreur réseau';
+        btn.disabled = false;
+    }
+}
+
+async function viewThread(threadId, btn) {
+    const box = document.getElementById('thread-' + threadId);
+    if (!box) return;
+    if (box.style.display === 'block') {
+        box.style.display = 'none';
+        btn.textContent = '💬 Voir la conversation';
+        return;
+    }
+    btn.textContent = '⏳ Chargement...';
+    btn.disabled = true;
+    try {
+        const res = await fetch('/sav/thread/' + threadId);
+        const data = await safeJson(res);
+        if (data.messages && data.messages.length > 0) {
+            box.innerHTML = data.messages.map(m => `
+                <div class="thread-msg ${m.direction}">
+                    <div class="tm-meta">${m.direction === 'sent' ? '→ Envoyé' : '← Reçu'} · ${m.sender || ''} · ${m.date || ''}</div>
+                    <div class="tm-body">${(m.body || '').substring(0, 600)}${(m.body||'').length > 600 ? '…' : ''}</div>
+                </div>`).join('');
+        } else {
+            box.innerHTML = '<div style="padding:12px; font-size:13px; color:#888;">Aucun message trouvé.</div>';
+        }
+        box.style.display = 'block';
+        btn.textContent = '💬 Masquer la conversation';
+    } catch(e) {
+        box.innerHTML = '<div style="padding:12px; font-size:13px; color:#991b1b;">❌ Erreur lors du chargement.</div>';
+        box.style.display = 'block';
+        btn.textContent = '💬 Voir la conversation';
+    }
     btn.disabled = false;
 }
 
