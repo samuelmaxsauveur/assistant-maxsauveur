@@ -516,3 +516,40 @@ def case_detail(case_id):
         return "Cas introuvable", 404
     history = database.get_sav_status_history(case_id)
     return render_template('sav_case.html', case=case, history=history, status_labels=STATUS_LABELS)
+
+
+@sav.route('/sav/outbound/schedule', methods=['POST'])
+def outbound_schedule():
+    data = request.json or {}
+    to_email = data.get('to_email', '')
+    subject = data.get('subject', '')
+    body = data.get('body', '')
+    thread_id = data.get('thread_id', '') or None
+    send_at = data.get('send_at', '')  # format: "2026-08-10T14:30"
+    if not to_email or not body or not send_at:
+        return jsonify({'success': False, 'error': 'Données manquantes'})
+    try:
+        email_id = database.save_scheduled_email(to_email, subject, body, thread_id, send_at)
+        return jsonify({'success': True, 'id': email_id})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)})
+
+
+@sav.route('/sav/scheduled/cancel', methods=['POST'])
+def scheduled_cancel():
+    data = request.json or {}
+    email_id = data.get('id')
+    if not email_id:
+        return jsonify({'success': False})
+    database.cancel_scheduled_email(email_id)
+    return jsonify({'success': True})
+
+
+@sav.route('/sav/thread/<thread_id>')
+def get_thread(thread_id):
+    try:
+        service = _get_service()
+        messages = gmail_helper.get_thread_messages(service, thread_id)
+        return jsonify({'success': True, 'messages': messages})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)})

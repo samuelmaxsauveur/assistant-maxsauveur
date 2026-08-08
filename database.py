@@ -134,6 +134,19 @@ def init_db():
                 created_at       TIMESTAMP NOT NULL
             )
         """)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS scheduled_emails (
+                id          INTEGER PRIMARY KEY AUTOINCREMENT,
+                to_email    TEXT NOT NULL,
+                subject     TEXT NOT NULL,
+                body        TEXT NOT NULL,
+                thread_id   TEXT,
+                send_at     TEXT NOT NULL,
+                status      TEXT NOT NULL DEFAULT 'pending',
+                error       TEXT,
+                created_at  TEXT NOT NULL
+            )
+        """)
         conn.commit()
         # Seed response_patterns from custom_patterns.json (survives Railway redeploys)
         _seed_patterns_from_json(conn)
@@ -658,6 +671,76 @@ def get_today_rejections():
                WHERE status = 'rejected' AND rejection_comment IS NOT NULL
                AND validated_at LIKE ?""",
             (f"{today}%",)
+        )
+        return [dict(row) for row in cursor.fetchall()]
+    finally:
+        conn.close()
+
+
+def save_scheduled_email(to_email, subject, body, thread_id, send_at):
+    """Save an email to send later. send_at is a ISO string in Europe/Paris time."""
+    now = datetime.utcnow().isoformat()
+    conn = get_connection()
+    try:
+        cursor = conn.execute(
+            "INSERT INTO scheduled_emails (to_email, subject, body, thread_id, send_at, status, created_at) VALUES (?, ?, ?, ?, ?, 'pending', ?)",
+            (to_email, subject, body, thread_id, send_at, now)
+        )
+        conn.commit()
+        return cursor.lastrowid
+    finally:
+        conn.close()
+
+
+def get_due_scheduled_emails():
+    """Return scheduled emails whose send_at <= now (Paris time) and status='pending'."""
+    import pytz
+    paris = pytz.timezone('Europe/Paris')
+    now_paris = datetime.now(paris).strftime('%Y-%m-%dT%H:%M')
+    conn = get_connection()
+    try:
+        cursor = conn.execute(
+            "SELECT * FROM scheduled_emails WHERE status='pending' AND send_at <= ?",
+            (now_paris,)
+        )
+        return [dict(row) for row in cursor.fetchall()]
+    finally:
+        conn.close()
+
+
+def mark_scheduled_sent(email_id):
+    conn = get_connection()
+    try:
+        conn.execute("UPDATE scheduled_emails SET status='sent' WHERE id=?", (email_id,))
+        conn.commit()
+    finally:
+        conn.close()
+
+
+def mark_scheduled_failed(email_id, error):
+    conn = get_connection()
+    try:
+        conn.execute("UPDATE scheduled_emails SET status='failed', error=? WHERE id=?", (error, email_id))
+        conn.commit()
+    finally:
+        conn.close()
+
+
+def cancel_scheduled_email(email_id):
+    conn = get_connection()
+    try:
+        conn.execute("UPDATE scheduled_emails SET status='cancelled' WHERE id=? AND status='pending'", (email_id,))
+        conn.commit()
+    finally:
+        conn.close()
+
+
+def get_scheduled_emails():
+    """Return all scheduled emails ordered by send_at."""
+    conn = get_connection()
+    try:
+        cursor = conn.execute(
+            "SELECT * FROM scheduled_emails ORDER BY send_at ASC"
         )
         return [dict(row) for row in cursor.fetchall()]
     finally:

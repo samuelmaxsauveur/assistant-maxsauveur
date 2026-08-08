@@ -67,6 +67,13 @@
         .manual-form input { width: 100%; padding: 9px 12px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 14px; font-family: inherit; margin-bottom: 10px; }
         .manual-form .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .form-label { font-size: 12px; font-weight: 600; color: #888; text-transform: uppercase; margin-bottom: 4px; display: block; }
+        .thread-box { display:none; margin-top:12px; border-top:1px solid #f0f0f0; padding-top:12px; }
+        .thread-msg { padding:10px 12px; border-radius:8px; margin-bottom:8px; font-size:13px; line-height:1.55; }
+        .thread-msg.received { background:#f9f9f9; border-left:3px solid #ddd; }
+        .thread-msg.sent { background:#f0f7ff; border-left:3px solid #93c5fd; }
+        .thread-msg .tm-meta { font-size:11px; color:#aaa; margin-bottom:4px; }
+        .thread-msg .tm-body { white-space:pre-wrap; color:#333; max-height:200px; overflow-y:auto; }
+        .schedule-form { display:none; margin-top:10px; padding:12px; background:#f8f9fa; border-radius:8px; border:1px solid #e0e0e0; }
         /* MOBILE */
         @media (max-width: 680px) {
             header { padding: 10px 12px; gap: 8px; }
@@ -169,6 +176,15 @@
           <button onclick="outboundSaveAsNew(this)" class="btn btn-gray" style="flex:1;">💾 Sauvegarder comme nouveau modèle</button>
           <button onclick="outboundSend(this)" class="btn btn-green" style="flex:1;">📤 Envoyer</button>
         </div>
+        <div class="schedule-form" id="ob-schedule-form">
+          <label class="form-label">Programmer l'envoi (heure de Paris)</label>
+          <div style="display:flex;gap:8px;align-items:center;margin-top:6px;">
+            <input type="datetime-local" id="ob-schedule-at" style="flex:1;padding:8px 10px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:inherit;">
+            <button onclick="outboundScheduleConfirm(this)" class="btn btn-blue">📅 Confirmer</button>
+            <button onclick="document.getElementById('ob-schedule-form').style.display='none'" class="btn btn-gray">✕</button>
+          </div>
+        </div>
+        <button onclick="document.getElementById('ob-schedule-form').style.display=document.getElementById('ob-schedule-form').style.display==='block'?'none':'block'" class="btn btn-gray" style="width:100%;margin-top:8px;">🕐 Programmer l'envoi plus tard</button>
         <div id="ob-result" class="result-msg" style="margin-top:10px;"></div>
       </div>
     </div>
@@ -198,6 +214,8 @@
         </div>
 
         <div class="card-body-text">{{ case.email_body[:500] }}</div>
+        <button class="btn btn-gray" style="margin-bottom:8px;font-size:12px;padding:6px 10px;" onclick="viewThread('{{ case.thread_id }}', this)">💬 Voir la conversation</button>
+        <div class="thread-box" id="thread-{{ case.thread_id }}"></div>
 
         <!-- Analysis box (shown automatically on load) -->
         <div class="analysis-box" id="analysis-{{ case.id }}"></div>
@@ -327,7 +345,9 @@
                     {{ email.sender | tojson }}, {{ email.subject | tojson }},
                     {{ email.body | tojson }}, {{ (email.order_number or '') | tojson }}, this
                 )">+ Ouvrir cas SAV</button>
+                <button class="btn btn-gray" onclick="viewThread('{{ email.thread_id }}', this)">💬 Voir la conversation</button>
             </div>
+            <div class="thread-box" id="thread-{{ email.thread_id }}"></div>
         </div>
         {% endfor %}
     {% else %}
@@ -784,6 +804,60 @@ async function outboundSend(btn) {
     resultEl.textContent = data.success ? '✅ Email envoyé !' : `❌ Erreur : ${data.error}`;
     if (data.success) setTimeout(() => closeOutbound(), 2000);
     else { btn.textContent = '📤 Envoyer'; btn.disabled = false; }
+}
+
+// ── Envoi différé ─────────────────────────────────────────────────
+async function outboundScheduleConfirm(btn) {
+    const sendAt = document.getElementById('ob-schedule-at').value;
+    if (!sendAt) { alert('Choisissez une date et heure.'); return; }
+    if (!outboundCustomer) { alert('Aucun client sélectionné.'); return; }
+    const toEmail = outboundCustomer.email;
+    const subject = document.getElementById('ob-subject').value.trim();
+    const body = document.getElementById('ob-draft-text').value.trim();
+    const threadId = null;
+    if (!body) { alert('Le brouillon est vide.'); return; }
+    btn.disabled = true; btn.textContent = '⏳';
+    try {
+        const res = await fetch('/sav/outbound/schedule', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ to_email: toEmail, subject, body, thread_id: threadId, send_at: sendAt })
+        });
+        const data = await safeJson(res);
+        if (data.success) {
+            const r = document.getElementById('ob-result');
+            r.className = 'result-msg result-ok'; r.style.display = 'block';
+            r.textContent = `✅ Email programmé pour le ${sendAt.replace('T', ' à ')}`;
+            document.getElementById('ob-schedule-form').style.display = 'none';
+            setTimeout(() => closeOutbound(), 2000);
+        } else {
+            alert('Erreur : ' + (data.error || 'inconnue'));
+        }
+    } catch(e) { alert('Erreur réseau'); }
+    finally { btn.disabled = false; btn.textContent = '📅 Confirmer'; }
+}
+
+// ── Thread complet ─────────────────────────────────────────────────
+async function viewThread(threadId, btn) {
+    const box = document.getElementById('thread-' + threadId);
+    if (!box) return;
+    if (box.style.display === 'block') { box.style.display = 'none'; btn.textContent = '💬 Voir la conversation'; return; }
+    btn.disabled = true; btn.textContent = '⏳ Chargement…';
+    try {
+        const res = await fetch('/sav/thread/' + threadId);
+        const data = await safeJson(res);
+        if (!data.success) { alert('Erreur : ' + data.error); return; }
+        box.innerHTML = data.messages.map(m => {
+            const dir = m.direction === 'sent' ? 'sent' : 'received';
+            const label = m.direction === 'sent' ? '📤 Vous' : ('📥 ' + (m.sender || '').split('<')[0].trim());
+            const date = (m.date || '').substring(0, 22);
+            const body = (m.body || '').substring(0, 600) + (m.body && m.body.length > 600 ? '\n…' : '');
+            return `<div class="thread-msg ${dir}"><div class="tm-meta">${label} · ${date}</div><div class="tm-body">${body.replace(/</g,'&lt;')}</div></div>`;
+        }).join('');
+        box.style.display = 'block';
+        btn.textContent = '💬 Masquer la conversation';
+    } catch(e) { alert('Erreur réseau'); }
+    finally { btn.disabled = false; }
 }
 
 async function createManualCase(btn) {

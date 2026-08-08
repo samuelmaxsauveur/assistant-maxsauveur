@@ -188,6 +188,25 @@ def get_customer_history(service, sender_email, max_results=10):
     return history[:6]
 
 
+def get_thread_messages(service, thread_id):
+    """Fetch all messages in a Gmail thread, sorted chronologically."""
+    thread = service.users().threads().get(
+        userId='me',
+        id=thread_id,
+        format='full'
+    ).execute()
+    messages = []
+    for msg in thread.get('messages', []):
+        parsed = parse_email(msg)
+        # Determine direction: if From contains our address, it's sent
+        sender = parsed.get('sender', '')
+        parsed['direction'] = 'sent' if 'maxsauveur.com' in sender.lower() else 'received'
+        messages.append(parsed)
+    # Sort chronologically by date header
+    messages.sort(key=lambda x: x.get('date', ''))
+    return messages
+
+
 def send_email(service, to, subject, body, thread_id=None,
                attachment_bytes=None, attachment_filename='etiquette_retour.pdf'):
     if attachment_bytes:

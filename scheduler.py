@@ -233,6 +233,38 @@ def generate_and_save_daily_summary():
         print(f"[{datetime.now()}] Error generating daily summary: {e}")
 
 
+def send_scheduled_emails():
+    """Send any scheduled emails that are due."""
+    try:
+        due = database.get_due_scheduled_emails()
+        if not due:
+            return
+        service = gmail_helper.get_gmail_service()
+        for email in due:
+            try:
+                gmail_helper.send_email(
+                    service,
+                    email['to_email'],
+                    email['subject'],
+                    email['body'],
+                    thread_id=email.get('thread_id') or None
+                )
+                database.mark_scheduled_sent(email['id'])
+                database.log_sent_email(
+                    to_email=email['to_email'],
+                    subject=email['subject'],
+                    body=email['body'],
+                    source='scheduled',
+                    thread_id=email.get('thread_id') or None
+                )
+                print(f"[{datetime.now()}] Scheduled email {email['id']} sent to {email['to_email']}")
+            except Exception as e:
+                database.mark_scheduled_failed(email['id'], str(e))
+                print(f"[{datetime.now()}] Failed to send scheduled email {email['id']}: {e}")
+    except Exception as e:
+        print(f"[{datetime.now()}] Error in send_scheduled_emails: {e}")
+
+
 if __name__ == "__main__":
     paris_tz = pytz.timezone("Europe/Paris")
 
@@ -259,6 +291,14 @@ if __name__ == "__main__":
         generate_and_save_daily_summary,
         CronTrigger(hour=20, minute=0, timezone=paris_tz),
         id="daily_summary"
+    )
+
+    # Send scheduled emails every minute
+    scheduler.add_job(
+        send_scheduled_emails,
+        "interval",
+        minutes=1,
+        id="send_scheduled"
     )
 
     scheduler.start()
