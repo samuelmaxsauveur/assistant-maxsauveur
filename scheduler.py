@@ -90,7 +90,7 @@ def process_new_emails():
                 subject=email['subject'],
                 email_body=email['body'],
                 order_info_json=order_info,
-                intent=intent_data,
+                intent=json.dumps(intent_data) if isinstance(intent_data, dict) else intent_data,
                 draft_response=draft_response
             )
 
