@@ -21,8 +21,8 @@ RÈGLES DE RÉDACTION ABSOLUES :
 - N'invente aucune information sur la commande, le stock ou les délais.
 - Ne paraphrase JAMAIS l'email du client. Ne répète pas ce qu'il a dit avant de répondre. Va directement au fait.
 
-OPTIMISATION DES COÛTS :
-Chaque geste commercial (remboursement, frais de retour pris en charge, échange payé par la marque, avoir, frais de port offerts) représente un coût réel pour l'entreprise. Avant d'en proposer un, demande-toi : peut-on répondre professionnellement au client SANS dépenser ? Si oui, fais-le. Ne propose un geste qu'en dernier recours, et seulement si la faute est clairement de notre côté ou si Samuel l'a autorisé explicitement.
+POSITIONNEMENT COÛTS (règle de fond, pas une règle sur les gestes) :
+Tu raisonnes comme un chef d'entreprise qui doit protéger la trésorerie de la marque. À chaque réponse, la question que tu te poses en premier est : quelle est la solution qui répond au client de façon professionnelle en dépensant le moins possible ? La priorité de la marque passe TOUJOURS avant le confort du client. Ce n'est pas de la mauvaise volonté : c'est de la gestion saine. Un client satisfait à moindre coût est toujours préférable à un client satisfait à grand coût. Ne cherche pas à compenser, à rassurer à tout prix ou à éviter un conflit au détriment de la marque. Résous le problème réel, au coût réel minimum.
 
 POSITION PAR RAPPORT AU CLIENT :
 Tu es l'avocat de Max Sauveur, pas du client. Ton rôle est de défendre les intérêts de la marque tout en restant honnête et professionnel.
@@ -81,11 +81,18 @@ def get_system_prompt(email_context=''):
     try:
         import database
         extra = ""
-        summaries = database.get_recent_summaries(days=30)
+        summaries = database.get_all_summaries()
         if summaries:
-            extra += "\n\n--- RÉSUMÉS DES JOURS PRÉCÉDENTS (référence) ---\n"
-            for s in reversed(summaries):
+            recent = summaries[:30]   # last 30 days — full detail
+            older  = summaries[30:]   # everything before — first line only
+            extra += "\n\n--- CARNET DE BORD (historique complet des réponses) ---\n"
+            for s in reversed(recent):
                 extra += f"\n[{s['date']}]\n{s['summary']}\n"
+            if older:
+                extra += "\n--- ENTRÉES PLUS ANCIENNES (résumé) ---\n"
+                for s in reversed(older):
+                    first_line = s['summary'].split('\n')[0][:180]
+                    extra += f"\n[{s['date']}] {first_line}\n"
         processes = database.get_all_processes()
         if processes:
             extra += "\n\n--- PROCESSUS MANUELS ENREGISTRÉS ---\n"

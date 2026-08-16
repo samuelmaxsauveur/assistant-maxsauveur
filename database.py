@@ -531,6 +531,18 @@ def get_recent_summaries(days=14):
         conn.close()
 
 
+def get_all_summaries():
+    """Return ALL daily summaries ever stored, most recent first."""
+    conn = get_connection()
+    try:
+        cursor = conn.execute(
+            "SELECT date, summary FROM daily_summaries ORDER BY created_at DESC"
+        )
+        return [dict(row) for row in cursor.fetchall()]
+    finally:
+        conn.close()
+
+
 def get_today_drafts():
     """Return all drafts created today (UTC date)."""
     today = datetime.utcnow().strftime("%Y-%m-%d")
