@@ -207,6 +207,33 @@ def get_thread_messages(service, thread_id):
     return messages
 
 
+def get_image_attachments(service, email_data):
+    """Extract image attachments from an email as base64 strings (max 5)."""
+    images = []
+    _extract_images(service, email_data.get('id', ''), email_data.get('payload', {}), images)
+    return images[:5]
+
+
+def _extract_images(service, message_id, payload, result):
+    mime = payload.get('mimeType', '')
+    body = payload.get('body', {})
+    if mime.startswith('image/'):
+        data = body.get('data')
+        if data:
+            result.append({'data': data, 'mime': mime})
+        elif body.get('attachmentId'):
+            try:
+                att = service.users().messages().attachments().get(
+                    userId='me', messageId=message_id, id=body['attachmentId']
+                ).execute()
+                if att.get('data'):
+                    result.append({'data': att['data'], 'mime': mime})
+            except Exception:
+                pass
+    for part in payload.get('parts', []):
+        _extract_images(service, message_id, part, result)
+
+
 def send_email(service, to, subject, body, thread_id=None,
                attachment_bytes=None, attachment_filename='etiquette_retour.pdf'):
     if attachment_bytes:

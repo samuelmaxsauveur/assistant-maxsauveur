@@ -438,8 +438,21 @@ def generate():
         except Exception:
             pass
 
+    # Extract image attachments from the email thread
+    email_images = []
+    email_id_for_images = data.get('email_id', '')
+    if email_id_for_images:
+        try:
+            raw_email_data = get_service().users().messages().get(
+                userId='me', id=email_id_for_images, format='full'
+            ).execute()
+            email_images = gmail_helper.get_image_attachments(get_service(), raw_email_data)
+        except Exception:
+            pass
+
     suggested = claude_ai.generate_response(data['body'], data['subject'], customer_name, order_info, history,
-                                            wing_context=wing_context, orders=all_orders)
+                                            wing_context=wing_context, orders=all_orders,
+                                            images=email_images if email_images else None)
 
     # Check if Claude returned a needs_info JSON instead of a draft
     try:

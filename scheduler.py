@@ -52,6 +52,14 @@ def process_new_emails():
         print(f"[{datetime.now()}] Processing email {email_id}: {email['subject']}")
 
         try:
+            # Extract image attachments (for Claude Vision)
+            email_images = []
+            try:
+                raw_email_data = service.users().messages().get(userId='me', id=email_id, format='full').execute()
+                email_images = gmail_helper.get_image_attachments(service, raw_email_data)
+            except Exception:
+                pass
+
             # Extract order number from subject + body
             order_number = claude_ai.extract_order_number(email['body'] + ' ' + email['subject'])
             order_info = None
@@ -78,7 +86,8 @@ def process_new_emails():
                 email['body'],
                 email['subject'],
                 customer_name,
-                order_info
+                order_info,
+                images=email_images if email_images else None
             )
 
             # Save draft to database

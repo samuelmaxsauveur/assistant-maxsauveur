@@ -19,6 +19,10 @@ RÈGLES DE RÉDACTION ABSOLUES :
 - Ne commence jamais un email par "Bonne nouvelle".
 - N'invente JAMAIS un numéro de commande. Tu ne peux citer un numéro de commande QUE s'il apparaît explicitement dans les données Shopify fournies dans ce contexte. Si aucune commande n'est fournie, ne mentionne aucun numéro.
 - N'invente aucune information sur la commande, le stock ou les délais.
+- Ne paraphrase JAMAIS l'email du client. Ne répète pas ce qu'il a dit avant de répondre. Va directement au fait.
+
+OPTIMISATION DES COÛTS :
+Chaque geste commercial (remboursement, frais de retour pris en charge, échange payé par la marque, avoir, frais de port offerts) représente un coût réel pour l'entreprise. Avant d'en proposer un, demande-toi : peut-on répondre professionnellement au client SANS dépenser ? Si oui, fais-le. Ne propose un geste qu'en dernier recours, et seulement si la faute est clairement de notre côté ou si Samuel l'a autorisé explicitement.
 
 POSITION PAR RAPPORT AU CLIENT :
 Tu es l'avocat de Max Sauveur, pas du client. Ton rôle est de défendre les intérêts de la marque tout en restant honnête et professionnel.
@@ -77,7 +81,7 @@ def get_system_prompt(email_context=''):
     try:
         import database
         extra = ""
-        summaries = database.get_recent_summaries(days=14)
+        summaries = database.get_recent_summaries(days=30)
         if summaries:
             extra += "\n\n--- RÉSUMÉS DES JOURS PRÉCÉDENTS (référence) ---\n"
             for s in reversed(summaries):
@@ -181,11 +185,11 @@ def _call_haiku(messages, max_tokens=512, system=None):
     return message.content[0].text
 
 
-def generate_response(email_body, email_subject, customer_name, order_info=None, history=None, wing_context='', orders=None):
+def generate_response(email_body, email_subject, customer_name, order_info=None, history=None, wing_context='', orders=None, images=None):
     context = _build_context(email_body, email_subject, customer_name, order_info, history, orders=orders)
     if wing_context:
         context += wing_context
-    prompt = f"""Voici un email de support client à traiter :
+    prompt_text = f"""Voici un email de support client à traiter :
 
 {context}
 
@@ -197,9 +201,26 @@ INSTRUCTIONS :
 3. Génère TOUJOURS une réponse directement. N'utilise JAMAIS le JSON needs_info pour des questions de suivi de commande, de livraison, de statut, de point relais ou de numéro de suivi — utilise les données Shopify et/ou Wing déjà dans le contexte.
 4. Le JSON needs_info est réservé UNIQUEMENT aux cas où une décision commerciale est impossible sans l'avis de Samuel (ex : accorder un geste commercial exceptionnel, savoir si une garantie s'applique dans un cas limite). Utilise-le avec parcimonie.
 5. Si le statut de livraison Shopify est disponible dans le contexte, utilise-le directement sans poser de question."""
+    if images:
+        prompt_text += f"\n6. Le client a joint {len(images)} photo(s) à son email. Analyse-les et tiens-en compte dans ta réponse."
+
+    # Build message content — prepend images if any
+    user_content = []
+    if images:
+        for img in images[:4]:
+            user_content.append({
+                "type": "image",
+                "source": {
+                    "type": "base64",
+                    "media_type": img.get('mime', 'image/jpeg'),
+                    "data": img['data']
+                }
+            })
+    user_content.append({"type": "text", "text": prompt_text})
+
     return _call_claude(
         system=get_system_prompt(email_context=f"{email_subject} {email_body}"),
-        messages=[{"role": "user", "content": prompt}]
+        messages=[{"role": "user", "content": user_content}]
     )
 
 
