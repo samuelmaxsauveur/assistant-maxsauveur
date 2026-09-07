@@ -479,31 +479,11 @@ def ask():
     question = data.get('question', '')
     sender_email_ask = extract_email_address(sender)
 
-    # Fetch orders strictly by sender email only — no name-based fallback to avoid wrong matches
-    try:
-        all_orders_ask = shopify_api.get_orders_by_email(sender_email_ask) or []
-    except Exception:
-        all_orders_ask = []
+    # Use orders already sent by the frontend — skip Shopify re-fetch unless user
+    # explicitly asks for a different email address in their question
+    all_orders_ask = data.get('orders') or ([] if not order_info else [order_info])
 
-    # Filter: only keep orders that truly belong to the sender
-    if sender_email_ask:
-        all_orders_ask = [
-            o for o in all_orders_ask
-            if (o.get('customer_email') or o.get('email') or '').lower() == sender_email_ask.lower()
-        ]
-
-    # If a specific order number was mentioned, put it first — but only if it belongs to sender
-    order_num_fallback = claude_ai.extract_order_number(data.get('subject', '')) or \
-                         claude_ai.extract_order_number(data.get('body', ''))
-    if order_num_fallback and all_orders_ask:
-        mentioned = next(
-            (o for o in all_orders_ask if str(o.get('number', '')).lstrip('#') == str(order_num_fallback)),
-            None
-        )
-        if mentioned:
-            all_orders_ask = [mentioned] + [o for o in all_orders_ask if o is not mentioned]
-
-    # Detect manual name/email search in question: "cherche Antoine FAU", "regarde pour X@x.com", etc.
+    # Only re-fetch from Shopify if user mentions a different email in their question
     _manual_email_match = re.search(r'[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}', question)
     if _manual_email_match:
         _manual_email = _manual_email_match.group(0)
@@ -522,59 +502,14 @@ def ask():
             except Exception:
                 pass
 
-    if not all_orders_ask and order_info:
-        all_orders_ask = [order_info]
     order_info = all_orders_ask[0] if all_orders_ask else order_info
 
-    # Extract order number once (used by multiple Wing lookups below)
-    def _extract_order_num():
-        if order_info:
-            n = str(order_info.get('number', '')).replace('#', '').strip()
-            if n:
-                return n
-        raw = data.get('subject', '') + ' ' + data.get('body', '') + ' ' + question
-        m = re.search(r'#?(\d{4,6})', raw)
-        return m.group(1) if m else None
-
-    wing_extra = ''
-    q_lower = question.lower()
-    email_body_lower = (data.get('body', '') + ' ' + data.get('subject', '')).lower()
-    is_fulfilled_ask = (order_info or {}).get('fulfillment_status') == 'fulfilled'
-
-    # Auto-fetch Wing whenever the email OR question involves expedition/tracking/relay
-    expedition_keywords = ['wing', 'suivi', 'livraison', 'colis', 'expédié', 'expedie',
-                           'tracking', 'retard', 'transporteur', 'expédition', 'expedition',
-                           'reçu', 'recu', 'où est', 'ou est', 'arrivée', 'arrivee',
-                           'pas encore reçu', 'pas reçu', 'point relais', 'relais', 'adresse']
-    needs_wing = (
-        is_fulfilled_ask or
-        any(kw in email_body_lower for kw in expedition_keywords) or
-        any(kw in q_lower for kw in expedition_keywords)
-    )
-    if needs_wing:
-        order_num = _extract_order_num()
-        if order_num:
-            try:
-                tracking = wing_automation.get_order_tracking(order_num)
-                if tracking:
-                    wing_extra += f"\n\n--- Données Wing pour la commande #{order_num} ---\n{tracking}"
-            except Exception:
-                pass
-            if not wing_extra:
-                try:
-                    repair = wing_automation.check_repair_status(order_num)
-                    if repair:
-                        wing_extra += f"\n\n--- Données Wing réparation #{order_num} ---\n{repair}"
-                except Exception:
-                    pass
-
-    full_question = question + wing_extra
     result = claude_ai.answer_question(
         data['body'],
         data['subject'],
         customer_name,
         order_info,
-        full_question,
+        question,
         previous_exchanges=previous_exchanges,
         orders=all_orders_ask
     )
@@ -673,6 +608,17 @@ _label_jobs  = {}   # async jobs:  job_id  -> {status, result}
 
 def _run_label_job(job_id, customer_name, order_number, email_body):
     """Background thread: generate Wing label + draft, store in _label_jobs."""
+    import threading as _threading
+
+    # Safety timeout: mark job as error after 90s if still pending
+    def _timeout_guard():
+        if _label_jobs.get(job_id, {}).get('status') == 'pending':
+            _label_jobs[job_id] = {'status': 'error', 'success': False,
+                                   'error': 'Timeout Wing (90s) — étiquette non générée'}
+    guard = _threading.Timer(90, _timeout_guard)
+    guard.daemon = True
+    guard.start()
+
     try:
         label_url = None
         if order_number:
@@ -680,6 +626,7 @@ def _run_label_job(job_id, customer_name, order_number, email_body):
             label_url = wing_automation.generate_return_label(order_number)
             print(f"[Label] Got URL: {label_url}")
         draft = claude_ai.generate_sav_approval_email(customer_name, order_number, email_body, label_url=label_url)
+        guard.cancel()
         _label_jobs[job_id] = {
             'status': 'done',
             'success': True,
@@ -688,6 +635,7 @@ def _run_label_job(job_id, customer_name, order_number, email_body):
             'draft': draft,
         }
     except Exception as e:
+        guard.cancel()
         print(f"[Label] Job {job_id} error: {e}")
         _label_jobs[job_id] = {'status': 'error', 'success': False, 'error': str(e)}
 
