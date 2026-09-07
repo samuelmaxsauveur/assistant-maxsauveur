@@ -498,83 +498,68 @@ JSON uniquement."""}],
         return {"intent": "other", "address": None, "has_full_address": False}
 
 
-SAV_APPROVAL_TEMPLATE = """Bonjour {customer_name},
-
-Merci de nous avoir contacté.
-
-Nous prenons en charge la réparation de votre article. Voici la marche à suivre :
-
-1. Emballez soigneusement votre paire (idéalement dans sa boîte d'origine).
-2. Glissez dans le colis un petit mot avec votre nom, votre numéro de commande et la mention "réparation".
-3. {label_line}
-4. Déposez le colis dans n'importe quel bureau de La Poste ou point relais.
-
-Adresse de retour (déjà renseignée sur l'étiquette) :
-SSL – Solutions & Services Logistiques
-14 avenue Lamartine, 13170 Les Pennes-Mirabeau
-
-Délai estimé en atelier : 6 à 8 semaines.
-
-On reste disponible si vous avez la moindre question.
-
-John – Service Client – Max Sauveur"""
-
-
-def analyze_sav_email(email_body, email_subject, order_info=None, history=None):
-    """Analyze a SAV email and return missing info questions + intent summary."""
-    order_context = ""
-    if order_info:
-        order_context = f"\nCommande trouvée : {order_info.get('number')} — {order_info.get('fulfillment_status')} — {order_info.get('total')}"
-    history_context = ""
-    if history:
-        history_context = "\n\n--- HISTORIQUE COMPLET DES ÉCHANGES AVEC CE CLIENT ---"
-        for h in history:
-            direction = "Client →" if h['direction'] == 'received' else "Nous →"
-            history_context += f"\n[{h['date']}] {direction} {h['subject']}\n{h['body'][:600]}\n"
-    prompt = f"""Analyse cet email SAV client et réponds en JSON strict :
-
-Sujet : {email_subject}
-Corps : {email_body}{order_context}{history_context}
-
-En tenant compte de TOUT l'historique des échanges, identifie :
-1. Le problème exact décrit
-2. Les informations manquantes pour traiter la demande (ex: pas de photo, pas de numéro de commande, problème flou, etc.)
-3. Les questions à poser à Samuel (le responsable) avant de répondre — uniquement si l'historique ne répond pas déjà à ces questions
-
-Réponds UNIQUEMENT avec ce JSON :
-{{
-  "problem_summary": "résumé en 1 phrase du problème",
-  "missing_info": ["info manquante 1", "info manquante 2"],
-  "questions_for_samuel": ["question 1 ?", "question 2 ?"],
-  "can_respond_now": true
-}}
-
-Si tu as assez d'info pour répondre, mets can_respond_now à true et questions_for_samuel vide."""
-    raw = _call_haiku(
-        messages=[{"role": "user", "content": prompt}],
-        max_tokens=400
-    )
-    try:
-        import re as _re
-        match = _re.search(r'\{[\s\S]*\}', raw)
-        if match:
-            return json.loads(match.group())
-    except Exception:
-        pass
-    return {"problem_summary": email_subject, "missing_info": [], "questions_for_samuel": [], "can_respond_now": True}
+def _extract_first_name(customer_name):
+    """Extract just the first name from a customer name string (strips email, takes first word)."""
+    if not customer_name:
+        return "Madame, Monsieur"
+    name = re.sub(r'\s*<[^>]+>', '', customer_name).strip().strip('"').strip("'")
+    return name.split()[0] if name else "Madame, Monsieur"
 
 
 def generate_sav_approval_email(customer_name, order_number, email_body, label_url=None):
-    """Generate the approval/repair email using the fixed SAV template."""
+    """Generate the return label email with context-aware opening and closing, first name only."""
+    first_name = _extract_first_name(customer_name)
+
+    try:
+        raw = _call_haiku(
+            messages=[{"role": "user", "content": f"""Email client SAV reçu (marque chaussures en cuir Max Sauveur) :
+{email_body[:600]}
+
+Génère trois éléments adaptés au cas réel :
+1. "opening" : 1-2 phrases directes sur ce qu on a constate et ce qu on va faire (ex: "Nous avons fait examiner votre ceinture, il s agit bien d un defaut de fabrication. Nous allons vous l echanger sans frais." ou "Nous prenons en charge la reparation de votre article."). Ne commence PAS par "Merci de nous avoir contacte".
+2. "closing" : 1-2 phrases sur ce qui se passe apres reception du colis. Adapte exactement au cas reel.
+3. "motif" : le motif exact a inscrire sur le bon de retour (ex: "defaut de fabrication", "reparation", "echange taille"). Maximum 4 mots.
+
+Réponds UNIQUEMENT avec ce JSON :
+{{"opening": "...", "closing": "...", "motif": "..."}}"""}],
+            max_tokens=300
+        )
+        m = re.search(r'\{[\s\S]*\}', raw)
+        parsed = json.loads(m.group()) if m else {}
+        opening = parsed.get('opening', 'Nous prenons en charge votre demande.')
+        closing = parsed.get('closing', 'Nous reviendrons vers vous après réception et contrôle.')
+        motif = parsed.get('motif', 'reparation')
+    except Exception:
+        opening = 'Nous prenons en charge votre demande.'
+        closing = 'Nous reviendrons vers vous après réception et contrôle.'
+        motif = 'reparation'
+
     if label_url:
-        label_line = f"Voici votre étiquette de retour prépayée (port entièrement pris en charge) :\n{label_url}\n\nImprimez-la et collez-la sur votre colis avant de le déposer en point relais."
+        step1 = f"1. Imprimez l'étiquette de retour prépayée ci-dessous et collez-la sur le colis :\n{label_url}"
     else:
-        label_line = "Collez l'étiquette de retour ci-jointe sur votre colis — le port est entièrement pris en charge."
-    return SAV_APPROVAL_TEMPLATE.format(
-        customer_name=customer_name,
-        order_number=order_number or '(votre commande)',
-        label_line=label_line
-    )
+        step1 = "1. Collez l'étiquette de retour prépayée sur le colis (le port est entièrement pris en charge)."
+
+    return f"""Bonjour {first_name},
+
+{opening}
+
+Voici la procédure :
+
+{step1}
+
+2. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour
+Indiquez comme motif : "{motif}".
+
+3. Glissez le bon de retour à l'intérieur du colis et expédiez-le à :
+SSL – Solutions & Services Logistiques
+14 avenue Lamartine
+13170 Les Pennes-Mirabeau
+
+{closing}
+
+N'hésitez pas si vous avez la moindre question.
+
+John de Max Sauveur"""
 
 
 SAV_STATUS_MESSAGES = {
