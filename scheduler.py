@@ -274,7 +274,21 @@ def send_scheduled_emails():
         print(f"[{datetime.now()}] Error in send_scheduled_emails: {e}")
 
 
-if __name__ == "__main__":
+scheduler = None
+
+
+def start():
+    """Register every job and start the background scheduler.
+
+    Called at app startup (app.py) so the jobs run inside the web process.
+    A separate Railway service would get its own container, and therefore its
+    own empty SQLite file, so it would never see the rows written by the web
+    process. Safe to call more than once: only the first call does anything.
+    """
+    global scheduler
+    if scheduler is not None:
+        return scheduler
+
     paris_tz = pytz.timezone("Europe/Paris")
 
     scheduler = BackgroundScheduler()
@@ -311,7 +325,12 @@ if __name__ == "__main__":
     )
 
     scheduler.start()
-    print(f"[{datetime.now()}] Scheduler started. Press Ctrl+C to exit.")
+    print(f"[{datetime.now()}] Scheduler started ({len(scheduler.get_jobs())} jobs).")
+    return scheduler
+
+
+if __name__ == "__main__":
+    start()
 
     try:
         while True:

@@ -23,6 +23,16 @@ app.register_blueprint(validation)
 app.register_blueprint(sav)
 app.register_blueprint(client_bp)
 app.register_blueprint(newsletter)
+
+# Start the scheduler inside the web process. gunicorn runs a single worker
+# (see gunicorn.conf.py), so exactly one scheduler exists and jobs never double
+# fire. Set ENABLE_SCHEDULER=0 to turn it off without a code change.
+if os.getenv("ENABLE_SCHEDULER", "1") == "1":
+    try:
+        scheduler_module.start()
+    except Exception as e:
+        print(f"Scheduler failed to start: {e}")
+
 gmail_service = None
 
 def _fetch_order_for_email(email):
