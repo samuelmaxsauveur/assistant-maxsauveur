@@ -129,14 +129,44 @@ def _extra_queries(order_info=None, orders=None, history=None):
     return list(dict.fromkeys(queries))[:12]
 
 
-def _rank_patterns(query_words, patterns):
+_IDF_CACHE = {}
+
+
+def _idf(patterns):
+    """Weight of each word, from how rare it is across the sheets.
+
+    Counting every matched word equally let "commande" decide the ranking: it
+    appears in nearly every sheet and nearly every customer email, so it carries
+    no information, yet it outvoted "précommande" and "octobre" which appear in
+    a handful. Rare words now weigh far more than common ones.
+    """
+    key = len(patterns)
+    if key in _IDF_CACHE:
+        return _IDF_CACHE[key]
+    df = {}
+    for p in patterns:
+        for w in _significant_words(f"{p.get('topic_label', '')} "
+                                    f"{p.get('situation', '')} "
+                                    f"{p.get('response_template', '')}"):
+            df[w] = df.get(w, 0) + 1
+    total = len(patterns) or 1
+    idf = {w: math.log(1 + total / c) for w, c in df.items()}
+    _IDF_CACHE.clear()
+    _IDF_CACHE[key] = idf
+    return idf
+
+
+def _rank_patterns(query_words, patterns, idf=None):
     """Patterns ordered by how much they talk about the query, best first."""
+    idf = idf if idf is not None else _idf(patterns)
+    unseen = math.log(1 + (len(patterns) or 1))
     scored = []
     for p in patterns:
         label = _significant_words(p.get('topic_label', ''))
         rest = _significant_words(
             f"{p.get('situation', '')} {p.get('response_template', '')}")
-        hits = 3 * len(query_words & label) + len(query_words & rest)
+        hits = (3 * sum(idf.get(w, unseen) for w in query_words & label)
+                + sum(idf.get(w, unseen) for w in query_words & rest))
         if not hits:
             continue
         # Normalise by vocabulary size, otherwise the longest templates win

@@ -219,6 +219,26 @@ KNOWLEDGE_BASE = """
 - Réponse type : confirmer que la commande est bien enregistrée, expliquer qu'il s'agit d'une précommande annoncée comme telle sur la fiche produit, et rappeler la livraison mi-novembre.
 - À METTRE À JOUR dès que les embauchoirs sont expédiés.
 
+### Ceintures en précommande — DEUX vagues distinctes, ne pas les confondre
+
+Deux précommandes de ceintures coexistent. La date de livraison dépend de CELLE QUE LE CLIENT A PAYÉE.
+Pour trancher, regarder la date de la commande et le nom de l'article dans les données Shopify.
+
+**Vague 1 — ceintures à boucles personnalisables** (commandes de fin juillet à début août 2026)
+- Articles nommés "Boucle [couleur] - Ceinture ..." : Boucle Ivoire, Boucle Menthe, Boucle Turquoise, etc.
+- Précommande ouverte du 28 juillet au 4 août 2026. **Livraison annoncée mi-octobre 2026.**
+
+**Vague 2 — ceintures Gigi et Morricone** (commandes du 1er au 10 octobre 2026)
+- Articles nommés "Gigi - ..." ou "Morricone - ...". **Livraison annoncée mi-décembre 2026.**
+
+Règles communes aux deux vagues :
+- Un statut de livraison vide sur Shopify est NORMAL sur une précommande, ce n'est pas un incident.
+- Ne JAMAIS répondre qu'on va "vérifier pourquoi la commande n'est pas partie" sur ces commandes.
+- Réponse type : confirmer que la commande est bien enregistrée, dire qu'il s'agit d'une précommande
+  annoncée comme telle sur la fiche produit, et donner la date de la BONNE vague.
+- Si la date de commande ne permet pas de trancher entre les deux vagues, se fier au nom de l'article.
+- À METTRE À JOUR à chaque expédition de vague.
+
 ### Cuir — usure normale vs défaut
 - Marques de frottement sur le cuir = matière vivante, normal
 - Doublure talon usée = usure liée à l'utilisation, pas couvert

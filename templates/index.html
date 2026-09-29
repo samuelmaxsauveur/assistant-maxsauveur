@@ -259,7 +259,7 @@
                                 <button type="button" class="btn btn-secondary" onclick="sendReturnLabel('{{ item.email.id }}')" id="return-label-btn-{{ item.email.id }}" style="background:#f59e0b;color:white;">📦 Étiquette retour</button>
                                 <button type="button" class="btn btn-primary" onclick="sendEmail('{{ item.email.id }}')">Envoyer ✓</button>
                                 <button type="button" class="btn btn-secondary" onclick="toggleSchedule('{{ item.email.id }}')">📅 Différer</button>
-                                <button type="button" class="btn btn-secondary" onclick="this.closest('.card').remove()">Ignorer</button>
+                                <button type="button" class="btn btn-secondary" onclick="ignoreEmail('{{ item.email.id }}', this)">Ignorer</button>
                             </div>
                             <div class="schedule-form" id="schedule-{{ item.email.id }}">
                                 <label>Envoyer le :</label>
@@ -703,6 +703,28 @@ function toggleSchedule(id) {
     const form = document.getElementById('schedule-' + id);
     if (!form) return;
     form.style.display = form.style.display === 'block' ? 'none' : 'block';
+}
+
+async function ignoreEmail(id, btn) {
+    // On marque le mail comme lu côté Gmail avant de retirer la carte, sinon
+    // il revient au rafraîchissement suivant.
+    const card = btn.closest('.card');
+    btn.disabled = true;
+    btn.textContent = 'Ignoré...';
+    try {
+        const res = await fetch('/ignore-email', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({email_id: id})
+        });
+        const data = await res.json();
+        if (!data.success) throw new Error(data.error || 'echec');
+        card.remove();
+    } catch (e) {
+        btn.disabled = false;
+        btn.textContent = 'Ignorer';
+        alert("Impossible d'ignorer ce mail : " + e.message);
+    }
 }
 
 async function scheduleEmail(id) {

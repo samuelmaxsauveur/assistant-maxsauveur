@@ -349,6 +349,25 @@ def index():
     except Exception:
         return f"<pre style='padding:20px'>{tb.format_exc()}</pre>", 500
 
+@app.route('/ignore-email', methods=['POST'])
+def ignore_email():
+    """Set an email aside for good.
+
+    The button used to only drop the card from the page, so the email stayed
+    unread in Gmail and came back at the next refresh. Mark it read and record
+    it as processed, otherwise the hourly job regenerates a draft for it.
+    """
+    email_id = (request.json or {}).get('email_id', '')
+    if not email_id:
+        return jsonify({'success': False, 'error': 'email_id manquant'}), 400
+    try:
+        gmail_helper.mark_as_read(get_service(), email_id)
+        database.mark_processed(email_id)
+        return jsonify({'success': True})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
 @app.route('/trigger-check', methods=['POST'])
 def trigger_check():
     try:
