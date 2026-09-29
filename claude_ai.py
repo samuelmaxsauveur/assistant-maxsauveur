@@ -261,10 +261,20 @@ INSTRUCTIONS :
             })
     user_content.append({"type": "text", "text": prompt_text})
 
-    return _call_claude(
-        system=get_system_prompt(email_context=f"{email_subject} {email_body}"),
-        messages=[{"role": "user", "content": user_content}]
-    )
+    system = get_system_prompt(email_context=f"{email_subject} {email_body}")
+    try:
+        return _call_claude(system=system,
+                            messages=[{"role": "user", "content": user_content}])
+    except Exception as e:
+        if not images:
+            raise
+        # A photo the API refuses used to lose the whole email, text included.
+        # The customer's question matters more than his attachment.
+        print(f"Image rejected ({e}); retrying without the {len(images)} attachment(s).")
+        return _call_claude(
+            system=system,
+            messages=[{"role": "user", "content": [{"type": "text", "text": prompt_text}]}]
+        )
 
 
 def answer_question(email_body, email_subject, customer_name, order_info, question, previous_exchanges=None, orders=None):

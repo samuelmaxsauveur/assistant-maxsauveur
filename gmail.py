@@ -269,6 +269,33 @@ def get_thread_messages(service, thread_id):
     return messages
 
 
+# Les seuls types d'image acceptés par l'API Anthropic.
+_SUPPORTED_IMAGE_MIMES = {'image/jpeg', 'image/png', 'image/gif', 'image/webp'}
+_MAX_IMAGE_BYTES = 4 * 1024 * 1024
+
+
+def _normalise_image_data(data):
+    """Gmail encodes attachments in URL-safe base64, the API wants standard base64.
+
+    Passing Gmail's string straight through gets rejected with
+    "invalid base64 data", and that error used to kill the processing of the
+    whole email, photo and text alike. Returns None for anything unusable.
+    """
+    cleaned = re.sub(r'\s+', '', data or '')
+    # Reject anything outside the url-safe alphabet up front: the decoder drops
+    # stray characters silently, so garbage would decode into garbage instead
+    # of being refused.
+    if not cleaned or re.search(r'[^A-Za-z0-9\-_=]', cleaned):
+        return None
+    try:
+        raw = base64.urlsafe_b64decode(cleaned + '=' * (-len(cleaned) % 4))
+    except Exception:
+        return None
+    if not raw or len(raw) > _MAX_IMAGE_BYTES:
+        return None
+    return base64.b64encode(raw).decode('ascii')
+
+
 def get_image_attachments(service, email_data):
     """Extract image attachments from an email as base64 strings (max 5)."""
     images = []
@@ -277,21 +304,22 @@ def get_image_attachments(service, email_data):
 
 
 def _extract_images(service, message_id, payload, result):
-    mime = payload.get('mimeType', '')
+    mime = (payload.get('mimeType') or '').lower()
     body = payload.get('body', {})
-    if mime.startswith('image/'):
+    if mime in _SUPPORTED_IMAGE_MIMES:
         data = body.get('data')
-        if data:
-            result.append({'data': data, 'mime': mime})
-        elif body.get('attachmentId'):
+        if not data and body.get('attachmentId'):
             try:
                 att = service.users().messages().attachments().get(
                     userId='me', messageId=message_id, id=body['attachmentId']
                 ).execute()
-                if att.get('data'):
-                    result.append({'data': att['data'], 'mime': mime})
+                data = att.get('data')
             except Exception:
-                pass
+                data = None
+        if data:
+            clean = _normalise_image_data(data)
+            if clean:
+                result.append({'data': clean, 'mime': mime})
     for part in payload.get('parts', []):
         _extract_images(service, message_id, part, result)
 
