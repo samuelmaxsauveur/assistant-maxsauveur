@@ -557,7 +557,7 @@ def generate_daily_patterns_document(all_patterns):
             continue
         patterns_text += f"\n[{p['topic_label']}]\nSituation : {p['situation'][:200]}\nRéponse type :\n{p['response_template'][:500]}\n---\n"
 
-    prompt = f"""Tu es l'assistant service client de Max Sauveur (lunettes de soleil).
+    prompt = f"""Tu es l'assistant service client de Max Sauveur (chaussures et ceintures en cuir).
 Voici toutes les fiches de réponses types accumulées à ce jour :
 {patterns_text}
 
@@ -584,60 +584,105 @@ Règles :
     return _call_haiku(messages=[{"role": "user", "content": prompt}], max_tokens=1200)
 
 
+# Les dossiers dans lesquels chaque réponse envoyée est classée. La liste est
+# fixe et fermée : avant, le slug était inventé à chaque email et reprenait
+# souvent l'objet du mail ("re__re__demande_de_retour___commande__12781"), d'où
+# 864 dossiers d'un seul exemple, introuvables à la lecture comme au classement.
+DOSSIERS = {
+    'pointure_conseil': "Conseil de pointure avant achat, guide des tailles, mesure en cm",
+    'pointure_echange': "Le client s'est trompé de pointure et veut échanger après réception",
+    'retour_procedure': "Comment retourner un article : bon de retour, adresse, étiquette",
+    'remboursement_avoir': "Remboursements, avoirs, délais de traitement, montants retenus",
+    'defaut_fabrication': "Défaut avéré : semelle décollée, couture lâchée, cuir fendu, garantie",
+    'usure_entretien': "Usure normale contestée, entretien du cuir, patine, imperméabilisation",
+    'precommande_delai': "Précommandes, dates de livraison annoncées, réassorts, retards",
+    'suivi_livraison': "Suivi de colis, transporteur, point relais, colis perdu, adresse",
+    'commande_modification': "Modifier, compléter ou annuler une commande déjà passée",
+    'stock_disponibilite': "Disponibilité, rupture, modèle ou taille non disponible",
+    'promo_prix': "Codes promo, offres, prix, cumul de réductions, facture",
+    'produit_info': "Renseignements produit : matières, fabrication, styles, entretien à l'achat",
+    'ceintures': "Spécificités ceintures : taille, boucle, longueur, ajustement",
+    'litige_reclamation': "Client mécontent, réclamation, mise en cause de la marque",
+    'autre': "Ne rentre dans aucun autre dossier",
+}
+
+
 def extract_response_patterns(sent_emails, existing_patterns):
-    """
-    Analyze today's sent emails and return a list of patterns to upsert.
-    Each pattern has: topic, topic_label, situation, response_template, key_points.
-    Only returns patterns where the response brings something new or confirms an existing approach.
+    """File today's sent replies into the fixed DOSSIERS, enriching what is there.
+
+    Each reply used to create its own sheet with its own invented slug, so the
+    same subject ended up scattered across dozens of one-off sheets titled with
+    a mail subject. Now a reply lands in an existing folder and completes it.
+
+    Anything the knowledge base already states is skipped: it is served on every
+    generation anyway, and duplicating it here only dilutes the folders.
     """
     if not sent_emails:
         return []
 
-    existing_summary = ""
-    if existing_patterns:
-        existing_summary = "\n\nFICHES EXISTANTES (topics déjà connus) :\n"
-        for p in existing_patterns:
-            existing_summary += f"- {p['topic']} : {p['topic_label']} — {p['situation'][:120]}\n"
+    current = ""
+    by_topic = {p['topic']: p for p in (existing_patterns or []) if p.get('topic') in DOSSIERS}
+    if by_topic:
+        current = "\n\nCONTENU ACTUEL DES DOSSIERS CONCERNÉS (à compléter, pas à remplacer) :\n"
+        for topic, p in by_topic.items():
+            current += (f"\n### {topic}\nSituation : {p['situation'][:400]}\n"
+                        f"Réponse type :\n{p['response_template'][:1200]}\n"
+                        f"Points clés : {(p.get('key_points') or '')[:400]}\n")
+
+    dossiers_text = "\n".join(f"- {slug} : {desc}" for slug, desc in DOSSIERS.items())
 
     emails_text = ""
     for s in sent_emails:
         source_label = "Réponse à un client" if s.get('source') == 'reply' else "Email sortant"
-        emails_text += f"\n[{source_label}]\nÀ : {s['to_email']}\nSujet : {s['subject']}\nContenu :\n{s['body']}\n---\n"
+        emails_text += (f"\n[{source_label}]\nÀ : {s['to_email']}\nSujet : {s['subject']}\n"
+                        f"Contenu :\n{s['body']}\n---\n")
 
-    prompt = f"""Tu es l'assistant de Max Sauveur (marque de lunettes de soleil).
-Voici les emails envoyés aux clients aujourd'hui :{emails_text}{existing_summary}
+    prompt = f"""Tu es l'assistant de Max Sauveur (marque de chaussures et ceintures en cuir).
 
-Pour chaque email, identifie le type de situation client traité et extrait la réponse validée.
-Regroupe les emails similaires ensemble.
+Voici les réponses envoyées aux clients aujourd'hui :{emails_text}
 
-Retourne UNIQUEMENT un JSON valide (liste) comme ceci :
+DOSSIERS DISPONIBLES (la liste est fermée, n'en invente aucun) :
+{dossiers_text}
+{current}
+
+BASE DE CONNAISSANCES DÉJÀ ACQUISE (ne réenregistre rien qui s'y trouve déjà) :
+{KNOWLEDGE_BASE[:12000]}
+
+Ta tâche : classer chaque réponse envoyée dans UN dossier de la liste, et
+enrichir ce dossier avec ce que la réponse apporte de nouveau.
+
+Retourne UNIQUEMENT un JSON valide (liste) :
 [
   {{
-    "topic": "slug_snake_case_unique",
-    "topic_label": "Titre court lisible (ex: Retour produit défectueux)",
-    "situation": "Description en 2-3 phrases de quand cette situation se présente",
-    "response_template": "Modèle de réponse extrait de l'email validé (adapté pour être réutilisé, avec [Prénom] pour les variables)",
-    "key_points": "Points clés à retenir : ton, engagements, formulations importantes"
+    "topic": "un slug EXACT de la liste ci-dessus",
+    "topic_label": "Titre lisible du dossier",
+    "situation": "Quand cette situation se présente, cas couverts par le dossier",
+    "response_template": "Le contenu du dossier, enrichi. Reprends l'existant et complète-le avec les formulations validées aujourd'hui. Utilise [Prénom] pour les variables.",
+    "key_points": "Ton, engagements pris, formulations importantes, pièges à éviter"
   }}
 ]
 
 Règles :
-- Ne crée pas de fiche si l'email est trop vague ou hors sujet
-- Si le topic existe déjà dans les fiches existantes, retourne quand même la fiche avec le contenu MIS À JOUR si la réponse apporte une nuance nouvelle — sinon ne l'inclus pas
-- Maximum 5 fiches par appel
+- "topic" DOIT être un slug de la liste, à l'identique. Jamais un objet de mail.
+- Si plusieurs réponses du jour vont dans le même dossier, produis UNE seule entrée qui les intègre toutes.
+- N'inclus un dossier que si la journée lui apporte quelque chose de nouveau. Si les réponses ne font que réappliquer ce qui est déjà dans le dossier ou dans la base de connaissances, ne le retourne pas.
+- Le contenu existant du dossier doit être CONSERVÉ et complété, jamais remplacé ni raccourci.
+- Garde "response_template" sous 2000 caractères : consolide au lieu d'empiler.
 - Réponds UNIQUEMENT avec le JSON, aucun texte autour"""
 
-    raw = _call_haiku(messages=[{"role": "user", "content": prompt}], max_tokens=2000).strip()
-    # Extract JSON array from response
-    import re as _re
-    match = _re.search(r'\[.*\]', raw, _re.DOTALL)
+    raw = _call_haiku(messages=[{"role": "user", "content": prompt}], max_tokens=4000).strip()
+    match = re.search(r'\[.*\]', raw, re.DOTALL)
     if not match:
         return []
     try:
-        import json as _json
-        return _json.loads(match.group(0))
+        entries = json.loads(match.group(0))
     except Exception:
         return []
+
+    # Le modèle invente parfois un slug malgré la consigne : on jette plutôt que
+    # de recréer un dossier orphelin.
+    return [e for e in entries
+            if isinstance(e, dict) and e.get('topic') in DOSSIERS and e.get('response_template')]
 
 
 def detect_intent(email_body, email_subject):

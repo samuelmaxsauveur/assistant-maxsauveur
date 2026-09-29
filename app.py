@@ -351,18 +351,18 @@ def index():
 
 @app.route('/ignore-email', methods=['POST'])
 def ignore_email():
-    """Set an email aside for good.
+    """Mark an email as read, nothing else.
 
     The button used to only drop the card from the page, so the email stayed
-    unread in Gmail and came back at the next refresh. Mark it read and record
-    it as processed, otherwise the hourly job regenerates a draft for it.
+    unread in Gmail and came back at the next refresh. Marking it read is enough
+    to keep it out: the inbox is polled on the UNREAD label. The message is not
+    deleted, not trashed and not archived.
     """
     email_id = (request.json or {}).get('email_id', '')
     if not email_id:
         return jsonify({'success': False, 'error': 'email_id manquant'}), 400
     try:
         gmail_helper.mark_as_read(get_service(), email_id)
-        database.mark_processed(email_id)
         return jsonify({'success': True})
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
