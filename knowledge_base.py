@@ -213,6 +213,11 @@ KNOWLEDGE_BASE = """
 ### Embauchoirs
 - Kit embauchoir disponible en 45 uniquement (pas de 46)
 - Réponse type : "Nos embauchoirs ne sont pas disponibles en taille 46, uniquement en 45 dans notre kit."
+- **Les embauchoirs bois de cèdre sont vendus en PRÉCOMMANDE. Livraison annoncée mi-novembre 2026**, comme indiqué sur la fiche produit au moment de la commande.
+- Conséquence directe : une commande d'embauchoirs non expédiée est NORMALE, ce n'est pas un incident logistique. Shopify affiche un statut de livraison vide, c'est attendu.
+- Ne JAMAIS répondre qu'on va "vérifier pourquoi la commande n'est pas partie" ou qu'il y a un problème d'expédition sur une commande d'embauchoirs.
+- Réponse type : confirmer que la commande est bien enregistrée, expliquer qu'il s'agit d'une précommande annoncée comme telle sur la fiche produit, et rappeler la livraison mi-novembre.
+- À METTRE À JOUR dès que les embauchoirs sont expédiés.
 
 ### Cuir — usure normale vs défaut
 - Marques de frottement sur le cuir = matière vivante, normal
