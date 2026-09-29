@@ -85,13 +85,74 @@ def _significant_words(text):
             if len(w) > 2 and w not in _STOPWORDS}
 
 
-def _select_relevant_patterns(email_text, patterns, top_n=20):
-    """Select the patterns that actually talk about the same subject.
+# Un email client mélange souvent plusieurs sujets ("ma pointure ET mon
+# remboursement"). Un classement unique laisse le sujet dominant rafler toutes
+# les places. On récupère donc séparément pour chaque sujet détecté.
+_FACETS = {
+    'retour_remboursement': ['retour', 'rembours', 'avoir', 'renvoyer', 'renvoi',
+                             'retracta', 'rétracta', 'annul', 'echange', 'échange'],
+    'pointure_taille': ['pointure', 'taille', 'chausse', 'chaussant', 'mesure',
+                        'grand', 'petit', 'ajuste', 'ajusté', 'large', 'etroit', 'étroit'],
+    'precommande_delai': ['precommande', 'précommande', 'delai', 'délai', 'expedi',
+                          'expédi', 'reassort', 'réassort', 'disponib', 'rupture'],
+    'defaut_garantie': ['defaut', 'défaut', 'garantie', 'decolle', 'décolle', 'casse',
+                        'abime', 'abîme', 'usure', 'repar', 'répar', 'couture',
+                        'fissur', 'pele', 'pèle'],
+    'suivi_colis': ['suivi', 'tracking', 'colis', 'transporteur', 'relais', 'perdu',
+                    'chronopost', 'mondial'],
+    'entretien': ['entretien', 'cirage', 'nettoy', 'patine', 'impermeabil',
+                  'imperméabil', 'brosse', 'cremer', 'crémer', 'graisse'],
+    'paiement': ['paiement', 'payer', 'carte bancaire', 'facture', 'promo',
+                 'code', 'reduction', 'réduction'],
+}
 
-    Counting raw word overlap made the longest templates win every time: more
-    words means more chance of sharing some, whatever the topic. Score on
-    meaningful words only, weight the topic label (it names the subject), and
-    normalise by vocabulary size so length stops deciding the ranking.
+
+def _extra_queries(order_info=None, orders=None, history=None):
+    """Extra things to look up besides the email itself.
+
+    "Où en est ma précommande ?" names no product, so nothing in the email can
+    find the sheet about the item actually paid for. These get searched on their
+    own: merged into the main query they only dilute the subject words and push
+    the right sheets out.
+    """
+    queries = []
+    for o in (orders or ([order_info] if order_info else [])):
+        for p in (o or {}).get('products', []):
+            name = (p.get('name') or '').strip()
+            if name:
+                queries.append(name)
+    for h in (history or [])[-6:]:
+        subject = (h.get('subject') or '').strip()
+        if subject:
+            queries.append(subject)
+    # Dedupe, keep order.
+    return list(dict.fromkeys(queries))[:12]
+
+
+def _rank_patterns(query_words, patterns):
+    """Patterns ordered by how much they talk about the query, best first."""
+    scored = []
+    for p in patterns:
+        label = _significant_words(p.get('topic_label', ''))
+        rest = _significant_words(
+            f"{p.get('situation', '')} {p.get('response_template', '')}")
+        hits = 3 * len(query_words & label) + len(query_words & rest)
+        if not hits:
+            continue
+        # Normalise by vocabulary size, otherwise the longest templates win
+        # every time regardless of what they are about.
+        scored.append((hits / math.sqrt(len(label) + len(rest) + 1), p))
+    scored.sort(key=lambda x: x[0], reverse=True)
+    return [p for _, p in scored]
+
+
+def _select_relevant_patterns(email_text, patterns, top_n=30, extra_queries=None):
+    """Select past answers covering every subject the email raises.
+
+    Three passes, each with its own slots, so no single wording can take the
+    whole list: the email as a whole, then each subject it mentions, then the
+    products ordered and the recent thread subjects. Each pass searches on its
+    own words, because merging them into one query dilutes the subject.
     """
     if not email_text or not patterns:
         return patterns[:top_n]
@@ -99,20 +160,42 @@ def _select_relevant_patterns(email_text, patterns, top_n=20):
     if not email_words:
         return patterns[:top_n]
 
-    scored = []
-    for p in patterns:
-        label = _significant_words(p.get('topic_label', ''))
-        rest = _significant_words(
-            f"{p.get('situation', '')} {p.get('response_template', '')}")
-        hits = 3 * len(email_words & label) + len(email_words & rest)
-        score = hits / math.sqrt(len(label) + len(rest) + 1)
-        scored.append((score, p))
+    selected, seen = [], set()
 
-    scored.sort(key=lambda x: x[0], reverse=True)
-    return [p for score, p in scored[:top_n] if score > 0]
+    def take(candidates, limit):
+        for p in candidates:
+            if len(selected) >= top_n or limit <= 0:
+                return
+            key = p.get('topic') or p.get('topic_label')
+            if key in seen:
+                continue
+            seen.add(key)
+            selected.append(p)
+            limit -= 1
+
+    # 1. The email itself keeps the largest share.
+    take(_rank_patterns(email_words, patterns), top_n // 2)
+
+    # 2. One pass per subject mentioned, so a second subject is never crowded out.
+    lowered = email_text.lower()
+    facets = [kws for kws in _FACETS.values() if any(k in lowered for k in kws)]
+    if facets:
+        share = max(2, (top_n // 3) // len(facets))
+        for kws in facets:
+            take(_rank_patterns(email_words | set(kws), patterns), share)
+
+    # 3. Products ordered and recent subjects, searched on their own words.
+    for query in (extra_queries or []):
+        words = _significant_words(query)
+        if words:
+            take(_rank_patterns(words, patterns), 2)
+
+    # Any room left goes back to the overall ranking.
+    take(_rank_patterns(email_words, patterns), top_n - len(selected))
+    return selected
 
 
-def get_system_prompt(email_context=''):
+def get_system_prompt(email_context='', extra_queries=None):
     """Build SYSTEM_PROMPT dynamically, injecting summaries, processes and relevant patterns."""
     try:
         import database
@@ -142,11 +225,12 @@ def get_system_prompt(email_context=''):
                 extra += f"\n\n--- DOCUMENT DES RÉPONSES TYPES (mis à jour chaque soir) ---\n{daily_doc['response_template']}\n"
             # Then inject top relevant individual patterns
             non_meta = [p for p in patterns if not p.get('topic', '').startswith('_')]
-            selected = _select_relevant_patterns(email_context, non_meta, top_n=20)
+            selected = _select_relevant_patterns(email_context, non_meta, top_n=30,
+                                                 extra_queries=extra_queries)
             if selected:
                 extra += "\n\n--- FICHES RÉPONSES INDIVIDUELLES (les plus pertinentes) ---\n"
                 for p in selected:
-                    extra += f"\n[{p['topic_label']}]\nSituation : {p['situation'][:600]}\nRéponse type :\n{p['response_template'][:1500]}\n"
+                    extra += f"\n[{p['topic_label']}]\nSituation : {p['situation'][:800]}\nRéponse type :\n{p['response_template'][:2500]}\n"
         if extra:
             return BASE_SYSTEM_PROMPT + extra
     except Exception:
@@ -261,7 +345,9 @@ INSTRUCTIONS :
             })
     user_content.append({"type": "text", "text": prompt_text})
 
-    system = get_system_prompt(email_context=f"{email_subject} {email_body}")
+    system = get_system_prompt(
+        email_context=f"{email_subject} {email_body}",
+        extra_queries=_extra_queries(order_info, orders, history))
     try:
         return _call_claude(system=system,
                             messages=[{"role": "user", "content": user_content}])
