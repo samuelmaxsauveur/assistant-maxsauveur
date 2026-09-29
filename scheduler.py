@@ -80,6 +80,22 @@ def process_new_emails():
                 print(f"[{datetime.now()}] Error detecting intent for {email_id}: {e}")
                 intent_data = {"intent": "other", "address": None, "has_full_address": False}
 
+            # Past exchanges with this customer. The web page already sends
+            # these to Claude; without them the draft repeats or contradicts
+            # what Samuel has already told the customer.
+            history = []
+            try:
+                raw_history = gmail_helper.get_customer_history(
+                    service, extract_email_address(email['sender']), max_results=10
+                )
+                history = [
+                    {'date': h.get('date', '')[:16], 'subject': h.get('subject', ''),
+                     'body': h.get('body', '')[:600], 'direction': h.get('direction', 'received')}
+                    for h in raw_history
+                ]
+            except Exception as e:
+                print(f"[{datetime.now()}] Could not fetch history for {email_id}: {e}")
+
             # Generate Claude AI draft response
             customer_name = extract_customer_name(email['sender'])
             draft_response = claude_ai.generate_response(
@@ -87,6 +103,7 @@ def process_new_emails():
                 email['subject'],
                 customer_name,
                 order_info,
+                history=history,
                 images=email_images if email_images else None
             )
 

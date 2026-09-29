@@ -5,6 +5,8 @@ import quopri
 import json
 import unicodedata
 import base64
+from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 import email.mime.text
 import email.mime.multipart
 import email.mime.base
@@ -158,6 +160,23 @@ def _find_body(payload, mime_type):
     return ''
 
 
+_EPOCH = datetime.min.replace(tzinfo=timezone.utc)
+
+
+def _date_sort_key(msg):
+    """Real datetime from the RFC 2822 Date header.
+
+    Sorting the raw header string instead sorts on the weekday name, so
+    "Wed, 9 Apr 2025" lands ahead of "Mon, 28 Sep 2026" and the most recent
+    exchanges get dropped from the history sent to Claude.
+    """
+    try:
+        d = parsedate_to_datetime(msg.get('date', ''))
+        return d if d.tzinfo else d.replace(tzinfo=timezone.utc)
+    except Exception:
+        return _EPOCH
+
+
 def get_customer_history(service, sender_email, max_results=10):
     """Fetch recent sent+received emails with a given customer address."""
     history = []
@@ -183,9 +202,10 @@ def get_customer_history(service, sender_email, max_results=10):
         parsed = parse_email(data)
         parsed['direction'] = 'sent'
         history.append(parsed)
-    # Sort by date descending, keep last 6 exchanges
-    history.sort(key=lambda x: x.get('date', ''), reverse=True)
-    return history[:6]
+    # Keep the 6 most recent exchanges, oldest first so the conversation reads
+    # in the order it happened.
+    history.sort(key=_date_sort_key, reverse=True)
+    return list(reversed(history[:6]))
 
 
 def get_thread_messages(service, thread_id):
