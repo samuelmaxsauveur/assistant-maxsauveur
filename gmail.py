@@ -189,8 +189,13 @@ def resolve_sender(sender, body):
             body, re.IGNORECASE)
         if email_match:
             raw_email = email_match.group(1).strip()
-        name_match = re.search(r'nom\s*:\s*(.+)', body, re.IGNORECASE)
-        if name_match:
+        # Stop at the next form label. get_email_body collapses the form onto a
+        # single line, so a plain (.+) swallows the address, the subject and the
+        # whole message into the customer's name.
+        name_match = re.search(
+            r'nom\s*:\s*(.+?)\s*(?=(?:e-?mail|courriel|sujet|objet|message|t[ée]l[ée]phone|tel)\s*:|$)',
+            body, re.IGNORECASE)
+        if name_match and name_match.group(1).strip():
             customer_name = name_match.group(1).strip()
 
     return raw_email, customer_name
