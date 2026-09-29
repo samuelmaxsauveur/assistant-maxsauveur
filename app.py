@@ -80,15 +80,9 @@ def get_service():
         gmail_service = gmail_helper.get_gmail_service()
     return gmail_service
 
-def extract_email_address(sender):
-    match = re.search(r'<(.+?)>', sender)
-    return match.group(1) if match else sender
-
-def extract_customer_name(sender):
-    match = re.search(r'^(.+?)\s*<', sender)
-    if match:
-        return match.group(1).strip().strip('"')
-    return sender
+# Definis dans gmail.py pour que scheduler.py resolve les expediteurs a l'identique.
+extract_email_address = gmail_helper.extract_email_address
+extract_customer_name = gmail_helper.extract_customer_name
 
 def _lookup_orders_by_name(name, body=''):
     """
@@ -199,22 +193,7 @@ def _lookup_orders_by_name(name, body=''):
     return []
 
 
-def resolve_sender(sender, body):
-    """If sender is a noreply/form address, extract real customer email and name from the body."""
-    raw_email = extract_email_address(sender)
-    customer_name = extract_customer_name(sender)
-
-    if re.search(r'noreply|no-reply|donotreply', raw_email, re.IGNORECASE):
-        # Extract email from form body (e.g. "E-mail : kevin@example.com")
-        email_match = re.search(r'e-?mail\s*:\s*([a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,})', body, re.IGNORECASE)
-        if email_match:
-            raw_email = email_match.group(1).strip()
-        # Extract name from form body (e.g. "Nom : Kevin Peschot")
-        name_match = re.search(r'nom\s*:\s*(.+)', body, re.IGNORECASE)
-        if name_match:
-            customer_name = name_match.group(1).strip()
-
-    return raw_email, customer_name
+resolve_sender = gmail_helper.resolve_sender
 
 @app.route('/health')
 def health():
@@ -392,7 +371,7 @@ def generate():
             raw = gmail_helper.get_customer_history(service, sender_email, max_results=10)
             history = [
                 {'date': h.get('date', '')[:16], 'subject': h.get('subject', ''),
-                 'body': h.get('body', '')[:600], 'direction': h.get('direction', 'received')}
+                 'body': h.get('body', '')[:1500], 'direction': h.get('direction', 'received')}
                 for h in raw
             ]
         except Exception:

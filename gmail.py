@@ -160,6 +160,42 @@ def _find_body(payload, mime_type):
     return ''
 
 
+def extract_email_address(sender):
+    match = re.search(r'<(.+?)>', sender)
+    return match.group(1) if match else sender
+
+
+def extract_customer_name(sender):
+    match = re.search(r'^(.+?)\s*<', sender)
+    if match:
+        return match.group(1).strip().strip('"')
+    return sender
+
+
+def resolve_sender(sender, body):
+    """Real customer address and name behind a noreply form address.
+
+    Shogun contact forms arrive from a noreply address, with the customer's own
+    address written in the body. Anything keyed on the raw sender (order lookup,
+    history, the reply-to) would then target the noreply address and find
+    nothing. Lives here so app.py and scheduler.py resolve senders identically.
+    """
+    raw_email = extract_email_address(sender)
+    customer_name = extract_customer_name(sender)
+
+    if re.search(r'noreply|no-reply|donotreply', raw_email, re.IGNORECASE):
+        email_match = re.search(
+            r'e-?mail\s*:\s*([a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,})',
+            body, re.IGNORECASE)
+        if email_match:
+            raw_email = email_match.group(1).strip()
+        name_match = re.search(r'nom\s*:\s*(.+)', body, re.IGNORECASE)
+        if name_match:
+            customer_name = name_match.group(1).strip()
+
+    return raw_email, customer_name
+
+
 _EPOCH = datetime.min.replace(tzinfo=timezone.utc)
 
 
@@ -202,10 +238,11 @@ def get_customer_history(service, sender_email, max_results=10):
         parsed = parse_email(data)
         parsed['direction'] = 'sent'
         history.append(parsed)
-    # Keep the 6 most recent exchanges, oldest first so the conversation reads
-    # in the order it happened.
+    # Keep the 10 most recent exchanges, oldest first so the conversation reads
+    # in the order it happened. Six was thin on an active support thread: the
+    # start of the conversation fell out of the context sent to Claude.
     history.sort(key=_date_sort_key, reverse=True)
-    return list(reversed(history[:6]))
+    return list(reversed(history[:10]))
 
 
 def get_thread_messages(service, thread_id):

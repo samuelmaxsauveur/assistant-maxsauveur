@@ -16,16 +16,10 @@ load_dotenv()
 BASE_URL = os.getenv("BASE_URL", "https://assistant-maxsauveur.up.railway.app")
 
 
-def extract_email_address(sender):
-    match = re.search(r'<(.+?)>', sender)
-    return match.group(1) if match else sender
-
-
-def extract_customer_name(sender):
-    match = re.search(r'^(.+?)\s*<', sender)
-    if match:
-        return match.group(1).strip().strip('"')
-    return sender
+# Definis dans gmail.py, partages avec app.py.
+extract_email_address = gmail_helper.extract_email_address
+extract_customer_name = gmail_helper.extract_customer_name
+resolve_sender = gmail_helper.resolve_sender
 
 
 def process_new_emails():
@@ -52,6 +46,12 @@ def process_new_emails():
         print(f"[{datetime.now()}] Processing email {email_id}: {email['subject']}")
 
         try:
+            # Shogun contact forms arrive from a noreply address with the real
+            # customer address written in the body. Resolve it once, exactly as
+            # app.py does, so the order lookup, the history and the saved draft
+            # all key on the customer instead of on noreply@.
+            sender_email, customer_name = resolve_sender(email['sender'], email['body'])
+
             # Extract image attachments (for Claude Vision)
             email_images = []
             try:
@@ -68,7 +68,6 @@ def process_new_emails():
                 order_info = shopify_api.get_order_by_number(order_number)
 
             if not order_info:
-                sender_email = extract_email_address(email['sender'])
                 orders = shopify_api.get_orders_by_email(sender_email)
                 if orders:
                     order_info = orders[0]
@@ -86,18 +85,17 @@ def process_new_emails():
             history = []
             try:
                 raw_history = gmail_helper.get_customer_history(
-                    service, extract_email_address(email['sender']), max_results=10
+                    service, sender_email, max_results=10
                 )
                 history = [
                     {'date': h.get('date', '')[:16], 'subject': h.get('subject', ''),
-                     'body': h.get('body', '')[:600], 'direction': h.get('direction', 'received')}
+                     'body': h.get('body', '')[:1500], 'direction': h.get('direction', 'received')}
                     for h in raw_history
                 ]
             except Exception as e:
                 print(f"[{datetime.now()}] Could not fetch history for {email_id}: {e}")
 
             # Generate Claude AI draft response
-            customer_name = extract_customer_name(email['sender'])
             draft_response = claude_ai.generate_response(
                 email['body'],
                 email['subject'],
@@ -111,7 +109,7 @@ def process_new_emails():
             database.save_draft(
                 email_id=email_id,
                 thread_id=email['thread_id'],
-                customer_email=extract_email_address(email['sender']),
+                customer_email=sender_email,
                 customer_name=customer_name,
                 subject=email['subject'],
                 email_body=email['body'],
