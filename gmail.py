@@ -243,11 +243,11 @@ def get_customer_history(service, sender_email, max_results=10):
         parsed = parse_email(data)
         parsed['direction'] = 'sent'
         history.append(parsed)
-    # Keep the 10 most recent exchanges, oldest first so the conversation reads
+    # Keep the 25 most recent exchanges, oldest first so the conversation reads
     # in the order it happened. Six was thin on an active support thread: the
     # start of the conversation fell out of the context sent to Claude.
     history.sort(key=_date_sort_key, reverse=True)
-    return list(reversed(history[:10]))
+    return list(reversed(history[:25]))
 
 
 def get_thread_messages(service, thread_id):

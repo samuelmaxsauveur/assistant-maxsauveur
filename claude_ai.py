@@ -1,5 +1,6 @@
 import os
 import re
+import math
 import json
 import time
 import anthropic
@@ -61,19 +62,54 @@ ACCÈS AUX OUTILS :
 {KNOWLEDGE_BASE}"""
 
 
-def _select_relevant_patterns(email_text, patterns, top_n=12):
-    """Select the most relevant patterns based on keyword overlap with the email."""
+# Mots trop courants pour dire quoi que ce soit du sujet d'un email client.
+_STOPWORDS = {
+    'le', 'la', 'les', 'un', 'une', 'des', 'du', 'de', 'd', 'l', 'et', 'ou', 'a', 'à',
+    'au', 'aux', 'en', 'dans', 'sur', 'pour', 'par', 'avec', 'sans', 'sous', 'vers',
+    'je', 'j', 'me', 'moi', 'tu', 'te', 'toi', 'il', 'elle', 'on', 'nous', 'vous',
+    'ils', 'elles', 'mon', 'ma', 'mes', 'votre', 'vos', 'notre', 'nos', 'son', 'sa',
+    'ses', 'leur', 'leurs', 'ce', 'cet', 'cette', 'ces', 'qui', 'que', 'quoi', 'dont',
+    'est', 'sont', 'suis', 'etes', 'êtes', 'ete', 'été', 'avoir', 'ai', 'as', 'ont',
+    'avez', 'avons', 'etre', 'être', 'fait', 'faire', 'plus', 'moins', 'tres', 'très',
+    'bien', 'tout', 'tous', 'toute', 'toutes', 'pas', 'ne', 'n', 'si', 'mais', 'donc',
+    'car', 'comme', 'aussi', 'encore', 'deja', 'déjà', 'cela', 'ca', 'ça', 'y',
+    'bonjour', 'bonsoir', 'cordialement', 'merci', 'madame', 'monsieur', 'salutations',
+    'email', 'mail', 'client', 'sauveur', 'max', 'john', 'service',
+    's', 'c', 'qu', 'the', 'to', 'of', 'and', 'you', 'your',
+}
+
+
+def _significant_words(text):
+    """Words worth scoring on: no stopwords, nothing shorter than 3 letters."""
+    return {w for w in re.findall(r'\w+', (text or '').lower())
+            if len(w) > 2 and w not in _STOPWORDS}
+
+
+def _select_relevant_patterns(email_text, patterns, top_n=20):
+    """Select the patterns that actually talk about the same subject.
+
+    Counting raw word overlap made the longest templates win every time: more
+    words means more chance of sharing some, whatever the topic. Score on
+    meaningful words only, weight the topic label (it names the subject), and
+    normalise by vocabulary size so length stops deciding the ranking.
+    """
     if not email_text or not patterns:
         return patterns[:top_n]
-    email_words = set(re.findall(r'\w+', email_text.lower()))
+    email_words = _significant_words(email_text)
+    if not email_words:
+        return patterns[:top_n]
+
     scored = []
     for p in patterns:
-        pattern_text = f"{p['topic_label']} {p['situation']} {p['response_template']}".lower()
-        pattern_words = set(re.findall(r'\w+', pattern_text))
-        score = len(email_words & pattern_words)
+        label = _significant_words(p.get('topic_label', ''))
+        rest = _significant_words(
+            f"{p.get('situation', '')} {p.get('response_template', '')}")
+        hits = 3 * len(email_words & label) + len(email_words & rest)
+        score = hits / math.sqrt(len(label) + len(rest) + 1)
         scored.append((score, p))
+
     scored.sort(key=lambda x: x[0], reverse=True)
-    return [p for _, p in scored[:top_n]]
+    return [p for score, p in scored[:top_n] if score > 0]
 
 
 def get_system_prompt(email_context=''):
@@ -106,11 +142,11 @@ def get_system_prompt(email_context=''):
                 extra += f"\n\n--- DOCUMENT DES RÉPONSES TYPES (mis à jour chaque soir) ---\n{daily_doc['response_template']}\n"
             # Then inject top relevant individual patterns
             non_meta = [p for p in patterns if not p.get('topic', '').startswith('_')]
-            selected = _select_relevant_patterns(email_context, non_meta, top_n=10)
+            selected = _select_relevant_patterns(email_context, non_meta, top_n=20)
             if selected:
                 extra += "\n\n--- FICHES RÉPONSES INDIVIDUELLES (les plus pertinentes) ---\n"
                 for p in selected:
-                    extra += f"\n[{p['topic_label']}]\nSituation : {p['situation'][:300]}\nRéponse type :\n{p['response_template'][:600]}\n"
+                    extra += f"\n[{p['topic_label']}]\nSituation : {p['situation'][:600]}\nRéponse type :\n{p['response_template'][:1500]}\n"
         if extra:
             return BASE_SYSTEM_PROMPT + extra
     except Exception:

@@ -368,10 +368,10 @@ def generate():
     if sender_email:
         try:
             service = get_service()
-            raw = gmail_helper.get_customer_history(service, sender_email, max_results=10)
+            raw = gmail_helper.get_customer_history(service, sender_email, max_results=20)
             history = [
                 {'date': h.get('date', '')[:16], 'subject': h.get('subject', ''),
-                 'body': h.get('body', '')[:1500], 'direction': h.get('direction', 'received')}
+                 'body': h.get('body', '')[:4000], 'direction': h.get('direction', 'received')}
                 for h in raw
             ]
         except Exception:
