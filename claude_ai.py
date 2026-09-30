@@ -260,7 +260,7 @@ def get_system_prompt(email_context='', extra_queries=None):
             if selected:
                 extra += "\n\n--- FICHES RÉPONSES INDIVIDUELLES (les plus pertinentes) ---\n"
                 for p in selected:
-                    extra += f"\n[{p['topic_label']}]\nSituation : {p['situation'][:800]}\nRéponse type :\n{p['response_template'][:2500]}\n"
+                    extra += f"\n[{p['topic_label']}]\nSituation : {p['situation'][:1200]}\nRéponse type :\n{p['response_template'][:8000]}\n"
         if extra:
             return BASE_SYSTEM_PROMPT + extra
     except Exception:
