@@ -345,6 +345,23 @@ def send_email(service, to, subject, body, thread_id=None,
     service.users().messages().send(userId='me', body=body_data).execute()
 
 
+def send_email_with_files(service, to, subject, body, files):
+    """Send a new email with several attachments, given as (bytes, filename, mime) tuples."""
+    message = email.mime.multipart.MIMEMultipart()
+    message.attach(email.mime.text.MIMEText(body, 'plain', 'utf-8'))
+    for data, filename, mime in files:
+        maintype, _, subtype = (mime or 'application/octet-stream').partition('/')
+        part = email.mime.base.MIMEBase(maintype, subtype or 'octet-stream')
+        part.set_payload(data)
+        email.encoders.encode_base64(part)
+        part.add_header('Content-Disposition', 'attachment', filename=filename)
+        message.attach(part)
+    message['to'] = to
+    message['subject'] = subject
+    raw = base64.urlsafe_b64encode(message.as_bytes()).decode()
+    service.users().messages().send(userId='me', body={'raw': raw}).execute()
+
+
 def mark_as_read(service, message_id):
     service.users().messages().modify(
         userId='me',

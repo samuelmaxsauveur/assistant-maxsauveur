@@ -59,6 +59,53 @@
         </div>
     </div>
 
+    <div class="card" style="border:2px solid #c4b5fd;">
+        <div class="card-title">📦 Envoi groupé à un atelier</div>
+        {% if ready %}
+        <div class="card-meta">Paires réceptionnées, pas encore parties. Coche celles qui partent dans le colis.</div>
+        <div style="margin-bottom:10px;">
+            <label>Atelier</label>
+            <select id="ws-key" onchange="precheckWorkshop()" style="max-width:280px;">
+                {% for key, w in workshops.items() %}
+                <option value="{{ key }}" data-name="{{ w.name }}">{{ w.name }} ({{ w.emails | join(', ') }})</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div id="ws-list">
+            {% for c in ready %}
+            <label style="display:flex; gap:8px; align-items:flex-start; font-weight:400; font-size:14px; color:#333; margin:6px 0; cursor:pointer;">
+                <input type="checkbox" value="{{ c.id }}" data-workshop="{{ c.workshop or '' }}" style="width:auto; margin-top:3px;">
+                <span><strong>{{ c.wing_ref }}</strong> · {{ c.product or '' }} · {{ 'boots' if c.parcel_type == 'boots' else 'basse' }}
+                    {% if c.workshop %}· {{ c.workshop }}{% endif %}
+                    {% if not c.workshop_ref %}<span style="color:#b45309;">· réf atelier manquante</span>{% endif %}
+                    {% if not c.problem %}<span style="color:#b45309;">· problème non renseigné</span>{% endif %}
+                </span>
+            </label>
+            {% endfor %}
+        </div>
+        <div class="actions">
+            <button class="btn btn-purple" id="ws-preview-btn" onclick="previewWorkshop()">Préparer l'e-mail</button>
+            <span class="msg" id="ws-msg"></span>
+        </div>
+        <div id="ws-draft" style="display:none; margin-top:14px;">
+            <div class="card-meta" id="ws-summary"></div>
+            <label>À</label>
+            <input id="ws-to" disabled>
+            <label style="margin-top:8px;">Objet</label>
+            <input id="ws-subject">
+            <label style="margin-top:8px;">Message (modifiable)</label>
+            <textarea id="ws-body" style="min-height:320px;"></textarea>
+            <div class="actions">
+                <button class="btn btn-purple" id="ws-send-btn" onclick="sendWorkshop()">Envoyer à l'atelier</button>
+                <button class="btn btn-gray" id="ws-shipped-btn" onclick="markShipped()" style="display:none;">Marquer ces paires « expédiées à l'atelier »</button>
+                <span class="msg" id="ws-send-msg"></span>
+            </div>
+        </div>
+        {% else %}
+        <div class="card-meta">Aucune paire réceptionnée en attente d'envoi. Les paires apparaissent ici dès qu'elles passent en « Paire réceptionnée ».</div>
+        {% endif %}
+    </div>
+
     {% for c in cases %}
     <div class="card" id="case-{{ c.id }}">
         <div class="card-title">{{ c.wing_ref }} · {{ c.customer_name or '' }}</div>
@@ -136,6 +183,95 @@ async function saveCase(id, btn) {
     }
     btn.disabled = false;
 }
+
+function _wsSelection() {
+    return [...document.querySelectorAll('#ws-list input:checked')].map(el => el.value);
+}
+
+function precheckWorkshop() {
+    const sel = document.getElementById('ws-key');
+    if (!sel) return;
+    const name = sel.options[sel.selectedIndex].dataset.name;
+    // Pairs already assigned to this workshop, and unassigned ones, start checked.
+    document.querySelectorAll('#ws-list input').forEach(el => {
+        el.checked = !el.dataset.workshop || el.dataset.workshop === name;
+    });
+    document.getElementById('ws-draft').style.display = 'none';
+}
+
+async function previewWorkshop() {
+    const msg = document.getElementById('ws-msg');
+    const btn = document.getElementById('ws-preview-btn');
+    btn.disabled = true;
+    msg.textContent = '⏳ Préparation (photos des clients incluses)...';
+    try {
+        const res = await fetch('/reparations/atelier/apercu', {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({workshop: document.getElementById('ws-key').value, case_ids: _wsSelection()})
+        });
+        const data = await res.json();
+        if (!data.success) { msg.textContent = '❌ ' + data.error; btn.disabled = false; return; }
+        document.getElementById('ws-to').value = data.to;
+        document.getElementById('ws-subject').value = data.subject;
+        document.getElementById('ws-body').value = data.body;
+        const warn = [];
+        if (data.missing_ref.length) warn.push('réf atelier manquante : ' + data.missing_ref.join(', '));
+        if (data.missing_problem.length) warn.push('problème non renseigné : ' + data.missing_problem.join(', '));
+        document.getElementById('ws-summary').innerHTML =
+            `${data.cartons.length} carton(s) · ${data.photos} photo(s) jointe(s)` +
+            (warn.length ? `<br><span style="color:#b45309;">⚠️ ${warn.join(' · ')}. Complète les dossiers plus bas puis prépare à nouveau, ou corrige directement le message.</span>` : '');
+        document.getElementById('ws-draft').style.display = 'block';
+        document.getElementById('ws-shipped-btn').style.display = 'none';
+        document.getElementById('ws-send-msg').textContent = '';
+        document.getElementById('ws-send-btn').disabled = false;
+        msg.textContent = '';
+    } catch (e) {
+        msg.textContent = '❌ Erreur réseau';
+    }
+    btn.disabled = false;
+}
+
+async function sendWorkshop() {
+    const btn = document.getElementById('ws-send-btn');
+    const msg = document.getElementById('ws-send-msg');
+    if (!confirm('Envoyer cet e-mail à ' + document.getElementById('ws-to').value + ' ?')) return;
+    btn.disabled = true;
+    msg.textContent = '⏳ Envoi...';
+    try {
+        const res = await fetch('/reparations/atelier/envoyer', {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                workshop: document.getElementById('ws-key').value, case_ids: _wsSelection(),
+                subject: document.getElementById('ws-subject').value, body: document.getElementById('ws-body').value
+            })
+        });
+        const data = await res.json();
+        if (data.success) {
+            msg.textContent = `✅ Envoyé à ${data.to} avec ${data.photos} photo(s). Quand le colis part avec l'étiquette UPS de l'atelier :`;
+            document.getElementById('ws-shipped-btn').style.display = 'inline-block';
+        } else {
+            msg.textContent = '❌ ' + (data.error || 'Erreur');
+            btn.disabled = false;
+        }
+    } catch (e) {
+        msg.textContent = '❌ Erreur réseau';
+        btn.disabled = false;
+    }
+}
+
+async function markShipped() {
+    const btn = document.getElementById('ws-shipped-btn');
+    btn.disabled = true;
+    const res = await fetch('/reparations/statut-groupe', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({status: 'sent_workshop', case_ids: _wsSelection()})
+    });
+    const data = await res.json();
+    if (data.success) location.reload();
+    else { document.getElementById('ws-send-msg').textContent = '❌ ' + data.error; btn.disabled = false; }
+}
+
+document.addEventListener('DOMContentLoaded', precheckWorkshop);
 
 async function refreshAll() {
     const btn = document.getElementById('refresh-btn');
