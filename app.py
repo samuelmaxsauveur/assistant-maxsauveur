@@ -13,6 +13,7 @@ import wing_api
 import wing_automation
 import wing_repair
 import repair_catalog
+import repairs
 import database
 import scheduler as scheduler_module
 
@@ -21,10 +22,12 @@ from routes_validation import validation
 from routes_sav import sav
 from routes_client import client_bp
 from routes_newsletter import newsletter
+from routes_repairs import repairs_bp
 app.register_blueprint(validation)
 app.register_blueprint(sav)
 app.register_blueprint(client_bp)
 app.register_blueprint(newsletter)
+app.register_blueprint(repairs_bp)
 
 # Start the scheduler inside the web process. gunicorn runs a single worker
 # (see gunicorn.conf.py), so exactly one scheduler exists and jobs never double
@@ -687,6 +690,7 @@ def _run_repair_label_job(job_id, data):
             label['ref'], order_number, data.get('customer_name'), data.get('customer_email'),
             data.get('thread_id'), data.get('email_id'), product, ptype, weight,
             label['tracking_id'], label['label_url'])
+        repairs.push_to_sheet(database.get_repair_case_by_ref(label['ref']))
 
         draft = claude_ai.generate_sav_approval_email(
             data.get('customer_name', ''), order_number, data.get('email_body', ''),

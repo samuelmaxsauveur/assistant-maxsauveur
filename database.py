@@ -168,6 +168,12 @@ def init_db():
                 created_at      TEXT NOT NULL
             )
         """)
+        # Columns added after the first release of repair_cases: the table
+        # already exists in production, so they are added one by one.
+        existing = {row[1] for row in cursor.execute("PRAGMA table_info(repair_cases)")}
+        for column in REPAIR_EXTRA_COLUMNS:
+            if column not in existing:
+                cursor.execute(f"ALTER TABLE repair_cases ADD COLUMN {column} TEXT")
         conn.commit()
         # Seed response_patterns from custom_patterns.json (survives Railway redeploys)
         _seed_patterns_from_json(conn)
@@ -663,6 +669,49 @@ def save_repair_case(wing_ref, order_number, customer_name, customer_email, thre
              product, parcel_type, weight_kg, tracking_id, label_url, datetime.utcnow().isoformat())
         )
         conn.commit()
+    finally:
+        conn.close()
+
+
+REPAIR_EXTRA_COLUMNS = ("status_updated_at", "parcel_status", "problem", "decision",
+                        "workshop", "workshop_ref", "notes")
+REPAIR_UPDATABLE = REPAIR_EXTRA_COLUMNS + ("status",)
+
+
+def get_repair_case(case_id):
+    conn = get_connection()
+    try:
+        row = conn.execute("SELECT * FROM repair_cases WHERE id = ?", (case_id,)).fetchone()
+        return dict(row) if row else None
+    finally:
+        conn.close()
+
+
+def update_repair_case(case_id, fields):
+    """Update the given columns; a status change is timestamped. Returns the row."""
+    fields = {k: v for k, v in fields.items() if k in REPAIR_UPDATABLE}
+    current = get_repair_case(case_id)
+    if current is None:
+        raise ValueError(f"Dossier réparation {case_id} introuvable")
+    if "status" in fields and fields["status"] != current["status"]:
+        fields["status_updated_at"] = datetime.utcnow().isoformat()
+    if fields:
+        conn = get_connection()
+        try:
+            assignments = ", ".join(f"{k} = ?" for k in fields)
+            conn.execute(f"UPDATE repair_cases SET {assignments} WHERE id = ?",
+                         (*fields.values(), case_id))
+            conn.commit()
+        finally:
+            conn.close()
+    return get_repair_case(case_id)
+
+
+def get_repair_case_by_ref(wing_ref):
+    conn = get_connection()
+    try:
+        row = conn.execute("SELECT * FROM repair_cases WHERE wing_ref = ?", (wing_ref,)).fetchone()
+        return dict(row) if row else None
     finally:
         conn.close()
 

@@ -10,6 +10,7 @@ import gmail as gmail_helper
 import shopify_api
 import claude_ai
 import database
+import repairs
 
 load_dotenv()
 
@@ -337,6 +338,14 @@ def start():
         "interval",
         minutes=1,
         id="send_scheduled"
+    )
+
+    # Move repair pairs to "réceptionnée" once their label is delivered to SSL
+    scheduler.add_job(
+        repairs.refresh_from_wing,
+        "interval",
+        minutes=60,
+        id="repair_tracking"
     )
 
     scheduler.start()
