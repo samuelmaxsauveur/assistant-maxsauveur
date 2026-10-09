@@ -257,9 +257,27 @@
                                     {% endif %}
                                 {% endif %}
                                 <button type="button" class="btn btn-secondary" onclick="sendReturnLabel('{{ item.email.id }}')" id="return-label-btn-{{ item.email.id }}" style="background:#f59e0b;color:white;">📦 Étiquette retour</button>
+                                <button type="button" class="btn btn-secondary" onclick="toggleRepairPanel('{{ item.email.id }}')" style="background:#7c3aed;color:white;">🔧 Étiquette réparation</button>
                                 <button type="button" class="btn btn-primary" onclick="sendEmail('{{ item.email.id }}')">Envoyer ✓</button>
                                 <button type="button" class="btn btn-secondary" onclick="toggleSchedule('{{ item.email.id }}')">📅 Différer</button>
                                 <button type="button" class="btn btn-secondary" onclick="ignoreEmail('{{ item.email.id }}', this)">Ignorer</button>
+                            </div>
+                            <div id="repair-{{ item.email.id }}" style="display:none; background:#f5f3ff; border:1px solid #c4b5fd; border-radius:8px; padding:14px; margin-top:12px; font-size:14px;">
+                                <div style="font-size:12px; font-weight:700; color:#5b21b6; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:10px;">🔧 Étiquette réparation (compte Wing réparation)</div>
+                                <div style="font-weight:600; margin-bottom:4px;">1. Commande d'origine de la paire</div>
+                                <div id="repair-orders-{{ item.email.id }}" style="margin-bottom:10px;"></div>
+                                <div style="font-weight:600; margin-bottom:4px;">2. Paire concernée</div>
+                                <div id="repair-products-{{ item.email.id }}" style="margin-bottom:10px; color:#666;">Choisis d'abord la commande.</div>
+                                <div style="font-weight:600; margin-bottom:4px;">3. Colis</div>
+                                <select id="repair-type-{{ item.email.id }}" style="margin-bottom:12px;">
+                                    <option value="basse">Paire basse · 1,5 kg</option>
+                                    <option value="boots">Paire boots · 2 kg</option>
+                                    <option value="accessoire">Ceinture / accessoire · 0,5 kg</option>
+                                </select>
+                                <div>
+                                    <button type="button" class="btn btn-primary" id="repair-btn-{{ item.email.id }}" onclick="generateRepairLabel('{{ item.email.id }}')" style="background:#7c3aed;">Générer l'étiquette (facturée)</button>
+                                </div>
+                                <div id="repair-result-{{ item.email.id }}" style="margin-top:10px;"></div>
                             </div>
                             <div class="schedule-form" id="schedule-{{ item.email.id }}">
                                 <label>Envoyer le :</label>
@@ -652,6 +670,123 @@ async function sendReturnLabel(id) {
         btn.textContent = '❌ Erreur réseau';
     }
     btn.disabled = false;
+}
+
+function _escapeHtml(s) {
+    return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function toggleRepairPanel(id) {
+    const panel = document.getElementById('repair-' + id);
+    if (panel.style.display === 'block') { panel.style.display = 'none'; return; }
+    panel.style.display = 'block';
+    const d = emailData[id];
+    const orders = (d.orders && d.orders.length) ? d.orders : (d.order ? [d.order] : []);
+    const box = document.getElementById('repair-orders-' + id);
+    if (!orders.length) {
+        box.innerHTML = '<span style="color:#b45309;">Aucune commande Shopify trouvée pour ce client.</span>';
+        return;
+    }
+    // The order the customer mentions comes first in d.orders: preselected.
+    box.innerHTML = orders.map((o, i) => {
+        const date = (o.created_at || '').slice(0, 10).split('-').reverse().join('/');
+        const items = (o.products || []).map(p => p.name).join(', ');
+        return `<label style="display:block; margin:3px 0; cursor:pointer;">
+            <input type="radio" name="repair-order-${id}" value="${i}" ${i === 0 ? 'checked' : ''}
+                   onchange="renderRepairProducts('${id}')">
+            <strong>${_escapeHtml(o.number)}</strong> · ${_escapeHtml(date)} · <span style="color:#555;">${_escapeHtml(items)}</span>
+        </label>`;
+    }).join('');
+    renderRepairProducts(id);
+}
+
+function _repairOrder(id) {
+    const d = emailData[id];
+    const orders = (d.orders && d.orders.length) ? d.orders : (d.order ? [d.order] : []);
+    const checked = document.querySelector(`input[name="repair-order-${id}"]:checked`);
+    return checked ? orders[parseInt(checked.value, 10)] : null;
+}
+
+function renderRepairProducts(id) {
+    const order = _repairOrder(id);
+    const box = document.getElementById('repair-products-' + id);
+    const products = (order && order.products) || [];
+    if (!products.length) { box.innerHTML = 'Aucun article dans cette commande.'; return; }
+    box.innerHTML = products.map((p, i) => `<label style="display:block; margin:3px 0; cursor:pointer; color:#333;">
+            <input type="radio" name="repair-product-${id}" value="${i}" ${i === 0 ? 'checked' : ''}
+                   onchange="suggestRepairType('${id}')"> ${_escapeHtml(p.name)}
+        </label>`).join('');
+    suggestRepairType(id);
+}
+
+function _repairProduct(id) {
+    const order = _repairOrder(id);
+    const checked = document.querySelector(`input[name="repair-product-${id}"]:checked`);
+    return (order && checked) ? order.products[parseInt(checked.value, 10)] : null;
+}
+
+async function suggestRepairType(id) {
+    const product = _repairProduct(id);
+    if (!product) return;
+    try {
+        const res = await fetch('/repair-parcel-type?product=' + encodeURIComponent(product.name));
+        const data = await safeJson(res);
+        if (data.parcel_type) document.getElementById('repair-type-' + id).value = data.parcel_type;
+    } catch(e) {}
+}
+
+async function generateRepairLabel(id) {
+    const d = emailData[id];
+    const order = _repairOrder(id);
+    const product = _repairProduct(id);
+    const btn = document.getElementById('repair-btn-' + id);
+    const result = document.getElementById('repair-result-' + id);
+    if (!order || !product) { result.innerHTML = '❌ Choisis la commande et la paire.'; return; }
+    const ptype = document.getElementById('repair-type-' + id).value;
+    if (!confirm(`Créer l'étiquette réparation pour ${order.number} (${product.name}) ?\nElle sera facturée par Wing.`)) return;
+
+    btn.disabled = true;
+    btn.textContent = '⏳ Création dans Wing...';
+    result.innerHTML = '';
+    try {
+        const startRes = await fetch('/prepare-repair-label', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                order_number: order.number,
+                product: product.name,
+                parcel_type: ptype,
+                customer_name: d.sender,
+                customer_email: d.sender_email,
+                thread_id: d.email_id,
+                email_id: d.email_id,
+                email_body: d.body
+            })
+        });
+        const start = await safeJson(startRes);
+        if (!start.job_id) throw new Error(start.error || 'Pas de job_id');
+
+        let job = {status: 'pending'};
+        for (let i = 0; i < 30 && job.status === 'pending'; i++) {
+            await new Promise(r => setTimeout(r, 3000));
+            job = await safeJson(await fetch(`/label-job-status/${start.job_id}`));
+        }
+        if (job.success) {
+            document.getElementById('textarea-' + id).value = job.draft;
+            result.innerHTML = `✅ <strong>${_escapeHtml(job.repair_ref)}</strong> créée · suivi ${_escapeHtml(job.tracking_id)} ·
+                <a href="${_escapeHtml(job.label_url)}" target="_blank">voir l'étiquette</a><br>
+                <span style="color:#555;">La réponse au client est prête plus haut : relis-la puis clique sur <strong>Envoyer ✓</strong>.</span>`;
+            btn.textContent = '✅ Étiquette créée';
+        } else {
+            result.innerHTML = '❌ ' + _escapeHtml(job.error || 'Délai dépassé, vérifie dans Wing avant de réessayer.');
+            btn.textContent = "Générer l'étiquette (facturée)";
+            btn.disabled = false;
+        }
+    } catch(e) {
+        result.innerHTML = '❌ ' + _escapeHtml(e.message) + ' · vérifie dans Wing avant de réessayer.';
+        btn.textContent = "Générer l'étiquette (facturée)";
+        btn.disabled = false;
+    }
 }
 
 async function lookupWing(id, orderNum) {

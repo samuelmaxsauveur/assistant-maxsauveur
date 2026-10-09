@@ -713,8 +713,12 @@ def _extract_first_name(customer_name):
     return name.split()[0] if name else "Madame, Monsieur"
 
 
-def generate_sav_approval_email(customer_name, order_number, email_body, label_url=None):
-    """Generate the return label email with context-aware opening and closing, first name only."""
+def generate_sav_approval_email(customer_name, order_number, email_body, label_url=None, repair_ref=None):
+    """Generate the return label email with context-aware opening and closing, first name only.
+
+    repair_ref (#13485_REPARATION) is written on the return slip so SSL can
+    match the parcel to its repair file on arrival.
+    """
     first_name = _extract_first_name(customer_name)
 
     try:
@@ -755,7 +759,8 @@ Voici la procédure :
 {step1}
 
 2. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour
-Indiquez comme motif : "{motif}".
+Indiquez comme motif : "{motif}".{f'''
+Notez également votre référence de réparation : {repair_ref}''' if repair_ref else ''}
 
 3. Glissez le bon de retour à l'intérieur du colis et expédiez-le à :
 SSL – Solutions & Services Logistiques

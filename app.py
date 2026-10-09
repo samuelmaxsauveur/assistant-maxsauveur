@@ -11,6 +11,8 @@ import shopify_api
 import claude_ai
 import wing_api
 import wing_automation
+import wing_repair
+import repair_catalog
 import database
 import scheduler as scheduler_module
 
@@ -664,6 +666,60 @@ def prepare_return_label():
     )
     t.start()
     return jsonify({'job_id': job_id, 'status': 'pending'})
+
+
+def _run_repair_label_job(job_id, data):
+    """Background thread: repair label on the second Wing account + draft + repair file."""
+    try:
+        order_number = str(data.get('order_number', '')).replace('#', '').strip()
+        product = data.get('product', '')
+        ptype = data.get('parcel_type') or repair_catalog.parcel_type(product)
+        weight = repair_catalog.PARCEL_TYPES[ptype]['weight']
+
+        label = wing_repair.create_repair_label(
+            order_number, weight_kg=weight,
+            designation=repair_catalog.model_name(product) or ptype)
+        print(f"[Repair] {label['ref']} created for {data.get('customer_email')}")
+
+        # Saved before drafting: the label is billed, so the file must exist
+        # even if the draft step fails.
+        database.save_repair_case(
+            label['ref'], order_number, data.get('customer_name'), data.get('customer_email'),
+            data.get('thread_id'), data.get('email_id'), product, ptype, weight,
+            label['tracking_id'], label['label_url'])
+
+        draft = claude_ai.generate_sav_approval_email(
+            data.get('customer_name', ''), order_number, data.get('email_body', ''),
+            label_url=label['label_url'], repair_ref=label['ref'])
+        _label_jobs[job_id] = {
+            'status': 'done', 'success': True, 'draft': draft,
+            'repair_ref': label['ref'], 'tracking_id': label['tracking_id'],
+            'label_url': label['label_url'], 'weight': weight,
+        }
+    except Exception as e:
+        print(f"[Repair] Job {job_id} error: {e}")
+        _label_jobs[job_id] = {'status': 'error', 'success': False, 'error': str(e)}
+
+
+@app.route('/prepare-repair-label', methods=['POST'])
+def prepare_repair_label():
+    """Start the repair label job; the page polls /label-job-status/<job_id>."""
+    import uuid, threading
+    data = request.json or {}
+    if not data.get('order_number') or not data.get('product'):
+        return jsonify({'error': 'Commande et paire requises'}), 400
+    if data.get('parcel_type') and data['parcel_type'] not in repair_catalog.PARCEL_TYPES:
+        return jsonify({'error': 'Type de colis inconnu'}), 400
+    job_id = str(uuid.uuid4())
+    _label_jobs[job_id] = {'status': 'pending'}
+    threading.Thread(target=_run_repair_label_job, args=(job_id, data), daemon=True).start()
+    return jsonify({'job_id': job_id, 'status': 'pending'})
+
+
+@app.route('/repair-parcel-type')
+def repair_parcel_type():
+    """Suggested parcel type for a product name, so the page and server agree."""
+    return jsonify({'parcel_type': repair_catalog.parcel_type(request.args.get('product', ''))})
 
 
 @app.route('/label-job-status/<job_id>')

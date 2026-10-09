@@ -147,6 +147,27 @@ def init_db():
                 created_at  TEXT NOT NULL
             )
         """)
+        # One row per pair sent back for repair. wing_ref (#13485_REPARATION)
+        # ties it to the label on the repair Wing account and to the Shopify
+        # order the pair was bought in.
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS repair_cases (
+                id              INTEGER PRIMARY KEY AUTOINCREMENT,
+                wing_ref        TEXT NOT NULL UNIQUE,
+                order_number    TEXT NOT NULL,
+                customer_name   TEXT,
+                customer_email  TEXT,
+                thread_id       TEXT,
+                email_id        TEXT,
+                product         TEXT,
+                parcel_type     TEXT,
+                weight_kg       REAL,
+                tracking_id     TEXT,
+                label_url       TEXT,
+                status          TEXT NOT NULL DEFAULT 'awaiting_customer',
+                created_at      TEXT NOT NULL
+            )
+        """)
         conn.commit()
         # Seed response_patterns from custom_patterns.json (survives Railway redeploys)
         _seed_patterns_from_json(conn)
@@ -625,6 +646,32 @@ def save_sav_case(email_id, thread_id, customer_email, customer_name, subject, e
         cursor = conn.execute("SELECT id FROM sav_cases WHERE email_id = ?", (email_id,))
         row = cursor.fetchone()
         return row['id'] if row else None
+    finally:
+        conn.close()
+
+
+def save_repair_case(wing_ref, order_number, customer_name, customer_email, thread_id, email_id,
+                     product, parcel_type, weight_kg, tracking_id, label_url):
+    conn = get_connection()
+    try:
+        conn.execute(
+            """INSERT INTO repair_cases
+               (wing_ref, order_number, customer_name, customer_email, thread_id, email_id,
+                product, parcel_type, weight_kg, tracking_id, label_url, created_at)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+            (wing_ref, order_number, customer_name, customer_email, thread_id, email_id,
+             product, parcel_type, weight_kg, tracking_id, label_url, datetime.utcnow().isoformat())
+        )
+        conn.commit()
+    finally:
+        conn.close()
+
+
+def get_repair_cases():
+    conn = get_connection()
+    try:
+        cursor = conn.execute("SELECT * FROM repair_cases ORDER BY created_at DESC")
+        return [dict(row) for row in cursor.fetchall()]
     finally:
         conn.close()
 
