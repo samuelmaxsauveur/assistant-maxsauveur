@@ -23,11 +23,15 @@ from routes_sav import sav
 from routes_client import client_bp
 from routes_newsletter import newsletter
 from routes_repairs import repairs_bp
+from routes_popup import popup_bp
+import popup_store
 app.register_blueprint(validation)
 app.register_blueprint(sav)
 app.register_blueprint(client_bp)
 app.register_blueprint(newsletter)
 app.register_blueprint(repairs_bp)
+app.register_blueprint(popup_bp)
+popup_store.init_db()
 
 # Start the scheduler inside the web process. gunicorn runs a single worker
 # (see gunicorn.conf.py), so exactly one scheduler exists and jobs never double
@@ -963,7 +967,7 @@ def wing_order():
 def shopify_install():
     client_id = os.getenv('SHOPIFY_CLIENT_ID', '')
     shop = 'maxsauveur.myshopify.com'
-    scopes = 'read_all_orders,read_customers,read_orders'
+    scopes = 'read_all_orders,read_customers,read_orders,read_products,write_products,read_discounts,write_discounts'
     redirect_uri = 'https://assistant-maxsauveur-production.up.railway.app/shopify/callback'
     url = f"https://{shop}/admin/oauth/authorize?client_id={client_id}&scope={scopes}&redirect_uri={redirect_uri}"
     return redirect(url)
@@ -999,6 +1003,10 @@ def shopify_callback():
 
 @app.route('/shopify/token')
 def shopify_token():
+    import popup_store
+    key = request.args.get('key', '')
+    if not popup_store.ADMIN_KEY or key != popup_store.ADMIN_KEY:
+        return 'Accès réservé.', 403
     conn = database.get_connection()
     try:
         conn.execute("CREATE TABLE IF NOT EXISTS shopify_tokens (token TEXT, created_at TEXT)")
