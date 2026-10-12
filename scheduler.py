@@ -11,6 +11,7 @@ import shopify_api
 import claude_ai
 import database
 import repairs
+import returns
 
 load_dotenv()
 
@@ -346,6 +347,21 @@ def start():
         "interval",
         minutes=60,
         id="repair_tracking"
+    )
+
+    # Follow the pairs shipped back to customers from the main Wing account
+    scheduler.add_job(
+        returns.refresh_outbound,
+        "interval",
+        minutes=60,
+        id="repair_outbound"
+    )
+
+    # Remind customers who have not confirmed their address after three days
+    scheduler.add_job(
+        returns.send_reminders,
+        CronTrigger(hour=10, minute=0, timezone=paris_tz),
+        id="repair_reminders"
     )
 
     scheduler.start()

@@ -674,7 +674,11 @@ def save_repair_case(wing_ref, order_number, customer_name, customer_email, thre
 
 
 REPAIR_EXTRA_COLUMNS = ("status_updated_at", "parcel_status", "problem", "decision",
-                        "workshop", "workshop_ref", "notes")
+                        "workshop", "workshop_ref", "notes",
+                        # Sending the pair back (step 6)
+                        "return_token", "return_requested_at", "return_reminded_at",
+                        "return_confirmed_at", "return_delivery", "return_order_ref",
+                        "return_parcel_status")
 REPAIR_UPDATABLE = REPAIR_EXTRA_COLUMNS + ("status",)
 
 
@@ -705,6 +709,15 @@ def update_repair_case(case_id, fields):
         finally:
             conn.close()
     return get_repair_case(case_id)
+
+
+def get_repair_case_by_token(token):
+    conn = get_connection()
+    try:
+        row = conn.execute("SELECT * FROM repair_cases WHERE return_token = ?", (token,)).fetchone()
+        return dict(row) if row else None
+    finally:
+        conn.close()
 
 
 def get_repair_case_by_ref(wing_ref):

@@ -363,6 +363,34 @@ def search_product_price(query):
     return result
 
 
+def get_order_delivery(order_number):
+    """Shipping address, phone and line prices of an order, to send a pair back."""
+    shop = os.getenv('SHOPIFY_SHOP')
+    token = os.getenv('SHOPIFY_TOKEN')
+    url = f"https://{shop}/admin/api/2024-01/orders.json"
+    params = {'name': str(order_number).replace('#', ''), 'status': 'any',
+              'fields': 'name,email,phone,shipping_address,line_items'}
+    response = requests.get(url, headers={'X-Shopify-Access-Token': token}, params=params, timeout=30)
+    orders = response.json().get('orders', [])
+    if not orders:
+        return None
+    order = orders[0]
+    sa = order.get('shipping_address') or {}
+    return {
+        'first_name': sa.get('first_name') or '',
+        'last_name': sa.get('last_name') or '',
+        'company': sa.get('company') or '',
+        'line1': sa.get('address1') or '',
+        'line2': sa.get('address2') or '',
+        'zip': sa.get('zip') or '',
+        'city': sa.get('city') or '',
+        'country_code': sa.get('country_code') or 'FR',
+        'phone': sa.get('phone') or order.get('phone') or '',
+        'email': order.get('email') or '',
+        'prices': {item.get('name', ''): float(item.get('price') or 0) for item in order.get('line_items', [])},
+    }
+
+
 def format_order(order):
     tracking_number = None
     tracking_url = None

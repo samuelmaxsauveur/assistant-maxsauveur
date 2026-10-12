@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <title>Votre paire est prête · Max Sauveur</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Georgia, 'Times New Roman', serif; background: #f6f3ee; color: #222; }
+        .wrap { max-width: 560px; margin: 0 auto; padding: 32px 16px 60px; }
+        .brand { text-align: center; letter-spacing: 4px; font-size: 13px; text-transform: uppercase; color: #6b5b4b; margin-bottom: 24px; }
+        .card { background: #fff; border-radius: 12px; padding: 24px 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        h1 { font-size: 22px; font-weight: normal; margin-bottom: 8px; }
+        p.lead { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; color: #555; line-height: 1.5; margin-bottom: 20px; }
+        .sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        h2 { font-size: 15px; font-weight: 600; margin: 20px 0 10px; }
+        .option { display: flex; gap: 10px; align-items: center; border: 1px solid #e3ddd4; border-radius: 10px; padding: 12px 14px; margin-bottom: 8px; cursor: pointer; font-size: 15px; }
+        .option:has(input:checked) { border-color: #6b5b4b; background: #faf7f2; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .full { grid-column: 1 / -1; }
+        @media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }
+        label.f { display: block; font-size: 12px; color: #666; margin-bottom: 4px; }
+        input[type=text], input[type=tel], input[type=email], select { width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; font-family: inherit; background: #fff; }
+        .btn { display: block; width: 100%; padding: 14px; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; margin-top: 20px; background: #2b2118; color: #fff; }
+        .btn-light { background: #ece5da; color: #2b2118; font-size: 14px; padding: 11px; margin-top: 10px; }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .relay { display: flex; gap: 10px; align-items: flex-start; border-bottom: 1px solid #f0ebe3; padding: 10px 2px; font-size: 14px; cursor: pointer; }
+        .relay small { color: #888; }
+        .msg { margin-top: 12px; font-size: 14px; }
+        .err { color: #b91c1c; }
+        .ok { text-align: center; }
+        .ok .big { font-size: 40px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="brand">Max Sauveur</div>
+    <div class="card">
+    {% if not case %}
+        <h1>Lien expiré</h1>
+        <p class="lead">Ce lien n'est plus valide. Répondez simplement à notre e-mail et nous reviendrons vers vous.</p>
+    {% elif confirmed %}
+        <div class="ok">
+            <div class="big">✓</div>
+            <h1>Adresse confirmée</h1>
+            <p class="lead">Votre paire {{ model }} partira très prochainement.<br>
+                Livraison : {{ options[confirmed.option].label }}{% if confirmed.relay_name %}, {{ confirmed.relay_name }}{% endif %}.<br>
+                Vous recevrez le suivi par e-mail.</p>
+            <p class="lead">Une modification ? Répondez simplement à notre e-mail.</p>
+        </div>
+    {% else %}
+        <div id="form-zone">
+            <h1>Votre paire est prête</h1>
+            <p class="lead">Votre {{ model }} revient de notre atelier. Indiquez-nous où vous souhaitez la recevoir, puis confirmez.</p>
+
+            <h2>Mode de livraison</h2>
+            <div class="sans">
+                {% for key, opt in options.items() %}
+                <label class="option"><input type="radio" name="option" value="{{ key }}" {% if loop.first %}checked{% endif %} onchange="optionChanged()"> {{ opt.label }}</label>
+                {% endfor %}
+            </div>
+
+            <h2>Vos coordonnées</h2>
+            <div class="grid sans">
+                <div><label class="f">Prénom</label><input type="text" id="first_name" value="{{ prefill.first_name or '' }}"></div>
+                <div><label class="f">Nom</label><input type="text" id="last_name" value="{{ prefill.last_name or '' }}"></div>
+                <div class="full"><label class="f">Adresse</label><input type="text" id="line1" value="{{ prefill.line1 or '' }}"></div>
+                <div class="full"><label class="f">Complément (bâtiment, étage…)</label><input type="text" id="line2" value="{{ prefill.line2 or '' }}"></div>
+                <div><label class="f">Code postal</label><input type="text" id="zip" value="{{ prefill.zip or '' }}"></div>
+                <div><label class="f">Ville</label><input type="text" id="city" value="{{ prefill.city or '' }}"></div>
+                <div><label class="f">Pays</label>
+                    <select id="country_code">
+                        {% for code, name in [('FR','France'),('BE','Belgique'),('CH','Suisse'),('LU','Luxembourg'),('DE','Allemagne'),('NL','Pays-Bas'),('ES','Espagne'),('IT','Italie'),('PT','Portugal'),('MC','Monaco')] %}
+                        <option value="{{ code }}" {% if (prefill.country_code or 'FR') == code %}selected{% endif %}>{{ name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div><label class="f">Téléphone</label><input type="tel" id="phone" value="{{ prefill.phone or '' }}"></div>
+                <div class="full"><label class="f">E-mail</label><input type="email" id="email" value="{{ prefill.email or case.customer_email or '' }}"></div>
+            </div>
+
+            <div id="relay-zone" class="sans" style="display:none;">
+                <h2>Point relais</h2>
+                <button class="btn btn-light" id="search-btn" onclick="searchRelays()">Chercher les points relais près de cette adresse</button>
+                <div id="relay-list" style="margin-top:8px;"></div>
+            </div>
+
+            <button class="btn sans" id="confirm-btn" onclick="confirmReturn()">Confirmer</button>
+            <div class="msg sans" id="msg"></div>
+        </div>
+    {% endif %}
+    </div>
+</div>
+{% if case and not confirmed %}
+<script>
+const TOKEN = {{ case.return_token | tojson }};
+const val = id => document.getElementById(id).value.trim();
+const option = () => document.querySelector('input[name="option"]:checked').value;
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function optionChanged() {
+    const relay = option() !== 'home';
+    document.getElementById('relay-zone').style.display = relay ? 'block' : 'none';
+    document.getElementById('relay-list').innerHTML = '';
+}
+
+async function searchRelays() {
+    const btn = document.getElementById('search-btn');
+    const list = document.getElementById('relay-list');
+    btn.disabled = true;
+    list.innerHTML = '<div class="msg">Recherche…</div>';
+    try {
+        const res = await fetch(`/retour/${TOKEN}/relais`, {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({option: option(), address: val('line1'), zip: val('zip'), city: val('city'), country: val('country_code')})
+        });
+        const data = await res.json();
+        if (!data.success) { list.innerHTML = `<div class="msg err">${esc(data.error)}</div>`; }
+        else if (!data.relays.length) { list.innerHTML = '<div class="msg">Aucun point relais trouvé près de cette adresse. Vérifiez le code postal et la ville.</div>'; }
+        else {
+            list.innerHTML = data.relays.map((r, i) => `<label class="relay">
+                <input type="radio" name="relay" value="${esc(r.id)}" data-name="${esc(r.name)}" ${i === 0 ? 'checked' : ''}>
+                <span><strong>${esc(r.name)}</strong><br>${esc(r.address)}, ${esc(r.zip)} ${esc(r.city)}<br><small>à ${(r.distance / 1000).toFixed(1).replace('.', ',')} km</small></span>
+            </label>`).join('');
+        }
+    } catch (e) {
+        list.innerHTML = '<div class="msg err">Recherche impossible, réessayez.</div>';
+    }
+    btn.disabled = false;
+}
+
+async function confirmReturn() {
+    const msg = document.getElementById('msg');
+    const btn = document.getElementById('confirm-btn');
+    const payload = {option: option()};
+    ['first_name','last_name','line1','line2','zip','city','country_code','phone','email'].forEach(k => payload[k] = val(k));
+    if (payload.option !== 'home') {
+        const relay = document.querySelector('input[name="relay"]:checked');
+        if (!relay) { msg.innerHTML = '<span class="err">Choisissez d\'abord un point relais.</span>'; return; }
+        payload.relay_id = relay.value;
+        payload.relay_name = relay.dataset.name;
+    }
+    btn.disabled = true;
+    msg.textContent = 'Envoi…';
+    try {
+        const res = await fetch(`/retour/${TOKEN}/confirmer`, {
+            method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.success) { location.reload(); return; }
+        msg.innerHTML = `<span class="err">${esc(data.error)}</span>`;
+    } catch (e) {
+        msg.innerHTML = '<span class="err">Erreur de connexion, réessayez.</span>';
+    }
+    btn.disabled = false;
+}
+</script>
+{% endif %}
+</body>
+</html>

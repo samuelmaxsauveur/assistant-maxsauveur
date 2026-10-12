@@ -1,12 +1,30 @@
 import base64
+import json
 from datetime import datetime
 
 from flask import Blueprint, request, jsonify, render_template
 
 import database
 import gmail as gmail_helper
+import repair_catalog
 import repairs
+import returns
 import workshop
+
+
+def _after_status_change(case):
+    """A pair back at the logistics centre: ask its customer where to send it.
+
+    Returns a short note for the page, or None.
+    """
+    if case['status'] != 'back_logistics' or case.get('return_requested_at'):
+        return None
+    try:
+        returns.request_return(case)
+        return f"e-mail « paire prête » envoyé à {case['customer_email']}"
+    except Exception as e:
+        print(f"[Returns] Ready email failed for {case['wing_ref']}: {e}")
+        return f"⚠️ e-mail « paire prête » non envoyé : {e}"
 
 repairs_bp = Blueprint('repairs', __name__)
 
@@ -18,11 +36,17 @@ def repairs_page():
     if not show_closed:
         cases = [c for c in cases if c['status'] not in ('delivered_customer', 'cancelled')]
     # Pairs received and not yet shipped to a workshop.
-    ready = [c for c in database.get_repair_cases() if c['status'] == 'received']
+    all_cases = database.get_repair_cases()
+    ready = [c for c in all_cases if c['status'] == 'received']
+    # Pairs at a workshop or on their way back from it.
+    at_workshop = [c for c in all_cases if c['status'] in ('sent_workshop', 'in_repair', 'returning')]
+    for c in cases:
+        c['delivery'] = json.loads(c['return_delivery']) if c.get('return_delivery') else None
     return render_template('repairs.html', cases=cases, statuses=repairs.STATUSES,
                            status_labels=repairs.STATUS_LABELS, decisions=repairs.DECISIONS,
                            parcel_labels=repairs.PARCEL_LABELS, show_closed=show_closed,
-                           ready=ready, workshops=workshop.WORKSHOPS)
+                           ready=ready, workshops=workshop.WORKSHOPS, at_workshop=at_workshop,
+                           delivery_options=returns.DELIVERY_OPTIONS)
 
 
 def _selected_cases(data):
@@ -91,9 +115,13 @@ def batch_status():
     if status not in repairs.STATUS_LABELS:
         return jsonify({'success': False, 'error': 'Statut inconnu'}), 400
     ids = [int(i) for i in data.get('case_ids') or []]
+    notes = []
     for case_id in ids:
-        repairs.update_case(case_id, status=status)
-    return jsonify({'success': True, 'count': len(ids)})
+        case, _ = repairs.update_case(case_id, status=status)
+        note = _after_status_change(case)
+        if note:
+            notes.append(f"{case['wing_ref']} : {note}")
+    return jsonify({'success': True, 'count': len(ids), 'notes': notes})
 
 
 @repairs_bp.route('/reparations/<int:case_id>', methods=['POST'])
@@ -102,8 +130,59 @@ def update_repair(case_id):
         case, synced = repairs.update_case(case_id, **(request.json or {}))
     except ValueError as e:
         return jsonify({'success': False, 'error': str(e)}), 400
-    return jsonify({'success': True, 'synced': synced,
+    return jsonify({'success': True, 'synced': synced, 'note': _after_status_change(case),
                     'status_label': repairs.STATUS_LABELS[case['status']]})
+
+
+# --- Customer page: confirm where the repaired pair goes -------------------
+
+def _case_for_token(token):
+    case = database.get_repair_case_by_token(token)
+    if not case or case['status'] == 'cancelled':
+        return None
+    return case
+
+
+@repairs_bp.route('/retour/<token>')
+def return_page(token):
+    case = _case_for_token(token)
+    if not case:
+        return render_template('return.html', case=None), 404
+    confirmed = json.loads(case['return_delivery']) if case.get('return_confirmed_at') else None
+    return render_template('return.html', case=case, prefill=None if confirmed else returns.prefill(case),
+                           confirmed=confirmed, options=returns.DELIVERY_OPTIONS,
+                           model=repair_catalog.model_name(case.get('product')) or 'paire')
+
+
+@repairs_bp.route('/retour/<token>/relais', methods=['POST'])
+def return_relays(token):
+    case = _case_for_token(token)
+    data = request.json or {}
+    if not case or data.get('option') not in ('chrono_relay', 'colissimo_relay'):
+        return jsonify({'success': False, 'error': 'Demande invalide'}), 400
+    if not (data.get('zip') or '').strip() or not (data.get('city') or '').strip():
+        return jsonify({'success': False, 'error': 'Indiquez votre code postal et votre ville'}), 400
+    try:
+        relays = returns.search_relays(data['option'], data.get('address', ''), data['zip'].strip(),
+                                       data['city'].strip(), data.get('country') or 'FR')
+    except Exception as e:
+        print(f"[Returns] Relay search failed: {e}")
+        return jsonify({'success': False, 'error': "Recherche indisponible pour le moment, réessayez dans quelques minutes."}), 502
+    return jsonify({'success': True, 'relays': relays})
+
+
+@repairs_bp.route('/retour/<token>/confirmer', methods=['POST'])
+def return_confirm(token):
+    case = _case_for_token(token)
+    if not case:
+        return jsonify({'success': False, 'error': 'Lien invalide'}), 404
+    if case.get('return_confirmed_at'):
+        return jsonify({'success': False, 'error': "Votre adresse est déjà confirmée. Écrivez-nous pour la modifier."}), 409
+    try:
+        returns.confirm_return(case, request.json or {})
+    except ValueError as e:
+        return jsonify({'success': False, 'error': str(e)}), 400
+    return jsonify({'success': True})
 
 
 @repairs_bp.route('/reparations/refresh', methods=['POST'])

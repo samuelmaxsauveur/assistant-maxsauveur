@@ -33,30 +33,35 @@ def _gql(query, variables=None, token=None):
     return resp.json()
 
 
-_token_cache = {"value": None, "at": 0.0}
+# "rep": the repair account (labels customers send pairs back with).
+# "main": the Shopify-linked account, from which SSL ships repaired pairs.
+ACCOUNT_ENV = {"rep": "WING_REP_", "main": "WING_"}
+_token_cache = {}
 TOKEN_TTL = 20 * 60
 
 
-def _get_token():
+def _get_token(account="rep"):
     # Wing answers "too-many-attempts" when logins come close together, so one
-    # token is reused for a while instead of logging in on every call.
-    if _token_cache["value"] and time.time() - _token_cache["at"] < TOKEN_TTL:
-        return _token_cache["value"]
+    # token per account is reused for a while instead of logging in on every call.
+    cached = _token_cache.get(account)
+    if cached and time.time() - cached["at"] < TOKEN_TTL:
+        return cached["value"]
     query = """
     mutation($email: EmailAddress!, $password: String!) {
       createAccessToken(email: $email, password: $password) { accessToken }
     }
     """
-    variables = {"email": os.getenv('WING_REP_EMAIL'), "password": os.getenv('WING_REP_PASSWORD')}
+    prefix = ACCOUNT_ENV[account]
+    variables = {"email": os.getenv(prefix + 'EMAIL'), "password": os.getenv(prefix + 'PASSWORD')}
     for attempt in range(3):
         data = _gql(query, variables)
         token = ((data.get('data') or {}).get('createAccessToken') or {}).get('accessToken')
         if token:
-            _token_cache.update(value=token, at=time.time())
+            _token_cache[account] = {"value": token, "at": time.time()}
             return token
         print(f"[WingRepair] Auth attempt {attempt + 1} failed: {data.get('errors')}")
         time.sleep(5)
-    raise Exception("Connexion impossible au compte Wing réparation")
+    raise Exception("Connexion impossible au compte Wing " + ("réparation" if account == "rep" else "principal"))
 
 
 ORDER_FIELDS = """

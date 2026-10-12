@@ -106,6 +106,25 @@
         {% endif %}
     </div>
 
+    {% if at_workshop %}
+    <div class="card" style="border:2px solid #bbf7d0;">
+        <div class="card-title">↩️ Retour de l'atelier</div>
+        <div class="card-meta">Coche les paires arrivées au centre logistique : chaque client reçoit aussitôt l'e-mail « votre paire est prête » avec le lien pour confirmer son adresse.</div>
+        <div id="back-list">
+            {% for c in at_workshop %}
+            <label style="display:flex; gap:8px; align-items:flex-start; font-weight:400; font-size:14px; color:#333; margin:6px 0; cursor:pointer;">
+                <input type="checkbox" value="{{ c.id }}" style="width:auto; margin-top:3px;">
+                <span><strong>{{ c.wing_ref }}</strong> · {{ c.product or '' }} · {{ c.workshop or '' }} · {{ status_labels.get(c.status) }}</span>
+            </label>
+            {% endfor %}
+        </div>
+        <div class="actions">
+            <button class="btn btn-purple" id="back-btn" onclick="markBack()">Paires réceptionnées : prévenir les clients</button>
+            <span class="msg" id="back-msg"></span>
+        </div>
+    </div>
+    {% endif %}
+
     {% for c in cases %}
     <div class="card" id="case-{{ c.id }}">
         <div class="card-title">{{ c.wing_ref }} · {{ c.customer_name or '' }}</div>
@@ -115,6 +134,14 @@
             Colis client : {{ parcel_labels.get(c.parcel_status or 'CREATED', '') }} ·
             suivi <a href="https://www.laposte.fr/outils/suivre-vos-envois?code={{ c.tracking_id }}" target="_blank">{{ c.tracking_id }}</a> ·
             <a href="{{ c.label_url }}" target="_blank">étiquette</a>
+            {% if c.return_requested_at and not c.delivery %}
+            <br>↩️ E-mail « paire prête » envoyé le {{ c.return_requested_at[:10] }}{% if c.return_reminded_at %}, relance le {{ c.return_reminded_at[:10] }}{% endif %} · en attente de l'adresse du client
+            {% endif %}
+            {% if c.delivery %}
+            <br>📍 <strong>{{ delivery_options[c.delivery.option].label }}</strong>{% if c.delivery.relay_name %} : {{ c.delivery.relay_name }}{% endif %}
+            · {{ c.delivery.first_name }} {{ c.delivery.last_name }}, {{ c.delivery.zip }} {{ c.delivery.city }}
+            · {% if c.return_order_ref %}commande Wing {{ c.return_order_ref }}{% else %}<span style="color:#b45309;">commande Wing à créer à la main</span>{% endif %}
+            {% endif %}
         </div>
         <div class="grid">
             <div>
@@ -174,7 +201,8 @@ async function saveCase(id, btn) {
         const data = await res.json();
         if (data.success) {
             document.getElementById('badge-' + id).textContent = data.status_label;
-            msg.textContent = data.synced ? '✅ Enregistré et copié dans le Sheet' : '✅ Enregistré · ⚠️ Sheet non mis à jour';
+            msg.textContent = (data.synced ? '✅ Enregistré et copié dans le Sheet' : '✅ Enregistré · ⚠️ Sheet non mis à jour')
+                + (data.note ? ' · ' + data.note : '');
         } else {
             msg.textContent = '❌ ' + (data.error || 'Erreur');
         }
@@ -269,6 +297,33 @@ async function markShipped() {
     const data = await res.json();
     if (data.success) location.reload();
     else { document.getElementById('ws-send-msg').textContent = '❌ ' + data.error; btn.disabled = false; }
+}
+
+async function markBack() {
+    const ids = [...document.querySelectorAll('#back-list input:checked')].map(el => el.value);
+    const msg = document.getElementById('back-msg');
+    if (!ids.length) { msg.textContent = 'Coche au moins une paire.'; return; }
+    if (!confirm(`${ids.length} client(s) vont recevoir l'e-mail « votre paire est prête ». Continuer ?`)) return;
+    const btn = document.getElementById('back-btn');
+    btn.disabled = true;
+    msg.textContent = '⏳ Envoi des e-mails...';
+    try {
+        const res = await fetch('/reparations/statut-groupe', {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({status: 'back_logistics', case_ids: ids})
+        });
+        const data = await res.json();
+        if (data.success) {
+            msg.innerHTML = '✅ ' + (data.notes.length ? data.notes.join('<br>') : 'Statuts mis à jour');
+            setTimeout(() => location.reload(), 2500);
+        } else {
+            msg.textContent = '❌ ' + data.error;
+            btn.disabled = false;
+        }
+    } catch (e) {
+        msg.textContent = '❌ Erreur réseau';
+        btn.disabled = false;
+    }
 }
 
 document.addEventListener('DOMContentLoaded', precheckWorkshop);
