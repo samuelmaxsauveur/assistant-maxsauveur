@@ -18,6 +18,42 @@ PARCEL_TYPES = {
 }
 
 
+# Maker and maker's model reference, from the 2026 order forms (BDC 2026) and
+# Samuel's answers of 12/10/2026. An empty reference means the model comes
+# from an older order form. Dakota (Darksea) goes to a cobbler for now.
+WORKSHOP_BY_MODEL = {
+    "paul": ("Penha", "13465"),
+    "brogues": ("Penha", "13806"),
+    "deck": ("Penha", "14114"),
+    "peter a.": ("Penha", "14811"),
+    "wayne": ("Penha", "14678-G"),
+    "springsteen": ("Penha", "14678-G"),
+    "chelsea chapman": ("Penha", "14990A-1"),
+    "le moc jagger": ("Penha", "14931 B"),
+    "wood": ("Penha", "13446"),
+    "blucher": ("Penha", "13705-G"),
+    "cody": ("Penha", ""),
+    "logger boots": ("Penha", ""),
+    "powell": ("Penha", ""),
+    "penny loafer": ("Penha", ""),
+    "miller": ("Arturo Vintage", ""),
+    "plain toe": ("Arturo Vintage", ""),
+    "wico": ("Gomes e Leite", "4305"),
+    "le boat": ("Gomes e Leite", "4376"),
+    "dakota": ("Cordonnier", ""),
+}
+
+
+def workshop_for(product_name):
+    """(workshop, reference) for a product name, or ("", "") when unknown."""
+    model = model_name(product_name).lower()
+    if model in WORKSHOP_BY_MODEL:
+        return WORKSHOP_BY_MODEL[model]
+    if re.search(r"\bsandales?\b", product_name or "", re.I):
+        return ("Gomes e Leite", "4311")
+    return ("", "")
+
+
 def model_name(product_name):
     """'Paul - Chaussures Mocassin Cuir Noir - 42' -> 'Paul'."""
     return (product_name or "").split(" - ")[0].strip()

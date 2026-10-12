@@ -690,7 +690,11 @@ def _run_repair_label_job(job_id, data):
             label['ref'], order_number, data.get('customer_name'), data.get('customer_email'),
             data.get('thread_id'), data.get('email_id'), product, ptype, weight,
             label['tracking_id'], label['label_url'])
-        repairs.push_to_sheet(database.get_repair_case_by_ref(label['ref']))
+        case = database.get_repair_case_by_ref(label['ref'])
+        maker, maker_ref = repair_catalog.workshop_for(product)
+        if maker:
+            case = database.update_repair_case(case['id'], {'workshop': maker, 'workshop_ref': maker_ref})
+        repairs.push_to_sheet(case)
 
         draft = claude_ai.generate_sav_approval_email(
             data.get('customer_name', ''), order_number, data.get('email_body', ''),
