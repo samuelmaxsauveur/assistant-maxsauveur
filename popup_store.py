@@ -40,14 +40,15 @@ TIERS = [
 ]
 
 MIN_PURCHASE    = 150
-STARTS_AT       = os.getenv("POPUP_STARTS_AT", "2026-11-06T00:00:00+01:00")
-ENDS_AT         = os.getenv("POPUP_ENDS_AT", "2027-01-31T23:59:59+01:00")
-ENDS_LABEL      = os.getenv("POPUP_ENDS_LABEL", "31 janvier 2027")
+STARTS_AT       = os.getenv("POPUP_STARTS_AT", "2026-11-04T00:00:00+01:00")
+STARTS_LABEL    = os.getenv("POPUP_STARTS_LABEL", "4 novembre 2026")
+ENDS_AT         = os.getenv("POPUP_ENDS_AT", "2027-05-29T23:59:59+02:00")
+ENDS_LABEL      = os.getenv("POPUP_ENDS_LABEL", "29 mai 2027")
 COLLECTION      = os.getenv("POPUP_COLLECTION_HANDLE", "popup-eligibles")
 CODE_PREFIX     = "MSPARIS-"
 TITLE_PREFIX    = "Pop-up Paris nov. 2026"
 KLAVIYO_LIST    = "Pop-up Paris novembre 2026"
-EVENT_ADDRESS   = os.getenv("POPUP_ADDRESS", "")
+EVENT_ADDRESS   = os.getenv("POPUP_ADDRESS", "2 rue des Commines, 75003 Paris")
 
 PIN             = os.getenv("POPUP_PIN", "")
 ADMIN_KEY       = os.getenv("POPUP_ADMIN_KEY", "")
@@ -326,7 +327,7 @@ def _email_html(p):
   </td></tr>
   <tr><td style="padding:0 32px 36px;font-size:13px;line-height:1.6;color:#555555">
     <p style="margin:0 0 8px"><strong style="color:#1f2021">Conditions d'utilisation</strong></p>
-    <p style="margin:0">Valable du 6 novembre 2026 au {ENDS_LABEL} sur maxsauveur.com, pour un achat d'au moins {MIN_PURCHASE}&nbsp;€
+    <p style="margin:0">Valable du {STARTS_LABEL} au {ENDS_LABEL} sur maxsauveur.com, pour un achat d'au moins {MIN_PURCHASE}&nbsp;€
     hors accessoires et produits en précommande. Utilisable une seule fois, non cumulable avec une autre offre,
     non remboursable et non échangeable contre des espèces. Si vous avez déjà ouvert le lien ci-dessus, le code
     s'applique tout seul à votre panier.</p>
@@ -344,7 +345,7 @@ def _email_text(p):
         f"Voici votre bon d'achat de {p['amount']} € gagné au pop-up store Max Sauveur à Paris.\n\n"
         f"Votre code : {p['code']}\n"
         f"Pour l'utiliser : {SHOP_URL}/discount/{p['code']}?redirect=/collections/all\n\n"
-        f"Valable du 6 novembre 2026 au {ENDS_LABEL} sur maxsauveur.com, pour un achat d'au moins "
+        f"Valable du {STARTS_LABEL} au {ENDS_LABEL} sur maxsauveur.com, pour un achat d'au moins "
         f"{MIN_PURCHASE} € hors accessoires et produits en précommande. Utilisable une seule fois, "
         f"non cumulable avec une autre offre, non remboursable et non échangeable contre des espèces.\n\n"
         f"À bientôt,\nMax Sauveur\n"

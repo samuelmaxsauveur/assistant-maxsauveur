@@ -39,6 +39,7 @@ def kiosk():
 @popup_bp.route("/popup/reglement")
 def rules():
     return render_template("popup_reglement.html", ends_label=popup_store.ENDS_LABEL,
+                           starts_label=popup_store.STARTS_LABEL,
                            min_purchase=popup_store.MIN_PURCHASE,
                            counts=popup_store.tier_counts(500), address=popup_store.EVENT_ADDRESS)
 
