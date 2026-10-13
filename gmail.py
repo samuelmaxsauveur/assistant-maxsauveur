@@ -58,8 +58,9 @@ def _manual_refresh(token_data):
     )
 
 
-# Samuel's own mailbox, used only to send to the workshops: send scope, no reading.
-SAMUEL_SCOPES = ['https://www.googleapis.com/auth/gmail.send']
+# Samuel's own mailbox: sends to the workshops and reads their replies
+# (UPS labels, credit notes). The SAV box stays the one customers see.
+SAMUEL_SCOPES = ['https://www.googleapis.com/auth/gmail.modify']
 SAMUEL_TOKEN_FILE = 'token_samuel.json'
 
 
@@ -74,7 +75,7 @@ def _load_samuel_token():
 
 
 def get_samuel_service():
-    """Gmail service sending as samuel@maxsauveur.com, or None if not connected yet."""
+    """Gmail service for samuel@maxsauveur.com, or None if not connected yet."""
     token_data = _load_samuel_token()
     if not token_data:
         return None
