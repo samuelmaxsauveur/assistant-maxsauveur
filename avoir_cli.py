@@ -7,7 +7,8 @@
 `prepare` only reads Shopify. `create` creates the code and prints the email
 with it, so Samuel can check both in Shopify. `send` sends that email from
 hello@, with the amount and end date read back from the code, and is run only
-once Samuel has approved it. --montant overrides the amount, --quantite covers
+once Samuel has approved it. --modele-seul limits the code to the returned
+product. --montant overrides the amount, --quantite covers
 several identical items returned.
 """
 import argparse
@@ -44,13 +45,14 @@ def main():
     parser.add_argument("order_number")
     parser.add_argument("model")
     parser.add_argument("--quantite", type=int, default=1)
+    parser.add_argument("--modele-seul", action="store_true", help="avoir valable sur le seul modèle retourné")
     parser.add_argument("--montant", type=float)
     parser.add_argument("--code", help="send : le code créé par create")
     parser.add_argument("--force", action="store_true", help="créer même si un avoir existe déjà")
     args = parser.parse_args()
 
     try:
-        avoir = avoirs.prepare(args.order_number, args.model, args.quantite, args.montant)
+        avoir = avoirs.prepare(args.order_number, args.model, args.quantite, args.montant, args.modele_seul)
     except RuntimeError as e:
         print(e)
         return 1

@@ -53,6 +53,7 @@ def get_order(order_number):
               title variantTitle quantity
               originalUnitPriceSet { shopMoney { amount } }
               variant { price compareAtPrice }
+              product { id }
             } }
           } }
         }""", {"q": f"name:#{number}"})
@@ -118,7 +119,7 @@ def _add_months(when, months):
     return when.replace(year=year, month=month, day=day)
 
 
-def prepare(order_number, model, quantity=1, amount=None):
+def prepare(order_number, model, quantity=1, amount=None, model_only=False):
     """Everything needed to show Samuel the avoir before anything is created."""
     order = get_order(order_number)
     item = match_item(order, model)
@@ -145,6 +146,8 @@ def prepare(order_number, model, quantity=1, amount=None):
         "amount": round(amount if amount is not None else unit * quantity, 2),
         "ends_at": ends,
         "already": existing_avoirs(order["name"]),
+        "product_id": (item.get("product") or {}).get("id"),
+        "model_only": model_only,
     }
 
 
@@ -157,6 +160,16 @@ def _collection_ids():
             raise RuntimeError(f"Collection Shopify « {handle} » introuvable.")
         ids.append(coll["id"])
     return ids
+
+
+def _items(avoir):
+    """Either the returned product only (same model and colour), or the men's
+    shoes and belts collections."""
+    if avoir["model_only"]:
+        if not avoir["product_id"]:
+            raise RuntimeError("Produit introuvable dans Shopify : impossible de limiter l'avoir au modèle.")
+        return {"products": {"productsToAdd": [avoir["product_id"]]}}
+    return {"collections": {"add": _collection_ids()}}
 
 
 def create_code(avoir):
@@ -175,7 +188,7 @@ def create_code(avoir):
             "customerSelection": {"customers": {"add": [avoir["customer_id"]]}},
             "customerGets": {
                 "value": {"discountAmount": {"amount": f"{avoir['amount']:.2f}", "appliesOnEachItem": False}},
-                "items": {"collections": {"add": _collection_ids()}},
+                "items": _items(avoir),
             },
             "usageLimit": 1,
             "appliesOncePerCustomer": True,
@@ -203,8 +216,9 @@ def email(avoir, code="XXXXXXXXXXXX"):
                 f"Here is your code, to enter in your basket before completing your order:\n\n{code}\n\n"
                 f"Terms of use:\n"
                 f"- valid until {ends},\n"
-                f"- valid on our men's shoes and belts, in a single order,\n"
-                f"- reserved for your email address ({avoir['email']}): please order with this address,\n"
+                + (f"- valid only on the {avoir['item']} model, in a single order,\n" if avoir["model_only"]
+                   else "- valid on our men's shoes and belts, in a single order,\n")
+                + f"- reserved for your email address ({avoir['email']}): please order with this address,\n"
                 f"- cannot be combined with any other code or promotion.\n\n"
                 f"If you have any questions, I remain at your disposal.\n\n"
                 f"John from Max Sauveur")
@@ -216,8 +230,9 @@ def email(avoir, code="XXXXXXXXXXXX"):
             f"Voici votre code à saisir dans votre panier avant de finaliser la commande :\n\n{code}\n\n"
             f"Conditions d'utilisation :\n"
             f"- valable jusqu'au {ends},\n"
-            f"- utilisable sur nos chaussures et ceintures homme, en une seule commande,\n"
-            f"- réservé à votre adresse e-mail ({avoir['email']}) : pensez à commander avec cette adresse,\n"
+            + (f"- utilisable uniquement sur le modèle {avoir['item']}, en une seule commande,\n" if avoir["model_only"]
+               else "- utilisable sur nos chaussures et ceintures homme, en une seule commande,\n")
+            + f"- réservé à votre adresse e-mail ({avoir['email']}) : pensez à commander avec cette adresse,\n"
             f"- non cumulable avec d'autres codes ou promotions.\n\n"
             f"Si vous avez la moindre question, je reste disponible.\n\n"
             f"John de Max Sauveur")
