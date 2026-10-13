@@ -18,6 +18,7 @@ STATUSES = [
     ("awaiting_customer", "Paire en attente de réception de la part du client"),
     ("received", "Paire réceptionnée"),
     ("label_requested", "Étiquette demandée à l'atelier"),
+    ("credit_requested", "Avoir demandé à l'atelier (sans renvoi)"),
     ("sent_workshop", "Paire expédiée à l'atelier"),
     ("in_repair", "Paire en cours de réparation"),
     ("returning", "Paire en cours de retour de l'atelier"),
@@ -34,7 +35,7 @@ STATUS_LABELS = dict(STATUSES)
 STAGES = [
     ("attente", "En attente du client", ("awaiting_customer",)),
     ("a-traiter", "À traiter", ("received",)),
-    ("etiquette", "Étiquette demandée", ("label_requested",)),
+    ("etiquette", "Demande envoyée", ("label_requested", "credit_requested")),
     ("atelier", "En atelier", ("sent_workshop", "in_repair", "returning")),
     ("retour", "De retour", ("back_logistics",)),
     ("client", "Vers le client", ("to_send", "sent")),

@@ -21,9 +21,11 @@ import repair_catalog
 import repair_docs
 import repairs
 
-WORKSHOP_DOMAINS = {"penha.pt": "Penha", "gomeseleite.pt": "Gomes e Leite"}
+# Sender domain, or full address for a workshop writing from a Gmail account.
+WORKSHOP_DOMAINS = {"penha.pt": "Penha", "gomeseleite.pt": "Gomes e Leite",
+                    "commerciale.santatrinita@gmail.com": "Santa Trinita"}
 LABEL_NAME = re.compile(r"\b(ups|upa)\b.*label|label.*\b(ups|upa)\b", re.I)
-CREDIT_NAME = re.compile(r"n\.?\s*cred|nota[ _-]de[ _-]cr[eé]dito|credit|cr[ée]dit|avoir", re.I)
+CREDIT_NAME = re.compile(r"n\.?\s*cred|nota[ _-]d[ei][ _-]cr[eé]dito|credit|cr[ée]dit|avoir", re.I)
 UPS_TRACKING = re.compile(r"\b1Z[0-9A-Z]{16}\b")
 
 READ_PROMPT = """Ce PDF vient d'un atelier de chaussures qui travaille pour la marque Max Sauveur.
@@ -117,10 +119,14 @@ def _note(case, line):
 
 def _handle_pdf(workshop, filename, data, sender, subject, date):
     by_name = "label" if LABEL_NAME.search(filename) else "credit" if CREDIT_NAME.search(filename) else None
-    if by_name is None:
+    awaiting_credit = any(c["status"] == "credit_requested" and c.get("workshop") == workshop
+                          for c in database.get_repair_cases())
+    if by_name is None and not awaiting_credit:
         return None  # invoices, receipts, packing lists: not repair business
     info = read_pdf(data)
     kind = info.get("type") if info.get("type") in ("label", "credit") else by_name
+    if kind is None:
+        return None  # a PDF read only because a credit note is awaited, and it is not one
 
     if kind == "label":
         waiting = [c for c in database.get_repair_cases()

@@ -89,7 +89,8 @@ def workshop_preview():
             except Exception as e:
                 print(f"[Workshop] Customer photos unavailable for {c['wing_ref']}: {e}")
         counts[c['id']] = len(repair_photos.names(c['id']))
-    draft = workshop.draft_email(key, cases, counts)
+    mode = 'credit' if (request.json or {}).get('mode') == 'credit' else 'label'
+    draft = workshop.draft_email(key, cases, counts, mode=mode)
     missing_ref = [c['wing_ref'] for c in cases if not (c.get('workshop_ref') or '').strip()]
     missing_problem = [c['wing_ref'] for c in cases if not (c.get('problem') or '').strip()]
     return jsonify({'success': True, **draft, 'photos': sum(counts.values()),
@@ -122,10 +123,13 @@ def workshop_send():
 
     name = workshop.WORKSHOPS[key]['name']
     stamp = datetime.now().strftime('%d/%m/%Y')
+    credit_only = data.get('mode') == 'credit'
     for case in cases:
         notes = (case.get('notes') or '').strip()
-        line = f"{stamp} : demande d'étiquette UPS envoyée à {name}"
-        repairs.update_case(case['id'], workshop=name, status='label_requested', notes=f"{notes}\n{line}".strip())
+        line = f"{stamp} : " + (f"demande d'avoir envoyée à {name} (sans renvoi)" if credit_only
+                                 else f"demande d'étiquette UPS envoyée à {name}")
+        repairs.update_case(case['id'], workshop=name, notes=f"{notes}\n{line}".strip(),
+                            status='credit_requested' if credit_only else 'label_requested')
     return jsonify({'success': True, 'photos': len(files), 'to': to})
 
 
