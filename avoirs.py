@@ -93,13 +93,22 @@ def existing_avoirs(order_name):
     data = _gql("""
         query($q: String!) {
           codeDiscountNodes(first: 20, query: $q) { nodes { codeDiscount {
-            ... on DiscountCodeBasic { title status codes(first: 1) { nodes { code } } }
+            ... on DiscountCodeBasic {
+              title status endsAt codes(first: 1) { nodes { code } }
+              customerGets { value { ... on DiscountAmount { amount { amount } } } }
+            }
           } } }
         }""", {"q": f'title:"{TITLE_PREFIX} {order_name}"'})
-    return [{"title": n["codeDiscount"]["title"], "status": n["codeDiscount"]["status"],
-             "code": (n["codeDiscount"]["codes"]["nodes"] or [{}])[0].get("code")}
-            for n in data["codeDiscountNodes"]["nodes"]
-            if (n.get("codeDiscount") or {}).get("title", "").startswith(f"{TITLE_PREFIX} {order_name} ")]
+    found = []
+    for n in data["codeDiscountNodes"]["nodes"]:
+        d = n.get("codeDiscount") or {}
+        if not d.get("title", "").startswith(f"{TITLE_PREFIX} {order_name} "):
+            continue
+        found.append({"title": d["title"], "status": d["status"],
+                      "code": (d["codes"]["nodes"] or [{}])[0].get("code"),
+                      "amount": float(((d.get("customerGets") or {}).get("value") or {}).get("amount", {}).get("amount", 0)),
+                      "ends_at": datetime.fromisoformat(d["endsAt"].replace("Z", "+00:00")) if d.get("endsAt") else None})
+    return found
 
 
 def _add_months(when, months):
