@@ -23,9 +23,9 @@ SAMUEL_EMAIL = "samuel@maxsauveur.com"
 REMINDER_AFTER = timedelta(days=3)
 
 DELIVERY_OPTIONS = {
-    "home": {"label": "À domicile (Colissimo)", "service": "COLISSIMO", "relay": None},
-    "chrono_relay": {"label": "En point relais Chronopost", "service": "SHOP2SHOP", "relay": "SHOP2SHOP"},
+    "chrono_relay": {"label": "En point relais Chronopost (Shop2Shop)", "service": "SHOP2SHOP", "relay": "SHOP2SHOP"},
     "colissimo_relay": {"label": "En point relais Colissimo", "service": "COLISSIMO_RELAY", "relay": "COLISSIMO_RELAY"},
+    "home": {"label": "À domicile (Colissimo)", "service": "COLISSIMO", "relay": None},
 }
 
 _channel_cache = {}
@@ -40,8 +40,33 @@ def return_link(case):
     return f"{BASE_URL}/retour/{case['return_token']}"
 
 
+def _ready_email(case, delivery, reminder=0):
+    """The "paire prête" email, its first reminder (same text) and its last one.
+
+    Customers are asked for a Chronopost Shop2Shop relay; the page still
+    offers home delivery or Colissimo to those who prefer it.
+    """
+    model = repair_catalog.model_name(case.get("product")) or "paire"
+    intro = (f"Votre paire {model} est de retour de notre atelier et prête à vous être renvoyée."
+             if reminder == 0 else f"Votre paire {model} réparée vous attend toujours.")
+    body = f"""Bonjour {_first_name(case, delivery)},
+
+{intro}
+
+Pour la recevoir, merci de choisir le point relais Chronopost (Shop2Shop) qui vous convient sur cette page :
+{return_link(case)}
+
+Votre paire partira dès votre choix."""
+    if reminder >= 2:
+        body += ("\n\nSans réponse de votre part sous trois jours, nous vous l'enverrons "
+                 "à l'adresse de livraison de votre commande initiale.")
+    body += "\n\nJohn de Max Sauveur"
+    subject = "Votre paire Max Sauveur est prête" if reminder == 0 else "Rappel : votre paire Max Sauveur est prête"
+    return subject, body
+
+
 def request_return(case):
-    """Email the customer that the pair is ready, with the link to confirm the address.
+    """Email the customer that the pair is ready, with the link to pick a relay.
 
     Sent once per file; changing the status back and forth does not resend it.
     """
@@ -49,51 +74,70 @@ def request_return(case):
         return case
     token = case.get("return_token") or secrets.token_urlsafe(16)
     case = database.update_repair_case(case["id"], {"return_token": token})
-    delivery = shopify_api.get_order_delivery(case["order_number"]) or {}
-    model = repair_catalog.model_name(case.get("product")) or "paire"
-    body = f"""Bonjour {_first_name(case, delivery)},
-
-Votre paire {model} est de retour de notre atelier et prête à vous être renvoyée.
-
-Avant l'expédition, merci de nous indiquer où vous souhaitez la recevoir : à domicile, en point relais Chronopost ou en point relais Colissimo. Votre adresse a peut-être changé depuis votre commande.
-
-Confirmez votre adresse de livraison ici :
-{return_link(case)}
-
-Votre paire partira dès votre confirmation.
-
-John de Max Sauveur"""
-    gmail_helper.send_email(gmail_helper.get_gmail_service(), case["customer_email"],
-                            "Votre paire Max Sauveur est prête", body)
+    subject, body = _ready_email(case, shopify_api.get_order_delivery(case["order_number"]) or {})
+    gmail_helper.send_email(gmail_helper.get_gmail_service(), case["customer_email"], subject, body)
     case = database.update_repair_case(case["id"], {"return_requested_at": datetime.utcnow().isoformat()})
     print(f"[Returns] Ready email sent for {case['wing_ref']}")
     return case
 
 
+def _ship_to_order_address(case):
+    """No answer after the last reminder: send home to the order's shipping address.
+
+    Only for orders that were delivered home; a relay order's shipping
+    address is the shop, so Samuel decides instead.
+    """
+    delivery = shopify_api.get_order_delivery(case["order_number"]) or {}
+    method = (delivery.get("shipping_method") or "").lower()
+    if not delivery.get("line1") or any(w in method for w in ("relais", "relay", "point", "shop2shop", "pickup")):
+        return None, f"Commande initiale livrée en point relais ({delivery.get('shipping_method') or 'mode inconnu'}) : adresse à décider."
+    d = {k: delivery.get(k, "") for k in ("first_name", "last_name", "company", "line1", "line2", "zip",
+                                         "city", "country_code", "phone", "email")}
+    d["email"] = d["email"] or case.get("customer_email") or ""
+    d["option"] = "home"
+    try:
+        confirm_return(case, d, by_customer=False)
+    except ValueError as e:
+        return None, f"Adresse de commande incomplète ({e})."
+    return database.get_repair_case(case["id"]), None
+
+
 def send_reminders():
-    """Scheduler job: one reminder when the customer has not answered after three days."""
+    """Scheduler job, once a day: chase customers who have not picked a relay.
+
+    Day 3: reminder (same text). Day 6: last reminder, announcing the order
+    address. Day 9: shipped home to the order address, Samuel notified.
+    """
     now = datetime.utcnow()
-    sent = 0
+    done = 0
     for case in database.get_repair_cases():
         if (case["status"] != "back_logistics" or not case.get("return_requested_at")
-                or case.get("return_confirmed_at") or case.get("return_reminded_at")):
+                or case.get("return_confirmed_at")):
             continue
-        if now - datetime.fromisoformat(case["return_requested_at"]) < REMINDER_AFTER:
+        count = int(case.get("return_reminder_count") or 0)
+        last = case.get("return_reminded_at") or case["return_requested_at"]
+        if now - datetime.fromisoformat(last) < REMINDER_AFTER:
             continue
-        body = f"""Bonjour {_first_name(case)},
-
-Votre paire réparée vous attend toujours. Pour que nous puissions vous l'envoyer, il nous manque simplement votre confirmation d'adresse :
-{return_link(case)}
-
-John de Max Sauveur"""
         try:
-            gmail_helper.send_email(gmail_helper.get_gmail_service(), case["customer_email"],
-                                    "Rappel : votre paire Max Sauveur est prête", body)
-            database.update_repair_case(case["id"], {"return_reminded_at": now.isoformat()})
-            sent += 1
+            if count < 2:
+                subject, body = _ready_email(case, shopify_api.get_order_delivery(case["order_number"]) or {},
+                                             reminder=count + 1)
+                gmail_helper.send_email(gmail_helper.get_gmail_service(), case["customer_email"], subject, body)
+                database.update_repair_case(case["id"], {"return_reminded_at": now.isoformat(),
+                                                         "return_reminder_count": str(count + 1)})
+            elif not case.get("return_fallback_at"):
+                shipped, problem = _ship_to_order_address(case)
+                database.update_repair_case(case["id"], {"return_fallback_at": now.isoformat()})
+                if problem:
+                    gmail_helper.send_email(
+                        gmail_helper.get_gmail_service(), SAMUEL_EMAIL,
+                        f"[Réparation] Sans réponse du client {case['wing_ref']}",
+                        f"{case['wing_ref']} · {case.get('customer_name') or ''}\n{case.get('product') or ''}\n\n"
+                        f"Le client n'a pas choisi de point relais après deux relances.\n{problem}\n\n{BASE_URL}/reparations")
+            done += 1
         except Exception as e:
             print(f"[Returns] Reminder failed for {case['wing_ref']}: {e}")
-    return sent
+    return done
 
 
 def prefill(case):
@@ -177,8 +221,11 @@ REQUIRED = {"first_name": "prénom", "last_name": "nom", "line1": "adresse", "zi
             "city": "ville", "country_code": "pays", "phone": "téléphone", "email": "e-mail"}
 
 
-def confirm_return(case, d):
+def confirm_return(case, d, by_customer=True):
     """Record the customer's choice, create the Wing order, tell Samuel.
+
+    by_customer is False when the pair goes to the order address because the
+    customer never answered the reminders.
 
     The choice is saved even if Wing refuses the order: Samuel is then asked
     to create it by hand, and the customer still sees a confirmation.
@@ -209,7 +256,7 @@ def confirm_return(case, d):
     body = f"""{case['wing_ref']} · {case.get('customer_name') or ''}
 {case.get('product') or ''}
 
-Le client a confirmé : {where}
+{"Le client a confirmé" if by_customer else "Sans réponse après deux relances, envoi à l'adresse de la commande"} : {where}
 {d['first_name']} {d['last_name']}, {d['line1']} {d.get('line2') or ''}, {d['zip']} {d['city']} ({d['country_code']})
 Tél. {d['phone']}
 
@@ -218,7 +265,7 @@ Tél. {d['phone']}
 {BASE_URL}/reparations"""
     try:
         gmail_helper.send_email(gmail_helper.get_gmail_service(), SAMUEL_EMAIL,
-                                f"[Réparation] Adresse confirmée {case['wing_ref']}", body)
+                                f"[Réparation] {'Adresse confirmée' if by_customer else 'Envoi adresse de commande'} {case['wing_ref']}", body)
     except Exception as e:
         print(f"[Returns] Notification failed: {e}")
     return case

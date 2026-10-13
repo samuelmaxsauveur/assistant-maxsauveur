@@ -678,7 +678,7 @@ REPAIR_EXTRA_COLUMNS = ("status_updated_at", "parcel_status", "problem", "decisi
                         # Sending the pair back (step 6)
                         "return_token", "return_requested_at", "return_reminded_at",
                         "return_confirmed_at", "return_delivery", "return_order_ref",
-                        "return_parcel_status")
+                        "return_parcel_status", "return_reminder_count", "return_fallback_at")
 # Contact and label fields can be corrected when a file is opened by hand
 # (customer writing from another address, label made under a wrong number).
 REPAIR_UPDATABLE = REPAIR_EXTRA_COLUMNS + ("status", "customer_email", "email_id", "tracking_id", "label_url")

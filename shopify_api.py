@@ -369,7 +369,7 @@ def get_order_delivery(order_number):
     token = os.getenv('SHOPIFY_TOKEN')
     url = f"https://{shop}/admin/api/2024-01/orders.json"
     params = {'name': str(order_number).replace('#', ''), 'status': 'any',
-              'fields': 'name,email,phone,shipping_address,line_items'}
+              'fields': 'name,email,phone,shipping_address,line_items,shipping_lines'}
     response = requests.get(url, headers={'X-Shopify-Access-Token': token}, params=params, timeout=30)
     orders = response.json().get('orders', [])
     if not orders:
@@ -388,6 +388,7 @@ def get_order_delivery(order_number):
         'phone': sa.get('phone') or order.get('phone') or '',
         'email': order.get('email') or '',
         'prices': {item.get('name', ''): float(item.get('price') or 0) for item in order.get('line_items', [])},
+        'shipping_method': ' / '.join(l.get('title') or '' for l in order.get('shipping_lines', [])),
     }
 
 

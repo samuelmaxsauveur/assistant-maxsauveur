@@ -52,7 +52,7 @@
     {% else %}
         <div id="form-zone">
             <h1>Votre paire est prête</h1>
-            <p class="lead">Votre {{ model }} revient de notre atelier. Indiquez-nous où vous souhaitez la recevoir, puis confirmez.</p>
+            <p class="lead">Votre {{ model }} revient de notre atelier. Choisissez le point relais Chronopost (Shop2Shop) où vous souhaitez la recevoir, puis confirmez.</p>
 
             <h2>Mode de livraison</h2>
             <div class="sans">
@@ -129,6 +129,8 @@ async function searchRelays() {
     }
     btn.disabled = false;
 }
+
+document.addEventListener('DOMContentLoaded', optionChanged);
 
 async function confirmReturn() {
     const msg = document.getElementById('msg');
