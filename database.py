@@ -168,6 +168,28 @@ def init_db():
                 created_at      TEXT NOT NULL
             )
         """)
+        # Workshop emails already read, and the documents found in them (UPS
+        # labels, credit notes) that still have to be filed in a repair file.
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS repair_mail_seen (
+                message_id  TEXT PRIMARY KEY,
+                seen_at     TEXT NOT NULL
+            )
+        """)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS repair_inbox (
+                id          INTEGER PRIMARY KEY AUTOINCREMENT,
+                kind        TEXT NOT NULL,
+                filename    TEXT NOT NULL,
+                stored_as   TEXT NOT NULL,
+                workshop    TEXT,
+                sender      TEXT,
+                subject     TEXT,
+                received_at TEXT,
+                case_ids    TEXT,
+                created_at  TEXT NOT NULL
+            )
+        """)
         # Columns added after the first release of repair_cases: the table
         # already exists in production, so they are added one by one.
         existing = {row[1] for row in cursor.execute("PRAGMA table_info(repair_cases)")}
@@ -678,7 +700,9 @@ REPAIR_EXTRA_COLUMNS = ("status_updated_at", "parcel_status", "problem", "decisi
                         # Sending the pair back (step 6)
                         "return_token", "return_requested_at", "return_reminded_at",
                         "return_confirmed_at", "return_delivery", "return_order_ref",
-                        "return_parcel_status", "return_reminder_count", "return_fallback_at")
+                        "return_parcel_status", "return_reminder_count", "return_fallback_at",
+                        # Carton to the workshop
+                        "workshop_tracking", "workshop_shipped_at")
 # Contact and label fields can be corrected when a file is opened by hand
 # (customer writing from another address, label made under a wrong number).
 REPAIR_UPDATABLE = REPAIR_EXTRA_COLUMNS + ("status", "customer_email", "email_id", "tracking_id", "label_url")
@@ -727,6 +751,54 @@ def get_repair_case_by_ref(wing_ref):
     try:
         row = conn.execute("SELECT * FROM repair_cases WHERE wing_ref = ?", (wing_ref,)).fetchone()
         return dict(row) if row else None
+    finally:
+        conn.close()
+
+
+def repair_mail_seen(message_id):
+    conn = get_connection()
+    try:
+        return conn.execute("SELECT 1 FROM repair_mail_seen WHERE message_id = ?", (message_id,)).fetchone() is not None
+    finally:
+        conn.close()
+
+
+def mark_repair_mail_seen(message_id):
+    conn = get_connection()
+    try:
+        conn.execute("INSERT OR IGNORE INTO repair_mail_seen (message_id, seen_at) VALUES (?, ?)",
+                     (message_id, datetime.utcnow().isoformat()))
+        conn.commit()
+    finally:
+        conn.close()
+
+
+def add_repair_inbox(kind, filename, stored_as, workshop, sender, subject, received_at, case_ids=None):
+    conn = get_connection()
+    try:
+        conn.execute("""INSERT INTO repair_inbox (kind, filename, stored_as, workshop, sender, subject,
+                        received_at, case_ids, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                     (kind, filename, stored_as, workshop, sender, subject, received_at,
+                      case_ids, datetime.utcnow().isoformat()))
+        conn.commit()
+    finally:
+        conn.close()
+
+
+def get_repair_inbox(pending_only=True):
+    conn = get_connection()
+    try:
+        q = "SELECT * FROM repair_inbox" + (" WHERE case_ids IS NULL" if pending_only else "") + " ORDER BY created_at DESC"
+        return [dict(r) for r in conn.execute(q).fetchall()]
+    finally:
+        conn.close()
+
+
+def set_repair_inbox_cases(item_id, case_ids):
+    conn = get_connection()
+    try:
+        conn.execute("UPDATE repair_inbox SET case_ids = ? WHERE id = ?", (case_ids, item_id))
+        conn.commit()
     finally:
         conn.close()
 

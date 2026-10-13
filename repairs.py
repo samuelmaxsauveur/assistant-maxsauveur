@@ -17,6 +17,7 @@ import wing_repair
 STATUSES = [
     ("awaiting_customer", "Paire en attente de réception de la part du client"),
     ("received", "Paire réceptionnée"),
+    ("label_requested", "Étiquette demandée à l'atelier"),
     ("sent_workshop", "Paire expédiée à l'atelier"),
     ("in_repair", "Paire en cours de réparation"),
     ("returning", "Paire en cours de retour de l'atelier"),
@@ -24,9 +25,22 @@ STATUSES = [
     ("to_send", "Paire à envoyer"),
     ("sent", "Paire envoyée"),
     ("delivered_customer", "Paire reçue par le client"),
+    ("credit_received", "Avoir reçu"),
     ("cancelled", "Annulé"),
 ]
 STATUS_LABELS = dict(STATUSES)
+
+# The tabs of the Réparations page, in the order a pair goes through them.
+STAGES = [
+    ("attente", "En attente du client", ("awaiting_customer",)),
+    ("a-traiter", "À traiter", ("received",)),
+    ("etiquette", "Étiquette demandée", ("label_requested",)),
+    ("atelier", "En atelier", ("sent_workshop", "in_repair", "returning")),
+    ("retour", "De retour", ("back_logistics",)),
+    ("client", "Vers le client", ("to_send", "sent")),
+    ("clos", "Clos", ("delivered_customer", "credit_received", "cancelled")),
+]
+STAGE_OF = {status: key for key, _, statuses in STAGES for status in statuses}
 
 DECISIONS = {"": "", "repair": "Paire à réparer", "credit": "Avoir demandé à l'atelier"}
 

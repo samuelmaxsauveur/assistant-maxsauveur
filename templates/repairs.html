@@ -9,30 +9,51 @@
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f5; color: #333; }
         header { background: #111; color: white; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         header h1 { font-size: 17px; font-weight: 600; }
-        .header-links { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        .header-links { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
         header a { color: #aaa; text-decoration: none; font-size: 14px; white-space: nowrap; }
         header a:hover { color: white; }
-        .container { max-width: 960px; margin: 24px auto; padding: 0 12px; }
-        .toolbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
-        .toolbar a { font-size: 13px; color: #2563eb; }
-        .card { background: white; border-radius: 12px; margin-bottom: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); padding: 16px 18px; }
+        .container { max-width: 1100px; margin: 18px auto 60px; padding: 0 12px; }
+        .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+        .tab { padding: 8px 12px; border-radius: 20px; background: #fff; color: #444; text-decoration: none; font-size: 13px; border: 1px solid #e5e5e5; white-space: nowrap; }
+        .tab.active { background: #7c3aed; color: #fff; border-color: #7c3aed; }
+        .tab .n { display: inline-block; min-width: 18px; padding: 0 5px; border-radius: 9px; background: #f0f0f0; color: #555; font-size: 11px; text-align: center; margin-left: 4px; }
+        .tab.active .n { background: rgba(255,255,255,0.25); color: #fff; }
+        .tab.empty { opacity: 0.55; }
+        .card { background: white; border-radius: 12px; margin-bottom: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); padding: 14px 16px; }
         .card-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
-        .card-meta { font-size: 13px; color: #888; margin-bottom: 12px; line-height: 1.6; }
-        .card-meta a { color: #2563eb; }
-        .badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 12px; font-weight: 500; background: #f5f3ff; color: #5b21b6; }
+        .meta { font-size: 13px; color: #777; line-height: 1.6; }
+        .meta a { color: #2563eb; }
+        .alert { border: 2px solid #fcd34d; background: #fffbeb; }
+        .group-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+        .scroll { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th { text-align: left; font-weight: 600; color: #888; font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; padding: 6px 8px; border-bottom: 1px solid #eee; white-space: nowrap; }
+        td { padding: 8px; border-bottom: 1px solid #f3f3f3; vertical-align: top; }
+        tr.row { cursor: pointer; }
+        tr.row:hover td { background: #faf8ff; }
+        tr.detail td { background: #fbfbfd; padding: 14px; cursor: default; }
+        .ref { font-weight: 600; white-space: nowrap; }
+        .pill { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px; background: #f5f3ff; color: #5b21b6; white-space: nowrap; }
+        .pill.credit { background: #fef3c7; color: #92400e; }
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
-        label { display: block; font-size: 12px; font-weight: 600; color: #555; margin-bottom: 4px; }
-        input, select, textarea { width: 100%; padding: 8px 10px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 14px; font-family: inherit; background: #fff; }
-        textarea { min-height: 60px; resize: vertical; }
+        @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } .hide-sm { display: none; } }
         .full { grid-column: 1 / -1; }
-        .actions { display: flex; gap: 10px; align-items: center; margin-top: 12px; flex-wrap: wrap; }
-        .btn { padding: 9px 14px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; border: none; }
+        label.f { display: block; font-size: 12px; font-weight: 600; color: #555; margin-bottom: 4px; }
+        input, select, textarea { width: 100%; padding: 8px 10px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 14px; font-family: inherit; background: #fff; }
+        input[type=checkbox] { width: auto; }
+        textarea { min-height: 60px; resize: vertical; }
+        .actions { display: flex; gap: 8px; align-items: center; margin-top: 10px; flex-wrap: wrap; }
+        .btn { padding: 8px 13px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; border: none; display: inline-block; }
         .btn-purple { background: #7c3aed; color: white; }
+        .btn-green { background: #16a34a; color: white; }
+        .btn-amber { background: #d97706; color: white; }
         .btn-gray { background: #f0f0f0; color: #333; }
         .btn:disabled { opacity: 0.5; cursor: not-allowed; }
         .msg { font-size: 13px; }
-        .empty { text-align: center; color: #888; padding: 40px 0; }
+        .thumbs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+        .thumbs img { width: 76px; height: 76px; object-fit: cover; border-radius: 8px; border: 1px solid #eee; }
+        .empty { text-align: center; color: #999; padding: 30px 0; font-size: 14px; }
+        details > summary { cursor: pointer; }
     </style>
 </head>
 <body>
@@ -45,411 +66,308 @@
     </div>
 </header>
 <div class="container">
-    <div class="toolbar">
-        <div>
-            {% if show_closed %}
-                <a href="/reparations">Masquer les dossiers clos</a>
-            {% else %}
-                <a href="/reparations?tout=1">Voir aussi les dossiers clos</a>
-            {% endif %}
-        </div>
-        <div style="display:flex; gap:10px; align-items:center;">
-            <span class="msg" id="refresh-msg"></span>
-            <button class="btn btn-gray" id="refresh-btn" onclick="refreshAll()">🔄 Vérifier Wing et mettre à jour le Sheet</button>
-        </div>
+
+    <div class="tabs">
+        {% for key, title, _ in stages %}
+        <a class="tab {% if key == tab %}active{% endif %} {% if not counts[key] %}empty{% endif %}" href="/reparations?onglet={{ key }}">{{ title }}<span class="n">{{ counts[key] }}</span></a>
+        {% endfor %}
     </div>
 
-    <details class="card" id="add-card">
-        <summary class="card-title" style="cursor:pointer;">＋ Ajouter une paire déjà reçue (sans étiquette 🔧)</summary>
-        <div class="card-meta" style="margin-top:8px;">Pour une paire arrivée sans passer par le bouton 🔧. Le dossier démarre en « Paire réceptionnée », avec l'atelier pré-rempli et le dernier fil d'e-mails du client pour les photos.</div>
-        <div class="grid">
-            <div><label>N° de commande</label><input id="add-order" placeholder="13350"></div>
-            <div><label>Modèle (si plusieurs paires)</label><input id="add-product" placeholder="Paul noir"></div>
-            <div class="full"><label>Problème constaté</label><input id="add-problem" placeholder="Bride de la languette déchirée à l'avant"></div>
-            <div><label>Demande à l'atelier</label>
-                <select id="add-decision"><option value="repair">Paire à réparer</option><option value="credit">Avoir demandé à l'atelier</option></select>
-            </div>
-        </div>
-        <div class="actions">
-            <button class="btn btn-purple" id="add-btn" onclick="addReceived()">Créer le dossier</button>
-            <span class="msg" id="add-msg"></span>
-        </div>
-    </details>
+    {% if not samuel_connected %}
+    <div class="card alert"><div class="meta">⚠️ La boîte <strong>samuel@maxsauveur.com</strong> n'est pas connectée ici : les e-mails aux ateliers ne peuvent pas partir, et leurs réponses ne sont lues que dans hello@.</div></div>
+    {% endif %}
 
-    <div class="card" style="border:2px solid #c4b5fd;">
-        <div class="card-title">📦 Envoi groupé à un atelier</div>
-        {% if ready %}
-        <div class="card-meta">Paires réceptionnées, pas encore parties. Coche celles qui partent dans le colis.</div>
-        <div style="margin-bottom:10px;">
-            <label>Atelier</label>
-            <select id="ws-key" onchange="precheckWorkshop()" style="max-width:280px;">
-                {% for key, w in workshops.items() %}
-                <option value="{{ key }}" data-name="{{ w.name }}">{{ w.name }} ({{ w.emails | join(', ') }})</option>
-                {% endfor %}
+    {% if inbox %}
+    <div class="card alert">
+        <div class="card-title">📎 Documents d'atelier à classer ({{ inbox | length }})</div>
+        <div class="meta" style="margin-bottom:8px;">Reçus par e-mail, l'assistant n'a pas su à quel dossier ils correspondent.</div>
+        {% for item in inbox %}
+        <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin:6px 0;">
+            <a href="/reparations/a-classer/{{ item.id }}" target="_blank" style="font-size:13px;">{{ 'Avoir' if item.kind == 'credit' else 'Étiquette UPS' if item.kind == 'label' else 'Document' }} · {{ item.workshop or '' }} · {{ item.filename }}</a>
+            <select id="inbox-{{ item.id }}" multiple size="3" style="max-width:340px;">
+                {% for c in open_cases %}<option value="{{ c.id }}">{{ c.wing_ref }} · {{ c.product }}</option>{% endfor %}
             </select>
+            <button class="btn btn-gray" onclick="fileInbox({{ item.id }}, this)">Classer</button>
         </div>
-        <div id="ws-list">
-            {% for c in ready %}
-            <label style="display:flex; gap:8px; align-items:flex-start; font-weight:400; font-size:14px; color:#333; margin:6px 0; cursor:pointer;">
-                <input type="checkbox" value="{{ c.id }}" data-workshop="{{ c.workshop or '' }}" style="width:auto; margin-top:3px;">
-                <span><strong>{{ c.wing_ref }}</strong> · {{ c.product or '' }} · {{ 'boots' if c.parcel_type == 'boots' else 'basse' }}
-                    {% if c.workshop %}· {{ c.workshop }}{% endif %}
-                    {% if not c.workshop_ref %}<span style="color:#b45309;">· réf atelier manquante</span>{% endif %}
-                    {% if not c.problem %}<span style="color:#b45309;">· problème non renseigné</span>{% endif %}
-                </span>
-            </label>
-            {% endfor %}
-        </div>
-        <div class="actions">
-            <button class="btn btn-purple" id="ws-preview-btn" onclick="previewWorkshop()">Préparer l'e-mail</button>
-            <span class="msg" id="ws-msg"></span>
-        </div>
-        <div id="ws-draft" style="display:none; margin-top:14px;">
-            <div class="card-meta" id="ws-summary"></div>
-            <label>À</label>
-            <input id="ws-to" disabled>
-            <label style="margin-top:8px;">Objet</label>
-            <input id="ws-subject">
-            <label style="margin-top:8px;">Message (modifiable)</label>
-            <textarea id="ws-body" style="min-height:320px;"></textarea>
-            <div class="actions">
-                <button class="btn btn-purple" id="ws-send-btn" onclick="sendWorkshop()">Envoyer à l'atelier</button>
-                <button class="btn btn-gray" id="ws-shipped-btn" onclick="markShipped()" style="display:none;">Marquer ces paires « expédiées à l'atelier »</button>
-                <span class="msg" id="ws-send-msg"></span>
-            </div>
-        </div>
-        {% else %}
-        <div class="card-meta">Aucune paire réceptionnée en attente d'envoi. Les paires apparaissent ici dès qu'elles passent en « Paire réceptionnée ».</div>
-        {% endif %}
-    </div>
-
-    {% if at_workshop %}
-    <div class="card" style="border:2px solid #bbf7d0;">
-        <div class="card-title">↩️ Retour de l'atelier</div>
-        <div class="card-meta">Coche les paires arrivées au centre logistique : chaque client reçoit aussitôt l'e-mail « votre paire est prête » avec le lien pour confirmer son adresse.</div>
-        <div id="back-list">
-            {% for c in at_workshop %}
-            <label style="display:flex; gap:8px; align-items:flex-start; font-weight:400; font-size:14px; color:#333; margin:6px 0; cursor:pointer;">
-                <input type="checkbox" value="{{ c.id }}" style="width:auto; margin-top:3px;">
-                <span><strong>{{ c.wing_ref }}</strong> · {{ c.product or '' }} · {{ c.workshop or '' }} · {{ status_labels.get(c.status) }}</span>
-            </label>
-            {% endfor %}
-        </div>
-        <div class="actions">
-            <button class="btn btn-purple" id="back-btn" onclick="markBack()">Paires réceptionnées : prévenir les clients</button>
-            <span class="msg" id="back-msg"></span>
-        </div>
+        {% endfor %}
     </div>
     {% endif %}
 
-    {% for c in cases %}
-    <div class="card" id="case-{{ c.id }}">
-        <div class="card-title">{{ c.wing_ref }} · {{ c.customer_name or '' }}</div>
-        <div class="card-meta">
-            <span class="badge" id="badge-{{ c.id }}">{{ status_labels.get(c.status, c.status) }}</span><br>
-            {{ c.product or '' }} · {{ c.weight_kg }} kg · commande #{{ c.order_number }} · {{ c.customer_email or '' }}<br>
-            Colis client : {{ parcel_labels.get(c.parcel_status or 'CREATED', '') }} ·
-            suivi <a href="https://www.laposte.fr/outils/suivre-vos-envois?code={{ c.tracking_id }}" target="_blank">{{ c.tracking_id }}</a> ·
-            <a href="{{ c.label_url }}" target="_blank">étiquette</a>
-            {% if c.return_requested_at and not c.delivery %}
-            <br>↩️ E-mail « paire prête » envoyé le {{ c.return_requested_at[:10] }}{% if c.return_reminded_at %}, relance le {{ c.return_reminded_at[:10] }}{% endif %} · en attente de l'adresse du client
-            {% endif %}
-            {% if c.delivery %}
-            <br>📍 <strong>{{ delivery_options[c.delivery.option].label }}</strong>{% if c.delivery.relay_name %} : {{ c.delivery.relay_name }}{% endif %}
-            · {{ c.delivery.first_name }} {{ c.delivery.last_name }}, {{ c.delivery.zip }} {{ c.delivery.city }}
-            · {% if c.return_order_ref %}commande Wing {{ c.return_order_ref }}{% else %}<span style="color:#b45309;">commande Wing à créer à la main</span>{% endif %}
-            {% endif %}
-        </div>
-        <div class="grid">
-            <div>
-                <label>Statut</label>
-                <select data-field="status">
-                    {% for key, text in statuses %}
-                    <option value="{{ key }}" {% if key == c.status %}selected{% endif %}>{{ text }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div>
-                <label>Demande à l'atelier</label>
-                <select data-field="decision">
-                    {% for key, text in decisions.items() %}
-                    <option value="{{ key }}" {% if key == (c.decision or '') %}selected{% endif %}>{{ text or '—' }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="full">
-                <label>Problème constaté</label>
-                <input data-field="problem" value="{{ c.problem or '' }}" placeholder="Ex. semelle décollée à l'avant">
-            </div>
-            <div>
-                <label>Atelier</label>
-                <input data-field="workshop" value="{{ c.workshop or '' }}">
-            </div>
-            <div>
-                <label>Référence atelier</label>
-                <input data-field="workshop_ref" value="{{ c.workshop_ref or '' }}">
-            </div>
-            <div class="full">
-                <label>Notes</label>
-                <textarea data-field="notes">{{ c.notes or '' }}</textarea>
+    <div class="card">
+        <div class="group-head">
+            <details style="flex:1; min-width:260px;">
+                <summary class="card-title" style="display:inline;">＋ Ajouter une paire déjà reçue</summary>
+                <div class="grid" style="margin-top:10px;">
+                    <div><label class="f">N° de commande</label><input id="add-order" placeholder="13350"></div>
+                    <div><label class="f">Modèle, coloris, pointure</label><input id="add-product" placeholder="Paul noir 41"></div>
+                    <div class="full"><label class="f">Problème constaté</label><input id="add-problem"></div>
+                    <div><label class="f">Demande à l'atelier</label>
+                        <select id="add-decision"><option value="repair">Paire à réparer</option><option value="credit">Avoir demandé à l'atelier</option></select>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="btn btn-purple" id="add-btn" onclick="addReceived()">Créer le dossier</button>
+                    <span class="msg" id="add-msg"></span>
+                </div>
+            </details>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <button class="btn btn-gray" onclick="runCheck('/reparations/courriels', this)">✉️ Lire les e-mails des ateliers</button>
+                <button class="btn btn-gray" onclick="runCheck('/reparations/refresh', this)">🔄 Vérifier Wing</button>
             </div>
         </div>
-        <div class="photos" style="margin-top:12px;">
-            {% for source, title in [('client', 'Photos du client'), ('reception', 'Photos à la réception')] %}
-            <label>{{ title }} ({{ c.photos[source] | length }})</label>
-            <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px;">
-                {% for name in c.photos[source] %}
-                <span style="position:relative;">
-                    <a href="/reparations/{{ c.id }}/photos/{{ name }}" target="_blank"><img src="/reparations/{{ c.id }}/photos/{{ name }}" loading="lazy" style="width:84px; height:84px; object-fit:cover; border-radius:8px; border:1px solid #eee;"></a>
-                    <button title="Supprimer" onclick="deletePhoto({{ c.id }}, '{{ name }}')" style="position:absolute; top:2px; right:2px; border:none; background:rgba(0,0,0,0.55); color:#fff; border-radius:50%; width:20px; height:20px; font-size:11px; cursor:pointer;">✕</button>
-                </span>
-                {% else %}
-                <span style="font-size:12px; color:#999;">Aucune</span>
-                {% endfor %}
+        <div class="msg" id="check-msg"></div>
+    </div>
+
+    {% if not cases %}
+    <div class="card empty">Aucune paire à cette étape.</div>
+    {% endif %}
+
+    {% for wname, group in by_workshop.items() %}
+    {% set wkey = (workshops.items() | selectattr('1.name', 'equalto', wname) | map(attribute='0') | first) %}
+    <div class="card" data-workshop="{{ wkey or '' }}" data-wname="{{ wname }}">
+        <div class="group-head">
+            <div>
+                <div class="card-title">{{ wname }} · {{ group | length }} paire{{ 's' if group | length > 1 }}</div>
+                {% if tab == 'a-traiter' %}<div class="meta">Coche les paires qui partent dans le prochain colis.</div>{% endif %}
+                {% if tab == 'etiquette' %}<div class="meta">En attente de l'étiquette UPS de l'atelier. Quand le carton part, indique le n° de suivi.</div>{% endif %}
+                {% if tab == 'atelier' %}<div class="meta">{{ 'Le suivi UPS fait passer les paires en réparation dès la livraison à l\'atelier.' if ups_auto else 'Passe les paires « en réparation » quand l\'atelier a reçu le colis.' }}</div>{% endif %}
+                {% if tab == 'retour' %}<div class="meta">Le client a reçu le lien pour choisir son point relais Chronopost. Relances automatiques à J+3 et J+6, envoi à l'adresse de commande à J+9.</div>{% endif %}
             </div>
+            <label style="font-size:12px; color:#666;"><input type="checkbox" onchange="toggleAll(this)"> tout cocher</label>
+        </div>
+        <div class="scroll">
+        <table>
+            <tr><th></th><th>Réf.</th><th>Client</th><th>Paire</th><th class="hide-sm">Problème</th><th>Suivi</th></tr>
+            {% for c in group %}
+            <tr class="row" onclick="toggleDetail(event, {{ c.id }})">
+                <td><input type="checkbox" class="sel" value="{{ c.id }}" data-decision="{{ c.decision or '' }}" onclick="event.stopPropagation()"></td>
+                <td class="ref">{{ c.wing_ref }}</td>
+                <td>{{ c.customer_name or '' }}</td>
+                <td>{{ c.model }} · {{ c.size }} {% if c.decision == 'credit' %}<span class="pill credit">avoir</span>{% endif %}</td>
+                <td class="hide-sm">{{ (c.problem or '') | truncate(70) }}</td>
+                <td style="font-size:12px; color:#666;">
+                    {% if tab == 'attente' %}{{ parcel_labels.get(c.parcel_status or 'CREATED', '') }}{% endif %}
+                    {% if tab in ('etiquette', 'atelier') %}
+                        {% set labels = c.docs | selectattr('1', 'equalto', 'Étiquette UPS') | list %}
+                        {% if labels %}<a href="/reparations/{{ c.id }}/documents/{{ labels[-1][0] }}" target="_blank" onclick="event.stopPropagation()">étiquette</a><br>{% endif %}
+                        {% if c.workshop_tracking %}<a href="{{ ups_link(c.workshop_tracking) }}" target="_blank" onclick="event.stopPropagation()">{{ c.workshop_tracking }}</a>{% elif tab == 'etiquette' %}en attente{% endif %}
+                        {% if tab == 'atelier' %}<br>{{ status_labels[c.status] }}{% endif %}
+                    {% endif %}
+                    {% if tab == 'retour' %}{% if c.return_reminder_count %}{{ c.return_reminder_count }} relance(s){% else %}prévenu le {{ (c.return_requested_at or '')[:10] }}{% endif %}{% endif %}
+                    {% if tab == 'client' and c.delivery %}{{ c.delivery.relay_name or c.delivery.city }} · {{ status_labels[c.status] }}{% endif %}
+                    {% if tab == 'clos' %}{{ status_labels[c.status] }}{% endif %}
+                </td>
+            </tr>
+            <tr class="detail" id="detail-{{ c.id }}" style="display:none;">
+                <td colspan="6">
+                    <div class="meta" style="margin-bottom:10px;">
+                        {{ c.product }} · {{ c.weight_kg }} kg · commande #{{ c.order_number }} · {{ c.customer_email or 'pas d\'e-mail client' }}
+                        {% if c.tracking_id %} · retour client <a href="https://www.laposte.fr/outils/suivre-vos-envois?code={{ c.tracking_id }}" target="_blank">{{ c.tracking_id }}</a>{% endif %}
+                        {% if c.delivery %}<br>📍 {{ delivery_options[c.delivery.option].label }}{% if c.delivery.relay_name %} : {{ c.delivery.relay_name }}{% endif %} · {{ c.delivery.zip }} {{ c.delivery.city }} · {% if c.return_order_ref %}commande Wing {{ c.return_order_ref }}{% else %}<span style="color:#b45309;">commande Wing à créer à la main</span>{% endif %}{% endif %}
+                    </div>
+                    <div class="grid" id="form-{{ c.id }}">
+                        <div><label class="f">Statut</label>
+                            <select data-field="status">{% for key, text in statuses %}<option value="{{ key }}" {% if key == c.status %}selected{% endif %}>{{ text }}</option>{% endfor %}</select>
+                        </div>
+                        <div><label class="f">Demande à l'atelier</label>
+                            <select data-field="decision">{% for key, text in decisions.items() %}<option value="{{ key }}" {% if key == (c.decision or '') %}selected{% endif %}>{{ text or '—' }}</option>{% endfor %}</select>
+                        </div>
+                        <div class="full"><label class="f">Problème constaté</label><input data-field="problem" value="{{ c.problem or '' }}"></div>
+                        <div><label class="f">Atelier</label><input data-field="workshop" value="{{ c.workshop or '' }}"></div>
+                        <div><label class="f">Référence atelier</label><input data-field="workshop_ref" value="{{ c.workshop_ref or '' }}"></div>
+                        <div class="full"><label class="f">Notes</label><textarea data-field="notes">{{ c.notes or '' }}</textarea></div>
+                    </div>
+                    <div style="margin-top:12px;">
+                        {% for source, title in [('client', 'Photos du client'), ('reception', 'Photos à la réception')] %}
+                        <label class="f">{{ title }} ({{ c.photos[source] | length }})</label>
+                        <div class="thumbs">
+                            {% for name in c.photos[source] %}
+                            <span style="position:relative;"><a href="/reparations/{{ c.id }}/photos/{{ name }}" target="_blank"><img src="/reparations/{{ c.id }}/photos/{{ name }}" loading="lazy"></a>
+                                <button title="Supprimer" onclick="deletePhoto({{ c.id }}, '{{ name }}')" style="position:absolute; top:2px; right:2px; border:none; background:rgba(0,0,0,0.55); color:#fff; border-radius:50%; width:20px; height:20px; font-size:11px; cursor:pointer;">✕</button></span>
+                            {% else %}<span style="font-size:12px; color:#999;">Aucune</span>{% endfor %}
+                        </div>
+                        {% endfor %}
+                        <label class="f">Documents ({{ c.docs | length }})</label>
+                        <div style="font-size:13px; margin-bottom:8px;">
+                            {% for name, kind, original in c.docs %}<div>📄 <a href="/reparations/{{ c.id }}/documents/{{ name }}" target="_blank">{{ kind }} · {{ original }}</a></div>{% else %}<span style="font-size:12px; color:#999;">Aucun</span>{% endfor %}
+                        </div>
+                        <div class="actions">
+                            <label class="btn btn-gray">📷 Ajouter des photos<input type="file" accept="image/*" multiple style="display:none;" onchange="uploadPhotos({{ c.id }}, this)"></label>
+                            <button class="btn btn-gray" onclick="importClientPhotos({{ c.id }}, this)">✉️ Photos du client</button>
+                            <label class="btn btn-gray">📄 Ajouter un PDF<input type="file" accept="application/pdf" style="display:none;" onchange="uploadDoc({{ c.id }}, this)"></label>
+                            <button class="btn btn-purple" onclick="saveCase({{ c.id }}, this)">Enregistrer</button>
+                            <span class="msg" id="msg-{{ c.id }}"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
             {% endfor %}
-            <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
-                <label class="btn btn-gray" style="display:inline-block; margin:0; font-weight:500; color:#333;">📷 Ajouter des photos
-                    <input type="file" accept="image/*" multiple style="display:none;" onchange="uploadPhotos({{ c.id }}, this)">
-                </label>
-                <button class="btn btn-gray" onclick="importClientPhotos({{ c.id }}, this)">✉️ Récupérer les photos du client</button>
-                <span class="msg" id="photo-msg-{{ c.id }}"></span>
-            </div>
+        </table>
         </div>
+
         <div class="actions">
-            <button class="btn btn-purple" onclick="saveCase({{ c.id }}, this)">Enregistrer</button>
-            <span class="msg" id="msg-{{ c.id }}"></span>
+            {% if tab == 'a-traiter' %}
+                {% if wkey %}
+                <button class="btn btn-purple" onclick="previewWorkshop(this)">Préparer la demande d'étiquette</button>
+                {% else %}
+                <button class="btn btn-purple" onclick="groupStatus(this, 'sent_workshop', 'Ces paires sont déposées chez {{ wname }} ?')">Paires déposées chez {{ wname }}</button>
+                {% endif %}
+            {% elif tab == 'etiquette' %}
+                <input class="tracking" placeholder="N° de suivi UPS (1Z…)" style="max-width:230px;" value="{{ (group | map(attribute='workshop_tracking') | select | first) or '' }}">
+                <button class="btn btn-purple" onclick="cartonShipped(this)">Colis parti</button>
+            {% elif tab == 'atelier' %}
+                {% if not ups_auto %}<button class="btn btn-gray" onclick="groupStatus(this, 'in_repair')">Arrivées à l'atelier</button>{% endif %}
+                <button class="btn btn-green" onclick="groupStatus(this, 'back_logistics', 'Les clients des paires cochées vont recevoir l\'e-mail « votre paire est prête ». Continuer ?', 'repair')">Paires revenues : prévenir les clients</button>
+                <button class="btn btn-amber" onclick="groupStatus(this, 'credit_received', null, 'credit')">Avoir reçu</button>
+            {% endif %}
+            <span class="msg"></span>
+        </div>
+        <div class="ws-draft" style="display:none; margin-top:12px;">
+            <div class="meta ws-summary"></div>
+            <label class="f">De</label><input value="samuel@maxsauveur.com" disabled>
+            <label class="f" style="margin-top:8px;">À</label><input class="ws-to" disabled>
+            <label class="f" style="margin-top:8px;">Objet</label><input class="ws-subject">
+            <label class="f" style="margin-top:8px;">Message (modifiable)</label><textarea class="ws-body" style="min-height:320px;"></textarea>
+            <div class="actions"><button class="btn btn-purple" onclick="sendWorkshop(this)">Envoyer à l'atelier</button><span class="msg ws-msg"></span></div>
         </div>
     </div>
-    {% else %}
-    <div class="empty">Aucun dossier réparation en cours.<br>Ils apparaissent ici dès qu'une étiquette réparation est générée depuis les e-mails.</div>
     {% endfor %}
 </div>
 <script>
+const post = (url, body) => fetch(url, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body || {})}).then(r => r.json());
+const groupOf = el => el.closest('.card');
+const selected = (card, decision) => [...card.querySelectorAll('.sel:checked')]
+    .filter(el => !decision || (el.dataset.decision || 'repair') === decision).map(el => el.value);
+const groupMsg = card => card.querySelector('.actions:last-of-type .msg') || card.querySelector('.msg');
+
+function toggleDetail(e, id) {
+    const row = document.getElementById('detail-' + id);
+    row.style.display = row.style.display === 'none' ? 'table-row' : 'none';
+}
+function toggleAll(box) { groupOf(box).querySelectorAll('.sel').forEach(el => el.checked = box.checked); }
+
+async function runCheck(url, btn) {
+    const msg = document.getElementById('check-msg');
+    btn.disabled = true; msg.textContent = '⏳ ...';
+    try {
+        const d = await post(url);
+        if (!d.success) msg.textContent = '❌ ' + d.error;
+        else if (d.done !== undefined) { msg.textContent = d.done.length ? '✅ ' + d.done.join(' · ') : 'Rien de nouveau dans les e-mails des ateliers.'; if (d.done.length) setTimeout(() => location.reload(), 2000); }
+        else { msg.textContent = `✅ ${d.moved} paire(s) réceptionnée(s)`; if (d.moved) setTimeout(() => location.reload(), 1200); }
+    } catch (e) { msg.textContent = '❌ Erreur réseau'; }
+    btn.disabled = false;
+}
+
+async function groupStatus(btn, status, question, decision) {
+    const card = groupOf(btn), msg = btn.parentElement.querySelector('.msg');
+    const ids = selected(card, decision);
+    if (!ids.length) { msg.textContent = decision === 'credit' ? 'Coche une paire en avoir.' : 'Coche au moins une paire' + (decision ? ' (hors avoirs).' : '.'); return; }
+    if (question && !confirm(question)) return;
+    btn.disabled = true; msg.textContent = '⏳ ...';
+    const d = await post('/reparations/statut-groupe', {status, case_ids: ids});
+    if (d.success) { msg.innerHTML = '✅ ' + (d.notes.length ? d.notes.join('<br>') : 'Fait'); setTimeout(() => location.reload(), 1500); }
+    else { msg.textContent = '❌ ' + d.error; btn.disabled = false; }
+}
+
+async function cartonShipped(btn) {
+    const card = groupOf(btn), msg = btn.parentElement.querySelector('.msg');
+    const ids = selected(card);
+    if (!ids.length) { msg.textContent = 'Coche les paires du carton.'; return; }
+    btn.disabled = true;
+    const d = await post('/reparations/atelier/colis-parti', {case_ids: ids, tracking: card.querySelector('.tracking').value});
+    if (d.success) { msg.textContent = '✅ Paires passées « en atelier »'; setTimeout(() => location.reload(), 1200); }
+    else { msg.textContent = '❌ ' + d.error; btn.disabled = false; }
+}
+
+async function previewWorkshop(btn) {
+    const card = groupOf(btn), msg = btn.parentElement.querySelector('.msg');
+    const ids = selected(card);
+    if (!ids.length) { msg.textContent = 'Coche les paires du colis.'; return; }
+    btn.disabled = true; msg.textContent = '⏳ Préparation (photos incluses)...';
+    const d = await post('/reparations/atelier/apercu', {workshop: card.dataset.workshop, case_ids: ids});
+    btn.disabled = false;
+    if (!d.success) { msg.textContent = '❌ ' + d.error; return; }
+    msg.textContent = '';
+    const draft = card.querySelector('.ws-draft');
+    draft.querySelector('.ws-to').value = d.to;
+    draft.querySelector('.ws-subject').value = d.subject;
+    draft.querySelector('.ws-body').value = d.body;
+    const warn = [];
+    if (d.missing_ref.length) warn.push('réf atelier manquante : ' + d.missing_ref.join(', '));
+    if (d.missing_problem.length) warn.push('problème non renseigné : ' + d.missing_problem.join(', '));
+    draft.querySelector('.ws-summary').innerHTML = `${d.cartons.length} carton(s) · ${d.photos} photo(s) jointe(s)` + (warn.length ? `<br><span style="color:#b45309;">⚠️ ${warn.join(' · ')}</span>` : '');
+    draft.style.display = 'block';
+}
+
+async function sendWorkshop(btn) {
+    const card = groupOf(btn), draft = card.querySelector('.ws-draft'), msg = draft.querySelector('.ws-msg');
+    if (!confirm('Envoyer cet e-mail à ' + draft.querySelector('.ws-to').value + ' ?')) return;
+    btn.disabled = true; msg.textContent = '⏳ Envoi...';
+    const d = await post('/reparations/atelier/envoyer', {workshop: card.dataset.workshop, case_ids: selected(card),
+        subject: draft.querySelector('.ws-subject').value, body: draft.querySelector('.ws-body').value});
+    if (d.success) { msg.textContent = `✅ Envoyé à ${d.to} avec ${d.photos} photo(s). Les paires passent dans « Étiquette demandée ».`; setTimeout(() => location.href = '/reparations?onglet=etiquette', 2500); }
+    else { msg.textContent = '❌ ' + (d.error || 'Erreur'); btn.disabled = false; }
+}
+
 async function saveCase(id, btn) {
-    const card = document.getElementById('case-' + id);
     const payload = {};
-    card.querySelectorAll('[data-field]').forEach(el => payload[el.dataset.field] = el.value);
+    document.querySelectorAll(`#form-${id} [data-field]`).forEach(el => payload[el.dataset.field] = el.value);
     const msg = document.getElementById('msg-' + id);
-    btn.disabled = true;
-    msg.textContent = '⏳ Enregistrement...';
-    try {
-        const res = await fetch('/reparations/' + id, {
-            method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload)
-        });
-        const data = await res.json();
-        if (data.success) {
-            document.getElementById('badge-' + id).textContent = data.status_label;
-            msg.textContent = (data.synced ? '✅ Enregistré et copié dans le Sheet' : '✅ Enregistré · ⚠️ Sheet non mis à jour')
-                + (data.note ? ' · ' + data.note : '');
-        } else {
-            msg.textContent = '❌ ' + (data.error || 'Erreur');
-        }
-    } catch (e) {
-        msg.textContent = '❌ Erreur réseau';
-    }
+    btn.disabled = true; msg.textContent = '⏳ ...';
+    const d = await post('/reparations/' + id, payload);
+    msg.textContent = d.success ? '✅ Enregistré' + (d.note ? ' · ' + d.note : '') : '❌ ' + d.error;
     btn.disabled = false;
-}
-
-function _wsSelection() {
-    return [...document.querySelectorAll('#ws-list input:checked')].map(el => el.value);
-}
-
-function precheckWorkshop() {
-    const sel = document.getElementById('ws-key');
-    if (!sel) return;
-    const name = sel.options[sel.selectedIndex].dataset.name;
-    // Pairs already assigned to this workshop, and unassigned ones, start checked.
-    document.querySelectorAll('#ws-list input').forEach(el => {
-        el.checked = !el.dataset.workshop || el.dataset.workshop === name;
-    });
-    document.getElementById('ws-draft').style.display = 'none';
-}
-
-async function previewWorkshop() {
-    const msg = document.getElementById('ws-msg');
-    const btn = document.getElementById('ws-preview-btn');
-    btn.disabled = true;
-    msg.textContent = '⏳ Préparation (photos des clients incluses)...';
-    try {
-        const res = await fetch('/reparations/atelier/apercu', {
-            method: 'POST', headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({workshop: document.getElementById('ws-key').value, case_ids: _wsSelection()})
-        });
-        const data = await res.json();
-        if (!data.success) { msg.textContent = '❌ ' + data.error; btn.disabled = false; return; }
-        document.getElementById('ws-to').value = data.to;
-        document.getElementById('ws-subject').value = data.subject;
-        document.getElementById('ws-body').value = data.body;
-        const warn = [];
-        if (data.missing_ref.length) warn.push('réf atelier manquante : ' + data.missing_ref.join(', '));
-        if (data.missing_problem.length) warn.push('problème non renseigné : ' + data.missing_problem.join(', '));
-        document.getElementById('ws-summary').innerHTML =
-            `${data.cartons.length} carton(s) · ${data.photos} photo(s) jointe(s)` +
-            (warn.length ? `<br><span style="color:#b45309;">⚠️ ${warn.join(' · ')}. Complète les dossiers plus bas puis prépare à nouveau, ou corrige directement le message.</span>` : '');
-        document.getElementById('ws-draft').style.display = 'block';
-        document.getElementById('ws-shipped-btn').style.display = 'none';
-        document.getElementById('ws-send-msg').textContent = '';
-        document.getElementById('ws-send-btn').disabled = false;
-        msg.textContent = '';
-    } catch (e) {
-        msg.textContent = '❌ Erreur réseau';
-    }
-    btn.disabled = false;
-}
-
-async function sendWorkshop() {
-    const btn = document.getElementById('ws-send-btn');
-    const msg = document.getElementById('ws-send-msg');
-    if (!confirm('Envoyer cet e-mail à ' + document.getElementById('ws-to').value + ' ?')) return;
-    btn.disabled = true;
-    msg.textContent = '⏳ Envoi...';
-    try {
-        const res = await fetch('/reparations/atelier/envoyer', {
-            method: 'POST', headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                workshop: document.getElementById('ws-key').value, case_ids: _wsSelection(),
-                subject: document.getElementById('ws-subject').value, body: document.getElementById('ws-body').value
-            })
-        });
-        const data = await res.json();
-        if (data.success) {
-            msg.textContent = `✅ Envoyé à ${data.to} avec ${data.photos} photo(s). Quand le colis part avec l'étiquette UPS de l'atelier :`;
-            document.getElementById('ws-shipped-btn').style.display = 'inline-block';
-        } else {
-            msg.textContent = '❌ ' + (data.error || 'Erreur');
-            btn.disabled = false;
-        }
-    } catch (e) {
-        msg.textContent = '❌ Erreur réseau';
-        btn.disabled = false;
-    }
-}
-
-async function markShipped() {
-    const btn = document.getElementById('ws-shipped-btn');
-    btn.disabled = true;
-    const res = await fetch('/reparations/statut-groupe', {
-        method: 'POST', headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({status: 'sent_workshop', case_ids: _wsSelection()})
-    });
-    const data = await res.json();
-    if (data.success) location.reload();
-    else { document.getElementById('ws-send-msg').textContent = '❌ ' + data.error; btn.disabled = false; }
+    if (d.success) setTimeout(() => location.reload(), 1200);
 }
 
 async function uploadPhotos(id, input) {
-    const msg = document.getElementById('photo-msg-' + id);
-    if (!input.files.length) return;
-    const form = new FormData();
+    const msg = document.getElementById('msg-' + id), form = new FormData();
     [...input.files].forEach(f => form.append('photos', f));
-    msg.textContent = `⏳ Envoi de ${input.files.length} photo(s)...`;
-    try {
-        const res = await fetch(`/reparations/${id}/photos`, {method: 'POST', body: form});
-        const data = await res.json();
-        msg.textContent = (data.saved ? `✅ ${data.saved} photo(s) ajoutée(s)` : '❌ Aucune photo ajoutée') +
-            (data.errors.length ? ' · ' + data.errors.join(' · ') : '');
-        if (data.saved) setTimeout(() => location.reload(), 800);
-    } catch (e) {
-        msg.textContent = '❌ Erreur réseau';
-    }
-    input.value = '';
+    msg.textContent = '⏳ Envoi des photos...';
+    const d = await fetch(`/reparations/${id}/photos`, {method: 'POST', body: form}).then(r => r.json());
+    msg.textContent = (d.saved ? `✅ ${d.saved} photo(s) ajoutée(s)` : '❌ Aucune photo ajoutée') + (d.errors.length ? ' · ' + d.errors.join(' · ') : '');
+    if (d.saved) setTimeout(() => location.reload(), 800);
+}
+
+async function uploadDoc(id, input) {
+    const msg = document.getElementById('msg-' + id), form = new FormData();
+    form.append('document', input.files[0]);
+    form.append('kind', confirm('Est-ce un avoir ? (Annuler = autre document)') ? 'credit' : 'document');
+    const d = await fetch(`/reparations/${id}/documents`, {method: 'POST', body: form}).then(r => r.json());
+    msg.textContent = d.success ? '✅ PDF ajouté' : '❌ ' + d.error;
+    if (d.success) setTimeout(() => location.reload(), 800);
 }
 
 async function importClientPhotos(id, btn) {
-    const msg = document.getElementById('photo-msg-' + id);
-    btn.disabled = true;
-    msg.textContent = '⏳ Recherche dans les e-mails du client...';
-    try {
-        const res = await fetch(`/reparations/${id}/photos/client`, {method: 'POST'});
-        const data = await res.json();
-        msg.textContent = data.success ? (data.added ? `✅ ${data.added} photo(s) récupérée(s)` : 'Aucune nouvelle photo dans ses e-mails') : '❌ ' + data.error;
-        if (data.added) setTimeout(() => location.reload(), 800);
-    } catch (e) {
-        msg.textContent = '❌ Erreur réseau';
-    }
+    const msg = document.getElementById('msg-' + id);
+    btn.disabled = true; msg.textContent = '⏳ Recherche dans ses e-mails...';
+    const d = await post(`/reparations/${id}/photos/client`);
+    msg.textContent = d.success ? (d.added ? `✅ ${d.added} photo(s) récupérée(s)` : 'Aucune nouvelle photo') : '❌ ' + d.error;
     btn.disabled = false;
+    if (d.added) setTimeout(() => location.reload(), 800);
 }
 
 async function deletePhoto(id, name) {
     if (!confirm('Supprimer cette photo ?')) return;
-    const res = await fetch(`/reparations/${id}/photos/${name}/supprimer`, {method: 'POST'});
-    if ((await res.json()).success) location.reload();
+    if ((await post(`/reparations/${id}/photos/${name}/supprimer`)).success) location.reload();
+}
+
+async function fileInbox(itemId, btn) {
+    const ids = [...document.getElementById('inbox-' + itemId).selectedOptions].map(o => o.value);
+    if (!ids.length) { alert('Choisis le ou les dossiers concernés.'); return; }
+    btn.disabled = true;
+    const d = await post('/reparations/a-classer/' + itemId, {case_ids: ids});
+    if (d.success) location.reload(); else { alert(d.error); btn.disabled = false; }
 }
 
 async function addReceived() {
-    const btn = document.getElementById('add-btn');
-    const msg = document.getElementById('add-msg');
+    const btn = document.getElementById('add-btn'), msg = document.getElementById('add-msg');
     const v = id => document.getElementById(id).value.trim();
-    btn.disabled = true;
-    msg.textContent = '⏳ Création...';
-    try {
-        const res = await fetch('/reparations/ajouter', {
-            method: 'POST', headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({order_number: v('add-order'), product: v('add-product'), problem: v('add-problem'), decision: v('add-decision')})
-        });
-        const data = await res.json();
-        if (data.success) {
-            msg.textContent = `✅ ${data.wing_ref} · ${data.product} · ${data.workshop || 'atelier à préciser'} ${data.workshop_ref}` +
-                (data.photos_thread ? '' : ' · ⚠️ aucun e-mail du client trouvé (pas de photos)');
-            ['add-order', 'add-product', 'add-problem'].forEach(id => document.getElementById(id).value = '');
-            setTimeout(() => location.reload(), 2500);
-        } else {
-            msg.textContent = '❌ ' + data.error;
-        }
-    } catch (e) {
-        msg.textContent = '❌ Erreur réseau';
-    }
+    btn.disabled = true; msg.textContent = '⏳ Création...';
+    const d = await post('/reparations/ajouter', {order_number: v('add-order'), product: v('add-product'), problem: v('add-problem'), decision: v('add-decision')});
+    msg.textContent = d.success ? `✅ ${d.wing_ref} · ${d.product} · ${d.workshop || 'atelier à préciser'}` : '❌ ' + d.error;
     btn.disabled = false;
-}
-
-async function markBack() {
-    const ids = [...document.querySelectorAll('#back-list input:checked')].map(el => el.value);
-    const msg = document.getElementById('back-msg');
-    if (!ids.length) { msg.textContent = 'Coche au moins une paire.'; return; }
-    if (!confirm(`${ids.length} client(s) vont recevoir l'e-mail « votre paire est prête ». Continuer ?`)) return;
-    const btn = document.getElementById('back-btn');
-    btn.disabled = true;
-    msg.textContent = '⏳ Envoi des e-mails...';
-    try {
-        const res = await fetch('/reparations/statut-groupe', {
-            method: 'POST', headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({status: 'back_logistics', case_ids: ids})
-        });
-        const data = await res.json();
-        if (data.success) {
-            msg.innerHTML = '✅ ' + (data.notes.length ? data.notes.join('<br>') : 'Statuts mis à jour');
-            setTimeout(() => location.reload(), 2500);
-        } else {
-            msg.textContent = '❌ ' + data.error;
-            btn.disabled = false;
-        }
-    } catch (e) {
-        msg.textContent = '❌ Erreur réseau';
-        btn.disabled = false;
-    }
-}
-
-document.addEventListener('DOMContentLoaded', precheckWorkshop);
-
-async function refreshAll() {
-    const btn = document.getElementById('refresh-btn');
-    const msg = document.getElementById('refresh-msg');
-    btn.disabled = true;
-    msg.textContent = '⏳ Vérification...';
-    try {
-        const res = await fetch('/reparations/refresh', {method: 'POST'});
-        const data = await res.json();
-        if (data.success) {
-            msg.textContent = `✅ ${data.moved} paire(s) réceptionnée(s) · ${data.synced} ligne(s) dans le Sheet`;
-            if (data.moved) setTimeout(() => location.reload(), 1200);
-        } else {
-            msg.textContent = '❌ ' + (data.error || 'Erreur');
-        }
-    } catch (e) {
-        msg.textContent = '❌ Erreur réseau';
-    }
-    btn.disabled = false;
+    if (d.success) setTimeout(() => location.href = '/reparations?onglet=a-traiter', 2000);
 }
 </script>
 </body>

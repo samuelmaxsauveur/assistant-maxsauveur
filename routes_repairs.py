@@ -1,4 +1,5 @@
 import json
+import re
 from datetime import datetime
 
 from flask import Blueprint, request, jsonify, render_template, send_file
@@ -7,10 +8,13 @@ import database
 import gmail as gmail_helper
 import intake
 import repair_catalog
+import repair_docs
 import repair_photos
 import repairs
 import returns
+import ups_tracking
 import workshop
+import workshop_mail
 
 
 def _after_status_change(case):
@@ -32,23 +36,31 @@ repairs_bp = Blueprint('repairs', __name__)
 
 @repairs_bp.route('/reparations')
 def repairs_page():
-    cases = database.get_repair_cases()
-    show_closed = request.args.get('tout') == '1'
-    if not show_closed:
-        cases = [c for c in cases if c['status'] not in ('delivered_customer', 'cancelled')]
-    # Pairs received and not yet shipped to a workshop.
     all_cases = database.get_repair_cases()
-    ready = [c for c in all_cases if c['status'] == 'received']
-    # Pairs at a workshop or on their way back from it.
-    at_workshop = [c for c in all_cases if c['status'] in ('sent_workshop', 'in_repair', 'returning')]
+    counts = {key: sum(1 for c in all_cases if c['status'] in statuses) for key, _, statuses in repairs.STAGES}
+    tab = request.args.get('onglet')
+    if tab not in counts:
+        # Open on the first stage that needs something from Samuel.
+        tab = next((k for k in ('a-traiter', 'etiquette', 'retour', 'atelier', 'client', 'attente') if counts[k]), 'a-traiter')
+    statuses = dict((k, s) for k, _, s in repairs.STAGES)[tab]
+    cases = [c for c in all_cases if c['status'] in statuses]
     for c in cases:
         c['delivery'] = json.loads(c['return_delivery']) if c.get('return_delivery') else None
         c['photos'] = {s: repair_photos.names(c['id'], s) for s in repair_photos.SOURCES}
-    return render_template('repairs.html', cases=cases, statuses=repairs.STATUSES,
+        c['docs'] = [(n,) + repair_docs.describe(n) for n in repair_docs.names(c['id'])]
+        c['size'] = (c.get('product') or '').rsplit(' - ', 1)[-1] if ' - ' in (c.get('product') or '') else ''
+        c['model'] = repair_catalog.model_name(c.get('product'))
+    by_workshop = {}
+    for c in cases:
+        by_workshop.setdefault(c.get('workshop') or 'Sans atelier', []).append(c)
+    open_cases = [c for c in all_cases if c['status'] not in ('delivered_customer', 'credit_received', 'cancelled')]
+    return render_template('repairs.html', tab=tab, stages=repairs.STAGES, counts=counts, cases=cases,
+                           by_workshop=by_workshop, statuses=repairs.STATUSES,
                            status_labels=repairs.STATUS_LABELS, decisions=repairs.DECISIONS,
-                           parcel_labels=repairs.PARCEL_LABELS, show_closed=show_closed,
-                           ready=ready, workshops=workshop.WORKSHOPS, at_workshop=at_workshop,
-                           delivery_options=returns.DELIVERY_OPTIONS)
+                           parcel_labels=repairs.PARCEL_LABELS, workshops=workshop.WORKSHOPS,
+                           delivery_options=returns.DELIVERY_OPTIONS, inbox=database.get_repair_inbox(),
+                           open_cases=open_cases, ups_link=ups_tracking.tracking_link,
+                           ups_auto=ups_tracking.enabled(), samuel_connected=gmail_helper.get_samuel_service() is not None)
 
 
 def _selected_cases(data):
@@ -113,7 +125,7 @@ def workshop_send():
     for case in cases:
         notes = (case.get('notes') or '').strip()
         line = f"{stamp} : demande d'étiquette UPS envoyée à {name}"
-        repairs.update_case(case['id'], workshop=name, notes=f"{notes}\n{line}".strip())
+        repairs.update_case(case['id'], workshop=name, status='label_requested', notes=f"{notes}\n{line}".strip())
     return jsonify({'success': True, 'photos': len(files), 'to': to})
 
 
@@ -169,6 +181,74 @@ def photo_file(case_id, name):
 @repairs_bp.route('/reparations/<int:case_id>/photos/<name>/supprimer', methods=['POST'])
 def photo_delete(case_id, name):
     return jsonify({'success': repair_photos.delete(case_id, name)})
+
+
+@repairs_bp.route('/reparations/atelier/colis-parti', methods=['POST'])
+def carton_shipped():
+    """The carton left with the workshop's UPS label: pairs are on their way."""
+    data = request.json or {}
+    tracking = re.sub(r'\s', '', data.get('tracking') or '').upper()
+    if tracking and not workshop_mail.UPS_TRACKING.fullmatch(tracking):
+        return jsonify({'success': False, 'error': "Numéro UPS invalide (il commence par 1Z, 18 caractères)"}), 400
+    ids = [int(i) for i in data.get('case_ids') or []]
+    if not ids:
+        return jsonify({'success': False, 'error': 'Sélectionne au moins une paire'}), 400
+    now = datetime.utcnow().isoformat()
+    for case_id in ids:
+        database.update_repair_case(case_id, {'workshop_tracking': tracking or None, 'workshop_shipped_at': now})
+        repairs.update_case(case_id, status='sent_workshop')
+    return jsonify({'success': True, 'count': len(ids)})
+
+
+@repairs_bp.route('/reparations/<int:case_id>/documents', methods=['POST'])
+def upload_document(case_id):
+    if not database.get_repair_case(case_id):
+        return jsonify({'success': False, 'error': 'Dossier introuvable'}), 404
+    f = request.files.get('document')
+    try:
+        repair_docs.save_upload(case_id, request.form.get('kind', 'document'), f.filename if f else '', f.read() if f else b'')
+    except ValueError as e:
+        return jsonify({'success': False, 'error': str(e)}), 400
+    return jsonify({'success': True})
+
+
+@repairs_bp.route('/reparations/<int:case_id>/documents/<name>')
+def document_file(case_id, name):
+    p = repair_docs.path(case_id, name)
+    return send_file(p, mimetype='application/pdf') if p else ('Document introuvable', 404)
+
+
+@repairs_bp.route('/reparations/a-classer/<int:item_id>')
+def inbox_file(item_id):
+    item = next((i for i in database.get_repair_inbox(pending_only=False) if i['id'] == item_id), None)
+    p = repair_docs.inbox_path(item['stored_as']) if item else None
+    return send_file(p, mimetype='application/pdf') if p else ('Document introuvable', 404)
+
+
+@repairs_bp.route('/reparations/a-classer/<int:item_id>', methods=['POST'])
+def inbox_assign(item_id):
+    """File a workshop document the assistant could not place on its own."""
+    item = next((i for i in database.get_repair_inbox() if i['id'] == item_id), None)
+    if not item:
+        return jsonify({'success': False, 'error': 'Document déjà classé ou introuvable'}), 404
+    ids = [int(i) for i in (request.json or {}).get('case_ids') or []]
+    if not ids:
+        return jsonify({'success': False, 'error': 'Choisis au moins un dossier'}), 400
+    repair_docs.file_inbox_item(item, ids)
+    if item['kind'] == 'credit':
+        for case_id in ids:
+            repairs.update_case(case_id, status='credit_received')
+    return jsonify({'success': True})
+
+
+@repairs_bp.route('/reparations/courriels', methods=['POST'])
+def check_workshop_mail():
+    """Read the workshops' emails now instead of waiting for the hourly run."""
+    try:
+        done = workshop_mail.check_mailboxes(days=30)
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 502
+    return jsonify({'success': True, 'done': done})
 
 
 @repairs_bp.route('/reparations/statut-groupe', methods=['POST'])

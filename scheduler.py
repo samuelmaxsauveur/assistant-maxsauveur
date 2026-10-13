@@ -12,6 +12,8 @@ import claude_ai
 import database
 import repairs
 import returns
+import ups_tracking
+import workshop_mail
 
 load_dotenv()
 
@@ -362,6 +364,22 @@ def start():
         returns.send_reminders,
         CronTrigger(hour=10, minute=0, timezone=paris_tz),
         id="repair_reminders"
+    )
+
+    # Workshops' replies: UPS labels and credit notes filed in the repair files
+    scheduler.add_job(
+        workshop_mail.check_mailboxes,
+        "interval",
+        minutes=60,
+        id="workshop_mail"
+    )
+
+    # Carton delivered at the workshop: pairs move to "en cours de réparation"
+    scheduler.add_job(
+        ups_tracking.refresh,
+        "interval",
+        minutes=60,
+        id="ups_tracking"
     )
 
     scheduler.start()
