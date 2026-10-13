@@ -13,6 +13,7 @@ import wing_api
 import wing_automation
 import wing_repair
 import repair_catalog
+import repair_photos
 import repairs
 import database
 import scheduler as scheduler_module
@@ -699,6 +700,10 @@ def _run_repair_label_job(job_id, data):
         if maker:
             case = database.update_repair_case(case['id'], {'workshop': maker, 'workshop_ref': maker_ref})
         repairs.push_to_sheet(case)
+        try:
+            repair_photos.import_customer_photos(case)
+        except Exception as e:
+            print(f"[Repair] Customer photos unavailable for {label['ref']}: {e}")
 
         draft = claude_ai.generate_sav_approval_email(
             data.get('customer_name', ''), order_number, data.get('email_body', ''),

@@ -194,6 +194,28 @@
                 <textarea data-field="notes">{{ c.notes or '' }}</textarea>
             </div>
         </div>
+        <div class="photos" style="margin-top:12px;">
+            {% for source, title in [('client', 'Photos du client'), ('reception', 'Photos à la réception')] %}
+            <label>{{ title }} ({{ c.photos[source] | length }})</label>
+            <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px;">
+                {% for name in c.photos[source] %}
+                <span style="position:relative;">
+                    <a href="/reparations/{{ c.id }}/photos/{{ name }}" target="_blank"><img src="/reparations/{{ c.id }}/photos/{{ name }}" loading="lazy" style="width:84px; height:84px; object-fit:cover; border-radius:8px; border:1px solid #eee;"></a>
+                    <button title="Supprimer" onclick="deletePhoto({{ c.id }}, '{{ name }}')" style="position:absolute; top:2px; right:2px; border:none; background:rgba(0,0,0,0.55); color:#fff; border-radius:50%; width:20px; height:20px; font-size:11px; cursor:pointer;">✕</button>
+                </span>
+                {% else %}
+                <span style="font-size:12px; color:#999;">Aucune</span>
+                {% endfor %}
+            </div>
+            {% endfor %}
+            <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+                <label class="btn btn-gray" style="display:inline-block; margin:0; font-weight:500; color:#333;">📷 Ajouter des photos
+                    <input type="file" accept="image/*" multiple style="display:none;" onchange="uploadPhotos({{ c.id }}, this)">
+                </label>
+                <button class="btn btn-gray" onclick="importClientPhotos({{ c.id }}, this)">✉️ Récupérer les photos du client</button>
+                <span class="msg" id="photo-msg-{{ c.id }}"></span>
+            </div>
+        </div>
         <div class="actions">
             <button class="btn btn-purple" onclick="saveCase({{ c.id }}, this)">Enregistrer</button>
             <span class="msg" id="msg-{{ c.id }}"></span>
@@ -314,6 +336,45 @@ async function markShipped() {
     const data = await res.json();
     if (data.success) location.reload();
     else { document.getElementById('ws-send-msg').textContent = '❌ ' + data.error; btn.disabled = false; }
+}
+
+async function uploadPhotos(id, input) {
+    const msg = document.getElementById('photo-msg-' + id);
+    if (!input.files.length) return;
+    const form = new FormData();
+    [...input.files].forEach(f => form.append('photos', f));
+    msg.textContent = `⏳ Envoi de ${input.files.length} photo(s)...`;
+    try {
+        const res = await fetch(`/reparations/${id}/photos`, {method: 'POST', body: form});
+        const data = await res.json();
+        msg.textContent = (data.saved ? `✅ ${data.saved} photo(s) ajoutée(s)` : '❌ Aucune photo ajoutée') +
+            (data.errors.length ? ' · ' + data.errors.join(' · ') : '');
+        if (data.saved) setTimeout(() => location.reload(), 800);
+    } catch (e) {
+        msg.textContent = '❌ Erreur réseau';
+    }
+    input.value = '';
+}
+
+async function importClientPhotos(id, btn) {
+    const msg = document.getElementById('photo-msg-' + id);
+    btn.disabled = true;
+    msg.textContent = '⏳ Recherche dans les e-mails du client...';
+    try {
+        const res = await fetch(`/reparations/${id}/photos/client`, {method: 'POST'});
+        const data = await res.json();
+        msg.textContent = data.success ? (data.added ? `✅ ${data.added} photo(s) récupérée(s)` : 'Aucune nouvelle photo dans ses e-mails') : '❌ ' + data.error;
+        if (data.added) setTimeout(() => location.reload(), 800);
+    } catch (e) {
+        msg.textContent = '❌ Erreur réseau';
+    }
+    btn.disabled = false;
+}
+
+async function deletePhoto(id, name) {
+    if (!confirm('Supprimer cette photo ?')) return;
+    const res = await fetch(`/reparations/${id}/photos/${name}/supprimer`, {method: 'POST'});
+    if ((await res.json()).success) location.reload();
 }
 
 async function addReceived() {

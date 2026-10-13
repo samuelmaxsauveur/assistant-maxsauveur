@@ -1,13 +1,13 @@
-import base64
 import json
 from datetime import datetime
 
-from flask import Blueprint, request, jsonify, render_template
+from flask import Blueprint, request, jsonify, render_template, send_file
 
 import database
 import gmail as gmail_helper
 import intake
 import repair_catalog
+import repair_photos
 import repairs
 import returns
 import workshop
@@ -43,6 +43,7 @@ def repairs_page():
     at_workshop = [c for c in all_cases if c['status'] in ('sent_workshop', 'in_repair', 'returning')]
     for c in cases:
         c['delivery'] = json.loads(c['return_delivery']) if c.get('return_delivery') else None
+        c['photos'] = {s: repair_photos.names(c['id'], s) for s in repair_photos.SOURCES}
     return render_template('repairs.html', cases=cases, statuses=repairs.STATUSES,
                            status_labels=repairs.STATUS_LABELS, decisions=repairs.DECISIONS,
                            parcel_labels=repairs.PARCEL_LABELS, show_closed=show_closed,
@@ -68,8 +69,14 @@ def workshop_preview():
         key, cases = _selected_cases(request.json or {})
     except ValueError as e:
         return jsonify({'success': False, 'error': str(e)}), 400
-    service = gmail_helper.get_gmail_service()
-    counts = {c['id']: len(workshop.customer_photos(service, c)) for c in cases}
+    counts = {}
+    for c in cases:
+        if not repair_photos.names(c['id'], 'client'):
+            try:
+                repair_photos.import_customer_photos(c)
+            except Exception as e:
+                print(f"[Workshop] Customer photos unavailable for {c['wing_ref']}: {e}")
+        counts[c['id']] = len(repair_photos.names(c['id']))
     draft = workshop.draft_email(key, cases, counts)
     missing_ref = [c['wing_ref'] for c in cases if not (c.get('workshop_ref') or '').strip()]
     missing_problem = [c['wing_ref'] for c in cases if not (c.get('problem') or '').strip()]
@@ -93,9 +100,8 @@ def workshop_send():
     files = []
     for case in cases:
         name = case['wing_ref'].lstrip('#')
-        for n, photo in enumerate(workshop.customer_photos(service, case), 1):
-            ext = photo['mime'].split('/')[-1].replace('jpeg', 'jpg')
-            files.append((base64.b64decode(photo['data']), f"{name}_{n}.{ext}", photo['mime']))
+        for n, (data, source) in enumerate(repair_photos.load_all(case['id']), 1):
+            files.append((data, f"{name}_{source}_{n}.jpg", 'image/jpeg'))
     to = ", ".join(workshop.WORKSHOPS[key]['emails'])
     gmail_helper.send_email_with_files(service, to, subject, body, files)
 
@@ -120,6 +126,46 @@ def add_received():
     return jsonify({'success': True, 'wing_ref': case['wing_ref'], 'product': case['product'],
                     'workshop': case.get('workshop') or '', 'workshop_ref': case.get('workshop_ref') or '',
                     'photos_thread': bool(case.get('email_id'))})
+
+
+@repairs_bp.route('/reparations/<int:case_id>/photos', methods=['POST'])
+def upload_photos(case_id):
+    """Reception photos taken by Samuel, from the phone or the computer."""
+    if not database.get_repair_case(case_id):
+        return jsonify({'success': False, 'error': 'Dossier introuvable'}), 404
+    saved, errors = [], []
+    for f in request.files.getlist('photos'):
+        try:
+            saved.append(repair_photos.save(case_id, f.read(), f.mimetype, source='reception'))
+        except ValueError as e:
+            errors.append(f"{f.filename} : {e}")
+    return jsonify({'success': bool(saved), 'saved': len(saved), 'errors': errors})
+
+
+@repairs_bp.route('/reparations/<int:case_id>/photos/client', methods=['POST'])
+def import_client_photos(case_id):
+    """Fetch (again) the photos the customer emailed."""
+    case = database.get_repair_case(case_id)
+    if not case:
+        return jsonify({'success': False, 'error': 'Dossier introuvable'}), 404
+    try:
+        added = repair_photos.import_customer_photos(case)
+    except Exception as e:
+        return jsonify({'success': False, 'error': f"Gmail : {e}"}), 502
+    return jsonify({'success': True, 'added': added})
+
+
+@repairs_bp.route('/reparations/<int:case_id>/photos/<name>')
+def photo_file(case_id, name):
+    p = repair_photos.path(case_id, name)
+    if not p:
+        return 'Photo introuvable', 404
+    return send_file(p, mimetype='image/jpeg')
+
+
+@repairs_bp.route('/reparations/<int:case_id>/photos/<name>/supprimer', methods=['POST'])
+def photo_delete(case_id, name):
+    return jsonify({'success': repair_photos.delete(case_id, name)})
 
 
 @repairs_bp.route('/reparations/statut-groupe', methods=['POST'])

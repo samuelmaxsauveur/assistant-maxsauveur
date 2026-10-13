@@ -12,6 +12,7 @@ import unicodedata
 import database
 import gmail as gmail_helper
 import repair_catalog
+import repair_photos
 import repairs
 import shopify_api
 import wing_repair
@@ -99,4 +100,8 @@ def add_received_pair(order_number, product_hint, problem, decision):
     if parcel:
         case = database.update_repair_case(case["id"], {"parcel_status": parcel["status"]})
         repairs.push_to_sheet(case)
+    try:
+        repair_photos.import_customer_photos(case)
+    except Exception as e:
+        print(f"[Intake] Customer photos unavailable for {ref}: {e}")
     return case

@@ -7,8 +7,6 @@ customer's photos attached, and sends it once Samuel has read it.
 """
 import math
 
-import gmail as gmail_helper
-
 WORKSHOPS = {
     "penha": {"name": "Penha", "emails": ["emilia@penha.pt", "estela@penha.pt"]},
     "gomes": {"name": "Gomes e Leite", "emails": ["geral@gomeseleite.pt", "elisabete@gomeseleite.pt"]},
@@ -19,8 +17,6 @@ WORKSHOPS = {
 # Small carton: 6 low pairs only (Samuel's measure).
 LARGE = {"label": "48 × 34 × 38 cm", "capacity": 6}
 SMALL = {"label": "38 × 38 × 38 cm", "capacity": 6}
-
-MAX_PHOTOS_PER_PAIR = 3
 
 
 def pack(cases):
@@ -114,22 +110,3 @@ def draft_email(workshop_key, cases, photo_counts):
 
 def _numbered(items):
     return [f"  {item}" for item in items]
-
-
-def customer_photos(service, case):
-    """Photos the customer attached in the thread of the repair request."""
-    if not case.get("email_id"):
-        return []
-    try:
-        message = service.users().messages().get(userId="me", id=case["email_id"], format="minimal").execute()
-        thread = service.users().threads().get(userId="me", id=message["threadId"], format="full").execute()
-    except Exception as e:
-        print(f"[Workshop] Thread unavailable for {case['wing_ref']}: {e}")
-        return []
-    photos = []
-    for msg in thread.get("messages", []):
-        sender = next((h["value"] for h in msg["payload"].get("headers", []) if h["name"].lower() == "from"), "")
-        if "maxsauveur.com" in sender.lower():
-            continue
-        photos += gmail_helper.get_image_attachments(service, msg)
-    return photos[:MAX_PHOTOS_PER_PAIR]
