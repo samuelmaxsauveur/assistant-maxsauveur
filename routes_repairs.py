@@ -96,7 +96,10 @@ def workshop_send():
     if not body or not subject:
         return jsonify({'success': False, 'error': "Objet ou message vide"}), 400
 
-    service = gmail_helper.get_gmail_service()
+    # Workshops get Samuel's own address, customers the SAV one (hello@).
+    service = gmail_helper.get_samuel_service()
+    if service is None:
+        return jsonify({'success': False, 'error': "La boîte samuel@maxsauveur.com n'est pas encore connectée à l'assistant"}), 400
     files = []
     for case in cases:
         name = case['wing_ref'].lstrip('#')

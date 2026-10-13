@@ -5,3 +5,4 @@ credentials.json
 *.pyc
 __pycache__/
 *.db
+token_samuel.json

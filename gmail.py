@@ -58,6 +58,38 @@ def _manual_refresh(token_data):
     )
 
 
+# Samuel's own mailbox, used only to send to the workshops: send scope, no reading.
+SAMUEL_SCOPES = ['https://www.googleapis.com/auth/gmail.send']
+SAMUEL_TOKEN_FILE = 'token_samuel.json'
+
+
+def _load_samuel_token():
+    token_env = os.getenv('GMAIL_SAMUEL_TOKEN_JSON')
+    if token_env:
+        return json.loads(base64.b64decode(token_env.strip()).decode('utf-8'))
+    if os.path.exists(SAMUEL_TOKEN_FILE):
+        with open(SAMUEL_TOKEN_FILE) as f:
+            return json.load(f)
+    return None
+
+
+def get_samuel_service():
+    """Gmail service sending as samuel@maxsauveur.com, or None if not connected yet."""
+    token_data = _load_samuel_token()
+    if not token_data:
+        return None
+    return build('gmail', 'v1', credentials=_manual_refresh(token_data))
+
+
+def authorize_samuel():
+    """One-time, on the Mac: sign in as samuel@maxsauveur.com in the browser."""
+    flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SAMUEL_SCOPES)
+    creds = flow.run_local_server(port=0, login_hint='samuel@maxsauveur.com', prompt='consent')
+    with open(SAMUEL_TOKEN_FILE, 'w') as f:
+        f.write(creds.to_json())
+    return creds
+
+
 def get_gmail_service():
     token_data = _load_token_data()
 
