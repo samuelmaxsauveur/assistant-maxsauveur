@@ -6,6 +6,7 @@ from flask import Blueprint, request, jsonify, render_template
 
 import database
 import gmail as gmail_helper
+import intake
 import repair_catalog
 import repairs
 import returns
@@ -105,6 +106,20 @@ def workshop_send():
         line = f"{stamp} : demande d'étiquette UPS envoyée à {name}"
         repairs.update_case(case['id'], workshop=name, notes=f"{notes}\n{line}".strip())
     return jsonify({'success': True, 'photos': len(files), 'to': to})
+
+
+@repairs_bp.route('/reparations/ajouter', methods=['POST'])
+def add_received():
+    """Open a file for a pair that came back without the 🔧 button."""
+    data = request.json or {}
+    try:
+        case = intake.add_received_pair(data.get('order_number', ''), data.get('product', ''),
+                                        data.get('problem', ''), data.get('decision', ''))
+    except ValueError as e:
+        return jsonify({'success': False, 'error': str(e)}), 400
+    return jsonify({'success': True, 'wing_ref': case['wing_ref'], 'product': case['product'],
+                    'workshop': case.get('workshop') or '', 'workshop_ref': case.get('workshop_ref') or '',
+                    'photos_thread': bool(case.get('email_id'))})
 
 
 @repairs_bp.route('/reparations/statut-groupe', methods=['POST'])

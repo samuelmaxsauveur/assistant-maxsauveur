@@ -59,6 +59,23 @@
         </div>
     </div>
 
+    <details class="card" id="add-card">
+        <summary class="card-title" style="cursor:pointer;">＋ Ajouter une paire déjà reçue (sans étiquette 🔧)</summary>
+        <div class="card-meta" style="margin-top:8px;">Pour une paire arrivée sans passer par le bouton 🔧. Le dossier démarre en « Paire réceptionnée », avec l'atelier pré-rempli et le dernier fil d'e-mails du client pour les photos.</div>
+        <div class="grid">
+            <div><label>N° de commande</label><input id="add-order" placeholder="13350"></div>
+            <div><label>Modèle (si plusieurs paires)</label><input id="add-product" placeholder="Paul noir"></div>
+            <div class="full"><label>Problème constaté</label><input id="add-problem" placeholder="Bride de la languette déchirée à l'avant"></div>
+            <div><label>Demande à l'atelier</label>
+                <select id="add-decision"><option value="repair">Paire à réparer</option><option value="credit">Avoir demandé à l'atelier</option></select>
+            </div>
+        </div>
+        <div class="actions">
+            <button class="btn btn-purple" id="add-btn" onclick="addReceived()">Créer le dossier</button>
+            <span class="msg" id="add-msg"></span>
+        </div>
+    </details>
+
     <div class="card" style="border:2px solid #c4b5fd;">
         <div class="card-title">📦 Envoi groupé à un atelier</div>
         {% if ready %}
@@ -297,6 +314,32 @@ async function markShipped() {
     const data = await res.json();
     if (data.success) location.reload();
     else { document.getElementById('ws-send-msg').textContent = '❌ ' + data.error; btn.disabled = false; }
+}
+
+async function addReceived() {
+    const btn = document.getElementById('add-btn');
+    const msg = document.getElementById('add-msg');
+    const v = id => document.getElementById(id).value.trim();
+    btn.disabled = true;
+    msg.textContent = '⏳ Création...';
+    try {
+        const res = await fetch('/reparations/ajouter', {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({order_number: v('add-order'), product: v('add-product'), problem: v('add-problem'), decision: v('add-decision')})
+        });
+        const data = await res.json();
+        if (data.success) {
+            msg.textContent = `✅ ${data.wing_ref} · ${data.product} · ${data.workshop || 'atelier à préciser'} ${data.workshop_ref}` +
+                (data.photos_thread ? '' : ' · ⚠️ aucun e-mail du client trouvé (pas de photos)');
+            ['add-order', 'add-product', 'add-problem'].forEach(id => document.getElementById(id).value = '');
+            setTimeout(() => location.reload(), 2500);
+        } else {
+            msg.textContent = '❌ ' + data.error;
+        }
+    } catch (e) {
+        msg.textContent = '❌ Erreur réseau';
+    }
+    btn.disabled = false;
 }
 
 async function markBack() {
