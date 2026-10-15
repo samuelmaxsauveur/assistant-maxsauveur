@@ -267,7 +267,8 @@ async function groupStatus(btn, status, question, decision) {
     if (question && !confirm(question)) return;
     btn.disabled = true; msg.textContent = '⏳ ...';
     const d = await post('/reparations/statut-groupe', {status, case_ids: ids});
-    if (d.success) { msg.innerHTML = '✅ ' + (d.notes.length ? d.notes.join('<br>') : 'Fait'); setTimeout(() => location.reload(), 1500); }
+    const next = {sent_workshop: 'atelier', in_repair: 'atelier', back_logistics: 'retour', credit_received: 'clos'}[status];
+    if (d.success) { msg.innerHTML = '✅ ' + (d.notes.length ? d.notes.join('<br>') : `${d.count} paire(s) déplacée(s)`); setTimeout(() => location.href = next ? '/reparations?onglet=' + next : location.href, 2000); }
     else { msg.textContent = '❌ ' + d.error; btn.disabled = false; }
 }
 
@@ -277,7 +278,7 @@ async function cartonShipped(btn) {
     if (!ids.length) { msg.textContent = 'Coche les paires du carton.'; return; }
     btn.disabled = true;
     const d = await post('/reparations/atelier/colis-parti', {case_ids: ids, tracking: card.querySelector('.tracking').value});
-    if (d.success) { msg.textContent = '✅ Paires passées « en atelier »'; setTimeout(() => location.reload(), 1200); }
+    if (d.success) { msg.textContent = `✅ ${d.count} paire(s) passée(s) dans « En atelier »`; setTimeout(() => location.href = '/reparations?onglet=atelier', 1500); }
     else { msg.textContent = '❌ ' + d.error; btn.disabled = false; }
 }
 
