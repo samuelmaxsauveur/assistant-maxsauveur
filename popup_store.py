@@ -374,112 +374,151 @@ def send_code_email(pid):
 
 
 # ── Klaviyo ───────────────────────────────────────────────────────────────────
+#
+# Règles fixées par Samuel : rien ne doit partir automatiquement depuis Klaviyo,
+# aucune donnée existante n'est écrasée, rien n'est jamais supprimé.
+#  - Un client déjà connu ne reçoit que les propriétés popup_* ; son nom, son
+#    téléphone et ses abonnements restent tels quels.
+#  - La liste du pop-up est en inscription simple : pas d'e-mail de confirmation.
+#    Si elle est un jour passée en double opt-in, plus personne n'y est abonné.
+#  - Le consentement SMS est seulement noté sur le profil (popup_optin_sms) :
+#    un abonnement SMS peut déclencher un SMS de confirmation chez Klaviyo.
 
 def _kl_headers():
-    key = os.getenv("KLAVIYO_POPUP_API_KEY") or os.getenv("KLAVIYO_API_KEY", "")
+    key = os.getenv("KLAVIYO_POPUP_API_KEY", "")
     return {"Authorization": f"Klaviyo-API-Key {key}", "revision": KLAVIYO_REV,
             "accept": "application/json", "content-type": "application/json"}
 
 
-_list_id = None
+# Un seul échange avec Klaviyo à la fois : le profil est créé avant que le
+# tirage ne l'enrichisse, même si le client tire très vite.
+_kl_lock = threading.Lock()
+_list = None
 
 
-def _klaviyo_list_id():
-    """Identifiant de la liste du pop-up, créée au premier passage."""
-    global _list_id
-    if _list_id:
-        return _list_id
-    r = requests.get(f"{KLAVIYO_BASE}/lists/", headers=_kl_headers(),
-                     params={"filter": f'equals(name,"{KLAVIYO_LIST}")'}, timeout=20)
+def _klaviyo_list():
+    """La liste du pop-up (id, opt_in_process), créée au premier passage."""
+    global _list
+    if _list:
+        return _list
+    r = requests.get(f"{KLAVIYO_BASE}/lists/", headers=_kl_headers(), timeout=20,
+                     params={"filter": f'equals(name,"{KLAVIYO_LIST}")',
+                             "fields[list]": "name,opt_in_process"})
     r.raise_for_status()
     found = r.json().get("data") or []
     if found:
-        _list_id = found[0]["id"]
+        data = found[0]
     else:
-        r = requests.post(f"{KLAVIYO_BASE}/lists/", headers=_kl_headers(), timeout=20,
-                          json={"data": {"type": "list", "attributes": {"name": KLAVIYO_LIST}}})
+        r = requests.post(f"{KLAVIYO_BASE}/lists/", headers=_kl_headers(), timeout=20, json={
+            "data": {"type": "list", "attributes": {"name": KLAVIYO_LIST,
+                                                    "opt_in_process": "single_opt_in"}}})
         r.raise_for_status()
-        _list_id = r.json()["data"]["id"]
-    return _list_id
+        data = r.json()["data"]
+    _list = {"id": data["id"], "opt_in": data["attributes"].get("opt_in_process")}
+    return _list
+
+
+def _popup_props(p):
+    props = {"popup_paris_2026": True, "popup_source": "Pop-up store Paris nov. 2026",
+             "popup_participation": p["created_at"], "popup_optin_sms": bool(p["optin_sms"])}
+    if p["code"]:
+        props.update({"popup_bon_montant": p["amount"], "popup_bon_code": p["code"]})
+    return props
+
+
+def _find_profile(email_addr):
+    r = requests.get(f"{KLAVIYO_BASE}/profiles/", headers=_kl_headers(), timeout=20,
+                     params={"filter": f'equals(email,"{email_addr}")', "fields[profile]": "email"})
+    r.raise_for_status()
+    found = r.json().get("data") or []
+    return found[0]["id"] if found else None
+
+
+def _upsert_profile(p):
+    """Renvoie l'id du profil. Un profil existant ne reçoit que les propriétés popup_*."""
+    props = _popup_props(p)
+    profile_id = _find_profile(p["email"])
+    if profile_id:
+        r = requests.patch(f"{KLAVIYO_BASE}/profiles/{profile_id}/", headers=_kl_headers(), timeout=20,
+                           json={"data": {"type": "profile", "id": profile_id,
+                                          "attributes": {"properties": props}}})
+        r.raise_for_status()
+        return profile_id
+    attrs = {"email": p["email"], "phone_number": p["phone"], "first_name": p["first_name"],
+             "last_name": p["last_name"], "properties": props}
+    r = requests.post(f"{KLAVIYO_BASE}/profiles/", headers=_kl_headers(), timeout=20,
+                      json={"data": {"type": "profile", "attributes": attrs}})
+    if r.status_code >= 400:
+        # Numéro refusé ou déjà porté par un autre profil : on le garde en propriété.
+        attrs.pop("phone_number")
+        attrs["properties"] = {**props, "popup_telephone": p["phone"]}
+        r = requests.post(f"{KLAVIYO_BASE}/profiles/", headers=_kl_headers(), timeout=20,
+                          json={"data": {"type": "profile", "attributes": attrs}})
+    r.raise_for_status()
+    return r.json()["data"]["id"]
 
 
 def sync_klaviyo(pid):
-    """Crée ou met à jour le profil, l'ajoute à la liste du pop-up et enregistre
-    les consentements cochés. Sans case cochée, le profil n'est pas abonné."""
+    """Envoie le participant dans Klaviyo et l'ajoute à la liste du pop-up.
+    Il n'est abonné à la newsletter que s'il a coché la case."""
+    if not os.getenv("KLAVIYO_POPUP_API_KEY"):
+        return
     p = get_participant_by_id(pid)
     if not p:
         return
-    try:
-        props = {"popup_paris_2026": True, "popup_source": "Pop-up store Paris nov. 2026",
-                 "popup_participation": p["created_at"]}
-        if p["code"]:
-            props.update({"popup_bon_montant": p["amount"], "popup_bon_code": p["code"]})
-        r = requests.post(f"{KLAVIYO_BASE}/profile-import/", headers=_kl_headers(), timeout=20, json={
-            "data": {"type": "profile", "attributes": {
-                "email": p["email"], "phone_number": p["phone"],
-                "first_name": p["first_name"], "last_name": p["last_name"],
-                "properties": props}}})
-        if r.status_code >= 400 and "phone_number" in r.text:
-            # Klaviyo refuse certains numéros étrangers : on garde le profil sans le téléphone.
-            attrs = {"email": p["email"], "first_name": p["first_name"],
-                     "last_name": p["last_name"], "properties": {**props, "popup_telephone": p["phone"]}}
-            r = requests.post(f"{KLAVIYO_BASE}/profile-import/", headers=_kl_headers(), timeout=20,
-                              json={"data": {"type": "profile", "attributes": attrs}})
-        r.raise_for_status()
-        profile_id = r.json()["data"]["id"]
+    with _kl_lock:
+        try:
+            profile_id = _upsert_profile(p)
+            lst = _klaviyo_list()
+            r = requests.post(f"{KLAVIYO_BASE}/lists/{lst['id']}/relationships/profiles/",
+                              headers=_kl_headers(), timeout=20,
+                              json={"data": [{"type": "profile", "id": profile_id}]})
+            r.raise_for_status()
 
-        list_id = _klaviyo_list_id()
-        r = requests.post(f"{KLAVIYO_BASE}/lists/{list_id}/relationships/profiles/",
-                          headers=_kl_headers(), timeout=20,
-                          json={"data": [{"type": "profile", "id": profile_id}]})
-        r.raise_for_status()
-
-        notes = []
-        if p["optin_email"] or p["optin_sms"]:
-            subs = {}
+            note = None
             if p["optin_email"]:
-                subs["email"] = {"marketing": {"consent": "SUBSCRIBED"}}
-            if p["optin_sms"]:
-                subs["sms"] = {"marketing": {"consent": "SUBSCRIBED"}}
-            attrs = {"email": p["email"], "subscriptions": subs}
-            if p["optin_sms"]:
-                attrs["phone_number"] = p["phone"]
-            r = requests.post(f"{KLAVIYO_BASE}/profile-subscription-bulk-create-jobs/",
-                              headers=_kl_headers(), timeout=20, json={"data": {
-                                  "type": "profile-subscription-bulk-create-job",
-                                  "attributes": {"custom_source": "Pop-up store Paris nov. 2026",
-                                                 "profiles": {"data": [{"type": "profile", "attributes": attrs}]}},
-                                  "relationships": {"list": {"data": {"type": "list", "id": list_id}}}}})
-            if r.status_code >= 400:
-                notes.append(f"abonnement refusé : {r.text[:300]}")
-        _update_participant(pid, klaviyo_status="failed" if notes else "synced",
-                            klaviyo_error="; ".join(notes) or None)
-    except Exception as e:
-        detail = getattr(getattr(e, "response", None), "text", "") or str(e)
-        print(f"[Popup] Klaviyo sync failed for participant {pid}: {detail[:500]}", flush=True)
-        _update_participant(pid, klaviyo_status="failed", klaviyo_error=detail[:500])
+                if lst["opt_in"] != "single_opt_in":
+                    note = "abonnement non fait : la liste n'est pas en inscription simple"
+                else:
+                    r = requests.post(f"{KLAVIYO_BASE}/profile-subscription-bulk-create-jobs/",
+                                      headers=_kl_headers(), timeout=20, json={"data": {
+                                          "type": "profile-subscription-bulk-create-job",
+                                          "attributes": {
+                                              "custom_source": "Pop-up store Paris nov. 2026",
+                                              "profiles": {"data": [{"type": "profile", "attributes": {
+                                                  "email": p["email"],
+                                                  "subscriptions": {"email": {"marketing": {"consent": "SUBSCRIBED"}}}}}]}},
+                                          "relationships": {"list": {"data": {"type": "list", "id": lst["id"]}}}}})
+                    if r.status_code >= 400:
+                        note = f"abonnement refusé : {r.text[:300]}"
+            _update_participant(pid, klaviyo_status="failed" if note else "synced", klaviyo_error=note)
+        except Exception as e:
+            detail = getattr(getattr(e, "response", None), "text", "") or str(e)
+            print(f"[Popup] Klaviyo sync failed for participant {pid}: {detail[:500]}", flush=True)
+            _update_participant(pid, klaviyo_status="failed", klaviyo_error=detail[:500])
 
 
 def klaviyo_track_draw(pid):
-    """Ajoute le bon gagné au profil et enregistre l'événement « Pop-up tirage »,
-    utilisable ensuite dans les flows Klaviyo (relance avant expiration, etc.)."""
+    """Ajoute le bon gagné au profil et enregistre l'événement « Pop-up tirage »."""
+    if not os.getenv("KLAVIYO_POPUP_API_KEY"):
+        return
     p = get_participant_by_id(pid)
     if not p or not p["code"]:
         return
-    try:
-        r = requests.post(f"{KLAVIYO_BASE}/events/", headers=_kl_headers(), timeout=20, json={
-            "data": {"type": "event", "attributes": {
-                "properties": {"montant": p["amount"], "code": p["code"], "expire_le": ENDS_LABEL},
-                "value": p["amount"], "unique_id": f"popup-{p['code']}",
-                "metric": {"data": {"type": "metric", "attributes": {"name": "Pop-up tirage"}}},
-                "profile": {"data": {"type": "profile", "attributes": {
-                    "email": p["email"],
-                    "properties": {"popup_bon_montant": p["amount"], "popup_bon_code": p["code"]}}}}}}})
-        r.raise_for_status()
-    except Exception as e:
-        detail = getattr(getattr(e, "response", None), "text", "") or str(e)
-        print(f"[Popup] Klaviyo event failed for participant {pid}: {detail[:500]}", flush=True)
-        _update_participant(pid, klaviyo_status="failed", klaviyo_error=detail[:500])
+    with _kl_lock:
+        try:
+            _upsert_profile(p)
+            r = requests.post(f"{KLAVIYO_BASE}/events/", headers=_kl_headers(), timeout=20, json={
+                "data": {"type": "event", "attributes": {
+                    "properties": {"montant": p["amount"], "code": p["code"], "expire_le": ENDS_LABEL},
+                    "value": p["amount"], "unique_id": f"popup-{p['code']}",
+                    "metric": {"data": {"type": "metric", "attributes": {"name": "Pop-up tirage"}}},
+                    "profile": {"data": {"type": "profile", "attributes": {"email": p["email"]}}}}}})
+            r.raise_for_status()
+        except Exception as e:
+            detail = getattr(getattr(e, "response", None), "text", "") or str(e)
+            print(f"[Popup] Klaviyo event failed for participant {pid}: {detail[:500]}", flush=True)
+            _update_participant(pid, klaviyo_status="failed", klaviyo_error=detail[:500])
 
 
 # ── Shopify : création des codes ──────────────────────────────────────────────
