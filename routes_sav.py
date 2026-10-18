@@ -33,7 +33,7 @@ def sav_page():
 
     try:
         service = _get_service()
-        emails = gmail_helper.get_unread_emails(service, max_results=10)
+        emails = gmail_helper.get_emails_to_answer(service, max_results=10)
 
         def enrich(email):
             order_number = claude_ai.extract_order_number(email['body'] + ' ' + email['subject'])

@@ -147,8 +147,70 @@ def parse_email(email_data):
         'subject': subject,
         'sender': sender,
         'date': date,
-        'body': body
+        'body': body,
+        'internal_date': int(email_data.get('internalDate') or 0),
     }
+
+
+def last_reply_at(service, thread_id):
+    """ms epoch of the last message we sent on a thread, 0 if none.
+
+    Uses Gmail's SENT label and internalDate: the Date header sorts as a
+    string, which puts "Fri" before "Mon" whatever the actual dates.
+    """
+    thread = service.users().threads().get(
+        userId='me', id=thread_id, format='minimal'
+    ).execute()
+    return max(
+        (int(m.get('internalDate') or 0) for m in thread.get('messages', [])
+         if 'SENT' in m.get('labelIds', [])),
+        default=0,
+    )
+
+
+def needs_reply(service, email, scheduled_threads):
+    """'new', 'answered' or 'scheduled' for an email still unread in the inbox.
+
+    An email counts as answered when we wrote on its thread after it arrived
+    (from the dashboard or straight from Gmail), and as scheduled when a reply
+    was programmed after it arrived. A customer message arriving later is new.
+    """
+    received = email.get('internal_date') or 0
+    if scheduled_threads.get(email['thread_id'], 0) > received:
+        return 'scheduled'
+    if last_reply_at(service, email['thread_id']) > received:
+        return 'answered'
+    return 'new'
+
+
+def get_emails_to_answer(service, max_results=10):
+    """Unread inbox emails that have neither been answered nor scheduled.
+
+    Answered ones are marked read so they stop taking a slot. Scheduled ones are
+    left unread: if the scheduled reply is cancelled, the email comes back.
+    """
+    import database
+    scheduled_threads = database.get_scheduled_threads()
+    result = []
+    for email in get_unread_emails(service, max_results=max_results * 3):
+        try:
+            state = needs_reply(service, email, scheduled_threads)
+        except Exception as e:
+            print(f"needs_reply failed for {email['id']}: {e}")
+            state = 'new'
+        if state == 'answered':
+            try:
+                mark_as_read(service, email['id'])
+            except Exception:
+                pass
+            database.close_drafts_for_thread(email['thread_id'])
+            continue
+        if state == 'scheduled':
+            continue
+        result.append(email)
+        if len(result) >= max_results:
+            break
+    return result
 
 
 def _clean_text(text):

@@ -2,7 +2,7 @@ import sqlite3
 import uuid
 import json
 import os
-from datetime import datetime
+from datetime import datetime, timezone
 
 DB_PATH = os.environ.get("DB_PATH", "assistant.db")
 
@@ -308,6 +308,10 @@ def log_sent_email(to_email, subject, body, source='reply', thread_id=None):
         conn.commit()
     finally:
         conn.close()
+    # The customer has been answered: their draft must not come back in the
+    # morning report.
+    if thread_id:
+        close_drafts_for_thread(thread_id)
     # Save directly as pattern — no AI analysis, no loss
     clean_subject = _re.sub(r'^Re:\s*', '', subject, flags=_re.IGNORECASE).strip()
     topic = _re.sub(r'[^a-z0-9_]', '_', clean_subject.lower())[:60]
@@ -481,6 +485,37 @@ def get_pending_drafts():
     finally:
         conn.close()
     return rows
+
+
+def close_drafts_for_thread(thread_id, status='handled'):
+    """Close every pending draft of a thread.
+
+    Replies sent from the dashboard never went through /validate, so their
+    drafts stayed 'pending' forever and piled up in the 6am report.
+    """
+    now = datetime.utcnow().isoformat()
+    conn = get_connection()
+    try:
+        conn.execute(
+            "UPDATE pending_drafts SET status = ?, validated_at = ? WHERE thread_id = ? AND status = 'pending'",
+            (status, now, thread_id),
+        )
+        conn.commit()
+    finally:
+        conn.close()
+
+
+def close_draft(token, status='handled'):
+    now = datetime.utcnow().isoformat()
+    conn = get_connection()
+    try:
+        conn.execute(
+            "UPDATE pending_drafts SET status = ?, validated_at = ? WHERE token = ? AND status = 'pending'",
+            (status, now, token),
+        )
+        conn.commit()
+    finally:
+        conn.close()
 
 
 def get_draft_by_token(token):
@@ -928,6 +963,31 @@ def cancel_scheduled_email(email_id):
         conn.commit()
     finally:
         conn.close()
+
+
+def get_scheduled_threads():
+    """{thread_id: ms epoch of the latest pending scheduled reply on that thread}.
+
+    created_at is naive UTC; the epoch lets it be compared with Gmail's
+    internalDate, so a customer message arriving after the reply was scheduled
+    still counts as new.
+    """
+    conn = get_connection()
+    try:
+        rows = conn.execute(
+            "SELECT thread_id, MAX(created_at) AS created_at FROM scheduled_emails "
+            "WHERE status='pending' AND thread_id IS NOT NULL AND thread_id != '' GROUP BY thread_id"
+        ).fetchall()
+    finally:
+        conn.close()
+    result = {}
+    for row in rows:
+        try:
+            created = datetime.fromisoformat(row['created_at']).replace(tzinfo=timezone.utc)
+            result[row['thread_id']] = int(created.timestamp() * 1000)
+        except (TypeError, ValueError):
+            continue
+    return result
 
 
 def get_scheduled_emails():

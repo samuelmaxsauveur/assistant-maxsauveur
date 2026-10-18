@@ -30,8 +30,8 @@ def process_new_emails():
     print(f"[{datetime.now()}] Starting email processing...")
     try:
         service = gmail_helper.get_gmail_service()
-        emails = gmail_helper.get_unread_emails(service, max_results=10)
-        print(f"[{datetime.now()}] Fetched {len(emails)} unread email(s).")
+        emails = gmail_helper.get_emails_to_answer(service, max_results=10)
+        print(f"[{datetime.now()}] Fetched {len(emails)} email(s) to answer.")
     except Exception as e:
         print(f"[{datetime.now()}] Error fetching emails: {e}")
         return
@@ -134,10 +134,58 @@ def process_new_emails():
     print(f"[{datetime.now()}] Email processing complete.")
 
 
+def _drafts_still_to_answer(service, drafts):
+    """Keep one draft per thread, only for emails nobody has dealt with yet.
+
+    A draft is closed when its email has been read or archived, answered on the
+    thread (dashboard or Gmail), or deleted. Drafts whose thread has a reply
+    scheduled are left pending but kept out of the report, so they come back
+    if the scheduled reply is cancelled.
+    """
+    scheduled_threads = database.get_scheduled_threads()
+    latest = {}
+    for draft in drafts:  # created_at ascending: the last one wins
+        previous = latest.get(draft['thread_id'])
+        if previous:
+            database.close_draft(previous['token'])
+        latest[draft['thread_id']] = draft
+
+    kept = []
+    for draft in latest.values():
+        try:
+            msg = service.users().messages().get(
+                userId='me', id=draft['email_id'], format='minimal'
+            ).execute()
+        except Exception as e:
+            if getattr(getattr(e, 'resp', None), 'status', None) == 404:
+                database.close_draft(draft['token'])
+            else:
+                print(f"[{datetime.now()}] Could not check {draft['email_id']}: {e}")
+            continue
+        labels = msg.get('labelIds', [])
+        if 'UNREAD' not in labels or 'INBOX' not in labels:
+            database.close_draft(draft['token'])
+            continue
+        email = {'thread_id': draft['thread_id'], 'internal_date': int(msg.get('internalDate') or 0)}
+        try:
+            state = gmail_helper.needs_reply(service, email, scheduled_threads)
+        except Exception as e:
+            print(f"[{datetime.now()}] needs_reply failed for {draft['email_id']}: {e}")
+            state = 'new'
+        if state == 'answered':
+            database.close_draft(draft['token'])
+            continue
+        if state == 'scheduled':
+            continue
+        kept.append(draft)
+    return kept
+
+
 def send_morning_report():
     print(f"[{datetime.now()}] Sending morning report...")
     try:
-        pending_drafts = database.get_pending_drafts()
+        service = gmail_helper.get_gmail_service()
+        pending_drafts = _drafts_still_to_answer(service, database.get_pending_drafts())
     except Exception as e:
         print(f"[{datetime.now()}] Error fetching pending drafts: {e}")
         return
@@ -155,9 +203,9 @@ def send_morning_report():
     drafts_html = ""
     for draft in pending_drafts:
         token = draft.get("token", "")
-        customer_name = extract_customer_name(draft.get("sender", ""))
+        customer_name = draft.get("customer_name") or draft.get("customer_email", "")
         email_subject = draft.get("subject", "(sans objet)")
-        email_body = draft.get("body", "")
+        email_body = draft.get("email_body", "")
         truncated_body = email_body[:300] + ("..." if len(email_body) > 300 else "")
         draft_response = draft.get("draft_response", "")
 
@@ -205,8 +253,6 @@ def send_morning_report():
 </html>"""
 
     try:
-        service = gmail_helper.get_gmail_service()
-
         import base64
         import email.mime.multipart
         import email.mime.text
