@@ -46,8 +46,16 @@ RÈGLES ABSOLUES SUR LES FRAIS DE RETOUR :
 - Ne propose jamais spontanément un geste commercial que Samuel n'a pas autorisé. Si tu n'es pas sûr qu'un geste est justifié, ne le propose pas — attends que Samuel le valide.
 - NE MENTIONNE JAMAIS dans un email que "les frais de retour sont à votre charge" ou toute formulation similaire. C'est dans les CGV, le client le sait ou le découvrira — le dire proactivement crée des négociations inutiles. Donne juste la procédure de retour, sans commentaire sur qui paie.
 
+POSTURE COMMERCIALE (s'applique à TOUTES les réponses) :
+- Tu écris comme une marque sûre d'elle : posée, aimable, confiante. Pas comme quelqu'un qui se justifie.
+- Pas d'excuses par réflexe. Ni "je suis désolé", ni "nous nous excusons", ni "pardon pour". Remercier vaut mieux que s'excuser : "Merci pour les photos" plutôt que "Désolé de vous les redemander".
+- N'expose JAMAIS un dysfonctionnement interne : dossier perdu ou oublié, demande traitée deux fois, confusion entre collègues, retard de traitement de notre côté, "ce n'est pas normal", "nous aurions dû". Le client n'a pas à connaître notre organisation interne, et l'écrire nous décrédibilise.
+- Ne donne pas raison au client pour lui faire plaisir. Reste factuel : ce qui est vrai, ce qu'on fait, la suite.
+- Quand il faut vérifier quelque chose ou attendre une décision de Samuel, la réponse est COURTE : remercier, dire qu'on regarde ce qu'on peut faire, qu'on revient vers lui très rapidement. Sans détail, sans engagement, sans hypothèse. Exemple : "Merci beaucoup pour les photos. Nous regardons ce que nous pouvons faire et revenons vers vous très rapidement."
+- Moins on a d'éléments certains, plus la réponse est brève.
+
 ÉQUILIBRE :
-- Rester honnête : si on a clairement fait une erreur (retard de notre fait, produit défectueux confirmé, mauvaise info donnée), on le reconnaît et on propose une solution juste.
+- Rester honnête : si on a clairement fait une erreur qui touche le client (retard de notre fait, produit défectueux confirmé, mauvais produit envoyé), on propose la solution juste. Une formule courte suffit ("Nous allons arranger cela"), sans s'étendre sur l'erreur ni l'expliquer.
 - Rester humain : le ton reste courtois et direct, jamais agressif ni condescendant.
 - En cas de doute sur la position à tenir : remonte à Samuel avec un résumé des faits plutôt que de concéder par défaut.
 
@@ -314,17 +322,36 @@ def _build_context(email_body, email_subject, customer_name, order_info=None, hi
     return context
 
 
+OPUS_MODEL = "claude-opus-5-5"
+
+
 def _call_claude(system, messages, max_tokens=1024, model="claude-sonnet-4-6"):
     client = anthropic.Anthropic(api_key=os.getenv('ANTHROPIC_API_KEY'))
+    kwargs = {}
+    if model == OPUS_MODEL:
+        # Opus always thinks, and its thinking counts against max_tokens: 1024
+        # would cut the reply short. Effort defaults to medium on this model; a
+        # dispute deserves high. A safety decline is re-run on another model by
+        # the API itself ("default" fallbacks).
+        max_tokens = max(max_tokens, 16000)
+        kwargs = dict(
+            output_config={"effort": "high"},
+            extra_headers={"anthropic-beta": "server-side-fallback-2026-07-01"},
+            extra_body={"fallbacks": "default"},
+        )
     for attempt in range(3):
         try:
             message = client.messages.create(
                 model=model,
                 max_tokens=max_tokens,
                 system=system,
-                messages=messages
+                messages=messages,
+                **kwargs
             )
-            return message.content[0].text
+            if message.stop_reason == "refusal":
+                raise RuntimeError("Claude a refusé de rédiger cette réponse.")
+            # With thinking, the first block is not the text.
+            return next(b.text for b in message.content if b.type == "text")
         except anthropic.APIStatusError as e:
             if attempt < 2:
                 time.sleep(3)
@@ -342,7 +369,7 @@ def _call_haiku(messages, max_tokens=512, system=None):
     return message.content[0].text
 
 
-def generate_response(email_body, email_subject, customer_name, order_info=None, history=None, wing_context='', orders=None, images=None):
+def generate_response(email_body, email_subject, customer_name, order_info=None, history=None, wing_context='', orders=None, images=None, model="claude-sonnet-4-6"):
     context = _build_context(email_body, email_subject, customer_name, order_info, history, orders=orders)
     if wing_context:
         context += wing_context
@@ -356,10 +383,17 @@ INSTRUCTIONS :
 1. Utilise EN PRIORITÉ l'historique des échanges pour comprendre le contexte et éviter de répéter des choses déjà dites.
 2. Si le contexte contient PLUSIEURS commandes client : cherche dans TOUS les articles de TOUTES les commandes celui qui correspond au produit mentionné dans l'email (matching souple : "Jagger" = "Moc Jagger" = "Mocassin Jagger"). Si tu trouves une correspondance même partielle, utilise cette commande. Si aucune correspondance, dis-le clairement en listant les produits trouvés dans chaque commande.
 3. Génère TOUJOURS une réponse directement. N'utilise JAMAIS le JSON needs_info pour des questions de suivi de commande, de livraison, de statut, de point relais ou de numéro de suivi — utilise les données Shopify et/ou Wing déjà dans le contexte.
-4. Le JSON needs_info est réservé UNIQUEMENT aux cas où une décision commerciale est impossible sans l'avis de Samuel (ex : accorder un geste commercial exceptionnel, savoir si une garantie s'applique dans un cas limite). Utilise-le avec parcimonie.
-5. Si le statut de livraison Shopify est disponible dans le contexte, utilise-le directement sans poser de question."""
+4. Le JSON needs_info est réservé UNIQUEMENT aux cas où une décision commerciale est impossible sans l'avis de Samuel (ex : accorder un geste commercial exceptionnel, savoir si une garantie s'applique dans un cas limite). Utilise-le avec parcimonie. Dans ce cas, ta réponse entière est CE JSON et rien d'autre, sans texte avant ni après :
+{{"needs_info": true, "summary": "les faits en 2 à 4 phrases pour Samuel", "questions": ["question 1 pour Samuel", "question 2"], "holding_reply": "réponse d'attente au client, prête à envoyer"}}
+holding_reply suit la POSTURE COMMERCIALE : 2 ou 3 phrases, remercier, dire qu'on regarde ce qu'on peut faire et qu'on revient très rapidement, sans détail, sans excuse, sans engagement, signée comme d'habitude.
+5. Si le statut de livraison Shopify est disponible dans le contexte, utilise-le directement sans poser de question.
+7. Relis ta réponse avant de la rendre :
+   a. Aucune phrase n'avoue un oubli, un manque de suivi, un retard de traitement ou une confusion de notre part, même "pour être transparent". Si l'historique montre qu'on a laissé traîner, tu n'en parles pas : tu avances.
+   b. Tu n'annonces aucune décision ni information (refus, rupture de stock, pièce indisponible, geste, délai) qui ne figure pas explicitement dans le contexte. Si la suite dépend d'une vérification ou de Samuel, utilise le JSON needs_info avec une holding_reply courte.
+   c. Aucune excuse.
+8. Le bloc "RÉPONSES RÉCENTES DE SAMUEL SUR CE PRODUIT", s'il est présent, fait foi pour les informations produit (précommande, date de livraison annoncée, réassort, pointure). Un statut de livraison vide sur une précommande est normal : ne dis jamais "pas d'information d'expédition" quand ces réponses expliquent que le produit est en précommande."""
     if images:
-        prompt_text += f"\n6. Le client a joint {len(images)} photo(s) à son email. Analyse-les et tiens-en compte dans ta réponse."
+        prompt_text += f"\n9. Le client a joint {len(images)} photo(s) à son email. Analyse-les et tiens-en compte dans ta réponse."
 
     # Build message content — prepend images if any
     user_content = []
@@ -380,7 +414,8 @@ INSTRUCTIONS :
         extra_queries=_extra_queries(order_info, orders, history))
     try:
         return _call_claude(system=system,
-                            messages=[{"role": "user", "content": user_content}])
+                            messages=[{"role": "user", "content": user_content}],
+                            model=model)
     except Exception as e:
         if not images:
             raise
@@ -389,8 +424,66 @@ INSTRUCTIONS :
         print(f"Image rejected ({e}); retrying without the {len(images)} attachment(s).")
         return _call_claude(
             system=system,
-            messages=[{"role": "user", "content": [{"type": "text", "text": prompt_text}]}]
+            messages=[{"role": "user", "content": [{"type": "text", "text": prompt_text}]}],
+            model=model
         )
+
+
+def parse_needs_info(text):
+    """{"summary": str, "questions": [str]} when a draft is a request for
+    Samuel's opinion instead of a reply to the customer, else None.
+
+    Also reads the shape the model improvised before the format was spelled
+    out ({"needs_info": {"to", "subject", "body"}}), so old drafts are caught
+    too: one of those must never reach a customer.
+    """
+    if not text or 'needs_info' not in text:
+        return None
+    start = text.find('{')
+    try:
+        # raw_decode stops at the end of the object: a stray "}" after it, or
+        # text around it, no longer makes the whole thing unreadable.
+        data, _ = json.JSONDecoder().raw_decode(text[start:]) if start >= 0 else (None, 0)
+    except ValueError:
+        return None
+    info = data.get('needs_info') if isinstance(data, dict) else None
+    if not info:
+        return None
+    if isinstance(info, dict):
+        return {"summary": info.get('body', ''), "questions": info.get('questions', []),
+                "holding_reply": ''}
+    return {"summary": data.get('summary', ''), "questions": data.get('questions', []),
+            "holding_reply": data.get('holding_reply', '')}
+
+
+def assess_complexity(email_body, email_subject):
+    """{"complex": bool, "reason": str}: does this email deserve Opus?
+
+    Flags disputes and anything legal or needing careful advice, so Samuel can
+    choose Opus before answering. Errs towards "not complex": the button is an
+    offer, a false alarm on every other email would make it noise.
+    """
+    raw = _call_haiku(
+        messages=[{"role": "user", "content": f"""Tu tries les emails du service client d'une marque de chaussures.
+Une demande est COMPLEXE seulement si elle relève d'un de ces cas :
+- litige ou conflit : client mécontent qui conteste une décision, menace (avis négatif, plainte, avocat, rétrofacturation / chargeback, signalement), médiateur, Centre Européen des Consommateurs, association de consommateurs ;
+- question juridique : droit de rétractation contesté, garantie légale de conformité, vice caché, mise en demeure, délais légaux, responsabilité, données personnelles ;
+- demande qui exige un conseil approfondi ou une décision délicate (geste commercial important, cas limite de garantie, plusieurs problèmes imbriqués).
+Une question de suivi, de taille, de retour ou de réparation ordinaire n'est PAS complexe.
+
+Réponds UNIQUEMENT avec un JSON : {{"complex": true, "reason": "litige : le client conteste le refus de remboursement"}}
+reason : quelques mots en français, vide si complex est false.
+
+Sujet: {email_subject}
+Corps: {email_body[:3000]}"""}],
+        max_tokens=150
+    )
+    try:
+        m = re.search(r'\{[\s\S]*\}', raw)
+        data = json.loads(m.group() if m else raw)
+        return {"complex": bool(data.get("complex")), "reason": str(data.get("reason") or "")}
+    except Exception:
+        return {"complex": False, "reason": ""}
 
 
 def answer_question(email_body, email_subject, customer_name, order_info, question, previous_exchanges=None, orders=None):

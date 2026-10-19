@@ -240,6 +240,12 @@
                             <div id="questions-list-{{ item.email.id }}" style="font-size:14px; color:#78350f; line-height:1.8;"></div>
                             <div style="font-size:12px; color:#b45309; margin-top:8px;">Réponds dans le champ "Discussion avec Claude" ci-dessous, puis clique sur <strong>Régénérer</strong>.</div>
                         </div>
+                        <div id="opus-{{ item.email.id }}" style="display:none; background:#f5f3ff; border:1px solid #8b5cf6; border-radius:8px; padding:14px; margin-bottom:12px;">
+                            <div style="font-size:12px; font-weight:700; color:#5b21b6; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:6px;">⚖️ Demande complexe</div>
+                            <div id="opus-reason-{{ item.email.id }}" style="font-size:14px; color:#4c1d95; margin-bottom:10px;"></div>
+                            <button type="button" class="btn btn-secondary" id="opus-btn-{{ item.email.id }}" onclick="generateWithOpus('{{ item.email.id }}')">Rédiger avec Opus 5.5</button>
+                            <span style="font-size:12px; color:#6d28d9; margin-left:8px;">Plus approfondi, plus lent (jusqu'à 2 min) et plus cher. Le brouillon ci-dessous est celui de Sonnet.</span>
+                        </div>
                         <div data-to="{{ item.sender_email }}" data-subject="{{ item.email.subject }}" data-thread="{{ item.email.thread_id }}" data-emailid="{{ item.email.id }}" class="send-form">
                             <textarea id="textarea-{{ item.email.id }}" placeholder="Cliquez Générer pour obtenir une suggestion de réponse.">{{ item.draft_response }}</textarea>
                             <div class="actions">
@@ -408,12 +414,10 @@ async function generateResponse(id) {
         } else {
             // No comment: regenerate from scratch
             const data = await safeFetch('/generate', emailData[id]);
-            if (data.questions && data.questions.length > 0) {
-                showQuestions(id, data.questions);
-            } else if (data.response) {
-                document.getElementById('questions-' + id).style.display = 'none';
-                textarea.value = data.response;
-            }
+            showComplexity(id, data);
+            if (data.questions && data.questions.length > 0) showQuestions(id, data.questions);
+            else document.getElementById('questions-' + id).style.display = 'none';
+            if (data.response) textarea.value = data.response;
         }
     } catch(e) {
         const msg = e.name === 'AbortError' || e.message === 'server_error'
@@ -509,6 +513,48 @@ function showQuestions(id, questions) {
     document.getElementById('textarea-' + id).placeholder = 'En attente de tes réponses aux questions ci-dessus...';
 }
 
+function showComplexity(id, data) {
+    if (!data.complex) return;
+    const box = document.getElementById('opus-' + id);
+    if (!box) return;
+    document.getElementById('opus-reason-' + id).textContent = data.reason || '';
+    box.style.display = 'block';
+}
+
+async function generateWithOpus(id) {
+    const textarea = document.getElementById('textarea-' + id);
+    const btn = document.getElementById('opus-btn-' + id);
+    btn.textContent = 'Opus rédige...';
+    btn.disabled = true;
+    const controller = new AbortController();
+    const tid = setTimeout(() => controller.abort(), 180000);
+    try {
+        const res = await fetch('/generate', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({...emailData[id], model: 'opus'}),
+            signal: controller.signal
+        });
+        const data = await safeJson(res);
+        if (data.questions && data.questions.length > 0) showQuestions(id, data.questions);
+        else document.getElementById('questions-' + id).style.display = 'none';
+        if (data.response) {
+            textarea.value = data.response;
+            btn.textContent = '✅ Réponse rédigée par Opus 5.5 — relancer';
+        } else if (data.questions && data.questions.length > 0) {
+            btn.textContent = 'Rédiger avec Opus 5.5';
+        } else {
+            alert(data.error || "Opus n'a pas pu rédiger la réponse.");
+            btn.textContent = 'Rédiger avec Opus 5.5';
+        }
+    } catch(e) {
+        alert(e.name === 'AbortError' ? "Opus a mis trop longtemps à répondre. Réessaie." : 'Erreur réseau.');
+        btn.textContent = 'Rédiger avec Opus 5.5';
+    }
+    clearTimeout(tid);
+    btn.disabled = false;
+}
+
 async function generateOne(id) {
     const textarea = document.getElementById('textarea-' + id);
     if (!textarea || textarea.value.trim()) return;
@@ -519,12 +565,10 @@ async function generateOne(id) {
             body: JSON.stringify(emailData[id])
         });
         const data = await safeJson(res);
-        if (data.questions && data.questions.length > 0) {
-            showQuestions(id, data.questions);
-        } else if (data.response) {
-            document.getElementById('questions-' + id).style.display = 'none';
-            textarea.value = data.response;
-        }
+        showComplexity(id, data);
+        if (data.questions && data.questions.length > 0) showQuestions(id, data.questions);
+        else document.getElementById('questions-' + id).style.display = 'none';
+        if (data.response) textarea.value = data.response;
     } catch(e) {
         textarea.placeholder = 'Erreur — cliquer Régénérer';
     }

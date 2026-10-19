@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 import gmail as gmail_helper
 import database
+import claude_ai
 import scheduler
 
 validation = Blueprint('validation', __name__)
@@ -37,13 +38,25 @@ def validate(token):
             "Cet email a déjà été traité et ne peut pas être envoyé à nouveau."
         ), 200
 
+    # A question for Samuel is never sent; only its holding reply, if any.
+    body = draft['draft_response']
+    needs_info = claude_ai.parse_needs_info(body)
+    if needs_info:
+        body = needs_info['holding_reply']
+        if not body:
+            return render_page(
+                "🤔",
+                "Rien n'a été envoyé",
+                "Ce brouillon est une question pour toi, pas une réponse au client. Ouvre le mail dans le tableau de bord."
+            ), 200
+
     service = gmail_helper.get_gmail_service()
 
     gmail_helper.send_email(
         service,
         draft['customer_email'],
         f"Re: {draft['subject']}",
-        draft['draft_response'],
+        body,
         draft['thread_id']
     )
 

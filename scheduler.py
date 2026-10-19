@@ -82,6 +82,13 @@ def process_new_emails():
             except Exception as e:
                 print(f"[{datetime.now()}] Error detecting intent for {email_id}: {e}")
                 intent_data = {"intent": "other", "address": None, "has_full_address": False}
+            # Stored with the intent so the morning report can point out the
+            # emails worth answering with Opus from the dashboard.
+            try:
+                if isinstance(intent_data, dict):
+                    intent_data.update(claude_ai.assess_complexity(email['body'], email['subject']))
+            except Exception as e:
+                print(f"[{datetime.now()}] Error assessing complexity for {email_id}: {e}")
 
             # Past exchanges with this customer. The web page already sends
             # these to Claude; without them the draft repeats or contradicts
@@ -99,6 +106,13 @@ def process_new_emails():
             except Exception as e:
                 print(f"[{datetime.now()}] Could not fetch history for {email_id}: {e}")
 
+            product_context = ''
+            try:
+                product_context = gmail_helper.product_replies_context(
+                    service, [order_info] if order_info else [])
+            except Exception as e:
+                print(f"[{datetime.now()}] Could not fetch product replies for {email_id}: {e}")
+
             # Generate Claude AI draft response
             draft_response = claude_ai.generate_response(
                 email['body'],
@@ -106,6 +120,7 @@ def process_new_emails():
                 customer_name,
                 order_info,
                 history=history,
+                wing_context=product_context,
                 images=email_images if email_images else None
             )
 
@@ -212,13 +227,28 @@ def send_morning_report():
         validate_url = f"{BASE_URL}/validate/{token}"
         reject_url = f"{BASE_URL}/reject/{token}"
 
-        drafts_html += f"""
-        <div style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 24px; background: #fafafa;">
-            <h3 style="margin: 0 0 8px 0; color: #333;">{customer_name}</h3>
-            <p style="margin: 0 0 8px 0; color: #666; font-size: 14px;"><strong>Sujet :</strong> {email_subject}</p>
-            <div style="background: #fff; border: 1px solid #ddd; border-radius: 4px; padding: 12px; margin-bottom: 12px;">
-                <p style="margin: 0; font-size: 13px; color: #555; white-space: pre-wrap;">{truncated_body}</p>
+        # A request for Samuel's opinion is not a reply: no Validate button,
+        # it would email the internal note to the customer.
+        needs_info = claude_ai.parse_needs_info(draft_response)
+        if needs_info:
+            questions_html = "".join(f"<li>{q}</li>" for q in needs_info["questions"])
+            holding_html = ""
+            if needs_info["holding_reply"]:
+                holding_html = f"""
+            <div style="background: #f0f7ff; border: 1px solid #b3d4f5; border-radius: 4px; padding: 12px; margin-bottom: 16px;">
+                <p style="margin: 0 0 4px 0; font-size: 12px; color: #888; font-weight: bold;">RÉPONSE D'ATTENTE AU CLIENT</p>
+                <p style="margin: 0; font-size: 13px; color: #333; white-space: pre-wrap;">{needs_info["holding_reply"]}</p>
             </div>
+            <a href="{validate_url}" style="display: inline-block; background: #28a745; color: white; padding: 10px 18px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 14px; margin-right: 12px;">✅ Envoyer la réponse d'attente</a>"""
+            answer_html = f"""
+            <div style="background: #fffbea; border: 1px solid #f59e0b; border-radius: 4px; padding: 12px; margin-bottom: 16px;">
+                <p style="margin: 0 0 4px 0; font-size: 12px; color: #92400e; font-weight: bold;">🤔 CLAUDE A BESOIN DE TON AVIS AVANT DE RÉPONDRE</p>
+                <p style="margin: 0; font-size: 13px; color: #78350f; white-space: pre-wrap;">{needs_info["summary"]}</p>
+                <ul style="margin: 8px 0 0 0; font-size: 13px; color: #78350f;">{questions_html}</ul>
+            </div>{holding_html}
+            <a href="{BASE_URL}" style="display: inline-block; background: #f59e0b; color: white; padding: 10px 18px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 14px;">Répondre depuis le tableau de bord</a>"""
+        else:
+            answer_html = f"""
             <div style="background: #f0f7ff; border: 1px solid #b3d4f5; border-radius: 4px; padding: 12px; margin-bottom: 16px;">
                 <p style="margin: 0 0 4px 0; font-size: 12px; color: #888; font-weight: bold;">BROUILLON DE RÉPONSE</p>
                 <p style="margin: 0; font-size: 13px; color: #333; white-space: pre-wrap;">{draft_response}</p>
@@ -226,7 +256,29 @@ def send_morning_report():
             <div style="display: flex; gap: 12px;">
                 <a href="{validate_url}" style="display: inline-block; background: #28a745; color: white; padding: 10px 18px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 14px;">✅ Valider et envoyer</a>
                 <a href="{reject_url}" style="display: inline-block; background: #dc3545; color: white; padding: 10px 18px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 14px;">❌ Rejeter</a>
+            </div>"""
+
+        complex_html = ""
+        try:
+            intent = json.loads(draft.get("intent") or "{}")
+        except (TypeError, ValueError):
+            intent = {}
+        if isinstance(intent, dict) and intent.get("complex"):
+            complex_html = f"""
+            <div style="background: #f5f3ff; border: 1px solid #8b5cf6; border-radius: 4px; padding: 10px 12px; margin-bottom: 12px; font-size: 13px; color: #4c1d95;">
+                <strong>⚖️ Demande complexe</strong> : {intent.get("reason", "")}<br>
+                Le brouillon ci-dessous vient de Sonnet. Pour une réponse rédigée par Opus 5.5, ouvre ce mail dans le <a href="{BASE_URL}" style="color: #5b21b6;">tableau de bord</a>.
+            </div>"""
+
+        drafts_html += f"""
+        <div style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 24px; background: #fafafa;">
+            <h3 style="margin: 0 0 8px 0; color: #333;">{customer_name}</h3>
+            <p style="margin: 0 0 8px 0; color: #666; font-size: 14px;"><strong>Sujet :</strong> {email_subject}</p>
+            {complex_html}
+            <div style="background: #fff; border: 1px solid #ddd; border-radius: 4px; padding: 12px; margin-bottom: 12px;">
+                <p style="margin: 0; font-size: 13px; color: #555; white-space: pre-wrap;">{truncated_body}</p>
             </div>
+            {answer_html}
         </div>
         """
 

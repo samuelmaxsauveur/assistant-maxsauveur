@@ -183,6 +183,54 @@ def needs_reply(service, email, scheduled_threads):
     return 'new'
 
 
+def _strip_quoted(body):
+    """Our own words only: drop the quoted customer message below them."""
+    kept = []
+    for line in (body or '').splitlines():
+        if line.startswith('>') or re.match(r'^(Le .+ a écrit|On .+ wrote)\s*:?\s*$', line.strip()):
+            break
+        kept.append(line)
+    return '\n'.join(kept).strip()
+
+
+def product_replies_context(service, orders, max_per_product=3):
+    """What Samuel recently told other customers about the products ordered.
+
+    Pre-orders, announced delivery dates and restocks are only ever written in
+    replies, and the customer history only covers this one customer. Searching
+    the sent folder by model and colour ("Blucher" "Noir") brings them back.
+    """
+    seen, blocks = set(), []
+    for order in (orders or [])[:2]:
+        for product in order.get('products', []):
+            parts = [p.strip() for p in (product.get('name') or '').split(' - ')]
+            if not parts or not parts[0]:
+                continue
+            model = parts[0]
+            colour = parts[1].split()[-1] if len(parts) > 1 and parts[1].split() else ''
+            key = (model.lower(), colour.lower())
+            if key in seen:
+                continue
+            seen.add(key)
+            q = (f'in:sent "{model}" {colour} newer_than:90d -to:samuel@maxsauveur.com '
+                 f'-subject:"en attente" -subject:"Quelques informations utiles"')
+            try:
+                found = service.users().messages().list(
+                    userId='me', q=q, maxResults=max_per_product).execute().get('messages', [])
+                for ref in found:
+                    msg = parse_email(service.users().messages().get(
+                        userId='me', id=ref['id'], format='full').execute())
+                    text = _strip_quoted(msg['body'])[:1200]
+                    if text:
+                        blocks.append(f"[{msg['date'][:16]}] {text}")
+            except Exception as e:
+                print(f"product_replies_context failed for {model}: {e}")
+    if not blocks:
+        return ''
+    return ("\n\n--- RÉPONSES RÉCENTES DE SAMUEL SUR CE PRODUIT (à d'autres clients) ---\n"
+            + "\n\n".join(blocks))
+
+
 def get_emails_to_answer(service, max_results=10):
     """Unread inbox emails that have neither been answered nor scheduled.
 

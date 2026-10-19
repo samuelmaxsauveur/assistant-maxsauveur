@@ -456,6 +456,11 @@ def generate():
         except Exception:
             pass
 
+    try:
+        wing_context += gmail_helper.product_replies_context(get_service(), all_orders)
+    except Exception:
+        pass
+
     # Extract image attachments from the email thread
     email_images = []
     email_id_for_images = data.get('email_id', '')
@@ -468,22 +473,40 @@ def generate():
         except Exception:
             pass
 
-    suggested = claude_ai.generate_response(data['body'], data['subject'], customer_name, order_info, history,
-                                            wing_context=wing_context, orders=all_orders,
-                                            images=email_images if email_images else None)
+    # Opus is only ever run when Samuel asks for it. The Sonnet pass checks, at
+    # the same time, whether the email is complex enough to offer him Opus.
+    use_opus = data.get('model') == 'opus'
+    complexity = None
+    if not use_opus:
+        complexity = ThreadPoolExecutor(max_workers=1).submit(
+            claude_ai.assess_complexity, data.get('body', ''), data.get('subject', ''))
 
-    # Check if Claude returned a needs_info JSON instead of a draft
     try:
-        m = re.search(r'\{[\s\S]*\}', suggested)
-        if m:
-            import json as _json
-            parsed = _json.loads(m.group())
-            if parsed.get('needs_info'):
-                return jsonify({'questions': parsed.get('questions', [])})
-    except Exception:
-        pass
+        suggested = claude_ai.generate_response(data['body'], data['subject'], customer_name, order_info, history,
+                                                wing_context=wing_context, orders=all_orders,
+                                                images=email_images if email_images else None,
+                                                model=claude_ai.OPUS_MODEL if use_opus else 'claude-sonnet-4-6')
+    except Exception as e:
+        if not use_opus:
+            raise
+        return jsonify({'error': f"Opus n'a pas pu rédiger la réponse : {e}"}), 502
 
-    return jsonify({'response': suggested})
+    extra = {'model': 'opus' if use_opus else 'sonnet'}
+    if complexity:
+        try:
+            extra.update(complexity.result(timeout=20))
+        except Exception:
+            pass
+
+    # Claude may ask for Samuel's opinion instead of writing a draft
+    needs_info = claude_ai.parse_needs_info(suggested)
+    if needs_info:
+        questions = needs_info['questions'] or [needs_info['summary']]
+        if needs_info['summary'] and needs_info['questions']:
+            questions = [needs_info['summary']] + questions
+        return jsonify({'questions': questions, 'response': needs_info['holding_reply'], **extra})
+
+    return jsonify({'response': suggested, **extra})
 
 @app.route('/ask', methods=['POST'])
 def ask():
