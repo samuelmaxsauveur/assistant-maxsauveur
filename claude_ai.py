@@ -814,6 +814,16 @@ def generate_sav_approval_email(customer_name, order_number, email_body, label_u
     """
     first_name = _extract_first_name(customer_name)
 
+    if repair_ref:
+        # Repairs always get Samuel's wording: repair first, 6 to 8 weeks,
+        # exchange through the workshop only if the repair is impossible.
+        return _approval_body(
+            first_name, label_url, repair_ref,
+            opening="Nous acceptons la prise en charge de votre paire pour réparation.",
+            closing="Comptez 6 à 8 semaines maximum entre la réception de votre paire et son retour chez vous. "
+                    "Si la réparation n'est pas possible, nous procéderons à un échange directement avec notre atelier.",
+            motif="réparation")
+
     try:
         raw = _call_haiku(
             messages=[{"role": "user", "content": f"""Email client SAV reçu (marque chaussures en cuir Max Sauveur) :
@@ -838,6 +848,10 @@ Réponds UNIQUEMENT avec ce JSON :
         closing = 'Nous reviendrons vers vous après réception et contrôle.'
         motif = 'reparation'
 
+    return _approval_body(first_name, label_url, repair_ref, opening, closing, motif)
+
+
+def _approval_body(first_name, label_url, repair_ref, opening, closing, motif):
     if label_url:
         step1 = f"1. Imprimez l'étiquette de retour prépayée ci-dessous et collez-la sur le colis :\n{label_url}"
     else:
