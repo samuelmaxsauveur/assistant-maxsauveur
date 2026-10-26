@@ -63,6 +63,15 @@ def validate(token):
     gmail_helper.mark_as_read(service, draft['email_id'])
 
     database.validate_draft(token)
+    # Without this, replies validated from the morning report never reached
+    # the dossiers: only dashboard sends were logged.
+    database.log_sent_email(
+        to_email=draft['customer_email'],
+        subject=f"Re: {draft['subject']}",
+        body=body,
+        source='validate',
+        thread_id=draft['thread_id']
+    )
 
     customer_name = draft.get('customer_name', draft['customer_email'])
     customer_email = draft['customer_email']

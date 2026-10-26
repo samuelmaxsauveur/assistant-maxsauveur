@@ -207,7 +207,10 @@ def product_replies_context(service, orders, max_per_product=3):
             if not parts or not parts[0]:
                 continue
             model = parts[0]
-            colour = parts[1].split()[-1] if len(parts) > 1 and parts[1].split() else ''
+            # "Blucher - Chaussures Derby Cuir Noir - 41.5": the colour ends the
+            # middle part. "Embauchoirs bois de cèdre - 43" has no middle part:
+            # its second part is the size, which no reply ever quotes.
+            colour = parts[1].split()[-1] if len(parts) > 2 and parts[1].split() else ''
             key = (model.lower(), colour.lower())
             if key in seen:
                 continue

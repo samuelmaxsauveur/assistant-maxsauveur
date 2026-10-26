@@ -391,9 +391,10 @@ holding_reply suit la POSTURE COMMERCIALE : 2 ou 3 phrases, remercier, dire qu'o
    a. Aucune phrase n'avoue un oubli, un manque de suivi, un retard de traitement ou une confusion de notre part, même "pour être transparent". Si l'historique montre qu'on a laissé traîner, tu n'en parles pas : tu avances.
    b. Tu n'annonces aucune décision ni information (refus, rupture de stock, pièce indisponible, geste, délai) qui ne figure pas explicitement dans le contexte. Si la suite dépend d'une vérification ou de Samuel, utilise le JSON needs_info avec une holding_reply courte.
    c. Aucune excuse.
-8. Le bloc "RÉPONSES RÉCENTES DE SAMUEL SUR CE PRODUIT", s'il est présent, fait foi pour les informations produit (précommande, date de livraison annoncée, réassort, pointure). Un statut de livraison vide sur une précommande est normal : ne dis jamais "pas d'information d'expédition" quand ces réponses expliquent que le produit est en précommande."""
+8. Le bloc "RÉPONSES RÉCENTES DE SAMUEL SUR CE PRODUIT", s'il est présent, fait foi pour les informations produit (précommande, date de livraison annoncée, réassort, pointure). Un statut de livraison vide sur une précommande est normal : ne dis jamais "pas d'information d'expédition" quand ces réponses expliquent que le produit est en précommande.
+9. Pour une date (livraison, précommande, réassort), l'ordre de confiance est : ce bloc de réponses récentes, puis la base de connaissances, et seulement ensuite le carnet de bord et les fiches réponses, qui peuvent être anciens. Ne recopie jamais une date d'exemple d'une fiche. Si deux sources se contredisent sans que tu puisses trancher, ne donne pas de date précise."""
     if images:
-        prompt_text += f"\n9. Le client a joint {len(images)} photo(s) à son email. Analyse-les et tiens-en compte dans ta réponse."
+        prompt_text += f"\n10. Le client a joint {len(images)} photo(s) à son email. Analyse-les et tiens-en compte dans ta réponse."
 
     # Build message content — prepend images if any
     user_content = []
