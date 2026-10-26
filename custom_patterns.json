@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "cde__13849___code_offre_ne_fonctionne_pas",
+      "topic_label": "Cde #13849 | Code offre ne fonctionne pas",
+      "situation": "Cde #13849 | Code offre ne fonctionne pas",
+      "response_template": "Bonjour Emmanuel,\n\nMerci pour votre retour.\n\nPour le cirage : le code de la roue fonctionne en ajoutant le cirage au panier, puis en appliquant le code lors du paiement. Le produit ne s'affiche pas automatiquement après saisie du code.\n\nConcernant le numéro de téléphone : merci de nous l'avoir signalé, nous allons corriger ça.\n\nBonne réception,\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_10_26_15_24_19",
       "topic_label": "Form name Form submitted 2026-10-26 15:24:19",
       "situation": "Form name Form submitted 2026-10-26 15:24:19",
