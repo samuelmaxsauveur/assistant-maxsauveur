@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__13809_confirm_e",
+      "topic_label": "Re: Commande #13809 confirmée",
+      "situation": "Re: Commande #13809 confirmée",
+      "response_template": "Bonjour Sébastien,\n\nPour organiser votre retour, voici la procédure :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez le motif : \"remboursement ou avoir\")\n2. Emballez soigneusement les Brogues Derby Cuir Gras Marron dans leur boîte d'origine avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle de la paire, le remboursement sera traité sous 10 jours ouvrés.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__cde__13849___code_offre_ne_fonctionne_pas",
       "topic_label": "Re: Cde #13849 | Code offre ne fonctionne pas",
       "situation": "Re: Cde #13849 | Code offre ne fonctionne pas",
