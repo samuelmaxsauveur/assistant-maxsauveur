@@ -2,6 +2,38 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "ma_commande",
+      "topic_label": "Ma commande",
+      "situation": "Ma commande",
+      "response_template": "Bonjour Sébastien,\n\nBien noté pour votre absence. Nous allons faire au mieux pour que votre Paul Mocassin Cuir Grainé Noir parte le plus tôt possible.\n\nVous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "form_name_form_submitted_2026_09_15_09_34_56",
+      "topic_label": "Form name Form submitted 2026-09-15 09:34:56",
+      "situation": "Form name Form submitted 2026-09-15 09:34:56",
+      "response_template": "Bonjour Gijs,\n\nC'est une bonne question, mais la longueur du pied ne nous donne pas d'indication sur la largeur interne du modèle. Avec des pieds fins et un cou-de-pied bas, seul l'essayage vous permettra de le vérifier concrètement.\n\nSi à réception la Dakota est trop large et que votre talon glisse, le retour reste possible via notre procédure habituelle.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "questions_sur_les_magnifiques_wayne__",
+      "topic_label": "Questions sur les magnifiques Wayne !",
+      "situation": "Questions sur les magnifiques Wayne !",
+      "response_template": "Hello Guillaume,\n\nPour être honnête, nous n'avons pas d'autres photos en dehors de celles disponibles sur le site et nos réseaux sociaux. En revanche, les avis clients sur la fiche produit peuvent être une bonne source : certains acheteurs ont partagé leurs propres photos de la paire, ce qui peut vous donner un aperçu supplémentaire en conditions réelles.\n\nLa couleur est bien un bordeaux franc, pas un marron. Il est possible que la calibration de votre écran joue un peu sur la perception des tons chauds.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
+      "topic": "commande__13524",
+      "topic_label": "Commande #13524",
+      "situation": "Commande #13524",
+      "response_template": "Bonjour Anthony,\n\nVotre commande #13524 (La Gigi Cuir Lézard Noir et La Gigi Cuir Marron, toutes deux en taille 95) est en précommande. La livraison est prévue pour mi-novembre 2026.\n\nVous recevrez automatiquement un email avec votre lien de suivi dès que votre colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "cde__13849___code_offre_ne_fonctionne_pas",
       "topic_label": "Cde #13849 | Code offre ne fonctionne pas",
       "situation": "Cde #13849 | Code offre ne fonctionne pas",
@@ -168,14 +200,6 @@
       "response_template": "# Document des réponses types — Max Sauveur\n\n## 1. Précommandes & Livraison\n\n### Statut de précommande\n**Quand :** Un client demande le statut d'une commande en précommande et s'inquiète d'un délai.\n\n**Réponse type :**\nBonjour [Prénom],\n\nVotre commande #[N°] ([PRODUIT], [VARIANTE]) est bien en précommande, comme indiqué sur la fiche produit au moment de votre achat. La livraison est prévue pour [DATE].\n\nUn statut de livraison vide sur Shopify est normal pour une précommande, ce n'est pas un incident. Votre commande est bien enregistrée et en cours de fabrication.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\n---\n\n### Modification d'adresse ou point relais avant expédition\n**Quand :** Le client demande à changer son adresse ou son point relais après commande passée.\n\n**Réponse type :**\nBonjour [Prénom],\n\nSi votre commande n'a pas encore quitté l'entrepôt, c'est possible.\n\n[SI CHANGEMENT ADRESSE]\nNous venons de mettre à jour votre adresse :\n[Adresse complète] [Code postal] [Ville]\n\n[SI CHANGEMENT POINT RELAIS]\nNous venons de modifier votre point relais :\n- [NOM du point relais]\n\nVous recevrez automatiquement un email avec votre lien de suivi dès l'expédition.\n\n---\n\n## 2. Conseil en Pointure\n\n### Guide de tailles standard\n**Quand :** Un client fournit la mesure de son pied en cm et demande quelle taille commander.\n\n**Réponse type :**\nBonjour [Prénom],\n\nMerci d'avoir suivi notre méthode de mesure.\n\nAvec [MESURE_CM] cm de pied, vous êtes en **[TAILLE_GUIDE]** selon notre guide.\n\n[SI MODÈLE SPÉCIFIQUE]\nLe [MODÈLE] chausse [légèrement grand/juste au départ], je vous recommande donc le **[TAILLE_FINALE]**.\n\nExemple : Avec 26,8 cm, la correspondance est 42. Le Brogue Derby chausse grand, je recommande donc le 41.\n\nN'hésitez pas si vous avez d'autres questions.\n\n---\n\n### Mocassins : cas particulier\n**Quand :** Un client demande sa pointure pour un mocassin (Paul, Jagger).\n\n**Réponse type :**\nBonjour [Prénom],\n\nAvec [MESURE_CM] cm, vous êtes en **[TAILLE]** sur notre guide.\n\nLe mocassin chausse [légèrement grand/juste], je vous recommande donc le **[TAILLE_FINALE]**.\n\nImportant : sans lacets, une légère sensation de serré au cou-de-pied est normale et nécessaire pour le maintien. Le cuir et la semelle en liège s'assouplissent avec le port.\n\n---\n\n## 3. Défauts de Fabrication & Réparations\n\n### Défaut avéré (semelle, couture, cuir)\n**Quand :** Le client signale un défaut de fabrication (semelle décollée, couture lâchée, cuir fendu).\n\n**Réponse type :**\nBonjour [Prénom],\n\n[Décrire les photos] confirme bien un défaut de fabrication. Nous prenons cela en charge intégralement : retour, réparation et renvoi, sans frais.\n\n**Procédure :**\n1. Téléchargez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (motif : « défaut fabrication »)\n2. Emballez soigneusement avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique\n4. Imprimez l'étiquette de retour prépayée fournie\n\nLe traitement prend 10 jours ouvrés après réception.\n\n---\n\n## 4. Retours & Remboursements\n\n### Procédure de retour complète\n**Quand :** Un client souhaite retourner un article et demande comment procéder.\n\n**Réponse type :**\nBonjour [Prénom],\n\n**Étape 1 :** Téléchargez le bon de retour\nhttps://maxsauveur.com/pages/livra",
       "key_points": "",
       "example_count": 189
-    },
-    {
-      "topic": "questions_sur_les_magnifiques_wayne__",
-      "topic_label": "Questions sur les magnifiques Wayne !",
-      "situation": "Questions sur les magnifiques Wayne !",
-      "response_template": "Hello Guillaume,\n\nDeux réponses rapides :\n\n1. La couleur : le Wayne Bordeaux est bien une couleur bordeaux franche. Pas de reflets marron à proprement parler, si vous cherchez un vrai marron, ce n'est pas le bon coloris.\n\n2. La pointure : avec 27,5 cm vous êtes en 43 sur notre guide, mais le Wayne chausse légèrement grand. Et puisque vos Brogues en 42 vous vont bien voire sont déjà légèrement grandes, je vous recommande sans hésiter le 42 sur le Wayne.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande !\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
     },
     {
       "topic": "precommande_delai",
