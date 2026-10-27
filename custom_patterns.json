@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "fwd__commande__13378_confirm_e",
+      "topic_label": "Fwd: Commande #13378 confirmée",
+      "situation": "Fwd: Commande #13378 confirmée",
+      "response_template": "Bonjour Gilles,\n\nC'est bien noté. Votre adresse de livraison pour la commande #13378 (Wico Cuir Grainé Noir, 43) a été mise à jour :\n\nGilles Ketterer\nLe Bourg 9\n2042 Valangin-NE\nSuisse\n\nIl s'agit d'une précommande, dont la livraison est prévue pour mi-novembre 2026. Vous recevrez automatiquement un email avec votre lien de suivi dès l'expédition.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re___re__re___re__form_name_form_submitted_2026_10_22_12_10_",
       "topic_label": "Re : Re: Re : Re: Form name Form submitted 2026-10-22 12:10:03",
       "situation": "Re : Re: Re : Re: Form name Form submitted 2026-10-22 12:10:03",
