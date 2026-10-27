@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "suivi_de_mon_retour___avoir_non_re_u",
+      "topic_label": "Suivi de mon retour – avoir non reçu",
+      "situation": "Suivi de mon retour – avoir non reçu",
+      "response_template": "Bonjour Cristiana,\n\nNous n'avons pas encore réceptionné votre retour de notre côté. Pour faire le point, pourriez-vous nous communiquer le numéro de suivi de votre envoi retour ? Il s'agit du numéro figurant sur le récépissé remis par La Poste ou le transporteur au moment du dépôt du colis.\n\nDès que nous avons cet élément, nous vérifions le statut de votre colis et revenons vers vous rapidement.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "help_with_sizing",
       "topic_label": "Help with sizing",
       "situation": "Help with sizing",
