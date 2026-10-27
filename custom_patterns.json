@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__commande__13425_confirm_e",
+      "topic_label": "RE: RE: Commande #13425 confirmée",
+      "situation": "RE: RE: Commande #13425 confirmée",
+      "response_template": "Bonjour Florian,\n\nVos Deck Cuir Marron 44 partent cette semaine. Vous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fwd__commande__13378_confirm_e",
       "topic_label": "Fwd: Commande #13378 confirmée",
       "situation": "Fwd: Commande #13378 confirmée",
