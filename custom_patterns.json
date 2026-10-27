@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__cde__13849___code_offre_ne_fonctionne_pas",
+      "topic_label": "Re: Cde #13849 | Code offre ne fonctionne pas",
+      "situation": "Re: Cde #13849 | Code offre ne fonctionne pas",
+      "response_template": "Bonjour Emmanuel,\n\nNous allons voir ce que nous pouvons faire de notre côté pour vous ajouter le cirage à votre commande #13849. On revient vers vous très rapidement.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__commande__13425_confirm_e",
       "topic_label": "RE: RE: Commande #13425 confirmée",
       "situation": "RE: RE: Commande #13425 confirmée",
