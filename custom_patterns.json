@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re___re__re___re__form_name_form_submitted_2026_10_22_12_10_",
+      "topic_label": "Re : Re: Re : Re: Form name Form submitted 2026-10-22 12:10:03",
+      "situation": "Re : Re: Re : Re: Form name Form submitted 2026-10-22 12:10:03",
+      "response_template": "Bonjour Franck,\n\nVotre commande #13833 (Wood Derby Golf Cuir Noir, 43) est bien enregistrée et le paiement est confirmé. Vous allez recevoir votre lien de suivi très prochainement, dès que votre colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
