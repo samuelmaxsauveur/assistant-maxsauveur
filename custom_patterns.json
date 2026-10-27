@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "help_with_sizing",
+      "topic_label": "Help with sizing",
+      "situation": "Help with sizing",
+      "response_template": "Hey Francesco,\n\nThe Brogue Derby runs slightly large, so I'd recommend going with a **42** rather than a 43. Your Red Wing reference (42.5) is actually the closest to what you'd want here, and since we don't have half sizes, 42 is the right call.\n\nAs for your other question: yes, our shoes are made with full grain leather. No corrected grain.\n\nHappy to help if you have any other questions before ordering!\n\nJohn – Customer Care – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__13809_confirm_e",
       "topic_label": "Re: Commande #13809 confirmée",
       "situation": "Re: Commande #13809 confirmée",
