@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__ma_commande",
+      "topic_label": "Re: Ma commande",
+      "situation": "Re: Ma commande",
+      "response_template": "Bonjour Sébastien,\n\nLe paiement en plusieurs fois est bien disponible sur notre site via Alma : il suffit de le sélectionner comme mode de paiement au moment du checkout, avant de valider la commande.\n\nPour votre commande #13848, elle sera expédiée aujourd'hui. Vous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nSi vous préférez annuler votre commande, faites-le moi savoir et nous nous en occupons immédiatement.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__retour_commande_12732",
       "topic_label": "Re: Retour commande 12732",
       "situation": "Re: Retour commande 12732",
