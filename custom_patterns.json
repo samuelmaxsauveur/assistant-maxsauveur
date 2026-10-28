@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande_13482_guillaume_fosse",
+      "topic_label": "Re: Commande 13482 Guillaume fosse",
+      "situation": "Re: Commande 13482 Guillaume fosse",
+      "response_template": "Bonjour Guillaume,\n\nLes Dakota sont en cours d'acheminement vers notre entrepôt. La livraison de votre commande #13482 (Dakota Noir 40) est prévue pour la première semaine de novembre.\n\nVous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__13848_confirm_e",
       "topic_label": "Re: Commande #13848 confirmée",
       "situation": "Re: Commande #13848 confirmée",
