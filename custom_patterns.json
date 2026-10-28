@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "commande__13459___simon_baas",
+      "topic_label": "Commande #13459 - Simon Baas",
+      "situation": "Commande #13459 - Simon Baas",
+      "response_template": "Bonjour Simon,\n\nPas de problème pour échanger la ceinture. Voici la marche à suivre :\n\n1. Téléchargez le bon de retour ici : https://maxsauveur.com/pages/livraison-et-retour\n   Indiquez comme motif : « avoir ».\n\n2. Glissez le bon à l'intérieur du colis et expédiez la ceinture à :\n   SSL – Solutions & Services Logistiques\n   14 avenue Lamartine\n   13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous émettrons un avoir de 149€ valable sur la Jason dans la taille souhaitée, vous ne paierez donc rien de plus si vous prenez le même modèle. Si vous souhaitez une autre ceinture à un tarif supérieur, vous règleriez uniquement la différence.\n\nBonne soirée,\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__ma_commande",
       "topic_label": "Re: Ma commande",
       "situation": "Re: Ma commande",
