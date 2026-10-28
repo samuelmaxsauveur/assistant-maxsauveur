@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__help_with_sizing",
+      "topic_label": "Re: Help with sizing",
+      "situation": "Re: Help with sizing",
+      "response_template": "Hey Francesco,\n\nGood catch, we do have half sizes! In that case, the 42.5 is actually the better option for you. No need for an insole or thick socks.\n\nThanks for the kind words, enjoy the shoes!\n\nJohn – Customer Care – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande__13459___simon_baas",
       "topic_label": "Commande #13459 - Simon Baas",
       "situation": "Commande #13459 - Simon Baas",
