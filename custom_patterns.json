@@ -2,6 +2,62 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__13848_confirm_e",
+      "topic_label": "Re: Commande #13848 confirmée",
+      "situation": "Re: Commande #13848 confirmée",
+      "response_template": "Bonjour Sébastien,\n\nLe cuir grainé et le cuir lisse sont bien deux modèles distincts, ce qui explique la différence d'affichage.\n\nPour effectuer cet échange, voici comment procéder :\n\n1. Nous annulons votre commande #13848 (Paul Cuir Grainé Noir, 40)\n2. Vous repassez commande du Paul en cuir lisse noir taille 40 directement sur le site\n\nDites-moi si vous souhaitez que nous procédions à l'annulation et nous le faisons immédiatement.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "commande__13273_confirm_e",
+      "topic_label": "Commande #13273 confirmée",
+      "situation": "Commande #13273 confirmée",
+      "response_template": "Bonjour Marion,\n\nVotre commande #13273 (3 embauchoirs bois de cèdre) est bien enregistrée et le paiement est confirmé. Il s'agit d'une précommande, comme indiqué sur la fiche produit au moment de votre achat. La livraison est prévue pour mi-novembre 2026.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "form_name_form_submitted_2026_10_26_09_49_19",
+      "topic_label": "Form name Form submitted 2026-10-26 09:49:19",
+      "situation": "Form name Form submitted 2026-10-26 09:49:19",
+      "response_template": "Bonjour Quentin,\n\nVotre commande #13432 (Deck Cuir Marron 42.5 + ceinture Jason) est bien enregistrée. L'expédition est prévue cette semaine, et vous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "r_assort",
+      "topic_label": "Réassort",
+      "situation": "Réassort",
+      "response_template": "Bonjour Geoffrey,\n\nLe réassort du Paul en cuir grainé marron arrive très prochainement.\n\nOn peut vous en mettre une paire de côté dès maintenant si vous le souhaitez. Confirmez-moi votre pointure et je m'en occupe.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "fwd__commande__13848_confirm_e",
+      "topic_label": "Fwd: Commande #13848 confirmée",
+      "situation": "Fwd: Commande #13848 confirmée",
+      "response_template": "Bonjour Sébastien,\n\nVotre Paul Mocassin Cuir Grainé Noir (#13848) est une précommande : l'expédition est prévue d'ici la fin de la semaine, semaine prochaine au plus tard. Vous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__re__form_name_form_submitted_2026_10_25_17_20_20",
+      "topic_label": "Re: Re: Form name Form submitted 2026-10-25 17:20:20",
+      "situation": "Re: Re: Form name Form submitted 2026-10-25 17:20:20",
+      "response_template": "Bonjour Sébastien,\n\nVotre commande #13848 (Paul Mocassin Cuir Grainé Noir, 40) est bien enregistrée et le paiement est confirmé.\n\nPour le paiement en plusieurs fois, il faut sélectionner Alma directement au moment du paiement, sur la page de règlement. Si vous souhaitez en bénéficier, il faudrait annuler cette commande et en repasser une nouvelle en choisissant Alma à l'étape du paiement.\n\nDites-moi comment vous souhaitez procéder.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
+      "topic": "echange_de_ceinture___commande__13488",
+      "topic_label": "Echange de ceinture - Commande #13488",
+      "situation": "Echange de ceinture - Commande #13488",
+      "response_template": "Bonjour Boris,\n\nNous vérifions cela de notre côté et revenons vers vous très rapidement.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "re__help_with_sizing",
       "topic_label": "Re: Help with sizing",
       "situation": "Re: Help with sizing",
@@ -230,14 +286,6 @@
       "topic_label": "Form name Form submitted 2026-10-26 15:24:19",
       "situation": "Form name Form submitted 2026-10-26 15:24:19",
       "response_template": "Bonjour Raül,\n\nJoyeux anniversaire ! Voici un code de bienvenue pour votre première commande : MSPARIS-ZPBBSB (15€ de réduction).\n\nN'hésitez pas si vous avez des questions sur un modèle ou une pointure avant de passer commande.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__re__form_name_form_submitted_2026_10_25_17_20_20",
-      "topic_label": "Re: Re: Form name Form submitted 2026-10-25 17:20:20",
-      "situation": "Re: Re: Form name Form submitted 2026-10-25 17:20:20",
-      "response_template": "Bonjour Sébastien,\n\nUne commande passée aujourd'hui avant 11h sera expédiée ce soir, demain dans le cas contraire. Comptez ensuite 3 à 5 jours ouvrés pour la livraison à domicile, ou 2 à 3 jours en point relais.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -1190,14 +1238,6 @@
       "topic_label": "Re: Retour reçu — remboursement en cours",
       "situation": "Re: Retour reçu — remboursement en cours",
       "response_template": "Bonjour Charles,\n\nNous nous rapprochons de notre comptabilité pour vérifier le statut de votre remboursement et revenons vers vous très rapidement. Veuillez nous excuser pour ce délai.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "echange_de_ceinture___commande__13488",
-      "topic_label": "Echange de ceinture - Commande #13488",
-      "situation": "Echange de ceinture - Commande #13488",
-      "response_template": "Bonjour Boris,\n\nMerci pour votre message et pour avoir suivi la procédure de retour.\n\nSur votre demande de remboursement des frais de port : ce n'est malheureusement pas quelque chose que nous pouvons faire. Nos CGV précisent que les retours sont à la charge du client, et nous ne faisons exception que dans deux cas précis : défaut de fabrication avéré ou erreur de préparation de notre part. Un échange de taille ne relève d'aucun de ces cas.\n\nCe que nous pouvons faire en revanche : offrir la livraison sur votre prochaine commande de la Carter en taille 100. Passez votre commande et transmettez-moi le numéro, je m'occupe de vous rembourser les frais de port.\n\nDès réception et contrôle de la ceinture retournée, votre avoir sera émis.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
