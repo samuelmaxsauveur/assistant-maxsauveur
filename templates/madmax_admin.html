@@ -57,7 +57,7 @@ button { font: inherit; font-size: 12px; padding: 6px 10px; border: 1px solid va
 
   <div class="state">
     Envois automatiques : {% if sending %}<b class="on">activés</b>{% else %}<b class="off">désactivés</b> (rien ne part tant que les textes ne sont pas validés){% endif %}<br>
-    Liens : le {{ links_from.strftime("%d/%m à %H h") }}, pour les commandes du jeudi 5 novembre ayant une remise automatique dont le nom contient « {{ match }} ».<br>
+    Liens : le {{ links_from.strftime("%d/%m à %H h") }}, pour les commandes du jeudi 5 novembre ayant une remise dont le nom contient « {{ match|upper }} » (MADMAX26-15, -20, -30).<br>
     Relances : le 1er de chaque mois à 10 h ({% for m in months %}{{ m[5:] }}/{{ m[:4] }}{% if not loop.last %}, {% endif %}{% endfor %}), pour les codes non utilisés et les boîtes jamais ouvertes.
   </div>
 
@@ -134,7 +134,7 @@ button { font: inherit; font-size: 12px; padding: 6px 10px; border: 1px solid va
       <td>{% if o.code %}{{ o.amount }} € · {{ o.code }}{% else %}<span class="small">boîte fermée</span>{% endif %}</td>
       <td>{% if not o.code %}{% elif o.code_status == "sent" %}<span class="tag ok">envoyé</span>{% elif o.code_status == "failed" %}<span class="tag ko">échec</span><span class="err">{{ o.code_error }}</span>{% else %}<span class="tag wait">en cours</span>{% endif %}</td>
       <td>{{ "oui" if o.used else "" }}</td>
-      <td>{% for r in reminders.get(o.id, []) %}<span class="tag {{ 'ok' if r.status == 'sent' else 'ko' }}">{{ r.month[5:] }}/{{ r.month[2:4] }}</span> {% endfor %}</td>
+      <td>{% if o.reminders_off %}<span class="tag">rappels arrêtés</span> {% endif %}{% for r in reminders.get(o.id, []) %}<span class="tag {{ 'ok' if r.status == 'sent' else 'ko' }}">{{ r.month[5:] }}/{{ r.month[2:4] }}</span> {% endfor %}</td>
       <td>
         <form class="inline" method="post" action="/madmax/admin/resend/link/{{ o.id }}"><button>Renvoyer le lien</button></form>
         {% if o.code %}<form class="inline" method="post" action="/madmax/admin/resend/code/{{ o.id }}"><button>Renvoyer le code</button></form>{% endif %}

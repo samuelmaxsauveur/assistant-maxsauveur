@@ -72,8 +72,9 @@ LINKS_UNTIL     = PARIS.localize(datetime(2026, 11, 30, 23, 59))
 REMINDER_MONTHS = ["2026-12", "2027-01", "2027-02", "2027-03", "2027-04"]
 REMINDER_HOUR   = 10
 
-# Une commande est éligible si l'une de ses remises automatiques contient ce texte.
-DISCOUNT_MATCH  = os.getenv("MADMAX_DISCOUNT_MATCH", "mad max").lower()
+# Une commande est éligible si l'une de ses remises (MADMAX26-15, MADMAX26-20,
+# MADMAX26-30) contient ce texte, qu'elle soit automatique ou saisie en code.
+DISCOUNT_MATCH  = os.getenv("MADMAX_DISCOUNT_MATCH", "madmax26").lower()
 
 # Produits sur lesquels le code s'applique : chaussures et ceintures, sauf
 # précommandes et fins de série. Recalculé chaque jour à partir de ces collections.
@@ -160,6 +161,7 @@ def init_db():
                 code_sent_at  TEXT,
                 code_error    TEXT,
                 used          INTEGER NOT NULL DEFAULT 0,
+                reminders_off INTEGER NOT NULL DEFAULT 0,
                 created_at    TEXT NOT NULL
             )
         """)
@@ -175,6 +177,9 @@ def init_db():
                 UNIQUE(order_row, month)
             )
         """)
+        cols = {r[1] for r in conn.execute("PRAGMA table_info(madmax_orders)")}
+        if "reminders_off" not in cols:
+            conn.execute("ALTER TABLE madmax_orders ADD COLUMN reminders_off INTEGER NOT NULL DEFAULT 0")
         conn.commit()
     finally:
         conn.close()
@@ -226,6 +231,10 @@ def _update(oid, **fields):
 
 def link_url(o):
     return f"{BASE_URL}/cadeau/{o['token']}"
+
+
+def stop_url(o):
+    return f"{BASE_URL}/cadeau/{o['token']}/stop"
 
 
 def stats():
@@ -290,7 +299,9 @@ query($q: String!, $after: String) {
       billingAddress { firstName }
       totalPriceSet { shopMoney { amount } }
       discountApplications(first: 20) {
-        nodes { __typename ... on AutomaticDiscountApplication { title } }
+        nodes { __typename
+                ... on AutomaticDiscountApplication { title }
+                ... on DiscountCodeApplication { code } }
       }
     }
   }
@@ -312,8 +323,9 @@ def _order_status(node):
 
 
 def _has_madmax(node):
-    return any(DISCOUNT_MATCH in (a.get("title") or "").lower()
-               for a in node["discountApplications"]["nodes"])
+    names = [(a.get("title") or a.get("code") or "").lower().replace(" ", "")
+             for a in node["discountApplications"]["nodes"]]
+    return any(DISCOUNT_MATCH in n for n in names)
 
 
 def import_orders():
@@ -642,6 +654,7 @@ def build_email(kind, o, month=None):
                 "À bientôt,",
             ],
             "ps": "Si vous l'avez déjà utilisée ces derniers jours, ne tenez pas compte de ce message.",
+            "stop": stop_url(o),
         }
     if kind == "reminder_link":
         return {
@@ -659,12 +672,17 @@ def build_email(kind, o, month=None):
                 "À bientôt,",
             ],
             "ps": "Il n'y a pas de perdant : chaque boîte contient une carte.",
+            "stop": stop_url(o),
         }
     raise ValueError(kind)
 
 
 def _render_html(e, o):
     esc = html.escape
+    stop_html = ""
+    if e.get("stop"):
+        stop_html = (f'<br>Vous ne souhaitez plus recevoir ces rappels ? '
+                     f'<a href="{esc(e["stop"])}" style="color:#888888">Arrêter les rappels</a>')
     paras = lambda ps: "".join(f'<p style="margin:0 0 16px">{esc(p)}</p>' for p in ps)
     code_block = ""
     if e.get("code"):
@@ -705,7 +723,7 @@ def _render_html(e, o):
   </td></tr>
   <tr><td align="center" style="background:#f6f6f6;padding:18px 32px;font-size:11px;line-height:1.6;color:#888888">
     Max Sauveur SAS · 9b rue Jeanne d'Arc, 94500 Champigny-sur-Marne · RCS Paris 327 017 802<br>
-    Une question ? Répondez simplement à cet e-mail.
+    Une question ? Répondez simplement à cet e-mail.{stop_html}
   </td></tr>
 </table></td></tr></table></body></html>"""
 
@@ -716,6 +734,8 @@ def _render_text(e, o):
         lines += [f"{o['amount']} € · code : {o['code']}", ""]
     label, href = e["button"]
     lines += [f"{label} : {href}", ""] + [p + "\n" for p in e["outro"]] + ["Sam", "", f"P.S. {e['ps']}", "", "--", CONDITIONS]
+    if e.get("stop"):
+        lines += ["", f"Ne plus recevoir ces rappels : {e['stop']}"]
     return "\n".join(lines)
 
 
@@ -810,7 +830,7 @@ def _send_pending_links():
 
 def _send_reminders(month):
     orders = _rows("""SELECT * FROM madmax_orders WHERE is_test = 0 AND status = 'ok' AND used = 0
-                      AND link_status = 'sent'
+                      AND link_status = 'sent' AND reminders_off = 0
                       AND id NOT IN (SELECT order_row FROM madmax_reminders WHERE month = ?)""", (month,))
     if not orders:
         return

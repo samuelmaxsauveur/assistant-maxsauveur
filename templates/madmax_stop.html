@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Rappels carte cadeau · Max Sauveur</title>
+<style>
+@font-face { font-family: Butler; src: url(/static/popup/Butler.woff2) format("woff2"); }
+@font-face { font-family: Avalon; src: url(/static/popup/Avalon-Book.woff2) format("woff2"); }
+body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center;
+  background: #1f2021; color: #fff; font: 17px/1.6 Avalon, "Helvetica Neue", Arial, sans-serif; padding: 24px; box-sizing: border-box; }
+main { max-width: 520px; }
+img { width: 180px; margin-bottom: 30px; }
+h1 { font: 400 32px/1.2 Butler, Georgia, serif; margin: 0 0 14px; }
+p { color: rgba(255,255,255,.75); }
+button { margin-top: 18px; min-height: 54px; padding: 0 30px; border: 0; background: #fff; color: #1f2021;
+  font: 600 13px Avalon, Arial, sans-serif; letter-spacing: .2em; text-transform: uppercase; cursor: pointer; }
+</style>
+</head>
+<body><main>
+<img src="/static/popup/logo-blanc.png" alt="Max Sauveur">
+{% if not o %}
+  <h1>Ce lien n'est pas valide</h1>
+  <p>Une question ? Écrivez-nous à hello@maxsauveur.com.</p>
+{% elif done %}
+  <h1>C'est noté</h1>
+  <p>Vous ne recevrez plus de rappel pour votre carte cadeau Mad Max.{% if o.code %} Votre code {{ o.code }} reste valable jusqu'au 15 avril 2027.{% endif %}</p>
+{% else %}
+  <h1>Arrêter les rappels ?</h1>
+  <p>Vous ne recevrez plus d'e-mail de rappel au sujet de votre carte cadeau Mad Max.{% if o.code %} Votre code {{ o.code }} restera valable jusqu'au 15 avril 2027.{% endif %}</p>
+  <form method="post"><button type="submit">Arrêter les rappels</button></form>
+{% endif %}
+</main></body>
+</html>

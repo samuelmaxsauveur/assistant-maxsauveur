@@ -39,6 +39,20 @@ def gift_page(token):
     return render_template("madmax.html", invalid=False, o=o, **_page_ctx())
 
 
+@madmax_bp.route("/cadeau/<token>/stop", methods=["GET", "POST"])
+def gift_stop(token):
+    # La page demande une confirmation : les antivirus de messagerie ouvrent
+    # parfois les liens tout seuls, un simple clic ne doit rien désinscrire.
+    o = madmax.get_order(token)
+    if not o:
+        return render_template("madmax_stop.html", o=None), 404
+    done = bool(o["reminders_off"])
+    if request.method == "POST" and not done:
+        madmax._update(o["id"], reminders_off=1)
+        done = True
+    return render_template("madmax_stop.html", o=o, done=done)
+
+
 @madmax_bp.route("/cadeau/<token>/tirage", methods=["POST"])
 def gift_draw(token):
     o = madmax.get_order(token)
