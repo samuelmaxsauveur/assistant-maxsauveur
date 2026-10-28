@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__commande_13418",
+      "topic_label": "Re: Re: Commande 13418",
+      "situation": "Re: Re: Commande 13418",
+      "response_template": "Bonjour Thomas,\n\nJe vois qu'une commande #13855 vient d'être passée ce jour pour un Wayne Bordeaux en 42,5. Si c'est vous qui venez de la passer, tout est en ordre.\n\nPour clarifier le guide : avec 27,2 cm, le 43 correspond bien à la bonne lecture du guide. Mais le Wayne chausse légèrement grand, ce qui explique la sensation que vous avez. Un 42 ou 42,5 est donc bien la recommandation, et le 42,5 est un bon choix intermédiaire.\n\nSi la commande #13855 est bien la vôtre, vous pouvez nous retourner le 43 via notre bon de retour (https://maxsauveur.com/pages/livraison-et-retour, motif \"avoir\") et nous émettrons un avoir dès réception.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande_13482_guillaume_fosse",
       "topic_label": "Re: Commande 13482 Guillaume fosse",
       "situation": "Re: Commande 13482 Guillaume fosse",
