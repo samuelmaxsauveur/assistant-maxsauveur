@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__re__re__re__une_commande__12957_est_en_transit",
+      "topic_label": "Re: Re: Re: Re: Re: Re: Une commande #12957 est en transit",
+      "situation": "Re: Re: Re: Re: Re: Re: Une commande #12957 est en transit",
+      "response_template": "Bonjour Louis Marie,\n\nVotre Deck en 42 part cette semaine. Vous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__commande_13418",
       "topic_label": "Re: Re: Commande 13418",
       "situation": "Re: Re: Commande 13418",
