@@ -216,6 +216,13 @@ KNOWLEDGE_BASE = """
 - Relances : le 1er de chaque mois de décembre à avril, tant que le code n'a pas servi. Chaque relance contient un lien « Arrêter les rappels ». Si le client demande quand même à ne plus les recevoir, le transmettre à Samuel.
 - Ne pas prolonger une carte expirée ni la convertir en avoir sans l'accord de Samuel.
 
+### Mad Max 2026 : remises et retours partiels
+- Remises automatiques du jeudi 5 au dimanche 8 novembre 2026 (MADMAX26-15, -20, -30) : -15 % dès 150 €, -20 % dès 450 €, -30 % dès 800 € sur le panier entier. Non cumulables entre elles ni avec un autre code.
+- Échange de pointure offert pendant les Mad Max : une fois par commande, même modèle, à demander dans la semaine qui suit la réception. Pointure épuisée : avoir du montant payé pour la paire. Un échange ne change pas la remise.
+- Retour partiel : on recalcule la remise sur les articles conservés, à leur prix avant remise. S'ils n'atteignent plus le palier de la commande, c'est le palier inférieur qui s'applique (aucune remise sous 150 €). La différence est déduite du remboursement, sans jamais dépasser le montant à rembourser.
+- Exemple : commande de 850 € avant remise, payée 595 € (-30 %). Le client renvoie une paire de 410 €. Il garde 440 € d'articles, donc -15 % : 374 €. Remboursement : 595 - 374 = 221 € (et non 287 €).
+- Toujours montrer ce calcul au client dans la réponse, et le faire valider par Samuel avant tout remboursement.
+
 ---
 
 ## PRODUITS — INFOS COMPLÉMENTAIRES
