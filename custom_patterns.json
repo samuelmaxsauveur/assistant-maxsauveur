@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__13116_confirm_e",
+      "topic_label": "Re: Commande #13116 confirmée",
+      "situation": "Re: Commande #13116 confirmée",
+      "response_template": "Bonjour Davy,\n\nLa fiche produit indiquait mi-novembre 2026 comme date de livraison, ce qui correspond bien à ce que nous vous avons communiqué. Il y a peut-être eu une confusion de date de votre côté.\n\nVos embauchoirs sont donc toujours prévus pour mi-novembre. Vous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande__13618",
       "topic_label": "Commande #13618",
       "situation": "Commande #13618",
