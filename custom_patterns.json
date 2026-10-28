@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__help_with_sizing",
+      "topic_label": "Re: Re: Help with sizing",
+      "situation": "Re: Re: Help with sizing",
+      "response_template": "Hey Francesco,\n\nNo need to apologize at all, second hand is a great way to discover new brands, and those shoes look fantastic on the photos you sent!\n\nWe do have belts available on the site. For that deep burgundy, our burgundy leather belts would be a natural match. You can check them out directly at maxsauveur.com.\n\nJohn – Customer Care – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__13116_confirm_e",
       "topic_label": "Re: Commande #13116 confirmée",
       "situation": "Re: Commande #13116 confirmée",
