@@ -118,18 +118,6 @@ def admin_sync():
         return _back(f"Erreur : {e}")
 
 
-@madmax_bp.route("/madmax/admin/close-old", methods=["POST"])
-def admin_close_old():
-    if not _admin_ok():
-        return "Accès réservé.", 403
-    try:
-        closed = madmax.close_old_popup_codes()
-        return _back(f"{len(closed)} ancienne(s) remise(s) MSPARIS désactivée(s)." if closed
-                     else "Aucune ancienne remise active à désactiver.")
-    except Exception as e:
-        return _back(f"Erreur : {e}")
-
-
 @madmax_bp.route("/madmax/admin/import", methods=["POST"])
 def admin_import():
     if not _admin_ok():

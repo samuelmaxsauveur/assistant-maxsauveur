@@ -85,7 +85,6 @@ EXCLUDED        = ["precommande", "fin-de-serie"]
 
 CODE_PREFIX     = "MADMAX-"
 TITLE_PREFIX    = "Mad Max nov. 2026 · carte cadeau"
-OLD_TITLE_PREFIX = "Pop-up Paris nov. 2026"
 
 BASE_URL        = os.getenv("MADMAX_BASE_URL", "https://assistant-maxsauveur-production.up.railway.app")
 # Règlement : sur l'app tant que la page n'existe pas sur maxsauveur.com.
@@ -518,23 +517,6 @@ def _bulk_add(discount_id, codes):
         if st["done"]:
             return [n["code"] for n in st["codes"]["nodes"] if not n["errors"]]
     raise RuntimeError("Shopify n'a pas fini de créer les codes à temps.")
-
-
-def close_old_popup_codes():
-    """Désactive les anciennes remises du pop-up (codes MSPARIS-), sans rien supprimer."""
-    nodes = _gql("""{ codeDiscountNodes(first: 100, sortKey: CREATED_AT, reverse: true) {
-                      nodes { id codeDiscount { ... on DiscountCodeBasic { title status } } } } }""")
-    closed = []
-    for n in nodes["codeDiscountNodes"]["nodes"]:
-        d = n["codeDiscount"]
-        if not d.get("title", "").startswith(OLD_TITLE_PREFIX) or d.get("status") == "EXPIRED":
-            continue
-        res = _gql("""mutation($id: ID!) { discountCodeDeactivate(id: $id) {
-                        userErrors { field message } } }""", {"id": n["id"]})["discountCodeDeactivate"]
-        if res["userErrors"]:
-            raise RuntimeError(f"{d['title']} : {res['userErrors']}")
-        closed.append(d["title"])
-    return closed
 
 
 # ── Tirage ────────────────────────────────────────────────────────────────────
