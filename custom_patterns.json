@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__retour_commande_12732",
+      "topic_label": "Re: Retour commande 12732",
+      "situation": "Re: Retour commande 12732",
+      "response_template": "Bonjour Mateusz,\n\nLe remboursement de 158,75€ a bien été émis. Selon votre banque, comptez 3 à 5 jours ouvrés pour que la transaction apparaisse sur votre relevé.\n\nMerci pour votre patience dans cette attente.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -1622,14 +1630,6 @@
       "topic_label": "Demande de pointure",
       "situation": "Demande de pointure",
       "response_template": "Bonjour Léo,\n\nAvec 26,7 cm, notre guide vous place en **41**.\n\nLe Paul chausse juste au départ, c'est tout à fait normal : le cuir et la semelle en liège s'assouplissent avec le port et se moulent progressivement à votre pied. Les premières sorties peuvent donner une légère sensation de serré, qui disparaît après quelques ports.\n\nUn point important sur le mocassin : sans lacets, le maintien dépend entièrement de votre cou-de-pied. Si votre cou-de-pied est plutôt fin, le 41 sera parfait. S'il est fort, vous serez également à l'aise car le cuir travaillera dans ce sens.\n\nJe vous recommande donc le **41**.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__retour_commande_12732",
-      "topic_label": "Re: Retour commande 12732",
-      "situation": "Re: Retour commande 12732",
-      "response_template": "Bonjour Mateusz,\n\nVotre relance est tout à fait légitime.\nNous sommes en train de nous rapprocher de notre comptabilité pour comprendre pourquoi le remboursement n'a pas encore été émis. Nous revenons vers vous très rapidement avec une réponse concrète.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
