@@ -27,7 +27,7 @@ def _page_ctx():
 
 @madmax_bp.route("/cadeau/conditions")
 def conditions():
-    return render_template("madmax_reglement.html", counts=madmax.tier_counts(500),
+    return render_template("madmax_reglement.html", counts=madmax.tier_counts(500), keep_min=madmax.CARD_KEEP_MIN,
                            min_purchase=madmax.MIN_PURCHASE, **_page_ctx())
 
 
@@ -77,8 +77,10 @@ def admin():
     tiers, orders, reminders = madmax.stats()
     real = [o for o in orders if not o["is_test"]]
     eligible = [o for o in real if o["status"] == "ok"]
+    to_check = [o for o in real if o["review"] == "to_check"]
     resp = make_response(render_template(
-        "madmax_admin.html", tiers=tiers, orders=orders, reminders=reminders,
+        "madmax_admin.html", tiers=tiers, orders=orders, reminders=reminders, to_check=to_check,
+        keep_min=madmax.CARD_KEEP_MIN,
         n_orders=len(eligible), n_links=sum(o["link_status"] == "sent" for o in real),
         n_drawn=sum(bool(o["code"]) for o in real), n_used=sum(o["used"] for o in real),
         drawn_value=sum(o["amount"] or 0 for o in real),
@@ -114,6 +116,19 @@ def admin_sync():
     try:
         _, added, removed = madmax.sync_collection()
         return _back(f"Collection à jour : {added} produit(s) ajouté(s), {removed} retiré(s).")
+    except Exception as e:
+        return _back(f"Erreur : {e}")
+
+
+@madmax_bp.route("/madmax/admin/review/<int:oid>", methods=["POST"])
+def admin_review(oid):
+    if not _admin_ok():
+        return "Accès réservé.", 403
+    try:
+        if request.form.get("decision") == "cancel":
+            return _back(madmax.cancel_card(oid))
+        madmax.keep_card(oid)
+        return _back("Carte conservée.")
     except Exception as e:
         return _back(f"Erreur : {e}")
 

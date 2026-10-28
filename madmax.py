@@ -83,6 +83,11 @@ COLLECTION_NAME = "Mad Max : produits éligibles à la carte cadeau"
 BELTS           = "ceintures"
 EXCLUDED        = ["precommande", "fin-de-serie"]
 
+# Une commande dont les articles conservés (prix avant remise) passent sous ce
+# montant après un retour partiel perd sa carte, une fois que Sam l'a confirmé.
+CARD_KEEP_MIN   = 150
+ALERT_EMAIL     = os.getenv("MADMAX_ALERT_EMAIL", "samuel@maxsauveur.com")
+
 CODE_PREFIX     = "MADMAX-"
 TITLE_PREFIX    = "Mad Max nov. 2026 · carte cadeau"
 
@@ -101,7 +106,8 @@ CONDITIONS = (
     f"Carte cadeau valable du {STARTS_LABEL} au {ENDS_LABEL} sur maxsauveur.com, en une seule commande, "
     f"dès {MIN_PURCHASE} € d'achat de chaussures et de ceintures (hors précommandes et fins de série). "
     "Non cumulable avec un autre code ou une autre remise. Ni remboursable, ni échangeable contre de "
-    f"l'argent. Annulée si la commande du {ORDER_DAY_LABEL} est annulée ou remboursée en totalité."
+    f"l'argent. Annulée si la commande du {ORDER_DAY_LABEL} est annulée ou remboursée en totalité, ou si, après "
+    f"un retour partiel, les articles conservés n'atteignent plus {CARD_KEEP_MIN} € (prix avant remise)."
 )
 
 
@@ -163,6 +169,8 @@ def init_db():
                 code_error    TEXT,
                 used          INTEGER NOT NULL DEFAULT 0,
                 reminders_off INTEGER NOT NULL DEFAULT 0,
+                kept_value    REAL,
+                review        TEXT NOT NULL DEFAULT '',
                 created_at    TEXT NOT NULL
             )
         """)
@@ -181,6 +189,11 @@ def init_db():
         cols = {r[1] for r in conn.execute("PRAGMA table_info(madmax_orders)")}
         if "reminders_off" not in cols:
             conn.execute("ALTER TABLE madmax_orders ADD COLUMN reminders_off INTEGER NOT NULL DEFAULT 0")
+        if "kept_value" not in cols:
+            conn.execute("ALTER TABLE madmax_orders ADD COLUMN kept_value REAL")
+        if "review" not in cols:
+            # '' normal, 'to_check' retour partiel sous le seuil, 'cancelled' ou 'kept' : décision de Sam
+            conn.execute("ALTER TABLE madmax_orders ADD COLUMN review TEXT NOT NULL DEFAULT ''")
         conn.commit()
     finally:
         conn.close()
@@ -356,22 +369,39 @@ def import_orders():
     return added
 
 
-def _refresh_statuses(order_rows):
-    """Relit dans Shopify le statut (annulée, remboursée) des commandes données."""
+def _refresh_statuses(order_rows, flag=False):
+    """Relit dans Shopify le statut (annulée, remboursée) des commandes données,
+    et la valeur avant remise des articles encore gardés par le client. Une
+    commande qui passe sous CARD_KEEP_MIN est mise « à vérifier » quand `flag`
+    est vrai (contrôle quotidien, qui prévient Sam). Renvoie ces commandes."""
+    flagged = []
     real = [o for o in order_rows if not o["is_test"]]
-    for i in range(0, len(real), 100):
-        batch = real[i:i + 100]
+    for i in range(0, len(real), 10):
+        batch = real[i:i + 10]
         data = _gql("""query($ids: [ID!]!) { nodes(ids: $ids) {
-                          ... on Order { id cancelledAt displayFinancialStatus } } }""",
+                          ... on Order { id cancelledAt displayFinancialStatus
+                            lineItems(first: 50) { nodes { currentQuantity
+                              originalUnitPriceSet { shopMoney { amount } } } } } } }""",
                     {"ids": [o["order_gid"] for o in batch]})
         by_id = {n["id"]: n for n in data["nodes"] if n}
         for o in batch:
             n = by_id.get(o["order_gid"])
-            if n:
-                status = _order_status(n)
-                if status != o["status"]:
-                    _update(o["id"], status=status)
-                    o["status"] = status
+            if not n:
+                continue
+            status = _order_status(n)
+            kept = round(sum(li["currentQuantity"] * float(li["originalUnitPriceSet"]["shopMoney"]["amount"])
+                             for li in n["lineItems"]["nodes"]), 2)
+            fields = {}
+            if status != o["status"]:
+                fields["status"] = o["status"] = status
+            if kept != o.get("kept_value"):
+                fields["kept_value"] = o["kept_value"] = kept
+            if flag and status == "ok" and kept < CARD_KEEP_MIN and not o.get("review"):
+                fields["review"] = o["review"] = "to_check"
+                flagged.append(o)
+            if fields:
+                _update(o["id"], **fields)
+    return flagged
 
 
 def refresh_usage():
@@ -531,6 +561,10 @@ def draw(o):
         return o, None
     if not o["is_test"]:
         _refresh_statuses([o])
+    if o.get("review") == "cancelled":
+        return o, (f"Après le retour d'une partie de votre commande, les articles gardés n'atteignent plus "
+                   f"{CARD_KEEP_MIN} € : elle ne donne plus droit à la carte cadeau. Une question ? "
+                   "Écrivez-nous à hello@maxsauveur.com.")
     if o["status"] in ("cancelled", "refunded"):
         return o, ("Cette commande a été annulée ou remboursée : elle ne donne plus droit à la carte "
                    "cadeau. Une question ? Écrivez-nous à hello@maxsauveur.com.")
@@ -794,6 +828,9 @@ def tick():
         if sending_enabled() and LINKS_FROM <= now <= LINKS_UNTIL:
             _send_pending_links()
         month = now.strftime("%Y-%m")
+        if LINKS_FROM <= now <= PARIS.localize(datetime(2027, 4, 16)) and now.hour >= 7 \
+                and _last_check_day != now.date():
+            daily_check(now.date())
         if sending_enabled() and month in REMINDER_MONTHS and now.day == 1 and now.hour >= REMINDER_HOUR:
             _send_reminders(month)
     except Exception as e:
@@ -814,7 +851,7 @@ def _send_pending_links():
 
 def _send_reminders(month):
     orders = _rows("""SELECT * FROM madmax_orders WHERE is_test = 0 AND status = 'ok' AND used = 0
-                      AND link_status = 'sent' AND reminders_off = 0
+                      AND link_status = 'sent' AND reminders_off = 0 AND review IN ('', 'kept')
                       AND id NOT IN (SELECT order_row FROM madmax_reminders WHERE month = ?)""", (month,))
     if not orders:
         return
@@ -822,10 +859,75 @@ def _send_reminders(month):
     _refresh_statuses(orders)
     for o in orders:
         fresh = get_order_by_id(o["id"])
-        if fresh["status"] != "ok" or fresh["used"]:
+        if fresh["status"] != "ok" or fresh["used"] or fresh["review"] in ("to_check", "cancelled"):
             continue
         if send_reminder(fresh, month, "reminder_code" if fresh["code"] else "reminder_link"):
             time.sleep(1)
+
+
+_last_check_day = None
+
+
+def daily_check(day):
+    """Une fois par jour : relit les commandes et prévient Sam des retours
+    partiels qui font perdre la carte."""
+    global _last_check_day
+    _last_check_day = day
+    orders = _rows("SELECT * FROM madmax_orders WHERE is_test = 0 AND status IN ('ok', 'unpaid') AND review = ''")
+    flagged = _refresh_statuses(orders, flag=True) if orders else []
+    if flagged:
+        try:
+            _send_alert(flagged)
+        except Exception as e:
+            print(f"[MadMax] Alert email failed: {e}", flush=True)
+
+
+def _send_alert(flagged):
+    lines = [f"{len(flagged)} commande(s) du jeudi 5 novembre ont été retournées en partie : les articles gardés "
+             f"valent moins de {CARD_KEEP_MIN} € avant remise.", "",
+             "Selon le règlement, la carte cadeau est perdue. Vérifie que ce n'est pas un simple échange de "
+             "pointure, puis clique sur « Annuler la carte » ou « Garder la carte » dans le tableau de bord Mad Max "
+             "(rubrique « À vérifier »).", ""]
+    for o in flagged:
+        card = f"carte {o['amount']} € {o['code']}" if o["code"] else "boîte pas encore ouverte"
+        lines.append(f"- {o['order_name']} · {o['email']} · articles gardés : {o['kept_value']:.2f} € · {card}")
+    msg = email.mime.text.MIMEText("\n".join(lines), "plain", "utf-8")
+    msg["From"] = email.utils.formataddr(("Assistant Max Sauveur", os.getenv("GMAIL_ADDRESS", "hello@maxsauveur.com")))
+    msg["To"] = ALERT_EMAIL
+    msg["Subject"] = f"[Mad Max] {len(flagged)} carte(s) cadeau à vérifier après un retour partiel"
+    raw = base64.urlsafe_b64encode(msg.as_bytes()).decode()
+    gmail_helper.get_gmail_service().users().messages().send(userId="me", body={"raw": raw}).execute()
+
+
+def cancel_card(oid):
+    """Décision de Sam : la carte est perdue. Le code, s'il a été tiré et pas
+    encore utilisé, est supprimé dans Shopify. Renvoie un message."""
+    o = get_order_by_id(oid)
+    note = "boîte pas encore ouverte : le tirage est désormais refusé"
+    if o["code"] and not o["is_test"]:
+        refresh_usage()
+        o = get_order_by_id(oid)
+        row = _row("SELECT discount_id FROM madmax_codes WHERE code = ?", (o["code"],))
+        if o["used"]:
+            note = f"le code {o['code']} a déjà été utilisé, il ne peut plus être annulé"
+        elif row:
+            found = _gql("""query($id: ID!, $q: String!) { codeDiscountNode(id: $id) { codeDiscount {
+                              ... on DiscountCodeBasic { codes(first: 1, query: $q) { nodes { id code } } } } } }""",
+                         {"id": row["discount_id"], "q": f"code:{o['code']}"})
+            nodes = found["codeDiscountNode"]["codeDiscount"]["codes"]["nodes"]
+            if nodes:
+                res = _gql("""mutation($d: ID!, $ids: [ID!]) { discountCodeRedeemCodeBulkDelete(discountId: $d, ids: $ids) {
+                                job { id } userErrors { field message } } }""",
+                           {"d": row["discount_id"], "ids": [nodes[0]["id"]]})["discountCodeRedeemCodeBulkDelete"]
+                if res["userErrors"]:
+                    raise RuntimeError(f"Shopify : {res['userErrors']}")
+            note = f"le code {o['code']} a été supprimé dans Shopify"
+    _update(oid, review="cancelled", reminders_off=1)
+    return f"Carte annulée pour {o['order_name']} : {note}."
+
+
+def keep_card(oid):
+    _update(oid, review="kept")
 
 
 # ── Tests (adresses @maxsauveur.com) ──────────────────────────────────────────

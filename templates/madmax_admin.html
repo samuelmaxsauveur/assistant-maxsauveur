@@ -61,6 +61,24 @@ button { font: inherit; font-size: 12px; padding: 6px 10px; border: 1px solid va
     Relances : le 1er de chaque mois à 10 h ({% for m in months %}{{ m[5:] }}/{{ m[:4] }}{% if not loop.last %}, {% endif %}{% endfor %}), pour les codes non utilisés et les boîtes jamais ouvertes.
   </div>
 
+  {% if to_check %}
+  <h2 style="margin-top:0">À vérifier : retours partiels</h2>
+  <p class="small">Les articles gardés valent moins de {{ keep_min }} € avant remise : selon le règlement, la carte est perdue.
+    Vérifie d'abord que ce n'est pas un simple échange de pointure.</p>
+  <div class="scroll" style="margin-bottom:24px"><table>
+    <tr><th>Commande</th><th>Client</th><th class="n">Articles gardés</th><th>Carte</th><th></th></tr>
+    {% for o in to_check %}
+    <tr><td>{{ o.order_name }}</td><td>{{ o.first_name or "" }}<br><span class="small">{{ o.email }}</span></td>
+      <td class="n">{{ "%.2f"|format(o.kept_value or 0) }} €</td>
+      <td>{% if o.code %}{{ o.amount }} € · {{ o.code }}{% if o.used %} <span class="tag ko">déjà utilisée</span>{% endif %}{% else %}<span class="small">boîte fermée</span>{% endif %}</td>
+      <td><form class="inline" method="post" action="/madmax/admin/review/{{ o.id }}"><input type="hidden" name="decision" value="cancel">
+            <label><input type="checkbox" required> confirmer</label> <button>Annuler la carte</button></form>
+          <form class="inline" method="post" action="/madmax/admin/review/{{ o.id }}"><input type="hidden" name="decision" value="keep">
+            <button>Garder la carte</button></form></td></tr>
+    {% endfor %}
+  </table></div>
+  {% endif %}
+
   <div class="kpis">
     <div class="kpi"><div class="v">{{ n_orders }}</div><div class="l">Commandes éligibles</div></div>
     <div class="kpi"><div class="v">{{ n_links }}</div><div class="l">Liens envoyés</div></div>
@@ -129,7 +147,7 @@ button { font: inherit; font-size: 12px; padding: 6px 10px; border: 1px solid va
       <td>{% if o.code %}{{ o.amount }} € · {{ o.code }}{% else %}<span class="small">boîte fermée</span>{% endif %}</td>
       <td>{% if not o.code %}{% elif o.code_status == "sent" %}<span class="tag ok">envoyé</span>{% elif o.code_status == "failed" %}<span class="tag ko">échec</span><span class="err">{{ o.code_error }}</span>{% else %}<span class="tag wait">en cours</span>{% endif %}</td>
       <td>{{ "oui" if o.used else "" }}</td>
-      <td>{% if o.reminders_off %}<span class="tag">rappels arrêtés</span> {% endif %}{% for r in reminders.get(o.id, []) %}<span class="tag {{ 'ok' if r.status == 'sent' else 'ko' }}">{{ r.month[5:] }}/{{ r.month[2:4] }}</span> {% endfor %}</td>
+      <td>{% if o.review == "cancelled" %}<span class="tag ko">carte annulée</span> {% elif o.review == "to_check" %}<span class="tag wait">à vérifier</span> {% endif %}{% if o.reminders_off %}<span class="tag">rappels arrêtés</span> {% endif %}{% for r in reminders.get(o.id, []) %}<span class="tag {{ 'ok' if r.status == 'sent' else 'ko' }}">{{ r.month[5:] }}/{{ r.month[2:4] }}</span> {% endfor %}</td>
       <td>
         <form class="inline" method="post" action="/madmax/admin/resend/link/{{ o.id }}"><button>Renvoyer le lien</button></form>
         {% if o.code %}<form class="inline" method="post" action="/madmax/admin/resend/code/{{ o.id }}"><button>Renvoyer le code</button></form>{% endif %}

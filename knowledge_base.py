@@ -212,7 +212,7 @@ KNOWLEDGE_BASE = """
 - Conditions : valable du 10 novembre 2026 au 15 avril 2027 sur maxsauveur.com, en une seule commande, dès 150 € de chaussures et de ceintures, hors précommandes et hors fins de série. Le code ne s'applique qu'à ces produits (pas aux chaussettes ni aux produits d'entretien). Non cumulable avec un autre code ou une autre remise. Ni remboursable ni échangeable contre de l'argent, pas d'avoir, pas de rendu de monnaie.
 - « Mon code ne marche pas » : vérifier dans l'ordre la date (rien avant le 10 novembre, rien après le 15 avril), le montant du panier en chaussures et ceintures seules (150 € minimum), la présence de produits en précommande ou en fin de série, un autre code déjà saisi, un code déjà utilisé une fois.
 - « Je n'ai pas reçu le lien ou le code » : vérifier les spams. Sinon, le transmettre à Samuel, qui peut le renvoyer en un clic depuis le tableau de bord Mad Max. Ne jamais inventer ni redonner un code soi-même.
-- Commande annulée ou remboursée en totalité : la carte est annulée. Retour partiel : la carte reste valable.
+- Commande annulée ou remboursée en totalité : la carte est annulée. Retour partiel : si les articles gardés valent encore au moins 150 € avant remise, la carte reste valable ; en dessous, la carte est perdue (Samuel reçoit une alerte et l'annule depuis le tableau de bord Mad Max ; un simple échange de pointure ne fait pas perdre la carte).
 - Relances : le 1er de chaque mois de décembre à avril, tant que le code n'a pas servi. Chaque relance contient un lien « Arrêter les rappels ». Si le client demande quand même à ne plus les recevoir, le transmettre à Samuel.
 - Ne pas prolonger une carte expirée ni la convertir en avoir sans l'accord de Samuel.
 
