@@ -20,7 +20,7 @@ def _admin_ok():
 
 def _page_ctx():
     return dict(starts_label=madmax.STARTS_LABEL, ends_label=madmax.ENDS_LABEL,
-                conditions=madmax.CONDITIONS)
+                conditions=madmax.CONDITIONS, rules_url=madmax.RULES_URL)
 
 
 # ── Page client ───────────────────────────────────────────────────────────────

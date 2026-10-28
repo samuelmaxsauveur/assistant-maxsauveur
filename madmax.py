@@ -88,6 +88,8 @@ TITLE_PREFIX    = "Mad Max nov. 2026 · carte cadeau"
 OLD_TITLE_PREFIX = "Pop-up Paris nov. 2026"
 
 BASE_URL        = os.getenv("MADMAX_BASE_URL", "https://assistant-maxsauveur-production.up.railway.app")
+# Règlement : sur l'app tant que la page n'existe pas sur maxsauveur.com.
+RULES_URL       = os.getenv("MADMAX_RULES_URL", f"{BASE_URL}/cadeau/conditions")
 TEST_DOMAIN     = "@maxsauveur.com"
 
 SHOPIFY_API     = "2025-01"
