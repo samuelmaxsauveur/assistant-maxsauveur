@@ -24,15 +24,15 @@ from routes_sav import sav
 from routes_client import client_bp
 from routes_newsletter import newsletter
 from routes_repairs import repairs_bp
-from routes_popup import popup_bp
-import popup_store
+from routes_madmax import madmax_bp
+import madmax
 app.register_blueprint(validation)
 app.register_blueprint(sav)
 app.register_blueprint(client_bp)
 app.register_blueprint(newsletter)
 app.register_blueprint(repairs_bp)
-app.register_blueprint(popup_bp)
-popup_store.init_db()
+app.register_blueprint(madmax_bp)
+madmax.init_db()
 
 # Start the scheduler inside the web process. gunicorn runs a single worker
 # (see gunicorn.conf.py), so exactly one scheduler exists and jobs never double

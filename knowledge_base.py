@@ -206,6 +206,16 @@ KNOWLEDGE_BASE = """
 ### Ceinture offerte + retour chaussures
 - Si le client retourne les chaussures auxquelles la ceinture était associée → déduire le prix réel de la ceinture de l'avoir
 
+### Carte cadeau Mad Max (commandes du jeudi 5 novembre 2026)
+- Qui y a droit : chaque commande passée le jeudi 5 novembre 2026 (jour réservé aux inscrits VIP) ayant eu une remise automatique Mad Max (donc dès 150 € de panier), et payée. Une commande = un tirage. Pas de carte pour les commandes du vendredi au dimanche.
+- Déroulement : le 6 novembre, le client reçoit depuis hello@ un e-mail avec un lien personnel. Il ouvre une boîte, le tirage décide du montant (15, 20, 30, 40, 50, 60 ou 70 €), le code s'affiche et part aussitôt par e-mail. Codes au format MADMAX-XXXXXX.
+- Conditions : valable du 10 novembre 2026 au 15 avril 2027 sur maxsauveur.com, en une seule commande, dès 150 € de chaussures et de ceintures, hors précommandes et hors fins de série. Le code ne s'applique qu'à ces produits (pas aux chaussettes ni aux produits d'entretien). Non cumulable avec un autre code ou une autre remise. Ni remboursable ni échangeable contre de l'argent, pas d'avoir, pas de rendu de monnaie.
+- « Mon code ne marche pas » : vérifier dans l'ordre la date (rien avant le 10 novembre, rien après le 15 avril), le montant du panier en chaussures et ceintures seules (150 € minimum), la présence de produits en précommande ou en fin de série, un autre code déjà saisi, un code déjà utilisé une fois.
+- « Je n'ai pas reçu le lien ou le code » : vérifier les spams. Sinon, le transmettre à Samuel, qui peut le renvoyer en un clic depuis le tableau de bord Mad Max. Ne jamais inventer ni redonner un code soi-même.
+- Commande annulée ou remboursée en totalité : la carte est annulée. Retour partiel : la carte reste valable.
+- Relances : le 1er de chaque mois de décembre à avril, tant que le code n'a pas servi. Si le client ne veut plus les recevoir, le transmettre à Samuel.
+- Ne pas prolonger une carte expirée ni la convertir en avoir sans l'accord de Samuel.
+
 ---
 
 ## PRODUITS — INFOS COMPLÉMENTAIRES

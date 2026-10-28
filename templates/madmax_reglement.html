@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Règlement · Carte cadeau Mad Max · Max Sauveur</title>
+<style>
+@font-face { font-family: Butler; src: url(/static/popup/Butler.woff2) format("woff2"); }
+@font-face { font-family: Avalon; src: url(/static/popup/Avalon-Book.woff2) format("woff2"); }
+body { margin: 0; background: #fff; color: #1f2021; font: 16px/1.65 Avalon, "Helvetica Neue", Arial, sans-serif; }
+main { max-width: 720px; margin: 0 auto; padding: 48px 22px 64px; }
+h1 { font: 400 34px/1.2 Butler, Georgia, serif; margin: 0 0 6px; }
+.sub { color: #70644a; letter-spacing: .2em; text-transform: uppercase; font-size: 12px; margin: 0 0 36px; }
+h2 { font: 400 21px/1.3 Butler, Georgia, serif; margin: 34px 0 8px; }
+p, li { color: #3a3b3c; }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; margin: 12px 0; width: 100%; max-width: 420px; }
+td, th { border-bottom: 1px solid #e6e1d7; padding: 8px 4px; text-align: left; }
+th { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #6d6a64; font-weight: 400; }
+td.n { text-align: right; font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body><main>
+<h1>Règlement de l'opération</h1>
+<p class="sub">Carte cadeau Mad Max · commandes du jeudi 5 novembre 2026</p>
+
+<h2>Article 1 · Organisateur</h2>
+<p>La société MAX SAUVEUR, SAS au capital de 15 244 euros, dont le siège social est situé 9b rue Jeanne d'Arc, 94500 Champigny-sur-Marne,
+immatriculée au RCS de Paris sous le numéro 327 017 802 (ci-après « l'Organisateur »), organise sur son site maxsauveur.com une opération
+promotionnelle avec tirage au sort intitulée « Carte cadeau Mad Max » (ci-après « l'Opération »).</p>
+
+<h2>Article 2 · Commandes concernées</h2>
+<p>Participe à l'Opération toute commande passée sur maxsauveur.com le jeudi 5 novembre 2026, entre 0 h et 23 h 59 (heure de Paris),
+ayant bénéficié de l'une des remises automatiques Mad Max, et payée. Chaque commande concernée donne droit à un tirage. Une commande annulée,
+ou remboursée en totalité, ne donne droit à aucun tirage, et la carte cadeau éventuellement obtenue est annulée.</p>
+
+<h2>Article 3 · Déroulement</h2>
+<p>À partir du 6 novembre 2026, le client reçoit à l'adresse e-mail de sa commande un lien personnel, rattaché à cette commande. En ouvrant ce lien,
+il lance le tirage, qui désigne instantanément et au hasard le montant de sa carte cadeau. Le résultat s'affiche à l'écran et le code est envoyé
+à la même adresse e-mail. Chaque lien ne permet qu'un seul tirage : l'ouvrir à nouveau affiche la même carte.</p>
+
+<h2>Article 4 · Dotations</h2>
+<p>Chaque tirage donne une carte cadeau. Son montant est tiré au sort parmi un lot de bons ainsi réparti :</p>
+<div class="scroll"><table>
+<tr><th>Montant</th><th style="text-align:right">Nombre de bons sur 500</th></tr>
+{% for amount, n in counts|dictsort %}<tr><td>{{ amount }} €</td><td class="n">{{ n }}</td></tr>{% endfor %}
+</table></div>
+<p>Chaque carte est tirée parmi les bons encore disponibles au moment du tirage. L'Organisateur peut ajouter des bons selon la même répartition
+si le nombre de commandes le nécessite.</p>
+
+<h2>Article 5 · Conditions d'utilisation</h2>
+<p>Chaque carte cadeau prend la forme d'un code unique, valable du {{ starts_label }} au {{ ends_label }} inclus sur maxsauveur.com, en une seule
+commande, pour un achat d'au moins {{ min_purchase }} € TTC de chaussures et de ceintures, hors produits en précommande et hors fins de série.
+Le code ne s'applique qu'à ces produits. Il n'est pas cumulable avec un autre code ou une autre remise. Il ne peut être ni remboursé, ni échangé
+contre de l'argent, ni rendu sous forme d'avoir, même partiellement. Un code non utilisé à sa date d'expiration est perdu. En cas de retour de la
+commande payée avec le code, le montant de la carte n'est pas remboursé.</p>
+
+<h2>Article 6 · Données personnelles</h2>
+<p>L'Opération utilise uniquement les données de la commande (prénom, adresse e-mail, numéro de commande), traitées par Max Sauveur SAS pour
+organiser le tirage, envoyer la carte cadeau et rappeler sa date d'expiration. Ces messages s'arrêtent dès que la carte est utilisée. Le client
+dispose d'un droit d'accès, de rectification, d'effacement, de limitation et d'opposition, qu'il peut exercer en écrivant à hello@maxsauveur.com,
+et peut introduire une réclamation auprès de la CNIL (www.cnil.fr).</p>
+
+<h2>Article 7 · Responsabilité</h2>
+<p>L'Organisateur ne saurait être tenu responsable d'un dysfonctionnement technique ou d'une adresse e-mail erronée empêchant la réception du lien
+ou du code. Le client qui n'aurait rien reçu peut écrire à hello@maxsauveur.com. L'Organisateur se réserve le droit de modifier ou d'annuler
+l'Opération en cas de force majeure ou de fraude.</p>
+
+<h2>Article 8 · Accès au règlement et loi applicable</h2>
+<p>Le présent règlement est consultable gratuitement depuis la page du tirage, et adressé gratuitement à toute personne qui en fait la demande à
+hello@maxsauveur.com. Il est soumis à la loi française.</p>
+</main></body>
+</html>

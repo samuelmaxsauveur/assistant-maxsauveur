@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Votre carte cadeau · Max Sauveur</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#1f2021">
+<link rel="icon" href="/static/popup/icon-192.png">
+<link rel="preload" href="/static/popup/Butler.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: Butler; src: url(/static/popup/Butler.woff2) format("woff2"); font-display: swap; }
+@font-face { font-family: Avalon; src: url(/static/popup/Avalon-Book.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: Avalon; src: url(/static/popup/Avalon-Demi.woff2) format("woff2"); font-weight: 600; font-display: swap; }
+
+:root {
+  --ink: #1f2021;
+  --paper: #f6f3ee;
+  --white: #ffffff;
+  --bronze: #70644a;
+  --bronze-light: #b5a47c;
+  --error: #a3352b;
+  --serif: Butler, "Didot", Georgia, serif;
+  --sans: Avalon, "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  font-family: var(--sans); color: var(--white); -webkit-font-smoothing: antialiased;
+  background: radial-gradient(ellipse at 50% 30%, #34352f 0%, var(--ink) 62%) fixed, var(--ink);
+}
+button { font: inherit; cursor: pointer; }
+[hidden] { display: none !important; }
+
+.page { min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: max(28px, env(safe-area-inset-top)) 20px max(28px, env(safe-area-inset-bottom)); }
+.logo { width: min(200px, 50vw); margin-bottom: 34px; }
+.eyebrow { font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: var(--bronze-light); margin: 0 0 14px; }
+h1 { font-family: var(--serif); font-weight: 400; margin: 0; line-height: 1.12; font-size: clamp(30px, 6vw, 48px); }
+.lead { font-size: 17px; line-height: 1.6; color: rgba(255,255,255,.72); max-width: 32em; margin: 14px auto 0; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 58px; padding: 0 38px; border: 0; border-radius: 0;
+  font-size: 14px; letter-spacing: .22em; text-transform: uppercase; font-weight: 600; text-decoration: none;
+  background: var(--white); color: var(--ink); transition: transform .15s ease, opacity .2s;
+}
+.btn:active { transform: scale(.97); }
+.btn[disabled] { opacity: .45; }
+
+/* ── Boîte à chaussures ──────────────────────────────── */
+.stage { position: relative; width: 420px; height: 470px; margin: 26px 0 8px; }
+.glow {
+  position: absolute; left: 50%; top: 150px; width: 560px; height: 560px; margin: -280px 0 0 -280px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(222,200,150,.55) 0%, rgba(181,164,124,.18) 38%, transparent 66%);
+  opacity: 0; transform: scale(.4); transition: opacity 1s ease, transform 1.4s cubic-bezier(.2,.8,.2,1);
+}
+.opened .glow { opacity: 1; transform: scale(1); }
+.box { position: absolute; left: 30px; bottom: 30px; width: 360px; height: 230px; animation: float 4s ease-in-out infinite; }
+.box-inside { position: absolute; left: 6px; right: 6px; top: -26px; height: 40px; background: #121313; clip-path: polygon(4% 0, 96% 0, 100% 100%, 0 100%); }
+.box-front {
+  position: absolute; inset: 0; background: linear-gradient(180deg, #2f3031 0%, #232425 100%);
+  box-shadow: 0 30px 60px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.06);
+  display: grid; place-items: center; z-index: 3;
+}
+.box-front::before { content: ""; position: absolute; inset: 14px; border: 1px solid rgba(181,164,124,.4); }
+.box-front img { width: 190px; opacity: .92; }
+.ribbon { position: absolute; top: 0; bottom: 0; left: 50%; width: 22px; margin-left: -11px; background: linear-gradient(90deg, #8a7b58, #b5a47c 50%, #8a7b58); opacity: .9; z-index: 4; transition: opacity .3s; }
+.tissue { position: absolute; top: -18px; width: 190px; height: 120px; background: linear-gradient(160deg, #fffdf8, #ebe4d6); z-index: 1; opacity: 0; transition: transform 1s cubic-bezier(.2,.9,.2,1) .15s, opacity .3s .15s; }
+.tissue.l { left: 2px; clip-path: polygon(0 100%, 30% 0, 100% 60%, 100% 100%); transform-origin: 90% 100%; }
+.tissue.r { right: 2px; clip-path: polygon(0 60%, 70% 0, 100% 100%, 0 100%); transform-origin: 10% 100%; }
+.opened .tissue { opacity: 1; }
+.opened .tissue.l { transform: translate(-50px, -40px) rotate(-24deg); }
+.opened .tissue.r { transform: translate(50px, -40px) rotate(24deg); }
+
+.lid { position: absolute; left: 18px; bottom: 236px; width: 384px; height: 64px; z-index: 5; transform-origin: 20% 100%; animation: float 4s ease-in-out infinite; }
+.lid-top { position: absolute; left: 0; right: 0; top: -22px; height: 24px; background: #3a3b3c; clip-path: polygon(3% 0, 97% 0, 100% 100%, 0 100%); }
+.lid-front { position: absolute; inset: 0; background: linear-gradient(180deg, #313233, #262728); box-shadow: 0 10px 22px rgba(0,0,0,.4); }
+.lid .ribbon { top: -22px; }
+.bow { position: absolute; left: 50%; top: -48px; width: 92px; height: 40px; margin-left: -46px; }
+.bow::before, .bow::after { content: ""; position: absolute; top: 4px; width: 44px; height: 30px; border: 7px solid #b5a47c; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; }
+.bow::before { left: 0; transform: rotate(-14deg); }
+.bow::after { right: 0; transform: rotate(14deg); }
+
+.shaking .box, .shaking .lid { animation: rattle .5s ease-in-out infinite; }
+.opened .lid { animation: none; transition: transform 1s cubic-bezier(.3,.7,.2,1), opacity .8s ease .25s; transform: translate(-150px, -230px) rotate(-38deg); opacity: 0; }
+@keyframes float { 50% { transform: translateY(-8px); } }
+@keyframes rattle {
+  0%, 100% { transform: rotate(0); } 15% { transform: rotate(-2.4deg) translateY(-3px); } 30% { transform: rotate(2deg); }
+  45% { transform: rotate(-1.6deg) translateY(-2px); } 60% { transform: rotate(1.4deg); } 80% { transform: rotate(-.6deg); }
+}
+
+.prize {
+  position: absolute; left: 50%; bottom: 90px; width: 300px; height: 186px; margin-left: -150px; z-index: 2;
+  background: linear-gradient(145deg, #fbf8f2 0%, #efe7d6 100%); color: var(--ink);
+  box-shadow: 0 20px 50px rgba(0,0,0,.35); display: flex; flex-direction: column; align-items: center; justify-content: center;
+  transform: translateY(60px); transition: transform 1.3s cubic-bezier(.2,.9,.25,1.12) .35s;
+}
+.prize::before { content: ""; position: absolute; inset: 9px; border: 1px solid rgba(112,100,74,.45); pointer-events: none; }
+.prize .lbl { font-size: 11px; letter-spacing: .32em; text-transform: uppercase; color: var(--bronze); }
+.prize .amt { font-family: var(--serif); font-size: 84px; line-height: 1; margin-top: 8px; font-variant-numeric: tabular-nums; }
+.prize .amt small { font-size: .55em; margin-left: 6px; }
+.opened .prize { transform: translateY(-150px); }
+.opened .box, .opened .box-front { animation: none; }
+.hint { min-height: 28px; font-size: 15px; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+
+
+/* ── Résultat ───────────────────────────────────────── */
+.result .amount { font-family: var(--serif); font-size: clamp(96px, 24vw, 150px); line-height: 1; margin: 12px 0 0; }
+.result .amount small { font-size: .5em; margin-left: 8px; }
+.result .code { display: inline-block; margin: 22px 0 6px; padding: 16px 28px; border: 1px dashed var(--bronze-light);
+  font: 600 clamp(20px, 5.4vw, 28px) "SF Mono", Menlo, monospace; letter-spacing: .12em;
+  -webkit-user-select: all; user-select: all; }
+.copy { background: none; border: 0; color: var(--bronze-light); font-size: 13px; letter-spacing: .16em; text-transform: uppercase; padding: 8px; }
+.dates { font-family: var(--serif); font-size: 21px; margin: 18px 0 0; }
+.sent { font-size: 16px; line-height: 1.5; color: rgba(255,255,255,.8); margin: 14px 0 0; }
+.sent svg { width: 20px; height: 20px; vertical-align: -4px; margin-right: 6px; }
+.terms { font-size: 13px; line-height: 1.65; color: rgba(255,255,255,.55); max-width: 36em; margin: 24px auto 30px; }
+.terms a { color: inherit; }
+.notice { max-width: 30em; font-size: 17px; line-height: 1.6; color: rgba(255,255,255,.8); margin: 18px auto 0; }
+
+#confetti { position: fixed; inset: 0; pointer-events: none; z-index: 50; }
+.toast {
+  position: fixed; left: 50%; bottom: max(24px, env(safe-area-inset-bottom)); transform: translate(-50%, 140%); visibility: hidden;
+  width: min(560px, 92vw); padding: 16px 22px; background: var(--error); color: var(--white); font-size: 16px; line-height: 1.45;
+  z-index: 60; transition: transform .35s cubic-bezier(.2,.9,.2,1), visibility 0s .35s;
+}
+.toast.show { transform: translate(-50%, 0); visibility: visible; transition: transform .35s cubic-bezier(.2,.9,.2,1); }
+
+@media (max-width: 480px) {
+  .stage { transform: scale(.8); margin: -40px 0 -50px; }
+}
+@media (max-width: 360px) {
+  .stage { transform: scale(.7); margin: -66px 0 -76px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .box, .lid { animation: none !important; }
+}
+</style>
+</head>
+<body>
+
+{% if invalid %}
+<main class="page">
+  <img class="logo" src="/static/popup/logo-blanc.png" alt="Max Sauveur">
+  <h1>Ce lien n'est pas valide</h1>
+  <p class="notice">Vérifiez que vous avez bien ouvert le lien reçu par e-mail après votre commande du jeudi 5 novembre.
+    Une question ? Écrivez-nous à hello@maxsauveur.com.</p>
+</main>
+{% else %}
+
+<main class="page" id="draw"{% if o.code %} hidden{% endif %}>
+  <img class="logo" src="/static/popup/logo-blanc.png" alt="Max Sauveur">
+  <p class="eyebrow">Mad Max · commande {{ o.order_name }}</p>
+  <h1>{% if o.first_name %}{{ o.first_name }}, votre{% else %}Votre{% endif %} carte cadeau vous attend</h1>
+  <p class="lead">Ouvrez la boîte : le tirage au sort décide du montant, entre 15 et 70 €. Un seul essai.</p>
+  <div class="stage" id="stage">
+    <div class="glow"></div>
+    <div class="box">
+      <div class="box-inside"></div>
+      <div class="tissue l"></div><div class="tissue r"></div>
+      <div class="prize"><span class="lbl">Carte cadeau</span><span class="amt"><span id="ticker">30</span><small>€</small></span></div>
+      <div class="box-front"><img src="/static/popup/logo-blanc.png" alt=""></div>
+    </div>
+    <div class="lid"><div class="lid-top"></div><div class="lid-front"></div><span class="ribbon"></span><span class="bow"></span></div>
+  </div>
+  <button class="btn" id="open-btn">Ouvrir ma boîte</button>
+</main>
+
+<main class="page result" id="result"{% if not o.code %} hidden{% endif %}>
+  <img class="logo" src="/static/popup/logo-blanc.png" alt="Max Sauveur">
+  <p class="eyebrow">{% if o.first_name %}Bravo {{ o.first_name }}{% else %}Bravo{% endif %}</p>
+  <h1>Votre carte cadeau</h1>
+  <p class="amount"><span id="res-amount">{{ o.amount or "" }}</span><small>€</small></p>
+  <div class="code" id="res-code">{{ o.code or "" }}</div>
+  <div><button class="copy" id="copy" type="button">Copier le code</button></div>
+  <p class="dates">Valable du {{ starts_label }} au {{ ends_label }}</p>
+  <p class="sent"><svg viewBox="0 0 24 24" fill="none" stroke="#b5a47c" stroke-width="1.6"><rect x="2.5" y="5" width="19" height="14"/><path d="M3 6l9 7 9-7"/></svg>
+Également envoyée à <strong>{{ o.email }}</strong></p>
+  <p class="terms">{{ conditions }} <a href="/cadeau/conditions" target="_blank" rel="noopener">Règlement complet</a></p>
+  <a class="btn" href="https://maxsauveur.com" rel="noopener">Aller sur maxsauveur.com</a>
+</main>
+
+<canvas id="confetti"></canvas>
+<div class="toast" id="toast" role="alert"></div>
+
+<script>
+(() => {
+  const AMOUNTS = [15, 20, 30, 40, 50, 60, 70];
+  const $ = s => document.querySelector(s);
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+  let busy = false;
+
+  function toast(msg) {
+    const t = $("#toast");
+    t.textContent = msg; t.classList.add("show");
+    clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove("show"), 7000);
+  }
+
+  $("#copy").addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText($("#res-code").textContent.trim()); $("#copy").textContent = "Code copié"; }
+    catch (e) { $("#copy").textContent = "Sélectionnez le code pour le copier"; }
+  });
+
+  $("#stage").addEventListener("click", openBox);
+  $("#open-btn").addEventListener("click", openBox);
+
+  async function openBox() {
+    if (busy || $("#stage").classList.contains("opened")) return;
+    busy = true;
+    const btn = $("#open-btn"); btn.disabled = true;
+    $("#stage").classList.add("shaking");
+    const t0 = Date.now();
+    let res;
+    try {
+      const r = await fetch(location.pathname.replace(/\/$/, "") + "/tirage", { method: "POST" });
+      res = { ok: r.ok, data: await r.json().catch(() => ({})) };
+    } catch (e) { res = { ok: false, data: { error: "Pas de connexion internet. Réessayez dans un instant." } }; }
+    await sleep(Math.max(0, 1700 - (Date.now() - t0)));
+    $("#stage").classList.remove("shaking");
+    if (!res.ok) {
+      toast(res.data.error || "Une erreur est survenue. Réessayez dans un instant.");
+      btn.disabled = false; busy = false;
+      return;
+    }
+    btn.hidden = true;
+    $("#stage").classList.add("opened");
+    await rollTo(res.data.amount);
+    burst();
+    await sleep(1500);
+    $("#res-amount").textContent = res.data.amount;
+    $("#res-code").textContent = res.data.code;
+    $("#draw").hidden = true;
+    $("#result").hidden = false;
+    scrollTo(0, 0);
+    burst();
+  }
+
+  // Les montants défilent puis ralentissent jusqu'au montant gagné.
+  async function rollTo(final) {
+    const el = $("#ticker");
+    const steps = 22;
+    let i = Math.floor(Math.random() * AMOUNTS.length);
+    for (let s = 0; s < steps; s++) {
+      i = (i + 1 + Math.floor(Math.random() * 2)) % AMOUNTS.length;
+      el.textContent = AMOUNTS[i];
+      await sleep(45 + Math.pow(s / steps, 3) * 330);
+    }
+    el.textContent = final;
+  }
+
+  const cv = $("#confetti"), cx = cv.getContext("2d");
+  let parts = [], raf = null;
+  function size() { cv.width = innerWidth * devicePixelRatio; cv.height = innerHeight * devicePixelRatio; }
+  addEventListener("resize", size); size();
+  function burst() {
+    const colors = ["#b5a47c", "#d9c79c", "#70644a", "#ffffff", "#efe7d6"];
+    const W = cv.width, H = cv.height, d = devicePixelRatio;
+    for (let n = 0; n < 140; n++) {
+      const a = -Math.PI / 2 + (Math.random() - .5) * 1.9, v = (8 + Math.random() * 12) * d;
+      parts.push({ x: W / 2, y: H * .5, vx: Math.cos(a) * v, vy: Math.sin(a) * v,
+        w: (6 + Math.random() * 7) * d, h: (10 + Math.random() * 12) * d, r: Math.random() * 6, vr: (Math.random() - .5) * .35,
+        c: colors[n % colors.length], life: 0 });
+    }
+    if (!raf) raf = requestAnimationFrame(tick);
+  }
+  function tick() {
+    const d = devicePixelRatio;
+    cx.clearRect(0, 0, cv.width, cv.height);
+    parts.forEach(p => {
+      p.life++; p.vy += .32 * d; p.vx *= .985; p.vy *= .985; p.x += p.vx; p.y += p.vy; p.r += p.vr;
+      cx.save(); cx.translate(p.x, p.y); cx.rotate(p.r); cx.scale(1, Math.cos(p.life / 6));
+      cx.globalAlpha = Math.max(0, 1 - p.life / 170); cx.fillStyle = p.c;
+      cx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h); cx.restore();
+    });
+    parts = parts.filter(p => p.life < 170 && p.y < cv.height + 50);
+    raf = parts.length ? requestAnimationFrame(tick) : (cx.clearRect(0, 0, cv.width, cv.height), null);
+  }
+})();
+</script>
+{% endif %}
+</body>
+</html>

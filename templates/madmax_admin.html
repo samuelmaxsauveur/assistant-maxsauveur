@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Cartes cadeaux Mad Max · Tableau de bord</title>
+<style>
+@font-face { font-family: Butler; src: url(/static/popup/Butler.woff2) format("woff2"); }
+@font-face { font-family: Avalon; src: url(/static/popup/Avalon-Book.woff2) format("woff2"); }
+:root { --ink: #1f2021; --bronze: #70644a; --line: #e6e1d7; --muted: #6d6a64; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #f6f3ee; color: var(--ink); font: 15px/1.5 Avalon, "Helvetica Neue", Arial, sans-serif; }
+header { background: var(--ink); color: #fff; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+header img { height: 28px; }
+header a { color: #fff; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(255,255,255,.4); padding: 9px 14px; margin-left: 8px; }
+main { max-width: 1240px; margin: 0 auto; padding: 26px 20px 60px; }
+h1 { font: 400 32px Butler, Georgia, serif; margin: 0 0 18px; }
+h2 { font: 400 22px Butler, Georgia, serif; margin: 38px 0 12px; }
+.msg { background: #fff; border-left: 3px solid var(--bronze); padding: 14px 18px; margin-bottom: 20px; }
+.state { background: #fff; padding: 16px 20px; margin-bottom: 20px; line-height: 1.7; }
+.state b.on { color: #2f5a26; } .state b.off { color: #8e2d24; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+.kpi { background: #fff; padding: 16px 18px; }
+.kpi .v { font: 400 32px Butler, Georgia, serif; }
+.kpi .l { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+.scroll { overflow-x: auto; background: #fff; }
+table { border-collapse: collapse; width: 100%; }
+th, td { padding: 9px 11px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; vertical-align: top; }
+th { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+td.n { text-align: right; font-variant-numeric: tabular-nums; }
+.bar { height: 6px; background: var(--line); width: 130px; display: inline-block; vertical-align: middle; }
+.bar i { display: block; height: 100%; background: var(--bronze); }
+.tag { font-size: 12px; padding: 2px 8px; background: #eee; }
+.tag.ok { background: #e3eedf; color: #2f5a26; }
+.tag.ko { background: #f6dedb; color: #8e2d24; }
+.tag.wait { background: #f2ecdf; color: #6a5a32; }
+form.inline { display: inline; }
+button { font: inherit; font-size: 12px; padding: 6px 10px; border: 1px solid var(--ink); background: #fff; cursor: pointer; }
+.box { background: #fff; padding: 18px 20px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 10px; }
+.box input[type=number], .box input[type=text], .box input[type=email] { padding: 10px; font: inherit; border: 1px solid #ccc; }
+.box input[type=number] { width: 100px; }
+.box button.main { padding: 11px 16px; background: var(--ink); color: #fff; letter-spacing: .12em; text-transform: uppercase; }
+.small { color: var(--muted); font-size: 13px; }
+.err { color: #8e2d24; font-size: 12px; white-space: normal; max-width: 260px; display: block; }
+.previews a { display: inline-block; margin: 0 14px 8px 0; color: var(--ink); }
+</style>
+</head>
+<body>
+<header>
+  <img src="/static/popup/logo-blanc.png" alt="Max Sauveur">
+  <div><a href="/cadeau/conditions" target="_blank">Règlement</a><a href="/madmax/admin/export.csv">Export CSV</a></div>
+</header>
+<main>
+  <h1>Cartes cadeaux Mad Max</h1>
+  {% if msg %}<div class="msg">{{ msg }}</div>{% endif %}
+
+  <div class="state">
+    Envois automatiques : {% if sending %}<b class="on">activés</b>{% else %}<b class="off">désactivés</b> (rien ne part tant que les textes ne sont pas validés){% endif %}<br>
+    Liens : le {{ links_from.strftime("%d/%m à %H h") }}, pour les commandes du jeudi 5 novembre ayant une remise automatique dont le nom contient « {{ match }} ».<br>
+    Relances : le 1er de chaque mois à 10 h ({% for m in months %}{{ m[5:] }}/{{ m[:4] }}{% if not loop.last %}, {% endif %}{% endfor %}), pour les codes non utilisés et les boîtes jamais ouvertes.
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="v">{{ n_orders }}</div><div class="l">Commandes éligibles</div></div>
+    <div class="kpi"><div class="v">{{ n_links }}</div><div class="l">Liens envoyés</div></div>
+    <div class="kpi"><div class="v">{{ n_drawn }}</div><div class="l">Boîtes ouvertes</div></div>
+    <div class="kpi"><div class="v">{{ n_used }}</div><div class="l">Codes utilisés</div></div>
+    <div class="kpi"><div class="v">{{ "{:,}".format(drawn_value).replace(",", " ") }} €</div><div class="l">Valeur tirée</div></div>
+    <div class="kpi"><div class="v">{{ "{:,}".format(used_value).replace(",", " ") }} €</div><div class="l">Valeur utilisée</div></div>
+  </div>
+
+  <h2>Aperçu des e-mails</h2>
+  <div class="box previews">
+    <a href="/madmax/admin/apercu/link" target="_blank">1. Lien (6 novembre)</a>
+    <a href="/madmax/admin/apercu/code" target="_blank">2. Code (après le tirage)</a>
+    <a href="/madmax/admin/apercu/reminder_code?mois=2026-12" target="_blank">3. Relance code (décembre)</a>
+    <a href="/madmax/admin/apercu/reminder_code?mois=2027-04" target="_blank">4. Dernière relance code (avril)</a>
+    <a href="/madmax/admin/apercu/reminder_link?mois=2026-12" target="_blank">5. Relance boîte fermée</a>
+    <a href="/madmax/admin/apercu/reminder_link?mois=2027-04" target="_blank">6. Dernière relance boîte fermée</a>
+  </div>
+
+  <h2>Urne des codes</h2>
+  <div class="scroll"><table>
+    <tr><th>Montant</th><th>Part prévue</th><th class="n">Codes créés</th><th class="n">Tirés</th><th class="n">Restants</th><th></th></tr>
+    {% for t in tiers %}
+    <tr><td>{{ t.amount }} €</td><td>{{ percents.get(t.amount, "") }} %</td><td class="n">{{ t.total }}</td><td class="n">{{ t.drawn }}</td>
+      <td class="n">{{ t.remaining }}</td><td><span class="bar"><i style="width:{{ (100 * t.drawn / t.total)|round }}%"></i></span></td></tr>
+    {% else %}
+    <tr><td colspan="6" class="small">Aucun code MADMAX créé pour l'instant. Pour 500 codes, la répartition sera :
+      {% for a, n in planned|dictsort %}{{ n }} × {{ a }} €{% if not loop.last %}, {% endif %}{% endfor %}.</td></tr>
+    {% endfor %}
+  </table></div>
+
+  <h2>Shopify</h2>
+  <form class="box" method="post" action="/madmax/admin/generate"
+        onsubmit="this.querySelector('button').disabled=true;this.querySelector('button').textContent='Création en cours…'">
+    <label>Nombre de codes <input type="number" name="total" value="500" min="1" max="5000" required></label>
+    <label><input type="checkbox" required> Je confirme la création dans Shopify</label>
+    <button class="main" type="submit">Créer les codes</button>
+    <span class="small">Valables du 10/11/2026 au 15/04/2027, dès 150 € de chaussures et ceintures. Chaque clic ajoute un lot. Compter une à deux minutes.</span>
+  </form>
+  <form class="box" method="post" action="/madmax/admin/sync">
+    <button type="submit">Mettre à jour les produits éligibles</button>
+    <span class="small">Chaussures et ceintures, moins « Précommande » et « Fin de Série ». Se fait aussi tout seul chaque nuit.</span>
+  </form>
+  <form class="box" method="post" action="/madmax/admin/close-old">
+    <label><input type="checkbox" required> Je confirme</label>
+    <button type="submit">Désactiver les anciens codes MSPARIS</button>
+    <span class="small">Ferme les 7 remises du pop-up annulé, sans les supprimer.</span>
+  </form>
+  <form class="box" method="post" action="/madmax/admin/import">
+    <button type="submit">Importer les commandes maintenant</button>
+    <span class="small">Lecture seule : range les commandes Mad Max du 5 novembre, n'envoie rien.</span>
+  </form>
+
+  <h2>Tester</h2>
+  <form class="box" method="post" action="/madmax/admin/test">
+    <input type="text" name="first_name" placeholder="Prénom" required>
+    <input type="email" name="email" placeholder="adresse@maxsauveur.com" required>
+    <button class="main" type="submit">Recevoir un lien de test</button>
+    <span class="small">Uniquement @maxsauveur.com. Ne consomme aucun vrai code.</span>
+  </form>
+
+  <h2>Commandes</h2>
+  <div class="scroll"><table>
+    <tr><th>Commande</th><th>Client</th><th>Statut</th><th>Lien</th><th>Carte</th><th>E-mail du code</th><th>Utilisé</th><th>Relances</th><th></th></tr>
+    {% for o in orders %}
+    <tr{% if o.is_test %} style="opacity:.6"{% endif %}>
+      <td>{{ o.order_name }}{% if o.is_test %} <span class="tag">test</span>{% endif %}<br><span class="small">{{ (o.ordered_at or "")[5:16].replace("T", " ") }}</span></td>
+      <td>{{ o.first_name or "" }}<br><span class="small">{{ o.email }}</span></td>
+      <td>{% if o.status == "ok" %}<span class="tag ok">payée</span>{% elif o.status == "unpaid" %}<span class="tag wait">paiement en attente</span>{% elif o.status == "refunded" %}<span class="tag ko">remboursée</span>{% else %}<span class="tag ko">annulée</span>{% endif %}</td>
+      <td>{% if o.link_status == "sent" %}<span class="tag ok">envoyé</span>{% elif o.link_status == "failed" %}<span class="tag ko">échec</span><span class="err">{{ o.link_error }}</span>{% else %}<span class="tag wait">à envoyer</span>{% endif %}</td>
+      <td>{% if o.code %}{{ o.amount }} € · {{ o.code }}{% else %}<span class="small">boîte fermée</span>{% endif %}</td>
+      <td>{% if not o.code %}{% elif o.code_status == "sent" %}<span class="tag ok">envoyé</span>{% elif o.code_status == "failed" %}<span class="tag ko">échec</span><span class="err">{{ o.code_error }}</span>{% else %}<span class="tag wait">en cours</span>{% endif %}</td>
+      <td>{{ "oui" if o.used else "" }}</td>
+      <td>{% for r in reminders.get(o.id, []) %}<span class="tag {{ 'ok' if r.status == 'sent' else 'ko' }}">{{ r.month[5:] }}/{{ r.month[2:4] }}</span> {% endfor %}</td>
+      <td>
+        <form class="inline" method="post" action="/madmax/admin/resend/link/{{ o.id }}"><button>Renvoyer le lien</button></form>
+        {% if o.code %}<form class="inline" method="post" action="/madmax/admin/resend/code/{{ o.id }}"><button>Renvoyer le code</button></form>{% endif %}
+        {% if o.is_test %}<form class="inline" method="post" action="/madmax/admin/resend/reminder/{{ o.id }}">
+          <select name="month">{% for m in months %}<option value="{{ m }}">{{ m[5:] }}/{{ m[:4] }}</option>{% endfor %}</select>
+          <button>Relance de test</button></form>{% endif %}
+      </td>
+    </tr>
+    {% else %}
+    <tr><td colspan="9" class="small">Aucune commande pour l'instant. Les commandes du 5 novembre arrivent ici à partir du 6 novembre à 0 h.</td></tr>
+    {% endfor %}
+  </table></div>
+</main>
+</body>
+</html>

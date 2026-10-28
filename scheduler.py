@@ -14,6 +14,7 @@ import repairs
 import returns
 import ups_tracking
 import workshop_mail
+import madmax
 
 load_dotenv()
 
@@ -478,6 +479,22 @@ def start():
         "interval",
         minutes=60,
         id="ups_tracking"
+    )
+
+    # Mad Max gift cards: links on 6 Nov, reminders on the 1st of each month.
+    # Nothing is sent while MADMAX_SENDING is not "1".
+    scheduler.add_job(
+        madmax.tick,
+        "interval",
+        minutes=30,
+        id="madmax_tick"
+    )
+
+    # Products the gift card applies to: shoes and belts, minus pre-orders and end-of-line
+    scheduler.add_job(
+        madmax.sync_collection,
+        CronTrigger(hour=5, minute=30, timezone=paris_tz),
+        id="madmax_collection"
     )
 
     scheduler.start()
