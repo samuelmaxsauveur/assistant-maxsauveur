@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "commande_num_ro_13828",
+      "topic_label": "Commande numéro 13828",
+      "situation": "Commande numéro 13828",
+      "response_template": "Bonjour Pauline,\n\nLe QR code vous est envoyé directement par Chronopost par email ou SMS dès que le colis est mis à disposition. Je vous invite à vérifier vos spams si vous ne l'avez pas reçu.\n\nVous pouvez également suivre votre colis et retrouver les informations de retrait via ce lien : https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR718131014TS\n\nEn cas de difficulté, le point relais peut aussi scanner votre pièce d'identité pour récupérer le colis sans QR code.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__commande__13848_confirm_e",
       "topic_label": "Re: Re: Re: Commande #13848 confirmée",
       "situation": "Re: Re: Re: Commande #13848 confirmée",
