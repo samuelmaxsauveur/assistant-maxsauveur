@@ -1028,11 +1028,15 @@ def extract_order_number(text):
         r'commande[s]?\s+n[°o]?\s*#?\s*(\d{4,6})',
         r'order\s+#?\s*(\d{4,6})',
         r'#(\d{4,6})',
-        r'\b(\d{4,6})\b'
     ]
     for pattern in patterns:
         match = re.search(pattern, text, re.IGNORECASE)
         if match:
+            return match.group(1)
+    # A bare year is a date, not an order: "Le 1 oct. 2026 à 10:12" in a quoted
+    # reply used to pull another customer's order #12026 from Wing.
+    for match in re.finditer(r'\b(\d{4,6})\b', text):
+        if not re.fullmatch(r'(19|20)\d\d', match.group(1)):
             return match.group(1)
     return None
 

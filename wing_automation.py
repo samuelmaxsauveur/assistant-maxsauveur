@@ -1,4 +1,5 @@
 import os
+import re
 from playwright.sync_api import sync_playwright
 
 WING_URL = "https://my.wing.eu"
@@ -258,24 +259,23 @@ def get_order_tracking(order_number):
         page_text = page.inner_text('body')
         print(f"[Wing] Page text (first 400): {page_text[:400]}")
 
-        # Find the row (try exact match first, then first available row)
+        # Find the row of this exact number. A looser match, or falling back on
+        # the first row, put another customer's tracking in the reply draft.
         tracking_number = ''
         tracking_url = ''
         row_text = ''
+        row = None
         try:
             rows = page.locator('tbody tr').all()
             print(f"[Wing] Found {len(rows)} rows")
-            row = None
             for r in rows:
                 txt = r.inner_text().strip()
-                if order_number in txt:
+                if re.search(rf'(?<!\d){order_number}(?!\d)', txt):
                     row = r
                     row_text = txt
                     break
-            if not row and rows:
-                row = rows[0]
-                row_text = rows[0].inner_text().strip()
-                print(f"[Wing] No exact match, using first row: {row_text[:100]}")
+            if not row:
+                print(f"[Wing] No row for #{order_number}")
 
             if row:
                 # Extract all external links from the row
@@ -293,8 +293,8 @@ def get_order_tracking(order_number):
         # Open detail panel for status info
         panel = ''
         try:
-            if page.locator('tbody tr').count() > 0:
-                page.locator('tbody tr').first.click()
+            if row:
+                row.click()
                 time.sleep(2)
                 panel = _get_panel_text(page)
         except Exception as e:

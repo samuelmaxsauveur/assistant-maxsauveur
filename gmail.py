@@ -318,6 +318,23 @@ def extract_customer_name(sender):
     return sender
 
 
+def _name_words(text):
+    text = unicodedata.normalize('NFKD', text or '').encode('ascii', 'ignore').decode().lower()
+    return set(re.findall(r'[a-z]{2,}', text))
+
+
+def same_person(name, sender_name, sender_email):
+    """True when the first and last names in `name` all appear in the sender's name or address.
+
+    Customers write from a work address ("BRUNEAU Baptiste (PALATINE)",
+    ernesto.aberturas@sig-ge.ch) while their order or repair file sits under a
+    personal one, so the address alone ties nothing together.
+    """
+    owner = _name_words(name)
+    sender = _name_words(sender_name) | _name_words((sender_email or '').split('@')[0])
+    return len(owner) >= 2 and owner <= sender
+
+
 def resolve_sender(sender, body):
     """Real customer address and name behind a noreply form address.
 

@@ -11,6 +11,7 @@ from datetime import datetime
 import requests
 
 import database
+import gmail as gmail_helper
 import wing_repair
 
 # Samuel's own steps, in order. The keys are stored; the labels are shown.
@@ -103,21 +104,25 @@ def push_to_sheet(case):
         return False
 
 
-def customer_context(sender_email, orders=()):
+def customer_context(sender_email, orders=(), sender_name=""):
     """The customer's repair files, as a block for the reply prompt.
 
     A file is the customer's when it was opened under the address they write
-    from, or for one of their orders. Shopify and the shop's Wing account know
-    nothing of a pair sent back for repair, so without this block a customer
-    asking about their repair got a request for Samuel's help instead of a reply.
+    from, for one of their orders, or under their first and last names (a
+    customer writing from a work address). Shopify and the shop's Wing account
+    know nothing of a pair sent back for repair, so without this block a
+    customer asking about their repair got a request for Samuel's help instead
+    of a reply.
     """
     email = (sender_email or "").lower()
     numbers = {str(o.get("number", "")).lstrip("#") for o in orders or () if o} - {""}
-    cases = [c for c in database.get_repair_cases()
-             if (email and (c.get("customer_email") or "").lower() == email)
-             or str(c["order_number"]).lstrip("#") in numbers]
     blocks = []
-    for c in cases:
+    for c in database.get_repair_cases():
+        by_address = email and (c.get("customer_email") or "").lower() == email
+        by_order = str(c["order_number"]).lstrip("#") in numbers
+        if not (by_address or by_order
+                or gmail_helper.same_person(c.get("customer_name"), sender_name, sender_email)):
+            continue
         status = STATUS_LABELS.get(c["status"], c["status"])
         if c.get("status_updated_at"):
             status += f" (depuis le {_date(c['status_updated_at'])})"
@@ -125,6 +130,8 @@ def customer_context(sender_email, orders=()):
                  f"Paire : {c.get('product') or '?'}",
                  f"Dossier ouvert le {_date(c['created_at'])}",
                  f"Statut : {status}"]
+        if not (by_address or by_order):
+            lines.append(f"Rattaché par le nom : dossier ouvert sous l'adresse {c.get('customer_email') or '?'}")
         if c.get("parcel_status"):
             lines.append(f"Colis du client : {PARCEL_LABELS.get(c['parcel_status'], c['parcel_status'])}")
         if c.get("problem"):

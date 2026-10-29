@@ -115,7 +115,7 @@ def process_new_emails():
                 print(f"[{datetime.now()}] Could not fetch product replies for {email_id}: {e}")
             try:
                 product_context += repairs.customer_context(
-                    sender_email, [order_info] if order_info else [])
+                    sender_email, [order_info] if order_info else [], customer_name)
             except Exception as e:
                 print(f"[{datetime.now()}] Could not fetch repair files for {email_id}: {e}")
 

@@ -1,6 +1,5 @@
 import os
 import re
-import unicodedata
 from concurrent.futures import ThreadPoolExecutor
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from dotenv import load_dotenv
@@ -46,10 +45,6 @@ if os.getenv("ENABLE_SCHEDULER", "1") == "1":
 
 gmail_service = None
 
-def _name_words(text):
-    text = unicodedata.normalize('NFKD', text or '').encode('ascii', 'ignore').decode().lower()
-    return set(re.findall(r'[a-z]{2,}', text))
-
 def _order_from_other_address(order_number, sender_email, customer_name):
     """The order the customer named, when it was placed under another address.
 
@@ -64,9 +59,7 @@ def _order_from_other_address(order_number, sender_email, customer_name):
         return None
     if not order:
         return None
-    owner = _name_words(order.get('customer_name'))
-    sender = _name_words(customer_name) | _name_words((sender_email or '').split('@')[0])
-    return order if len(owner) >= 2 and owner <= sender else None
+    return order if gmail_helper.same_person(order.get('customer_name'), customer_name, sender_email) else None
 
 def _fetch_order_for_email(email):
     """Fetch Shopify orders for a single email. Returns all orders for the customer."""
@@ -484,7 +477,7 @@ def generate():
     except Exception:
         pass
     try:
-        wing_context += repairs.customer_context(sender_email, all_orders)
+        wing_context += repairs.customer_context(sender_email, all_orders, customer_name)
     except Exception:
         pass
 
@@ -539,9 +532,7 @@ def generate():
 def ask():
     data = request.json
     sender = data.get('sender', '')
-    customer_name, _ = resolve_sender(sender, data.get('body', ''))
-    if customer_name == sender:
-        customer_name = extract_customer_name(sender)
+    _, customer_name = resolve_sender(sender, data.get('body', ''))
     order_info = data.get('order')
     previous_exchanges = data.get('previous_exchanges', [])
     question = data.get('question', '')
@@ -574,7 +565,8 @@ def ask():
 
     repair_context = ''
     try:
-        repair_context = repairs.customer_context(data.get('sender_email') or sender_email_ask, all_orders_ask)
+        repair_context = repairs.customer_context(data.get('sender_email') or sender_email_ask, all_orders_ask,
+                                                  customer_name)
     except Exception:
         pass
 
