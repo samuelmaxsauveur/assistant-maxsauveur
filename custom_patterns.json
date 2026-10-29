@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "article_manquant_commande__13422",
+      "topic_label": "Article manquant commande #13422",
+      "situation": "Article manquant commande #13422",
+      "response_template": "Bonjour Eliott,\n\nMerci pour votre message et pour le détail de ce que vous avez reçu.\n\nLes chaussettes n'ont malheureusement pas pu être incluses dans votre colis : elles n'étaient plus disponibles en stock au moment de l'expédition. Nous n'aurions pas dû expédier la commande sans vous en informer au préalable.\n\nComme les chaussettes ne sont plus disponibles, nous pouvons vous proposer un avoir du montant correspondant, utilisable sur notre site. Y a-t-il un autre produit de la collection qui vous ferait de l'œil ?\n\nToutes nos excuses.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__13850_confirm_e",
       "topic_label": "Re: Commande #13850 confirmée",
       "situation": "Re: Commande #13850 confirmée",
