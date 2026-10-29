@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "moc_paul___semelles",
+      "topic_label": "Moc Paul - semelles",
+      "situation": "Moc Paul - semelles",
+      "response_template": "Bonjour Tennessee,\n\nMerci pour votre fidélité depuis toutes ces années.\n\nVotre paire date de fin 2021, à une période où nous utilisions des semelles d'un autre fournisseur. La garantie à vie sur les semelles s'applique aux modèles avec nos semelles actuelles, ce n'était pas encore le cas sur cette version.\n\nCela dit, nous pouvons tout à fait réparer votre paire depuis notre atelier pour 50€, réfection complète de la semelle incluse.\n\nVoici comment procéder :\n\n1. Téléchargez et complétez le bon de retour ici : https://maxsauveur.com/pages/livraison-et-retour\n   Indiquez comme motif : « réparation »\n2. Emballez soigneusement votre paire avec le bon à l'intérieur\n3. Expédiez-la à :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception de votre paire, nous vous enverrons un lien de paiement pour les 50€, puis la réparation sera lancée en atelier. Comptez 6 à 8 semaines, après quoi nous vous renvoyons la paire avec un numéro de suivi.\n\nN'hésitez pas si vous avez des questions.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande_num_ro_13828",
       "topic_label": "Commande numéro 13828",
       "situation": "Commande numéro 13828",
