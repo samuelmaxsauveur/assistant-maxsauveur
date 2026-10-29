@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_10_29_10_24_31",
+      "topic_label": "Form name Form submitted 2026-10-29 10:24:31",
+      "situation": "Form name Form submitted 2026-10-29 10:24:31",
+      "response_template": "Bonjour Simon,\n\nVotre commande #13446 (Deck Cuir Marron, 44) a bien été expédiée. Voici votre lien de suivi :\nhttps://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR722093480TS\n\nLa livraison est estimée entre le 31 octobre et le 2 novembre.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande__13140",
       "topic_label": "Commande #13140",
       "situation": "Commande #13140",
