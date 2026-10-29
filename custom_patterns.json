@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__commande__13848_confirm_e",
+      "topic_label": "Re: Re: Commande #13848 confirmée",
+      "situation": "Re: Re: Commande #13848 confirmée",
+      "response_template": "Bonjour Sébastien,\n\nAnnulation de la commande #13848 effectuée.\n\nPour le Paul Cuir Lisse Noir en 40, il faut passer la nouvelle commande directement sur le site. Dès qu'elle est passée, faites-le moi savoir et nous ferons le nécessaire pour l'expédier dans les meilleurs délais.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
