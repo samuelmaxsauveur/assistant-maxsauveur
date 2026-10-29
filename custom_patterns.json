@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_10_28_15_32_56",
+      "topic_label": "Form name Form submitted 2026-10-28 15:32:56",
+      "situation": "Form name Form submitted 2026-10-28 15:32:56",
+      "response_template": "Bonjour Nicolas,\n\nVotre commande #13831 (Powell Boots Cuir Grainé Marron, 43) est bien expédiée. Voici votre lien de suivi :\nhttps://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR722174400TS\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__commande_13418",
       "topic_label": "Re: Re: Re: Commande 13418",
       "situation": "Re: Re: Re: Commande 13418",
