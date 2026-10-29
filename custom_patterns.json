@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__commande__13848_confirm_e",
+      "topic_label": "Re: Re: Re: Commande #13848 confirmée",
+      "situation": "Re: Re: Re: Commande #13848 confirmée",
+      "response_template": "Bonjour Sébastien,\n\nVotre commande #13862 est bien enregistrée. Nous allons faire au mieux pour l'expédier aujourd'hui mais rien n'est garantie.\n\nVous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "demande_de_pointure",
       "topic_label": "Demande de pointure",
       "situation": "Demande de pointure",
