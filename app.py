@@ -1,5 +1,6 @@
 import os
 import re
+import unicodedata
 from concurrent.futures import ThreadPoolExecutor
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from dotenv import load_dotenv
@@ -45,6 +46,28 @@ if os.getenv("ENABLE_SCHEDULER", "1") == "1":
 
 gmail_service = None
 
+def _name_words(text):
+    text = unicodedata.normalize('NFKD', text or '').encode('ascii', 'ignore').decode().lower()
+    return set(re.findall(r'[a-z]{2,}', text))
+
+def _order_from_other_address(order_number, sender_email, customer_name):
+    """The order the customer named, when it was placed under another address.
+
+    Customers often write from a work address while the order sits under their
+    personal one, so the lookup by sender finds nothing. The number alone does
+    not prove the order is theirs: the first and last names on it must also
+    appear in the sender's name or address (ernesto.aberturas@...).
+    """
+    try:
+        order = shopify_api.get_order_by_number(order_number)
+    except Exception:
+        return None
+    if not order:
+        return None
+    owner = _name_words(order.get('customer_name'))
+    sender = _name_words(customer_name) | _name_words((sender_email or '').split('@')[0])
+    return order if len(owner) >= 2 and owner <= sender else None
+
 def _fetch_order_for_email(email):
     """Fetch Shopify orders for a single email. Returns all orders for the customer."""
     order_number = claude_ai.extract_order_number(email['subject']) or \
@@ -70,7 +93,7 @@ def _fetch_order_for_email(email):
         mentioned = next(
             (o for o in all_orders if str(o.get('number', '')).lstrip('#') == str(order_number)),
             None
-        )
+        ) or _order_from_other_address(order_number, sender_email, customer_name)
         if mentioned:
             all_orders = [mentioned] + [o for o in all_orders if o is not mentioned]
 
@@ -423,11 +446,11 @@ def generate():
     # If a specific order number was mentioned, put it first — but only if it belongs to sender
     order_num_fallback = claude_ai.extract_order_number(data.get('subject', '')) or \
                          claude_ai.extract_order_number(data.get('body', ''))
-    if order_num_fallback and all_orders:
+    if order_num_fallback:
         mentioned = next(
             (o for o in all_orders if str(o.get('number', '')).lstrip('#') == str(order_num_fallback)),
             None
-        )
+        ) or _order_from_other_address(order_num_fallback, sender_email, customer_name)
         if mentioned:
             all_orders = [mentioned] + [o for o in all_orders if o is not mentioned]
 

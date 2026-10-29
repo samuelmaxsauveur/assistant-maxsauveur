@@ -7,12 +7,13 @@ def get_order_by_number(order_number):
     order_number = str(order_number).replace('#', '')
     url = f"https://{shop}/admin/api/2024-01/orders.json"
     headers = {'X-Shopify-Access-Token': token}
-    params = {'name': order_number, 'status': 'any'}
+    params = {'name': order_number, 'status': 'any', 'limit': 250}
     response = requests.get(url, headers=headers, params=params)
     orders = response.json().get('orders', [])
-    if orders:
-        return format_order(orders[0])
-    return None
+    # Shopify matches the name as a prefix: "1340" also returns #13400 to #13409,
+    # newest first, so the first result is not the order asked for.
+    exact = next((o for o in orders if str(o.get('name', '')).lstrip('#') == order_number), None)
+    return format_order(exact) if exact else None
 
 def get_orders_by_email(email):
     """Fetch all orders for a given email, expanding via customer_id.
