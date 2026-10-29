@@ -2,6 +2,46 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__13848_confirm_e",
+      "topic_label": "Re: Commande #13848 confirmée",
+      "situation": "Re: Commande #13848 confirmée",
+      "response_template": "Bonjour Sébastien,\n\nSi le Paul Cuir Lisse Noir 40 est bien disponible sur le site, voici comment procéder : nous annulons votre commande actuelle (#13848, Paul Cuir Grainé Noir 40) et vous repassez commande du modèle lisse directement sur le site.\n\nDites-moi si vous confirmez, et nous procédons à l'annulation immédiatement.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
+      "topic": "recommandation_pointure_dakota___logger_boots___moc_jagger",
+      "topic_label": "Recommandation pointure Dakota / Logger Boots / Moc Jagger",
+      "situation": "Recommandation pointure Dakota / Logger Boots / Moc Jagger",
+      "response_template": "Bonjour Pierre,\n\nAvec 26,3 cm (pied le plus grand), voici mes recommandations par modèle :\n\n**Dakota Noir** : chausse légèrement grand → prenez le **40**.\n\n**Logger Boots** : chausse à la pointure habituelle → prenez le **40**.\n\n**Moc Jagger Noir** : chausse légèrement grand → prenez le **40** également.\n\nUne petite précision sur le Moc Jagger : sans lacets, le mocassin serre un peu au cou-de-pied au premier port, c'est normal et nécessaire pour le maintien. Le cuir et la semelle en liège s'assouplissent après quelques sorties.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__commande__13300_confirm_e",
+      "topic_label": "Re: Commande #13300 confirmée",
+      "situation": "Re: Commande #13300 confirmée",
+      "response_template": "Bonjour Olaf,\n\nVos embauchoirs bois de cèdre (commande #13300) sont en précommande, comme indiqué sur la fiche produit au moment de votre achat. La livraison est prévue pour mi-novembre 2026.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__commande",
+      "topic_label": "Re: Commande",
+      "situation": "Re: Commande",
+      "response_template": "Bonjour Arthur,\n\nVotre commande est bien expédiée ! Vous pouvez suivre votre colis en temps réel ici : https://www.laposte.fr/outils/suivre-vos-envois?code=6M18111194426\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
+      "topic": "re__commande__13146_confirm_e",
+      "topic_label": "Re: Commande #13146 confirmée",
+      "situation": "Re: Commande #13146 confirmée",
+      "response_template": "Bonjour Veasna,\n\nVos embauchoirs bois de cèdre (commande #13146) sont en précommande, comme indiqué sur la fiche produit au moment de votre achat. La livraison est prévue pour mi-novembre 2026.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__help_with_sizing",
       "topic_label": "Re: Re: Help with sizing",
       "situation": "Re: Re: Help with sizing",
@@ -46,14 +86,6 @@
       "topic_label": "Re: Commande 13482 Guillaume fosse",
       "situation": "Re: Commande 13482 Guillaume fosse",
       "response_template": "Bonjour Guillaume,\n\nLes Dakota sont en cours d'acheminement vers notre entrepôt. La livraison de votre commande #13482 (Dakota Noir 40) est prévue pour la première semaine de novembre.\n\nVous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__commande__13848_confirm_e",
-      "topic_label": "Re: Commande #13848 confirmée",
-      "situation": "Re: Commande #13848 confirmée",
-      "response_template": "Bonjour Sébastien,\n\nLe cuir grainé et le cuir lisse sont bien deux modèles distincts, ce qui explique la différence d'affichage.\n\nPour effectuer cet échange, voici comment procéder :\n\n1. Nous annulons votre commande #13848 (Paul Cuir Grainé Noir, 40)\n2. Vous repassez commande du Paul en cuir lisse noir taille 40 directement sur le site\n\nDites-moi si vous souhaitez que nous procédions à l'annulation et nous le faisons immédiatement.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -614,14 +646,6 @@
       "topic_label": "Guide pointure - mocassins Paul",
       "situation": "Guide pointure - mocassins Paul",
       "response_template": "Bonjour Pierre,\n\nAvec 27,9 cm, vous ajoutez 0,2 cm, ce qui vous donne 28,1 cm. Notre guide vous place très exactement en 43. Vous êtes donc dans la bonne pointure.\n\nSur la sensation de serré : sur un mocassin sans lacets, c'est normal, et même nécessaire. Le maintien dépend entièrement du cou-de-pied. Si la chaussure ne serre pas un peu à cet endroit, vous risquez de la perdre en marchant. Le cuir et la semelle en liège vont se mouler progressivement à votre pied avec quelques ports, et vous trouverez votre confort.\n\nSi malgré tout vous souhaitez explorer une autre pointure, la question clé est de déterminer où vous vous sentez à l'étroit :\n\n- Si c'est en longueur (orteils comprimés vers l'avant) → partez sur un 44.\n- Si c'est en largeur ou au niveau du cou-de-pied → un 43,5 sera plus adapté.\n\nAttention tout de même : passer au 44 en longueur sur un mocassin comporte un risque réel que la chaussure lâche et devienne trop libre après quelques semaines d'assouplissement du cuir.\n\nPour la procédure d'échange si vous décidez de changer de taille : téléchargez le bon de retour sur maxsauveur.com/pages/livraison-et-retour (indiquez « avoir »), emballez soigneusement la paire avec le bon à l'intérieur, et expédiez à :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander la taille souhaitée.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__commande",
-      "topic_label": "Re: Commande",
-      "situation": "Re: Commande",
-      "response_template": "Bonjour Arthur,\n\nLe modèle arrive chez nous la semaine prochaine et votre colis partira dans la foulée. Vous recevrez automatiquement un email avec votre lien de suivi dès l'expédition.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
