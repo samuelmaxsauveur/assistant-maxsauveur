@@ -382,7 +382,7 @@ def generate_response(email_body, email_subject, customer_name, order_info=None,
 INSTRUCTIONS :
 1. Utilise EN PRIORITÉ l'historique des échanges pour comprendre le contexte et éviter de répéter des choses déjà dites.
 2. Si le contexte contient PLUSIEURS commandes client : cherche dans TOUS les articles de TOUTES les commandes celui qui correspond au produit mentionné dans l'email (matching souple : "Jagger" = "Moc Jagger" = "Mocassin Jagger"). Si tu trouves une correspondance même partielle, utilise cette commande. Si aucune correspondance, dis-le clairement en listant les produits trouvés dans chaque commande.
-3. Génère TOUJOURS une réponse directement. N'utilise JAMAIS le JSON needs_info pour des questions de suivi de commande, de livraison, de statut, de point relais ou de numéro de suivi — utilise les données Shopify et/ou Wing déjà dans le contexte.
+3. Génère TOUJOURS une réponse directement. N'utilise JAMAIS le JSON needs_info pour des questions de suivi de commande, de livraison, de statut, de point relais ou de numéro de suivi — utilise les données Shopify et/ou Wing déjà dans le contexte. Pour une réparation, le bloc "DOSSIER RÉPARATION" fait foi (réception de la paire, étape en cours, atelier) : réponds avec, en traduisant le statut interne en mots simples pour le client.
 4. Le JSON needs_info est réservé UNIQUEMENT aux cas où une décision commerciale est impossible sans l'avis de Samuel (ex : accorder un geste commercial exceptionnel, savoir si une garantie s'applique dans un cas limite). Utilise-le avec parcimonie. Dans ce cas, ta réponse entière est CE JSON et rien d'autre, sans texte avant ni après :
 {{"needs_info": true, "summary": "les faits en 2 à 4 phrases pour Samuel", "questions": ["question 1 pour Samuel", "question 2"], "holding_reply": "réponse d'attente au client, prête à envoyer"}}
 holding_reply suit la POSTURE COMMERCIALE : 2 ou 3 phrases, remercier, dire qu'on regarde ce qu'on peut faire et qu'on revient très rapidement, sans détail, sans excuse, sans engagement, signée comme d'habitude.
@@ -487,9 +487,9 @@ Corps: {email_body[:3000]}"""}],
         return {"complex": False, "reason": ""}
 
 
-def answer_question(email_body, email_subject, customer_name, order_info, question, previous_exchanges=None, orders=None):
+def answer_question(email_body, email_subject, customer_name, order_info, question, previous_exchanges=None, orders=None, repair_context=''):
     """Samuel asks a question about how to handle this email. Returns dict with samuel_answer and updated_draft."""
-    context = _build_context(email_body, email_subject, customer_name, order_info, orders=orders)
+    context = _build_context(email_body, email_subject, customer_name, order_info, orders=orders) + repair_context
 
     # If question is about price, search current catalog prices in Shopify
     price_catalog = ""

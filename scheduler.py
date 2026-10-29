@@ -113,6 +113,11 @@ def process_new_emails():
                     service, [order_info] if order_info else [])
             except Exception as e:
                 print(f"[{datetime.now()}] Could not fetch product replies for {email_id}: {e}")
+            try:
+                product_context += repairs.customer_context(
+                    sender_email, [order_info] if order_info else [])
+            except Exception as e:
+                print(f"[{datetime.now()}] Could not fetch repair files for {email_id}: {e}")
 
             # Generate Claude AI draft response
             draft_response = claude_ai.generate_response(

@@ -483,6 +483,10 @@ def generate():
         wing_context += gmail_helper.product_replies_context(get_service(), all_orders)
     except Exception:
         pass
+    try:
+        wing_context += repairs.customer_context(sender_email, all_orders)
+    except Exception:
+        pass
 
     # Extract image attachments from the email thread
     email_images = []
@@ -568,6 +572,12 @@ def ask():
 
     order_info = all_orders_ask[0] if all_orders_ask else order_info
 
+    repair_context = ''
+    try:
+        repair_context = repairs.customer_context(data.get('sender_email') or sender_email_ask, all_orders_ask)
+    except Exception:
+        pass
+
     result = claude_ai.answer_question(
         data['body'],
         data['subject'],
@@ -575,7 +585,8 @@ def ask():
         order_info,
         question,
         previous_exchanges=previous_exchanges,
-        orders=all_orders_ask
+        orders=all_orders_ask,
+        repair_context=repair_context
     )
     samuel_answer = result.get('samuel_answer', '')
     updated_draft = result.get('updated_draft', '')

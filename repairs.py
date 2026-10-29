@@ -103,6 +103,46 @@ def push_to_sheet(case):
         return False
 
 
+def customer_context(sender_email, orders=()):
+    """The customer's repair files, as a block for the reply prompt.
+
+    A file is the customer's when it was opened under the address they write
+    from, or for one of their orders. Shopify and the shop's Wing account know
+    nothing of a pair sent back for repair, so without this block a customer
+    asking about their repair got a request for Samuel's help instead of a reply.
+    """
+    email = (sender_email or "").lower()
+    numbers = {str(o.get("number", "")).lstrip("#") for o in orders or () if o} - {""}
+    cases = [c for c in database.get_repair_cases()
+             if (email and (c.get("customer_email") or "").lower() == email)
+             or str(c["order_number"]).lstrip("#") in numbers]
+    blocks = []
+    for c in cases:
+        status = STATUS_LABELS.get(c["status"], c["status"])
+        if c.get("status_updated_at"):
+            status += f" (depuis le {_date(c['status_updated_at'])})"
+        lines = [f"\n\n--- DOSSIER RÉPARATION {c['wing_ref']} (onglet Réparations, fait foi) ---",
+                 f"Paire : {c.get('product') or '?'}",
+                 f"Dossier ouvert le {_date(c['created_at'])}",
+                 f"Statut : {status}"]
+        if c.get("parcel_status"):
+            lines.append(f"Colis du client : {PARCEL_LABELS.get(c['parcel_status'], c['parcel_status'])}")
+        if c.get("problem"):
+            lines.append(f"Problème : {c['problem']}")
+        if c.get("decision"):
+            lines.append(f"Décision : {DECISIONS.get(c['decision'], c['decision'])}")
+        if c.get("workshop"):
+            lines.append(f"Atelier : {c['workshop']}")
+        if c.get("workshop_shipped_at"):
+            lines.append(f"Envoyée à l'atelier le {_date(c['workshop_shipped_at'])}")
+        if c.get("return_confirmed_at"):
+            lines.append(f"Adresse de renvoi confirmée par le client le {_date(c['return_confirmed_at'])}")
+        if c.get("notes"):
+            lines.append(f"Notes de Samuel : {c['notes']}")
+        blocks.append("\n".join(lines))
+    return "".join(blocks)
+
+
 def update_case(case_id, **fields):
     """Save the edits, stamp the status change, mirror to the sheet."""
     fields = {k: v for k, v in fields.items() if k in EDITABLE_FIELDS}
