@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "demande_de_pointure",
+      "topic_label": "Demande de pointure",
+      "situation": "Demande de pointure",
+      "response_template": "Bonjour Camille,\n\nAvec 27,7 cm, en ajoutant les 0,2 cm vous êtes à 27,9 cm, ce qui vous place en **43** sur notre guide.\n\nLe Brogue Derby chausse légèrement grand, je vous recommande donc de prendre le **42**.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "re__re__form_name_form_submitted_2026_10_22_22_04_16",
       "topic_label": "Re: Re: Form name Form submitted 2026-10-22 22:04:16",
       "situation": "Re: Re: Form name Form submitted 2026-10-22 22:04:16",
@@ -1798,14 +1806,6 @@
       "topic_label": "Form name Form submitted 2026-10-03 15:58:33",
       "situation": "Form name Form submitted 2026-10-03 15:58:33",
       "response_template": "Bonjour Michel,\n\nVotre commande #13268 concerne les embauchoirs bois de cèdre, qui sont en précommande, comme indiqué sur la fiche produit au moment de votre achat. La livraison est prévue pour mi-novembre 2026.\n\nLe statut vide que vous pouvez observer est tout à fait normal pour une précommande. Dès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "demande_de_pointure",
-      "topic_label": "Demande de pointure",
-      "situation": "Demande de pointure",
-      "response_template": "Bonjour Léo,\n\nAvec 26,7 cm, notre guide vous place en **41**.\n\nLe Paul chausse juste au départ, c'est tout à fait normal : le cuir et la semelle en liège s'assouplissent avec le port et se moulent progressivement à votre pied. Les premières sorties peuvent donner une légère sensation de serré, qui disparaît après quelques ports.\n\nUn point important sur le mocassin : sans lacets, le maintien dépend entièrement de votre cou-de-pied. Si votre cou-de-pied est plutôt fin, le 41 sera parfait. S'il est fort, vous serez également à l'aise car le cuir travaillera dans ce sens.\n\nJe vous recommande donc le **41**.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
