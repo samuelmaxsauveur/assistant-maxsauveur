@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__13850_confirm_e",
+      "topic_label": "Re: Commande #13850 confirmée",
+      "situation": "Re: Commande #13850 confirmée",
+      "response_template": "Bonjour Jean-Marc,\n\nVotre commande #13850 est bien expédiée. Vous pouvez suivre votre colis ici : https://www.laposte.fr/outils/suivre-vos-envois?code=CB600923616FR\n\nLa livraison est estimée entre le 3 et le 13 novembre à votre adresse au Luxembourg.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "moc_paul___semelles",
       "topic_label": "Moc Paul - semelles",
       "situation": "Moc Paul - semelles",
