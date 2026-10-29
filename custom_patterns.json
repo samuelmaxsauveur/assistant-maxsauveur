@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__form_name_form_submitted_2026_10_22_22_04_16",
+      "topic_label": "Re: Re: Form name Form submitted 2026-10-22 22:04:16",
+      "situation": "Re: Re: Form name Form submitted 2026-10-22 22:04:16",
+      "response_template": "Bonjour Loris,\n\nPour vérifier le montant exact de votre avoir, pourriez-vous nous confirmer quel article vous avez retourné et en quelle taille ? Cela nous permettra de nous assurer que l'avoir est bien établi sur la bonne commande.\n\nMerci d'avance.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "retour_commande__13710",
       "topic_label": "Retour commande #13710",
       "situation": "Retour commande #13710",
