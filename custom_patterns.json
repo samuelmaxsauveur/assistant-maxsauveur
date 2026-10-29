@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "retour_commande__13710",
+      "topic_label": "Retour commande #13710",
+      "situation": "Retour commande #13710",
+      "response_template": "Bonjour Vincent,\n\nNous avons bien réceptionné votre retour.\n\nÀ l'inspection, nous avons constaté une tache sur la paire. Nous devons examiner cela de plus près pour déterminer si nous sommes en mesure de prendre le retour en charge. Nous revenons vers vous très rapidement avec notre réponse.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_10_29_10_24_31",
       "topic_label": "Form name Form submitted 2026-10-29 10:24:31",
       "situation": "Form name Form submitted 2026-10-29 10:24:31",
