@@ -2,6 +2,30 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "max_sauveur_x_yann_piette",
+      "topic_label": "Max Sauveur x Yann Piette",
+      "situation": "Max Sauveur x Yann Piette",
+      "response_template": "Bonjour Yann,\n\nMerci pour votre message. Pour les collaborations et partenariats, vous pouvez contacter directement Samuel, le fondateur : samuel@maxsauveur.com.\n\nC'est lui qui gère ce type de demandes.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_retour_pour_la_commande__13643",
+      "topic_label": "Votre retour pour la commande #13643",
+      "situation": "Votre retour pour la commande #13643",
+      "response_template": "Bonjour Lily,\n\nNous avons bien reçu votre retour (Kayce - Ceinture Western en Cuir de Veau Noir, taille 80) et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux vous correspondre, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si une autre pointure ou un autre modèle vous tente, voici ce qu'on peut faire : nous vous envoyons un avoir de 204 €, soit le prix de votre ceinture (189 €) et 15 € offerts par la maison. Il est valable 6 mois sur toute la collection, chaussures et ceintures, et la livraison de votre nouvelle commande est offerte, à l'adresse de votre choix.\n\nAutrement dit, vous gardez l'avantage de votre commande initiale et vous repartez avec 15 € de plus.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte. Sans réponse de votre part d'ici le vendredi 6 novembre, nous procéderons au remboursement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_avoir_pour_la_commande__13488",
+      "topic_label": "Votre avoir pour la commande #13488",
+      "situation": "Votre avoir pour la commande #13488",
+      "response_template": "Bonjour Boris,\n\nNous avons bien reçu votre retour (Carter - Ceinture Western en Cuir Noir) et venons de générer votre avoir d'un montant de 189 €.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\nQKXVBQB24PS9\n\nConditions d'utilisation :\n- valable jusqu'au 30/04/2027,\n- utilisable sur nos chaussures et ceintures homme, en une seule commande,\n- réservé à votre adresse e-mail (boris.sebbag@gmail.com) : pensez à commander avec cette adresse,\n- non cumulable avec d'autres codes ou promotions.\n\nSi vous avez la moindre question, je reste disponible.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande__13661_en_attente_r_ception",
       "topic_label": "Commande #13661 en attente réception",
       "situation": "Commande #13661 en attente réception",
