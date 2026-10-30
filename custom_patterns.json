@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__re__commande_13418",
+      "topic_label": "Re: Re: Re: Re: Commande 13418",
+      "situation": "Re: Re: Re: Re: Commande 13418",
+      "response_template": "Bonjour Thomas,\n\nVous avez raison, le lien envoyé précédemment concernait votre commande #13418 (le 43), déjà livrée.\n\nVotre Wayne 42,5 (commande #13855) partira en fin de journée ou lundi matin. Vous recevrez automatiquement un email avec votre lien de suivi dès la prise en charge par le transporteur.\n\nMerci pour votre patience.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
