@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "pointure",
+      "topic_label": "POINTURE",
+      "situation": "POINTURE",
+      "response_template": "Bonjour Marvin,\n\nBienvenue dans le monde du soulier !\n\nAvec 27,1-27,2 cm de pied, notre guide vous place en 42. La Deck chausse légèrement grand, donc je vous recommande le 41.\n\nSur la semelle intérieure : une semelle fine type Collonil peut apporter un vrai confort supplémentaire. Dans ce cas, restez sur le 42 pour avoir la place nécessaire.\n\nEn résumé :\n- Sans semelle ajoutée : prenez le 41\n- Avec semelle intérieure : prenez le 42\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 3
+    },
+    {
       "topic": "re__form_name_form_submitted_2026_10_24_09_19_43",
       "topic_label": "RE: Form name Form submitted 2026-10-24 09:19:43",
       "situation": "RE: Form name Form submitted 2026-10-24 09:19:43",
@@ -944,14 +952,6 @@
       "response_template": "Bonjour Hermès,\n\nVotre commande #13454 (Wayne Boots Cuir Bordeaux, 42.5) est bien enregistrée et le paiement est confirmé. Il s'agit d'une précommande dont la livraison est prévue pour la semaine prochaine.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "pointure",
-      "topic_label": "POINTURE",
-      "situation": "POINTURE",
-      "response_template": "Bonjour Yann,\n\nAvec 26,8 cm de pied, notre guide vous place en 42 mais le Brogue Derby chausse légèrement grand, je vous recommande donc de prendre le 41.\n\nVotre largeur de 9,7 cm est tout à fait dans la norme, pas d'adaptation nécessaire de ce côté.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 2
     },
     {
       "topic": "re__commande__13543_confirm_e",
