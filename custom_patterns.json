@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "commande__13661_en_attente_r_ception",
+      "topic_label": "Commande #13661 en attente réception",
+      "situation": "Commande #13661 en attente réception",
+      "response_template": "Bonjour Ronaldo,\n\nVotre commande #13661 (La Gigi, ceinture cuir lézard noir, 85) est bien en précommande. La livraison est prévue pour mi-novembre 2026.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_10_30_10_04_10",
       "topic_label": "Form name Form submitted 2026-10-30 10:04:10",
       "situation": "Form name Form submitted 2026-10-30 10:04:10",
