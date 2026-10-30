@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "retour_commande__13512",
+      "topic_label": "Retour Commande #13512",
+      "situation": "Retour Commande #13512",
+      "response_template": "Bonjour Raphaël,\n\nNous avons bien reçu votre retour, pas d'inquiétude.\n\nPour les emails promotionnels : le service marketing et le service client sont deux équipes distinctes, ce qui explique que vous puissiez recevoir des communications de l'un sans nouvelles de l'autre.\n\nNous revenons vers vous très rapidement concernant votre remboursement.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "re__taille_moc_paul",
       "topic_label": "Re: Taille moc Paul",
       "situation": "Re: Taille moc Paul",
@@ -1030,14 +1038,6 @@
       "topic_label": "Re: Commande #13313 confirmée",
       "situation": "Re: Commande #13313 confirmée",
       "response_template": "Bonjour Robin,\n\nVotre commande #13313 (embauchoirs bois de cèdre) est bien enregistrée. Il s'agit d'une précommande dont la livraison est prévue pour mi-novembre 2026.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "retour_commande__13512",
-      "topic_label": "Retour Commande #13512",
-      "situation": "Retour Commande #13512",
-      "response_template": "Bonjour Raphaël,\n\nNous vérifions le statut de votre retour côté logistique. Le traitement prend jusqu'à 10 jours ouvrés à compter de la réception de votre colis, vous devriez avoir une réponse de notre part très prochainement.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
