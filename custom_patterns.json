@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__colis_non_r_cup_r_",
+      "topic_label": "Re: Colis non récupéré",
+      "situation": "Re: Colis non récupéré",
+      "response_template": "Bonjour Victor,\n\nNous sommes toujours en attente d'une réponse de Chronopost et faisons une dernière relance aujourd'hui.\n\nSi nous n'avons pas de retour de leur part d'ici la semaine prochaine, nous vous envoyons directement un avoir du montant de votre commande pour que vous puissiez recommander la paire sans attendre davantage.\n\nNous revenons vers vous dès que nous avons du concret.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "retour_de_commande__13651",
       "topic_label": "Retour de commande #13651",
       "situation": "Retour de commande #13651",
