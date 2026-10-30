@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "retour_de_commande__13651",
+      "topic_label": "Retour de commande #13651",
+      "situation": "Retour de commande #13651",
+      "response_template": "Bonjour Pierre,\n\nNotre logisticien ne nous a pas encore confirmé la réception et l'enregistrement de votre retour. Dès que c'est le cas, nous revenons vers vous très rapidement.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_10_29_17_43_44",
       "topic_label": "Form name Form submitted 2026-10-29 17:43:44",
       "situation": "Form name Form submitted 2026-10-29 17:43:44",
