@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__form_name_form_submitted_2026_10_24_09_19_43",
+      "topic_label": "RE: Form name Form submitted 2026-10-24 09:19:43",
+      "situation": "RE: Form name Form submitted 2026-10-24 09:19:43",
+      "response_template": "Bonjour Laurent,\n\nPas d'inquiétude, la différence avec votre 44 habituel vient probablement de la largeur plutôt que de la longueur. Je vous recommande le 43.\n\nSi à réception la paire ne convient pas, un échange reste possible via notre procédure habituelle.\n\nBonne commande !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "max_sauveur___service_client",
       "topic_label": "Max Sauveur — Service Client",
       "situation": "Max Sauveur — Service Client",
