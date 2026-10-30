@@ -15,6 +15,7 @@ import returns
 import ups_tracking
 import workshop_mail
 import madmax
+import retours
 
 load_dotenv()
 
@@ -288,6 +289,18 @@ def send_morning_report():
         </div>
         """
 
+    returns_html = ""
+    try:
+        waiting = {label: n for label, n in retours.counts_for_report().items() if n}
+        if waiting:
+            listing = " · ".join(f"{label} : {n}" for label, n in waiting.items())
+            returns_html = f"""
+        <div style="background: #f0fdfa; border: 1px solid #99f6e4; border-radius: 6px; padding: 12px; margin-bottom: 24px; font-size: 14px;">
+            ↩️ <strong>Retours clients</strong> : {listing} · <a href="{BASE_URL}/retours" style="color: #0f766e;">ouvrir</a>
+        </div>"""
+    except Exception as e:
+        print(f"[{datetime.now()}] Returns summary unavailable: {e}")
+
     html_body = f"""<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -301,6 +314,7 @@ def send_morning_report():
         <p style="margin: 0 0 28px 0; color: #666; font-size: 15px;">
             {count} email(s) en attente de validation pour le {today_date}.
         </p>
+        {returns_html}
         {drafts_html}
         <hr style="border: none; border-top: 1px solid #eee; margin: 24px 0;">
         <p style="margin: 0; font-size: 12px; color: #aaa; text-align: center;">
@@ -484,6 +498,14 @@ def start():
         "interval",
         minutes=60,
         id="ups_tracking"
+    )
+
+    # Customer returns: answers to the credit offers, reminders, refunds seen in Shopify
+    scheduler.add_job(
+        retours.tick,
+        "interval",
+        minutes=60,
+        id="client_returns"
     )
 
     # Mad Max gift cards: links on 6 Nov, reminders on the 1st of each month.

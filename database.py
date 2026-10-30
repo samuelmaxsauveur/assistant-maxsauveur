@@ -190,6 +190,22 @@ def init_db():
                 created_at  TEXT NOT NULL
             )
         """)
+        # One row per return slip photographed at the logistics centre
+        # (refund or credit, not repairs). The analysis, the draft and the
+        # history live in the JSON `data` column.
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS client_returns (
+                id              INTEGER PRIMARY KEY AUTOINCREMENT,
+                status          TEXT NOT NULL DEFAULT 'to_check',
+                order_number    TEXT,
+                customer_name   TEXT,
+                customer_email  TEXT,
+                thread_id       TEXT,
+                data            TEXT NOT NULL DEFAULT '{}',
+                created_at      TEXT NOT NULL,
+                updated_at      TEXT NOT NULL
+            )
+        """)
         # Columns added after the first release of repair_cases: the table
         # already exists in production, so they are added one by one.
         existing = {row[1] for row in cursor.execute("PRAGMA table_info(repair_cases)")}
@@ -1004,3 +1020,81 @@ def get_scheduled_emails():
 
 # Initialise the database as soon as the module is imported.
 init_db()
+
+
+CLIENT_RETURN_COLUMNS = ("status", "order_number", "customer_name", "customer_email", "thread_id")
+
+
+def _client_return(row):
+    if not row:
+        return None
+    case = dict(row)
+    case["data"] = json.loads(case.get("data") or "{}")
+    return case
+
+
+def save_client_return(data=None, **fields):
+    now = datetime.utcnow().isoformat()
+    fields = {k: v for k, v in fields.items() if k in CLIENT_RETURN_COLUMNS}
+    columns = list(fields) + ["data", "created_at", "updated_at"]
+    values = list(fields.values()) + [json.dumps(data or {}, ensure_ascii=False), now, now]
+    conn = get_connection()
+    try:
+        cur = conn.execute(
+            f"INSERT INTO client_returns ({', '.join(columns)}) VALUES ({', '.join('?' for _ in columns)})",
+            values)
+        conn.commit()
+        return cur.lastrowid
+    finally:
+        conn.close()
+
+
+def get_client_return(case_id):
+    conn = get_connection()
+    try:
+        return _client_return(conn.execute("SELECT * FROM client_returns WHERE id = ?", (case_id,)).fetchone())
+    finally:
+        conn.close()
+
+
+def get_client_returns(statuses=None):
+    conn = get_connection()
+    try:
+        if statuses:
+            rows = conn.execute(
+                f"SELECT * FROM client_returns WHERE status IN ({', '.join('?' for _ in statuses)}) ORDER BY id DESC",
+                tuple(statuses)).fetchall()
+        else:
+            rows = conn.execute("SELECT * FROM client_returns ORDER BY id DESC").fetchall()
+        return [_client_return(r) for r in rows]
+    finally:
+        conn.close()
+
+
+def update_client_return(case_id, data=None, **fields):
+    """Update columns and merge `data` keys into the stored JSON. Returns the row."""
+    current = get_client_return(case_id)
+    if current is None:
+        raise ValueError(f"Dossier retour {case_id} introuvable")
+    fields = {k: v for k, v in fields.items() if k in CLIENT_RETURN_COLUMNS}
+    if data:
+        merged = {**current["data"], **data}
+        fields["data"] = json.dumps(merged, ensure_ascii=False)
+    fields["updated_at"] = datetime.utcnow().isoformat()
+    conn = get_connection()
+    try:
+        assignments = ", ".join(f"{k} = ?" for k in fields)
+        conn.execute(f"UPDATE client_returns SET {assignments} WHERE id = ?", (*fields.values(), case_id))
+        conn.commit()
+    finally:
+        conn.close()
+    return get_client_return(case_id)
+
+
+def delete_client_return(case_id):
+    conn = get_connection()
+    try:
+        conn.execute("DELETE FROM client_returns WHERE id = ?", (case_id,))
+        conn.commit()
+    finally:
+        conn.close()

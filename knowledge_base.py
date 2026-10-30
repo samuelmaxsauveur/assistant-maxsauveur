@@ -295,7 +295,15 @@ Adopter cette approche en 3 temps :
 
 1. **Confirmer la réception** du colis, simplement et humainement.
 2. **Poser une vraie question** sur la raison du retour (taille ? style ? cuir ? pas convaincu ?) pour montrer qu'on cherche à comprendre — pas juste à traiter le dossier.
-3. **Proposer l'alternative** : au lieu du remboursement, offrir un avoir du montant + geste commercial (ex: 35€ offerts) + frais de livraison offerts pour un échange vers un autre modèle.
+3. **Proposer l'alternative** : au lieu du remboursement, offrir un avoir du montant + geste commercial + frais de livraison offerts pour un échange vers un autre modèle.
+
+Calcul de l'avoir bonifié (règle de Samuel, 30/10/2026) :
+- Base = prix catalogue de l'article retourné, avant toute remise et hors frais de port. Jamais le total de la commande, jamais le prix remisé : le client garde ainsi l'avantage de sa remise initiale.
+- Geste ajouté par article : chaussures et boots +35 €, sandales et chaussures bateau +25 €, ceintures +15 €. Exemple : brogues à 335 € → avoir de 370 €.
+- L'avoir est utilisable sur toute la collection (chaussures et ceintures), et la livraison de la nouvelle commande est offerte (un second code « livraison offerte » accompagne l'avoir).
+- Pas d'échange direct : on passe toujours par un avoir, le client recommande et choisit son adresse.
+- Le client qui demande directement un avoir sur son bon : avoir du prix catalogue de la paire au moment de la commande, sans geste, livraison à sa charge.
+- Les retours se traitent dans l'onglet ↩️ Retours de l'assistant (photo du bon de retour).
 
 Format de la proposition d'alternative :
 "Si un autre modèle vous fait de l'œil, on peut vous envoyer un avoir de [montant + geste]€ (soit [geste]€ offerts par la maison) et on prend en charge les frais de livraison pour cet échange. Cela vous permet de trouver la pièce idéale sans aucun frais supplémentaire."

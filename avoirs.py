@@ -173,6 +173,9 @@ def _items(avoir):
 
 
 def create_code(avoir):
+    """The avoir code. With avoir["free_shipping"], it combines with the
+    free-shipping code from create_shipping_code (Shopify cannot put shipping
+    in an amount code)."""
     code = "".join(secrets.choice(_CODE_ALPHABET) for _ in range(12))
     data = _gql("""
         mutation($d: DiscountCodeBasicInput!) {
@@ -193,11 +196,39 @@ def create_code(avoir):
             "usageLimit": 1,
             "appliesOncePerCustomer": True,
             "combinesWith": {"orderDiscounts": False, "productDiscounts": False,
-                             "shippingDiscounts": False},
+                             "shippingDiscounts": bool(avoir.get("free_shipping"))},
         }})
     res = data["discountCodeBasicCreate"]
     if res["userErrors"]:
         raise RuntimeError(f"Shopify a refusé l'avoir : {res['userErrors']}")
+    return code
+
+
+def create_shipping_code(avoir):
+    """Free shipping on the order paid with the avoir: same customer, same end
+    date, single use, combinable with the avoir code only."""
+    code = "LIVRAISON" + "".join(secrets.choice(_CODE_ALPHABET) for _ in range(6))
+    data = _gql("""
+        mutation($d: DiscountCodeFreeShippingInput!) {
+          discountCodeFreeShippingCreate(freeShippingCodeDiscount: $d) {
+            codeDiscountNode { id }
+            userErrors { field message }
+          }
+        }""", {"d": {
+            "title": f"Livraison offerte {avoir['order']} · {avoir['email']}",
+            "code": code,
+            "startsAt": datetime.now(timezone.utc).isoformat(),
+            "endsAt": avoir["ends_at"].isoformat(),
+            "customerSelection": {"customers": {"add": [avoir["customer_id"]]}},
+            "destination": {"all": True},
+            "usageLimit": 1,
+            "appliesOncePerCustomer": True,
+            "combinesWith": {"orderDiscounts": False, "productDiscounts": True,
+                             "shippingDiscounts": False},
+        }})
+    res = data["discountCodeFreeShippingCreate"]
+    if res["userErrors"]:
+        raise RuntimeError(f"Shopify a refusé le code livraison : {res['userErrors']}")
     return code
 
 

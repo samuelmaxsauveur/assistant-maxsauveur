@@ -505,7 +505,8 @@ def send_email(service, to, subject, body, thread_id=None,
     body_data = {'raw': raw}
     if thread_id:
         body_data['threadId'] = thread_id
-    service.users().messages().send(userId='me', body=body_data).execute()
+    # The sent message (id, threadId): a new conversation is followed by its thread.
+    return service.users().messages().send(userId='me', body=body_data).execute()
 
 
 def send_email_with_files(service, to, subject, body, files):

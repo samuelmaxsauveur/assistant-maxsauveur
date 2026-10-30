@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Retours — Max Sauveur</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f5; color: #333; }
+        header { background: #111; color: white; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        header h1 { font-size: 17px; font-weight: 600; }
+        .header-links { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+        header a { color: #aaa; text-decoration: none; font-size: 14px; white-space: nowrap; }
+        header a:hover { color: white; }
+        .container { max-width: 900px; margin: 18px auto 60px; padding: 0 12px; }
+        .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+        .tab { padding: 8px 12px; border-radius: 20px; background: #fff; color: #444; text-decoration: none; font-size: 13px; border: 1px solid #e5e5e5; white-space: nowrap; }
+        .tab.active { background: #0f766e; color: #fff; border-color: #0f766e; }
+        .tab .n { display: inline-block; min-width: 18px; padding: 0 5px; border-radius: 9px; background: #f0f0f0; color: #555; font-size: 11px; text-align: center; margin-left: 4px; }
+        .tab.active .n { background: rgba(255,255,255,0.25); color: #fff; }
+        .tab.empty { opacity: 0.55; }
+        .card { background: white; border-radius: 12px; margin-bottom: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); padding: 14px 16px; }
+        .card-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .meta { font-size: 13px; color: #777; line-height: 1.6; }
+        .meta a, .card a { color: #2563eb; }
+        .alert { border: 2px solid #fcd34d; background: #fffbeb; }
+        .error { border: 2px solid #fca5a5; background: #fef2f2; }
+        .row { display: flex; gap: 10px; align-items: center; padding: 10px 4px; border-bottom: 1px solid #f1f1f1; text-decoration: none; color: inherit; }
+        .row:last-child { border-bottom: none; }
+        .row:hover, .row.sel { background: #f0fdfa; }
+        .row .who { flex: 1; min-width: 0; }
+        .row .who strong { font-size: 14px; }
+        .row .sub { font-size: 12px; color: #777; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+        .dot.ok { background: #16a34a; } .dot.warn { background: #f59e0b; } .dot.bad { background: #dc2626; }
+        .pill { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px; background: #f0fdfa; color: #115e59; white-space: nowrap; }
+        .pill.amber { background: #fef3c7; color: #92400e; }
+        .section { border-top: 1px solid #f0f0f0; margin-top: 14px; padding-top: 12px; }
+        .section h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.4px; color: #888; margin-bottom: 8px; }
+        .checks { list-style: none; font-size: 14px; line-height: 1.5; }
+        .checks li { padding: 3px 0 3px 26px; position: relative; }
+        .checks li::before { position: absolute; left: 0; top: 3px; }
+        .checks li.ok::before { content: "✅"; } .checks li.warn::before { content: "⚠️"; } .checks li.bad::before { content: "⛔"; }
+        .checks li.bad { color: #991b1b; font-weight: 500; }
+        .amounts { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; }
+        .amount { background: #f8fafc; border-radius: 8px; padding: 8px 10px; }
+        .amount .l { font-size: 11px; color: #888; }
+        .amount .v { font-size: 17px; font-weight: 600; }
+        .amount.hi { background: #f0fdfa; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+        .full { grid-column: 1 / -1; }
+        label.f { display: block; font-size: 12px; font-weight: 600; color: #555; margin-bottom: 4px; }
+        input, select, textarea { width: 100%; padding: 9px 10px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 15px; font-family: inherit; background: #fff; }
+        input[type=checkbox] { width: 20px; height: 20px; flex: none; }
+        textarea { resize: vertical; }
+        textarea.mail { min-height: 360px; line-height: 1.5; font-size: 14px; }
+        .line { display: flex; gap: 10px; align-items: center; padding: 6px 0; font-size: 14px; }
+        .line .qty { width: 64px; }
+        .actions { display: flex; gap: 8px; align-items: center; margin-top: 12px; flex-wrap: wrap; }
+        .btn { padding: 10px 14px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; display: inline-block; text-decoration: none; }
+        .btn-teal { background: #0f766e; color: white; }
+        .btn-green { background: #16a34a; color: white; }
+        .btn-purple { background: #7c3aed; color: white; }
+        .btn-red { background: #fee2e2; color: #991b1b; }
+        .btn-gray { background: #f0f0f0; color: #333; }
+        .btn-big { font-size: 16px; padding: 14px 18px; }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .msg { font-size: 13px; }
+        .thumbs img { width: 120px; max-height: 160px; object-fit: cover; border-radius: 8px; border: 1px solid #eee; }
+        .reply { background: #eff6ff; border-radius: 8px; padding: 10px 12px; font-size: 14px; white-space: pre-wrap; }
+        .codes { font-family: ui-monospace, Menlo, monospace; font-size: 16px; font-weight: 600; }
+        .log { font-size: 12px; color: #888; line-height: 1.7; }
+        .empty { text-align: center; color: #999; padding: 30px 0; font-size: 14px; }
+        .upload input[type=file] { display: none; }
+    </style>
+</head>
+<body>
+<header>
+    <h1>↩️ Retours — Max Sauveur</h1>
+    <div class="header-links">
+        <a href="/">📬 Emails</a>
+        <a href="/sav">🔧 SAV</a>
+        <a href="/reparations">🛠 Réparations</a>
+        <a href="/retours" style="color:white;">↩️ Retours</a>
+    </div>
+</header>
+<div class="container">
+
+    <div class="card upload">
+        <div class="actions" style="margin-top:0;">
+            <label class="btn btn-teal btn-big">📷 Photographier un bon de retour
+                <input type="file" accept="image/*" capture="environment" onchange="uploadPhotos(this)">
+            </label>
+            <label class="btn btn-gray">🖼 Choisir des photos
+                <input type="file" accept="image/*" multiple onchange="uploadPhotos(this)">
+            </label>
+            <button class="btn btn-gray" onclick="checkNow(this)">🔄 Vérifier les réponses</button>
+        </div>
+        <div class="meta" style="margin-top:8px;">Un bon par photo, avec la date d'arrivée chez SSL écrite au stylo. Comptez une vingtaine de secondes de lecture par bon.</div>
+        <div class="msg" id="upload-msg" style="margin-top:6px;"></div>
+    </div>
+
+    <div class="tabs">
+        {% for key, title, _ in stages %}
+        <a class="tab {% if key == tab %}active{% endif %} {% if not counts[key] %}empty{% endif %}" href="/retours?onglet={{ key }}">{{ title }}<span class="n">{{ counts[key] }}</span>{% if key == 'attente' and reminders %} <span class="pill amber">{{ reminders }} relance{{ 's' if reminders > 1 }}</span>{% endif %}</a>
+        {% endfor %}
+    </div>
+
+    <div class="card" style="padding:6px 12px;">
+        {% if not cases %}<div class="empty">Aucun retour à cette étape.</div>{% endif %}
+        {% for c in cases %}
+        {% set s = c.data.summary or {} %}
+        {% set slip = c.data.slip or {} %}
+        <a class="row {% if view and view.case.id == c.id %}sel{% endif %}" href="/retours?onglet={{ tab }}&id={{ c.id }}#fiche">
+            <span class="dot {{ 'bad' if c.data.error else (s.alert or 'warn') }}"></span>
+            <span class="who">
+                <strong>{{ c.customer_name or slip.name or 'Client à identifier' }}</strong>
+                {% if c.order_number %}<span class="meta"> · #{{ c.order_number }}</span>{% endif %}
+                <div class="sub">{{ s['items'] or '' }}{% for i in slip['items'] or [] %}{% if i.reason_code %} · {{ i.reason_code }} {{ reasons[i.reason_code] }}{% endif %}{% endfor %}{% if c.data.choice %} · {{ choices[c.data.choice] }}{% endif %}</div>
+            </span>
+            {% if c.status == 'waiting_client' and c.data.reminder_due %}<span class="pill amber">relance</span>{% endif %}
+            <span class="meta">{{ short_date(c.data.arrival_date) }}</span>
+        </a>
+        {% if view and view.case.id == c.id %}<div id="fiche-anchor"></div>{% endif %}
+        {% endfor %}
+    </div>
+
+    {% if view %}
+    {% set c = view.case %}{% set d = view.data %}{% set r = view.result %}{% set a = r.amounts %}{% set o = view.order %}
+    <div class="card" id="fiche">
+        <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:flex-start;">
+            <div>
+                <div class="card-title">{{ c.customer_name or 'Client à identifier' }}{% if o %} · <a href="{{ view.admin_link }}" target="_blank">commande {{ o.name }}</a>{% endif %}</div>
+                <div class="meta">{% if o %}Commandée le {{ short_date(o.created_at) }} · {{ o.email }}{% if o.carrier %} · livrée par {{ o.carrier }}{% endif %}<br>{% endif %}
+                    Arrivée chez SSL le {{ short_date(d.arrival_date) }} · <span class="pill">{{ status_labels[c.status] }}</span></div>
+            </div>
+            {% if view.next_id %}<a class="btn btn-gray" href="/retours?onglet={{ tab }}&id={{ view.next_id }}#fiche">Suivant →</a>{% endif %}
+        </div>
+
+        {% if d.error %}<div class="card error" style="margin:12px 0 0;"><div class="meta">⚠️ {{ d.error }}</div></div>{% endif %}
+
+        <div class="section" style="display:flex; gap:14px; flex-wrap:wrap;">
+            <div class="thumbs">{% for p in d.photos or [] %}<a href="/retours/{{ c.id }}/photo/{{ p }}" target="_blank"><img src="/retours/{{ c.id }}/photo/{{ p }}" alt="bon de retour"></a>{% endfor %}</div>
+            {% set slip = d.slip or {} %}
+            <div class="meta" style="flex:1; min-width:200px;">
+                <strong>Lu sur le bon :</strong><br>
+                Nom : {{ slip.name or '?' }} · N° : {{ slip.order_number or '?' }}<br>
+                {% for i in slip['items'] or [] %}{{ i.reference or '?' }}{% if i.size %}, {{ i.size }}{% endif %}{% if i.quantity and i.quantity > 1 %} × {{ i.quantity }}{% endif %}{% if i.reason_code %} · {{ i.reason_code }} {{ reasons[i.reason_code] }}{% endif %}{% if i.choice %} · {{ choices[i.choice] }}{% endif %}<br>{% endfor %}
+                {% if slip.client_shipping_date %}Expédié par le client le {{ short_date(slip.client_shipping_date) }} (indicatif)<br>{% endif %}
+                {% if slip.comment %}Note : {{ slip.comment }}<br>{% endif %}
+                {% if slip.unreadable %}<span style="color:#b45309;">Illisible : {{ slip.unreadable }}</span>{% endif %}
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Le retour</h3>
+            <div class="grid">
+                <div><label class="f">N° de commande</label><input id="f-order" inputmode="numeric" value="{{ c.order_number or '' }}"></div>
+                <div><label class="f">Arrivée chez SSL</label><input id="f-arrival" type="date" value="{{ d.arrival_date or '' }}"></div>
+                <div class="full"><label class="f">Le client demande</label>
+                    <select id="f-choice">
+                        <option value="" {% if not d.choice %}selected{% endif %}>Non précisé</option>
+                        {% for k, label in choices.items() %}<option value="{{ k }}" {% if d.choice == k %}selected{% endif %}>{{ label }}</option>{% endfor %}
+                    </select>
+                </div>
+                {% if o %}
+                <div class="full"><label class="f">Articles retournés</label>
+                    {% for l in o.lines %}
+                    {% set q = (d.returned or {}).get(l.id) %}
+                    <div class="line">
+                        <input type="checkbox" class="f-line" data-id="{{ l.id }}" {% if q %}checked{% endif %}>
+                        {% if l.quantity > 1 %}<select class="qty" id="q-{{ l.id }}">{% for n in range(1, l.quantity + 1) %}<option {% if (q or l.quantity) == n %}selected{% endif %}>{{ n }}</option>{% endfor %}</select>{% endif %}
+                        <span>{{ l.title }}{% if l.variant %} ({{ l.variant }}){% endif %}<br><span class="meta">{{ categories[l.category] }} · prix {{ euros(l.catalogue) }}{% if l.paid != l.catalogue %} · payé {{ euros(l.paid) }}{% endif %}</span></span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <div class="actions"><button class="btn btn-gray" onclick="recompute(this)">Recalculer</button><span class="msg" id="re-msg"></span></div>
+        </div>
+
+        <div class="section">
+            <h3>Contrôles</h3>
+            <ul class="checks">{% for ch in r.checks %}<li class="{{ ch.level }}">{{ ch.text }}</li>{% endfor %}</ul>
+        </div>
+
+        {% if a %}
+        <div class="section">
+            <h3>Montants</h3>
+            <div class="amounts">
+                <div class="amount"><div class="l">Prix catalogue</div><div class="v">{{ euros(a.catalogue) }}</div></div>
+                <div class="amount"><div class="l">Geste</div><div class="v">+ {{ euros(a.gesture) }}</div></div>
+                <div class="amount hi"><div class="l">Avoir bonifié</div><div class="v">{{ euros(a.bonus) }}</div></div>
+                <div class="amount"><div class="l">Remboursement</div><div class="v">{{ euros(a.refund) }}</div></div>
+            </div>
+            <div class="meta" style="margin-top:6px;">
+                Remboursement = prix payé pour les articles retournés{% if a.shipping_refunded %}, plus les frais de port (commande renvoyée en entier){% endif %}.
+                {% if a.credit_paid %} La part payée en avoir ({{ euros(a.credit_paid) }}) n'est pas remboursable.{% endif %}
+                {% if view.refund_deadline %}<br>À rembourser au plus tard le <strong>{{ fr_date(view.refund_deadline) }}</strong> (10 jours ouvrés après l'arrivée, comme promis sur le bon).{% endif %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if c.status == 'waiting_client' %}
+        <div class="section">
+            <h3>Proposition envoyée</h3>
+            <div class="meta">Envoyée le {{ short_date((d.offer_sent_at or d.last_sent_at or '')[:10]) }}{% if view.offer_deadline and d.offer_kind == 'bonus' %} · sans réponse, passage en « À rembourser » le {{ fr_date(view.offer_deadline) }}{% endif %}.
+                {% if d.reminder_due %}<br><strong>Relance prête ci-dessous.</strong>{% endif %}</div>
+        </div>
+        {% endif %}
+
+        {% if d.reply_text %}
+        <div class="section">
+            <h3>Réponse du client</h3>
+            {% if d.reply_summary %}<div class="meta" style="margin-bottom:6px;">En bref : {{ d.reply_summary }}</div>{% endif %}
+            <div class="reply">{{ d.reply_text }}</div>
+        </div>
+        {% endif %}
+
+        {% if c.status in ('waiting_client', 'reply_to_read') %}
+        <div class="actions">
+            <button class="btn btn-purple" onclick="customerChoice('credit', this)">Il veut l'avoir{% if a and d.offer_kind != 'plain' %} ({{ euros(d.offer_amount or a.bonus) }}){% elif a %} ({{ euros(d.offer_amount or a.catalogue) }}){% endif %}</button>
+            <button class="btn btn-gray" onclick="customerChoice('refund', this)">Il veut le remboursement</button>
+            <span class="msg" id="choice-msg"></span>
+        </div>
+        {% endif %}
+
+        {% if d.credit_code %}
+        <div class="section">
+            <h3>Avoir créé dans Shopify</h3>
+            <div class="codes">{{ d.credit_code }} · {{ euros(d.credit_amount or 0) }}{% if d.shipping_code %}<br>{{ d.shipping_code }} · livraison offerte{% endif %}</div>
+            <div class="meta">Valable jusqu'au {{ short_date(d.credit_ends_at) }}, réservé à {{ c.customer_email }}.</div>
+        </div>
+        {% endif %}
+
+        {% if c.status == 'to_refund' %}
+        <div class="section">
+            <h3>À rembourser par toi</h3>
+            <div class="meta">Rembourse dans Shopify : le dossier passera tout seul en « Terminés » dès que le remboursement y apparaît (vérification toutes les heures).</div>
+            <div class="actions">
+                {% if view.admin_link %}<a class="btn btn-teal" href="{{ view.admin_link }}" target="_blank">Ouvrir la commande dans Shopify</a>{% endif %}
+                <button class="btn btn-gray" onclick="setStatus('done', this, 'remboursement fait (noté à la main)')">C'est remboursé</button>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if c.status not in ('done', 'refused') %}
+        <div class="section">
+            <h3>Le mail</h3>
+            <div class="grid">
+                <div class="full"><label class="f">Mail à préparer</label>
+                    <select id="m-template" onchange="templateChanged()">
+                        {% for k, label in templates.items() %}<option value="{{ k }}" {% if d.template == k %}selected{% endif %}>{{ label }}</option>{% endfor %}
+                        {% if custom_templates %}<optgroup label="Tes mails pré-rédigés">
+                        {% for t in custom_templates %}<option value="tpl:{{ t.subject_type }}" {% if d.template == 'tpl:' ~ t.subject_type %}selected{% endif %}>{{ t.label }}</option>{% endfor %}
+                        </optgroup>{% endif %}
+                    </select>
+                </div>
+                <div><label class="f">Montant (laisser vide = calcul automatique)</label><input id="m-amount" inputmode="decimal" value="{{ d.amount_override or '' }}" placeholder="{% if a %}avoir {{ a.catalogue }} / bonifié {{ a.bonus }} / remb. {{ a.refund }}{% endif %}"></div>
+                <div class="full"><label class="f">Consignes particulières (facultatif)</label><textarea id="m-consignes" rows="2" placeholder="ex. il garde la ceinture BEBELT : déduire 39 € de l'avoir">{{ d.consignes or '' }}</textarea></div>
+            </div>
+            <div class="actions"><button class="btn btn-gray" onclick="prepareMail(this)">✍️ Préparer le mail</button><span class="msg" id="m-msg"></span></div>
+            <div style="margin-top:10px;"><label class="f">Objet</label><input id="m-subject" value="{{ d.mail_subject or '' }}"></div>
+            <div style="margin-top:8px;"><label class="f">Message (modifiable)</label><textarea id="m-body" class="mail">{{ d.mail_body or '' }}</textarea></div>
+            <div class="actions">
+                <button class="btn btn-purple" id="credit-btn" onclick="createCredit(this)" style="display:none;">Créer l'avoir dans Shopify</button>
+                <button class="btn btn-green" id="send-btn" onclick="sendMail(this)">Envoyer à {{ c.customer_email or '?' }}</button>
+                <span class="msg" id="send-msg"></span>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="section">
+            <div class="actions" style="margin-top:0;">
+                {% if c.status == 'to_check' %}<button class="btn btn-red" onclick="setStatus('refused', this, 'refusé sans mail')">Refuser sans mail</button>{% endif %}
+                {% if c.status in ('waiting_client', 'reply_to_read', 'credit_to_send') %}<button class="btn btn-gray" onclick="setStatus('to_check', this)">Revenir à « À traiter »</button>{% endif %}
+                {% if c.status in ('done', 'refused') %}<button class="btn btn-gray" onclick="setStatus('to_check', this, 'dossier rouvert')">Rouvrir</button>{% endif %}
+                <button class="btn btn-red" onclick="deleteCase(this)">Supprimer le dossier</button>
+            </div>
+            {% if d.log %}<div class="log" style="margin-top:10px;">{% for line in d.log %}{{ line }}<br>{% endfor %}</div>{% endif %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+const CASE_ID = {{ view.case.id if view else 'null' }};
+const TAB = {{ tab | tojson }};
+const NEXT_ID = {{ view.next_id if view and view.next_id else 'null' }};
+const CREDIT_TEMPLATES = {{ credit_templates | list | tojson }};
+const HAS_CODE = {{ 'true' if view and view.data.credit_code else 'false' }};
+
+async function post(url, body) {
+    const r = await fetch(url, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body || {})});
+    const j = await r.json().catch(() => ({success: false, error: 'Réponse illisible du serveur (' + r.status + ')'}));
+    if (!j.success) throw new Error(j.error || 'Erreur');
+    return j;
+}
+function busy(btn, on, label) {
+    if (!btn) return;
+    if (on) { btn.dataset.label = btn.textContent; btn.textContent = label || '…'; btn.disabled = true; }
+    else { btn.textContent = btn.dataset.label || btn.textContent; btn.disabled = false; }
+}
+// tab undefined: stay on this step; null: the step the file is now in.
+function go(id, tab) {
+    const t = tab === undefined ? TAB : tab;
+    location.href = '/retours?' + (t ? 'onglet=' + t + '&' : '') + (id ? 'id=' + id + '#fiche' : '');
+}
+
+async function uploadPhotos(input) {
+    const files = [...input.files];
+    if (!files.length) return;
+    const msg = document.getElementById('upload-msg');
+    let first = null;
+    for (let i = 0; i < files.length; i++) {
+        msg.textContent = `Lecture du bon ${i + 1}/${files.length}…`;
+        const fd = new FormData();
+        fd.append('photo', files[i]);
+        try {
+            const r = await fetch('/retours/nouveau', {method: 'POST', body: fd});
+            const j = await r.json();
+            if (!j.success) throw new Error(j.error);
+            first = first || j.id;
+        } catch (e) {
+            msg.textContent = '⚠️ Bon ' + (i + 1) + ' : ' + e.message;
+            await new Promise(res => setTimeout(res, 2500));
+        }
+    }
+    input.value = '';
+    if (first) go(first, 'a-traiter');
+}
+
+async function checkNow(btn) {
+    busy(btn, true, 'Vérification…');
+    try { await post('/retours/verifier'); location.reload(); }
+    catch (e) { busy(btn, false); alert(e.message); }
+}
+
+function returnedLines() {
+    const out = {};
+    document.querySelectorAll('.f-line').forEach(cb => {
+        if (!cb.checked) return;
+        const q = document.getElementById('q-' + cb.dataset.id);
+        out[cb.dataset.id] = q ? parseInt(q.value) : 1;
+    });
+    return out;
+}
+
+async function recompute(btn) {
+    busy(btn, true, 'Calcul…');
+    const body = {
+        order_number: document.getElementById('f-order').value,
+        arrival_date: document.getElementById('f-arrival').value,
+        choice: document.getElementById('f-choice').value,
+    };
+    if (document.querySelector('.f-line')) body.returned = returnedLines();
+    try { const j = await post('/retours/' + CASE_ID + '/recalculer', body); go(CASE_ID); }
+    catch (e) { busy(btn, false); document.getElementById('re-msg').textContent = '⚠️ ' + e.message; }
+}
+
+function templateChanged() {
+    const t = document.getElementById('m-template');
+    const credit = t && CREDIT_TEMPLATES.includes(t.value);
+    const cb = document.getElementById('credit-btn');
+    if (cb) cb.style.display = credit && !HAS_CODE ? '' : 'none';
+    const sb = document.getElementById('send-btn');
+    if (sb) sb.disabled = credit && !HAS_CODE;
+}
+
+async function prepareMail(btn) {
+    busy(btn, true, 'Rédaction…');
+    const msg = document.getElementById('m-msg');
+    msg.textContent = '';
+    try {
+        const j = await post('/retours/' + CASE_ID + '/mail', {
+            template: document.getElementById('m-template').value,
+            consignes: document.getElementById('m-consignes').value,
+            amount: document.getElementById('m-amount').value.replace(',', '.'),
+        });
+        document.getElementById('m-subject').value = j.subject || '';
+        document.getElementById('m-body').value = j.body || '';
+        msg.textContent = '✅ Mail préparé : relis-le avant de l\'envoyer.';
+    } catch (e) { msg.textContent = '⚠️ ' + e.message; }
+    busy(btn, false);
+}
+
+async function createCredit(btn) {
+    const t = document.getElementById('m-template').value;
+    const amount = document.getElementById('m-amount').value.replace(',', '.');
+    if (!confirm('Créer l\'avoir dans Shopify' + (amount ? ' (' + amount + ' €)' : '') + ' ?' + (t === 'credit_bonus' ? '\nAvec le code livraison offerte.' : ''))) return;
+    busy(btn, true, 'Création…');
+    try { await post('/retours/' + CASE_ID + '/avoir', {bonus: t === 'credit_bonus', amount: amount}); go(CASE_ID, null); }
+    catch (e) { busy(btn, false); document.getElementById('send-msg').textContent = '⚠️ ' + e.message; }
+}
+
+async function sendMail(btn) {
+    const to = btn.textContent.replace('Envoyer à ', '');
+    if (!confirm('Envoyer ce mail à ' + to + ' ?')) return;
+    busy(btn, true, 'Envoi…');
+    try {
+        await post('/retours/' + CASE_ID + '/envoyer', {
+            template: document.getElementById('m-template').value,
+            subject: document.getElementById('m-subject').value,
+            body: document.getElementById('m-body').value,
+        });
+        // On to the next file of the same step, as on paper.
+        go(NEXT_ID);
+    } catch (e) { busy(btn, false); document.getElementById('send-msg').textContent = '⚠️ ' + e.message; }
+}
+
+async function customerChoice(choice, btn) {
+    if (choice === 'credit' && !confirm('Créer l\'avoir dans Shopify et préparer le mail ?')) return;
+    busy(btn, true, '…');
+    try { const j = await post('/retours/' + CASE_ID + '/client', {choice}); go(CASE_ID, null); }
+    catch (e) { busy(btn, false); document.getElementById('choice-msg').textContent = '⚠️ ' + e.message; }
+}
+
+async function setStatus(status, btn, note) {
+    busy(btn, true, '…');
+    try { await post('/retours/' + CASE_ID + '/statut', {status, note}); go(CASE_ID, null); }
+    catch (e) { busy(btn, false); alert(e.message); }
+}
+
+async function deleteCase(btn) {
+    if (!confirm('Supprimer ce dossier ? (Rien n\'est supprimé dans Shopify.)')) return;
+    busy(btn, true, '…');
+    try { await post('/retours/' + CASE_ID + '/supprimer'); go(null); }
+    catch (e) { busy(btn, false); alert(e.message); }
+}
+
+templateChanged();
+if (location.hash === '#fiche') { const f = document.getElementById('fiche'); if (f) f.scrollIntoView(); }
+</script>
+</body>
+</html>
