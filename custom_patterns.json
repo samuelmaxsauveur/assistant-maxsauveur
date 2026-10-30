@@ -2,6 +2,30 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_10_30_10_04_10",
+      "topic_label": "Form name Form submitted 2026-10-30 10:04:10",
+      "situation": "Form name Form submitted 2026-10-30 10:04:10",
+      "response_template": "Bonjour Brass,\n\nMax Sauveur est une marque exclusivement en ligne, nous n'avons plus de showroom.\n\nPour votre Chelsea Chapman en 44, avant d'envisager un échange, j'aurais une question : à quel endroit exactement trouvez-vous la boot trop grande ? Est-ce en longueur (le pied glisse vers l'avant), au niveau du cou-de-pied, ou est-ce que le talon se lève quand vous marchez ?\n\nLa raison : si le jeu est au niveau du cou-de-pied ou de la voûte, une simple semelle d'ajustement en liège peut caler parfaitement le pied et régler le problème sans échange. C'est souvent plus efficace qu'on ne le pense.\n\nDites-moi où se situe la gêne et je vous oriente vers la meilleure solution.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_retour_pour_la_commande__13530",
+      "topic_label": "Votre retour pour la commande #13530",
+      "situation": "Votre retour pour la commande #13530",
+      "response_template": "Bonjour Pierre,\n\nNous avons bien reçu votre retour (Paul - Chaussures Mocassin Cuir Noir, pointure 45) et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux vous correspondre, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si une autre pointure ou un autre modèle vous tente, voici ce qu'on peut faire : nous vous envoyons un avoir de 370 €, soit le prix de votre paire (335 €) et 35 € offerts par la maison. Il est valable 6 mois sur toute la collection, chaussures et ceintures, et la livraison de votre nouvelle commande est offerte, à l'adresse de votre choix.\n\nAutrement dit, vous repartez avec une nouvelle pièce sans rien débourser, et 35 € de plus en poche.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte. Sans réponse de votre part d'ici le vendredi 6 novembre, nous procéderons au remboursement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_retour_pour_la_commande__13494",
+      "topic_label": "Votre retour pour la commande #13494",
+      "situation": "Votre retour pour la commande #13494",
+      "response_template": "Bonjour Vincent,\n\nNous avons bien reçu votre retour (Brogues - Chaussures Derby Cuir Marron, pointure 44) et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux vous correspondre, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si une autre pointure ou un autre modèle vous tente, voici ce qu'on peut faire : nous vous envoyons un avoir de 370 €, soit le prix de votre paire (335 €) et 35 € offerts par la maison. Il est valable 6 mois sur toute la collection, chaussures et ceintures, et la livraison de votre nouvelle commande est offerte, à l'adresse de votre choix.\n\nAutrement dit, vous repartez avec une nouvelle pièce sans rien débourser, et 35 € de plus en poche.\n\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte. Sans réponse de votre part d'ici le vendredi 6 novembre, nous procéderons au remboursement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__re__re__commande__13848_confirm_e",
       "topic_label": "Re: Re: Re: Re: Re: Commande #13848 confirmée",
       "situation": "Re: Re: Re: Re: Re: Commande #13848 confirmée",
