@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_10_30_11_16_29",
+      "topic_label": "Form name Form submitted 2026-10-30 11:16:29",
+      "situation": "Form name Form submitted 2026-10-30 11:16:29",
+      "response_template": "Bonjour Sébastien,\n\nVoici comment procéder pour votre échange :\n\n1. Téléchargez le bon de retour sur maxsauveur.com/pages/livraison-et-retour, en indiquant \"avoir\" comme motif.\n2. Emballez soigneusement la paire dans sa boîte d'origine avec le bon à l'intérieur.\n3. Expédiez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau.\n\nDès réception et contrôle de la paire, nous vous enverrons un avoir pour commander le Powell en 42.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__votre_retour_pour_la_commande__13530",
       "topic_label": "Re: Votre retour pour la commande #13530",
       "situation": "Re: Votre retour pour la commande #13530",
