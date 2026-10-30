@@ -440,7 +440,7 @@ def analyse(data):
         checks.append({"level": level, "text": text})
 
     if not order:
-        add("bad", "Commande introuvable : saisis le numéro de commande puis « Recalculer ».")
+        add("bad", "Commande introuvable : saisis le numéro de commande dans « Le retour », juste au-dessus.")
         return {"checks": checks, "amounts": {}, "returned": [], "kept": []}
 
     slip = data.get("slip") or {}
@@ -617,7 +617,6 @@ def draft(case, template, amount=None):
                 f"{euros(gesture)} offerts par la maison. Il est valable 6 mois sur toute la collection, chaussures "
                 f"et ceintures, et la livraison de votre nouvelle commande est offerte, à l'adresse de votre choix.\n\n"
                 f"{advantage}\n\n"
-                f"Une précision : une fois émis, l'avoir remplace le remboursement.\n\n"
                 f"Dites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial "
                 f"sur votre compte. Sans réponse de votre part d'ici le {answer_by}, nous procéderons au "
                 f"remboursement.{sign}")

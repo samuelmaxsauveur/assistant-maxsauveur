@@ -50,7 +50,8 @@ def retours_page():
         }
     custom = sorted(database.get_all_outbound_templates(), key=lambda t: (t.get('label') or '').lower())
     return render_template('retours.html', tab=tab, stages=retours.STAGES, counts=counts, cases=cases,
-                           reminders=reminders, view=view, templates=retours.TEMPLATES, custom_templates=custom,
+                           reminders=reminders, view=view, updated=request.args.get('maj') == '1',
+                           templates=retours.TEMPLATES, custom_templates=custom,
                            credit_templates=retours.CREDIT_TEMPLATES, status_labels=retours.STATUS_LABELS,
                            reasons=retours.REASONS, choices=retours.CHOICES, categories=retours.CATEGORY_LABELS,
                            euros=retours.euros, short_date=retours.short_date, fr_date=retours.fr_date)

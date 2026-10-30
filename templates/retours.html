@@ -73,6 +73,14 @@
         .log { font-size: 12px; color: #888; line-height: 1.7; }
         .empty { text-align: center; color: #999; padding: 30px 0; font-size: 14px; }
         .upload input[type=file] { display: none; }
+        .upload.busy label { pointer-events: none; opacity: 0.5; }
+        .progress { display: flex; gap: 12px; align-items: center; margin-top: 12px; padding: 12px; border-radius: 10px; background: #f0fdfa; border: 1px solid #99f6e4; }
+        .progress img { width: 64px; height: 84px; object-fit: cover; border-radius: 6px; border: 1px solid #ccc; flex: none; }
+        .spinner { display: inline-block; width: 16px; height: 16px; border: 3px solid #99f6e4; border-top-color: #0f766e; border-radius: 50%; animation: spin 0.8s linear infinite; vertical-align: -3px; margin-right: 8px; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .bar { height: 6px; background: #ccfbf1; border-radius: 3px; margin: 8px 0 4px; overflow: hidden; }
+        .bar div { height: 100%; width: 0; background: #0f766e; transition: width 0.2s; }
+        .updated { background: #dcfce7; color: #166534; border-radius: 8px; padding: 6px 10px; font-size: 13px; margin-bottom: 8px; }
     </style>
 </head>
 <body>
@@ -98,6 +106,14 @@
             <button class="btn btn-gray" onclick="checkNow(this)">🔄 Vérifier les réponses</button>
         </div>
         <div class="meta" style="margin-top:8px;">Un bon par photo, avec la date d'arrivée chez SSL écrite au stylo. Comptez une vingtaine de secondes de lecture par bon.</div>
+        <div class="progress" id="upload-progress" style="display:none;">
+            <img id="upload-preview" alt="">
+            <div style="flex:1; min-width:0;">
+                <div><span class="spinner" id="upload-spinner"></span><strong id="upload-step">⏳ Préparation de la photo…</strong></div>
+                <div class="bar"><div id="upload-bar"></div></div>
+                <div class="meta" id="upload-detail"></div>
+            </div>
+        </div>
         <div class="msg" id="upload-msg" style="margin-top:6px;"></div>
     </div>
 
@@ -153,7 +169,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" id="le-retour">
             <h3>Le retour</h3>
             <div class="grid">
                 <div><label class="f">N° de commande</label><input id="f-order" inputmode="numeric" value="{{ c.order_number or '' }}"></div>
@@ -177,11 +193,15 @@
                 </div>
                 {% endif %}
             </div>
-            <div class="actions"><button class="btn btn-gray" onclick="recompute(this)">Recalculer</button><span class="msg" id="re-msg"></span></div>
+            <div class="actions">
+                <button class="btn btn-teal" id="re-btn" onclick="recompute()">✅ Valider les modifications</button>
+                <span class="msg" id="re-msg">Les contrôles, les montants et le mail se mettent à jour dès que tu changes une info.</span>
+            </div>
         </div>
 
-        <div class="section">
-            <h3>Contrôles</h3>
+        <div class="section" id="controles">
+            <h3>Contrôles · <a href="#le-retour" style="text-transform:none; letter-spacing:0;">modifier la date, la demande ou les articles</a></h3>
+            {% if updated %}<div class="updated">✅ Contrôles et montants mis à jour.</div>{% endif %}
             <ul class="checks">{% for ch in r.checks %}<li class="{{ ch.level }}">{{ ch.text }}</li>{% endfor %}</ul>
         </div>
 
@@ -303,32 +323,109 @@ function busy(btn, on, label) {
     else { btn.textContent = btn.dataset.label || btn.textContent; btn.disabled = false; }
 }
 // tab undefined: stay on this step; null: the step the file is now in.
-function go(id, tab) {
+function go(id, tab, extra) {
     const t = tab === undefined ? TAB : tab;
-    location.href = '/retours?' + (t ? 'onglet=' + t + '&' : '') + (id ? 'id=' + id + '#fiche' : '');
+    location.href = '/retours?' + (t ? 'onglet=' + t + '&' : '') + (id ? 'id=' + id : '') + (extra || '') + (id ? '#fiche' : '');
+}
+
+// A phone photo weighs 3 to 5 MB: shrunk to 1600 px it goes up in a second,
+// even on a weak connection. The server shrinks it to the same size anyway.
+function shrink(file) {
+    return new Promise(resolve => {
+        const url = URL.createObjectURL(file);
+        const img = new Image();
+        img.onload = () => {
+            const scale = Math.min(1, 1600 / Math.max(img.naturalWidth, img.naturalHeight));
+            const canvas = document.createElement('canvas');
+            canvas.width = Math.round(img.naturalWidth * scale);
+            canvas.height = Math.round(img.naturalHeight * scale);
+            canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+            URL.revokeObjectURL(url);
+            canvas.toBlob(b => resolve(b && b.size < file.size ? b : file), 'image/jpeg', 0.85);
+        };
+        img.onerror = () => { URL.revokeObjectURL(url); resolve(file); };
+        img.src = url;
+    });
+}
+
+function sendPhoto(blob, onProgress) {
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/retours/nouveau');
+        xhr.timeout = 180000;
+        xhr.upload.onprogress = e => { if (e.lengthComputable) onProgress(e.loaded / e.total); };
+        xhr.upload.onload = () => onProgress(1);
+        xhr.onload = () => {
+            let j = null;
+            try { j = JSON.parse(xhr.responseText); } catch (e) {}
+            if (j && j.success) resolve(j);
+            else reject(new Error((j && j.error) || 'erreur du serveur (' + xhr.status + ')'));
+        };
+        xhr.onerror = () => reject(new Error('connexion perdue pendant l\'envoi, réessaie'));
+        xhr.ontimeout = () => reject(new Error('pas de réponse après 3 minutes, réessaie'));
+        const fd = new FormData();
+        fd.append('photo', blob, 'bon.jpg');
+        xhr.send(fd);
+    });
 }
 
 async function uploadPhotos(input) {
     const files = [...input.files];
+    input.value = '';
     if (!files.length) return;
+    const card = document.querySelector('.card.upload');
+    const box = document.getElementById('upload-progress');
+    const step = document.getElementById('upload-step');
+    const bar = document.getElementById('upload-bar');
+    const detail = document.getElementById('upload-detail');
     const msg = document.getElementById('upload-msg');
-    let first = null;
+    card.classList.add('busy');
+    box.style.display = 'flex';
+    msg.textContent = '';
+    let first = null, failed = 0;
     for (let i = 0; i < files.length; i++) {
-        msg.textContent = `Lecture du bon ${i + 1}/${files.length}…`;
-        const fd = new FormData();
-        fd.append('photo', files[i]);
+        const n = files.length > 1 ? ` ${i + 1}/${files.length}` : '';
+        document.getElementById('upload-preview').src = URL.createObjectURL(files[i]);
+        step.textContent = `⏳ Photo${n} prise en compte, préparation…`;
+        bar.style.width = '5%';
+        detail.textContent = '';
+        const blob = await shrink(files[i]);
+        const started = Date.now();
+        let reading = null;
         try {
-            const r = await fetch('/retours/nouveau', {method: 'POST', body: fd});
-            const j = await r.json();
-            if (!j.success) throw new Error(j.error);
+            const j = await sendPhoto(blob, p => {
+                bar.style.width = Math.max(5, Math.round(p * 70)) + '%';
+                if (p < 1) {
+                    step.textContent = `⏳ Envoi de la photo${n}… ${Math.round(p * 100)} %`;
+                    detail.textContent = `${Math.round(blob.size / 1024)} Ko`;
+                } else if (!reading) {
+                    step.textContent = `⏳ Photo${n} bien reçue : lecture du bon…`;
+                    const tickReading = () => {
+                        const s = Math.round((Date.now() - started) / 1000);
+                        detail.textContent = `Claude lit le bon et cherche la commande dans Shopify (${s} s)`;
+                        bar.style.width = Math.min(95, 70 + s) + '%';
+                    };
+                    tickReading();
+                    reading = setInterval(tickReading, 1000);
+                }
+            });
             first = first || j.id;
         } catch (e) {
-            msg.textContent = '⚠️ Bon ' + (i + 1) + ' : ' + e.message;
-            await new Promise(res => setTimeout(res, 2500));
+            failed++;
+            msg.textContent = '⚠️ Bon' + n + ' : ' + e.message;
         }
+        if (reading) clearInterval(reading);
     }
-    input.value = '';
-    if (first) go(first, 'a-traiter');
+    if (first) {
+        bar.style.width = '100%';
+        step.textContent = failed ? '⚠️ Un bon n\'est pas passé (voir ci-dessous), ouverture des autres…' : '✅ Bon lu, ouverture de la fiche…';
+        detail.textContent = '';
+        if (failed) await new Promise(res => setTimeout(res, 4000));
+        go(first, 'a-traiter');
+    } else {
+        box.style.display = 'none';
+        card.classList.remove('busy');
+    }
 }
 
 async function checkNow(btn) {
@@ -347,17 +444,34 @@ function returnedLines() {
     return out;
 }
 
-async function recompute(btn) {
-    busy(btn, true, 'Calcul…');
+let recomputeTimer = null;
+async function recompute() {
+    clearTimeout(recomputeTimer);
+    const btn = document.getElementById('re-btn');
+    const msg = document.getElementById('re-msg');
+    busy(btn, true, '⏳ Mise à jour…');
+    msg.textContent = '';
     const body = {
         order_number: document.getElementById('f-order').value,
         arrival_date: document.getElementById('f-arrival').value,
         choice: document.getElementById('f-choice').value,
     };
     if (document.querySelector('.f-line')) body.returned = returnedLines();
-    try { const j = await post('/retours/' + CASE_ID + '/recalculer', body); go(CASE_ID); }
-    catch (e) { busy(btn, false); document.getElementById('re-msg').textContent = '⚠️ ' + e.message; }
+    try {
+        await post('/retours/' + CASE_ID + '/recalculer', body);
+        go(CASE_ID, undefined, '&maj=1');
+    } catch (e) { busy(btn, false); msg.textContent = '⚠️ ' + e.message; }
 }
+
+// Any change in « Le retour » updates the checks on its own, after a short
+// pause so several boxes can be ticked in a row.
+function scheduleRecompute() {
+    clearTimeout(recomputeTimer);
+    document.getElementById('re-msg').textContent = '⏳ Mise à jour des contrôles dans un instant…';
+    recomputeTimer = setTimeout(recompute, 1200);
+}
+document.querySelectorAll('#f-arrival, #f-choice, #f-order, .f-line, #le-retour select.qty')
+    .forEach(el => el.addEventListener('change', scheduleRecompute));
 
 function templateChanged() {
     const t = document.getElementById('m-template');
@@ -430,7 +544,12 @@ async function deleteCase(btn) {
 }
 
 templateChanged();
-if (location.hash === '#fiche') { const f = document.getElementById('fiche'); if (f) f.scrollIntoView(); }
+if (location.hash === '#fiche') {
+    // After a correction, straight to the updated checks.
+    const updated = new URLSearchParams(location.search).get('maj');
+    const target = document.getElementById(updated ? 'controles' : 'fiche');
+    if (target) target.scrollIntoView();
+}
 </script>
 </body>
 </html>
