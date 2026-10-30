@@ -2,6 +2,62 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__re__commande__13848_confirm_e",
+      "topic_label": "Re: Re: Re: Re: Commande #13848 confirmée",
+      "situation": "Re: Re: Re: Re: Commande #13848 confirmée",
+      "response_template": "Bonjour Sébastien,\n\nQuand vous avez passé votre commande #13848 le 26 octobre, vous avez commandé le Paul Cuir Grainé Noir. Ce modèle était bien indiqué en précommande sur la fiche produit au moment de l'achat, avec une expédition annoncée fin octobre. Le Paul Cuir Lisse Noir, lui, était disponible immédiatement. Ce sont deux modèles distincts, et le statut de chacun était affiché sur nos fiches produit respectives.\n\nSi vous souhaitiez une expédition rapide dès lundi, le Cuir Lisse Noir était le bon choix. Le Cuir Grainé Noir, lui, ne l'était pas, et cette information était accessible avant l'achat.\n\nVotre commande #13862 (Paul Cuir Noir Lisse, 40) est bien en cours de traitement. Vous recevrez votre lien de suivi dès l'expédition.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__re__re__commande__13848_confirm_e",
+      "topic_label": "Re: Re: Re: Commande #13848 confirmée",
+      "situation": "Re: Re: Re: Commande #13848 confirmée",
+      "response_template": "Bonjour Sébastien,\n\nPermettez-moi de recadrer ce qui s'est passé, parce que la situation mérite quelques précisions.\n\nVous avez passé une commande lundi (#13848) sur le Paul Cuir Grainé Noir en 40, non pas sur le Paul Cuir Lisse Noir. Ces deux modèles sont distincts. Le Cuir Lisse Noir était disponible à la commande, le Grainé Noir était, lui, en précommande avec une expédition prévue la semaine prochaine. Vous avez commandé le Grainé, et nous avons tout mis en œuvre pour l'expédier au plus vite malgré ce statut. Votre commande #13862 (Paul Cuir Lisse Noir, passée hier) est en cours de traitement.\n\nSur le fond : si le Paul Cuir Lisse Noir avait été commandé lundi, il aurait effectivement été expédié plus tôt. Ce n'est pas une erreur de notre part, c'est une confusion entre deux modèles au moment de votre commande.\n\nPour les frais express : si votre commande #13862 est expédiée en express comme prévu, ces frais sont justifiés et seront honorés.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
+      "topic": "demande_si_possibilit__de_modification_de_pr_commande",
+      "topic_label": "Demande si possibilité de modification de précommande",
+      "situation": "Demande si possibilité de modification de précommande",
+      "response_template": "Bonjour Maxime,\n\nMerci pour votre message.\n\nMalheureusement, la Morricone est déjà en cours de production : nous ne pouvons plus modifier la commande à ce stade, même pour remplacer un article.\n\nSi la Carter vous fait vraiment envie, la seule option est de réceptionner la Morricone à la livraison, puis de nous la retourner pour obtenir un avoir, que vous pourrez utiliser pour commander la Carter. Voici la procédure le moment venu : https://maxsauveur.com/pages/livraison-et-retour (motif : « avoir »).\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "pr__commande",
+      "topic_label": "pré commande",
+      "situation": "pré commande",
+      "response_template": "Bonjour Jérémy,\n\nVotre commande #13279 (3 embauchoirs bois de cèdre en taille 45) est bien une précommande. La livraison est prévue pour mi-novembre 2026.\n\nVous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
+      "topic": "remboursement_avoir",
+      "topic_label": "Remboursements, avoirs, délais de traitement, montants retenus",
+      "situation": "Client demande le statut de son retour et de son avoir suite à un retour accepté, ou met en cause le montant de l'avoir. Inclut l'attente de réception et de traitement du colis retour, et la génération du code avoir. Client peut aussi demander une mise à jour d'un avoir existant pour en élargir l'utilisation. Client peut aussi demander confirmation du montant exact avant valider un retour.",
+      "response_template": "Bonjour [Prénom],\n\n**Statut de votre retour :**\nNous avons bien reçu votre colis retour. Le traitement prend jusqu'à 10 jours ouvrés à compter de la réception, incluant vérification et génération de l'avoir. Vous devriez avoir une réponse de notre part très prochainement.\n\n[SI AVOIR GÉNÉRÉ]\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n[CODE AVOIR]\n\n**Conditions d'utilisation :**\n- Valable jusqu'au [DATE : +6 mois]\n- Utilisable en une seule commande\n- Réservé à votre adresse e-mail ([EMAIL]) : pensez à commander avec cette adresse\n- Non cumulable avec d'autres codes ou promotions\n\n[SI AVOIR MIS À JOUR / RESTRICTION LEVÉE]\nNous venons de mettre à jour votre avoir : il est désormais utilisable sur l'ensemble de notre collection, sans restriction de modèle.\n\n[SI VÉRIFICATION MONTANT DEMANDÉE]\nPour vérifier le montant exact de votre avoir, pourriez-vous nous confirmer quel article vous avez retourné et en quelle taille ? Cela nous permettra de nous assurer que l'avoir est bien établi sur la bonne commande.\n\nMerci d'avance.\n\n[SI RETOUR INCOMPLET]\nNous avons bien reçu votre colis. Nos équipes logistiques ont trouvé [ARTICLES PRÉSENTS] mais pas [ARTICLES MANQUANTS]. Votre remboursement était conditionné au retour de l'ensemble des articles.\n\nOptions possibles :\n- Vous renvoyez l'article manquant séparément → avoir complet\n- Échange sur autres articles de même valeur\n\nCordialement,\nJohn – Service Client – Max Sauveur",
+      "key_points": "Ton : informatif, clair, rassurant. Engagements : traitement 10 jours ouvrés, avoir valable 6 mois, usage unique, non cumulable. POINT CRITIQUE : code réservé à l'adresse e-mail fournie — le client doit commander avec cette adresse. Pour retours incomplets : JAMAIS rembourser tant que tout n'est pas reçu — proposer des options claires et attendre confirmation. Les avoirs peuvent être mis à jour pour lever des restrictions. Toujours demander confirmation d'articles retournés si montant en question.",
+      "example_count": 160
+    },
+    {
+      "topic": "suivi_livraison",
+      "topic_label": "Suivi de colis, transporteur, point relais, colis perdu, adresse",
+      "situation": "Client demande le statut de sa livraison, souhaite modifier son adresse de livraison ou son point relais après commande passée mais avant expédition, ou pose une question sur le suivi en temps réel. Peut concerner un changement d'adresse domicile ou un changement de point relais Chronopost. Client peut aussi demander confirmation du lieu de livraison avant expédition, ou chercher un QR code pour retrait en point relais.",
+      "response_template": "Bonjour [Prénom],\n\n**Pour votre suivi de colis :**\nVotre commande #[NUM] est bien expédiée. Vous pouvez suivre votre colis en temps réel ici : [LIEN_SUIVI]\n\nLa livraison est estimée entre [DATE] à [ADRESSE/POINT_RELAIS].\n\n**Si vous avez un QR code manquant pour point relais :**\nLe QR code vous est envoyé directement par [TRANSPORTEUR] par email ou SMS dès que le colis est mis à disposition. Je vous invite à vérifier vos spams si vous ne l'avez pas reçu.\n\nVous pouvez également suivre votre colis et retrouver les informations de retrait via le lien ci-dessus. En cas de difficulté, le point relais peut aussi scanner votre pièce d'identité pour récupérer le colis sans QR code.\n\n**Pour modifier votre adresse ou point relais (avant expédition) :**\nSi votre commande n'a pas encore quitté l'entrepôt, c'est tout à fait possible. Nous venons de mettre à jour [l'adresse / le point relais] avec :\n[Adresse complète ou nom du point relais]\n[Code postal] [Ville]\n\nNote importante : Si vous modifiez un point relais Chrono2Shop, le nouveau point doit également être un point Chronopost.\n\n**Important à savoir :** Cette modification n'apparaîtra pas dans votre email de confirmation initial, mais elle est bien prise en compte dans votre lien de suivi et notre système logistique.\n\nVotre colis est prêt à partir. Vous recevrez un email avec votre lien de suivi dès que le colis sera pris en charge.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
+      "key_points": "Ton rassurant, pratique. Engagements : changement d'adresse/point relais possible AVANT expédition uniquement. POINT CRITIQUE : expliquer que la modification n'apparaît pas dans l'email de confirmation initial, c'est NORMAL et visible sur le lien de suivi. Pour Chrono2Shop : proposer uniquement un autre point Chronopost. Ne jamais accepter un changement APRÈS expédition. QR code manquant : toujours vérifier les spams, suggérer alerte transporteur, mentionner que pièce d'identité suffit en dernier recours.",
+      "example_count": 83
+    },
+    {
+      "topic": "precommande_delai",
+      "topic_label": "Précommandes, dates de livraison annoncées, réassorts, retards",
+      "situation": "Client en précommande demande le statut, la date de livraison estimée, ou s'inquiète d'un délai. Articles en cours de fabrication (ceintures à boucles personnalisables, embauchoirs, chaussures). Client peut relancer plusieurs fois avant expédition. Un statut vide sur Shopify pour une précommande est NORMAL et n'indique pas un incident logistique.",
+      "response_template": "Bonjour [Prénom],\n\nVotre commande #[NUM] ([PRODUIT], taille/couleur [VARIANTE]) est bien en précommande, comme indiqué sur la fiche produit au moment de votre achat. La livraison est prévue pour [DATE : mi-novembre 2026 / mi-décembre 2026 / etc.].\n\n**Important à savoir :** Un statut de livraison vide sur Shopify est normal pour une précommande, ce n'est pas un incident. Votre commande est bien enregistrée et en cours de fabrication. Ne JAMAIS répondre qu'on va « vérifier pourquoi la commande n'est pas partie » sur une précommande.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
+      "key_points": "Ton empathique mais honnête. POINT CRITIQUE : un statut Shopify vide sur précommande = NORMAL, ne JAMAIS alarmer le client ni dire 'on va vérifier pourquoi ça ne part pas'. Jamais de fausse promesse sur délai serré. Distinction des deux vagues ceintures (Vague 1 boucles mi-octobre 2026 ; Vague 2 Gigi/Morricone mi-décembre 2026). Embauchoirs : toujours mi-novembre 2026. Formulation validée et testée. Toujours rappeler que l'email de suivi arrivera automatiquement.",
+      "example_count": 79
+    },
+    {
       "topic": "re__re__re__votre_commande_max_sauveur___information_importa",
       "topic_label": "Re: Re: Re: Votre commande Max Sauveur — information importante",
       "situation": "Re: Re: Re: Votre commande Max Sauveur — information importante",
@@ -54,14 +110,6 @@
       "topic_label": "Commande numéro 13828",
       "situation": "Commande numéro 13828",
       "response_template": "Bonjour Pauline,\n\nLe QR code vous est envoyé directement par Chronopost par email ou SMS dès que le colis est mis à disposition. Je vous invite à vérifier vos spams si vous ne l'avez pas reçu.\n\nVous pouvez également suivre votre colis et retrouver les informations de retrait via ce lien : https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR718131014TS\n\nEn cas de difficulté, le point relais peut aussi scanner votre pièce d'identité pour récupérer le colis sans QR code.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__re__re__commande__13848_confirm_e",
-      "topic_label": "Re: Re: Re: Commande #13848 confirmée",
-      "situation": "Re: Re: Re: Commande #13848 confirmée",
-      "response_template": "Bonjour Sébastien,\n\nVotre commande #13862 est bien enregistrée. Nous allons faire au mieux pour l'expédier aujourd'hui mais rien n'est garantie.\n\nVous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -144,14 +192,6 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et pour avoir suivi notre méthode de mesure.\n\nAvec [MESURE_CM] cm de pied, vous êtes en **[TAILLE_GUIDE]** sur notre guide de tailles.\n\n[SI MODÈLE SPÉCIFIQUE]\nLe [MODÈLE] chausse [légèrement grand/juste au départ], donc je vous recommande le **[TAILLE_FINALE]**.\n\nExemple concret : Avec 26,3 cm, la correspondance est 40 selon le guide. Le Dakota chausse légèrement grand, je vous recommande donc le 40 (ou le 39 si vous trouvez toujours trop d'espace). Le Logger Boots chausse à la pointure habituelle, donc le 40. Le Moc Jagger chausse légèrement grand, donc le 40 également.\n\n[SI MOCASSIN - SENSATION COU-DE-PIED]\nSans lacets, le mocassin serre un peu au cou-de-pied au premier port, c'est normal et nécessaire pour le maintien. Le cuir et la semelle en liège s'assouplissent avec le port et après quelques sorties, l'ajustement devient naturel.\n\n[SI QUESTION SUR LARGEUR SANS MESURE]\nAvec des pieds fins et un cou-de-pied bas, seul l'essayage vous permettra de vérifier concrètement. Si à réception la paire est trop large et que votre talon glisse, le retour reste possible via notre procédure habituelle.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
       "key_points": "Ton rassurant. Toujours ajouter 0,2 cm à la mesure brute. Adapter selon modèle : Paul/Jagger = chaussent juste ; Deck/Dakota/Fisherman/Brogue Derby/Springsteen = chaussent légèrement grand ; Winston = chausse large (descendre demi-taille) ; Logger Boots = pointure habituelle. Pour pied large ou cou-de-pied fort, ne jamais descendre. Expliquer l'assouplissement du cuir comme normal. Fournir exemple chiffré concret (validé aujourd'hui avec Pierre).",
       "example_count": 177
-    },
-    {
-      "topic": "precommande_delai",
-      "topic_label": "Précommandes et délais de livraison",
-      "situation": "Client en précommande demande le statut, la date de livraison estimée, ou s'inquiète d'un délai. Articles en cours de fabrication (ceintures à boucles personnalisables, embauchoirs, chaussures). Client peut relancer plusieurs fois avant expédition. Un statut vide sur Shopify pour une précommande est NORMAL et n'indique pas un incident logistique.",
-      "response_template": "Bonjour [Prénom],\n\nVotre commande #[NUM] ([PRODUIT], taille/couleur [VARIANTE]) est bien en précommande, comme indiqué sur la fiche produit au moment de votre achat. La livraison est prévue pour [DATE : mi-novembre 2026 / mi-décembre 2026 / etc.].\n\n**Important à savoir :** Un statut de livraison vide sur Shopify est normal pour une précommande, ce n'est pas un incident. Votre commande est bien enregistrée et en cours de fabrication. Ne JAMAIS répondre qu'on va « vérifier pourquoi la commande n'est pas partie » sur une précommande.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
-      "key_points": "Ton empathique mais honnête. POINT CRITIQUE : un statut Shopify vide sur précommande = NORMAL, ne JAMAIS alarmer le client ni dire 'on va vérifier pourquoi ça ne part pas'. Jamais de fausse promesse sur délai serré. Distinction des deux vagues ceintures (Vague 1 boucles mi-octobre 2026 ; Vague 2 Gigi/Morricone mi-décembre 2026). Embauchoirs : toujours mi-novembre 2026. Formulation validée et testée aujourd'hui sur 2 clients (Veasna et Olaf).",
-      "example_count": 78
     },
     {
       "topic": "re__commande__13848_confirm_e",
@@ -360,14 +400,6 @@
       "response_template": "Bonjour [Prénom],\n\n**Sur les codes promo et réductions : conditions d'application**\n\n**Non-cumulabilité absolue**\nNos conditions générales précisent clairement : les offres promotionnelles et codes de réduction ne sont pas cumulables. Cette règle s'applique à l'ensemble des commandes, sans exception. Si vous avez tenté d'appliquer un code sur des articles déjà en promotion, le cumul ne peut pas être validé.\n\n**Application uniquement avant paiement**\nLes codes promo ne peuvent être appliqués qu'au moment du paiement, avant validation de la commande. Une fois la commande confirmée, il est techniquement impossible d'ajouter un code rétroactivement. Le processus doit intervenir directement à votre panier avant validation.\n\n[SI CODE ROUE DE LA FORTUNE]\n**Codes issus de la roue**\nLes codes générés par notre roue sont créés à la volée et ne sont pas enregistrés dans notre système. Sans capture ou copie du code au moment du tirage, nous ne pouvons pas vous le retrouver ou vous le renvoyer. Ces codes ont également une validité limitée (généralement 48h).\n\n[SI ERREUR TECHNIQUE AVÉRÉE]\nSi un bug technique s'est produit à votre paiement, nous examinerons votre dossier en priorité et vous proposerons un geste commercial approprié.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
       "key_points": "Ton : honnête, transparent, explicatif. Engagements : appliquer les codes avant paiement uniquement, respecter les conditions, jamais rétroactif. Codes roue = impossibles à retrouver. Non-cumulabilité absolue. Distinction bug technique (possibilité geste) vs condition de code (client responsable). Ne pas laisser espérer une exception à la règle sans fondement technique.",
       "example_count": 67
-    },
-    {
-      "topic": "suivi_livraison",
-      "topic_label": "Suivi de colis, transporteur, point relais, colis perdu, adresse",
-      "situation": "Client demande à modifier son adresse de livraison ou son point relais après commande passée mais avant expédition. Peut concerner un changement d'adresse domicile ou un changement de point relais Chronopost. Client peut aussi demander confirmation du lieu de livraison avant expédition.",
-      "response_template": "Bonjour [Prénom],\n\n**Pour modifier votre adresse ou point relais :**\n\nSi votre commande n'a pas encore quitté l'entrepôt, c'est tout à fait possible.\n\n[SI CHANGEMENT ADRESSE DOMICILE]\nC'est noté ! Nous venons de mettre à jour votre adresse de livraison dans notre outil logistique avec :\n[Adresse complète]\n[Code postal] [Ville]\n\n[SI CHANGEMENT POINT RELAIS]\nVous demandez un changement de point relais Chrono2Shop. Pas de souci — nous venons d'effectuer la modification avec :\n- Point relais : [NOM ET ADRESSE COMPLETS]\n\nNote importante : le point relais doit rester un point Chronopost.\n\n**Important à savoir :**\nCette modification n'apparaîtra pas dans votre email de confirmation initial, mais elle est bien prise en compte dans votre lien de suivi et notre système logistique.\n\nVotre colis est prêt à partir. Vous recevrez un email avec votre lien de suivi dès que le colis est pris en charge.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
-      "key_points": "Ton rassurant, pratique. Engagements : changement d'adresse/point relais possible AVANT expédition uniquement. POINT CRITIQUE : expliquer que la modification n'apparaît pas dans l'email de confirmation initial, c'est NORMAL et visible sur le lien de suivi. Pour Chrono2Shop : proposer uniquement un autre point Chronopost. Ne jamais accepter un changement APRÈS expédition. Formulation validée : 'Cette modification n'apparaîtra pas dans votre email de confirmation initial, mais elle est bien prise en compte dans votre lien de suivi.'",
-      "example_count": 82
     },
     {
       "topic": "re__commande__13392_confirm_e",
@@ -618,14 +650,6 @@
       "example_count": 1
     },
     {
-      "topic": "pr__commande",
-      "topic_label": "Pré commande",
-      "situation": "Pré commande",
-      "response_template": "Bonjour,\n\nVotre commande #13012 (Boucle Ivoire, Ceinture Cuir Suede Cognac 80) est bien enregistrée. Votre colis part cette semaine et vous recevrez automatiquement un email avec votre lien de suivi dès sa prise en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "commande__13108_embauchoirs",
       "topic_label": "Commande #13108 embauchoirs",
       "situation": "Commande #13108 embauchoirs",
@@ -680,14 +704,6 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre retour et pour les précisions.\n\n**Si c'est une usure visible ou des marques signalées (talon, plis, traces, marques de frottement) :**\n\nCe que vous décrivez est en réalité lié à votre démarche, à la matière naturelle du cuir, ou au type de cuir utilisé, non à un défaut de fabrication. Quelques points de contexte :\n\n— Les semelles cuir s'usent naturellement selon l'appui du talon et la façon de marcher. Certains sols, certaines appuis marqués ou une pronation accélèrent cette usure. Ce n'est pas un défaut structurel.\n\n— Si la languette dévie systématiquement du même côté, c'est votre démarche ou votre pronation qui la pousse latéralement. Solution simple : laçage plus serré (en partant du bas) ou visite chez un cordonnier pour ajouter un passant de maintien — modification rapide et peu coûteuse.\n\n— Les plis visibles sur le cuir dès les premiers essais en intérieur sont normaux. Le cuir travaille naturellement.\n\n— Si le cuir présente des marques de gras, variations de teinte ou légers défauts sur le cuir naturel (chèvre, grainé), c'est une caractéristique, pas un défaut.\n\n**Sur les marques de contact (ex: boucles qui marquent le cuir) :**\n\nSur ce modèle, le cuir utilisé est un \"cuir gras\" (cireux/huilé), connu pour marquer aux points de contact, notamment où les boucles métalliques pressent dessus. C'est une CARACTÉRISTIQUE de ce type de cuir, non un défaut de fabrication — elle existe quelle que soit la gamme de prix.\n\nBonne nouvelle : c'est facilement corrigible. Une simple application de baume à cuir ou de conditionneur, travaillée délicatement dans la zone marquée, estompera les traces. Ce cuir tend aussi à développer une belle patine avec le temps, précisément à cause de cette nature réactive.\n\nCela n'affecte en rien la qualité ou la durabilité de la chaussure.\n\n**Pour l'entretien général :**\n\nLe cuir est une matière naturelle qui vit et marque selon l'usage. Un entretien régulier (baume, conditionneur) prolonge sa vie et améliore son apparence.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
       "key_points": "Ton : empathique, rassurant, éducatif. Jamais défensif. Expliquer la matière et le processus naturel du cuir. Engagements : usure normale (talon, plis, languette déviée par démarche) = NON prise en charge, orienter vers cordonnier si besoin ; rodage du cuir neuf (serrement initial, talon qui glisse) = normal, proposer solutions (chaussettes fines, assouplissant, embauchoirs) ; cuir gras/cireux marquant aux points de contact = caractéristique normale du matériau, corriger avec baume/conditionneur. POINT CRITIQUE : distinguer usure/détérioration normale de défaut avéré (décollement structurel, rupture de couture).",
       "example_count": 22
-    },
-    {
-      "topic": "remboursement_avoir",
-      "topic_label": "Remboursements, avoirs, délais de traitement, montants retenus",
-      "situation": "Client demande le statut de son retour et de son avoir suite à un retour accepté. Inclut l'attente de réception et de traitement du colis retour, et la génération du code avoir. Client peut aussi demander une mise à jour d'un avoir existant pour en élargir l'utilisation.",
-      "response_template": "Bonjour [Prénom],\n\n**Statut de votre retour :**\n\nNous avons bien reçu votre colis retour. Le traitement prend jusqu'à 10 jours ouvrés à compter de la réception, incluant vérification et génération de l'avoir. Vous devriez avoir une réponse de notre part très prochainement.\n\n[SI AVOIR GÉNÉRÉ]\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n[CODE AVOIR]\n\n**Conditions d'utilisation :**\n- Valable jusqu'au [DATE : +6 mois]\n- Utilisable en une seule commande\n- Réservé à votre adresse e-mail ([EMAIL]) : pensez à commander avec cette adresse\n- Non cumulable avec d'autres codes ou promotions\n\n[SI AVOIR MIS À JOUR / RESTRICTION LEVÉE]\nNous venons de mettre à jour votre avoir : il est désormais utilisable sur l'ensemble de notre collection, sans restriction de modèle.\n\n[SI RETOUR INCOMPLET]\nNous avons bien reçu votre colis. Nos équipes logistiques ont trouvé [ARTICLES PRÉSENTS] mais pas [ARTICLES MANQUANTS]. Votre remboursement était conditionné au retour de l'ensemble des articles.\n\nOptions possibles :\n- Vous gardez l'article manquant → avoir réduit au montant des articles reçus\n- Vous renvoyez l'article manquant séparément → avoir complet\n- Échange sur articles présents uniquement\n\nQuelle option vous convient ?\n\n**Formulation validée (attente simple) :**\nDès que nous réceptionnons et ouvrons votre retour, nous revenons vers vous.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
-      "key_points": "Ton : informatif, clair, rassurant. Engagements : traitement 10 jours ouvrés, avoir valable 6 mois, usage unique, non cumulable. POINT CRITIQUE : code réservé à l'adresse e-mail fournie — le client doit commander avec cette adresse. Pour retours incomplets : JAMAIS rembourser tant que tout n'est pas reçu — proposer des options claires et attendre confirmation. Les avoirs peuvent être mis à jour pour lever des restrictions (passage à collection complète, par ex.).",
-      "example_count": 159
     },
     {
       "topic": "form_name_form_submitted_2026_10_22_12_48_03",
