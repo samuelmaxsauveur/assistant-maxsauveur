@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__votre_retour_pour_la_commande__13530",
+      "topic_label": "Re: Votre retour pour la commande #13530",
+      "situation": "Re: Votre retour pour la commande #13530",
+      "response_template": "Bonjour Pierre,\n\nMerci pour ce retour honnête, c'est utile à entendre.\n\nJe comprends votre décision, mais permettez-moi de partager un point qui pourrait changer la donne : un mocassin, c'est une chaussure qui fonctionne très différemment d'une chaussure à lacets. Sans lacets, le maintien repose entièrement sur le cou-de-pied, et la sensation des premières heures est rarement représentative du confort final.\n\nCe que vous ne voyez pas de l'extérieur : il y a une semelle intérieure en liège qui se moule progressivement à la forme exacte de votre pied, et notre cuir pleine fleur fait de même. Après quelques ports, le résultat est vraiment celui d'un chausson sur mesure. Beaucoup de clients qui ont failli rendre leur Paul au départ nous écrivent ensuite pour nous dire que c'est devenu leur paire préférée.\n\nSi vous souhaitez tout de même procéder au remboursement, nous le respectons bien sûr. Mais si cette information vous amène à reconsidérer, faites-le nous savoir avant le 6 novembre.\n\nDans tous les cas, à bientôt sur la collection.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_retour_pour_la_commande__13780",
+      "topic_label": "Votre retour pour la commande #13780",
+      "situation": "Votre retour pour la commande #13780",
+      "response_template": "Bonjour Vincent,\n\nNous avons bien reçu votre retour (Springsteen - Chaussures Boots Cuir Gras Marron, pointure 42) et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux vous correspondre, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si une autre pointure ou un autre modèle vous tente, voici ce qu'on peut faire : nous vous envoyons un avoir de 445 €, soit le prix de votre paire (410 €) et 35 € offerts par la maison. Il est valable 6 mois sur toute la collection, chaussures et ceintures, et la livraison de votre nouvelle commande est offerte, à l'adresse de votre choix.\n\nAutrement dit, vous repartez avec une nouvelle pièce sans rien débourser, et 35 € de plus en poche.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte. Sans réponse de votre part d'ici le vendredi 6 novembre, nous procéderons au remboursement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__form_name_form_submitted_2026_10_30_10_04_10",
       "topic_label": "Re: Form name Form submitted 2026-10-30 10:04:10",
       "situation": "Re: Form name Form submitted 2026-10-30 10:04:10",
