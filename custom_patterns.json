@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__taille_moc_paul",
+      "topic_label": "Re: Taille moc Paul",
+      "situation": "Re: Taille moc Paul",
+      "response_template": "Bonjour Damien,\n\nVotre retour est bien confirmé de notre côté. Le remboursement vient d'être émis, comptez 3 à 5 jours ouvrés sur votre compte selon votre banque.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 3
+    },
+    {
       "topic": "re__re__re__re__commande_13418",
       "topic_label": "Re: Re: Re: Re: Commande 13418",
       "situation": "Re: Re: Re: Re: Commande 13418",
@@ -576,14 +584,6 @@
       "response_template": "Bonjour Ismaïla,\n\nVotre commande #13731 (Deck Chaussures Bateau Cuir Bordeaux, 43) correspond à une précommande. Votre colis sera expédié cette semaine et vous recevrez automatiquement un email avec votre lien de suivi dès qu'il est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re__taille_moc_paul",
-      "topic_label": "Re: Taille moc Paul",
-      "situation": "Re: Taille moc Paul",
-      "response_template": "Bonjour Damien,\n\nNous devons analyser la réception de votre colis par notre logistique avant de pouvoir procéder au remboursement. C'est une étape obligatoire de notre côté avant tout traitement.\n\nNous revenons vers vous dès que c'est confirmé.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 2
     },
     {
       "topic": "re__demande_de_remboursement___commande_n_9249___colis_non_l",
