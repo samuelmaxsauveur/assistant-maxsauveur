@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_10_29_17_43_44",
+      "topic_label": "Form name Form submitted 2026-10-29 17:43:44",
+      "situation": "Form name Form submitted 2026-10-29 17:43:44",
+      "response_template": "Bonjour François,\n\nNous avons bien reçu votre retour et pris note de votre demande.\n\nAvez-vous eu l'occasion de lire notre dernier message ? Nous vous avions proposé une alternative au remboursement qui pourrait vous intéresser.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_10_30_11_16_29",
       "topic_label": "Form name Form submitted 2026-10-30 11:16:29",
       "situation": "Form name Form submitted 2026-10-30 11:16:29",
