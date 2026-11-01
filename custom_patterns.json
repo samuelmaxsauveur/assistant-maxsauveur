@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__echange_de_ceinture___commande__13488",
+      "topic_label": "Re: Echange de ceinture - Commande #13488",
+      "situation": "Re: Echange de ceinture - Commande #13488",
+      "response_template": "Bonjour Boris,\n\nLa commande #13878 est bien enregistrée. Je transmets votre numéro à l'équipe pour procéder au remboursement des frais de livraison comme convenu, et reviens vers vous dès que c'est fait.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -1136,14 +1144,6 @@
       "response_template": "Bonjour [Prénom],\n\n**Sur le délai légal de rétractation :**\n\nConformément à la réglementation européenne, la charge de la preuve de l'exercice du droit de rétractation dans les délais impartis incombe au consommateur. Le délai légal de 14 jours s'achève à compter de la réception du colis.\n\nSi la date d'expédition est invoquée, nous exigeons la présentation d'une preuve officielle de dépôt (bordereau d'expédition daté) démontrant que le colis a été confié aux services postaux au plus tard le dernier jour du délai. Un simple message WhatsApp ou email sans date d'expédition officielle ne constitue pas une preuve valide.\n\n**En l'absence de preuve documentaire :**\n\nLe remboursement reste exclu passé le délai légal. Nous proposons un avoir à titre de geste commercial, valable 6 mois sur notre site.\n\n**Procédure pour utiliser l'avoir :**\n\nVotre code vous sera envoyé dès validation. Il est utilisable une seule fois, réservé à votre adresse e-mail, et non cumulable avec d'autres offres.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
       "key_points": "Ton : ferme, honnête, transparent. Ne pas céder à la pression ni à la réescalade. Engagements : respecter strictement le délai légal de 14 jours, exiger une preuve officielle de dépôt datée (bordereau d'expédition, pas messages WhatsApp/email). Proposition : avoir commercial à titre gracieux en-dehors du cadre légal. Ne JAMAIS rembourser après délai sans preuve irréfutable d'expédition dans les délais.",
       "example_count": 13
-    },
-    {
-      "topic": "re__echange_de_ceinture___commande__13488",
-      "topic_label": "Re: Echange de ceinture - Commande #13488",
-      "situation": "Re: Echange de ceinture - Commande #13488",
-      "response_template": "Bonjour Boris,\n\nNous vérifions la réception de votre colis côté logistique. Le traitement des retours prend jusqu'à 10 jours ouvrés à compter de la réception effective, vous devriez recevoir votre avoir très prochainement.\n\nNous revenons vers vous dès que c'est confirmé.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
     },
     {
       "topic": "r_clamation___d_faut_de_couture_sur_une_paire_de_chaussures_",
