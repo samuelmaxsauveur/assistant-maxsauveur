@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__r_assort",
+      "topic_label": "Re: Réassort",
+      "situation": "Re: Réassort",
+      "response_template": "Bonjour Geoffrey,\n\nLe Paul en cuir grainé marron est disponible en 41, vous pouvez passer commande directement sur le site !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__pointure_boots_wayne",
       "topic_label": "Re: Pointure boots Wayne",
       "situation": "Re: Pointure boots Wayne",
