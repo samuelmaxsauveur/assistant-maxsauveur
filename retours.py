@@ -930,9 +930,10 @@ def send(case_id, template, subject, body):
         changes["reminder_sent_at"] = now
         changes["reminder_due"] = False
     if status == "to_refund":
-        changes["refunded_before"] = order.get("refunded", 0)
+        changes["refunded_before"] = _refunded_now(case)[1]
     if status in ("done", "refused"):
         changes["closed_at"] = now
+        changes["closed_from"] = case["status"]
     if status == "waiting_client" and thread_id:
         try:
             changes["seen_messages"] = list({m["id"] for m in gmail_helper.get_thread_messages(service, thread_id)}
@@ -942,13 +943,31 @@ def send(case_id, template, subject, body):
     return database.update_client_return(case_id, status=status, thread_id=thread_id, data=changes)
 
 
+def _refunded_now(case):
+    """The order as Shopify shows it now, and what it has already refunded.
+
+    The hourly check only closes a file on a refund made after this point, so a
+    file reopened after a refund that failed at the bank does not close again on
+    the same refund."""
+    order = case["data"].get("order") or {}
+    try:
+        order = fetch_order(case.get("order_number")) or order
+    except Exception as e:
+        print(f"[Retours] Order {case.get('order_number')} unreadable, keeping the stored refunds: {e}")
+    return order, order.get("refunded", 0)
+
+
 def set_status(case_id, status, note=None, extra=None):
     case = database.get_client_return(case_id)
     changes = dict(extra or {}, log=_log(case["data"], note or f"passé en « {STATUS_LABELS[status]} »"))
     if status == "to_refund":
-        changes["refunded_before"] = (case["data"].get("order") or {}).get("refunded", 0)
+        order, changes["refunded_before"] = _refunded_now(case)
+        if order:
+            changes["order"] = order
     if status in ("done", "refused"):
         changes["closed_at"] = datetime.now(PARIS).isoformat()
+        # « Rouvrir » sends the file back to this step.
+        changes["closed_from"] = case["status"]
     case = database.update_client_return(case_id, status=status, data=changes)
     if status == "to_refund" and case["data"].get("order"):
         # The "refund on its way" email is ready, for when Samuel wants to send one.

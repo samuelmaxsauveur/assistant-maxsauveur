@@ -295,7 +295,11 @@
             <div class="actions" style="margin-top:0;">
                 {% if c.status == 'to_check' %}<button class="btn btn-red" onclick="setStatus('refused', this, 'refusé sans mail')">Refuser sans mail</button>{% endif %}
                 {% if c.status in ('waiting_client', 'reply_to_read', 'credit_to_send') %}<button class="btn btn-gray" onclick="setStatus('to_check', this)">Revenir à « À traiter »</button>{% endif %}
-                {% if c.status in ('done', 'refused') %}<button class="btn btn-gray" onclick="setStatus('to_check', this, 'dossier rouvert')">Rouvrir</button>{% endif %}
+                {% if c.status in ('done', 'refused') %}
+                {# Back to the step the file was closed from; older files that went through « À rembourser » go back there. #}
+                {% set back = d.closed_from or ('to_refund' if 'refunded_before' in d else 'to_check') %}
+                <button class="btn btn-gray" onclick="setStatus('{{ back }}', this, 'dossier rouvert')">Rouvrir (retour en « {{ status_labels[back] }} »)</button>
+                {% endif %}
                 <button class="btn btn-red" onclick="deleteCase(this)">Supprimer le dossier</button>
             </div>
             {% if d.log %}<div class="log" style="margin-top:10px;">{% for line in d.log %}{{ line }}<br>{% endfor %}</div>{% endif %}
@@ -311,8 +315,14 @@ const NEXT_ID = {{ view.next_id if view and view.next_id else 'null' }};
 const CREDIT_TEMPLATES = {{ credit_templates | list | tojson }};
 const HAS_CODE = {{ 'true' if view and view.data.credit_code else 'false' }};
 
+// After each SAV email, the assistant saves its patterns to GitHub and Railway
+// restarts it: for about a minute, requests get no answer.
+const RESTARTING = 'L\'assistant redémarre (mise à jour, environ une minute). Recharge la page dans un instant pour voir où en est le dossier, puis réessaie si besoin.';
 async function post(url, body) {
-    const r = await fetch(url, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body || {})});
+    let r;
+    try { r = await fetch(url, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body || {})}); }
+    catch (e) { throw new Error(RESTARTING); }
+    if (r.status === 502 || r.status === 503) throw new Error(RESTARTING);
     const j = await r.json().catch(() => ({success: false, error: 'Réponse illisible du serveur (' + r.status + ')'}));
     if (!j.success) throw new Error(j.error || 'Erreur');
     return j;
@@ -359,6 +369,7 @@ function sendPhoto(blob, onProgress) {
             let j = null;
             try { j = JSON.parse(xhr.responseText); } catch (e) {}
             if (j && j.success) resolve(j);
+            else if (xhr.status === 502 || xhr.status === 503) reject(new Error(RESTARTING));
             else reject(new Error((j && j.error) || 'erreur du serveur (' + xhr.status + ')'));
         };
         xhr.onerror = () => reject(new Error('connexion perdue pendant l\'envoi, réessaie'));
