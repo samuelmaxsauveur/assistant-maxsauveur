@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "commande__13868",
+      "topic_label": "COMMANDE #13868",
+      "situation": "COMMANDE #13868",
+      "response_template": "Bonjour Claire,\n\nVotre commande #13868 (Chelsea Chapman Bordeaux 40) est bien en cours de préparation et partira très prochainement. Vous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par Colissimo.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "retour_commande__13842",
       "topic_label": "Retour commande #13842",
       "situation": "Retour commande #13842",
