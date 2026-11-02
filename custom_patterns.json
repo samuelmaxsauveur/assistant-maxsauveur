@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "retour_commande__13842",
+      "topic_label": "Retour commande #13842",
+      "situation": "Retour commande #13842",
+      "response_template": "Bonjour Grégoire,\n\nLa commande #13842 concerne un retour depuis la Belgique, et les frais de retour sont bien à votre charge pour un retour standard.\n\nEn revanche, la mention que vous citez sur le remboursement des frais de livraison initiaux s'applique effectivement en cas de retour de l'intégralité de la commande, et votre demande écrite ici en fait foi.\n\nVoici comment procéder :\n\n1. Expédiez votre colis à notre adresse logistique, à vos frais :\n**SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau, France**\n\n2. Glissez le bon de retour à l'intérieur du colis (vous pouvez l'imprimer depuis https://maxsauveur.com/pages/livraison-et-retour).\n\n3. Une fois le retour réceptionné et contrôlé, nous procéderons au remboursement des articles ainsi que des frais de livraison initiaux.\n\nConservez bien votre preuve d'expédition.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
