@@ -2,6 +2,126 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__r_clamation",
+      "topic_label": "Re: Réclamation",
+      "situation": "Re: Réclamation",
+      "response_template": "Bonjour,\n\n\nVoici votre code : **Q28NVT09XB6G**\n\nConditions :\n- 15 € de réduction\n- Achat minimum de 149 €\n- Valable une fois, non cumulable avec d'autres offres\n- Utilisable dès aujourd'hui sur maxsauveur.com\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "mad_max___les_remises_de_cette_ann_e",
+      "topic_label": "Mad Max : les remises de cette année",
+      "situation": "Mad Max : les remises de cette année",
+      "response_template": "Bonjour Camille,\n\nAvec 24,7 cm (votre mesure + 0,2 cm), vous êtes effectivement en **39** sur notre guide de tailles, et non, être une femme ne change rien à la méthode : la mesure du pied en cm est universelle.\n\nUne petite précision sur le Paul en mocassin : sans lacets, le maintien repose entièrement sur le cou-de-pied. La chaussure serre un peu à cet endroit au premier port, c'est tout à fait normal et même nécessaire. Le cuir et la semelle en liège s'assouplissent avec quelques sorties, et vous trouverez votre confort rapidement.\n\nBon shopping et belle journée !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
+      "topic": "demande_d_information_pointure",
+      "topic_label": "Demande d'information pointure",
+      "situation": "Demande d'information pointure",
+      "response_template": "Bonjour Thierry,\n\nAvec 27,2 cm (272 mm + 0,2 cm = 27,4 cm), notre guide vous place en **43**.\n\nLa Springsteen chausse légèrement grand, donc je vous recommande le **43** sans descendre au 42. Entre 43 et 43,5, restez sur le **43** : c'est la bonne direction pour votre mesure sur ce modèle.\n\nBonne commande pour le Mad Max !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__re__re__form_name_form_submitted_2026_10_22_22_04_16",
+      "topic_label": "Re: Re: Re: Form name Form submitted 2026-10-22 22:04:16",
+      "situation": "Re: Re: Re: Form name Form submitted 2026-10-22 22:04:16",
+      "response_template": "Bonjour Loris,\n\nVotre avoir est prêt. Voici votre code à saisir dans votre panier : K43WAQA4EHGB\n\nMontant : 239,00 €\n\nConditions :\n- Valable 6 mois\n- Utilisable en une seule commande\n- Réservé à votre adresse email, pensez à commander avec cette adresse\n- Non cumulable avec d'autres codes ou promotions\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "article_manquant_commande__13422",
+      "topic_label": "Article manquant commande #13422",
+      "situation": "Article manquant commande #13422",
+      "response_template": "Bonjour Eliott,\n\nVoici votre avoir : **51F3XHS7P2Z5**\n\nMontant : 30€, valable 6 mois sur maxsauveur.com. Il est utilisable en une seule fois, non cumulable avec d'autres codes.\n\nÀ bientôt sur le site.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
+      "topic": "h_sitation_pointure",
+      "topic_label": "Hésitation Pointure",
+      "situation": "Hésitation Pointure",
+      "response_template": "Bonjour Guillaume,\n\nPas d'inquiétude : avec 29,2 cm, le 45 est la bonne pointure. Le Paul est un mocassin qui chausse plutôt serré au départ, donc descendre en 44,5 serait une erreur. Votre commande est parfaite telle quelle.\n\nÀ noter que la sensation sera un peu serrée au cou-de-pied lors des premiers ports, c'est tout à fait normal et même nécessaire pour le maintien sans lacets. Le cuir et la semelle en liège se moulent progressivement au pied et le confort s'installe après quelques sorties.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "r_clamation",
+      "topic_label": "Réclamation",
+      "situation": "Réclamation",
+      "response_template": "Bonjour,\n\nMerci pour votre message et pour le screen.\n\nEn vérifiant votre commande #12343, nous constatons qu'un code promo de 40€ vous avait bien été envoyé en récompense de votre avis, et que ce code a été utilisé lors de cette commande. La remise apparaît d'ailleurs sur votre facture.\n\nLa récompense a donc bien été honorée, sous forme de réduction directement appliquée à votre achat.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "commande__13521",
+      "topic_label": "Commande #13521",
+      "situation": "Commande #13521",
+      "response_template": "Bonjour Olivier,\n\nC'est fait, nous venons de mettre à jour l'adresse de livraison pour la commande #13521. Ta ceinture sera livrée au point relais suivant :\n\nCoccimarket\n55 rue Louise Michel\n92300 Levallois-Perret\n\nNote que cette modification n'apparaîtra pas dans ton email de confirmation initial, mais elle est bien prise en compte.\n\nComme il s'agit d'une précommande, la livraison est prévue pour mi-décembre 2026. Tu recevras automatiquement un email avec ton lien de suivi dès l'expédition.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "commande",
+      "topic_label": "Commande",
+      "situation": "Commande",
+      "response_template": "Bonjour Arthur,\n\nLa procédure est simple : retournez la paire via notre bon de retour (https://maxsauveur.com/pages/livraison-et-retour, motif \"avoir\"), et dès réception nous vous émettons un avoir pour commander le 44.\n\nAvant de lancer ça, une petite question : la paire vous semble grande en longueur, ou plutôt large ? La Deck chausse légèrement grand, mais si c'est une question de largeur, le 44 pourrait être un peu juste. Je veux juste m'assurer que le 44 sera la bonne taille pour vous.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
+      "topic": "commande__13836_confirm_e",
+      "topic_label": "Commande #13836 confirmée",
+      "situation": "Commande #13836 confirmée",
+      "response_template": "Bonjour Chakir,\n\nLa commande #13836 (Dakota Noir 41) n'est pas encore expédiée. Les Dakota sont en cours d'acheminement vers notre entrepôt, et les livraisons sont prévues pour la première semaine de novembre. Vous recevrez automatiquement un email avec votre lien de suivi dès la prise en charge par le transporteur.\n\nPour la ceinture Morricone (commande #13630), il s'agit bien d'une précommande avec une livraison prévue mi-décembre 2026.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "ceintures",
+      "topic_label": "Spécificités ceintures : taille, boucle, longueur, ajustement",
+      "situation": "Client demande sa taille de ceinture, souhaite échanger pour une autre taille ou couleur, ou pose une question sur les spécificités (longueur, boucle, ajustement). Inclut les vérifications de stock avant échange et les caractéristiques de coupe (notamment largeur variable).",
+      "response_template": "Bonjour [Prénom],\n\n**DÉTERMINER LA BONNE TAILLE**\n\nPour trouver votre taille de ceinture, la règle est simple : la taille correspond à la distance entre l'ardillon et le trou du milieu (sur 5 trous).\n\nEn pratique :\n- Pour un pantalon taille 40/42 → tour de taille ~85/90 cm → recommander 95 cm\n- Pour un pantalon taille 38 → tour de taille ~80/85 cm → recommander 90 cm\nLe 100 serait un peu grand et risquerait de dépasser trop sur le côté.\n\nChaque taille propose plusieurs trous, ce qui permet une marge des deux côtés pour un ajustement confortable.\n\n**CARACTÉRISTIQUES DE COUPE**\n\nCertains modèles présentent une largeur variable selon l'emplacement (exemple : la ceinture Jonas) :\n- 2 cm au niveau de la boucle et du bout\n- 2,5 cm sur la partie centrale\n\nC'est une caractéristique propre au style et qui lui donne ce galbe particulier. La description du site fait référence à la largeur aux extrémités.\n\n**POUR UN ÉCHANGE DE CEINTURE**\n\nPas de souci, on peut arranger ça. Voici la procédure :\n\n1. Téléchargez et complétez le bon de retour ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez « avoir »)\n2. Emballez soigneusement la ceinture avec le bon à l'intérieur\n3. Expédiez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nUne fois reçue et vérifiée, votre avoir sera généré et vous pourrez commander la nouvelle taille/couleur.",
+      "key_points": "Ton friendly et rassurant. Toujours expliquer la règle de mesure (ardillon-trou du milieu) plutôt que de demander la pointure. Vérifier le stock APRÈS réception du retour, pas avant — c'est un engagement, ne pas s'avancer sur la dispo. Pour les échanges : système d'avoir uniquement, même produit même couleur (sauf ajustement stock). Adresse logistique précise obligatoire. Ne jamais proposer de frais de retour payants.",
+      "example_count": 5
+    },
+    {
+      "topic": "produit_info",
+      "topic_label": "Informations produit et comparaison modèles",
+      "situation": "Client hésite entre deux modèles, pose des questions sur le confort/semelle, les différences de forme/style, ou demande à valider sa pointure avant commande. Peut s'inquiéter d'une mauvaise expérience antérieure avec un autre modèle. Inclut les questions sur les matières et les spécificités de fabrication.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour ces questions, je vais vous répondre point par point.\n\n**Comparaison entre deux modèles : quelle différence ?**\n\nLes deux modèles partagent [POINTS COMMUNS : semelle identique, matière identique], donc sur ce point vous êtes tranquille. La différence se joue plutôt sur :\n• Le **[MODÈLE A]** : [caractéristique style/forme]\n• Le **[MODÈLE B]** : [caractéristique style/forme]\n\n**Sur le confort et la semelle :**\nNos chaussures sont équipées d'une semelle intérieure en liège qui se moule progressivement à la forme exacte de votre pied. Au premier port, la sensation peut sembler rigide ou serrante, c'est normal : après quelques sorties, le résultat est celui d'un chausson sur mesure.\n\n**Sur les matières :**\nNos chaussures sont fabriquées en **full grain leather** (cuir pleine fleur, non corrigé). C'est une matière naturelle qui marque avec l'usage, se patine, et s'assouplit avec le temps. Les variations de teinte, les petites imperfections ou les marques de gras sont des caractéristiques, pas des défauts.",
+      "key_points": "Tonalité : naturelle, rassurante, sans surcharge. Engagements : confirmer les semelles/matières communes, préciser les différences de style plutôt que de confort. Valider la pointure en fonction de la mesure du pied. Full grain leather = matière vivante, marques normales. Ne jamais s'engager sur une taille sans avoir la mesure exacte. Expliquer cuir/semelle s'assouplissent comme processus normal.",
+      "example_count": 20
+    },
+    {
+      "topic": "precommande_delai",
+      "topic_label": "Précommandes et délais de livraison",
+      "situation": "Client en précommande demande le statut, la date de livraison estimée, ou s'inquiète d'un délai. Articles en cours de fabrication (ceintures à boucles personnalisables, embauchoirs, chaussures). Client peut relancer plusieurs fois avant expédition. Un statut vide sur Shopify pour une précommande est NORMAL et n'indique pas un incident logistique.",
+      "response_template": "Bonjour [Prénom],\n\nVotre commande #[NUM] ([PRODUIT], taille/couleur [VARIANTE]) est bien en précommande, comme indiqué sur la fiche produit au moment de votre achat. La livraison est prévue pour [DATE : mi-novembre 2026 / mi-décembre 2026 / etc.].\n\n**Important à savoir :** Un statut de livraison vide sur Shopify est normal pour une précommande, ce n'est pas un incident. Votre commande est bien enregistrée et en cours de fabrication.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
+      "key_points": "Ton empathique mais honnête. POINT CRITIQUE : un statut Shopify vide sur précommande = NORMAL, ne JAMAIS alarmer le client ni dire 'on va vérifier pourquoi ça ne part pas'. Jamais de fausse promesse sur délai serré. Distinction des deux vagues ceintures (Vague 1 boucles mi-octobre 2026 ; Vague 2 Gigi/Morricone mi-décembre 2026). Embauchoirs : toujours mi-novembre 2026.",
+      "example_count": 81
+    },
+    {
+      "topic": "pointure_echange",
+      "topic_label": "Échange de pointure après réception",
+      "situation": "Client a reçu une paire dans une mauvaise pointure et souhaite l'échanger pour la bonne taille. Inclut confirmation de pointure avant retour pour éviter les aller-retours inutiles, notamment sur mocassins où le rodage du cuir peut être trompeur. Le Wayne chausse légèrement grand : avec mesure précise, adapter la taille à la baisse si nécessaire.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre retour – on comprend tout à fait la situation.\n\n---\n\n**AVANT DE RETOURNER : Une question importante sur la pointure**\n\nSur un mocassin notamment, un léger excès de volume au premier essayage est souvent trompeur. Le cuir et la semelle en liège s'assouplissent avec le port et se moulent au pied après quelques sorties. Avant de retourner la paire, pouvez-vous me confirmer :\n- Avez-vous essayé la paire à l'intérieur pendant quelques minutes ?\n- Le problème persiste-t-il, ou était-ce juste la première impression ?\n- À quel endroit exactement trouvez-vous la boot trop grande ? (en longueur, au cou-de-pied, au talon ?)\n\nCe diagnostic simple peut éviter un aller-retour inutile.\n\n**Sur les modèles qui chaussent grand :**\nLe Wayne, le Deck, le Dakota, le Brogue Derby chaussent légèrement grand. Si votre mesure en cm vous place théoriquement en 43 mais que la paire vous semble grande, une demi-taille en dessous (42) peut être justifiée.\n\n**Si la gêne persiste au talon et à l'avant :**\nUne semelle d'ajustement en liège peut vraiment faire la différence : placée sous le pied, elle remonte le pied légèrement et réduit ce mouvement au talon. C'est une solution simple et efficace.",
+      "key_points": "Ton : friendly et patient. POINT CRITIQUE : toujours poser une question diagnostic avant d'accepter le retour, notamment pour les mocassins et les boots — un excès de volume au premier essayage est normal et le cuir s'assouplit. Cela évite un aller-retour inutile. Pour les modèles chaussant grand (Wayne, Deck, Dakota, Brogue Derby) : valider si une demi-taille en dessous est justifiée. Proposer les solutions d'ajustement avant retour.",
+      "example_count": 111
+    },
+    {
+      "topic": "retour_procedure",
+      "topic_label": "Procédure de retour complète",
+      "situation": "Client souhaite retourner un article et demande la procédure complète : bon de retour, adresse d'expédition, code postal formaté, bon de retour à inclure, délais de traitement et conditions de remboursement ou avoir.",
+      "response_template": "Bonjour [Prénom],\n\nPas de problème pour organiser ce retour. Voici la procédure complète à suivre :\n\n**Étape 1 : Téléchargez le bon de retour**\nRendez-vous sur : https://maxsauveur.com/pages/livraison-et-retour\n\n**Étape 2 : Remplissez le bon de retour**\nComplétez le formulaire avec :\n- Vos nom et prénom\n- Le numéro de votre commande (trouvable dans votre email de confirmation)\n- La raison du retour : « avoir », « remboursement », ou « défaut fabrication » selon votre situation\n\n**Étape 3 : Emballez soigneusement**\nMettez la paire dans sa boîte d'origine, glissez le bon de retour à l'intérieur du colis, et emballez l'ensemble pour éviter les dommages.\n\n**Étape 4 : Expédiez à notre adresse logistique**\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n**13170** Les Pennes-Mirabeau (sans espace après le code postal — certains transporteurs rejettent le format \"13 170\")\nFrance\n\nLes frais de retour sont à votre charge, sauf en cas de défaut de fabrication avéré ou erreur de notre part (mauvais article expédié).\n\n**Délais de traitement**\nDès réception et contrôle de la paire en état neuf et dans sa boîte d'origine :\n- Un avoir valable 6 mois sur notre site (si vous avez indiqué « avoir »)\n- Un remboursement émis sous 3 à 5 jours ouvrés (si vous avez indiqué « remboursement »)",
+      "key_points": "Ton : clair, rassurant, pratique. POINT CRITIQUE : le code postal doit être écrit SANS ESPACE (13170, pas 13 170) car certains transporteurs le rejettent. Bon de retour OBLIGATOIRE à l'intérieur du colis avec motif précisé. Frais de retour TOUJOURS à la charge du client sauf défaut fabrication ou erreur de préparation. Délai traitement : 3-5 jours ouvrés après réception et contrôle.",
+      "example_count": 48
+    },
+    {
       "topic": "commande_embauchoirs_le_19_ao_t",
       "topic_label": "Commande embauchoirs le 19 août",
       "situation": "Commande embauchoirs le 19 août",
@@ -42,14 +162,6 @@
       "example_count": 194
     },
     {
-      "topic": "retour_procedure",
-      "topic_label": "Comment retourner un article",
-      "situation": "Client souhaite retourner un article et demande la procédure complète : bon de retour, adresse d'expédition, code postal formaté, bon de retour à inclure, délais de traitement et conditions de remboursement ou avoir.",
-      "response_template": "Bonjour [Prénom],\n\nPas de problème pour organiser ce retour. Voici la procédure complète à suivre :\n\n**Étape 1 : Téléchargez le bon de retour**\nRendez-vous sur : https://maxsauveur.com/pages/livraison-et-retour\n\n**Étape 2 : Remplissez le bon de retour**\nComplétez le formulaire avec :\n- Vos nom et prénom\n- Le numéro de votre commande (trouvable dans votre email de confirmation)\n- La raison du retour : « avoir », « remboursement », ou « défaut fabrication » selon votre situation\n\n**Étape 3 : Emballez soigneusement**\nMettez la paire dans sa boîte d'origine, glissez le bon de retour à l'intérieur du colis, et emballez l'ensemble pour éviter les dommages.\n\n**Étape 4 : Expédiez à notre adresse logistique**\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n**13170** Les Pennes-Mirabeau (sans espace après le code postal — certains transporteurs rejettent le format \"13 170\")\nFrance\n\nLes frais de retour sont à votre charge, sauf en cas de défaut de fabrication avéré ou erreur de notre part (mauvais article expédié).\n\n**Délais de traitement**\nDès réception et contrôle de la paire en état neuf et dans sa boîte d'origine :\n- Un avoir valable 6 mois sur notre site (si vous avez indiqué « avoir »)\n- Un remboursement sur votre moyen de paiement d'origine (si vous avez indiqué « remboursement »), sous 3 à 5 jours ouvrés\n\nCordialement,\nJohn – Service Client – Max Sauveur",
-      "key_points": "Ton : clair, rassurant, pratique. POINT CRITIQUE : le code postal doit être écrit SANS ESPACE (13170, pas 13 170) car certains transporteurs le rejettent. Bon de retour OBLIGATOIRE à l'intérieur du colis avec motif précisé. Frais de retour TOUJOURS à la charge du client sauf défaut fabrication ou erreur de préparation. Délai traitement : 3-5 jours ouvrés après réception et contrôle. Ne jamais proposer d'étiquette prépayée sauf erreur de notre part.",
-      "example_count": 47
-    },
-    {
       "topic": "re__re__avis_chaussure__brogues",
       "topic_label": "Re: Re: Avis chaussure* brogues",
       "situation": "Re: Re: Avis chaussure* brogues",
@@ -72,22 +184,6 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre retour et pour les précisions.\n\n**Ce que vous décrivez est lié à votre démarche, à la matière naturelle du cuir, ou au type de cuir utilisé, non à un défaut de fabrication.**\n\nQuelques points de contexte :\n\n— **Usure du talon :** Les semelles cuir s'usent naturellement selon l'appui du talon et la façon de marcher. Certains sols, certains appuis marqués ou une pronation accélèrent cette usure. Ce n'est pas un défaut structurel.\n\n— **Languette qui dévie :** Si la languette dévie systématiquement du même côté, c'est votre démarche ou votre pronation qui la pousse latéralement. Solution simple : laçage plus serré (en partant du bas) ou visite chez un cordonnier pour ajouter un passant de maintien — modification rapide et peu coûteuse.\n\n— **Plis visibles sur le cuir :** Les plis dès les premiers essais en intérieur sont normaux. Le cuir travaille naturellement.\n\n— **Marques de gras ou variations de teinte :** Sur cuir naturel (chèvre, grainé, gras/cireux), ce sont des caractéristiques, pas des défauts.\n\n— **Marques de contact (ex: boucles qui marquent) :** Le cuir pleine fleur mémorise les contacts. C'est une preuve de sa naturalité et de sa qualité, pas un défaut.\n\n**Sur le rodage du cuir :**\nAu premier port, le cuir peut sembler serrant au cou-de-pied ou au talon qui glisse. C'est normal et nécessaire pour le maintien. Après quelques sorties, l'assouplissement crée un ajustement naturel. Patience = meilleure stratégie.\n\n**Solutions avant de retourner :**\n- Chaussettes fines pour faciliter l'enfilage\n- Embauchoirs pour maintenir la forme entre les ports\n- Assouplissant cuir (disponible chez cordonniers)\n- Semelle d'ajustement en liège si talon qui glisse\n\nJohn – Service Client – Max Sauveur",
       "key_points": "Ton : empathique, rassurant, éducatif. Jamais défensif. Expliquer la matière et le processus naturel du cuir. Engagements : usure normale (talon, plis, languette déviée par démarche) = NON prise en charge, orienter vers cordonnier si besoin ; rodage du cuir neuf (serrement initial, talon qui glisse) = normal, proposer solutions (chaussettes fines, assouplissant, embauchoirs) ; cuir gras/cireux marqué = caractéristique de qualité, pas défaut. JAMAIS d'exception pour usure normale, même si client insiste.",
       "example_count": 23
-    },
-    {
-      "topic": "produit_info",
-      "topic_label": "Renseignements produit avant achat",
-      "situation": "Client hésite entre deux modèles, pose des questions sur le confort/semelle, les différences de forme/style, ou demande à valider sa pointure avant commande. Peut s'inquiéter d'une mauvaise expérience antérieure avec un autre modèle. Inclut les questions sur les matières (cuir grainé, cuir gras, full grain, etc.) et les spécificités de fabrication.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour ces questions, je vais vous répondre point par point.\n\n**Comparaison entre deux modèles : quelle différence ?**\n\nLes deux modèles partagent [POINTS COMMUNS : semelle identique, matière identique], donc sur ce point vous êtes tranquille. La différence se joue plutôt sur :\n• Le **[MODÈLE A]** : [caractéristique style/forme]\n• Le **[MODÈLE B]** : [caractéristique style/forme]\n\n**Sur le confort et la semelle :**\nNos chaussures sont équipées d'une semelle intérieure en liège qui se moule progressivement à la forme exacte de votre pied. Au premier port, la sensation peut sembler rigide ou serrante, c'est normal : après quelques sorties, le résultat est celui d'un chausson sur mesure. Beaucoup de clients qui ont failli rendre leur paire nous écrivent ensuite pour dire que c'est devenue leur paire préférée.\n\n**Sur les matières :**\nNos chaussures sont fabriquées en **full grain leather** (cuir pleine fleur, non corrigé). C'est une matière naturelle qui marque avec l'usage, se patine, et s'assouplit avec le temps. Les variations de teinte, les petites imperfections ou les marques de gras sont des caractéristiques, pas des défauts.\n\n**Sur votre pointure :**\nAvec [MESURE_CM] de longueur de pied, vous êtes sur du [POINTURE]. Concernant le [MODÈLE] en particulier, [CONSEIL SPÉCIFIQUE AU MODÈLE]. Si vous avez une mauvaise expérience avec un autre modèle, c'est un bon signal pour ne pas descendre.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "Tonalité : naturelle, rassurante, sans surcharge. Engagements : confirmer les semelles/matières communes, préciser les différences de style plutôt que de confort. Valider la pointure en fonction de la mesure du pied. Full grain leather = matière vivante, marques normales. Ne jamais s'engager sur une taille sans avoir la mesure exacte. Expliquer cuir/semelle s'assouplissent comme processus normal, jamais une fausse sensation. Point important : pour les mocassins, souligner que la semelle liège se moule au pied et que beaucoup de clients reviennent pour dire que c'est devenu leur préféré — cela encourage à ne pas abandonner au premier port.",
-      "example_count": 19
-    },
-    {
-      "topic": "pointure_echange",
-      "topic_label": "Échange de pointure après réception",
-      "situation": "Client a reçu une paire dans une mauvaise pointure et souhaite l'échanger pour la bonne taille. Inclut confirmation de pointure avant retour pour éviter les aller-retours inutiles, notamment sur mocassins où le rodage du cuir peut être trompeur. Le Wayne chausse légèrement grand : avec mesure précise, adapter la taille à la baisse si nécessaire.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour votre retour – on comprend tout à fait la situation.\n\n---\n\n**AVANT DE RETOURNER : Une question importante sur la pointure**\n\nSur un mocassin notamment, un léger excès de volume au premier essayage est souvent trompeur. Le cuir et la semelle en liège s'assouplissent avec le port et se moulent au pied après quelques sorties. Avant de retourner la paire, pouvez-vous me confirmer :\n- Avez-vous essayé la paire à l'intérieur pendant quelques minutes ?\n- Le problème persiste-t-il, ou était-ce juste la première impression ?\n- À quel endroit exactement trouvez-vous la boot trop grande ? (en longueur, au cou-de-pied, au talon ?)\n\nCe diagnostic simple peut éviter un aller-retour inutile.\n\n**Sur les modèles qui chaussent grand :**\nLe Wayne, le Deck, le Dakota, le Brogue Derby chaussent légèrement grand. Si votre mesure en cm vous place théoriquement en 43 mais que la paire vous semble grande, une demi-taille en dessous (42) peut être justifiée.\n\n**Si la gêne persiste au talon et à l'avant :**\nUne semelle d'ajustement en liège peut vraiment faire la différence : placée sous le pied, elle remonte le pied légèrement et réduit ce mouvement au talon. C'est une solution simple à tester avant d'envisager un échange, et que vous trouverez facilement chez un cordonnier.\n\n---\n\n**PROCÉDURE D'ÉCHANGE**\n\nNos échanges fonctionnent via un système d'avoir : vous retournez la paire, nous la recevons et contrôlons, puis nous vous envoyons un code avoir que vous utilisez pour recommander dans la bonne taille.\n\n**Étape 1 : Retourner la paire**\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour\n2. Emballez soigneusement la paire dans sa boîte d'origine avec le bon à l'intérieur\n3. Expédiez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\n**Étape 2 : Attendre la génération de l'avoir**\nDès réception et contrôle de la paire, nous vous enverrons un code avoir valable 6 mois. Vous pourrez alors recommander la paire dans la bonne taille sans rien débourser.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "Ton : friendly et patient. POINT CRITIQUE : toujours poser une question diagnostic avant d'accepter le retour, notamment pour les mocassins et les boots — un excès de volume au premier essayage est normal et le cuir s'assouplit. Cela évite un aller-retour inutile. Pour les modèles chaussant grand (Wayne, Deck, Dakota, Brogue Derby) : valider si une demi-taille en dessous est justifiée. Proposer la semelle d'ajustement en liège comme solution avant retour sur les problèmes de talon/avant. Engagements : système d'avoir obligatoire, pas d'échange direct. Frais de retour à charge du client sauf erreur de notre part.",
-      "example_count": 110
     },
     {
       "topic": "re__colis_non_r_cup_r_",
@@ -298,14 +394,6 @@
       "example_count": 33
     },
     {
-      "topic": "precommande_delai",
-      "topic_label": "Précommandes, dates de livraison annoncées, réassorts, retards",
-      "situation": "Client en précommande demande le statut, la date de livraison estimée, ou s'inquiète d'un délai. Articles en cours de fabrication (ceintures à boucles personnalisables, embauchoirs, chaussures). Client peut relancer plusieurs fois avant expédition. Un statut vide sur Shopify pour une précommande est NORMAL et n'indique pas un incident logistique.",
-      "response_template": "Bonjour [Prénom],\n\nVotre commande #[NUM] ([PRODUIT], taille/couleur [VARIANTE]) est bien en précommande, comme indiqué sur la fiche produit au moment de votre achat. La livraison est prévue pour [DATE : mi-novembre 2026 / mi-décembre 2026 / etc.].\n\n**Important à savoir :** Un statut de livraison vide sur Shopify est normal pour une précommande, ce n'est pas un incident. Votre commande est bien enregistrée et en cours de fabrication. Ne JAMAIS répondre qu'on va « vérifier pourquoi la commande n'est pas partie » sur une précommande.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
-      "key_points": "Ton empathique mais honnête. POINT CRITIQUE : un statut Shopify vide sur précommande = NORMAL, ne JAMAIS alarmer le client ni dire 'on va vérifier pourquoi ça ne part pas'. Jamais de fausse promesse sur délai serré. Distinction des deux vagues ceintures (Vague 1 boucles mi-octobre 2026 ; Vague 2 Gigi/Morricone mi-décembre 2026). Embauchoirs : toujours mi-novembre 2026. Formulation validée et testée. Toujours indiquer que le lien de suivi sera envoyé automatiquement dès prise en charge par le transporteur.",
-      "example_count": 80
-    },
-    {
       "topic": "re__re__re__re__commande__13848_confirm_e",
       "topic_label": "Re: Re: Re: Re: Commande #13848 confirmée",
       "situation": "Re: Re: Re: Re: Commande #13848 confirmée",
@@ -366,14 +454,6 @@
       "topic_label": "Re: Re: Re: Commande 13418",
       "situation": "Re: Re: Re: Commande 13418",
       "response_template": "Bonjour Thomas,\n\nVotre Wayne 42,5 (commande #13855) est déjà parti ! Vous pouvez suivre votre colis ici : https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR719864081TS\n\nUne fois que vous aurez fait votre comparaison, retournez simplement la paire qui ne convient pas via notre bon de retour (https://maxsauveur.com/pages/livraison-et-retour, motif \"avoir\") et nous émettrons un avoir dès réception.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "article_manquant_commande__13422",
-      "topic_label": "Article manquant commande #13422",
-      "situation": "Article manquant commande #13422",
-      "response_template": "Bonjour Eliott,\n\nMerci pour votre message et pour le détail de ce que vous avez reçu.\n\nLes chaussettes n'ont malheureusement pas pu être incluses dans votre colis : elles n'étaient plus disponibles en stock au moment de l'expédition. Nous n'aurions pas dû expédier la commande sans vous en informer au préalable.\n\nComme les chaussettes ne sont plus disponibles, nous pouvons vous proposer un avoir du montant correspondant, utilisable sur notre site. Y a-t-il un autre produit de la collection qui vous ferait de l'œil ?\n\nToutes nos excuses.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -1666,14 +1746,6 @@
       "example_count": 1
     },
     {
-      "topic": "commande",
-      "topic_label": "Commande",
-      "situation": "Commande",
-      "response_template": "Bonjour Arthur,\n\nVotre commande #13493 (Deck Marron 45) est en précommande. Nous attendons la réception de la marchandise la semaine prochaine, et votre colis partira dans la foulée, soit autour de la mi-octobre.\n\nDès que l'expédition est déclenchée, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "commande__13280",
       "topic_label": "Commande #13280",
       "situation": "Commande #13280",
@@ -2232,14 +2304,6 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et votre retour sur les numéros de téléphone, c'est une information importante.\n\nNous sommes actuellement en train de changer de ligne téléphonique, ce qui peut expliquer certains dysfonctionnements. Votre signalement nous aide à identifier précisément ce qui circule encore sur internet et qu'il faut corriger en priorité.\n\nPourriez-vous me préciser quelques détails ?\n\n1. Où avez-vous trouvé ce numéro ? (sur notre site maxsauveur.com, une page tierce, un moteur de recherche, un annuaire ?)\n2. Quel numéro exactement avez-vous composé ?\n3. Vers qui ou vers quoi avez-vous été redirigé ? (une personne tierce, un répondeur, rien ?)\n\nCes précisions nous permettront de mieux comprendre les anciens numéros qui circulent encore et de mettre à jour nos coordonnées en priorité.\n\nEn attendant, si vous avez une question urgente, n'hésitez pas à passer par notre formulaire de contact sur le site — nous répondons rapidement.\n\nCordialement,\nJohn de Max Sauveur",
       "key_points": "Ton : honnête et transparent sur la situation de changement de ligne. Montrer que le signalement est utile. Toujours demander des précisions (où, quel numéro, redirection vers qui) pour nettoyer efficacement les anciennes données. Ne pas s'excuser de manière excessive : c'est une situation en cours de résolution. Engagement : mettre à jour les coordonnées en priorité. Piège : ne pas ignorer le client ou donner l'impression que c'est un problème mineur — c'est un blocage de contact réel. Jamais proposer un numéro 'temporaire' si on n'en a pas.",
       "example_count": 19
-    },
-    {
-      "topic": "ceintures",
-      "topic_label": "Ceintures – Taille, ajustement et échange",
-      "situation": "Client demande sa taille de ceinture, souhaite échanger pour une autre taille ou couleur, ou pose une question sur les spécificités (longueur, boucle, ajustement). Inclut les vérifications de stock avant échange et les caractéristiques de coupe (notamment largeur variable).",
-      "response_template": "Bonjour [Prénom],\n\n**DÉTERMINER LA BONNE TAILLE**\n\nPour trouver votre taille de ceinture, la règle est simple : la taille correspond à la distance entre l'ardillon et le trou du milieu (sur 5 trous).\n\nEn pratique :\n- Pour un pantalon taille 40/42 → tour de taille ~85/90 cm → recommander 95 cm\n- Pour un pantalon taille 38 → tour de taille ~80/85 cm → recommander 90 cm\nLe 100 serait un peu grand et risquerait de dépasser trop sur le côté.\n\nChaque taille propose plusieurs trous, ce qui permet une marge des deux côtés pour un ajustement confortable.\n\n**CARACTÉRISTIQUES DE COUPE**\n\nCertains modèles présentent une largeur variable selon l'emplacement (exemple : la ceinture Jonas) :\n- 2 cm au niveau de la boucle et du bout\n- 2,5 cm sur la partie centrale\n\nC'est une caractéristique propre au style et qui lui donne ce galbe particulier. La description du site fait référence à la largeur aux extrémités.\n\n**POUR UN ÉCHANGE DE CEINTURE**\n\nPas de souci, on peut arranger ça. Voici la procédure :\n\n1. Téléchargez et complétez le bon de retour ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez « avoir »)\n2. Emballez soigneusement la ceinture avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\n   SSL – Solutions & Services Logistiques\n   14 avenue Lamartine\n   13170 Les Pennes-Mirabeau\n\nDès réception, on vérifie le stock disponible pour la taille et la couleur souhaitées, et on revient vers vous pour confirmer ce qu'on peut vous proposer avant d'émettre l'avoir.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande ou de retourner votre ceinture.\n\nAmicalement,\nJohn – Service Client – Max Sauveur",
-      "key_points": "Ton friendly et rassurant. Toujours expliquer la règle de mesure (ardillon-trou du milieu) plutôt que de demander la pointure. Vérifier le stock APRÈS réception du retour, pas avant — c'est un engagement, ne pas s'avancer sur la dispo. Pour les échanges : système d'avoir uniquement, même produit même couleur (sauf ajustement stock). Adresse logistique précise obligatoire. Ne jamais proposer de frais de retour pris en charge sauf erreur de préparation de notre côté. Les caractéristiques de coupe variable (largeur) sont normales et à valoriser comme un plus (style, galbe).",
-      "example_count": 4
     },
     {
       "topic": "_change_commande_12759",
