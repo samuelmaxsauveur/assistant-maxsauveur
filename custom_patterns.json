@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__commande__13417_confirm_e",
+      "topic_label": "Re: Re: Commande #13417 confirmée",
+      "situation": "Re: Re: Commande #13417 confirmée",
+      "response_template": "Bonjour Eddy,\n\nBonne nouvelle : votre Deck Marron 41.5 sera expédiée demain. Vous recevrez automatiquement un email avec votre lien de suivi dès la prise en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__suivi_commande_dakota",
       "topic_label": "Re: Suivi commande Dakota",
       "situation": "Re: Suivi commande Dakota",
