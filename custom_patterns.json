@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__re__re__commande_13418",
+      "topic_label": "Re: Re: Re: Re: Re: Commande 13418",
+      "situation": "Re: Re: Re: Re: Re: Commande 13418",
+      "response_template": "Bonjour Thomas,\n\nVotre Wayne 42,5 (commande #13855) est expédiée. Vous pouvez suivre votre colis ici : https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR724163930TS\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__commande__13417_confirm_e",
       "topic_label": "Re: Re: Commande #13417 confirmée",
       "situation": "Re: Re: Commande #13417 confirmée",
