@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__demande_de_pointure",
+      "topic_label": "Re: Demande de pointure",
+      "situation": "Re: Demande de pointure",
+      "response_template": "Bonjour Camille,\n\nLes commandes passées avant mardi 11h sont expédiées le mardi même, celles passées après sont expédiées le jeudi. La livraison suit sous 3 à 5 jours ouvrés, avec un email de suivi automatique dès que le colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande__13868",
       "topic_label": "COMMANDE #13868",
       "situation": "COMMANDE #13868",
