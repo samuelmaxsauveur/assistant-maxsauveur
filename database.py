@@ -206,6 +206,25 @@ def init_db():
                 updated_at      TEXT NOT NULL
             )
         """)
+        # Yotpo reviews and the mail asking to post them on Google. Reviews already
+        # published on the first run are kept as bare ids (status "known").
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS review_invites (
+                yotpo_id    TEXT PRIMARY KEY,
+                status      TEXT NOT NULL,
+                email       TEXT,
+                name        TEXT,
+                score       INTEGER,
+                content     TEXT,
+                subject     TEXT,
+                body        TEXT,
+                note        TEXT,
+                thread_id   TEXT,
+                sent_at     TEXT,
+                created_at  TEXT NOT NULL,
+                updated_at  TEXT NOT NULL
+            )
+        """)
         # Columns added after the first release of repair_cases: the table
         # already exists in production, so they are added one by one.
         existing = {row[1] for row in cursor.execute("PRAGMA table_info(repair_cases)")}
@@ -1096,5 +1115,117 @@ def delete_client_return(case_id):
     try:
         conn.execute("DELETE FROM client_returns WHERE id = ?", (case_id,))
         conn.commit()
+    finally:
+        conn.close()
+
+
+REVIEW_INVITE_COLUMNS = {"status", "email", "name", "score", "content", "subject", "body",
+                         "note", "thread_id", "sent_at"}
+
+
+def review_invites_seeded():
+    conn = get_connection()
+    try:
+        return conn.execute("SELECT 1 FROM review_invites LIMIT 1").fetchone() is not None
+    finally:
+        conn.close()
+
+
+def add_known_reviews(review_ids):
+    """Reviews published before this feature: all recorded together, or none."""
+    now = datetime.utcnow().isoformat()
+    conn = get_connection()
+    try:
+        conn.executemany(
+            "INSERT OR IGNORE INTO review_invites (yotpo_id, status, created_at, updated_at) VALUES (?, 'known', ?, ?)",
+            [(review_id, now, now) for review_id in review_ids])
+        conn.commit()
+    finally:
+        conn.close()
+
+
+def known_review_ids(review_ids):
+    """Those of `review_ids` already recorded, whatever their status."""
+    if not review_ids:
+        return set()
+    conn = get_connection()
+    try:
+        rows = conn.execute(
+            f"SELECT yotpo_id FROM review_invites WHERE yotpo_id IN ({', '.join('?' for _ in review_ids)})",
+            tuple(review_ids)).fetchall()
+        return {row["yotpo_id"] for row in rows}
+    finally:
+        conn.close()
+
+
+def add_review_invite(review_id, status, **fields):
+    now = datetime.utcnow().isoformat()
+    fields = {k: v for k, v in fields.items() if k in REVIEW_INVITE_COLUMNS}
+    columns = ["yotpo_id", "status", *fields, "created_at", "updated_at"]
+    values = [review_id, status, *fields.values(), now, now]
+    conn = get_connection()
+    try:
+        conn.execute(
+            f"INSERT OR IGNORE INTO review_invites ({', '.join(columns)}) VALUES ({', '.join('?' for _ in columns)})",
+            values)
+        conn.commit()
+    finally:
+        conn.close()
+
+
+def get_review_invite(review_id):
+    conn = get_connection()
+    try:
+        row = conn.execute("SELECT * FROM review_invites WHERE yotpo_id = ?", (review_id,)).fetchone()
+        return dict(row) if row else None
+    finally:
+        conn.close()
+
+
+def get_review_invites(statuses):
+    conn = get_connection()
+    try:
+        rows = conn.execute(
+            f"SELECT * FROM review_invites WHERE status IN ({', '.join('?' for _ in statuses)}) "
+            "ORDER BY created_at DESC, yotpo_id DESC",
+            tuple(statuses)).fetchall()
+        return [dict(r) for r in rows]
+    finally:
+        conn.close()
+
+
+def update_review_invite(review_id, **fields):
+    fields = {k: v for k, v in fields.items() if k in REVIEW_INVITE_COLUMNS}
+    fields["updated_at"] = datetime.utcnow().isoformat()
+    conn = get_connection()
+    try:
+        assignments = ", ".join(f"{k} = ?" for k in fields)
+        conn.execute(f"UPDATE review_invites SET {assignments} WHERE yotpo_id = ?", (*fields.values(), review_id))
+        conn.commit()
+    finally:
+        conn.close()
+
+
+def claim_review_invite(review_id):
+    """Take a mail for sending. False if someone else took it: never sent twice."""
+    conn = get_connection()
+    try:
+        cur = conn.execute(
+            "UPDATE review_invites SET status = 'sending', updated_at = ? "
+            "WHERE yotpo_id = ? AND status IN ('to_validate', 'failed')",
+            (datetime.utcnow().isoformat(), review_id))
+        conn.commit()
+        return cur.rowcount == 1
+    finally:
+        conn.close()
+
+
+def review_email_invited(email):
+    """This customer already has a mail waiting or sent."""
+    conn = get_connection()
+    try:
+        return conn.execute(
+            "SELECT 1 FROM review_invites WHERE email = ? AND status IN ('to_validate', 'sending', 'sent', 'failed') LIMIT 1",
+            (email,)).fetchone() is not None
     finally:
         conn.close()

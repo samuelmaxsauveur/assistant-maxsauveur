@@ -16,6 +16,7 @@ import ups_tracking
 import workshop_mail
 import madmax
 import retours
+import avis
 
 load_dotenv()
 
@@ -203,6 +204,10 @@ def _drafts_still_to_answer(service, drafts):
     return kept
 
 
+def _is_review_day():
+    return datetime.now(pytz.timezone("Europe/Paris")).weekday() == 0
+
+
 def send_morning_report():
     print(f"[{datetime.now()}] Sending morning report...")
     try:
@@ -213,13 +218,23 @@ def send_morning_report():
         return
 
     count = len(pending_drafts)
-    if count == 0:
+    # Reviews are a Monday matter: they never trigger or fill the other reports.
+    reviews_waiting = {}
+    if _is_review_day():
+        try:
+            reviews_waiting = {label: n for label, n in avis.counts_for_report().items() if n}
+        except Exception as e:
+            print(f"[{datetime.now()}] Reviews summary unavailable: {e}")
+    if count == 0 and not reviews_waiting:
         print(f"[{datetime.now()}] No pending drafts, skipping morning report.")
         return
 
     paris_tz = pytz.timezone("Europe/Paris")
     today_date = datetime.now(paris_tz).strftime("%d/%m/%Y")
-    subject = f"[Max Sauveur] {count} email(s) en attente — {today_date}"
+    if count:
+        subject = f"[Max Sauveur] {count} email(s) en attente — {today_date}"
+    else:
+        subject = f"[Max Sauveur] Avis clients à valider — {today_date}"
 
     # Build HTML body
     drafts_html = ""
@@ -301,6 +316,14 @@ def send_morning_report():
     except Exception as e:
         print(f"[{datetime.now()}] Returns summary unavailable: {e}")
 
+    reviews_html = ""
+    if reviews_waiting:
+        listing = " · ".join(f"{label} : {n}" for label, n in reviews_waiting.items())
+        reviews_html = f"""
+        <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 6px; padding: 12px; margin-bottom: 24px; font-size: 14px;">
+            ⭐ <strong>Avis clients</strong> : {listing} · <a href="{BASE_URL}/avis" style="color: #92400e;">relire et envoyer</a>
+        </div>"""
+
     html_body = f"""<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -314,6 +337,7 @@ def send_morning_report():
         <p style="margin: 0 0 28px 0; color: #666; font-size: 15px;">
             {count} email(s) en attente de validation pour le {today_date}.
         </p>
+        {reviews_html}
         {returns_html}
         {drafts_html}
         <hr style="border: none; border-top: 1px solid #eee; margin: 24px 0;">
@@ -506,6 +530,23 @@ def start():
         "interval",
         minutes=60,
         id="client_returns"
+    )
+
+    # Reviews published on Yotpo: prepares the mails for the Avis page, never sends one.
+    # Every Monday, just before the 6 am report.
+    scheduler.add_job(
+        avis.tick,
+        CronTrigger(day_of_week="mon", hour=5, minute=45, timezone=paris_tz),
+        id="review_invites",
+        misfire_grace_time=3600
+    )
+
+    # Right after a deployment: reviews published before it never get a mail,
+    # those published after it do.
+    scheduler.add_job(
+        avis.seed,
+        id="review_invites_seed",
+        misfire_grace_time=3600
     )
 
     # Mad Max gift cards: links on 6 Nov, reminders on the 1st of each month.

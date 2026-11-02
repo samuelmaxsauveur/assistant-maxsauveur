@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Avis — Max Sauveur</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f5; color: #333; }
+        header { background: #111; color: white; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        header h1 { font-size: 17px; font-weight: 600; }
+        .header-links { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+        header a { color: #aaa; text-decoration: none; font-size: 14px; white-space: nowrap; }
+        header a:hover { color: white; }
+        .container { max-width: 900px; margin: 18px auto 90px; padding: 0 12px; }
+        .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+        .tab { padding: 8px 12px; border-radius: 20px; background: #fff; color: #444; text-decoration: none; font-size: 13px; border: 1px solid #e5e5e5; white-space: nowrap; }
+        .tab.active { background: #0f766e; color: #fff; border-color: #0f766e; }
+        .tab .n { display: inline-block; min-width: 18px; padding: 0 5px; border-radius: 9px; background: #f0f0f0; color: #555; font-size: 11px; text-align: center; margin-left: 4px; }
+        .tab.active .n { background: rgba(255,255,255,0.25); color: #fff; }
+        .tab.empty { opacity: 0.55; }
+        .card { background: white; border-radius: 12px; margin-bottom: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); padding: 14px 16px; }
+        .card-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .meta { font-size: 13px; color: #777; line-height: 1.6; overflow-wrap: anywhere; }
+        .alert { border: 2px solid #fcd34d; background: #fffbeb; font-size: 14px; line-height: 1.5; }
+        .note { font-size: 13px; color: #92400e; margin-top: 6px; }
+        .stars { color: #b45309; letter-spacing: 1px; }
+        label.f { display: block; font-size: 12px; font-weight: 600; color: #555; margin: 10px 0 4px; }
+        input, textarea { width: 100%; padding: 9px 10px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 15px; font-family: inherit; background: #fff; }
+        textarea { resize: vertical; min-height: 340px; line-height: 1.5; font-size: 14px; }
+        pre.mail { white-space: pre-wrap; overflow-wrap: anywhere; font-family: inherit; font-size: 14px; line-height: 1.5; background: #f8fafc; border-radius: 8px; padding: 10px 12px; margin-top: 10px; }
+        .actions { display: flex; gap: 8px; align-items: center; margin-top: 10px; flex-wrap: wrap; }
+        .btn { padding: 9px 14px; border: none; border-radius: 8px; font-size: 14px; cursor: pointer; }
+        .btn:disabled { opacity: 0.5; cursor: default; }
+        .btn-teal { background: #0f766e; color: #fff; }
+        .btn-gray { background: #eee; color: #333; }
+        .sendbar { position: sticky; bottom: 0; background: #fff; border-top: 1px solid #e5e5e5; padding: 12px; margin: 0 -12px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+        .sendbar .btn { font-size: 15px; font-weight: 600; }
+        #result { font-size: 14px; }
+        .empty-state { text-align: center; color: #888; font-size: 14px; padding: 24px 8px; }
+    </style>
+</head>
+<body>
+<header>
+    <h1>⭐ Avis — Max Sauveur</h1>
+    <div class="header-links">
+        <a href="/">📬 Emails</a>
+        <a href="/sav">🔧 SAV</a>
+        <a href="/reparations">🛠 Réparations</a>
+        <a href="/retours">↩️ Retours</a>
+        <a href="/avis" style="color:white;">⭐ Avis</a>
+    </div>
+</header>
+<div class="container">
+
+    {% if not configured %}
+    <div class="card alert">Les clés Yotpo ne sont pas configurées : aucun avis n'est détecté pour l'instant.</div>
+    {% endif %}
+    {% if not review_url %}
+    <div class="card alert">Le lien Google n'est pas configuré (GOOGLE_REVIEW_URL) : aucun mail ne peut partir pour l'instant.</div>
+    {% endif %}
+    {% if configured and not seeded %}
+    <div class="card alert">Première lecture de Yotpo à venir : les avis déjà publiés seront simplement notés, sans aucun mail. Ensuite, les nouveaux avis validés arrivent ici chaque lundi matin.</div>
+    {% endif %}
+
+    <div class="tabs">
+        {% for key, title, _ in stages %}
+        <a class="tab {% if key == tab %}active{% endif %} {% if not counts[key] %}empty{% endif %}" href="/avis?onglet={{ key }}">{{ title }}<span class="n">{{ counts[key] }}</span></a>
+        {% endfor %}
+    </div>
+
+    {% for i in invites %}
+    <div class="card invite" data-id="{{ i.yotpo_id }}">
+        <div class="card-title">{{ i.name or 'Client sans nom' }} <span class="stars">{{ '★' * (i.score or 0) }}{{ '☆' * (5 - (i.score or 0)) }}</span></div>
+        <div class="meta">{{ i.email }}{% if i.sent_at %} · envoyé le {{ i.sent_at[:10] }}{% endif %}</div>
+        {% if i.note %}<div class="note">{{ i.note }}</div>{% endif %}
+        {% if i.status == 'sending' %}<div class="note">L'envoi a été interrompu. Regarde dans les messages envoyés de samuel@ s'il est parti avant de le remettre à valider.</div>{% endif %}
+
+        {% if i.status in sendable %}
+        <label class="f">Objet</label>
+        <input class="subject" value="{{ i.subject or '' }}">
+        <label class="f">Mail</label>
+        <textarea class="body">{{ i.body or '' }}</textarea>
+        <div class="actions">
+            <button class="btn btn-gray" onclick="act(this, 'retirer')">Retirer</button>
+        </div>
+        {% else %}
+        {% if i.body %}<pre class="mail"><strong>{{ i.subject }}</strong>
+
+{{ i.body }}</pre>{% elif i.content %}<pre class="mail">{{ i.content }}</pre>{% endif %}
+        {% if i.status != 'sent' %}
+        <div class="actions">
+            <button class="btn btn-gray" onclick="act(this, 'remettre')">Remettre à valider</button>
+        </div>
+        {% endif %}
+        {% endif %}
+    </div>
+    {% else %}
+    <div class="card empty-state">Rien ici pour l'instant.</div>
+    {% endfor %}
+
+    {% if tab == 'a-valider' and invites %}
+    <div class="sendbar">
+        <button class="btn btn-teal" id="sendAll" onclick="sendAll()" {% if not review_url %}disabled{% endif %}>Envoyer ces {{ invites|length }} mail{{ 's' if invites|length > 1 }}</button>
+        <span id="result" class="meta">Depuis samuel@maxsauveur.com</span>
+    </div>
+    {% endif %}
+    {% if tab == 'probleme' and invites %}
+    <div class="sendbar">
+        <button class="btn btn-teal" id="sendAll" onclick="sendAll()" {% if not review_url %}disabled{% endif %}>Réessayer les mails en échec</button>
+        <span id="result" class="meta">Depuis samuel@maxsauveur.com</span>
+    </div>
+    {% endif %}
+</div>
+<script>
+async function post(url, data) {
+    const res = await fetch(url, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data || {})});
+    const out = await res.json();
+    if (!out.success) throw new Error(out.error || 'Erreur');
+    return out;
+}
+
+function saveCard(card) {
+    return post(`/avis/${card.dataset.id}/mail`, {
+        subject: card.querySelector('.subject').value,
+        body: card.querySelector('.body').value,
+    }).then(() => { delete card.dataset.dirty; });
+}
+
+// The whole mail is readable without scrolling inside the field.
+function fit(area) {
+    area.style.height = 'auto';
+    area.style.height = (area.scrollHeight + 4) + 'px';
+}
+document.querySelectorAll('textarea.body').forEach(area => {
+    fit(area);
+    area.addEventListener('input', () => fit(area));
+});
+window.addEventListener('resize', () => document.querySelectorAll('textarea.body').forEach(fit));
+
+document.querySelectorAll('.invite').forEach(card => {
+    card.querySelectorAll('.subject, .body').forEach(field => {
+        field.addEventListener('input', () => { card.dataset.dirty = '1'; });
+        field.addEventListener('change', () => saveCard(card).catch(e => alert(e.message)));
+    });
+});
+
+async function act(button, action) {
+    button.disabled = true;
+    try {
+        await post(`/avis/${button.closest('.invite').dataset.id}/${action}`);
+        location.reload();
+    } catch (e) {
+        alert(e.message);
+        button.disabled = false;
+    }
+}
+
+async function sendAll() {
+    const cards = [...document.querySelectorAll('.invite')].filter(c => c.querySelector('.body'));
+    if (!cards.length) return;
+    if (!confirm(`Envoyer ${cards.length} mail(s) depuis samuel@maxsauveur.com ?`)) return;
+    const button = document.getElementById('sendAll');
+    const result = document.getElementById('result');
+    button.disabled = true;
+    result.textContent = 'Envoi en cours...';
+    try {
+        await Promise.all(cards.filter(c => c.dataset.dirty).map(saveCard));
+        const out = await post('/avis/envoyer', {ids: cards.map(c => c.dataset.id)});
+        const parts = [`${out.sent} envoyé(s)`];
+        if (out.failed) parts.push(`${out.failed} en échec`);
+        if (out.unpublished) parts.push(`${out.unpublished} dépublié(s) sur Yotpo, écarté(s)`);
+        alert(parts.join(', '));
+        location.href = out.failed ? '/avis?onglet=probleme' : '/avis?onglet=envoyes';
+    } catch (e) {
+        result.textContent = e.message;
+        button.disabled = false;
+    }
+}
+</script>
+</body>
+</html>
