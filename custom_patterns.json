@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__suivi_commande_dakota",
+      "topic_label": "Re: Suivi commande Dakota",
+      "situation": "Re: Suivi commande Dakota",
+      "response_template": "Bonjour Antoine,\n\nVotre commande #13578 (Dakota Noir 43) est bien enregistrée et en cours d'acheminement vers notre entrepôt. Les Dakota sont prévues pour être expédiées dans la première semaine de novembre, et vous recevrez automatiquement un email avec votre lien de suivi dès la prise en charge par le transporteur.\n\nBonne journée,\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__demande_de_pointure",
       "topic_label": "Re: Demande de pointure",
       "situation": "Re: Demande de pointure",
