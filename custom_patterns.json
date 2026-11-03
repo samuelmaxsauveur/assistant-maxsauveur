@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_02_21_27_04",
+      "topic_label": "Form name Form submitted 2026-11-02 21:27:04",
+      "situation": "Form name Form submitted 2026-11-02 21:27:04",
+      "response_template": "Bonjour Rayane,\n\nCertains points relais peuvent fermer temporairement ou définitivement, auquel cas Chronopost est prévenu de ne pas y déposer les colis.\n\nVotre commande n'étant pas encore expédiée, nous pouvons tout à fait rediriger votre Dakota vers un nouveau point relais Chrono2Shop de votre choix.\n\nPourriez-vous sélectionner un nouveau point relais sur ce lien et nous communiquer l'adresse complète ?\nhttps://www.chronopost.fr/expeditionAvanceeSec/ounoustrouver.html\n\nDès réception, nous mettons à jour votre livraison.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__annulation_de_commande_13483",
       "topic_label": "Re: Annulation de commande 13483",
       "situation": "Re: Annulation de commande 13483",
