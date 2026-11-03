@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_02_17_12_22",
+      "topic_label": "Form name Form submitted 2026-11-02 17:12:22",
+      "situation": "Form name Form submitted 2026-11-02 17:12:22",
+      "response_template": "Bonjour Gauthier,\n\nMerci pour votre message. Avant de déclencher la procédure, pourriez-vous nous envoyer quelques photos de la paire ? Idéalement :\n\n- Une vue d'ensemble de la botte (côté extérieur)\n- Un gros plan sur la zone de décollement au talon gauche\n- Une vue de la semelle\n\nCela nous permettra d'évaluer la situation et de vous proposer la bonne solution.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__au",
       "topic_label": "Re: Au",
       "situation": "Re: Au",
