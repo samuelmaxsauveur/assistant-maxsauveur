@@ -104,9 +104,12 @@
             <label class="btn btn-gray">🖼 Choisir des photos
                 <input type="file" accept="image/*" multiple onchange="uploadPhotos(this)">
             </label>
+            <label class="btn btn-purple">📦 Colis non récupéré : photo de l'étiquette
+                <input type="file" accept="image/*" onchange="uploadPhotos(this, 'unclaimed')">
+            </label>
             <button class="btn btn-gray" onclick="checkNow(this)">🔄 Vérifier les réponses</button>
         </div>
-        <div class="meta" style="margin-top:8px;">Un bon par photo, avec la date d'arrivée chez SSL écrite au stylo. Comptez une vingtaine de secondes de lecture par bon.</div>
+        <div class="meta" style="margin-top:8px;">Un bon ou une étiquette par photo, avec la date d'arrivée chez SSL écrite au stylo. Comptez une vingtaine de secondes de lecture par photo.</div>
         <div class="progress" id="upload-progress" style="display:none;">
             <img id="upload-preview" alt="">
             <div style="flex:1; min-width:0;">
@@ -132,9 +135,9 @@
         <a class="row {% if view and view.case.id == c.id %}sel{% endif %}" href="/retours?onglet={{ tab }}&id={{ c.id }}#fiche">
             <span class="dot {{ 'bad' if c.data.error else (s.alert or 'warn') }}"></span>
             <span class="who">
-                <strong>{{ c.customer_name or slip.name or 'Client à identifier' }}</strong>
+                <strong>{% if c.data.kind == 'unclaimed' %}📦 {% endif %}{{ c.customer_name or slip.name or 'Client à identifier' }}</strong>
                 {% if c.order_number %}<span class="meta"> · #{{ c.order_number }}</span>{% endif %}
-                <div class="sub">{{ s['items'] or '' }}{% for i in slip['items'] or [] %}{% if i.reason_code %} · {{ i.reason_code }} {{ reasons[i.reason_code] }}{% endif %}{% endfor %}{% if c.data.choice %} · {{ choices[c.data.choice] }}{% endif %}</div>
+                <div class="sub">{% if c.data.kind == 'unclaimed' %}Colis non récupéré{% if s.get('items') %} · {% endif %}{% endif %}{{ s.get('items') or '' }}{% for i in slip.get('items') or [] %}{% if i.reason_code %} · {{ i.reason_code }} {{ reasons[i.reason_code] }}{% endif %}{% endfor %}{% if c.data.choice %} · {{ choices[c.data.choice] }}{% endif %}</div>
             </span>
             {% if c.status == 'waiting_client' and c.data.reminder_due %}<span class="pill amber">relance</span>{% endif %}
             <span class="meta">{{ short_date(c.data.arrival_date) }}</span>
@@ -145,12 +148,13 @@
 
     {% if view %}
     {% set c = view.case %}{% set d = view.data %}{% set r = view.result %}{% set a = r.amounts %}{% set o = view.order %}
+    {% set unclaimed = d.kind == 'unclaimed' %}
     <div class="card" id="fiche">
         <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:flex-start;">
             <div>
                 <div class="card-title">{{ c.customer_name or 'Client à identifier' }}{% if o %} · <a href="{{ view.admin_link }}" target="_blank">commande {{ o.name }}</a>{% endif %}</div>
-                <div class="meta">{% if o %}Commandée le {{ short_date(o.created_at) }} · {{ o.email }}{% if o.carrier %} · livrée par {{ o.carrier }}{% endif %}<br>{% endif %}
-                    Arrivée chez SSL le {{ short_date(d.arrival_date) }} · <span class="pill">{{ status_labels[c.status] }}</span></div>
+                <div class="meta">{% if o %}Commandée le {{ short_date(o.created_at) }} · {{ o.email }}{% if o.carrier %} · {{ 'expédiée' if unclaimed else 'livrée' }} par {{ o.carrier }}{% endif %}<br>{% endif %}
+                    Arrivée chez SSL le {{ short_date(d.arrival_date) }} · {% if unclaimed %}<span class="pill amber">📦 Colis non récupéré</span> {% endif %}<span class="pill">{{ status_labels[c.status] }}</span></div>
             </div>
             {% if view.next_id %}<a class="btn btn-gray" href="/retours?onglet={{ tab }}&id={{ view.next_id }}#fiche">Suivant →</a>{% endif %}
         </div>
@@ -158,12 +162,14 @@
         {% if d.error %}<div class="card error" style="margin:12px 0 0;"><div class="meta">⚠️ {{ d.error }}</div></div>{% endif %}
 
         <div class="section" style="display:flex; gap:14px; flex-wrap:wrap;">
-            <div class="thumbs">{% for p in d.photos or [] %}<a href="/retours/{{ c.id }}/photo/{{ p }}" target="_blank"><img src="/retours/{{ c.id }}/photo/{{ p }}" alt="bon de retour"></a>{% endfor %}</div>
+            <div class="thumbs">{% for p in d.photos or [] %}<a href="/retours/{{ c.id }}/photo/{{ p }}" target="_blank"><img src="/retours/{{ c.id }}/photo/{{ p }}" alt="photo du dossier"></a>{% endfor %}</div>
             {% set slip = d.slip or {} %}
             <div class="meta" style="flex:1; min-width:200px;">
-                <strong>Lu sur le bon :</strong><br>
-                Nom : {{ slip.name or '?' }} · N° : {{ slip.order_number or '?' }}<br>
-                {% for i in slip['items'] or [] %}{{ i.reference or '?' }}{% if i.size %}, {{ i.size }}{% endif %}{% if i.quantity and i.quantity > 1 %} × {{ i.quantity }}{% endif %}{% if i.reason_code %} · {{ i.reason_code }} {{ reasons[i.reason_code] }}{% endif %}{% if i.choice %} · {{ choices[i.choice] }}{% endif %}<br>{% endfor %}
+                <strong>Lu sur {{ "l'étiquette" if unclaimed else 'le bon' }} :</strong><br>
+                Nom : {{ slip.name or '?' }} · N° : {{ slip.order_number or '?' }}{% if o and slip.order_number and slip.order_number != o.number %} <span style="color:#b45309;">(dossier sur {{ o.name }})</span>{% endif %}<br>
+                {% if unclaimed %}Suivi : {{ (slip.tracking_numbers or []) | join(', ') or '?' }}{% if slip.carrier %} · {{ slip.carrier }}{% endif %}<br>{% endif %}
+                Date au stylo : {{ short_date(slip.arrival_date) if slip.arrival_date else 'non lue' }}<br>
+                {% for i in slip.get('items') or [] %}{{ i.reference or '?' }}{% if i.size %}, {{ i.size }}{% endif %}{% if i.quantity and i.quantity > 1 %} × {{ i.quantity }}{% endif %}{% if i.reason_code %} · {{ i.reason_code }} {{ reasons[i.reason_code] }}{% endif %}{% if i.choice %} · {{ choices[i.choice] }}{% endif %}<br>{% endfor %}
                 {% if slip.client_shipping_date %}Expédié par le client le {{ short_date(slip.client_shipping_date) }} (indicatif)<br>{% endif %}
                 {% if slip.comment %}Note : {{ slip.comment }}<br>{% endif %}
                 {% if slip.unreadable %}<span style="color:#b45309;">Illisible : {{ slip.unreadable }}</span>{% endif %}
@@ -171,18 +177,22 @@
         </div>
 
         <div class="section" id="le-retour">
-            <h3>Le retour</h3>
+            <h3>{{ 'Le colis' if unclaimed else 'Le retour' }}</h3>
+            {% if not o %}<div class="meta" style="margin-bottom:8px;">Rien trouvé dans Shopify : regarde la photo, puis saisis le nom du client ou le numéro de commande.</div>{% endif %}
             <div class="grid">
+                <div class="full"><label class="f">Nom du client</label><input id="f-name" placeholder="Prénom et nom" value="{{ d.name_typed or slip.name or c.customer_name or '' }}"></div>
                 <div><label class="f">N° de commande</label><input id="f-order" inputmode="numeric" value="{{ c.order_number or '' }}"></div>
                 <div><label class="f">Arrivée chez SSL</label><input id="f-arrival" type="date" value="{{ d.arrival_date or '' }}"></div>
+                {% if not unclaimed %}
                 <div class="full"><label class="f">Le client demande</label>
                     <select id="f-choice">
                         <option value="" {% if not d.choice %}selected{% endif %}>Non précisé</option>
                         {% for k, label in choices.items() %}<option value="{{ k }}" {% if d.choice == k %}selected{% endif %}>{{ label }}</option>{% endfor %}
                     </select>
                 </div>
+                {% endif %}
                 {% if o %}
-                <div class="full"><label class="f">Articles retournés</label>
+                <div class="full"><label class="f">{{ 'Articles dans le colis' if unclaimed else 'Articles retournés' }}</label>
                     {% for l in o.lines %}
                     {% set q = (d.returned or {}).get(l.id) %}
                     <div class="line">
@@ -201,7 +211,7 @@
         </div>
 
         <div class="section" id="controles">
-            <h3>Contrôles · <a href="#le-retour" style="text-transform:none; letter-spacing:0;">modifier la date, la demande ou les articles</a></h3>
+            <h3>Contrôles · <a href="#le-retour" style="text-transform:none; letter-spacing:0;">modifier le client, la commande ou la date</a></h3>
             {% if updated %}<div class="updated">✅ Contrôles et montants mis à jour.</div>{% endif %}
             <ul class="checks">{% for ch in r.checks %}<li class="{{ ch.level }}">{{ ch.text }}</li>{% endfor %}</ul>
         </div>
@@ -209,6 +219,18 @@
         {% if a %}
         <div class="section">
             <h3>Montants</h3>
+            {% if unclaimed %}
+            <div class="amounts">
+                <div class="amount"><div class="l">Payé pour les articles</div><div class="v">{{ euros(a.paid) }}</div></div>
+                <div class="amount"><div class="l">Frais de retour</div><div class="v">− {{ euros(a.fee) }}</div></div>
+                <div class="amount hi"><div class="l">Remboursement</div><div class="v">{{ euros(a.refund) }}</div></div>
+            </div>
+            <div class="meta" style="margin-top:6px;">
+                Les frais de livraison initiaux{% if o.shipping %} ({{ euros(o.shipping) }}){% endif %} ne sont pas remboursés.
+                {% if a.credit_paid %} La part payée en avoir ({{ euros(a.credit_paid) }}) n'est pas remboursable.{% endif %}
+                {% if view.refund_deadline %}<br>En cas de remboursement : au plus tard le <strong>{{ fr_date(view.refund_deadline) }}</strong> (14 jours après la réception du colis, comme prévu par tes conditions).{% endif %}
+            </div>
+            {% else %}
             <div class="amounts">
                 <div class="amount"><div class="l">Prix catalogue</div><div class="v">{{ euros(a.catalogue) }}</div></div>
                 <div class="amount"><div class="l">Geste</div><div class="v">+ {{ euros(a.gesture) }}</div></div>
@@ -220,14 +242,16 @@
                 {% if a.credit_paid %} La part payée en avoir ({{ euros(a.credit_paid) }}) n'est pas remboursable.{% endif %}
                 {% if view.refund_deadline %}<br>À rembourser au plus tard le <strong>{{ fr_date(view.refund_deadline) }}</strong> (10 jours ouvrés après l'arrivée, comme promis sur le bon).{% endif %}
             </div>
+            {% endif %}
         </div>
         {% endif %}
 
         {% if c.status == 'waiting_client' %}
         <div class="section">
-            <h3>Proposition envoyée</h3>
+            <h3>{{ 'Mail envoyé' if unclaimed else 'Proposition envoyée' }}</h3>
             <div class="meta">Envoyée le {{ short_date((d.offer_sent_at or d.last_sent_at or '')[:10]) }}{% if view.offer_deadline and d.offer_kind == 'bonus' %} · sans réponse, passage en « À rembourser » le {{ fr_date(view.offer_deadline) }}{% endif %}.
-                {% if d.reminder_due %}<br><strong>Relance prête ci-dessous.</strong>{% endif %}</div>
+                {% if d.reminder_due %}<br><strong>Relance prête ci-dessous.</strong>{% endif %}
+                {% if unclaimed %}<br>Le dossier reste ici tant que le client n'a pas répondu.{% endif %}</div>
         </div>
         {% endif %}
 
@@ -241,8 +265,13 @@
 
         {% if c.status in ('waiting_client', 'reply_to_read') %}
         <div class="actions">
+            {% if unclaimed %}
+            <button class="btn btn-purple" onclick="customerChoice('relay', this)">Il choisit un autre point relais</button>
+            <button class="btn btn-gray" onclick="customerChoice('refund', this)">Il veut le remboursement{% if a %} ({{ euros(a.refund) }}){% endif %}</button>
+            {% else %}
             <button class="btn btn-purple" onclick="customerChoice('credit', this)">Il veut l'avoir{% if a and d.offer_kind != 'plain' %} ({{ euros(d.offer_amount or a.bonus) }}){% elif a %} ({{ euros(d.offer_amount or a.catalogue) }}){% endif %}</button>
             <button class="btn btn-gray" onclick="customerChoice('refund', this)">Il veut le remboursement</button>
+            {% endif %}
             <span class="msg" id="choice-msg"></span>
         </div>
         {% endif %}
@@ -266,6 +295,17 @@
         </div>
         {% endif %}
 
+        {% if c.status == 'to_reship' %}
+        <div class="section">
+            <h3>À réexpédier par toi</h3>
+            <div class="meta">Renvoie la commande au point relais indiqué dans sa réponse, sans frais pour le client, puis clique ici.</div>
+            <div class="actions">
+                {% if view.admin_link %}<a class="btn btn-teal" href="{{ view.admin_link }}" target="_blank">Ouvrir la commande dans Shopify</a>{% endif %}
+                <button class="btn btn-gray" onclick="setStatus('done', this, 'colis réexpédié')">C'est réexpédié</button>
+            </div>
+        </div>
+        {% endif %}
+
         {% if c.status not in ('done', 'refused') %}
         <div class="section">
             <h3>Le mail</h3>
@@ -278,7 +318,7 @@
                         </optgroup>{% endif %}
                     </select>
                 </div>
-                <div><label class="f">Montant (laisser vide = calcul automatique)</label><input id="m-amount" inputmode="decimal" value="{{ d.amount_override or '' }}" placeholder="{% if a %}avoir {{ a.catalogue }} / bonifié {{ a.bonus }} / remb. {{ a.refund }}{% endif %}"></div>
+                <div><label class="f">Montant (laisser vide = calcul automatique)</label><input id="m-amount" inputmode="decimal" value="{{ d.amount_override or '' }}" placeholder="{% if a and unclaimed %}remb. {{ a.refund }}{% elif a %}avoir {{ a.catalogue }} / bonifié {{ a.bonus }} / remb. {{ a.refund }}{% endif %}"></div>
                 <div class="full"><label class="f">Consignes particulières (facultatif)</label><textarea id="m-consignes" rows="2" placeholder="ex. il garde la ceinture BEBELT : déduire 39 € de l'avoir">{{ d.consignes or '' }}</textarea></div>
             </div>
             <div class="actions"><button class="btn btn-gray" onclick="prepareMail(this)">✍️ Préparer le mail</button><span class="msg" id="m-msg"></span></div>
@@ -295,7 +335,7 @@
         <div class="section">
             <div class="actions" style="margin-top:0;">
                 {% if c.status == 'to_check' %}<button class="btn btn-red" onclick="setStatus('refused', this, 'refusé sans mail')">Refuser sans mail</button>{% endif %}
-                {% if c.status in ('waiting_client', 'reply_to_read', 'credit_to_send') %}<button class="btn btn-gray" onclick="setStatus('to_check', this)">Revenir à « À traiter »</button>{% endif %}
+                {% if c.status in ('waiting_client', 'reply_to_read', 'credit_to_send', 'to_reship') %}<button class="btn btn-gray" onclick="setStatus('to_check', this)">Revenir à « À traiter »</button>{% endif %}
                 {% if c.status in ('done', 'refused') %}
                 {# Back to the step the file was closed from; older files that went through « À rembourser » go back there. #}
                 {% set back = d.closed_from or ('to_refund' if 'refunded_before' in d else 'to_check') %}
@@ -336,7 +376,10 @@ function busy(btn, on, label) {
 // tab undefined: stay on this step; null: the step the file is now in.
 function go(id, tab, extra) {
     const t = tab === undefined ? TAB : tab;
-    location.href = '/retours?' + (t ? 'onglet=' + t + '&' : '') + (id ? 'id=' + id : '') + (extra || '') + (id ? '#fiche' : '');
+    const url = '/retours?' + (t ? 'onglet=' + t + '&' : '') + (id ? 'id=' + id : '') + (extra || '') + (id ? '#fiche' : '');
+    // The same address with a #fiche does not reload the page on its own: a second correction would seem lost.
+    if (location.pathname + location.search + location.hash === url) location.reload();
+    else location.href = url;
 }
 
 // A phone photo weighs 3 to 5 MB: shrunk to 1600 px it goes up in a second,
@@ -359,7 +402,7 @@ function shrink(file) {
     });
 }
 
-function sendPhoto(blob, onProgress) {
+function sendPhoto(blob, onProgress, kind) {
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
         xhr.open('POST', '/retours/nouveau');
@@ -377,14 +420,16 @@ function sendPhoto(blob, onProgress) {
         xhr.ontimeout = () => reject(new Error('pas de réponse après 3 minutes, réessaie'));
         const fd = new FormData();
         fd.append('photo', blob, 'bon.jpg');
+        if (kind) fd.append('kind', kind);
         xhr.send(fd);
     });
 }
 
-async function uploadPhotos(input) {
+async function uploadPhotos(input, kind) {
     const files = [...input.files];
     input.value = '';
     if (!files.length) return;
+    const what = kind ? 'l\'étiquette' : 'le bon';
     const card = document.querySelector('.card.upload');
     const box = document.getElementById('upload-progress');
     const step = document.getElementById('upload-step');
@@ -411,26 +456,26 @@ async function uploadPhotos(input) {
                     step.textContent = `⏳ Envoi de la photo${n}… ${Math.round(p * 100)} %`;
                     detail.textContent = `${Math.round(blob.size / 1024)} Ko`;
                 } else if (!reading) {
-                    step.textContent = `⏳ Photo${n} bien reçue : lecture du bon…`;
+                    step.textContent = `⏳ Photo${n} bien reçue : lecture de ${what}…`;
                     const tickReading = () => {
                         const s = Math.round((Date.now() - started) / 1000);
-                        detail.textContent = `Claude lit le bon et cherche la commande dans Shopify (${s} s)`;
+                        detail.textContent = `Claude lit ${what} et cherche la commande dans Shopify (${s} s)`;
                         bar.style.width = Math.min(95, 70 + s) + '%';
                     };
                     tickReading();
                     reading = setInterval(tickReading, 1000);
                 }
-            });
+            }, kind);
             first = first || j.id;
         } catch (e) {
             failed++;
-            msg.textContent = '⚠️ Bon' + n + ' : ' + e.message;
+            msg.textContent = '⚠️ Photo' + n + ' : ' + e.message;
         }
         if (reading) clearInterval(reading);
     }
     if (first) {
         bar.style.width = '100%';
-        step.textContent = failed ? '⚠️ Un bon n\'est pas passé (voir ci-dessous), ouverture des autres…' : '✅ Bon lu, ouverture de la fiche…';
+        step.textContent = failed ? '⚠️ Une photo n\'est pas passée (voir ci-dessous), ouverture des autres…' : '✅ Photo lue, ouverture de la fiche…';
         detail.textContent = '';
         if (failed) await new Promise(res => setTimeout(res, 4000));
         go(first, 'a-traiter');
@@ -463,10 +508,12 @@ async function recompute() {
     const msg = document.getElementById('re-msg');
     busy(btn, true, '⏳ Mise à jour…');
     msg.textContent = '';
+    const field = id => { const el = document.getElementById(id); return el ? el.value : undefined; };
     const body = {
-        order_number: document.getElementById('f-order').value,
-        arrival_date: document.getElementById('f-arrival').value,
-        choice: document.getElementById('f-choice').value,
+        name: field('f-name'),
+        order_number: field('f-order'),
+        arrival_date: field('f-arrival'),
+        choice: field('f-choice'),
     };
     if (document.querySelector('.f-line')) body.returned = returnedLines();
     try {
@@ -482,8 +529,16 @@ function scheduleRecompute() {
     document.getElementById('re-msg').textContent = '⏳ Mise à jour des contrôles dans un instant…';
     recomputeTimer = setTimeout(recompute, 1200);
 }
-document.querySelectorAll('#f-arrival, #f-choice, #f-order, .f-line, #le-retour select.qty')
+document.querySelectorAll('#f-name, #f-arrival, #f-choice, #f-order, .f-line, #le-retour select.qty')
     .forEach(el => el.addEventListener('change', scheduleRecompute));
+// A typed name or number only counts once the field is left: say so, and let Enter do it.
+document.querySelectorAll('#f-name, #f-order').forEach(el => {
+    el.addEventListener('input', () => {
+        clearTimeout(recomputeTimer);
+        document.getElementById('re-msg').textContent = '✍️ Appuie sur Entrée ou sur « Valider » pour chercher cette commande.';
+    });
+    el.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); el.blur(); } });
+});
 
 function templateChanged() {
     const t = document.getElementById('m-template');

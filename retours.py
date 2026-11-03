@@ -7,6 +7,10 @@ credit already used, past refunds) and drafts the email Samuel picks. It
 creates the credit codes and reads the customers' answers. Refunds stay with
 Samuel, in Shopify: the assistant only computes them and notices when they
 are done. No email leaves without Samuel's click.
+
+The same files also follow the parcels a customer never picked up: they start
+from the photo of the label, then the customer chooses another relay point or
+a refund less the return fee.
 """
 import base64
 import difflib
@@ -37,6 +41,11 @@ REFUND_WITHIN_WORKDAYS = 10     # promised on the slip once the parcel is in
 REMINDER_AFTER_DAYS = 3
 REFUND_AFTER_DAYS = 7           # no answer to the offer: refund as asked on the slip
 
+UNCLAIMED = "unclaimed"         # data["kind"] of a parcel that came back unclaimed
+UNCLAIMED_FEE = 9.50            # deducted from the refund (Samuel, 03/11/2026)
+UNCLAIMED_REFUND_DAYS = 14      # from the arrival of the parcel (page Nos garanties, 3 bis)
+RELAY_FINDER = "https://www.chronopost.fr/expeditionAvanceeSec/ounoustrouver.html"
+
 REASONS = {"10": "Trop grand", "20": "Trop petit", "30": "Mauvaise pointure reçue",
            "40": "Mauvaise couleur reçue", "50": "Mauvais article reçu",
            "60": "Article défectueux", "70": "Le modèle ne me plaît plus",
@@ -49,6 +58,7 @@ STATUS_LABELS = {
     "reply_to_read": "Réponse à lire",
     "credit_to_send": "Avoir à envoyer",
     "to_refund": "À rembourser",
+    "to_reship": "À réexpédier",
     "done": "Terminé",
     "refused": "Refusé",
 }
@@ -58,6 +68,7 @@ STAGES = [
     ("reponse", "Réponse à lire", ("reply_to_read",)),
     ("avoir", "Avoir à envoyer", ("credit_to_send",)),
     ("rembourser", "À rembourser", ("to_refund",)),
+    ("reexpedier", "À réexpédier", ("to_reship",)),
     ("termines", "Terminés", ("done",)),
     ("refuses", "Refusés", ("refused",)),
 ]
@@ -70,13 +81,15 @@ TEMPLATES = {
     "late": "Délai dépassé : avoir à la place du remboursement",
     "partial": "Retour partiel : offre liée à la commande",
     "condition": "Refus : paire marquée ou abîmée",
+    "unclaimed": "Colis revenu : autre point relais ou remboursement",
     "reminder": "Relance de la proposition",
     "free": "Message libre (d'après tes consignes)",
 }
 # Where the file goes once the email is sent.
 AFTER_SEND = {"offer": "waiting_client", "reminder": "waiting_client", "late": "waiting_client",
               "partial": "waiting_client", "free": "waiting_client", "credit": "done",
-              "credit_bonus": "done", "refund": "to_refund", "condition": "refused"}
+              "credit_bonus": "done", "refund": "to_refund", "condition": "refused",
+              "unclaimed": "waiting_client"}
 CREDIT_TEMPLATES = ("credit", "credit_bonus")
 # The offer each email makes, so the customer's "yes" gets the right credit.
 OFFER_KIND = {"offer": "bonus", "reminder": "bonus", "late": "plain", "partial": "plain"}
@@ -88,12 +101,25 @@ Réponds UNIQUEMENT avec ce JSON :
  "order_number": "numéro de commande, chiffres seulement, ou null",
  "client_shipping_date": "date d'expédition écrite par le client (AAAA-MM-JJ) ou null",
  "arrival_date": "date d'arrivée ajoutée par la logistique (AAAA-MM-JJ) ou null",
- "items": [{"reference": "modèle ou référence tel qu'écrit", "size": "pointure ou taille, ou null",
+ "items": [{"reference": "modèle ou référence tel qu'écrit", "size": "pointure ou taille de l'article retourné, ou null",
             "quantity": 1, "reason_code": "10 à 80, ou null", "choice": "refund" | "credit" | null}],
  "comment": "autre texte manuscrit utile (défaut précisé, demande particulière), ou null",
  "unreadable": "ce que tu n'arrives pas à lire, ou null"}
 Codes retour : 10 Trop grand, 20 Trop petit, 30 Mauvaise pointure reçue, 40 Mauvaise couleur reçue, 50 Mauvais article reçu, 60 Article défectueux (précisez le défaut), 70 Le modèle ne me plaît plus, 80 J'ai changé d'avis.
 choice : "refund" si la colonne « Remboursement ou Avoir » indique le remboursement, "credit" si elle indique l'avoir (ou un échange).
+Une mention comme « Échange T42 » dans cette colonne donne la pointure souhaitée, pas celle de l'article retourné : ne la mets pas dans size, garde-la dans comment.
+Les dates sont de {year}, ou de la fin de {last_year} : écris toujours l'année complète."""
+
+LABEL_PROMPT = """Photo de l'étiquette d'un colis Max Sauveur revenu à notre logistique (SSL) parce que le client ne l'a pas récupéré. C'est une étiquette de transporteur, le plus souvent Chronopost ou Chrono2Shop.
+La logistique a parfois ajouté au stylo la date d'arrivée du colis chez elle.
+Réponds UNIQUEMENT avec ce JSON :
+{"name": "nom du client à qui le colis était destiné, ou null. Jamais SSL, Solutions & Services Logistiques ou Max Sauveur, ni le nom d'un point relais ou d'un commerce",
+ "order_number": "numéro de commande s'il est indiqué (référence à 5 chiffres, parfois précédée de #), chiffres seulement, ou null",
+ "tracking_numbers": ["chaque numéro de suivi ou de colis lisible, sans espaces, par exemple XR725156705TS"],
+ "carrier": "transporteur, ou null",
+ "arrival_date": "date écrite au stylo (AAAA-MM-JJ) ou null",
+ "comment": "autre texte manuscrit utile, ou null",
+ "unreadable": "ce que tu n'arrives pas à lire, ou null"}
 Les dates sont de {year}, ou de la fin de {last_year} : écris toujours l'année complète."""
 
 REPLY_PROMPT = """Un client de Max Sauveur a renvoyé un article. Nous lui avons proposé : {offer}.
@@ -227,8 +253,8 @@ def delete_photos(case_id):
 
 # ---------------------------------------------------------------- reading the slip
 
-def read_slip(jpeg):
-    """What Claude reads on the photo of the slip."""
+def _read_photo(jpeg, prompt):
+    """The JSON Claude reads on a photo, with its order number and dates cleaned up."""
     year = today().year
     client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
     msg = client.messages.create(
@@ -236,17 +262,23 @@ def read_slip(jpeg):
         messages=[{"role": "user", "content": [
             {"type": "image", "source": {"type": "base64", "media_type": "image/jpeg",
                                          "data": base64.b64encode(jpeg).decode()}},
-            {"type": "text", "text": READ_PROMPT.replace("{year}", str(year)).replace("{last_year}", str(year - 1))},
+            {"type": "text", "text": prompt.replace("{year}", str(year)).replace("{last_year}", str(year - 1))},
         ]}])
     text = next(b.text for b in msg.content if b.type == "text")
     start = text.find("{")
     if start < 0:
-        raise RuntimeError("Claude n'a pas su lire le bon.")
+        raise RuntimeError("Claude n'a pas su lire la photo.")
     slip, _ = json.JSONDecoder().raw_decode(text[start:])
     slip["order_number"] = re.sub(r"\D", "", str(slip.get("order_number") or "")) or None
     for key in ("arrival_date", "client_shipping_date"):
         d = _recent(_parse_date(slip.get(key)))
         slip[key] = d.isoformat() if d else None
+    return slip
+
+
+def read_slip(jpeg):
+    """What Claude reads on the photo of the slip."""
+    slip = _read_photo(jpeg, READ_PROMPT)
     for item in slip.get("items") or []:
         code = re.sub(r"\D", "", str(item.get("reason_code") or ""))
         item["reason_code"] = code if code in REASONS else None
@@ -255,12 +287,21 @@ def read_slip(jpeg):
     return slip
 
 
+def read_label(jpeg):
+    """What Claude reads on the label of a parcel that came back."""
+    label = _read_photo(jpeg, LABEL_PROMPT)
+    label["tracking_numbers"] = [t for t in (re.sub(r"[^A-Za-z0-9]", "", str(n)).upper()
+                                             for n in label.get("tracking_numbers") or []) if t]
+    return label
+
+
 # ---------------------------------------------------------------- the Shopify order
 
 _ORDER_FIELDS = """
   id name createdAt email customerLocale displayFinancialStatus cancelledAt
   customer { id firstName lastName }
   billingAddress { firstName name }
+  shippingAddress { name }
   discountApplications(first: 20) { nodes { __typename
      ... on DiscountCodeApplication { code } ... on AutomaticDiscountApplication { title }
      ... on ManualDiscountApplication { title } ... on ScriptDiscountApplication { title } } }
@@ -344,6 +385,7 @@ def _normalise(node):
         "financial_status": node.get("displayFinancialStatus"), "cancelled": bool(node.get("cancelledAt")),
         "customer_id": customer.get("id"), "first_name": first.strip().title(),
         "full_name": billing.get("name") or f"{customer.get('firstName') or ''} {customer.get('lastName') or ''}".strip(),
+        "shipping_name": (node.get("shippingAddress") or {}).get("name") or "",
         "shipping": _amount(node.get("totalShippingPriceSet")),
         "gift_card": sum(_amount(t["amountSet"]) for t in node.get("transactions") or []
                          if t.get("gateway") == "gift_card" and t.get("kind") in ("SALE", "CAPTURE")
@@ -354,6 +396,7 @@ def _normalise(node):
                          .astimezone(PARIS).date().isoformat() if delivered else None),
         "shipped_at": min(f["createdAt"] for f in fulfilled)[:10] if fulfilled else None,
         "carrier": tracking.get("company") or "",
+        "tracking": [t["number"] for f in fulfilled for t in f.get("trackingInfo") or [] if t.get("number")],
         "discounts": discounts,
         "lines": lines,
     }
@@ -370,6 +413,19 @@ def fetch_order(number):
     return _normalise(nodes[0])
 
 
+def fetch_by_tracking(number):
+    """The order shipped under this tracking number (Shopify's plain search finds it)."""
+    nodes = avoirs._gql(f"query($q: String!) {{ orders(first: 3, query: $q) {{ nodes {{ {_ORDER_FIELDS} }} }} }}",
+                        {"q": number})["orders"]["nodes"]
+    found = [_normalise(n) for n in nodes]
+    return next((o for o in found if number in o["tracking"]), None)
+
+
+def _order_names(order):
+    """Who the order is known under: billing, delivery and email."""
+    return avoirs._norm(f"{order['full_name']} {order.get('shipping_name') or ''} {order['email']}")
+
+
 def search_orders_by_name(name):
     """Most recent delivered orders of a customer, when the slip has no usable number."""
     words = [w for w in avoirs._norm(name).split() if len(w) > 2]
@@ -378,13 +434,13 @@ def search_orders_by_name(name):
     nodes = avoirs._gql(f"query($q: String!) {{ orders(first: 5, query: $q, sortKey: CREATED_AT, reverse: true) "
                         f"{{ nodes {{ {_ORDER_FIELDS} }} }} }}", {"q": " ".join(words)})["orders"]["nodes"]
     found = [_normalise(n) for n in nodes]
-    return [o for o in found if all(w in avoirs._norm(o["full_name"] + " " + o["email"]) for w in words[-1:])]
+    return [o for o in found if all(w in _order_names(o) for w in words[-1:])]
 
 
 def _names_match(slip_name, order):
     if not slip_name:
         return True
-    target = avoirs._norm(order["full_name"] + " " + order["email"])
+    target = _order_names(order)
     return any(w in target for w in avoirs._norm(slip_name).split() if len(w) > 2)
 
 
@@ -431,8 +487,89 @@ def _slip_reason(slip):
 
 # ---------------------------------------------------------------- analysis
 
+def _named(data):
+    """The customer's name: what Samuel typed, or else what was read on the photo."""
+    return data.get("name_typed") or (data.get("slip") or {}).get("name")
+
+
+def _pieces_back(order, data):
+    qty = {k: int(v) for k, v in (data.get("returned") or {}).items() if int(v) > 0}
+    returned = [dict(l, qty=qty[l["id"]]) for l in order["lines"] if l["id"] in qty]
+    kept = [dict(l, qty=l["quantity"] - qty.get(l["id"], 0)) for l in order["lines"]
+            if l["quantity"] - qty.get(l["id"], 0) > 0]
+    return returned, kept
+
+
+def _customer_check(add, order, data):
+    """Sending the file's emails to another customer is the worst that can happen here."""
+    name = _named(data)
+    if data.get("found_by"):
+        add("warn", data["found_by"])
+    elif name and not _names_match(name, order):
+        add("bad", f"Le nom lu ou saisi (« {name} ») ne correspond pas à la commande ({order['full_name']}) : "
+                   f"vérifie avant d'envoyer quoi que ce soit.")
+    if order["cancelled"]:
+        add("bad", "Commande annulée dans Shopify.")
+
+
+def _payment_checks(add, order, returned, data):
+    """How the pieces were paid and what the order has already given back."""
+    credit_paid = sum(d["amount"] * l["qty"] / l["quantity"] for l in returned for d in l["discounts"] if d["is_credit"])
+    if credit_paid:
+        add("bad", f"Payé avec un avoir ({euros(credit_paid)}) : cette part ne se rembourse pas, l'avoir est à réactiver.")
+    if order["gift_card"]:
+        add("warn", f"Commande payée en partie par carte cadeau ({euros(order['gift_card'])}).")
+    for line in returned:
+        promos = [d for d in line["discounts"] if not d["is_credit"] and d["amount"] > 0]
+        if promos and line["paid"] < line["catalogue"]:
+            add("ok", f"{line['title']} payée {euros(line['paid'])} au lieu de {euros(line['catalogue'])} "
+                      f"({', '.join(d['label'] for d in promos)}).")
+    if order["refunded"]:
+        add("warn", f"Déjà remboursé sur cette commande : {euros(order['refunded'])} "
+                    f"(le {', '.join(short_date(d) for d in order['refund_dates'])}).")
+    for a in data.get("existing_avoirs") or []:
+        add("warn", f"Avoir déjà créé pour cette commande : {a['code']} ({euros(a['amount'])}, {a['status'].lower()}).")
+    return credit_paid
+
+
+def _analyse_unclaimed(data):
+    """A parcel that came back: no slip to compare with, and the whole order is concerned."""
+    order = data.get("order")
+    checks = []
+
+    def add(level, text):
+        checks.append({"level": level, "text": text})
+
+    if not order:
+        add("bad", "Commande introuvable : regarde la photo et saisis le nom du client ou le numéro de commande "
+                   "dans « Le colis », juste au-dessus.")
+        return {"checks": checks, "amounts": {}, "returned": [], "kept": []}
+    _customer_check(add, order, data)
+    read = (data.get("slip") or {}).get("tracking_numbers") or []
+    shipped = order.get("tracking") or []
+    if set(read) & set(shipped):
+        add("ok", f"Numéro de suivi {next(t for t in read if t in shipped)} : c'est bien celui de cette commande.")
+    elif read:
+        add("warn", f"Numéro de suivi de l'étiquette ({', '.join(read)}) différent de celui de la commande "
+                    f"({', '.join(shipped) or 'aucun'}) : vérifie.")
+    if order.get("carrier") and "chrono" not in order["carrier"].lower():
+        add("warn", f"Expédiée par {order['carrier']} : le mail parle de Chrono2Shop, adapte-le si besoin.")
+    returned, kept = _pieces_back(order, data)
+    if not returned:
+        add("bad", "Aucun article coché : qu'y avait-il dans le colis ?")
+    credit_paid = _payment_checks(add, order, returned, data)
+    paid = sum(l["paid"] * l["qty"] for l in returned)
+    catalogue = sum(l["catalogue"] * l["qty"] for l in returned)
+    amounts = {"catalogue": round(catalogue, 2), "gesture": 0, "bonus": round(catalogue, 2), "paid": round(paid, 2),
+               "fee": UNCLAIMED_FEE, "refund": round(max(paid - UNCLAIMED_FEE, 0), 2),
+               "credit_paid": round(credit_paid, 2), "shipping_refunded": False, "discounted": paid + credit_paid < catalogue}
+    return {"checks": checks, "amounts": amounts, "returned": returned, "kept": kept}
+
+
 def analyse(data):
     """Checks and amounts for the file, from the order, the slip and Samuel's corrections."""
+    if data.get("kind") == UNCLAIMED:
+        return _analyse_unclaimed(data)
     order = data.get("order")
     checks = []
 
@@ -444,17 +581,8 @@ def analyse(data):
         return {"checks": checks, "amounts": {}, "returned": [], "kept": []}
 
     slip = data.get("slip") or {}
-    if data.get("found_by"):
-        add("warn", data["found_by"])
-    elif slip.get("name") and not _names_match(slip["name"], order):
-        add("warn", f"Le nom du bon (« {slip['name']} ») ne correspond pas à la commande ({order['full_name']}).")
-    if order["cancelled"]:
-        add("bad", "Commande annulée dans Shopify.")
-
-    qty = {k: int(v) for k, v in (data.get("returned") or {}).items() if int(v) > 0}
-    returned = [dict(l, qty=qty[l["id"]]) for l in order["lines"] if l["id"] in qty]
-    kept = [dict(l, qty=l["quantity"] - qty.get(l["id"], 0)) for l in order["lines"]
-            if l["quantity"] - qty.get(l["id"], 0) > 0]
+    _customer_check(add, order, data)
+    returned, kept = _pieces_back(order, data)
 
     # Deadline: delivery of the order to the customer -> arrival at SSL.
     arrival = _parse_date(data.get("arrival_date"))
@@ -508,22 +636,7 @@ def analyse(data):
         if any(d["is_madmax"] for d in order["discounts"]):
             add("warn", "Remise Mad Max sur la commande : le palier se recalcule sur les articles gardés.")
 
-    # How the returned pieces were paid.
-    credit_paid = sum(d["amount"] * l["qty"] / l["quantity"] for l in returned for d in l["discounts"] if d["is_credit"])
-    if credit_paid:
-        add("bad", f"Payé avec un avoir ({euros(credit_paid)}) : cette part ne se rembourse pas, l'avoir est à réactiver.")
-    if order["gift_card"]:
-        add("warn", f"Commande payée en partie par carte cadeau ({euros(order['gift_card'])}).")
-    for line in returned:
-        promos = [d for d in line["discounts"] if not d["is_credit"] and d["amount"] > 0]
-        if promos and line["paid"] < line["catalogue"]:
-            add("ok", f"{line['title']} payée {euros(line['paid'])} au lieu de {euros(line['catalogue'])} "
-                      f"({', '.join(d['label'] for d in promos)}).")
-    if order["refunded"]:
-        add("warn", f"Déjà remboursé sur cette commande : {euros(order['refunded'])} "
-                    f"(le {', '.join(short_date(d) for d in order['refund_dates'])}).")
-    for a in data.get("existing_avoirs") or []:
-        add("warn", f"Avoir déjà créé pour cette commande : {a['code']} ({euros(a['amount'])}, {a['status'].lower()}).")
+    credit_paid = _payment_checks(add, order, returned, data)
 
     choice = data.get("choice")
     add("ok" if choice else "warn", f"Demande du client : {CHOICES[choice]}." if choice
@@ -542,6 +655,8 @@ def analyse(data):
 
 
 def default_template(data, result):
+    if data.get("kind") == UNCLAIMED:
+        return "unclaimed"
     late = any(c["level"] == "bad" and c["text"].startswith("Délai dépassé") for c in result["checks"])
     if late and data.get("choice") != "credit":
         return "late"
@@ -579,6 +694,13 @@ def _avoir(case, amount, free_shipping):
             "amount": round(float(amount), 2), "model_only": False, "product_id": None,
             "free_shipping": free_shipping,
             "ends_at": avoirs._add_months(datetime.now(timezone.utc), avoirs.VALIDITY_MONTHS)}
+
+
+def templates_for(data):
+    """The emails that make sense for this file."""
+    if data.get("kind") == UNCLAIMED:
+        return {k: TEMPLATES[k] for k in ("unclaimed", "refund", "free")}
+    return {k: v for k, v in TEMPLATES.items() if k != "unclaimed"}
 
 
 def draft(case, template, amount=None):
@@ -661,6 +783,30 @@ def draft(case, template, amount=None):
                 subject, body = avoirs.email(av, code)
             else:
                 body = f"Bonjour {first},\n\n(avoir impossible : la commande n'a pas de fiche client){sign}"
+    elif template == "unclaimed":
+        subject = f"Votre colis nous est revenu (commande {order.get('name', '')})"
+        refund = float(amount) if amount not in (None, "") else a["refund"]
+        shipping = " Les frais de livraison initiaux ne sont pas remboursés." if order.get("shipping") else ""
+        body = (f"Bonjour {first},\n\n"
+                f"Nous avons récemment reçu votre colis en retour expéditeur : il semble que votre commande "
+                f"{order.get('name', '')} ({items}) n'ait pas pu être récupérée au point relais dans les délais "
+                f"impartis.\n\n"
+                f"Elle est bien chez nous et vous avez deux options :\n\n"
+                f"1. Renvoyer la commande\n"
+                f"Indiquez-nous un autre point relais Chrono2Shop et nous vous la renvoyons gratuitement. Vous pouvez "
+                f"en trouver un ici : {RELAY_FINDER}\n\n"
+                f"2. Recevoir un remboursement\n"
+                f"Si vous ne souhaitez plus votre commande, nous vous la remboursons, déduction faite de "
+                f"{euros(a['fee'])} de frais de retour, soit {euros(refund)} sur votre moyen de paiement "
+                f"d'origine.{shipping}\n\n"
+                f"Dites-moi simplement quelle option vous convient et je m'en occupe dans la foulée.{sign}")
+    elif template == "refund" and data.get("kind") == UNCLAIMED:
+        refund = float(amount) if amount not in (None, "") else a.get("refund", 0)
+        body = (f"Bonjour {first},\n\n"
+                f"Comme convenu, le remboursement de votre commande {order.get('name', '')} est en cours : "
+                f"{euros(refund)}, déduction faite de {euros(a['fee'])} de frais de retour, sur votre moyen de paiement "
+                f"d'origine. Il apparaîtra sur votre compte d'ici quelques jours.\n\n"
+                f"Si vous avez la moindre question, je reste disponible.{sign}")
     elif template == "refund":
         refund = float(amount) if amount not in (None, "") else a.get("refund", 0)
         body = (f"Bonjour {first},\n\n"
@@ -712,7 +858,13 @@ def _facts(case):
     for l in result["kept"]:
         lines.append(f"Gardé par le client : {l['title']} ({l['variant']}), payé {euros(l['paid'])} au lieu de "
                      f"{euros(l['catalogue'])}.")
-    if a:
+    if data.get("kind") == UNCLAIMED:
+        lines.append("Colis non récupéré par le client et revenu chez nous : il peut choisir un autre point relais "
+                     "Chrono2Shop (renvoi gratuit) ou un remboursement moins les frais de retour.")
+        if a:
+            lines.append(f"Payé : {euros(a['paid'])}. Frais de retour : {euros(a['fee'])}. "
+                         f"Remboursement : {euros(a['refund'])}. Les frais de livraison initiaux ne sont pas remboursés.")
+    elif a:
         lines.append(f"Avoir simple : {euros(a['catalogue'])}. Geste : {euros(a['gesture'])}. Avoir bonifié : "
                      f"{euros(a['bonus'])}. Remboursement estimé : {euros(a['refund'])}.")
     reason = _slip_reason(data.get("slip") or {})
@@ -767,21 +919,42 @@ def _summary(result):
                      else "warn" if any(c["level"] == "warn" for c in result["checks"]) else "ok"}
 
 
+def _locate(data, number):
+    """The Shopify order of this file, with a note for Samuel when it is not simply the number read."""
+    order = fetch_order(number) if number else None
+    if data.get("order_manual"):
+        return order, data.get("order_note")
+    if data.get("kind") == UNCLAIMED:
+        for tracking in (data.get("slip") or {}).get("tracking_numbers") or []:
+            found = fetch_by_tracking(tracking)
+            if found:
+                return found, None
+    name = _named(data)
+    if order and _names_match(name, order):
+        return order, None
+    # A wrong number can land on another customer's order (a 7 read as a 3): the name decides.
+    found = search_orders_by_name(name) if name else []
+    if not found:
+        return order, None
+    best = max(found, key=lambda o: difflib.SequenceMatcher(None, number or "", o["number"]).ratio())
+    why = (f"Le numéro #{number} est celui de la commande de {order['full_name']}" if order else
+           f"Le numéro #{number} n'existe pas dans Shopify" if number else "Numéro de commande illisible")
+    several = f" (la plus proche sur {len(found)})" if len(found) > 1 else ""
+    return best, f"{why} : commande retrouvée au nom de {name}{several}. Vérifie que c'est la bonne."
+
+
 def refresh(case_id, order_number=None):
     """Re-read the order in Shopify and recompute the checks and the draft."""
     case = database.get_client_return(case_id)
     data = dict(case["data"])
     number = order_number or case.get("order_number") or (data.get("slip") or {}).get("order_number")
-    order = fetch_order(number) if number else None
-    data["found_by"] = None
-    if not order and (data.get("slip") or {}).get("name"):
-        candidates = search_orders_by_name(data["slip"]["name"])
-        if candidates:
-            order = candidates[0]
-            data["found_by"] = (f"Numéro de commande illisible ou inconnu : commande trouvée par le nom "
-                                f"(la plus récente sur {len(candidates)}). Vérifie que c'est la bonne.")
-    if order and (not data.get("order") or data["order"]["name"] != order["name"]):
-        data["returned"] = _match_lines(data.get("slip") or {}, order)
+    order, note = _locate(data, number)
+    same = bool(order) and (data.get("order") or {}).get("name") == order["name"]
+    if order and not same:
+        # The whole parcel comes back when it was never picked up.
+        data["returned"] = ({l["id"]: l["quantity"] for l in order["lines"]} if data.get("kind") == UNCLAIMED
+                            else _match_lines(data.get("slip") or {}, order))
+    data["found_by"] = note or (data.get("found_by") if same and not data.get("order_manual") else None)
     data["order"] = order
     data["existing_avoirs"] = []
     if order:
@@ -796,7 +969,7 @@ def refresh(case_id, order_number=None):
         data["template"] = default_template(data, result)
     case = database.update_client_return(
         case_id, data=data, order_number=order["number"] if order else number,
-        customer_name=order["full_name"] if order else (data.get("slip") or {}).get("name"),
+        customer_name=order["full_name"] if order else _named(data),
         customer_email=order["email"] if order else None)
     if order and case["status"] == "to_check" and not data.get("mail_edited"):
         subject, body = rewrite(case, data["template"], data.get("consignes") or "", data.get("amount_override"))
@@ -816,20 +989,20 @@ def prepare_mail(case_id, template, consignes, amount):
                                                         "mail_edited": False})
 
 
-def create_from_photo(raw):
-    """A new file from the photo of a slip: read, matched to its order, drafted."""
-    case_id = database.save_client_return(status="to_check", data={})
+def create_from_photo(raw, kind=None):
+    """A new file from the photo of a slip or of a label: read, matched to its order, drafted."""
+    case_id = database.save_client_return(status="to_check", data={"kind": kind})
     name, jpeg = save_photo(case_id, raw)
-    data = {"photos": [name], "log": _log({}, "bon photographié")}
+    data = {"photos": [name], "log": _log({}, "étiquette photographiée" if kind == UNCLAIMED else "bon photographié")}
     try:
-        slip = read_slip(jpeg)
+        slip = read_label(jpeg) if kind == UNCLAIMED else read_slip(jpeg)
         data["slip"] = slip
         data["choice"] = _slip_choice(slip)
         arrival = _parse_date(slip.get("arrival_date"))
         data["arrival_from_slip"] = bool(arrival)
         data["arrival_date"] = (arrival or today()).isoformat()
     except Exception as e:
-        data["error"] = f"Lecture du bon impossible : {e}"
+        data["error"] = f"Lecture de la photo impossible : {e}"
         data["arrival_date"] = today().isoformat()
     database.update_client_return(case_id, data=data,
                                   order_number=(data.get("slip") or {}).get("order_number"),
@@ -842,7 +1015,7 @@ def create_from_photo(raw):
 
 
 def update(case_id, fields):
-    """Samuel's corrections on the card: order number, arrival date, choice, pieces returned."""
+    """Samuel's corrections on the card: customer, order number, arrival date, choice, pieces returned."""
     case = database.get_client_return(case_id)
     data = {}
     if "arrival_date" in fields and _parse_date(fields["arrival_date"]):
@@ -853,6 +1026,23 @@ def update(case_id, fields):
     if "returned" in fields:
         data["returned"] = {str(k): int(v) for k, v in (fields["returned"] or {}).items() if int(v) > 0}
     number = re.sub(r"\D", "", str(fields.get("order_number") or "")) or None
+    name = (fields.get("name") or "").strip()
+    if name and name != (_named(case["data"]) or case.get("customer_name") or ""):
+        data["name_typed"] = name
+    # What Samuel types wins over what was read. When it leads nowhere he is told,
+    # and the file stays as it was.
+    if number and number != case.get("order_number"):
+        if not fetch_order(number):
+            raise ValueError(f"La commande #{number} n'existe pas dans Shopify : vérifie le numéro.")
+        data.update(order_manual=True, order_note=None)
+    elif data.get("name_typed") and not (case["data"].get("order") and _names_match(name, case["data"]["order"])):
+        found = search_orders_by_name(name)
+        if not found:
+            raise ValueError(f"Aucune commande au nom de « {name} » dans Shopify : vérifie l'orthographe "
+                             f"ou saisis le numéro.")
+        number = found[0]["number"]
+        data.update(order_manual=True, order_note=(f"{len(found)} commandes au nom de {name} : j'ai pris la plus "
+                                                   f"récente. Vérifie que c'est la bonne." if len(found) > 1 else None))
     if number and number != case.get("order_number"):
         data["returned"] = None
     data["mail_edited"] = False
@@ -995,6 +1185,8 @@ def _offer_deadline(data):
 
 def refund_deadline(data):
     arrival = _parse_date(data.get("arrival_date"))
+    if arrival and data.get("kind") == UNCLAIMED:
+        return arrival + timedelta(UNCLAIMED_REFUND_DAYS)
     return add_workdays(arrival, REFUND_WITHIN_WORKDAYS) if arrival else None
 
 
@@ -1033,7 +1225,9 @@ def check_replies():
                        if m["id"] not in seen and m["direction"] == "received"]
             if new:
                 reply = "\n\n".join(gmail_helper._strip_quoted(m["body"]) for m in new).strip()
-                info = _classify(reply, data.get("offer_kind") or "bonus", data)
+                # Samuel reads the answers about a returned parcel: a new relay point needs his eyes anyway.
+                info = ({"choice": "unclear", "summary": ""} if data.get("kind") == UNCLAIMED
+                        else _classify(reply, data.get("offer_kind") or "bonus", data))
                 changes = {"seen_messages": list(seen | {m["id"] for m in new}), "reply_text": reply,
                            "reply_summary": info.get("summary") or "", "reply_choice": info["choice"],
                            "reply_at": datetime.now(PARIS).isoformat()}
@@ -1061,7 +1255,7 @@ def check_replies():
                                                   data=dict(changes, log=_log(data, "réponse du client à lire")))
                 continue
             sent = data.get("offer_sent_at")
-            if not sent or (data.get("offer_kind") or "bonus") != "bonus":
+            if data.get("kind") == UNCLAIMED or not sent or (data.get("offer_kind") or "bonus") != "bonus":
                 continue
             age = (datetime.now(PARIS) - datetime.fromisoformat(sent)).days
             if age >= REFUND_AFTER_DAYS and data.get("choice") != "credit":
@@ -1098,11 +1292,13 @@ def tick():
 
 def counts_for_report():
     """Files waiting for Samuel, for the morning report."""
-    cases = database.get_client_returns(["to_check", "reply_to_read", "credit_to_send", "to_refund", "waiting_client"])
+    cases = database.get_client_returns(["to_check", "reply_to_read", "credit_to_send", "to_refund", "to_reship",
+                                         "waiting_client"])
     return {
         "À traiter": sum(c["status"] == "to_check" for c in cases),
         "Réponse à lire": sum(c["status"] == "reply_to_read" for c in cases),
         "Avoir à envoyer": sum(c["status"] == "credit_to_send" for c in cases),
         "À rembourser": sum(c["status"] == "to_refund" for c in cases),
+        "À réexpédier": sum(c["status"] == "to_reship" for c in cases),
         "Relance à envoyer": sum(c["status"] == "waiting_client" and bool(c["data"].get("reminder_due")) for c in cases),
     }

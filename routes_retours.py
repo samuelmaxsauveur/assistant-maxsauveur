@@ -29,7 +29,7 @@ def retours_page():
         tab = next(k for k, _, s in retours.STAGES if selected['status'] in s)
     if tab not in counts:
         # Open on the first step that needs something from Samuel.
-        tab = next((k for k in ('a-traiter', 'reponse', 'avoir', 'rembourser', 'attente') if counts[k]), 'a-traiter')
+        tab = next((k for k in ('a-traiter', 'reponse', 'avoir', 'rembourser', 'reexpedier', 'attente') if counts[k]), 'a-traiter')
     statuses = dict((k, s) for k, _, s in retours.STAGES)[tab]
     cases = [c for c in all_cases if c['status'] in statuses]
     if tab == 'attente':
@@ -51,7 +51,7 @@ def retours_page():
     custom = sorted(database.get_all_outbound_templates(), key=lambda t: (t.get('label') or '').lower())
     return render_template('retours.html', tab=tab, stages=retours.STAGES, counts=counts, cases=cases,
                            reminders=reminders, view=view, updated=request.args.get('maj') == '1',
-                           templates=retours.TEMPLATES, custom_templates=custom,
+                           templates=retours.templates_for(selected['data'] if selected else {}), custom_templates=custom,
                            credit_templates=retours.CREDIT_TEMPLATES, status_labels=retours.STATUS_LABELS,
                            reasons=retours.REASONS, choices=retours.CHOICES, categories=retours.CATEGORY_LABELS,
                            euros=retours.euros, short_date=retours.short_date, fr_date=retours.fr_date)
@@ -70,8 +70,9 @@ def new_return():
     f = request.files.get('photo')
     if not f:
         return _fail("Aucune photo reçue")
+    kind = request.form.get('kind') if request.form.get('kind') == retours.UNCLAIMED else None
     try:
-        case = retours.create_from_photo(f.read())
+        case = retours.create_from_photo(f.read(), kind)
     except Exception as e:
         print(f"[Retours] New file failed: {e}")
         return _fail(f"Photo illisible : {e}")
@@ -143,7 +144,7 @@ def set_status(case_id):
 
 @retours_bp.route('/retours/<int:case_id>/client', methods=['POST'])
 def customer_choice(case_id):
-    """Samuel reads the answer himself: the customer takes the credit, or the refund."""
+    """Samuel reads the answer himself: the customer takes the credit, the refund, or another relay point."""
     choice = (request.json or {}).get('choice')
     case = database.get_client_return(case_id)
     if not case:
@@ -154,6 +155,8 @@ def customer_choice(case_id):
             case = retours.create_credit(case_id, bonus=bonus, amount=(request.json or {}).get('amount'))
         elif choice == 'refund':
             case = retours.set_status(case_id, 'to_refund', "le client choisit le remboursement")
+        elif choice == 'relay':
+            case = retours.set_status(case_id, 'to_reship', "le client choisit un autre point relais")
         else:
             return _fail("Choix inconnu")
     except Exception as e:

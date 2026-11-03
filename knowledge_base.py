@@ -117,7 +117,7 @@ KNOWLEDGE_BASE = """
 - Délai légal : 14 jours après réception
 - Hors délai : avoir ou échange uniquement
 - Si le client retourne une commande reçue en promotion : avoir au prix promotionnel payé
-- Si colis non récupéré : avoir uniquement (pas de remboursement)
+- Si colis non récupéré et revenu chez nous : au choix du client, renvoi gratuit vers un autre point relais Chrono2Shop, ou remboursement moins 9,50 € de frais de retour (frais de livraison initiaux non remboursés). Suivi dans l'onglet Retours de l'assistant.
 
 ### Codes promo & réductions
 - Codes générés automatiquement : impossibles à retrouver une fois expirés
