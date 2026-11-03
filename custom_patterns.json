@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "pointure",
+      "topic_label": "Pointure",
+      "situation": "Pointure",
+      "response_template": "Bonjour Bruno,\n\nAvec 25,1 cm de pied, en ajoutant les 0,2 cm vous êtes à 25,3 cm, ce qui vous place en **39** sur notre guide.\n\nLe Wood Derby chausse légèrement petit, je vous recommande donc le **40**.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 4
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_02_17_12_22",
       "topic_label": "Form name Form submitted 2026-11-02 17:12:22",
       "situation": "Form name Form submitted 2026-11-02 17:12:22",
@@ -448,14 +456,6 @@
       "response_template": "Bonjour Sébastien,\n\nAucune excuse à accepter, pas de souci.\n\nVotre commande #13862 (Paul Cuir Lisse Noir, 40) est en cours de traitement. Nous allons faire au mieux pour l'expédier aujourd'hui. Vous recevrez votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "pointure",
-      "topic_label": "POINTURE",
-      "situation": "POINTURE",
-      "response_template": "Bonjour Marvin,\n\nBienvenue dans le monde du soulier !\n\nAvec 27,1-27,2 cm de pied, notre guide vous place en 42. La Deck chausse légèrement grand, donc je vous recommande le 41.\n\nSur la semelle intérieure : une semelle fine type Collonil peut apporter un vrai confort supplémentaire. Dans ce cas, restez sur le 42 pour avoir la place nécessaire.\n\nEn résumé :\n- Sans semelle ajoutée : prenez le 41\n- Avec semelle intérieure : prenez le 42\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 3
     },
     {
       "topic": "re__form_name_form_submitted_2026_10_24_09_19_43",
