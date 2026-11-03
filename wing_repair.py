@@ -67,7 +67,7 @@ def _get_token(account="rep"):
 ORDER_FIELDS = """
   id ref status service
   recipient { firstName lastName company phone email line1 line2 additional city zip countryCode }
-  orderProducts { quantity product { designation price weight } }
+  orderProducts { quantity product { designation price weight ean } }
   fulfillmentOrders {
     id status service
     parcels { id trackingId labelURL trackingURL status organizationExpeditorId }

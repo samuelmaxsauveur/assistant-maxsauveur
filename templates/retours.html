@@ -52,14 +52,14 @@
         .full { grid-column: 1 / -1; }
         label.f { display: block; font-size: 12px; font-weight: 600; color: #555; margin-bottom: 4px; }
         input, select, textarea { width: 100%; padding: 9px 10px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 15px; font-family: inherit; background: #fff; }
-        input[type=checkbox] { width: 20px; height: 20px; flex: none; }
+        input[type=checkbox], input[type=radio] { width: 20px; height: 20px; flex: none; }
         textarea { resize: vertical; }
         textarea.mail { min-height: 360px; line-height: 1.5; font-size: 14px; }
         .line { display: flex; gap: 10px; align-items: center; padding: 6px 0; font-size: 14px; }
         .line .qty { width: 64px; }
         .actions { display: flex; gap: 8px; align-items: center; margin-top: 12px; flex-wrap: wrap; }
         .btn { padding: 10px 14px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; display: inline-block; text-decoration: none; }
-        .btn-teal { background: #0f766e; color: white; }
+        .btn-teal, .card a.btn-teal { background: #0f766e; color: white; }
         .btn-green { background: #16a34a; color: white; }
         .btn-purple { background: #7c3aed; color: white; }
         .btn-red { background: #fee2e2; color: #991b1b; }
@@ -140,6 +140,7 @@
                 <div class="sub">{% if c.data.kind == 'unclaimed' %}Colis non récupéré{% if s.get('items') %} · {% endif %}{% endif %}{{ s.get('items') or '' }}{% for i in slip.get('items') or [] %}{% if i.reason_code %} · {{ i.reason_code }} {{ reasons[i.reason_code] }}{% endif %}{% endfor %}{% if c.data.choice %} · {{ choices[c.data.choice] }}{% endif %}</div>
             </span>
             {% if c.status == 'waiting_client' and c.data.reminder_due %}<span class="pill amber">relance</span>{% endif %}
+            {% if c.status == 'to_decide' and c.data.reply_choice %}<span class="pill amber">{{ answers[c.data.reply_choice] }}</span>{% endif %}
             <span class="meta">{{ short_date(c.data.arrival_date) }}</span>
         </a>
         {% if view and view.case.id == c.id %}<div id="fiche-anchor"></div>{% endif %}
@@ -258,20 +259,44 @@
         {% if d.reply_text %}
         <div class="section">
             <h3>Réponse du client</h3>
+            {% if unclaimed and d.reply_choice %}<div class="meta" style="margin-bottom:4px;">Ce que le client demande : <span class="pill amber">{{ answers[d.reply_choice] }}</span></div>{% endif %}
             {% if d.reply_summary %}<div class="meta" style="margin-bottom:6px;">En bref : {{ d.reply_summary }}</div>{% endif %}
             <div class="reply">{{ d.reply_text }}</div>
         </div>
         {% endif %}
 
-        {% if c.status in ('waiting_client', 'reply_to_read') %}
+        {% if unclaimed and o and c.status in ('waiting_client', 'to_decide') %}
+        {% set hint = d.relay_hint or {} %}
+        <div class="section" id="recreer">
+            <h3>Ta décision : recréer la commande</h3>
+            <div class="meta">Elle sera créée dans Wing sous la référence <strong>{{ o.name }}{{ reship_suffix }}</strong>, en Chrono2Shop, avec le même client et les mêmes articles. Tu n'auras plus qu'à l'ajouter à ta collecte.
+                {% if hint.name %}<br>Point relais indiqué par le client : <strong>{{ hint.name }}</strong>{% if hint.address %}, {{ hint.address }}{% endif %}{% if hint.zip or hint.city %}, {{ hint.zip or '' }} {{ hint.city or '' }}{% endif %}{% endif %}</div>
+            <div class="grid" style="margin-top:8px;">
+                <div class="full"><label class="f">Adresse où chercher (facultatif)</label><input id="r-address" value="{{ hint.address or '' }}"></div>
+                <div><label class="f">Code postal</label><input id="r-zip" inputmode="numeric" value="{{ hint.zip or o.shipping_zip or '' }}"></div>
+                <div><label class="f">Ville</label><input id="r-city" value="{{ hint.city or o.shipping_city or '' }}"></div>
+            </div>
+            <div class="actions">
+                <button class="btn btn-gray" id="r-search" onclick="searchRelays(this)">🔍 Chercher les points relais</button>
+                <span class="msg" id="r-msg"></span>
+            </div>
+            <div id="r-list" style="margin-top:6px;"></div>
+            <div class="actions">
+                <button class="btn btn-purple" id="recreate-btn" onclick="recreateOrder(this)" disabled>🔁 Recréer la commande</button>
+            </div>
+        </div>
+        <div class="section">
+            <h3>Ta décision : rembourser</h3>
+            <div class="meta">Si tu décides de rembourser : {% if a %}<strong>{{ euros(a.refund) }}</strong>, {% endif %}à faire toi-même dans Shopify. Le dossier se ferme tout seul dès que le remboursement y apparaît (vérification toutes les heures).</div>
+            <div class="actions">
+                {% if view.admin_link %}<a class="btn btn-teal" href="{{ view.admin_link }}" target="_blank">Ouvrir la commande dans Shopify</a>{% endif %}
+                <button class="btn btn-gray" onclick="setStatus('done', this, 'remboursement fait (noté à la main)')">C'est remboursé</button>
+            </div>
+        </div>
+        {% elif c.status in ('waiting_client', 'reply_to_read') %}
         <div class="actions">
-            {% if unclaimed %}
-            <button class="btn btn-purple" onclick="customerChoice('relay', this)">Il choisit un autre point relais</button>
-            <button class="btn btn-gray" onclick="customerChoice('refund', this)">Il veut le remboursement{% if a %} ({{ euros(a.refund) }}){% endif %}</button>
-            {% else %}
             <button class="btn btn-purple" onclick="customerChoice('credit', this)">Il veut l'avoir{% if a and d.offer_kind != 'plain' %} ({{ euros(d.offer_amount or a.bonus) }}){% elif a %} ({{ euros(d.offer_amount or a.catalogue) }}){% endif %}</button>
             <button class="btn btn-gray" onclick="customerChoice('refund', this)">Il veut le remboursement</button>
-            {% endif %}
             <span class="msg" id="choice-msg"></span>
         </div>
         {% endif %}
@@ -298,9 +323,9 @@
         {% if c.status == 'to_reship' %}
         <div class="section">
             <h3>À réexpédier par toi</h3>
-            <div class="meta">Renvoie la commande au point relais indiqué dans sa réponse, sans frais pour le client, puis clique ici.</div>
+            {% if d.reship_ref %}<div class="codes">{{ d.reship_ref }} · {{ d.reship_relay }}</div>{% endif %}
+            <div class="meta">{% if d.reship_ref %}Commande créée dans Wing : ajoute-la à ta collecte. Clique ici une fois qu'elle est partie.{% else %}Renvoie la commande au point relais indiqué dans sa réponse, sans frais pour le client, puis clique ici.{% endif %}</div>
             <div class="actions">
-                {% if view.admin_link %}<a class="btn btn-teal" href="{{ view.admin_link }}" target="_blank">Ouvrir la commande dans Shopify</a>{% endif %}
                 <button class="btn btn-gray" onclick="setStatus('done', this, 'colis réexpédié')">C'est réexpédié</button>
             </div>
         </div>
@@ -335,7 +360,7 @@
         <div class="section">
             <div class="actions" style="margin-top:0;">
                 {% if c.status == 'to_check' %}<button class="btn btn-red" onclick="setStatus('refused', this, 'refusé sans mail')">Refuser sans mail</button>{% endif %}
-                {% if c.status in ('waiting_client', 'reply_to_read', 'credit_to_send', 'to_reship') %}<button class="btn btn-gray" onclick="setStatus('to_check', this)">Revenir à « À traiter »</button>{% endif %}
+                {% if c.status in ('waiting_client', 'to_decide', 'reply_to_read', 'credit_to_send', 'to_reship') %}<button class="btn btn-gray" onclick="setStatus('to_check', this)">Revenir à « À traiter »</button>{% endif %}
                 {% if c.status in ('done', 'refused') %}
                 {# Back to the step the file was closed from; older files that went through « À rembourser » go back there. #}
                 {% set back = d.closed_from or ('to_refund' if 'refunded_before' in d else 'to_check') %}
@@ -540,6 +565,50 @@ document.querySelectorAll('#f-name, #f-order').forEach(el => {
     el.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); el.blur(); } });
 });
 
+async function searchRelays(btn) {
+    const msg = document.getElementById('r-msg');
+    const list = document.getElementById('r-list');
+    const recreate = document.getElementById('recreate-btn');
+    busy(btn, true, '⏳ Recherche…');
+    msg.textContent = '';
+    list.textContent = '';
+    recreate.disabled = true;
+    try {
+        const j = await post('/retours/' + CASE_ID + '/relais', {
+            address: document.getElementById('r-address').value,
+            zip: document.getElementById('r-zip').value,
+            city: document.getElementById('r-city').value,
+        });
+        if (!j.relays.length) msg.textContent = 'Aucun point relais trouvé : essaie un autre code postal.';
+        j.relays.forEach(r => {
+            const line = document.createElement('label');
+            line.className = 'line';
+            const radio = document.createElement('input');
+            radio.type = 'radio';
+            radio.name = 'relay';
+            radio.value = r.id;
+            radio.dataset.name = r.name;
+            radio.checked = r.id === j.suggested;
+            radio.addEventListener('change', () => { recreate.disabled = false; });
+            const text = document.createElement('span');
+            text.textContent = `${r.name} · ${r.address}, ${r.zip} ${r.city}`;
+            line.append(radio, text);
+            list.append(line);
+        });
+        recreate.disabled = !j.suggested;
+    } catch (e) { msg.textContent = '⚠️ ' + e.message; }
+    busy(btn, false);
+}
+
+async function recreateOrder(btn) {
+    const relay = document.querySelector('input[name=relay]:checked');
+    if (!relay) return;
+    if (!confirm('Créer la commande dans Wing, vers le point relais ' + relay.dataset.name + ' ?')) return;
+    busy(btn, true, '⏳ Création dans Wing…');
+    try { await post('/retours/' + CASE_ID + '/recreer', {relay_id: relay.value, relay_name: relay.dataset.name}); go(CASE_ID, null); }
+    catch (e) { busy(btn, false); document.getElementById('r-msg').textContent = '⚠️ ' + e.message; }
+}
+
 function templateChanged() {
     const t = document.getElementById('m-template');
     const credit = t && CREDIT_TEMPLATES.includes(t.value);
@@ -611,6 +680,8 @@ async function deleteCase(btn) {
 }
 
 templateChanged();
+// The customer asked for another relay point: the list is ready when the file opens.
+{% if view and view.case.status == 'to_decide' and view.data.reply_choice == 'relay' %}searchRelays(document.getElementById('r-search'));{% endif %}
 if (location.hash === '#fiche') {
     // After a correction, straight to the updated checks.
     const updated = new URLSearchParams(location.search).get('maj');

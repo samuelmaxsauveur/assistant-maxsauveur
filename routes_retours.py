@@ -29,7 +29,7 @@ def retours_page():
         tab = next(k for k, _, s in retours.STAGES if selected['status'] in s)
     if tab not in counts:
         # Open on the first step that needs something from Samuel.
-        tab = next((k for k in ('a-traiter', 'reponse', 'avoir', 'rembourser', 'reexpedier', 'attente') if counts[k]), 'a-traiter')
+        tab = next((k for k in ('a-traiter', 'decision', 'reponse', 'avoir', 'rembourser', 'reexpedier', 'attente') if counts[k]), 'a-traiter')
     statuses = dict((k, s) for k, _, s in retours.STAGES)[tab]
     cases = [c for c in all_cases if c['status'] in statuses]
     if tab == 'attente':
@@ -54,6 +54,7 @@ def retours_page():
                            templates=retours.templates_for(selected['data'] if selected else {}), custom_templates=custom,
                            credit_templates=retours.CREDIT_TEMPLATES, status_labels=retours.STATUS_LABELS,
                            reasons=retours.REASONS, choices=retours.CHOICES, categories=retours.CATEGORY_LABELS,
+                           answers=retours.UNCLAIMED_ANSWERS, reship_suffix=retours.RESHIP_SUFFIXES[0],
                            euros=retours.euros, short_date=retours.short_date, fr_date=retours.fr_date)
 
 
@@ -144,7 +145,7 @@ def set_status(case_id):
 
 @retours_bp.route('/retours/<int:case_id>/client', methods=['POST'])
 def customer_choice(case_id):
-    """Samuel reads the answer himself: the customer takes the credit, the refund, or another relay point."""
+    """Samuel reads the answer: the customer takes the credit, or the refund."""
     choice = (request.json or {}).get('choice')
     case = database.get_client_return(case_id)
     if not case:
@@ -155,13 +156,33 @@ def customer_choice(case_id):
             case = retours.create_credit(case_id, bonus=bonus, amount=(request.json or {}).get('amount'))
         elif choice == 'refund':
             case = retours.set_status(case_id, 'to_refund', "le client choisit le remboursement")
-        elif choice == 'relay':
-            case = retours.set_status(case_id, 'to_reship', "le client choisit un autre point relais")
         else:
             return _fail("Choix inconnu")
     except Exception as e:
         return _fail(e)
     return _ok(case)
+
+
+@retours_bp.route('/retours/<int:case_id>/relais', methods=['POST'])
+def relays(case_id):
+    data = request.json or {}
+    try:
+        found, suggested = retours.find_relays(case_id, data.get('address'), data.get('zip'), data.get('city'))
+    except Exception as e:
+        print(f"[Retours] Relay search failed for file {case_id}: {e}")
+        return _fail(e)
+    return jsonify({'success': True, 'relays': found, 'suggested': suggested})
+
+
+@retours_bp.route('/retours/<int:case_id>/recreer', methods=['POST'])
+def recreate(case_id):
+    data = request.json or {}
+    try:
+        case = retours.recreate_order(case_id, data.get('relay_id'), data.get('relay_name'))
+    except Exception as e:
+        print(f"[Retours] Recreating the order failed for file {case_id}: {e}")
+        return _fail(e)
+    return _ok(case, ref=case['data'].get('reship_ref'))
 
 
 @retours_bp.route('/retours/<int:case_id>/supprimer', methods=['POST'])
