@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__au",
+      "topic_label": "Re: Au",
+      "situation": "Re: Au",
+      "response_template": "Bonjour Stéphane,\n\nMerci pour les photos.\n\nVous pouvez nous retourner la paire. Voici la procédure :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour — indiquez comme motif « avoir »\n2. Glissez le bon à l'intérieur du colis avec la paire dans sa boîte\n3. Expédiez à :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous envoyons un avoir valable 6 mois sur notre site pour commander le modèle de votre choix.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_02_21_27_04",
       "topic_label": "Form name Form submitted 2026-11-02 21:27:04",
       "situation": "Form name Form submitted 2026-11-02 21:27:04",
