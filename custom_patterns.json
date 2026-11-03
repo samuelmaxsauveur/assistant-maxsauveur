@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__annulation_de_commande_13483",
+      "topic_label": "Re: Annulation de commande 13483",
+      "situation": "Re: Annulation de commande 13483",
+      "response_template": "Bonjour Monsieur Ondaye,\n\nVotre commande #13483 est annulée et le remboursement intégral de 745,00 € sera émis sur votre moyen de paiement d'origine sous 3 à 5 jours ouvrés.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
