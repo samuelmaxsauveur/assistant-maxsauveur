@@ -2,6 +2,46 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re____d_faut_chaussure",
+      "topic_label": "Re: : Défaut chaussure",
+      "situation": "Re: : Défaut chaussure",
+      "response_template": "Bonjour Victor,\n\nVos embauchoirs vont partir très prochainement, vous recevrez votre lien de suivi dès l'expédition.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 3
+    },
+    {
+      "topic": "retour_procedure",
+      "topic_label": "Procédure de retour, bon de retour, adresse logistique",
+      "situation": "Client demande comment retourner un article. Client reçoit les modalités complètes de retour, frais à charge, adresse d'expédition avec code postal sans espace, bon de retour à télécharger.",
+      "response_template": "Bonjour [Prénom],\n\nPas de problème pour organiser ce retour. Voici la procédure complète à suivre :\n\n**Étape 1 : Téléchargez le bon de retour**\nRendez-vous sur : https://maxsauveur.com/pages/livraison-et-retour\n\n**Étape 2 : Remplissez le bon de retour**\nComplétez le formulaire avec :\n- Vos nom et prénom\n- Le numéro de votre commande (trouvable dans votre email de confirmation)\n- La raison du retour : « avoir », « remboursement », ou « défaut fabrication » selon votre situation\n\n**Étape 3 : Emballez soigneusement**\nMettez la paire dans sa boîte d'origine, glissez le bon de retour à l'intérieur du colis, et emballez l'ensemble pour éviter les dommages.\n\n**Étape 4 : Expédiez à notre adresse logistique**\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\nFrance\n\n⚠️ **IMPORTANT** : Le code postal doit s'écrire **13170** sans espace. Certains transporteurs rejettent le format « 13 170 ».\n\n**Frais de retour**\nLes frais de retour sont à votre charge, sauf en cas de :\n- Défaut de fabrication avéré\n- Erreur de notre part (mauvais article expédié)\n\n**Délais de traitement**\nDès réception et contrôle de la paire en état neuf et dans sa boîte d'origine, comptez 3 à 5 jours ouvrés pour :\n- Un avoir valable 6 mois sur notre site (si vous avez indiqué « avoir »)\n- Un remboursement sur votre compte bancaire (si vous avez indiqué « remboursement »)\n\nCordialement,\nJohn – Service Client – Max Sauveur",
+      "key_points": "Ton clair, rassurant, pratique. CRITIQUE : code postal 13170 SANS ESPACE — certains transporteurs le rejettent au format « 13 170 ». Bon de retour OBLIGATOIRE à l'intérieur du colis avec motif précisé. Frais TOUJOURS à charge du client sauf défaut ou erreur de préparation. Délai 3-5 jours ouvrés après réception et contrôle. Paire doit être neuve et dans sa boîte.",
+      "example_count": 49
+    },
+    {
+      "topic": "pointure_echange",
+      "topic_label": "Échange de pointure après réception",
+      "situation": "Client a reçu une paire dans une mauvaise pointure et souhaite l'échanger. Client demande si la sensation serrée au premier essayage sur mocassin justifie vraiment un retour ou si c'est du rodage normal. Diagnostic pointure avant retour pour éviter aller-retours inutiles.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre retour – on comprend tout à fait la situation.\n\n---\n\n**AVANT DE RETOURNER : Une question importante sur la pointure**\n\nSur un mocassin notamment, un léger excès de volume au premier essayage est souvent trompeur. Le cuir et la semelle en liège s'assouplissent avec le port et se moulent au pied après quelques sorties. Avant de retourner la paire, pouvez-vous me confirmer :\n- Avez-vous essayé la paire à l'intérieur pendant quelques minutes ?\n- Le problème persiste-t-il, ou était-ce juste la première impression ?\n- À quel endroit exactement trouvez-vous la boot trop grande ? (en longueur, au cou-de-pied, au talon ?)\n\nCe diagnostic simple peut éviter un aller-retour inutile.\n\n**SUR LES MODÈLES QUI CHAUSSENT GRAND**\n\nLe Wayne, le Deck, le Dakota, le Brogue Derby chaussent légèrement grand. Si votre mesure en cm vous place théoriquement en 43 mais que la paire vous semble grande, une demi-taille en dessous (42) peut être justifiée.\n\n**SI LA GÊNE PERSISTE AU TALON ET À L'AVANT**\n\nUne semelle d'ajustement en liège peut vraiment faire la différence : placée sous le pied, elle remonte le pied légèrement et réduit ce mouvement au talon. C'est une solution à explorer avant le retour.\n\n**SI VOUS CONFIRMEZ QUE LA TAILLE NE CONVIENT PAS**\n\nPas de souci, on organise l'échange. Voici la procédure : [LIEN RETOUR]\n\nCordialement,\nJohn – Service Client – Max Sauveur",
+      "key_points": "Ton friendly et patient. CRITIQUE : poser diagnostic AVANT accepter retour — un excès de volume au premier essayage sur mocassin est normal, cuir + liège s'assouplissent. Cela évite un aller-retour inutile. Pour modèles chaussant grand (Wayne, Deck, Dakota, Brogue Derby) : valider si demi-taille en dessous justifiée. Proposer semelle d'ajustement comme alternative au retour.",
+      "example_count": 112
+    },
+    {
+      "topic": "remboursement_avoir",
+      "topic_label": "Remboursements, avoirs, délais de traitement",
+      "situation": "Client reçoit un avoir suite à retour. Client reçoit un avoir spécifique au modèle retourné. Client souhaite utiliser un avoir pour un autre modèle ou une autre taille. Code avoir généré avec conditions d'utilisation restrictives.",
+      "response_template": "Bonjour [Prénom],\n\n**AVOIR GÉNÉRÉ**\n\nNous avons bien reçu votre retour ([MODÈLE] - [DESCRIPTIF]) et venons de générer votre avoir.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n[CODE_AVOIR]\n\n**CONDITIONS D'UTILISATION**\n\n- Valable jusqu'au [DATE : +6 mois],\n- Utilisable [SUR LE MÊME MODÈLE / SUR NOS CHAUSSURES ET CEINTURES HOMME],\n- Réservé à votre adresse e-mail ([EMAIL]) : pensez à commander avec cette adresse,\n- Non cumulable avec d'autres codes ou promotions.\n\n**DÉLAI DE TRAITEMENT**\n\nDès réception et contrôle, comptez 3 à 5 jours ouvrés pour recevoir votre code avoir.\n\n**SI RETOUR EN PROMOTION**\n\nSi vous aviez acheté votre paire en promotion, l'avoir est établi sur le montant que vous avez réellement payé (prix promotionnel), non le prix catalogue.\n\nN'hésitez pas si vous avez d'autres questions.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
+      "key_points": "Ton informatif, clair, rassurant. Engagements : traitement 3-5 jours ouvrés, avoir valable 6 mois, usage unique, non cumulable. CRITIQUE : avoir sur le MONTANT RÉELLEMENT PAYÉ (prix promotionnel si applicable), jamais le prix catalogue. Code réservé à l'adresse e-mail du client — doit commander avec cette adresse. Distinguer avoir « même modèle » vs avoir « toute collection ».",
+      "example_count": 164
+    },
+    {
+      "topic": "pointure_conseil",
+      "topic_label": "Conseil de pointure avant achat",
+      "situation": "Client demande sa taille en fonction d'une référence de comparaison (autre marque, autre modèle Max Sauveur). Client fournit une mesure en cm et demande confirmation. Client s'inquiète du maintien sur mocassin avec cou-de-pied fort.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et pour avoir suivi notre méthode de mesure.\n\nAvec [MESURE_CM] cm de pied, en ajoutant les 0,2 cm vous êtes à [MESURE_PLUS_02] cm, ce qui vous place en **[TAILLE_GUIDE]** sur notre guide.\n\n**SUR VOTRE MODÈLE**\n\nLe [MODÈLE] chausse [légèrement grand/juste au départ], je vous recommande donc le **[TAILLE_FINALE]**.\n\n**COMPARAISON AVEC UNE AUTRE RÉFÉRENCE**\n\nVotre référence [AUTRE_MODÈLE] est un excellent repère, ce modèle est effectivement proche du [MODÈLE] en termes de chaussant. Restez sur le **[TAILLE_CONFIRMÉE]**.\n\n**SUR LES MOCASSINS - SENSATION COU-DE-PIED**\n\nSans lacets, le mocassin serre un peu au cou-de-pied au premier port, c'est normal et nécessaire pour le maintien. Avec un cou-de-pied fort, vous aurez naturellement un bon maintien sans risque que la chaussure lâche. Le cuir et la semelle en liège s'assouplissent avec le port et après quelques sorties, l'ajustement devient naturel.\n\n**POUR PIEDS FINS OU LARGES**\n\nAvec des pieds [fins/larges] et un cou-de-pied [bas/fort], seul l'essayage vous permettra de vérifier concrètement. Si à réception la paire ne convient pas, le retour reste possible via notre procédure habituelle.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
+      "key_points": "Ton rassurant, éducatif. Ajouter 0,2 cm à la mesure brute. Accepter les comparaisons de modèles Max Sauveur comme repères valides. Cou-de-pied fort = AVANTAGE sur mocassin, pas un obstacle. Expliquer assouplissement cuir + liège comme normal et rapide. Ne jamais s'engager sans mesure exacte en cm.",
+      "example_count": 180
+    },
+    {
       "topic": "re__mad_max___les_remises_de_cette_ann_e",
       "topic_label": "Re: Mad Max : les remises de cette année",
       "situation": "Re: Mad Max : les remises de cette année",
@@ -90,28 +130,12 @@
       "example_count": 1
     },
     {
-      "topic": "remboursement_avoir",
-      "topic_label": "Remboursements, avoirs, délais de traitement, montants retenus",
-      "situation": "Client demande confirmation du montant exact d'un avoir avant de valider un retour. Client a reçu une paire en promotion ou en retour et demande si l'avoir tiendra compte du prix payé ou du prix catalogue.",
-      "response_template": "Bonjour [Prénom],\n\n**CONDITIONS DE RETOUR ET D'AVOIR**\n\nPas de souci pour le retour. Voici ce qui se passera :\n\n**Si la pointure ne convient pas et que la taille souhaitée n'est plus disponible**\nNous vous émettons un avoir du montant payé pour la paire, valable 6 mois sur toute notre collection. Cela vous permet de le réutiliser sur un autre modèle de votre choix.\n\n**RETOUR D'UN ARTICLE EN PROMOTION**\nSi vous avez acheté votre paire en promotion, l'avoir sera établi sur le montant que vous avez réellement payé (prix promotionnel), non le prix catalogue.\n\n**Conditions d'utilisation de l'avoir :**\n- Valable jusqu'au [DATE : +6 mois]\n- Utilisable en une seule commande\n- Réservé à votre adresse e-mail ([EMAIL]) : pensez à commander avec cette adresse\n- Non cumulable avec d'autres codes ou promotions\n\n**DÉLAI DE TRAITEMENT**\nDès réception et contrôle, comptez 3 à 5 jours ouvrés pour recevoir votre code avoir.\n\nN'hésitez pas si vous avez d'autres questions.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
-      "key_points": "Ton : informatif, clair, rassurant. Engagements : traitement 3-5 jours ouvrés, avoir valable 6 mois, usage unique, non cumulable. POINT CRITIQUE : avoir sur le MONTANT RÉELLEMENT PAYÉ (prix promotionnel si applicable), jamais le prix catalogue. Code réservé à l'adresse e-mail fournie — client doit commander avec cette adresse. Ne jamais rembourser tant qu'un retour incomplet n'est pas devenu complet.",
-      "example_count": 163
-    },
-    {
       "topic": "suivi_livraison",
       "topic_label": "Suivi de colis, transporteur, point relais, changement d'adresse avant expédition",
       "situation": "Client demande le statut de sa livraison, souhaite modifier son adresse de livraison ou son point relais après commande passée mais avant expédition, ou pose une question sur le suivi en temps réel.",
       "response_template": "Bonjour [Prénom],\n\n**POUR MODIFIER VOTRE POINT RELAIS CHRONOPOST**\n\nVotre commande n'étant pas encore expédiée, nous pouvons tout à fait rediriger votre [PRODUIT] vers un nouveau point relais Chrono2Shop de votre choix.\n\nPourriez-vous sélectionner un nouveau point relais sur ce lien et nous communiquer l'adresse complète ?\nhttps://www.chronopost.fr/expeditionAvanceeSec/ounoustrouver.html\n\nDès réception, nous mettons à jour votre livraison.\n\n**IMPORTANT**\nCertains points relais peuvent fermer temporairement ou définitivement, auquel cas Chronopost est prévenu de ne pas y déposer les colis.\n\n**NOTE : Modification d'adresse ou point relais**\nCette modification n'apparaîtra pas dans votre email de confirmation initial, mais elle est bien prise en compte dans votre lien de suivi. C'est tout à fait normal.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
       "key_points": "Ton rassurant, pratique. Changement d'adresse/point relais possible AVANT expédition uniquement. POINT CRITIQUE : expliquer clairement que la modification n'apparaît pas dans l'email de confirmation initial — c'est NORMAL et visible uniquement sur le lien de suivi. Pour Chrono2Shop : proposer uniquement un autre point Chronopost via le finder officiel. Attendre l'adresse complète du client avant de confirmer la modification.",
       "example_count": 86
-    },
-    {
-      "topic": "pointure_conseil",
-      "topic_label": "Conseil de pointure avant achat, guide des tailles, mesure en cm",
-      "situation": "Client demande sa taille sans avoir mesuré son pied en cm, ou s'inquiète du maintien/confort sur des modèles spécifiques. Client demande une confirmation de pointure en fonction de sa mesure précise en cm. Inclut les questions sur la sensation au premier port et les comparaisons avec d'autres marques.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et pour avoir suivi notre méthode de mesure.\n\nAvec [MESURE_CM] cm de pied, en ajoutant les 0,2 cm vous êtes à [MESURE_PLUS_02] cm, ce qui vous place en **[TAILLE_GUIDE]** sur notre guide.\n\n**SUR VOTRE MODÈLE**\n\nLe [MODÈLE] chausse [légèrement grand/juste au départ], je vous recommande donc le **[TAILLE_FINALE]**.\n\n**SUR LES MOCASSINS - SENSATION COU-DE-PIED**\n\nSans lacets, le mocassin serre un peu au cou-de-pied au premier port, c'est normal et nécessaire pour le maintien. Le cuir et la semelle en liège s'assouplissent avec le port et après quelques sorties, l'ajustement devient naturel.\n\n**POUR PIEDS FINS OU LARGES**\n\nAvec des pieds [fins/larges] et un cou-de-pied [bas/fort], seul l'essayage vous permettra de vérifier concrètement. Si à réception la paire ne convient pas, le retour reste possible via notre procédure habituelle.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
-      "key_points": "Ton rassurant. Toujours ajouter 0,2 cm à la mesure brute et confirmer la taille correspondante. Adapter selon modèle : Paul/Jagger/Winston = ajustement spécifique ; Deck/Dakota/Fisherman/Brogue Derby/Springsteen = chaussent légèrement grand ; Logger Boots = pointure habituelle. Pour pied large ou cou-de-pied fort, ne jamais descendre. Expliquer assouplissement cuir + liège comme normal. Ne jamais se baser sur pointures de sneakers.",
-      "example_count": 179
     },
     {
       "topic": "produit_info",
@@ -328,22 +352,6 @@
       "response_template": "Bonjour [Prénom],\n\nVotre commande #[NUM] ([PRODUIT], taille/couleur [VARIANTE]) est bien en précommande, comme indiqué sur la fiche produit au moment de votre achat. La livraison est prévue pour [DATE : mi-novembre 2026 / mi-décembre 2026 / etc.].\n\n**Important à savoir :** Un statut de livraison vide sur Shopify est normal pour une précommande, ce n'est pas un incident. Votre commande est bien enregistrée et en cours de fabrication.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
       "key_points": "Ton empathique mais honnête. POINT CRITIQUE : un statut Shopify vide sur précommande = NORMAL, ne JAMAIS alarmer le client ni dire 'on va vérifier pourquoi ça ne part pas'. Jamais de fausse promesse sur délai serré. Distinction des deux vagues ceintures (Vague 1 boucles mi-octobre 2026 ; Vague 2 Gigi/Morricone mi-décembre 2026). Embauchoirs : toujours mi-novembre 2026.",
       "example_count": 81
-    },
-    {
-      "topic": "pointure_echange",
-      "topic_label": "Échange de pointure après réception",
-      "situation": "Client a reçu une paire dans une mauvaise pointure et souhaite l'échanger pour la bonne taille. Inclut confirmation de pointure avant retour pour éviter les aller-retours inutiles, notamment sur mocassins où le rodage du cuir peut être trompeur. Le Wayne chausse légèrement grand : avec mesure précise, adapter la taille à la baisse si nécessaire.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour votre retour – on comprend tout à fait la situation.\n\n---\n\n**AVANT DE RETOURNER : Une question importante sur la pointure**\n\nSur un mocassin notamment, un léger excès de volume au premier essayage est souvent trompeur. Le cuir et la semelle en liège s'assouplissent avec le port et se moulent au pied après quelques sorties. Avant de retourner la paire, pouvez-vous me confirmer :\n- Avez-vous essayé la paire à l'intérieur pendant quelques minutes ?\n- Le problème persiste-t-il, ou était-ce juste la première impression ?\n- À quel endroit exactement trouvez-vous la boot trop grande ? (en longueur, au cou-de-pied, au talon ?)\n\nCe diagnostic simple peut éviter un aller-retour inutile.\n\n**Sur les modèles qui chaussent grand :**\nLe Wayne, le Deck, le Dakota, le Brogue Derby chaussent légèrement grand. Si votre mesure en cm vous place théoriquement en 43 mais que la paire vous semble grande, une demi-taille en dessous (42) peut être justifiée.\n\n**Si la gêne persiste au talon et à l'avant :**\nUne semelle d'ajustement en liège peut vraiment faire la différence : placée sous le pied, elle remonte le pied légèrement et réduit ce mouvement au talon. C'est une solution simple et efficace.",
-      "key_points": "Ton : friendly et patient. POINT CRITIQUE : toujours poser une question diagnostic avant d'accepter le retour, notamment pour les mocassins et les boots — un excès de volume au premier essayage est normal et le cuir s'assouplit. Cela évite un aller-retour inutile. Pour les modèles chaussant grand (Wayne, Deck, Dakota, Brogue Derby) : valider si une demi-taille en dessous est justifiée. Proposer les solutions d'ajustement avant retour.",
-      "example_count": 111
-    },
-    {
-      "topic": "retour_procedure",
-      "topic_label": "Procédure de retour complète",
-      "situation": "Client souhaite retourner un article et demande la procédure complète : bon de retour, adresse d'expédition, code postal formaté, bon de retour à inclure, délais de traitement et conditions de remboursement ou avoir.",
-      "response_template": "Bonjour [Prénom],\n\nPas de problème pour organiser ce retour. Voici la procédure complète à suivre :\n\n**Étape 1 : Téléchargez le bon de retour**\nRendez-vous sur : https://maxsauveur.com/pages/livraison-et-retour\n\n**Étape 2 : Remplissez le bon de retour**\nComplétez le formulaire avec :\n- Vos nom et prénom\n- Le numéro de votre commande (trouvable dans votre email de confirmation)\n- La raison du retour : « avoir », « remboursement », ou « défaut fabrication » selon votre situation\n\n**Étape 3 : Emballez soigneusement**\nMettez la paire dans sa boîte d'origine, glissez le bon de retour à l'intérieur du colis, et emballez l'ensemble pour éviter les dommages.\n\n**Étape 4 : Expédiez à notre adresse logistique**\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n**13170** Les Pennes-Mirabeau (sans espace après le code postal — certains transporteurs rejettent le format \"13 170\")\nFrance\n\nLes frais de retour sont à votre charge, sauf en cas de défaut de fabrication avéré ou erreur de notre part (mauvais article expédié).\n\n**Délais de traitement**\nDès réception et contrôle de la paire en état neuf et dans sa boîte d'origine :\n- Un avoir valable 6 mois sur notre site (si vous avez indiqué « avoir »)\n- Un remboursement émis sous 3 à 5 jours ouvrés (si vous avez indiqué « remboursement »)",
-      "key_points": "Ton : clair, rassurant, pratique. POINT CRITIQUE : le code postal doit être écrit SANS ESPACE (13170, pas 13 170) car certains transporteurs le rejettent. Bon de retour OBLIGATOIRE à l'intérieur du colis avec motif précisé. Frais de retour TOUJOURS à la charge du client sauf défaut fabrication ou erreur de préparation. Délai traitement : 3-5 jours ouvrés après réception et contrôle.",
-      "example_count": 48
     },
     {
       "topic": "commande_embauchoirs_le_19_ao_t",
@@ -1648,14 +1656,6 @@
       "response_template": "Bonjour Benjamin,\n\nLes embauchoirs en bois de cèdre sont en précommande, comme indiqué sur la fiche produit au moment de votre achat. La livraison est prévue pour mi-novembre 2026, ce qui explique que vous ne les ayez pas encore reçus.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re____d_faut_chaussure",
-      "topic_label": "Re: : Défaut chaussure",
-      "situation": "Re: : Défaut chaussure",
-      "response_template": "Bonjour Victor,\n\nRavi que la réparation soit à la hauteur !\n\nConcernant les embauchoirs, nous vérifions en interne pour nous assurer que tout est bien en ordre de notre côté, et nous revenons vers vous très rapidement.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 2
     },
     {
       "topic": "form_name_form_submitted_2026_10_17_12_19_13",
