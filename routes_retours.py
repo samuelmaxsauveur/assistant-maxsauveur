@@ -46,6 +46,9 @@ def retours_page():
             'refund_deadline': retours.refund_deadline(data),
             'offer_deadline': retours._offer_deadline(data) if data.get('offer_sent_at') else None,
             'next_id': following[0] if following else None,
+            'credit_mismatch': retours.credit_mismatch(data),
+            'credit_where': retours._where(bool(data.get('credit_model_only')), result),
+            'models': " et ".join(l['title'] for l in result['returned']),
             'tab_of': next(k for k, _, s in retours.STAGES if selected['status'] in s),
         }
     custom = sorted(database.get_all_outbound_templates(), key=lambda t: (t.get('label') or '').lower())
@@ -103,20 +106,45 @@ def prepare_mail(case_id):
     data = request.json or {}
     try:
         case = retours.prepare_mail(case_id, data.get('template') or 'offer',
-                                    (data.get('consignes') or '').strip(), data.get('amount'))
+                                    (data.get('consignes') or '').strip(), data.get('amount'), data.get('scope'))
     except Exception as e:
         print(f"[Retours] Draft failed for file {case_id}: {e}")
         return _fail(e)
-    return _ok(case, subject=case['data'].get('mail_subject'), body=case['data'].get('mail_body'))
+    return _ok(case, subject=case['data'].get('mail_subject'), body=case['data'].get('mail_body'),
+               **retours.conditions_view(case, data.get('template')))
+
+
+@retours_bp.route('/retours/<int:case_id>/conditions', methods=['POST'])
+def conditions(case_id):
+    """Reads the instructions and fields, so Samuel confirms the real terms before Shopify is touched."""
+    data = request.json or {}
+    try:
+        case = retours.set_conditions(case_id, data.get('template') or 'credit', (data.get('consignes') or '').strip(),
+                                      data.get('amount'), data.get('scope'))
+    except Exception as e:
+        print(f"[Retours] Conditions failed for file {case_id}: {e}")
+        return _fail(e)
+    return _ok(case, **retours.conditions_view(case, data.get('template')))
 
 
 @retours_bp.route('/retours/<int:case_id>/avoir', methods=['POST'])
 def create_credit(case_id):
     data = request.json or {}
     try:
-        case = retours.create_credit(case_id, bonus=bool(data.get('bonus')), amount=data.get('amount'))
+        stored = database.get_client_return(case_id)['data']
+        case = retours.create_credit(case_id, bonus=bool(data.get('bonus')), amount=stored.get('amount_override'))
     except Exception as e:
         print(f"[Retours] Credit failed for file {case_id}: {e}")
+        return _fail(e)
+    return _ok(case)
+
+
+@retours_bp.route('/retours/<int:case_id>/avoir/modifier', methods=['POST'])
+def update_credit(case_id):
+    try:
+        case = retours.update_credit(case_id)
+    except Exception as e:
+        print(f"[Retours] Credit update failed for file {case_id}: {e}")
         return _fail(e)
     return _ok(case)
 

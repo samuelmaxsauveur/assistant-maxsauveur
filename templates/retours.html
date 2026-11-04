@@ -302,10 +302,19 @@
         {% endif %}
 
         {% if d.credit_code %}
-        <div class="section">
+        <div class="section" id="avoir-cree">
             <h3>Avoir créé dans Shopify</h3>
             <div class="codes">{{ d.credit_code }} · {{ euros(d.credit_amount or 0) }}{% if d.shipping_code %}<br>{{ d.shipping_code }} · livraison offerte{% endif %}</div>
-            <div class="meta">Valable jusqu'au {{ short_date(d.credit_ends_at) }}, réservé à {{ c.customer_email }}.</div>
+            <div class="meta">Valable {{ view.credit_where }}, jusqu'au {{ short_date(d.credit_ends_at) }}, réservé à {{ c.customer_email }}.</div>
+            {% if request.args.get('avoir') and not view.credit_mismatch %}<div class="updated" style="margin-top:8px;">✅ L'avoir dans Shopify correspond à tes conditions.</div>{% endif %}
+            {% if view.credit_mismatch %}<div class="card error" style="margin:8px 0 0;"><div class="meta">⚠️ L'avoir ne correspond pas à tes conditions : {{ view.credit_mismatch }}.</div></div>
+            {% elif d.consignes and d.consignes != d.conditions_from %}<div class="card error" style="margin:8px 0 0;"><div class="meta">⚠️ Tes consignes ne sont pas encore appliquées à cet avoir.</div></div>{% endif %}
+            {% if c.status not in ('done', 'refused') %}
+            <div class="actions">
+                <button class="btn btn-purple" id="credit-update-btn" onclick="updateCredit(this)">🔄 Mettre à jour l'avoir dans Shopify</button>
+                <span class="msg" id="credit-msg"></span>
+            </div>
+            {% endif %}
         </div>
         {% endif %}
 
@@ -344,6 +353,14 @@
                     </select>
                 </div>
                 <div><label class="f">Montant (laisser vide = calcul automatique)</label><input id="m-amount" inputmode="decimal" value="{{ d.amount_override or '' }}" placeholder="{% if a and unclaimed %}remb. {{ a.refund }}{% elif a %}avoir {{ a.catalogue }} / bonifié {{ a.bonus }} / remb. {{ a.refund }}{% endif %}"></div>
+                {% if not unclaimed %}
+                <div id="m-scope-box"><label class="f">L'avoir est valable sur</label>
+                    <select id="m-scope">
+                        <option value="collection" {% if not d.model_only %}selected{% endif %}>Toute la collection</option>
+                        <option value="model" {% if d.model_only %}selected{% endif %}>Ce modèle uniquement{% if view.models %} ({{ view.models }}){% endif %}</option>
+                    </select>
+                </div>
+                {% endif %}
                 <div class="full"><label class="f">Consignes particulières (facultatif)</label><textarea id="m-consignes" rows="2" placeholder="ex. il garde la ceinture BEBELT : déduire 39 € de l'avoir">{{ d.consignes or '' }}</textarea></div>
             </div>
             <div class="actions"><button class="btn btn-gray" onclick="prepareMail(this)">✍️ Préparer le mail</button><span class="msg" id="m-msg"></span></div>
@@ -616,6 +633,8 @@ function templateChanged() {
     if (cb) cb.style.display = credit && !HAS_CODE ? '' : 'none';
     const sb = document.getElementById('send-btn');
     if (sb) sb.disabled = credit && !HAS_CODE;
+    const scope = document.getElementById('m-scope-box');
+    if (scope && t) scope.style.display = ['refund', 'condition'].includes(t.value) ? 'none' : '';
 }
 
 async function prepareMail(btn) {
@@ -627,21 +646,64 @@ async function prepareMail(btn) {
             template: document.getElementById('m-template').value,
             consignes: document.getElementById('m-consignes').value,
             amount: document.getElementById('m-amount').value.replace(',', '.'),
+            scope: scopeField(),
         });
+        // A code already exists: the page says whether it still matches the conditions.
+        if (HAS_CODE) { go(CASE_ID, undefined, '&avoir=1'); return; }
         document.getElementById('m-subject').value = j.subject || '';
         document.getElementById('m-body').value = j.body || '';
-        msg.textContent = '✅ Mail préparé : relis-le avant de l\'envoyer.';
+        showConditions(j);
+        msg.textContent = (j.warning ? '⚠️ ' + j.warning + ' ' : '✅ ') + 'Mail préparé : relis-le avant de l\'envoyer.' + (document.getElementById('m-scope') && j.terms ? ' Avoir prévu : ' + j.terms + '.' : '');
     } catch (e) { msg.textContent = '⚠️ ' + e.message; }
     busy(btn, false);
 }
 
+function scopeField() {
+    const scope = document.getElementById('m-scope');
+    return scope ? scope.value : undefined;
+}
+function showConditions(j) {
+    document.getElementById('m-amount').value = j.amount === null || j.amount === undefined ? '' : j.amount;
+    const scope = document.getElementById('m-scope');
+    if (scope && j.scope) scope.value = j.scope;
+}
+// Instructions and fields are read first, so what is confirmed is what goes to Shopify.
+async function readConditions() {
+    const j = await post('/retours/' + CASE_ID + '/conditions', {
+        template: document.getElementById('m-template').value,
+        consignes: document.getElementById('m-consignes').value,
+        amount: document.getElementById('m-amount').value.replace(',', '.'),
+        scope: scopeField(),
+    });
+    showConditions(j);
+    return j;
+}
+
 async function createCredit(btn) {
     const t = document.getElementById('m-template').value;
-    const amount = document.getElementById('m-amount').value.replace(',', '.');
-    if (!confirm('Créer l\'avoir dans Shopify' + (amount ? ' (' + amount + ' €)' : '') + ' ?' + (t === 'credit_bonus' ? '\nAvec le code livraison offerte.' : ''))) return;
-    busy(btn, true, 'Création…');
-    try { await post('/retours/' + CASE_ID + '/avoir', {bonus: t === 'credit_bonus', amount: amount}); go(CASE_ID, null); }
-    catch (e) { busy(btn, false); document.getElementById('send-msg').textContent = '⚠️ ' + e.message; }
+    busy(btn, true, 'Lecture de tes consignes…');
+    try {
+        const c = await readConditions();
+        const warning = c.warning ? c.warning + '\n\n' : '';
+        if (!confirm(warning + 'Créer l\'avoir dans Shopify : ' + c.terms + ' ?' + (t === 'credit_bonus' ? '\nAvec le code livraison offerte.' : ''))) { busy(btn, false); return; }
+        btn.textContent = 'Création…';
+        await post('/retours/' + CASE_ID + '/avoir', {bonus: t === 'credit_bonus'});
+        go(CASE_ID, null);
+    } catch (e) { busy(btn, false); document.getElementById('send-msg').textContent = '⚠️ ' + e.message; }
+}
+
+async function updateCredit(btn) {
+    const msg = document.getElementById('credit-msg');
+    msg.textContent = '';
+    busy(btn, true, 'Lecture de tes consignes…');
+    try {
+        const c = await readConditions();
+        const warning = c.warning ? c.warning + '\n\n' : '';
+        if (!confirm(warning + 'Modifier l\'avoir dans Shopify : ' + c.terms + ' ?\nLe code reste le même et le mail est refait.')) { busy(btn, false); return; }
+        btn.textContent = 'Modification…';
+        await post('/retours/' + CASE_ID + '/avoir/modifier');
+        go(CASE_ID, undefined, '&avoir=1');
+    } catch (e) { busy(btn, false); msg.textContent = '⚠️ ' + e.message; }
 }
 
 async function sendMail(btn) {
@@ -684,8 +746,8 @@ templateChanged();
 {% if view and view.case.status == 'to_decide' and view.data.reply_choice == 'relay' %}searchRelays(document.getElementById('r-search'));{% endif %}
 if (location.hash === '#fiche') {
     // After a correction, straight to the updated checks.
-    const updated = new URLSearchParams(location.search).get('maj');
-    const target = document.getElementById(updated ? 'controles' : 'fiche');
+    const params = new URLSearchParams(location.search);
+    const target = document.getElementById(params.get('avoir') ? 'avoir-cree' : params.get('maj') ? 'controles' : 'fiche');
     if (target) target.scrollIntoView();
 }
 </script>

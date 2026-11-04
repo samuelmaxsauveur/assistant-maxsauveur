@@ -166,9 +166,10 @@ def _items(avoir):
     """Either the returned product only (same model and colour), or the men's
     shoes and belts collections."""
     if avoir["model_only"]:
-        if not avoir["product_id"]:
+        ids = avoir.get("product_ids") or [avoir["product_id"]]
+        if not all(ids):
             raise RuntimeError("Produit introuvable dans Shopify : impossible de limiter l'avoir au modèle.")
-        return {"products": {"productsToAdd": [avoir["product_id"]]}}
+        return {"products": {"productsToAdd": ids}}
     return {"collections": {"add": _collection_ids()}}
 
 
@@ -230,6 +231,62 @@ def create_shipping_code(avoir):
     if res["userErrors"]:
         raise RuntimeError(f"Shopify a refusé le code livraison : {res['userErrors']}")
     return code
+
+
+def _code_state(code):
+    node = _gql("""
+        query($c: String!) { codeDiscountNodeByCode(code: $c) { id codeDiscount { ... on DiscountCodeBasic {
+          asyncUsageCount
+          customerGets {
+            value { ... on DiscountAmount { amount { amount } } }
+            items { ... on DiscountCollections { collections(first: 10) { nodes { id } } }
+                    ... on DiscountProducts { products(first: 10) { nodes { id } } } }
+          }
+        } } } }""", {"c": code})["codeDiscountNodeByCode"]
+    if not node or not (node.get("codeDiscount") or {}).get("customerGets"):
+        raise RuntimeError(f"Avoir {code} introuvable dans Shopify.")
+    gets = node["codeDiscount"]["customerGets"]
+    return {"id": node["id"], "used": node["codeDiscount"].get("asyncUsageCount") or 0,
+            "amount": float(gets["value"]["amount"]["amount"]),
+            "collections": [n["id"] for n in (gets["items"].get("collections") or {}).get("nodes", [])],
+            "products": [n["id"] for n in (gets["items"].get("products") or {}).get("nodes", [])]}
+
+
+def update_code(code, amount, model_only, product_ids=None):
+    """Change the amount and the scope of an avoir already created. The code
+    stays the same, and what Shopify holds afterwards is read back."""
+    now = _code_state(code)
+    if now["used"]:
+        raise RuntimeError(f"L'avoir {code} a déjà été utilisé : il ne peut plus être modifié.")
+    if model_only:
+        ids = list(dict.fromkeys(product_ids or []))
+        if not ids or not all(ids):
+            raise RuntimeError("Produit introuvable dans Shopify : impossible de limiter l'avoir au modèle.")
+        items = {"products": {"productsToAdd": [i for i in ids if i not in now["products"]],
+                              "productsToRemove": [i for i in now["products"] if i not in ids]}}
+        if now["collections"]:
+            items["collections"] = {"remove": now["collections"]}
+    else:
+        wanted = _collection_ids()
+        items = {"collections": {"add": [i for i in wanted if i not in now["collections"]],
+                                 "remove": [i for i in now["collections"] if i not in wanted]}}
+        if now["products"]:
+            items["products"] = {"productsToRemove": now["products"]}
+    res = _gql("""
+        mutation($id: ID!, $d: DiscountCodeBasicInput!) {
+          discountCodeBasicUpdate(id: $id, basicCodeDiscount: $d) {
+            codeDiscountNode { id }
+            userErrors { field message }
+          }
+        }""", {"id": now["id"], "d": {"customerGets": {
+            "value": {"discountAmount": {"amount": f"{amount:.2f}", "appliesOnEachItem": False}},
+            "items": items}}})["discountCodeBasicUpdate"]
+    if res["userErrors"]:
+        raise RuntimeError(f"Shopify a refusé la modification de l'avoir : {res['userErrors']}")
+    after = _code_state(code)
+    if abs(after["amount"] - amount) > 0.001 or bool(after["products"]) != bool(model_only):
+        raise RuntimeError(f"Shopify n'a pas pris la modification de l'avoir {code} : vérifie-le dans Shopify.")
+    return after
 
 
 def _euros(amount):
