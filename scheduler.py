@@ -532,6 +532,14 @@ def start():
         id="client_returns"
     )
 
+    # Emails scheduled on a return file
+    scheduler.add_job(
+        retours.send_due,
+        "interval",
+        minutes=1,
+        id="client_returns_scheduled"
+    )
+
     # Reviews published on Yotpo: prepares the mails for the Avis page, never sends one.
     # Every Monday, just before the 6 am report.
     scheduler.add_job(

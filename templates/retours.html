@@ -141,6 +141,8 @@
             </span>
             {% if c.status == 'waiting_client' and c.data.reminder_due %}<span class="pill amber">relance</span>{% endif %}
             {% if c.status == 'to_decide' and c.data.reply_choice %}<span class="pill amber">{{ answers[c.data.reply_choice] }}</span>{% endif %}
+            {% if c.data.scheduled %}<span class="pill">📅 {{ scheduled_label(c.data) }}</span>{% endif %}
+            {% if c.data.scheduled_error %}<span class="pill amber">⚠️ envoi non parti</span>{% endif %}
             <span class="meta">{{ short_date(c.data.arrival_date) }}</span>
         </a>
         {% if view and view.case.id == c.id %}<div id="fiche-anchor"></div>{% endif %}
@@ -369,8 +371,23 @@
             <div class="actions">
                 <button class="btn btn-purple" id="credit-btn" onclick="createCredit(this)" style="display:none;">Créer l'avoir dans Shopify</button>
                 <button class="btn btn-green" id="send-btn" onclick="sendMail(this)">Envoyer à {{ c.customer_email or '?' }}</button>
+                <button class="btn btn-gray" id="schedule-btn" onclick="toggleSchedule()">📅 {{ 'Reprogrammer' if d.scheduled else 'Programmer l\'envoi' }}</button>
                 <span class="msg" id="send-msg"></span>
             </div>
+            <div id="schedule-form" style="display:none; margin-top:8px;">
+                <label class="f">Programmer l'envoi (heure de Paris)</label>
+                <div class="actions" style="margin-top:0;">
+                    <input type="datetime-local" id="schedule-at" style="width:auto;" value="{{ d.scheduled.at[:16] if d.scheduled else '' }}">
+                    <button class="btn btn-teal" onclick="scheduleMail(this)">📅 Confirmer</button>
+                    <button class="btn btn-gray" onclick="toggleSchedule()">✕</button>
+                </div>
+            </div>
+            {% if d.scheduled %}
+            <div class="updated" id="scheduled-note" style="margin-top:8px;">📅 Envoi programmé le <strong>{{ scheduled_label(d) }}</strong> à {{ c.customer_email or '?' }}. Si tu modifies le mail, reprogramme-le : c'est le texte confirmé qui partira. Si le client répond avant, l'envoi est annulé.
+                <div class="actions"><button class="btn btn-gray" onclick="cancelSchedule(this)">Annuler l'envoi programmé</button></div>
+            </div>
+            {% endif %}
+            {% if d.scheduled_error %}<div class="card error" style="margin:8px 0 0;"><div class="meta">⚠️ L'envoi programmé n'est pas parti : {{ d.scheduled_error }} Le mail n'a pas été envoyé : renvoie-le ou reprogramme-le.</div></div>{% endif %}
         </div>
         {% endif %}
 
@@ -597,6 +614,7 @@ async function searchRelays(btn) {
             city: document.getElementById('r-city').value,
         });
         if (!j.relays.length) msg.textContent = 'Aucun point relais trouvé : essaie un autre code postal.';
+        else if (j.missing) msg.textContent = '⚠️ « ' + j.missing + ' » n\'est pas dans la liste de Wing : relance la recherche, choisis un autre relais, ou change-le ensuite dans Wing.';
         j.relays.forEach(r => {
             const line = document.createElement('label');
             line.className = 'line';
@@ -608,7 +626,7 @@ async function searchRelays(btn) {
             radio.checked = r.id === j.suggested;
             radio.addEventListener('change', () => { recreate.disabled = false; });
             const text = document.createElement('span');
-            text.textContent = `${r.name} · ${r.address}, ${r.zip} ${r.city}`;
+            text.textContent = `${r.name} · ${r.address}, ${r.zip} ${r.city} · à ${(r.distance / 1000).toFixed(1).replace('.', ',')} km`;
             line.append(radio, text);
             list.append(line);
         });
@@ -633,6 +651,8 @@ function templateChanged() {
     if (cb) cb.style.display = credit && !HAS_CODE ? '' : 'none';
     const sb = document.getElementById('send-btn');
     if (sb) sb.disabled = credit && !HAS_CODE;
+    const sc = document.getElementById('schedule-btn');
+    if (sc) sc.disabled = credit && !HAS_CODE;
     const scope = document.getElementById('m-scope-box');
     if (scope && t) scope.style.display = ['refund', 'condition'].includes(t.value) ? 'none' : '';
 }
@@ -706,6 +726,32 @@ async function updateCredit(btn) {
     } catch (e) { busy(btn, false); msg.textContent = '⚠️ ' + e.message; }
 }
 
+function toggleSchedule() {
+    const form = document.getElementById('schedule-form');
+    form.style.display = form.style.display === 'none' ? 'block' : 'none';
+}
+
+async function scheduleMail(btn) {
+    const msg = document.getElementById('send-msg');
+    msg.textContent = '';
+    busy(btn, true, 'Programmation…');
+    try {
+        await post('/retours/' + CASE_ID + '/programmer', {
+            template: document.getElementById('m-template').value,
+            subject: document.getElementById('m-subject').value,
+            body: document.getElementById('m-body').value,
+            send_at: document.getElementById('schedule-at').value,
+        });
+        go(CASE_ID, undefined, '&programme=1');
+    } catch (e) { busy(btn, false); msg.textContent = '⚠️ ' + e.message; }
+}
+
+async function cancelSchedule(btn) {
+    busy(btn, true, '…');
+    try { await post('/retours/' + CASE_ID + '/programmer/annuler'); go(CASE_ID, undefined, '&programme=1'); }
+    catch (e) { busy(btn, false); alert(e.message); }
+}
+
 async function sendMail(btn) {
     const to = btn.textContent.replace('Envoyer à ', '');
     if (!confirm('Envoyer ce mail à ' + to + ' ?')) return;
@@ -747,7 +793,7 @@ templateChanged();
 if (location.hash === '#fiche') {
     // After a correction, straight to the updated checks.
     const params = new URLSearchParams(location.search);
-    const target = document.getElementById(params.get('avoir') ? 'avoir-cree' : params.get('maj') ? 'controles' : 'fiche');
+    const target = document.getElementById(params.get('programme') ? 'send-btn' : params.get('avoir') ? 'avoir-cree' : params.get('maj') ? 'controles' : 'fiche');
     if (target) target.scrollIntoView();
 }
 </script>

@@ -1256,12 +1256,10 @@ def _credit_mail(case, template):
                                                            "mail_body": body, "mail_edited": False})
 
 
-def send(case_id, template, subject, body):
-    """Send the email Samuel validated, then move the file to its next step."""
-    case = database.get_client_return(case_id)
+def _check_mail(case, template, body):
+    """The address to send to, once the email may leave. Checked when it is scheduled and again when it goes."""
     data = case["data"]
-    order = data.get("order") or {}
-    to = order.get("email") or case.get("customer_email")
+    to = (data.get("order") or {}).get("email") or case.get("customer_email")
     if not to:
         raise RuntimeError("Adresse du client inconnue.")
     if template in CREDIT_TEMPLATES and not data.get("credit_code"):
@@ -1278,6 +1276,68 @@ def send(case_id, template, subject, body):
         held = euros(float(data.get("credit_amount") or 0))
         if held.replace(" ", "") not in re.sub(r"\s", "", body):
             raise RuntimeError(f"Le mail n'annonce pas le montant de l'avoir dans Shopify ({held}).")
+    return to
+
+
+def scheduled_label(data):
+    """« jeudi 5 novembre à 09:00 », Paris time."""
+    planned = data.get("scheduled")
+    if not planned:
+        return ""
+    when = datetime.fromisoformat(planned["at"]).astimezone(PARIS)
+    return f"{fr_date(when)} à {when.strftime('%H:%M')}"
+
+
+def schedule_mail(case_id, template, subject, body, send_at):
+    """Keep a validated email for later. It stays on the file so that it moves the file on when it leaves."""
+    case = database.get_client_return(case_id)
+    try:
+        when = PARIS.localize(datetime.fromisoformat(send_at))
+    except (TypeError, ValueError):
+        raise ValueError("Choisis la date et l'heure d'envoi.")
+    if when <= datetime.now(PARIS):
+        raise ValueError("Cette heure est déjà passée.")
+    _check_mail(case, template, body)
+    planned = {"at": when.isoformat(), "template": template, "subject": subject, "body": body}
+    changes = {"scheduled": planned, "scheduled_error": None, "template": template, "mail_subject": subject,
+               "mail_body": body, "mail_edited": True}
+    changes["log"] = _log(case["data"], f"envoi programmé : {scheduled_label(changes)}")
+    return database.update_client_return(case_id, data=changes)
+
+
+def cancel_scheduled(case_id, why="envoi programmé annulé"):
+    case = database.get_client_return(case_id)
+    if not case["data"].get("scheduled"):
+        return case
+    return database.update_client_return(case_id, data={"scheduled": None, "log": _log(case["data"], why)})
+
+
+def send_due():
+    """The scheduled emails whose time has come. Each gets one attempt: if it fails, Samuel sees why and decides."""
+    now = datetime.now(PARIS)
+    for case in database.get_client_returns():
+        planned = case["data"].get("scheduled")
+        if not planned or datetime.fromisoformat(planned["at"]) > now:
+            continue
+        # Taken off the file first: whatever happens next, it can never leave twice.
+        database.update_client_return(case["id"], data={"scheduled": None})
+        if case["status"] in ("done", "refused"):
+            continue
+        try:
+            send(case["id"], planned["template"], planned["subject"], planned["body"])
+        except Exception as e:
+            print(f"[Retours] Scheduled email of file {case['id']} not sent: {e}")
+            current = database.get_client_return(case["id"])
+            database.update_client_return(case["id"], data={
+                "scheduled_error": str(e), "log": _log(current["data"], "envoi programmé non parti")})
+
+
+def send(case_id, template, subject, body):
+    """Send the email Samuel validated, then move the file to its next step."""
+    case = database.get_client_return(case_id)
+    data = case["data"]
+    order = data.get("order") or {}
+    to = _check_mail(case, template, body)
     service = gmail_helper.get_gmail_service()
     sent = gmail_helper.send_email(service, to, subject, body, thread_id=case.get("thread_id"))
     thread_id = (sent or {}).get("threadId") or case.get("thread_id")
@@ -1288,7 +1348,7 @@ def send(case_id, template, subject, body):
         status = AFTER_SEND.get(template, case["status"])
     now = datetime.now(PARIS).isoformat()
     changes = {"log": _log(data, f"mail envoyé : {TEMPLATES.get(template, 'mail pré-rédigé')}"),
-               "mail_edited": False, "last_sent_at": now,
+               "mail_edited": False, "last_sent_at": now, "scheduled": None, "scheduled_error": None,
                "seen_messages": (data.get("seen_messages") or []) + ([sent["id"]] if sent and sent.get("id") else [])}
     if template in OFFER_KIND or template.startswith("tpl:") or template == "free":
         changes["offer_kind"] = OFFER_KIND.get(template, data.get("offer_kind") or "bonus")
@@ -1319,16 +1379,23 @@ def send(case_id, template, subject, body):
 
 
 def find_relays(case_id, address, zip_code, city):
-    """Chrono2Shop relay points near this address, and the one the customer seems to name."""
+    """Chrono2Shop relay points near this address, the one the customer seems to name, and that name if
+    it is not there: Wing's list can change from one search to the next, even for the same postcode."""
     case = database.get_client_return(case_id)
     if not (zip_code or "").strip() or not (city or "").strip():
         raise ValueError("Indique le code postal et la ville.")
     country = ((case["data"].get("order") or {}).get("shipping_country")) or "FR"
     relays = repair_returns.search_relays("chrono_relay", (address or "").strip(), zip_code.strip(), city.strip(), country)
-    named = avoirs._norm((case["data"].get("relay_hint") or {}).get("name") or "")
-    closeness = {r["id"]: difflib.SequenceMatcher(None, named, avoirs._norm(r["name"])).ratio() for r in relays}
-    best = max(relays, key=lambda r: closeness[r["id"]], default=None) if named else None
-    return relays, best["id"] if best and closeness[best["id"]] >= 0.6 else None
+    hint = case["data"].get("relay_hint") or {}
+    named, street = avoirs._norm(hint.get("name") or ""), avoirs._norm(hint.get("address") or "")
+
+    def closeness(relay):
+        return max(difflib.SequenceMatcher(None, named, avoirs._norm(relay["name"])).ratio() if named else 0,
+                   difflib.SequenceMatcher(None, street, avoirs._norm(relay["address"])).ratio() if street else 0)
+
+    best = max(relays, key=closeness, default=None)
+    suggested = best["id"] if best and closeness(best) >= 0.6 else None
+    return relays, suggested, hint.get("name") if hint.get("name") and not suggested else None
 
 
 def recreate_order(case_id, relay_id, relay_name):
@@ -1401,6 +1468,7 @@ def set_status(case_id, status, note=None, extra=None):
         changes["closed_at"] = datetime.now(PARIS).isoformat()
         # « Rouvrir » sends the file back to this step.
         changes["closed_from"] = case["status"]
+        changes["scheduled"] = None
     case = database.update_client_return(case_id, status=status, data=changes)
     if status == "to_refund" and case["data"].get("order"):
         # The "refund on its way" email is ready, for when Samuel wants to send one.
@@ -1497,6 +1565,9 @@ def check_replies():
                        if m["id"] not in seen and m["direction"] == "received"]
             if new:
                 reply = "\n\n".join(gmail_helper._strip_quoted(m["body"]) for m in new).strip()
+                # What was scheduled was written before this answer: it must not leave on its own now.
+                case = cancel_scheduled(case["id"], "envoi programmé annulé : le client a répondu")
+                data = case["data"]
                 unclaimed = data.get("kind") == UNCLAIMED
                 info = _read_unclaimed_reply(reply) if unclaimed else _classify(reply, data.get("offer_kind") or "bonus", data)
                 changes = {"seen_messages": list(seen | {m["id"] for m in new}), "reply_text": reply,

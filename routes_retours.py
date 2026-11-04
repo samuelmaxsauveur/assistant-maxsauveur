@@ -58,7 +58,8 @@ def retours_page():
                            credit_templates=retours.CREDIT_TEMPLATES, status_labels=retours.STATUS_LABELS,
                            reasons=retours.REASONS, choices=retours.CHOICES, categories=retours.CATEGORY_LABELS,
                            answers=retours.UNCLAIMED_ANSWERS, reship_suffix=retours.RESHIP_SUFFIXES[0],
-                           euros=retours.euros, short_date=retours.short_date, fr_date=retours.fr_date)
+                           euros=retours.euros, short_date=retours.short_date, fr_date=retours.fr_date,
+                           scheduled_label=retours.scheduled_label)
 
 
 def _ok(case, **extra):
@@ -163,6 +164,25 @@ def send(case_id):
     return _ok(case)
 
 
+@retours_bp.route('/retours/<int:case_id>/programmer', methods=['POST'])
+def schedule(case_id):
+    data = request.json or {}
+    subject, body = (data.get('subject') or '').strip(), (data.get('body') or '').strip()
+    if not subject or not body:
+        return _fail("Objet ou message vide")
+    try:
+        case = retours.schedule_mail(case_id, data.get('template') or '', subject, body, data.get('send_at'))
+    except Exception as e:
+        print(f"[Retours] Scheduling failed for file {case_id}: {e}")
+        return _fail(e)
+    return _ok(case)
+
+
+@retours_bp.route('/retours/<int:case_id>/programmer/annuler', methods=['POST'])
+def cancel_schedule(case_id):
+    return _ok(retours.cancel_scheduled(case_id))
+
+
 @retours_bp.route('/retours/<int:case_id>/statut', methods=['POST'])
 def set_status(case_id):
     status = (request.json or {}).get('status')
@@ -195,11 +215,11 @@ def customer_choice(case_id):
 def relays(case_id):
     data = request.json or {}
     try:
-        found, suggested = retours.find_relays(case_id, data.get('address'), data.get('zip'), data.get('city'))
+        found, suggested, missing = retours.find_relays(case_id, data.get('address'), data.get('zip'), data.get('city'))
     except Exception as e:
         print(f"[Retours] Relay search failed for file {case_id}: {e}")
         return _fail(e)
-    return jsonify({'success': True, 'relays': found, 'suggested': suggested})
+    return jsonify({'success': True, 'relays': found, 'suggested': suggested, 'missing': missing})
 
 
 @retours_bp.route('/retours/<int:case_id>/recreer', methods=['POST'])
