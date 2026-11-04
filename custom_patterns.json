@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__ceintures",
+      "topic_label": "Re: ceintures",
+      "situation": "Re: ceintures",
+      "response_template": "Bonjour André,\n\nVotre commande #13663 (Gigi Ceinture Cuir Lézard Noir, taille 80) est bien en précommande. La livraison est prévue pour mi-décembre 2026.\n\nVous recevrez automatiquement un email avec votre lien de suivi dès que votre colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "probl_me_avec_ma_commande",
       "topic_label": "problème avec ma commande",
       "situation": "problème avec ma commande",
