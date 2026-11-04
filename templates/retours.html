@@ -393,8 +393,9 @@
 
         <div class="section">
             <div class="actions" style="margin-top:0;">
+                {% if c.status == 'to_check' and o %}<button class="btn btn-teal" onclick="setStatus('to_refund', this, 'passé en « À rembourser » à la main')">💶 Passer à « À rembourser »</button>{% endif %}
                 {% if c.status == 'to_check' %}<button class="btn btn-red" onclick="setStatus('refused', this, 'refusé sans mail')">Refuser sans mail</button>{% endif %}
-                {% if c.status in ('waiting_client', 'to_decide', 'reply_to_read', 'credit_to_send', 'to_reship') %}<button class="btn btn-gray" onclick="setStatus('to_check', this)">Revenir à « À traiter »</button>{% endif %}
+                {% if c.status in ('waiting_client', 'to_decide', 'reply_to_read', 'credit_to_send', 'to_refund', 'to_reship') %}<button class="btn btn-gray" onclick="setStatus('to_check', this)">Revenir à « À traiter »</button>{% endif %}
                 {% if c.status in ('done', 'refused') %}
                 {# Back to the step the file was closed from; older files that went through « À rembourser » go back there. #}
                 {% set back = d.closed_from or ('to_refund' if 'refunded_before' in d else 'to_check') %}

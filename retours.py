@@ -1466,7 +1466,10 @@ def set_status(case_id, status, note=None, extra=None):
         changes["closed_at"] = datetime.now(PARIS).isoformat()
         # « Rouvrir » sends the file back to this step.
         changes["closed_from"] = case["status"]
+    if status in ("done", "refused", "to_refund") and case["data"].get("scheduled"):
+        # Written for the step the file has just left: it must not leave on its own now.
         changes["scheduled"] = None
+        changes["log"] = _log({"log": changes["log"]}, "envoi programmé annulé")
     case = database.update_client_return(case_id, status=status, data=changes)
     if status == "to_refund" and case["data"].get("order"):
         # The "refund on its way" email is ready, for when Samuel wants to send one.
