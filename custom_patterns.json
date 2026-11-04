@@ -2,6 +2,126 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__mad_max___les_remises_de_cette_ann_e",
+      "topic_label": "Re: Mad Max : les remises de cette année",
+      "situation": "Re: Mad Max : les remises de cette année",
+      "response_template": "Bonjour Jimmy,\n\nOui, un cou-de-pied fort joue un rôle important sur un mocassin, précisément parce qu'il n'y a pas de lacets pour ajuster le maintien.\n\nBonne nouvelle pour vous : un cou-de-pied prononcé est en réalité un avantage sur le Paul. Le maintien repose entièrement sur cette zone, donc vous aurez naturellement un bon maintien sans risque que la chaussure lâche. La sensation de serré au début sera peut-être un peu plus marquée, mais le cuir et le liège vont travailler dans ce sens et s'assouplir progressivement.\n\nJe vous confirme donc le 42, voir 42,5 mais cela va dépendre de l'essayage.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "mad_max___les_remises_de_cette_ann_e",
+      "topic_label": "Mad Max : les remises de cette année",
+      "situation": "Mad Max : les remises de cette année",
+      "response_template": "Bonjour Jimmy,\n\nSur le Paul, la logique est inverse à la Chapman : il chausse petit, donc il faut prendre une taille au-dessus de sa taille habituelle. Avec votre 41,5, je vous recommande le 42.\n\nÀ noter qu'une légère sensation de serré au premier port est normale sur un mocassin sans lacets, le maintien repose sur le cou-de-pied. Le cuir et la semelle en liège se moulent au pied après quelques sorties, et le confort s'installe rapidement.\n\nBonne journée à vous !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 3
+    },
+    {
+      "topic": "info_paiement_mad_max",
+      "topic_label": "Info paiement MAD MAX",
+      "situation": "Info paiement MAD MAX",
+      "response_template": "Bonjour Thierry,\n\nPayPal n'est malheureusement pas disponible sur notre site, en raison de leur politique commerciale.\n\nNous proposons trois alternatives tout aussi sécurisées : Stripe (carte bancaire), Alma (paiement en plusieurs fois) et Payplug. Ces solutions offrent les mêmes garanties en matière de protection des achats en ligne.\n\nN'hésitez pas si vous avez d'autres questions avant le Mad Max.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_retour_pour_la_commande__13809",
+      "topic_label": "Votre retour pour la commande #13809",
+      "situation": "Votre retour pour la commande #13809",
+      "response_template": "Bonjour Sebastien,\n\nNous avons bien reçu votre retour (Brogues - Chaussures Derby Cuir Gras Marron, pointure 43) et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux vous correspondre, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si une autre pointure ou un autre modèle vous tente, voici ce qu'on peut faire : nous vous envoyons un avoir de 370 €, soit le prix de votre paire (335 €) et 35 € offerts par la maison. Il est valable 6 mois sur toute la collection, chaussures et ceintures, et la livraison de votre nouvelle commande est offerte, à l'adresse de votre choix.\n\nAutrement dit, vous repartez avec une nouvelle pièce sans rien débourser, et 35 € de plus en poche.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte. Sans réponse de votre part d'ici le mercredi 11 novembre, nous procéderons au remboursement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "commande__13573___date_de_livraison__",
+      "topic_label": "Commande #13573 – date de livraison ?",
+      "situation": "Commande #13573 – date de livraison ?",
+      "response_template": "Hello Antonin,\n\nNos Dakota arrivent en entrepôt en début de semaine prochaine, et votre commande #13573 partira dans la foulée. Vous recevrez automatiquement votre lien de suivi dès l'expédition.\n\nOn glisse également un petit accessoire dans le colis pour vous remercier de votre patience.\n\nBonne journée,\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "suivi_de_mon_retour___avoir_non_re_u",
+      "topic_label": "Suivi de mon retour – avoir non reçu",
+      "situation": "Suivi de mon retour – avoir non reçu",
+      "response_template": "Bonjour Cristiana,\n\nMalheureusement, nous n'avons aucune trace de réception de votre colis à notre entrepôt à ce jour.\n\nSans numéro de suivi, il nous est impossible de localiser votre retour en transit. Nous vous invitons à contacter directement La Poste ou le bureau de poste où vous avez déposé votre colis : ils pourront retrouver votre envoi dans leur système grâce à vos informations personnelles (date de dépôt, adresse d'expédition) et vous communiquer le numéro de suivi correspondant.\n\nDès que vous avez cet élément, transmettez-le nous et nous faisons le point de notre côté.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
+      "topic": "votre_avoir_pour_la_commande__13821",
+      "topic_label": "Votre avoir pour la commande #13821",
+      "situation": "Votre avoir pour la commande #13821",
+      "response_template": "Bonjour Philippe,\n\nNous avons bien reçu votre retour (Paul - Chaussures Mocassin Cuir Noir) et venons de générer votre avoir d'un montant de 335 €.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\nM8Y98U9GWTGP\n\nConditions d'utilisation :\n- valable jusqu'au 04/05/2027,\n- utilisable sur nos chaussures et ceintures homme, en une seule commande,\n- réservé à votre adresse e-mail (philippe.burat@outlook.com) : pensez à commander avec cette adresse,\n- non cumulable avec d'autres codes ou promotions.\n\nSi vous avez la moindre question, je reste disponible.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_retour_pour_la_commande__13818",
+      "topic_label": "Votre retour pour la commande #13818",
+      "situation": "Votre retour pour la commande #13818",
+      "response_template": "Bonjour Quentin,\n\nNous avons bien reçu votre retour (Deck - Chaussures Bateau Cuir Bordeaux, pointure 41) et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux vous correspondre, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si une autre pointure ou un autre modèle vous tente, voici ce qu'on peut faire : nous vous envoyons un avoir de 395 €, soit le prix de votre paire (335 €) et 60 € offerts par la maison. Il est valable 6 mois sur toute la collection, chaussures et ceintures, et la livraison de votre nouvelle commande est offerte, à l'adresse de votre choix.\n\nAutrement dit, vous repartez avec une nouvelle pièce sans rien débourser, et 60 € de plus en poche.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte. \n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_retour_pour_la_commande__13493",
+      "topic_label": "Votre retour pour la commande #13493",
+      "situation": "Votre retour pour la commande #13493",
+      "response_template": "Bonjour Arthur,\n\nNous avons bien reçu votre retour (Deck - Chaussures Bateau Cuir Marron, pointure 45) et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux vous correspondre, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si une autre pointure ou un autre modèle vous tente, voici ce qu'on peut faire : nous vous envoyons un avoir de 360 €, soit le prix de votre paire (335 €) et 25 € offerts par la maison. Il est valable 6 mois sur toute la collection, chaussures et ceintures, et la livraison de votre nouvelle commande est offerte, à l'adresse de votre choix.\n\nAutrement dit, vous gardez l'avantage de votre commande initiale et vous repartez avec 25 € de plus.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte. Sans réponse de votre part d'ici le mercredi 11 novembre, nous procéderons au remboursement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "conseil_pointure_concernant_la_deck",
+      "topic_label": "Conseil pointure concernant la Deck",
+      "situation": "Conseil pointure concernant la Deck",
+      "response_template": "Bonjour Thomas,\n\nVotre référence Paraboots Briac est un excellent repère, ce modèle est effectivement proche de la Deck en termes de chaussant. Avec votre mesure de 27 cm et cette référence en 41, restez sur le **41**.\n\nBonne commande !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_avoir_pour_la_commande__13845",
+      "topic_label": "Votre avoir pour la commande #13845",
+      "situation": "Votre avoir pour la commande #13845",
+      "response_template": "Bonjour Sebastien,\n\nNous avons bien reçu votre retour (Powell - Chaussures Boots Cuir Grainé Marron) et venons de générer votre avoir.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n8F7Y34VZ5WGM\n\nConditions d'utilisation :\n- valable jusqu'au 04/05/2027,\n- utilisable uniquement sur le modèle Powell - Chaussures Boots Cuir Grainé Marron, en une seule commande,\n- réservé à votre adresse e-mail (sebastien.talard@orange.fr) : pensez à commander avec cette adresse,\n- non cumulable avec d'autres codes ou promotions.\n\nSi vous avez la moindre question, je reste disponible.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "remboursement_avoir",
+      "topic_label": "Remboursements, avoirs, délais de traitement, montants retenus",
+      "situation": "Client demande confirmation du montant exact d'un avoir avant de valider un retour. Client a reçu une paire en promotion ou en retour et demande si l'avoir tiendra compte du prix payé ou du prix catalogue.",
+      "response_template": "Bonjour [Prénom],\n\n**CONDITIONS DE RETOUR ET D'AVOIR**\n\nPas de souci pour le retour. Voici ce qui se passera :\n\n**Si la pointure ne convient pas et que la taille souhaitée n'est plus disponible**\nNous vous émettons un avoir du montant payé pour la paire, valable 6 mois sur toute notre collection. Cela vous permet de le réutiliser sur un autre modèle de votre choix.\n\n**RETOUR D'UN ARTICLE EN PROMOTION**\nSi vous avez acheté votre paire en promotion, l'avoir sera établi sur le montant que vous avez réellement payé (prix promotionnel), non le prix catalogue.\n\n**Conditions d'utilisation de l'avoir :**\n- Valable jusqu'au [DATE : +6 mois]\n- Utilisable en une seule commande\n- Réservé à votre adresse e-mail ([EMAIL]) : pensez à commander avec cette adresse\n- Non cumulable avec d'autres codes ou promotions\n\n**DÉLAI DE TRAITEMENT**\nDès réception et contrôle, comptez 3 à 5 jours ouvrés pour recevoir votre code avoir.\n\nN'hésitez pas si vous avez d'autres questions.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
+      "key_points": "Ton : informatif, clair, rassurant. Engagements : traitement 3-5 jours ouvrés, avoir valable 6 mois, usage unique, non cumulable. POINT CRITIQUE : avoir sur le MONTANT RÉELLEMENT PAYÉ (prix promotionnel si applicable), jamais le prix catalogue. Code réservé à l'adresse e-mail fournie — client doit commander avec cette adresse. Ne jamais rembourser tant qu'un retour incomplet n'est pas devenu complet.",
+      "example_count": 163
+    },
+    {
+      "topic": "suivi_livraison",
+      "topic_label": "Suivi de colis, transporteur, point relais, changement d'adresse avant expédition",
+      "situation": "Client demande le statut de sa livraison, souhaite modifier son adresse de livraison ou son point relais après commande passée mais avant expédition, ou pose une question sur le suivi en temps réel.",
+      "response_template": "Bonjour [Prénom],\n\n**POUR MODIFIER VOTRE POINT RELAIS CHRONOPOST**\n\nVotre commande n'étant pas encore expédiée, nous pouvons tout à fait rediriger votre [PRODUIT] vers un nouveau point relais Chrono2Shop de votre choix.\n\nPourriez-vous sélectionner un nouveau point relais sur ce lien et nous communiquer l'adresse complète ?\nhttps://www.chronopost.fr/expeditionAvanceeSec/ounoustrouver.html\n\nDès réception, nous mettons à jour votre livraison.\n\n**IMPORTANT**\nCertains points relais peuvent fermer temporairement ou définitivement, auquel cas Chronopost est prévenu de ne pas y déposer les colis.\n\n**NOTE : Modification d'adresse ou point relais**\nCette modification n'apparaîtra pas dans votre email de confirmation initial, mais elle est bien prise en compte dans votre lien de suivi. C'est tout à fait normal.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
+      "key_points": "Ton rassurant, pratique. Changement d'adresse/point relais possible AVANT expédition uniquement. POINT CRITIQUE : expliquer clairement que la modification n'apparaît pas dans l'email de confirmation initial — c'est NORMAL et visible uniquement sur le lien de suivi. Pour Chrono2Shop : proposer uniquement un autre point Chronopost via le finder officiel. Attendre l'adresse complète du client avant de confirmer la modification.",
+      "example_count": 86
+    },
+    {
+      "topic": "pointure_conseil",
+      "topic_label": "Conseil de pointure avant achat, guide des tailles, mesure en cm",
+      "situation": "Client demande sa taille sans avoir mesuré son pied en cm, ou s'inquiète du maintien/confort sur des modèles spécifiques. Client demande une confirmation de pointure en fonction de sa mesure précise en cm. Inclut les questions sur la sensation au premier port et les comparaisons avec d'autres marques.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et pour avoir suivi notre méthode de mesure.\n\nAvec [MESURE_CM] cm de pied, en ajoutant les 0,2 cm vous êtes à [MESURE_PLUS_02] cm, ce qui vous place en **[TAILLE_GUIDE]** sur notre guide.\n\n**SUR VOTRE MODÈLE**\n\nLe [MODÈLE] chausse [légèrement grand/juste au départ], je vous recommande donc le **[TAILLE_FINALE]**.\n\n**SUR LES MOCASSINS - SENSATION COU-DE-PIED**\n\nSans lacets, le mocassin serre un peu au cou-de-pied au premier port, c'est normal et nécessaire pour le maintien. Le cuir et la semelle en liège s'assouplissent avec le port et après quelques sorties, l'ajustement devient naturel.\n\n**POUR PIEDS FINS OU LARGES**\n\nAvec des pieds [fins/larges] et un cou-de-pied [bas/fort], seul l'essayage vous permettra de vérifier concrètement. Si à réception la paire ne convient pas, le retour reste possible via notre procédure habituelle.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
+      "key_points": "Ton rassurant. Toujours ajouter 0,2 cm à la mesure brute et confirmer la taille correspondante. Adapter selon modèle : Paul/Jagger/Winston = ajustement spécifique ; Deck/Dakota/Fisherman/Brogue Derby/Springsteen = chaussent légèrement grand ; Logger Boots = pointure habituelle. Pour pied large ou cou-de-pied fort, ne jamais descendre. Expliquer assouplissement cuir + liège comme normal. Ne jamais se baser sur pointures de sneakers.",
+      "example_count": 179
+    },
+    {
+      "topic": "produit_info",
+      "topic_label": "Renseignements produit : matières, fabrication, styles, entretien à l'achat",
+      "situation": "Client demande des conseils spécifiques sur l'entretien du daim, pose des questions sur les matières naturelles avant achat, ou cherche à valider son choix de modèle selon ses caractéristiques (confort, semelle, matière).",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et pour avoir suivi notre méthode de mesure.\n\n**ENTRETIEN DU DAIM**\n\nLe daim demande un entretien spécifique, différent du cuir lisse :\n- Une brosse à daim pour raviver les fibres et enlever la poussière\n- Un spray imperméabilisant pour daim avant le premier port, et à renouveler régulièrement\n- En cas de tache, une gomme à daim permet d'effacer les marques légères à sec\n\nÀ éviter absolument : les cirages classiques et les crèmes pour cuir lisse, qui abîmeraient le daim.\n\n**SUR LES MATIÈRES NATURELLES**\n\nNos chaussures sont fabriquées en full grain leather (cuir pleine fleur, non corrigé). C'est une matière naturelle qui marque avec l'usage, se patine, et s'assouplit avec le temps. Les variations de teinte, les petites imperfections ou les marques de gras sont des caractéristiques, pas des défauts.\n\n**SUR LE CONFORT ET LA SEMELLE**\n\nNos chaussures sont équipées d'une semelle intérieure en liège qui se moule progressivement à la forme exacte de votre pied. Au premier port, la sensation peut sembler rigide ou serrante, c'est normal : après quelques sorties, le résultat est celui d'un chausson sur mesure.\n\nN'hésitez pas si vous avez d'autres questions.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
+      "key_points": "Ton : rassurant, éducatif sur les matières naturelles. Distinguer daim (entretien spécifique) du cuir lisse. Full grain leather = matière vivante, marques normales et naturelles. Semelle liège = se moule au pied, rigidité initiale normale. Ne jamais s'engager sur une taille sans mesure exacte du pied en cm. Expliquer l'assouplissement du cuir comme processus naturel, jamais comme défaut.",
+      "example_count": 21
+    },
+    {
       "topic": "pointure",
       "topic_label": "Pointure",
       "situation": "Pointure",
@@ -66,36 +186,12 @@
       "example_count": 1
     },
     {
-      "topic": "pointure_conseil",
-      "topic_label": "Conseil de pointure avant achat, guide des tailles, mesure en cm",
-      "situation": "Client demande sa taille sans avoir mesuré son pied en cm, ou s'inquiète du maintien/confort sur des modèles spécifiques. Inclut les questions sur la sensation au premier port (serrement, glissement) et les comparaisons avec d'autres marques. Client demande une confirmation de pointure en fonction de sa mesure précise.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et pour avoir suivi notre méthode de mesure.\n\nAvec [MESURE_CM] cm de pied, vous êtes en **[TAILLE_GUIDE]** sur notre guide de tailles.\n\n[SI MODÈLE SPÉCIFIQUE]\nLe [MODÈLE] chausse [légèrement grand/juste au départ], donc je vous recommande le **[TAILLE_FINALE]**.\n\nExemple concret : Avec 26,3 cm, la correspondance est 40 selon le guide. Le Dakota chausse légèrement grand, je vous recommande donc le 40 (ou le 39 si vous trouvez toujours trop d'espace). Le Logger Boots chausse à la pointure habituelle, donc le 40. Le Paul Mocassin chausse juste au départ, donc le 40 également.\n\n[SI MOCASSIN - SENSATION COU-DE-PIED]\nSans lacets, le mocassin serre un peu au cou-de-pied au premier port, c'est normal et nécessaire pour le maintien. Le cuir et la semelle en liège s'assouplissent avec le port et après quelques sorties, l'ajustement devient naturel.\n\n[SI QUESTION SUR LARGEUR SANS MESURE]\nAvec des pieds fins et un cou-de-pied bas, seul l'essayage vous permettra de vérifier concrètement. Si à réception la paire est trop large et que votre talon glisse, le retour reste possible via notre procédure habituelle.\n\nN'hésitez pas si vous avez d'autres questions.",
-      "key_points": "Ton rassurant. Toujours ajouter 0,2 cm à la mesure brute. Adapter selon modèle : Paul/Jagger/Winston = ajustement spécifique ; Deck/Dakota/Fisherman/Brogue Derby/Springsteen = chaussent légèrement grand ; Logger Boots = pointure habituelle. Pour pied large ou cou-de-pied fort, ne jamais descendre. Expliquer l'assouplissement du cuir comme normal et naturel. Toujours confirmer la taille avec une question diagnostic avant d'affirmer c'est la bonne.",
-      "example_count": 178
-    },
-    {
       "topic": "promo_prix",
       "topic_label": "Codes promo, offres, prix, cumul de réductions, facture",
       "situation": "Client demande l'application d'un code promo ou d'une réduction après passation de la commande, ou signale qu'un code n'a pas fonctionné. Inclut les demandes rétroactives et les litiges sur cumul de réductions. Client obtient un code via roue de la fortune et demande à l'appliquer après. Client conteste le non-cumul de réductions ou demande une exception. Client réclame l'honoration d'une récompense pour avis client non appliquée.",
       "response_template": "Bonjour [Prénom],\n\n**Sur les codes promo et réductions : conditions d'application**\n\n**Non-cumulabilité absolue**\nNos conditions générales précisent clairement : les offres promotionnelles et codes de réduction ne sont pas cumulables. Cette règle s'applique à l'ensemble des commandes, sans exception. Si vous avez tenté d'appliquer un code sur des articles déjà en promotion, le cumul ne peut pas être validé.\n\n**Application uniquement avant paiement**\nLes codes promo ne peuvent être appliqués qu'au moment du paiement, avant validation de la commande. Une fois la commande confirmée, il est techniquement impossible d'ajouter un code rétroactivement. Le processus doit intervenir directement à votre panier avant validation.\n\n[SI CODE ROUE DE LA FORTUNE]\n**Codes issus de la roue**\nLes codes générés par notre roue sont créés à la volée et ne sont pas enregistrés dans notre système. Sans capture ou copie du code au moment du tirage, nous ne pouvons pas vous le retrouver ou vous le renvoyer. Ces codes ont également une validité limitée (généralement 48h).\n\n[SI RÉCOMPENSE AVIS CLIENT VALIDÉE]\n**Vérification de votre récompense**\nEn vérifiant votre commande #[NUM], nous constatons qu'un code promo de [MONTANT]€ vous avait bien été envoyé en récompense de votre avis, et que ce code a été utilisé lors de cette commande. La remise apparaît d'ailleurs sur votre facture. La récompense a donc bien été honorée, sous forme de réduction directement appliquée à votre achat.\n\n[SI ERREUR TECHNIQUE AVÉRÉE]\nSi un bug technique s'est produit à votre paiement, nous examinerons votre dossier en priorité et vous proposerons une solution adaptée.",
       "key_points": "Ton : honnête, transparent, explicatif. Engagements : appliquer les codes avant paiement uniquement, respecter les conditions, jamais rétroactif sauf erreur technique avérée. Codes roue = impossibles à retrouver/redonner. Non-cumulabilité ABSOLUE — aucune exception sans fondement technique. Distinction bug technique (possibilité geste) vs condition de code (client responsable). Vérifier toujours la facture pour confirmer application des récompenses d'avis.",
       "example_count": 69
-    },
-    {
-      "topic": "suivi_livraison",
-      "topic_label": "Suivi de colis, transporteur, point relais, colis perdu, adresse",
-      "situation": "Client demande le statut de sa livraison, souhaite modifier son adresse de livraison ou son point relais après commande passée mais avant expédition, ou pose une question sur le suivi en temps réel. Peut concerner un changement d'adresse domicile ou un changement de point relais Chronopost. Client peut aussi demander confirmation du lieu de livraison avant expédition.",
-      "response_template": "Bonjour [Prénom],\n\n**Pour votre suivi de colis :**\nVotre commande #[NUM] est bien expédiée. Vous pouvez suivre votre colis en temps réel ici : [LIEN_SUIVI]\n\nLa livraison est estimée entre [DATE] à [ADRESSE/POINT_RELAIS].\n\n**Si vous avez un QR code manquant pour point relais :**\nLe QR code vous est envoyé directement par [TRANSPORTEUR] par email ou SMS dès que le colis est mis à disposition. Je vous invite à vérifier vos spams si vous ne l'avez pas reçu. Vous pouvez également suivre votre colis et retrouver les informations de retrait via le lien ci-dessus. En cas de difficulté, le point relais peut scanner votre pièce d'identité pour récupérer le colis sans QR code.\n\n**Pour modifier votre adresse ou point relais (avant expédition) :**\nSi votre commande n'a pas encore quitté l'entrepôt, c'est tout à fait possible. Nous venons de mettre à jour [l'adresse / le point relais] avec :\n[Adresse complète ou nom du point relais]\n[Code postal] [Ville]\n\n**Note importante :** Cette modification n'apparaîtra pas dans votre email de confirmation initial, mais elle est bien prise en compte dans votre lien de suivi. Si vous modifiez un point relais Chrono2Shop, le nouveau point doit également être un point Chronopost. Pour trouver un point compatible : https://www.chronopost.fr/expeditionAvanceeSec/ounoustrouver.html",
-      "key_points": "Ton rassurant, pratique. Engagements : changement d'adresse/point relais possible AVANT expédition uniquement. POINT CRITIQUE : expliquer clairement que la modification n'apparaît pas dans l'email de confirmation initial, c'est NORMAL et visible uniquement sur le lien de suivi. Pour Chrono2Shop : proposer uniquement un autre point Chronopost via le finder officiel. Ne jamais accepter un changement APRÈS expédition. QR code manquant : vérifier spams, proposer l'identification à la récupération. Code postal sans espace (13170, pas 13 170).",
-      "example_count": 85
-    },
-    {
-      "topic": "remboursement_avoir",
-      "topic_label": "Remboursements, avoirs, délais de traitement, montants retenus",
-      "situation": "Client demande le statut de son retour et de son avoir suite à un retour accepté, ou met en cause le montant de l'avoir. Inclut l'attente de réception et de traitement du colis retour, et la génération du code avoir. Client peut aussi demander une mise à jour d'un avoir existant pour en élargir l'utilisation. Client peut aussi demander confirmation du montant exact avant valider un retour.",
-      "response_template": "Bonjour [Prénom],\n\n**Statut de votre retour :**\nNous avons bien reçu votre colis retour. Le traitement prend jusqu'à 10 jours ouvrés à compter de la réception, incluant vérification et génération de l'avoir. Vous devriez avoir une réponse de notre part très prochainement.\n\n[SI AVOIR GÉNÉRÉ]\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n**[CODE AVOIR]**\n\n**Conditions d'utilisation :**\n- Valable jusqu'au [DATE : +6 mois]\n- Utilisable en une seule commande\n- Réservé à votre adresse e-mail ([EMAIL]) : pensez à commander avec cette adresse\n- Non cumulable avec d'autres codes ou promotions\n\n[SI AVOIR MIS À JOUR / RESTRICTION LEVÉE]\nNous venons de mettre à jour votre avoir : il est désormais utilisable sur l'ensemble de notre collection, sans restriction de modèle.\n\n[SI VÉRIFICATION MONTANT DEMANDÉE]\nPour vérifier le montant exact de votre avoir, pourriez-vous nous confirmer quel article vous avez retourné et en quelle taille ? Cela nous permettra de nous assurer que l'avoir est bien établi sur la bonne commande.\n\nMerci d'avance.\n\n[SI RETOUR INCOMPLET]\nNous avons bien reçu votre colis. Nos équipes logistiques ont trouvé [ARTICLES PRÉSENTS] mais pas [ARTICLES MANQUANTS]. Pour traiter le remboursement, nous avons besoin de recevoir l'intégralité de la commande retournée.\n\n[SI AVOIR PARTIEL SUR RETOUR PARTIEL - RECALCUL APRÈS MAD MAX]\nVoici le détail du remboursement suite à votre retour :\n- Articles retournés : [MONTANT_RETOUR]\n- Articles conservés : [MONTANT_CONSERVÉ]\n- Remise appliquée aux articles conservés : [REMISE_RÉAJUSTÉE]\n- Remboursement : [MONTANT_FINAL]\n\nLe remboursement est calculé en retirant de votre paiement initial le prix (après remise réajustée) des articles gardés. Aucune différence de remise n'est créditée.\n\nMerci d'avance.",
-      "key_points": "Ton : informatif, clair, rassurant. Engagements : traitement 10 jours ouvrés, avoir valable 6 mois, usage unique, non cumulable. POINT CRITIQUE : code réservé à l'adresse e-mail fournie — le client doit commander avec cette adresse. Pour retours incomplets : JAMAIS rembourser tant que tout n'est pas reçu — demander clarification avant traitement. Les avoirs peuvent être mis à jour pour supprimer les restrictions de modèle. Pour retours partiels post-Mad Max : recalculer la remise sur les articles conservés au palier applicable (150€ mini), déduit du remboursement initial, jamais de crédit de différence.",
-      "example_count": 162
     },
     {
       "topic": "re__re__re__re__re__commande_13418",
@@ -152,14 +248,6 @@
       "response_template": "Bonjour,\n\n\nVoici votre code : **Q28NVT09XB6G**\n\nConditions :\n- 15 € de réduction\n- Achat minimum de 149 €\n- Valable une fois, non cumulable avec d'autres offres\n- Utilisable dès aujourd'hui sur maxsauveur.com\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "mad_max___les_remises_de_cette_ann_e",
-      "topic_label": "Mad Max : les remises de cette année",
-      "situation": "Mad Max : les remises de cette année",
-      "response_template": "Bonjour Camille,\n\nAvec 24,7 cm (votre mesure + 0,2 cm), vous êtes effectivement en **39** sur notre guide de tailles, et non, être une femme ne change rien à la méthode : la mesure du pied en cm est universelle.\n\nUne petite précision sur le Paul en mocassin : sans lacets, le maintien repose entièrement sur le cou-de-pied. La chaussure serre un peu à cet endroit au premier port, c'est tout à fait normal et même nécessaire. Le cuir et la semelle en liège s'assouplissent avec quelques sorties, et vous trouverez votre confort rapidement.\n\nBon shopping et belle journée !\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 2
     },
     {
       "topic": "demande_d_information_pointure",
@@ -232,14 +320,6 @@
       "response_template": "Bonjour [Prénom],\n\n**DÉTERMINER LA BONNE TAILLE**\n\nPour trouver votre taille de ceinture, la règle est simple : la taille correspond à la distance entre l'ardillon et le trou du milieu (sur 5 trous).\n\nEn pratique :\n- Pour un pantalon taille 40/42 → tour de taille ~85/90 cm → recommander 95 cm\n- Pour un pantalon taille 38 → tour de taille ~80/85 cm → recommander 90 cm\nLe 100 serait un peu grand et risquerait de dépasser trop sur le côté.\n\nChaque taille propose plusieurs trous, ce qui permet une marge des deux côtés pour un ajustement confortable.\n\n**CARACTÉRISTIQUES DE COUPE**\n\nCertains modèles présentent une largeur variable selon l'emplacement (exemple : la ceinture Jonas) :\n- 2 cm au niveau de la boucle et du bout\n- 2,5 cm sur la partie centrale\n\nC'est une caractéristique propre au style et qui lui donne ce galbe particulier. La description du site fait référence à la largeur aux extrémités.\n\n**POUR UN ÉCHANGE DE CEINTURE**\n\nPas de souci, on peut arranger ça. Voici la procédure :\n\n1. Téléchargez et complétez le bon de retour ici : https://maxsauveur.com/pages/livraison-et-retour (indiquez « avoir »)\n2. Emballez soigneusement la ceinture avec le bon à l'intérieur\n3. Expédiez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nUne fois reçue et vérifiée, votre avoir sera généré et vous pourrez commander la nouvelle taille/couleur.",
       "key_points": "Ton friendly et rassurant. Toujours expliquer la règle de mesure (ardillon-trou du milieu) plutôt que de demander la pointure. Vérifier le stock APRÈS réception du retour, pas avant — c'est un engagement, ne pas s'avancer sur la dispo. Pour les échanges : système d'avoir uniquement, même produit même couleur (sauf ajustement stock). Adresse logistique précise obligatoire. Ne jamais proposer de frais de retour payants.",
       "example_count": 5
-    },
-    {
-      "topic": "produit_info",
-      "topic_label": "Informations produit et comparaison modèles",
-      "situation": "Client hésite entre deux modèles, pose des questions sur le confort/semelle, les différences de forme/style, ou demande à valider sa pointure avant commande. Peut s'inquiéter d'une mauvaise expérience antérieure avec un autre modèle. Inclut les questions sur les matières et les spécificités de fabrication.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour ces questions, je vais vous répondre point par point.\n\n**Comparaison entre deux modèles : quelle différence ?**\n\nLes deux modèles partagent [POINTS COMMUNS : semelle identique, matière identique], donc sur ce point vous êtes tranquille. La différence se joue plutôt sur :\n• Le **[MODÈLE A]** : [caractéristique style/forme]\n• Le **[MODÈLE B]** : [caractéristique style/forme]\n\n**Sur le confort et la semelle :**\nNos chaussures sont équipées d'une semelle intérieure en liège qui se moule progressivement à la forme exacte de votre pied. Au premier port, la sensation peut sembler rigide ou serrante, c'est normal : après quelques sorties, le résultat est celui d'un chausson sur mesure.\n\n**Sur les matières :**\nNos chaussures sont fabriquées en **full grain leather** (cuir pleine fleur, non corrigé). C'est une matière naturelle qui marque avec l'usage, se patine, et s'assouplit avec le temps. Les variations de teinte, les petites imperfections ou les marques de gras sont des caractéristiques, pas des défauts.",
-      "key_points": "Tonalité : naturelle, rassurante, sans surcharge. Engagements : confirmer les semelles/matières communes, préciser les différences de style plutôt que de confort. Valider la pointure en fonction de la mesure du pied. Full grain leather = matière vivante, marques normales. Ne jamais s'engager sur une taille sans avoir la mesure exacte. Expliquer cuir/semelle s'assouplissent comme processus normal.",
-      "example_count": 20
     },
     {
       "topic": "precommande_delai",
@@ -838,14 +918,6 @@
       "topic_label": "Fwd: Commande #13116 confirmée",
       "situation": "Fwd: Commande #13116 confirmée",
       "response_template": "Bonjour Davy,\n\nVos embauchoirs bois de cèdre (commande #13116) sont en précommande, comme indiqué sur la fiche produit au moment de votre achat. La livraison est prévue pour mi-novembre 2026.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "suivi_de_mon_retour___avoir_non_re_u",
-      "topic_label": "Suivi de mon retour – avoir non reçu",
-      "situation": "Suivi de mon retour – avoir non reçu",
-      "response_template": "Bonjour Cristiana,\n\nNous n'avons pas encore réceptionné votre retour de notre côté. Pour faire le point, pourriez-vous nous communiquer le numéro de suivi de votre envoi retour ? Il s'agit du numéro figurant sur le récépissé remis par La Poste ou le transporteur au moment du dépôt du colis.\n\nDès que nous avons cet élément, nous vérifions le statut de votre colis et revenons vers vous rapidement.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
