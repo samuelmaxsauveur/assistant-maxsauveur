@@ -116,8 +116,8 @@ def workshop_send():
     files = []
     for case in cases:
         name = case['wing_ref'].lstrip('#')
-        for n, (data, source) in enumerate(repair_photos.load_all(case['id']), 1):
-            files.append((data, f"{name}_{source}_{n}.jpg", 'image/jpeg'))
+        for n, (photo, source) in enumerate(repair_photos.load_all(case['id']), 1):
+            files.append((photo, f"{name}_{source}_{n}.jpg", 'image/jpeg'))
     to = ", ".join(workshop.WORKSHOPS[key]['emails'])
     gmail_helper.send_email_with_files(service, to, subject, body, files)
 

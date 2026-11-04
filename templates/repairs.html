@@ -238,7 +238,10 @@
     {% endfor %}
 </div>
 <script>
-const post = (url, body) => fetch(url, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body || {})}).then(r => r.json());
+// A server error page is not JSON: report it instead of leaving the hourglass spinning.
+const post = (url, body) => fetch(url, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body || {})})
+    .then(r => r.json().catch(() => ({success: false, error: `Erreur serveur (${r.status})`})))
+    .catch(() => ({success: false, error: 'Connexion impossible'}));
 const groupOf = el => el.closest('.card');
 const selected = (card, decision) => [...card.querySelectorAll('.sel:checked')]
     .filter(el => !decision || (el.dataset.decision || 'repair') === decision).map(el => el.value);
