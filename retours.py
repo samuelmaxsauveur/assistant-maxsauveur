@@ -932,12 +932,12 @@ def _facts(case):
 
 
 def _same_credit(data, model, rewritten):
-    """Claude may reword a credit email, never its code, its amounts or where it can be used."""
-    flat = re.sub(r"\s", "", rewritten)
-    amounts = re.findall(r"\d[\d,]*€", re.sub(r"\s", "", model))
+    """Claude may reword a credit email and leave an amount out if asked, but never bring in another
+    amount, lose the code or change where it can be used."""
+    amounts = lambda text: set(re.findall(r"\d[\d,]*€", re.sub(r"\s", "", text)))
     codes = [c for c in (data.get("credit_code"), data.get("shipping_code")) if c]
     scope = [t for t in ("uniquement sur le modèle", "chaussures et ceintures") if t in model and t not in rewritten]
-    return all(x in flat for x in amounts + codes) and not scope
+    return not amounts(rewritten) - amounts(model) and all(c in rewritten for c in codes) and not scope
 
 
 def rewrite(case, template, consignes, amount=None):
@@ -956,7 +956,8 @@ def rewrite(case, template, consignes, amount=None):
         base = "" if template == "free" else f"\n\nMODÈLE VALIDÉ, À MODIFIER LE MOINS POSSIBLE :\n---\n{body}\n---"
         # Once the code exists, Shopify has the last word: the fields may have moved on since the instructions.
         locked = ("Le code, le montant et les conditions d'utilisation de l'avoir sont ceux de Shopify : ne les change "
-                  "jamais, même si les consignes citent autre chose. "
+                  "jamais, même si les consignes citent autre chose. Si elles demandent de ne pas afficher le montant, "
+                  "retire-le simplement du mail. "
                   if template in CREDIT_TEMPLATES and data.get("credit_code") else "")
         prompt = (f"Tu prépares un e-mail à un client Max Sauveur au sujet de son retour.\n\n"
                   f"Données du retour :\n{_facts(case)}{base}\n\n"
@@ -1273,9 +1274,6 @@ def _check_mail(case, template, body):
         gap = credit_mismatch(data)
         if gap:
             raise RuntimeError(f"L'avoir dans Shopify ne correspond pas à tes conditions ({gap}) : clique sur « Mettre à jour l'avoir dans Shopify ».")
-        held = euros(float(data.get("credit_amount") or 0))
-        if held.replace(" ", "") not in re.sub(r"\s", "", body):
-            raise RuntimeError(f"Le mail n'annonce pas le montant de l'avoir dans Shopify ({held}).")
     return to
 
 
