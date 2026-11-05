@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "pointure_chaussures",
+      "topic_label": "Pointure chaussures",
+      "situation": "Pointure chaussures",
+      "response_template": "Bonjour Joël,\n\nAvec 27,7 cm, en ajoutant les 0,2 cm vous êtes à 27,9 cm, ce qui vous place en **43** sur notre guide.\n\nAvec une largeur de 10 cm, votre pied est dans une largeur standard, donc pas de contrainte particulière à ce niveau.\n\nLa recommandation finale dépend du modèle qui vous intéresse :\n\n- **Brogue Derby, Deck, Wayne, Dakota** : chaussent légèrement grand → je vous recommande le **42**\n- **Paul (mocassin)** : chausse serré au début → restez sur le **43**\n- **Springsteen** : chausse légèrement grand → le **42** sera adapté\n- **Logger Boots, Wico** : pointure habituelle → le **43**\n\nDites-moi quel modèle vous a tapé dans l'œil et je vous confirme la bonne taille.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande__13397",
       "topic_label": "COMMANDE #13397",
       "situation": "COMMANDE #13397",
