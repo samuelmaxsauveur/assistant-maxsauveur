@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "chaussures",
+      "topic_label": "Chaussures",
+      "situation": "Chaussures",
+      "response_template": "Bonjour Raül,\n\nAvec 26,6 cm, en ajoutant les 0,2 cm vous êtes à 26,8 cm, ce qui vous place en **41** sur notre guide.\n\nLe Blucher Derby chausse légèrement grand. Avec un pied large, je vous recommande de rester sur le **41** pour ne pas être à l'étroit en largeur.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_04_18_11_28",
       "topic_label": "Form name Form submitted 2026-11-04 18:11:28",
       "situation": "Form name Form submitted 2026-11-04 18:11:28",
