@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__c_est_ouvert__pour_vous_seulement",
+      "topic_label": "RE: C'est ouvert, pour vous seulement",
+      "situation": "RE: C'est ouvert, pour vous seulement",
+      "response_template": "Bonjour Aristide,\n\nOui, le Brogue Derby chausse grand, donc avec un 40,5 habituel, je vous recommande de prendre le **40** plutôt que le 41. Votre intuition était la bonne.\n\nSur les frais de livraison initiaux : ils ne sont remboursés qu'en cas de retour de l'intégralité de la commande.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__form_name_form_submitted_2026_11_05_14_46_28",
       "topic_label": "Re: Form name Form submitted 2026-11-05 14:46:28",
       "situation": "Re: Form name Form submitted 2026-11-05 14:46:28",
