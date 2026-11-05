@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__form_name_form_submitted_2026_11_05_14_46_28",
+      "topic_label": "Re: Re: Form name Form submitted 2026-11-05 14:46:28",
+      "situation": "Re: Re: Form name Form submitted 2026-11-05 14:46:28",
+      "response_template": "Bonjour Christophe,\n\nPas de problème pour relancer la prise en charge de vos mocassins.\n\nPour que nous puissions regarder cela de notre côté, pourriez-vous nous envoyer quelques photos du défaut ainsi qu'une description du problème constaté ?\n\nDès réception, nous vous confirmons la suite.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__13819_confirm_e",
       "topic_label": "Re: Commande #13819 confirmée",
       "situation": "Re: Commande #13819 confirmée",
