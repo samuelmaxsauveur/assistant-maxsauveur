@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__13263___informations_sur_l__tat_de_la_commande",
+      "topic_label": "Re: Commande #13263 : informations sur l'état de la commande",
+      "situation": "Re: Commande #13263 : informations sur l'état de la commande",
+      "response_template": "Bonjour Luca,\n\nLa date annoncée en septembre était incorrecte. Vos embauchoirs bois de cèdre sont en précommande avec une livraison prévue pour mi-novembre 2026.\n\nVous recevrez automatiquement votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__votre_avoir_pour_la_commande__13453",
       "topic_label": "Re: Votre avoir pour la commande #13453",
       "situation": "Re: Votre avoir pour la commande #13453",
