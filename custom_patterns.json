@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "conseil_pointure_mocassin_paul",
+      "topic_label": "Conseil pointure Mocassin Paul",
+      "situation": "Conseil pointure Mocassin Paul",
+      "response_template": "Bonjour Louis,\n\nAvec 27,0 cm + 0,2 cm = 27,2 cm, notre guide vous place en **42**.\n\nLe Paul chausse serré au départ, donc je vous recommande de rester sur le **42** sans descendre. Avec un pied large (10,6 cm), c'est d'autant plus important de ne pas viser en dessous.\n\nVos références Weston 7F et Malfroid UK8 correspondent à un 41/41,5 en pointure européenne standard, ce qui confirme que le 42 est la bonne direction sur le Paul.\n\nQuelques points à anticiper sur ce modèle :\n\nLa sensation sera un peu serrée au cou-de-pied lors des premiers ports, c'est normal et nécessaire pour le maintien sans lacets. Le cuir et la semelle en liège se moulent progressivement au pied, et le confort s'installe après quelques sorties. Sur un pied large, cette période de rodage sera un peu plus marquée, mais ne compromet pas le résultat final.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__13263___informations_sur_l__tat_de_la_commande",
       "topic_label": "Re: Commande #13263 : informations sur l'état de la commande",
       "situation": "Re: Commande #13263 : informations sur l'état de la commande",
