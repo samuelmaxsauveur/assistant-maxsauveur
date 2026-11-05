@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__form_name_form_submitted_2026_11_05_14_46_28",
+      "topic_label": "Re: Form name Form submitted 2026-11-05 14:46:28",
+      "situation": "Re: Form name Form submitted 2026-11-05 14:46:28",
+      "response_template": "Bonjour Christophe,\n\nNoté, merci pour la précision. Nous gardons bien le 40 en tête pour la suite.\n\nConcernant Powell et Chapman, pas de réassort prévu pour l'instant. Si la situation évolue, n'hésitez pas à activer l'alerte pointure directement sur les fiches produits concernées.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__re__votre_commande_max_sauveur___information_imp",
       "topic_label": "Re: Re: Re: Re: Votre commande Max Sauveur — information importante",
       "situation": "Re: Re: Re: Re: Votre commande Max Sauveur — information importante",
