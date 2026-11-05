@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__votre_retour_pour_la_commande__13809",
+      "topic_label": "Re: Votre retour pour la commande #13809",
+      "situation": "Re: Votre retour pour la commande #13809",
+      "response_template": "Bonjour Sébastien,\n\nVotre remboursement de 335 € sera traité sous 3 à 5 jours ouvrés sur votre moyen de paiement d'origine.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "conseil_pointure_mocassin_paul",
       "topic_label": "Conseil pointure Mocassin Paul",
       "situation": "Conseil pointure Mocassin Paul",
