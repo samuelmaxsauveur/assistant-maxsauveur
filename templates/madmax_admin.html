@@ -62,14 +62,14 @@ button { font: inherit; font-size: 12px; padding: 6px 10px; border: 1px solid va
   </div>
 
   {% if to_check %}
-  <h2 style="margin-top:0">À vérifier : retours partiels</h2>
-  <p class="small">Les articles gardés valent moins de {{ keep_min }} € avant remise : selon le règlement, la carte est perdue.
+  <h2 style="margin-top:0">À vérifier : retours et remboursements</h2>
+  <p class="small">Les articles gardés valent moins de {{ keep_min }} € avant remise, ou la commande est remboursée en totalité : selon le règlement, la carte est perdue.
     Vérifie d'abord que ce n'est pas un simple échange de pointure.</p>
   <div class="scroll" style="margin-bottom:24px"><table>
     <tr><th>Commande</th><th>Client</th><th class="n">Articles gardés</th><th>Carte</th><th></th></tr>
     {% for o in to_check %}
     <tr><td>{{ o.order_name }}</td><td>{{ o.first_name or "" }}<br><span class="small">{{ o.email }}</span></td>
-      <td class="n">{{ "%.2f"|format(o.kept_value or 0) }} €</td>
+      <td class="n">{% if o.status == "refunded" %}<span class="tag ko">remboursée</span>{% else %}{{ "%.2f"|format(o.kept_value or 0) }} €{% endif %}</td>
       <td>{% if o.code %}{{ o.amount }} € · {{ o.code }}{% if o.used %} <span class="tag ko">déjà utilisée</span>{% endif %}{% else %}<span class="small">boîte fermée</span>{% endif %}</td>
       <td><form class="inline" method="post" action="/madmax/admin/review/{{ o.id }}"><input type="hidden" name="decision" value="cancel">
             <label><input type="checkbox" required> confirmer</label> <button>Annuler la carte</button></form>

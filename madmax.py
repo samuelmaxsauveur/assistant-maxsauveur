@@ -371,9 +371,11 @@ def import_orders():
 
 def _refresh_statuses(order_rows, flag=False):
     """Relit dans Shopify le statut (annulée, remboursée) des commandes données,
-    et la valeur avant remise des articles encore gardés par le client. Une
-    commande qui passe sous CARD_KEEP_MIN est mise « à vérifier » quand `flag`
-    est vrai (contrôle quotidien, qui prévient Sam). Renvoie ces commandes."""
+    et la valeur avant remise des articles encore gardés par le client. Quand
+    `flag` est vrai (contrôle quotidien, qui prévient Sam), sont mises « à
+    vérifier » : les commandes qui passent sous CARD_KEEP_MIN, et celles
+    remboursées en totalité alors que le code est tiré et pas encore utilisé
+    (ce peut être un échange de pointure). Renvoie ces commandes."""
     flagged = []
     real = [o for o in order_rows if not o["is_test"]]
     for i in range(0, len(real), 10):
@@ -396,7 +398,9 @@ def _refresh_statuses(order_rows, flag=False):
                 fields["status"] = o["status"] = status
             if kept != o.get("kept_value"):
                 fields["kept_value"] = o["kept_value"] = kept
-            if flag and status == "ok" and kept < CARD_KEEP_MIN and not o.get("review"):
+            lost = ((status == "ok" and kept < CARD_KEEP_MIN)
+                    or (status == "refunded" and o.get("code") and not o.get("used")))
+            if flag and lost and not o.get("review"):
                 fields["review"] = o["review"] = "to_check"
                 flagged.append(o)
             if fields:
@@ -869,32 +873,58 @@ _last_check_day = None
 
 
 def daily_check(day):
-    """Une fois par jour : relit les commandes et prévient Sam des retours
-    partiels qui font perdre la carte."""
+    """Une fois par jour : relit les commandes, supprime le code des commandes
+    annulées après le tirage, et prévient Sam des retours partiels et des
+    remboursements qui font perdre la carte."""
     global _last_check_day
     _last_check_day = day
-    orders = _rows("SELECT * FROM madmax_orders WHERE is_test = 0 AND status IN ('ok', 'unpaid') AND review = ''")
+    orders = _rows("SELECT * FROM madmax_orders WHERE is_test = 0 AND status != 'cancelled' AND review != 'cancelled'")
     flagged = _refresh_statuses(orders, flag=True) if orders else []
-    if flagged:
+    voided = _void_cancelled_cards()
+    if flagged or voided:
         try:
-            _send_alert(flagged)
+            _send_alert(flagged, voided)
         except Exception as e:
             print(f"[MadMax] Alert email failed: {e}", flush=True)
 
 
-def _send_alert(flagged):
-    lines = [f"{len(flagged)} commande(s) du jeudi 5 novembre ont été retournées en partie : les articles gardés "
-             f"valent moins de {CARD_KEEP_MIN} € avant remise.", "",
-             "Selon le règlement, la carte cadeau est perdue. Vérifie que ce n'est pas un simple échange de "
-             "pointure, puis clique sur « Annuler la carte » ou « Garder la carte » dans le tableau de bord Mad Max "
-             "(rubrique « À vérifier »).", ""]
+def _void_cancelled_cards():
+    """Commande annulée après le tirage : selon le règlement la carte est
+    perdue, le code est supprimé dans Shopify sans attendre Sam. Une
+    suppression qui échoue est retentée le lendemain. Renvoie les comptes rendus."""
+    notes = []
+    for o in _rows("""SELECT * FROM madmax_orders WHERE is_test = 0 AND status = 'cancelled'
+                      AND code IS NOT NULL AND review != 'cancelled'"""):
+        try:
+            note = cancel_card(o["id"])
+        except Exception as e:
+            print(f"[MadMax] Void failed for {o['order_name']}: {e}", flush=True)
+            note = f"échec de la suppression du code {o['code']}, nouvel essai demain ({e})"
+        notes.append(f"- {o['email']} · {o['amount']} € · {note}")
+    return notes
+
+
+def _send_alert(flagged, voided=()):
+    lines = []
+    if voided:
+        lines += [f"{len(voided)} commande(s) du jeudi 5 novembre ont été annulées après le tirage. Selon le "
+                  "règlement, la carte cadeau est perdue :", *voided, ""]
+    if flagged:
+        lines += [f"{len(flagged)} commande(s) du jeudi 5 novembre ont été retournées en partie (articles gardés "
+                  f"sous {CARD_KEEP_MIN} € avant remise) ou remboursées en totalité.", "",
+                  "Selon le règlement, la carte cadeau est perdue. Vérifie que ce n'est pas un simple échange de "
+                  "pointure, puis clique sur « Annuler la carte » ou « Garder la carte » dans le tableau de bord "
+                  "Mad Max (rubrique « À vérifier »).", ""]
     for o in flagged:
         card = f"carte {o['amount']} € {o['code']}" if o["code"] else "boîte pas encore ouverte"
-        lines.append(f"- {o['order_name']} · {o['email']} · articles gardés : {o['kept_value']:.2f} € · {card}")
+        why = "remboursée en totalité" if o["status"] == "refunded" else f"articles gardés : {o['kept_value']:.2f} €"
+        lines.append(f"- {o['order_name']} · {o['email']} · {why} · {card}")
     msg = email.mime.text.MIMEText("\n".join(lines), "plain", "utf-8")
     msg["From"] = email.utils.formataddr(("Assistant Max Sauveur", os.getenv("GMAIL_ADDRESS", "hello@maxsauveur.com")))
     msg["To"] = ALERT_EMAIL
-    msg["Subject"] = f"[Mad Max] {len(flagged)} carte(s) cadeau à vérifier après un retour partiel"
+    parts = ([f"{len(voided)} carte(s) annulée(s)"] if voided else []) + \
+            ([f"{len(flagged)} carte(s) à vérifier"] if flagged else [])
+    msg["Subject"] = f"[Mad Max] {' et '.join(parts)} après une annulation ou un retour"
     raw = base64.urlsafe_b64encode(msg.as_bytes()).decode()
     gmail_helper.get_gmail_service().users().messages().send(userId="me", body={"raw": raw}).execute()
 
