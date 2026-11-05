@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Salut Xavier,\n\nVoici ton code : FD9CNBS11ENB \n\nBonne journée !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 14
+    },
+    {
       "topic": "choix_de_pointure",
       "topic_label": "Choix de pointure",
       "situation": "Choix de pointure",
@@ -1312,14 +1320,6 @@
       "response_template": "Bonjour,\n\nVos deux commandes sont bien enregistrées et tout est en ordre.\n\nVos Brogues Derby Cuir Marron (#13807) partent cette semaine. Votre Paul Mocassin Cuir Grainé Noir (#13806) est une précommande expédiée fin octobre, comme indiqué sur la fiche produit : elle partira début novembre.\n\nDans les deux cas, vous recevrez automatiquement un email avec votre lien de suivi dès que chaque colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Jordan,\n\nLe remboursement a bien été émis. Vous devriez le voir apparaître sur votre moyen de paiement d'origine dans les 3 à 5 jours ouvrés.\n\nMerci pour votre patience.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 13
     },
     {
       "topic": "re__re__max_sauveur___service_client",
