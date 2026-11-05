@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "commande_n_13256_du_25_ao_t___absence_d_exp_dition",
+      "topic_label": "Commande n°13256 du 25 août – Absence d’expédition",
+      "situation": "Commande n°13256 du 25 août – Absence d’expédition",
+      "response_template": "Bonjour Samba,\n\nVos embauchoirs bois de cèdre (commande #13256) sont en précommande, avec une livraison prévue pour mi-novembre 2026. Le statut que vous observez est tout à fait normal.\n\nVous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__c_est_ouvert__pour_vous_seulement",
       "topic_label": "RE: C'est ouvert, pour vous seulement",
       "situation": "RE: C'est ouvert, pour vous seulement",
