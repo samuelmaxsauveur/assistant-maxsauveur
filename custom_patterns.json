@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "choix_de_pointure",
+      "topic_label": "Choix de pointure",
+      "situation": "Choix de pointure",
+      "response_template": "Bonjour Arnaud,\n\nLa confusion vient du fait que les conseils s'appliquent à des modèles différents. Puisque vous portez du 42 sur le Wayne et la Springsteen, qui chaussent tous les deux légèrement grand, votre pointure réelle en cuir se situe plutôt autour du 42,5/43.\n\nLe Paul mocassin, lui, chausse serré au départ. Je vous recommande le **43** : c'est la bonne pointure pour vous sur ce modèle.\n\nÀ noter : la sensation sera un peu serrée au cou-de-pied lors des premiers ports, c'est normal et nécessaire pour le maintien sans lacets. Le cuir et la semelle en liège se moulent progressivement au pied, et le confort s'installe après quelques sorties.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_05_11_11_22",
       "topic_label": "Form name Form submitted 2026-11-05 11:11:22",
       "situation": "Form name Form submitted 2026-11-05 11:11:22",
