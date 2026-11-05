@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_05_11_11_22",
+      "topic_label": "Form name Form submitted 2026-11-05 11:11:22",
+      "situation": "Form name Form submitted 2026-11-05 11:11:22",
+      "response_template": "Bonjour Jean-Pierre,\n\nAvec 27,6 cm, en ajoutant les 0,2 cm vous êtes à 27,8 cm, ce qui vous place en **42** sur notre guide.\n\nLe Wico chausse de façon standard, sans excès dans un sens ou dans l'autre. Avec un pied fin, le 42 sera la bonne pointure : descendre au 41 serait trop juste en longueur, et monter au 43 créerait trop de jeu, surtout avec un pied fin. La semelle en liège se moule au pied avec le temps et améliore le maintien.\n\nJe vous recommande donc le **42** .\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__votre_retour_pour_la_commande__13809",
       "topic_label": "Re: Votre retour pour la commande #13809",
       "situation": "Re: Votre retour pour la commande #13809",
