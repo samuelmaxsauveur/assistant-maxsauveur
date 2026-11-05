@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__votre_avoir_pour_la_commande__13453",
+      "topic_label": "Re: Votre avoir pour la commande #13453",
+      "situation": "Re: Votre avoir pour la commande #13453",
+      "response_template": "Bonjour Colin,\n\nToutes nos excuses pour la gêne. Le code est bien paramétré pour inclure le Paul en cuir grainé noir. Pourriez-vous faire un nouvel essai directement sur le site ?\n\nSi le message d'erreur persiste, revenez vers nous et nous arrangerons cela.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "commande_13302___taille",
       "topic_label": "Commande 13302 - taille",
       "situation": "Commande 13302 - taille",
@@ -1230,14 +1238,6 @@
       "topic_label": "Re: Demande de remboursement - Commande n°9249 - Colis non livré",
       "situation": "Re: Demande de remboursement - Commande n°9249 - Colis non livré",
       "response_template": "Bonjour Taranis,\n\nNous sommes toujours en attente d'une réponse de Chronopost, qui doit nous confirmer la destination exacte du colis. De notre côté, nous n'avons pas retrouvé votre paire en entrepôt, ce qui nous amène à approfondir l'enquête avec le transporteur avant de pouvoir vous apporter une réponse claire.\n\nDès que nous avons leurs retours, nous revenons vers vous sans attendre.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__votre_avoir_pour_la_commande__13453",
-      "topic_label": "Re: Votre avoir pour la commande #13453",
-      "situation": "Re: Votre avoir pour la commande #13453",
-      "response_template": "Bonjour Colin,\n\nLe code CJEW23BM4Q79 avait été configuré uniquement sur le modèle Paul Cuir Noir. Nous venons de l'élargir à l'ensemble de la collection, vous pouvez l'utiliser pour commander vos mocassins Paul en cuir grainé noir sans problème.\n\nN'hésitez pas si vous rencontrez la moindre difficulté.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
