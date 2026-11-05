@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "commande_13852",
+      "topic_label": "Commande 13852",
+      "situation": "Commande 13852",
+      "response_template": "Bonjour Kévin,\n\nNous n'accordons pas de remise commerciale rétroactive après commande, ce n'est pas quelque chose que nous faisons.\n\nVous pouvez tout à fait retourner la paire si vous souhaitez exercer votre droit de rétractation, mais il y a un point important à avoir en tête : votre commande est déjà expédiée et vous avez pu profiter de votre pointure immédiatement. Les Chelsea Chapman partent vite, d'autant plus si vous n'êtes pas abonné à notre offre VIP. Nous ne pouvons pas vous garantir que le 44 sera encore disponible au moment où nous réceptionnerons votre paire. Vous prendriez donc un risque réel de vous retrouver sans chaussures.\n\nÀ vous de voir si cela vaut la peine.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__13921_confirm_e",
       "topic_label": "Re: Commande #13921 confirmée",
       "situation": "Re: Commande #13921 confirmée",
