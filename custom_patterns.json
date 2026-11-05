@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "commande_13302___taille",
+      "topic_label": "Commande 13302 - taille",
+      "situation": "Commande 13302 - taille",
+      "response_template": "Salut Benjamin,\n\nMerci pour le message et pour être aussi transparent sur la situation.\n\nUne chose importante sur le Moc Jagger en cuir pony : 30 minutes de port en extérieur, c'est vraiment trop peu pour tirer des conclusions. Ce type de cuir est épais et rigide au départ, il faut le porter régulièrement sur plusieurs semaines pour qu'il s'assouplisse et se moule au pied. Une première sortie serrée ne veut pas dire que la paire ne se fera pas à ton pied, ça fait partie du rodage, notamment en longueur où le cuir cède progressivement.\n\nAvant d'aller plus loin, est-ce que tu peux nous envoyer quelques photos des semelles ? Cela nous permettra de voir où on en est côté usure et d'évaluer ce qu'on peut faire.\n\nBonne chance pour les Mad Max à vous aussi !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande__13394",
       "topic_label": "Commande #13394",
       "situation": "Commande #13394",
