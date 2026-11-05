@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__max_sauveur___service_client",
+      "topic_label": "Re: Re: Max Sauveur — Service Client",
+      "situation": "Re: Re: Max Sauveur — Service Client",
+      "response_template": "Salut Xavier,\n\nLe Powell n'existe pas en demi-pointure, donc le choix se fait entre 43 et 44.\n\nEn te basant sur ta Chelsea Chapman en 43, qui a un chaussant assez proche du Powell, le 43 sera la bonne option. Le mocassin en 43,5 n'est pas la meilleure référence ici, les deux modèles chaussent très différemment.\n\nMême avec de grosses chaussettes, reste sur le 43 : le 44 risquerait d'être trop grand.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 4
+    },
+    {
       "topic": "re__votre_avoir_pour_la_commande__13453",
       "topic_label": "Re: Votre avoir pour la commande #13453",
       "situation": "Re: Votre avoir pour la commande #13453",
@@ -1320,14 +1328,6 @@
       "response_template": "Bonjour,\n\nVos deux commandes sont bien enregistrées et tout est en ordre.\n\nVos Brogues Derby Cuir Marron (#13807) partent cette semaine. Votre Paul Mocassin Cuir Grainé Noir (#13806) est une précommande expédiée fin octobre, comme indiqué sur la fiche produit : elle partira début novembre.\n\nDans les deux cas, vous recevrez automatiquement un email avec votre lien de suivi dès que chaque colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re__re__max_sauveur___service_client",
-      "topic_label": "Re: Re: Max Sauveur — Service Client",
-      "situation": "Re: Re: Max Sauveur — Service Client",
-      "response_template": "Bonjour Mattéo,\n\nUn réassort du Deck est prévu pour fin février, vous serez dans les temps avec votre avoir.\n\nCordialement,\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 3
     },
     {
       "topic": "re__question_before_i_order",
