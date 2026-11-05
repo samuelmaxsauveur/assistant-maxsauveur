@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__re__votre_commande_max_sauveur___information_imp",
+      "topic_label": "Re: Re: Re: Re: Votre commande Max Sauveur — information importante",
+      "situation": "Re: Re: Re: Re: Votre commande Max Sauveur — information importante",
+      "response_template": "Bonjour Jérémie,\n\nVotre paire a bien été réceptionnée et votre dossier de réparation est ouvert. L'étiquette de retour vers notre atelier est en cours de traitement, vous recevrez une confirmation dès que la paire est prise en charge pour réparation.\n\nSur le remboursement de la différence de ceinture, on s'en occupe.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__max_sauveur___service_client",
       "topic_label": "Re: Re: Max Sauveur — Service Client",
       "situation": "Re: Re: Max Sauveur — Service Client",
