@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande_13852",
+      "topic_label": "Re: Commande 13852",
+      "situation": "Re: Commande 13852",
+      "response_template": "Bonjour Kévin,\n\nVotre demande de rétractation est bien prise en compte.\n\nComme la commande #13852 est déjà expédiée, il vous suffira de nous retourner l'ensemble des articles à réception. Pour la paire, elle devra être en état de remise en vente (non portée, boîte conservée).\n\nVoici la procédure :\n\n1. Téléchargez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez « remboursement »)\n2. Glissez-le à l'intérieur du colis avec l'ensemble des articles\n3. Expédiez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, le remboursement sera émis sous 3 à 5 jours ouvrés.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__13836_confirm_e",
       "topic_label": "Re: Commande #13836 confirmée",
       "situation": "Re: Commande #13836 confirmée",
