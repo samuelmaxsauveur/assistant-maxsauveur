@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_06_15_15_14",
+      "topic_label": "Form name Form submitted 2026-11-06 15:15:14",
+      "situation": "Form name Form submitted 2026-11-06 15:15:14",
+      "response_template": "Bonjour Robin,\n\nVoici le point sur vos deux précommandes :\n\n**Embauchoirs bois de cèdre (#13115)** : livraison prévue pour mi-novembre 2026. Vous recevrez automatiquement votre lien de suivi dès l'expédition.\n\n**Ceintures Gigi et Morricone (#13582)** : livraison prévue pour mi-décembre 2026, même principe.\n\nPas d'inquiétude pour le point relais : rien n'a encore été expédié, vous ne pouvez pas avoir raté de livraison.\n\nBonne fin de semaine à vous aussi,\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_06_15_22_52",
       "topic_label": "Form name Form submitted 2026-11-06 15:22:52",
       "situation": "Form name Form submitted 2026-11-06 15:22:52",
