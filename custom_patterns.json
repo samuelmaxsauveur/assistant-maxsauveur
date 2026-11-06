@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__form_name_form_submitted_2026_10_30_10_04_10",
+      "topic_label": "Re: Form name Form submitted 2026-10-30 10:04:10",
+      "situation": "Re: Form name Form submitted 2026-10-30 10:04:10",
+      "response_template": "Bonjour Stéphane,\n\nLa meilleure façon de procéder : commandez le 43 directement sur le site, essayez les deux chez vous, et renvoyez celle qui ne convient pas.\n\nPour le retour de la paire à renvoyer :\n1. Téléchargez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez « remboursement »)\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous envoyons un remboursment du montant correspondant.\n\nBonne journée,\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "re__chaussures",
       "topic_label": "Re: Chaussures",
       "situation": "Re: Chaussures",
@@ -774,14 +782,6 @@
       "topic_label": "Votre retour pour la commande #13780",
       "situation": "Votre retour pour la commande #13780",
       "response_template": "Bonjour Vincent,\n\nNous avons bien reçu votre retour (Springsteen - Chaussures Boots Cuir Gras Marron, pointure 42) et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux vous correspondre, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si une autre pointure ou un autre modèle vous tente, voici ce qu'on peut faire : nous vous envoyons un avoir de 445 €, soit le prix de votre paire (410 €) et 35 € offerts par la maison. Il est valable 6 mois sur toute la collection, chaussures et ceintures, et la livraison de votre nouvelle commande est offerte, à l'adresse de votre choix.\n\nAutrement dit, vous repartez avec une nouvelle pièce sans rien débourser, et 35 € de plus en poche.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte. Sans réponse de votre part d'ici le vendredi 6 novembre, nous procéderons au remboursement.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__form_name_form_submitted_2026_10_30_10_04_10",
-      "topic_label": "Re: Form name Form submitted 2026-10-30 10:04:10",
-      "situation": "Re: Form name Form submitted 2026-10-30 10:04:10",
-      "response_template": "Bonjour Stéphane,\n\nSi le jeu se situe au talon et à l'avant, une semelle d'ajustement en liège peut vraiment faire la différence : placée sous le pied, elle remonte le pied légèrement et réduit ce mouvement au talon. C'est une solution simple à tester avant d'envisager un échange, et que vous trouverez facilement chez un cordonnier.\n\nSi après essai la gêne persiste et que vous souhaitez retourner la paire, voici la procédure :\n\n1. Téléchargez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez « avoir »)\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander la taille souhaitée.\n\nBelle journée à vous également.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
