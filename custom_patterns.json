@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__13836_confirm_e",
+      "topic_label": "Re: Commande #13836 confirmée",
+      "situation": "Re: Commande #13836 confirmée",
+      "response_template": "Bonjour Chakir,\n\nVotre Dakota part la semaine prochaine, vous recevrez votre lien de suivi dès l'expédition.\n\nSur la question de la promo : quand vous avez passé commande le 23 octobre, vous aviez accès à l'ensemble des pointures disponibles en Dakota, y compris votre 41. C'est précisément cette priorité-là que vous avez eue en commandant à ce moment.\n\nAujourd'hui, avec les Mad Max, il ne reste quasiment plus aucune pointure en Dakota. Même si vous vouliez en profiter, il n'y aurait aucune garantie d'avoir votre taille.\n\nSi la commande ne vous convient plus, vous pouvez tout à fait nous la retourner à réception.\n\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__une_commande__13840_est_en_transit",
       "topic_label": "RE: Une commande #13840 est en transit",
       "situation": "RE: Une commande #13840 est en transit",
