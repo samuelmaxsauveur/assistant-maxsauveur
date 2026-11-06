@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__13863_confirm_e",
+      "topic_label": "Re: Commande #13863 confirmée",
+      "situation": "Re: Commande #13863 confirmée",
+      "response_template": "Bonjour Pierre,\n\nVotre Dakota Cuir Noir (41) sera expédiée la semaine prochaine. Vous recevrez automatiquement un email avec votre lien de suivi dès la prise en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__form_name_form_submitted_2026_10_30_10_04_10",
       "topic_label": "Re: Form name Form submitted 2026-10-30 10:04:10",
       "situation": "Re: Form name Form submitted 2026-10-30 10:04:10",
