@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__chaussures",
+      "topic_label": "Re: Chaussures",
+      "situation": "Re: Chaussures",
+      "response_template": "Bonjour Raül,\n\nLa réponse vous a déjà été donnée dans notre échange précédent : pour un échange de taille, vous retournez la paire à vos frais, nous vous envoyons un avoir, et vous recommandez dans la bonne taille sur notre site. Le conseil pointure ne change pas cette règle.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_06_10_58_30",
       "topic_label": "Form name Form submitted 2026-11-06 10:58:30",
       "situation": "Form name Form submitted 2026-11-06 10:58:30",
@@ -24,14 +32,6 @@
       "response_template": "Bonjour Stéphane,\n\nLa meilleure façon de procéder : commandez le 43 directement sur le site, essayez les deux chez vous, et renvoyez celle qui ne convient pas.\n\nPour le retour de la paire à renvoyer :\n1. Téléchargez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez « remboursement »)\n2. Emballez soigneusement la paire avec le bon à l'intérieur\n3. Expédiez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous envoyons un remboursment du montant correspondant.\n\nBonne journée,\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 2
-    },
-    {
-      "topic": "re__chaussures",
-      "topic_label": "Re: Chaussures",
-      "situation": "Re: Chaussures",
-      "response_template": "Bonjour Raül,\n\nLa procédure pour un échange de taille est la suivante : vous nous retournez la paire, nous vous envoyons un avoir, et vous recommandez dans la bonne taille sur notre site. Les frais d'envoi retour sont à votre charge.\n\nUn conseil donné par nos soins ne modifie pas cette règle : nous faisons notre meilleur calcul en fonction de votre mesure, mais c'est vous qui décidez d'acheter, et le choix final de la taille vous appartient.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
     },
     {
       "topic": "form_name_form_submitted_2026_11_06_15_15_14",
