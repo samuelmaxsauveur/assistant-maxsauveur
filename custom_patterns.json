@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__une_commande__13840_est_en_transit",
+      "topic_label": "RE: Une commande #13840 est en transit",
+      "situation": "RE: Une commande #13840 est en transit",
+      "response_template": "Bonjour Marine,\n\nD'après le suivi Chronopost, votre colis est (ou a été) disponible au point relais suivant :\n\nROMAIN PICANT PEINTURE\n6 rue Camille Blaisot\n14210 Evrecy\n\nPouvez-vous vérifier s'il est encore récupérable là-bas via ce lien : https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR722172205TS\n\nSi le colis est toujours disponible en point relais, c'est la solution la plus rapide pour être dans les temps pour le 25 novembre.\n\nS'il est déjà reparti vers nous, nous le réexpédions dès réception vers le point relais de votre choix. Dans ce cas, donnez-nous l'adresse complète d'un point relais Chrono2Shop près de chez vous et nous nous en occupons.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande__13170",
       "topic_label": "Commande #13170",
       "situation": "Commande #13170",
