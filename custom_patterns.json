@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "commande__13170",
+      "topic_label": "Commande #13170",
+      "situation": "Commande #13170",
+      "response_template": "Bonjour Barthélémy,\n\nVos embauchoirs bois de cèdre (commande #13170) sont en précommande, avec une livraison prévue pour mi-novembre 2026. Vous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nConcernant votre point relais, nous venons de vérifier votre commande : elle est bien orientée vers la Consigne Super U de Sarzeau. Si ce point relais ne vous convient plus, donnez-nous l'adresse complète d'un point relais Chrono2Shop alternatif et nous faisons la modification avant l'expédition.\n\nVous pouvez trouver un point relais près de chez vous via ce lien : https://www.chronopost.fr/expeditionAvanceeSec/ounoustrouver.html\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__chaussures",
       "topic_label": "Re: Chaussures",
       "situation": "Re: Chaussures",
