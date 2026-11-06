@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__chaussures",
+      "topic_label": "Re: Chaussures",
+      "situation": "Re: Chaussures",
+      "response_template": "Bonjour Raül,\n\nLa procédure pour un échange de taille est la suivante : vous nous retournez la paire, nous vous envoyons un avoir, et vous recommandez dans la bonne taille sur notre site. Les frais d'envoi retour sont à votre charge.\n\nUn conseil donné par nos soins ne modifie pas cette règle : nous faisons notre meilleur calcul en fonction de votre mesure, mais c'est vous qui décidez d'acheter, et le choix final de la taille vous appartient.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_06_15_15_14",
       "topic_label": "Form name Form submitted 2026-11-06 15:15:14",
       "situation": "Form name Form submitted 2026-11-06 15:15:14",
