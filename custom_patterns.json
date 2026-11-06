@@ -2,6 +2,46 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_06_16_01_50",
+      "topic_label": "Form name Form submitted 2026-11-06 16:01:50",
+      "situation": "Form name Form submitted 2026-11-06 16:01:50",
+      "response_template": "Bonjour Patrick,\n\nMerci pour votre retour détaillé.\n\nConcernant les chaussettes, nous vous présentons nos excuses. Ce n'est pas normal, et nous allons vérifier avec notre équipe logistique ce qui s'est passé lors de la préparation de votre commande. Nous vous tenons informé.\n\nPour la boîte abîmée, c'est effectivement regrettable, mais il s'agit d'un aléa lié au transport sur lequel nous n'avons pas de prise. Ce que nous contrôlons, c'est la protection intérieure : la boîte à chaussures, le carton d'emballage et le papier de soie sont précisément là pour absorber les chocs et protéger la paire. Si la paire elle-même est en bon état, c'est que cette protection a joué son rôle.\n\nPour les chaussures, nous travaillons à rendre notre guide des pointures le plus précis possible pour permettre à chacun de commander à distance en toute confiance. Mais selon la morphologie du pied, la forme et le volume interne du modèle, une paire peut ne pas convenir à tout le monde, et c'est tout à fait compréhensible.\n\nVoici la procédure pour retourner les Brogues :\n\n1. Téléchargez le bon de retour sur : https://maxsauveur.com/pages/livraison-et-retour\n2. Indiquez comme motif : « remboursement »\n3. Glissez le bon à l'intérieur du colis, emballé soigneusement avec la boîte d'origine\n4. Expédiez à :\n   SSL – Solutions & Services Logistiques\n   14 avenue Lamartine\n   13170 Les Pennes-Mirabeau\n\nDès réception et contrôle de la paire, nous procéderons au remboursement des Brogues (335 €) dans les 3 à 5 jours ouvrés.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "annuler_commande__13407",
+      "topic_label": "Annuler Commande #13407",
+      "situation": "Annuler Commande #13407",
+      "response_template": "Bonjour Steve,\n\nVotre commande #13407 contient deux articles en précommande (les embauchoirs bois de cèdre et le Wico), ce qui rend l'annulation impossible à ce stade : les commandes en précommande ne peuvent pas être annulées avant expédition.\n\nLa marche à suivre sera de réceptionner le colis à la livraison, puis de nous retourner les articles via le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour. Dès réception et contrôle, nous procéderons au remboursement.\n\nNous vous préviendrons dès l'expédition.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "commande_13064",
+      "topic_label": "Commande 13064",
+      "situation": "Commande 13064",
+      "response_template": "Bonjour Hippolyte,\n\nMerci pour votre message et pour la vidéo.\n\nQuelques éléments importants à clarifier.\n\nPremièrement, la Boucle Menthe est une ceinture sur mesure, fabriquée spécifiquement pour votre commande. À ce titre, les retours et remboursements ne sont pas possibles : la pièce a été produite et assemblée pour vous, selon les spécifications communiquées au moment de la commande.\n\nDeuxièmement, et c'est le point central : le barème de tailles de la Boucle Menthe n'est pas identique à celui de votre ceinture Angel (commande #7990). Sur notre ceinture sur mesure, la taille 95 correspond à la longueur de l'ardillon au troisième trou central, ce que nous précisons explicitement sur la fiche produit, avec toutes les longueurs détaillées. Ce n'est pas le même repère que sur la Angel, qui suit un barème standard différent. Comparer les deux tailles 95 directement n'est donc pas pertinent : ce ne sont pas les mêmes références de mesure.\n\nNous avons contrôlé notre production : la ceinture que vous avez reçue est conforme à ce qui a été commandé et fabriqué.\n\nTroisièmement, même si le trou habituel ne correspond pas exactement, les trous sont espacés de 2,5 cm, ce qui signifie qu'un trou voisin vous permettra de la porter parfaitement. La ceinture est utilisable.\n\nFace à ces éléments, nous ne sommes pas en mesure d'accepter votre demande de remboursement.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__c_est_ouvert__pour_vous_seulement",
+      "topic_label": "RE: C'est ouvert, pour vous seulement",
+      "situation": "RE: C'est ouvert, pour vous seulement",
+      "response_template": "Bonjour Aristide,\n\nVotre commande #13952 est bien enregistrée et le point de livraison sélectionné est LE CRISTAL.\n\nPas d'inquiétude non plus pour l'adresse email : votre commande a bien été passée avec ribeiroar@live.fr, c'est celle qui sera prise en compte pour le suivi. Vous recevrez votre lien de suivi automatiquement dès l'expédition.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
+      "topic": "form_name_form_submitted_2026_11_05_21_28_57",
+      "topic_label": "Form name Form submitted 2026-11-05 21:28:57",
+      "situation": "Form name Form submitted 2026-11-05 21:28:57",
+      "response_template": "Bonjour Angelo,\n\nAvec 27,5 cm, en ajoutant les 0,2 cm vous êtes à 27,7 cm, ce qui vous place en **43** sur notre guide.\n\nLa Chelsea Chapman chausse ajusté, donc le **43** est la bonne pointure pour vous, nous pensons.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__form_name_form_submitted_2026_11_05_14_46_28",
       "topic_label": "Re: Re: Form name Form submitted 2026-11-05 14:46:28",
       "situation": "Re: Re: Form name Form submitted 2026-11-05 14:46:28",
@@ -22,14 +62,6 @@
       "topic_label": "Commande n°13256 du 25 août – Absence d’expédition",
       "situation": "Commande n°13256 du 25 août – Absence d’expédition",
       "response_template": "Bonjour Samba,\n\nVos embauchoirs bois de cèdre (commande #13256) sont en précommande, avec une livraison prévue pour mi-novembre 2026. Le statut que vous observez est tout à fait normal.\n\nVous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__c_est_ouvert__pour_vous_seulement",
-      "topic_label": "RE: C'est ouvert, pour vous seulement",
-      "situation": "RE: C'est ouvert, pour vous seulement",
-      "response_template": "Bonjour Aristide,\n\nOui, le Brogue Derby chausse grand, donc avec un 40,5 habituel, je vous recommande de prendre le **40** plutôt que le 41. Votre intuition était la bonne.\n\nSur les frais de livraison initiaux : ils ne sont remboursés qu'en cas de retour de l'intégralité de la commande.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
