@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_06_10_58_30",
+      "topic_label": "Form name Form submitted 2026-11-06 10:58:30",
+      "situation": "Form name Form submitted 2026-11-06 10:58:30",
+      "response_template": "Bonjour Lionel,\n\nPour le Wayne, il chausse légèrement grand. Une semelle orthopédique de 27,5 cm correspond à un pied d'environ 27,3 cm, ce qui vous place en 43 sur notre guide. Avec le fait que le Wayne chausse grand, je vous recommande le **43**.\n\nConcernant votre deuxième question, nous ne pouvons pas ajouter un article indisponible à une commande pour atteindre un palier de réduction. Les accessoires affichés comme indisponibles ne peuvent pas être intégrés à ce stade.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__13863_confirm_e",
       "topic_label": "Re: Commande #13863 confirmée",
       "situation": "Re: Commande #13863 confirmée",
