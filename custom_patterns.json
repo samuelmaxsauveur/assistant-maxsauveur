@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_06_15_22_52",
+      "topic_label": "Form name Form submitted 2026-11-06 15:22:52",
+      "situation": "Form name Form submitted 2026-11-06 15:22:52",
+      "response_template": "Bonjour Guillaume,\n\nMerci pour votre message.\n\nNous ne pouvons pas modifier le prix d'une commande une fois passée et payée, quelle que soit la promotion lancée ensuite. C'est une règle que nous appliquons de façon uniforme.\n\nCe que vous avez eu en commandant en avance, c'est le choix et la priorité sur votre pointure : le Paul Grainé Marron en 45 est une taille rare, et elle était disponible pour vous à ce moment-là.\n\nPour la suite, nous vous offrons volontiers 10% sur votre prochaine commande. \n\nCordialement\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
