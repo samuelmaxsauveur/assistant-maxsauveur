@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__il_vous_reste_6_heures",
+      "topic_label": "Re: Il vous reste 6 heures",
+      "situation": "Re: Il vous reste 6 heures",
+      "response_template": "Bonjour Simon,\n\nVotre commande #13945 (Powell Boots Cuir Grainé Marron, 42) est bien la seule enregistrée à votre nom. Pas de doublon, vous pouvez être rassuré.\n\nBonne soirée,\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande_13852",
       "topic_label": "Re: Commande 13852",
       "situation": "Re: Commande 13852",
