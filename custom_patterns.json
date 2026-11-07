@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__une_commande__13860_a__t__livr_e",
+      "topic_label": "Re: Une commande #13860 a été livrée",
+      "situation": "Re: Une commande #13860 a été livrée",
+      "response_template": "Bonjour Jean-François,\n\nPas de problème pour l'échange de pointure. Voici la procédure :\n\n1. Téléchargez le bon de retour sur [maxsauveur.com/pages/livraison-et-retour](https://maxsauveur.com/pages/livraison-et-retour) en indiquant le motif \"avoir\"\n2. Glissez-le dans la boîte avec la paire\n3. Expédiez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander le Paul en 44.\n\nUn point à garder en tête : le Paul chausse serré au départ, et le cuir avec la semelle en liège se moulent progressivement au pied. Si la gêne est au niveau du cou-de-pied, c'est tout à fait normal et se corrige avec quelques ports. Si en revanche vous sentez que la longueur manque, le 44 est effectivement la bonne direction.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
