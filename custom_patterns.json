@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "status_de_ma_commande_13755",
+      "topic_label": "Status de ma commande 13755",
+      "situation": "Status de ma commande 13755",
+      "response_template": "Bonjour Mohamad,\n\nVotre commande #13755 (La Gigi Cuir Marron et Cuir Lézard Noir, taille 100) est bien enregistrée et le paiement est confirmé. Il s'agit d'une précommande, avec une livraison prévue pour mi-décembre 2026.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__une_commande__13860_a__t__livr_e",
       "topic_label": "Re: Une commande #13860 a été livrée",
       "situation": "Re: Une commande #13860 a été livrée",
