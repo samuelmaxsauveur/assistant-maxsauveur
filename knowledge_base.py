@@ -55,6 +55,7 @@ KNOWLEDGE_BASE = """
 - Avoir = code promo valable 6 mois, usage unique, non cumulable, sur le même produit
 - Pour les ceintures : avoir = même produit même couleur (sauf ajustement stock)
 - Commande incomplète retournée : impossible de rembourser tant que tout n'est pas reçu
+- Paire portée (hors défaut de fabrication) : ni reprise, ni échange, ni avoir, même si l'usure est très légère. Une semelle marquée se voit et se déforme : la paire n'est plus revendable comme neuve, et le client suivant la renverrait. On refuse poliment, avec cette raison, sans proposer de contrepartie (avoir, réduction, échange vers un autre modèle). C'est Samuel qui juge sur photos si une paire est portée.
 
 ### Réparation
 - Procédure : client retourne la paire avec bon de retour (mention "défaut fabrication" ou "réparation")
@@ -289,6 +290,8 @@ Règles communes aux deux vagues :
 ---
 
 ## STRATÉGIE RETOUR — RÉTENTION CLIENT
+
+Champ d'application : uniquement un client qui demande un remboursement pour une paire retournée en état neuf, dans les délais. Jamais pour une paire portée, jamais pour une demande d'échange que Samuel a refusée, jamais sans retour de la paire.
 
 Quand un client demande un remboursement après retour, NE PAS juste confirmer le remboursement mécaniquement.
 Adopter cette approche en 3 temps :

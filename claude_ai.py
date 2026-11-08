@@ -559,16 +559,26 @@ def answer_question(email_body, email_subject, customer_name, order_info, questi
 
 ---
 
-Samuel (le responsable) te demande maintenant :
+Message de Samuel (le responsable) sur cet email :
 {question}
 
-Utilise tous les éléments ci-dessus pour répondre.
+COMMENT LIRE LE MESSAGE DE SAMUEL :
+1. S'il pose une question, tu y réponds avec les éléments ci-dessus.
+2. S'il donne sa position (un refus, un accord, ce qu'il voit sur les photos, ce qu'il pense du cas), c'est SA DÉCISION, et elle est définitive. Le brouillon l'applique telle quelle, avec ses raisons, reformulées dans le ton de John. Tu ne la discutes pas et tu ne l'adoucis pas.
+3. Tu n'ajoutes AUCUNE solution que Samuel n'a pas écrite : ni avoir, ni remboursement, ni échange, ni reprise, ni réduction, ni frais offerts, ni « sinon on peut aussi... ». Un refus de Samuel reste un refus, sans contrepartie ni porte de sortie. Tu ne cherches pas à sauver la vente. Refuser de reprendre une paire, c'est refuser toute forme de retour ou d'échange de cette paire, quel que soit le modèle que le client voudrait à la place.
+4. Si l'email contient une demande que la position de Samuel ne tranche vraiment pas, tu ne la tranches pas à sa place. Tu la signales dans samuel_answer par une question courte, et le brouillon n'en parle pas (pas de « je transmets », pas de « on revient vers toi sur ce point »).
+
 Si le contexte contient PLUSIEURS commandes client, identifie laquelle est concernée par l'email (produit mentionné, numéro, description) et n'utilise que celle-là.
 Si le contexte contient un "Numéro de suivi" et un "Lien de suivi" Wing, intègre-les DIRECTEMENT dans le updated_draft (ne les omets pas, ne demande pas de confirmation).
 
+Relis le brouillon avant de le rendre :
+a. Chaque geste ou solution qu'il propose (avoir, remboursement, échange, reprise, réduction, frais offerts) figure mot pour mot dans le message de Samuel ou dans l'historique de la discussion écrit par Samuel. Sinon, tu le retires.
+b. Aucune excuse, aucun aveu d'oubli ou de retard de notre part.
+c. Pas de tiret long ni de tiret comme ponctuation.
+
 Réponds en JSON strict avec exactement ces deux champs :
 {{
-  "samuel_answer": "ta réponse à Samuel en 2-3 phrases (explication, conseil)",
+  "samuel_answer": "1 ou 2 phrases pour Samuel : comment tu as appliqué sa position, ou la réponse à sa question. Ne lui propose pas d'options ni de geste commercial.",
   "updated_draft": "la réponse COMPLÈTE à envoyer au client, tenant compte de tout le contexte"
 }}
 
@@ -602,7 +612,7 @@ def generate_daily_summary(drafts_today, questions_today=None, rejections_today=
     if questions_today:
         questions_text = "\n\n--- CORRECTIONS ET QUESTIONS DE SAMUEL ---\n"
         for q in questions_today:
-            questions_text += f"\nEmail: {q.get('subject', '')} ({q.get('customer_name', '')})\nQuestion de Samuel: {q['question']}\nRéponse Claude: {q['claude_answer'][:300]}\n"
+            questions_text += f"\nEmail: {q.get('subject', '')} ({q.get('customer_name', '')})\nMessage de Samuel (fait règle): {q['question']}\nRéponse de Claude (simple proposition, ne fait pas règle): {q['claude_answer'][:300]}\n"
 
     rejections_text = ""
     if rejections_today:
@@ -626,6 +636,8 @@ Génère un résumé TRÈS concis (max 400 mots) structuré ainsi :
 2. Réponses types données (ce qui a bien marché) — basées sur les emails réellement envoyés
 3. Corrections apportées par Samuel (ce qu'il faut améliorer)
 4. Points d'attention à retenir pour les prochains jours
+
+Seuls les messages de Samuel et les emails réellement envoyés font règle. Une proposition de Claude dans la discussion (avoir, échange, geste...) n'est jamais une règle : ne la retiens pas comme réponse type.
 
 Ce résumé servira de référence pour répondre aux futurs emails."""
 
