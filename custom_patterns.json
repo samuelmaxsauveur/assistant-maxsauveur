@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_08_10_01_48",
+      "topic_label": "Form name Form submitted 2026-11-08 10:01:48",
+      "situation": "Form name Form submitted 2026-11-08 10:01:48",
+      "response_template": "Bonjour Thuy An,\n\nVotre commande #13461 (Dakota Cuir Noir en 42 et ceinture Jamie) est bien enregistrée. La Dakota sera expédiée la semaine prochaine. Vous recevrez automatiquement un email avec votre lien de suivi dès la prise en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande",
       "topic_label": "Commande",
       "situation": "Commande",
