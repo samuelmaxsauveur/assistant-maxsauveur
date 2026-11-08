@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__infos_sur_la_taille",
+      "topic_label": "Re: Infos sur la taille",
+      "situation": "Re: Infos sur la taille",
+      "response_template": "Bonjour Nicolas,\n\nAvec 29 cm, vous êtes en 45 sur notre guide. Le Brogue Derby chaussant légèrement grand, je vous recommande le 45.\n\nBonne commande !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__pointure_dakota___moc_paul",
       "topic_label": "Re: Pointure Dakota & Moc Paul",
       "situation": "Re: Pointure Dakota & Moc Paul",
