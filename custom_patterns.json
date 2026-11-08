@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__chaussures",
+      "topic_label": "Re: Re: Chaussures",
+      "situation": "Re: Re: Chaussures",
+      "response_template": "Hey Raül,\n\nThat's correct. With 26.6 cm and a wide foot, the 41 is the right call. Going up to the 41.5 would risk being too loose, and with a wide foot, staying in the 41 gives you the width you need without losing the fit.\n\nJohn – Customer Care – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "pointure_dakota___moc_paul",
       "topic_label": "Pointure Dakota & Moc Paul",
       "situation": "Pointure Dakota & Moc Paul",
