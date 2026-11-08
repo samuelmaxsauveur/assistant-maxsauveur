@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__pointure_dakota___moc_paul",
+      "topic_label": "Re: Pointure Dakota & Moc Paul",
+      "situation": "Re: Pointure Dakota & Moc Paul",
+      "response_template": "Bonjour Tom,\n\nLes promotions actuelles se terminent ce soir à minuit, donc si vous comptez commander, c'est le moment.\n\nPour le réassort de la Dakota en 41, nous ne pouvons pas garantir de date précise. Le mieux est d'activer l'alerte pointure directement sur la fiche produit du modèle : vous serez notifié en priorité dès qu'elle sera de nouveau disponible.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_08_19_57_45",
       "topic_label": "Form name Form submitted 2026-11-08 19:57:45",
       "situation": "Form name Form submitted 2026-11-08 19:57:45",
