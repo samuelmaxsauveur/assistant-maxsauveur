@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "infos_sur_la_taille",
+      "topic_label": "Infos sur la taille",
+      "situation": "Infos sur la taille",
+      "response_template": "Bonjour Nicolas,\n\nLa référence Paraboot Chambord est un bon repère, mais le chaussant varie d'un modèle à l'autre, même chez la même marque. Pour être sûr de vous orienter vers la bonne taille, j'aurais besoin de la longueur exacte de votre pied en cm.\n\nVoici comment mesurer : posez votre pied nu sur une feuille, talon contre un mur, marquez le bout du gros orteil et mesurez la distance. Ajoutez 0,2 cm à ce résultat et communiquez-moi le total.\n\nAvec cette mesure, je pourrai vous confirmer la bonne pointure sur nos Brogues Derby, qui chaussent légèrement grand.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__chaussures",
       "topic_label": "Re: Re: Chaussures",
       "situation": "Re: Re: Chaussures",
