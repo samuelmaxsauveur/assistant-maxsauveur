@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__commande__13961_confirm_e",
+      "topic_label": "RE: Re: Commande #13961 confirmée",
+      "situation": "RE: Re: Commande #13961 confirmée",
+      "response_template": "Bonjour Thien an,\n\nC'est noté, nous retenons votre commande #13961 de notre côté. Écrivez-nous simplement quand vous souhaitez que nous procédions à l'expédition, et nous ferons partir votre colis dans la foulée.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_09_15_42_23",
       "topic_label": "Form name Form submitted 2026-11-09 15:42:23",
       "situation": "Form name Form submitted 2026-11-09 15:42:23",
