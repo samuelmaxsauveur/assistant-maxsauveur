@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__13823_confirm_e",
+      "topic_label": "RE: Commande #13823 confirmée",
+      "situation": "RE: Commande #13823 confirmée",
+      "response_template": "Bonjour Manuel,\n\nLe colis du retour est bien en transit, nous le réceptionnerons d'ici peu.\n\nSur la pointure : vous portez du 42,5 habituellement, la première paire en 42 était grand (sans être extrêmement grande), et vous avez le pied fin. Dans ce cas, je vous recommande le **41** plutôt que le 41,5. Le Brogue Derby chausse grand, et avec un pied fin, le 41,5 risque encore de bouger légèrement. Le 41 sera plus précis pour vous.\n\nDès réception et contrôle de votre retour, nous vous envoyons un avoir pour commander le 41.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "re__commande__13921_confirm_e",
       "topic_label": "Re: Commande #13921 confirmée",
       "situation": "Re: Commande #13921 confirmée",
@@ -70,14 +78,6 @@
       "topic_label": "Commande non reçu",
       "situation": "Commande non reçu",
       "response_template": "Bonjour Nathan,\n\nVotre commande #13700 contient deux ceintures en précommande, la Gigi Cuir Marron et la Morricone Western Noir. La livraison est prévue pour mi-décembre 2026, comme indiqué sur les fiches produit au moment de votre achat.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__commande__13823_confirm_e",
-      "topic_label": "RE: Commande #13823 confirmée",
-      "situation": "RE: Commande #13823 confirmée",
-      "response_template": "Bonjour Manuel,\n\nDe notre côté, nous n'avons pas encore réceptionné votre retour. Pourriez-vous nous communiquer le numéro de suivi de votre envoi ? Cela nous permettra de localiser le colis et de traiter votre dossier dès réception.\n\nConcernant votre demande en 41,5 : dès que nous aurons reçu et contrôlé la paire retournée, nous vous enverrons un avoir pour commander la bonne pointure sur notre site.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
