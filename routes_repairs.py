@@ -50,6 +50,8 @@ def repairs_page():
         c['docs'] = [(n,) + repair_docs.describe(n) for n in repair_docs.names(c['id'])]
         c['size'] = (c.get('product') or '').rsplit(' - ', 1)[-1] if ' - ' in (c.get('product') or '') else ''
         c['model'] = repair_catalog.model_name(c.get('product'))
+        c['can_remind'] = c.get('decision') == 'credit' and c['status'] in repairs.CREDIT_AWAITED
+        c['credit_reminders'] = re.findall(r"(\d{2}/\d{2}/\d{4}) : relance avoir", c.get('notes') or '')
     by_workshop = {}
     for c in cases:
         by_workshop.setdefault(c.get('workshop') or 'Sans atelier', []).append(c)
@@ -63,12 +65,23 @@ def repairs_page():
                            ups_auto=ups_tracking.enabled(), samuel_connected=gmail_helper.get_samuel_service() is not None)
 
 
+WORKSHOP_MODES = ('label', 'credit', 'reminder')
+
+
+def _mode(data):
+    return data.get('mode') if data.get('mode') in WORKSHOP_MODES else 'label'
+
+
 def _selected_cases(data):
     key = data.get('workshop')
     if key not in workshop.WORKSHOPS:
         raise ValueError("Atelier inconnu")
     ids = [int(i) for i in data.get('case_ids') or []]
     cases = [c for c in (database.get_repair_case(i) for i in ids) if c]
+    if _mode(data) == 'reminder':
+        cases = [c for c in cases if c.get('decision') == 'credit' and c['status'] in repairs.CREDIT_AWAITED]
+        if not cases:
+            raise ValueError("Coche une paire marquée avoir, déjà envoyée à l'atelier ou demandée sur photos")
     if not cases:
         raise ValueError("Sélectionne au moins une paire")
     return key, cases
@@ -76,24 +89,26 @@ def _selected_cases(data):
 
 @repairs_bp.route('/reparations/atelier/apercu', methods=['POST'])
 def workshop_preview():
-    """Draft of the UPS label request, with the customer photos counted per pair."""
+    """Draft of the request to the workshop, with the customer photos counted per pair."""
+    data = request.json or {}
     try:
-        key, cases = _selected_cases(request.json or {})
+        key, cases = _selected_cases(data)
     except ValueError as e:
         return jsonify({'success': False, 'error': str(e)}), 400
+    mode = _mode(data)
     counts = {}
-    for c in cases:
+    # A reminder goes without photos: the workshop has them since the first request.
+    for c in cases if mode != 'reminder' else []:
         if not repair_photos.names(c['id'], 'client'):
             try:
                 repair_photos.import_customer_photos(c)
             except Exception as e:
                 print(f"[Workshop] Customer photos unavailable for {c['wing_ref']}: {e}")
         counts[c['id']] = len(repair_photos.names(c['id']))
-    mode = 'credit' if (request.json or {}).get('mode') == 'credit' else 'label'
     draft = workshop.draft_email(key, cases, counts, mode=mode)
     missing_ref = [c['wing_ref'] for c in cases if not (c.get('workshop_ref') or '').strip()]
     missing_problem = [c['wing_ref'] for c in cases if not (c.get('problem') or '').strip()]
-    return jsonify({'success': True, **draft, 'photos': sum(counts.values()),
+    return jsonify({'success': True, **draft, 'photos': sum(counts.values()), 'case_ids': [c['id'] for c in cases],
                     'missing_ref': missing_ref, 'missing_problem': missing_problem})
 
 
@@ -113,8 +128,9 @@ def workshop_send():
     service = gmail_helper.get_samuel_service()
     if service is None:
         return jsonify({'success': False, 'error': "La boîte samuel@maxsauveur.com n'est pas encore connectée à l'assistant"}), 400
+    mode = _mode(data)
     files = []
-    for case in cases:
+    for case in cases if mode != 'reminder' else []:
         name = case['wing_ref'].lstrip('#')
         for n, (photo, source) in enumerate(repair_photos.load_all(case['id']), 1):
             files.append((photo, f"{name}_{source}_{n}.jpg", 'image/jpeg'))
@@ -123,14 +139,17 @@ def workshop_send():
 
     name = workshop.WORKSHOPS[key]['name']
     stamp = datetime.now().strftime('%d/%m/%Y')
-    credit_only = data.get('mode') == 'credit'
+    line = f"{stamp} : " + {'credit': f"demande d'avoir envoyée à {name} (sans renvoi)",
+                            'reminder': f"relance avoir envoyée à {name}",
+                            'label': f"demande d'étiquette UPS envoyée à {name}"}[mode]
     for case in cases:
         notes = (case.get('notes') or '').strip()
-        line = f"{stamp} : " + (f"demande d'avoir envoyée à {name} (sans renvoi)" if credit_only
-                                 else f"demande d'étiquette UPS envoyée à {name}")
-        repairs.update_case(case['id'], workshop=name, notes=f"{notes}\n{line}".strip(),
-                            status='credit_requested' if credit_only else 'label_requested')
-    return jsonify({'success': True, 'photos': len(files), 'to': to})
+        fields = {'notes': f"{notes}\n{line}".strip()}
+        if mode != 'reminder':
+            # A reminder changes nothing else: the pair waits for its credit note where it is.
+            fields.update(workshop=name, status='credit_requested' if mode == 'credit' else 'label_requested')
+        repairs.update_case(case['id'], **fields)
+    return jsonify({'success': True, 'photos': len(files), 'to': to, 'mode': mode})
 
 
 @repairs_bp.route('/reparations/ajouter', methods=['POST'])

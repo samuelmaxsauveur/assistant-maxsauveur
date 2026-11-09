@@ -131,7 +131,7 @@
             <div>
                 <div class="card-title">{{ wname }} · {{ group | length }} paire{{ 's' if group | length > 1 }}</div>
                 {% if tab == 'a-traiter' %}<div class="meta">Coche les paires qui partent dans le prochain colis.</div>{% endif %}
-                {% if tab == 'etiquette' %}<div class="meta">Étiquette UPS demandée : quand le carton part, coche les paires et indique le n° de suivi. Avoir demandé sans renvoi : rien à faire, l'avoir sera rangé dès qu'il arrive par e-mail.</div>{% endif %}
+                {% if tab == 'etiquette' %}<div class="meta">Étiquette UPS demandée : quand le carton part, coche les paires et indique le n° de suivi. Avoir demandé sans renvoi : l'avoir sera rangé dès qu'il arrive par e-mail. S'il tarde, coche la paire et relance l'atelier.</div>{% endif %}
                 {% if tab == 'atelier' %}<div class="meta">{{ 'Le suivi UPS fait passer les paires en réparation dès la livraison à l\'atelier.' if ups_auto else 'Passe les paires « en réparation » quand l\'atelier a reçu le colis.' }}</div>{% endif %}
                 {% if tab == 'retour' %}<div class="meta">Le client a reçu le lien pour choisir son point relais Chronopost. Relances automatiques à J+3 et J+6, envoi à l'adresse de commande à J+9.</div>{% endif %}
             </div>
@@ -142,7 +142,7 @@
             <tr><th></th><th>Réf.</th><th>Client</th><th>Paire</th><th class="hide-sm">Problème</th><th>Suivi</th></tr>
             {% for c in group %}
             <tr class="row" onclick="toggleDetail(event, {{ c.id }})">
-                <td><input type="checkbox" class="sel" value="{{ c.id }}" data-decision="{{ c.decision or '' }}" data-status="{{ c.status }}" onclick="event.stopPropagation()"></td>
+                <td><input type="checkbox" class="sel" value="{{ c.id }}" data-decision="{{ c.decision or '' }}" data-status="{{ c.status }}" data-remind="{{ '1' if c.can_remind else '' }}" onclick="event.stopPropagation()"></td>
                 <td class="ref">{{ c.wing_ref }}</td>
                 <td>{{ c.customer_name or '' }}</td>
                 <td>{{ c.model }} · {{ c.size }} {% if c.decision == 'credit' %}<span class="pill credit">avoir</span>{% endif %}</td>
@@ -155,6 +155,7 @@
                         {% if c.status == 'credit_requested' %}avoir demandé, sans renvoi
                         {% elif c.workshop_tracking %}<a href="{{ ups_link(c.workshop_tracking) }}" target="_blank" onclick="event.stopPropagation()">{{ c.workshop_tracking }}</a>{% elif tab == 'etiquette' %}étiquette en attente{% endif %}
                         {% if tab == 'atelier' %}<br>{{ status_labels[c.status] }}{% endif %}
+                        {% if c.can_remind %}<br><span style="color:#92400e;">{% if c.credit_reminders %}avoir relancé le {{ c.credit_reminders[-1] }}{% if c.credit_reminders | length > 1 %} ({{ c.credit_reminders | length }} relances){% endif %}{% else %}avoir pas encore reçu{% endif %}</span>{% endif %}
                     {% endif %}
                     {% if tab == 'retour' %}{% if c.return_reminder_count %}{{ c.return_reminder_count }} relance(s){% else %}prévenu le {{ (c.return_requested_at or '')[:10] }}{% endif %}{% endif %}
                     {% if tab == 'client' and c.delivery %}{{ c.delivery.relay_name or c.delivery.city }} · {{ status_labels[c.status] }}{% endif %}
@@ -216,13 +217,18 @@
                 {% else %}
                 <button class="btn btn-purple" onclick="groupStatus(this, 'sent_workshop', 'Ces paires sont déposées chez {{ wname }} ?')">Paires déposées chez {{ wname }}</button>
                 {% endif %}
-            {% elif tab == 'etiquette' and group | selectattr('status', 'equalto', 'label_requested') | list %}
+            {% elif tab == 'etiquette' %}
+                {% if group | selectattr('status', 'equalto', 'label_requested') | list %}
                 <input class="tracking" placeholder="N° de suivi UPS (1Z…)" style="max-width:230px;" value="{{ (group | map(attribute='workshop_tracking') | select | first) or '' }}">
                 <button class="btn btn-purple" onclick="cartonShipped(this)">Colis parti</button>
+                {% endif %}
             {% elif tab == 'atelier' %}
                 {% if not ups_auto %}<button class="btn btn-gray" onclick="groupStatus(this, 'in_repair')">Arrivées à l'atelier</button>{% endif %}
                 <button class="btn btn-green" onclick="groupStatus(this, 'back_logistics', 'Les clients des paires cochées vont recevoir l\'e-mail « votre paire est prête ». Continuer ?', 'repair')">Paires revenues : prévenir les clients</button>
                 <button class="btn btn-amber" onclick="groupStatus(this, 'credit_received', null, 'credit')">Avoir reçu</button>
+            {% endif %}
+            {% if tab in ('etiquette', 'atelier') and wkey and group | selectattr('can_remind') | list %}
+                <button class="btn btn-gray" onclick="previewWorkshop(this, 'reminder')">✉️ Relancer pour l'avoir</button>
             {% endif %}
             <span class="msg"></span>
         </div>
@@ -289,14 +295,19 @@ async function cartonShipped(btn) {
 
 async function previewWorkshop(btn, mode) {
     const card = groupOf(btn), msg = btn.parentElement.querySelector('.msg');
-    const ids = selected(card);
-    if (!ids.length) { msg.textContent = mode === 'credit' ? 'Coche les articles concernés.' : 'Coche les paires du colis.'; return; }
-    btn.disabled = true; msg.textContent = '⏳ Préparation (photos incluses)...';
-    card.dataset.mode = mode;
+    // A reminder only concerns the credit pairs the workshop already knows about.
+    const ids = mode === 'reminder'
+        ? [...card.querySelectorAll('.sel:checked')].filter(el => el.dataset.remind).map(el => el.value)
+        : selected(card);
+    if (!ids.length) { msg.textContent = {credit: 'Coche les articles concernés.', reminder: 'Coche les paires marquées avoir à relancer.'}[mode] || 'Coche les paires du colis.'; return; }
+    btn.disabled = true; msg.textContent = mode === 'reminder' ? '⏳ Préparation...' : '⏳ Préparation (photos incluses)...';
     const d = await post('/reparations/atelier/apercu', {workshop: card.dataset.workshop, case_ids: ids, mode});
     btn.disabled = false;
     if (!d.success) { msg.textContent = '❌ ' + d.error; return; }
     msg.textContent = '';
+    // The email leaves for exactly the pairs it was drafted for.
+    card.dataset.mode = mode;
+    card.dataset.ids = d.case_ids.join(',');
     const draft = card.querySelector('.ws-draft');
     draft.querySelector('.ws-to').value = d.to;
     draft.querySelector('.ws-subject').value = d.subject;
@@ -304,7 +315,12 @@ async function previewWorkshop(btn, mode) {
     const warn = [];
     if (d.missing_ref.length) warn.push('réf atelier manquante : ' + d.missing_ref.join(', '));
     if (d.missing_problem.length) warn.push('problème non renseigné : ' + d.missing_problem.join(', '));
-    draft.querySelector('.ws-summary').innerHTML = (mode === 'credit' ? 'Demande d\'avoir, sans renvoi' : `${d.cartons.length} carton(s)`) + ` · ${d.photos} photo(s) jointe(s)` + (warn.length ? `<br><span style="color:#b45309;">⚠️ ${warn.join(' · ')}</span>` : '');
+    const head = {
+        credit: `Demande d'avoir, sans renvoi · ${d.photos} photo(s) jointe(s)`,
+        reminder: `Relance pour l'avoir · ${d.case_ids.length} article(s) · sans pièce jointe, l'atelier a déjà les photos`,
+    }[mode] || `${d.cartons.map(c => `${c.format}, ${c.weight_kg} kg`).join(' + ')} · ${d.photos} photo(s) jointe(s)`
+        + `<br>Taille calculée d'après les boîtes de chaussures. Si tu utilises un autre carton, corrige ses dimensions dans le message.`;
+    draft.querySelector('.ws-summary').innerHTML = head + (warn.length ? `<br><span style="color:#b45309;">⚠️ ${warn.join(' · ')}</span>` : '');
     draft.style.display = 'block';
 }
 
@@ -312,10 +328,11 @@ async function sendWorkshop(btn) {
     const card = groupOf(btn), draft = card.querySelector('.ws-draft'), msg = draft.querySelector('.ws-msg');
     if (!confirm('Envoyer cet e-mail à ' + draft.querySelector('.ws-to').value + ' ?')) return;
     btn.disabled = true; msg.textContent = '⏳ Envoi...';
-    const d = await post('/reparations/atelier/envoyer', {workshop: card.dataset.workshop, case_ids: selected(card), mode: card.dataset.mode,
+    const d = await post('/reparations/atelier/envoyer', {workshop: card.dataset.workshop, case_ids: card.dataset.ids.split(','), mode: card.dataset.mode,
         subject: draft.querySelector('.ws-subject').value, body: draft.querySelector('.ws-body').value});
-    if (d.success) { msg.textContent = `✅ Envoyé à ${d.to} avec ${d.photos} photo(s). Les articles passent dans « Demande envoyée ».`; setTimeout(() => location.href = '/reparations?onglet=etiquette', 2500); }
-    else { msg.textContent = '❌ ' + (d.error || 'Erreur'); btn.disabled = false; }
+    if (!d.success) { msg.textContent = '❌ ' + (d.error || 'Erreur'); btn.disabled = false; }
+    else if (d.mode === 'reminder') { msg.textContent = `✅ Relance envoyée à ${d.to}, notée dans chaque dossier.`; setTimeout(() => location.reload(), 2500); }
+    else { msg.textContent = `✅ Envoyé à ${d.to} avec ${d.photos} photo(s). Les articles passent dans « Demande envoyée ».`; setTimeout(() => location.href = '/reparations?onglet=etiquette', 2500); }
 }
 
 async function saveCase(id, btn) {

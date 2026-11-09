@@ -46,6 +46,10 @@ STAGE_OF = {status: key for key, _, statuses in STAGES for status in statuses}
 
 DECISIONS = {"": "", "repair": "Paire à réparer", "credit": "Avoir demandé à l'atelier"}
 
+# A credit pair the workshop already knows about (shipped to it, or shown on
+# photos): its credit note can be chased until it arrives.
+CREDIT_AWAITED = ("credit_requested", "sent_workshop", "in_repair", "returning")
+
 # Wing status of the label the customer ships the pair with.
 PARCEL_LABELS = {
     "CREATED": "Étiquette pas encore utilisée",
