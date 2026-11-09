@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "commande_non_re_u",
+      "topic_label": "Commande non reçu",
+      "situation": "Commande non reçu",
+      "response_template": "Bonjour Nathan,\n\nVotre commande #13700 contient deux ceintures en précommande, la Gigi Cuir Marron et la Morricone Western Noir. La livraison est prévue pour mi-décembre 2026, comme indiqué sur les fiches produit au moment de votre achat.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__13823_confirm_e",
       "topic_label": "RE: Commande #13823 confirmée",
       "situation": "RE: Commande #13823 confirmée",
