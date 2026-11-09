@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__commande__13392_confirm_e",
+      "topic_label": "Re: Re: Commande #13392 confirmée",
+      "situation": "Re: Re: Commande #13392 confirmée",
+      "response_template": "Bonjour Daniel,\n\nVotre commande #13392 est bien expédiée. Vous pouvez suivre votre colis en temps réel ici : https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR729159455TS\n\nLa livraison est estimée entre le 11 et le 13 novembre.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__commande__13410___deck_marron_t_43",
       "topic_label": "Re: Re: Commande #13410 / DECK Marron t 43",
       "situation": "Re: Re: Commande #13410 / DECK Marron t 43",
