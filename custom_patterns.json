@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_09_15_42_23",
+      "topic_label": "Form name Form submitted 2026-11-09 15:42:23",
+      "situation": "Form name Form submitted 2026-11-09 15:42:23",
+      "response_template": "Bonjour,\n\nMalheureusement, les codes générés par la roue sont automatiques et nous n'avons pas la possibilité de les retrouver ou de les réémettre une fois perdus.\n\nAjoutez un e-mail différent pour obtenir un nouveau code.\n\nN'hésitez pas à revenir vers nous si vous avez des questions sur un modèle ou une pointure avant de passer commande.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_09_16_13_26",
       "topic_label": "Form name Form submitted 2026-11-09 16:13:26",
       "situation": "Form name Form submitted 2026-11-09 16:13:26",
