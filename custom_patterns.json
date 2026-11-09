@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_09_15_11_28",
+      "topic_label": "Form name Form submitted 2026-11-09 15:11:28",
+      "situation": "Form name Form submitted 2026-11-09 15:11:28",
+      "response_template": "Bonjour,\n\nNous n'avons pas encore réceptionné votre retour de notre côté. Pour vérifier où en est votre colis, je vous invite à le suivre via le numéro de suivi qui vous a été remis au moment du dépôt.\n\nDès réception, comptez 10 jours ouvrés pour le traitement de votre demande. Nous reviendrons vers vous dès que c'est fait.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__form_name_form_submitted_2026_11_04_18_11_28",
       "topic_label": "RE: Form name Form submitted 2026-11-04 18:11:28",
       "situation": "RE: Form name Form submitted 2026-11-04 18:11:28",
