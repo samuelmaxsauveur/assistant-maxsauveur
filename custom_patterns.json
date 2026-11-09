@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_09_16_13_26",
+      "topic_label": "Form name Form submitted 2026-11-09 16:13:26",
+      "situation": "Form name Form submitted 2026-11-09 16:13:26",
+      "response_template": "Bonjour Ryan,\n\nVotre commande #13976 (Deck Cuir Marron 41 + Paul Mocassin Cuir Grainé Noir 41) est en cours de préparation et la livraison est estimée entre le 11 et le 13 novembre. Vous recevrez automatiquement un email avec votre lien de suivi dès l'expédition.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__13823_confirm_e",
       "topic_label": "RE: Commande #13823 confirmée",
       "situation": "RE: Commande #13823 confirmée",
