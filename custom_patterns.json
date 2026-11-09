@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__13961_confirm_e",
+      "topic_label": "Re: Commande #13961 confirmée",
+      "situation": "Re: Commande #13961 confirmée",
+      "response_template": "Bonjour Thien an,\n\nD'après les données de livraison, votre colis est prévu entre le 11 et le 13 novembre. Il va donc partir cette semaine, avant votre absence.\n\nSi vous souhaitez néanmoins que nous décalions l'expédition au 1er décembre, dites-le moi et nous ajustons de notre côté.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__infos_sur_la_taille",
       "topic_label": "Re: Re: Infos sur la taille",
       "situation": "Re: Re: Infos sur la taille",
