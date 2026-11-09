@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__13823_confirm_e",
+      "topic_label": "RE: Commande #13823 confirmée",
+      "situation": "RE: Commande #13823 confirmée",
+      "response_template": "Bonjour Manuel,\n\nDe notre côté, nous n'avons pas encore réceptionné votre retour. Pourriez-vous nous communiquer le numéro de suivi de votre envoi ? Cela nous permettra de localiser le colis et de traiter votre dossier dès réception.\n\nConcernant votre demande en 41,5 : dès que nous aurons reçu et contrôlé la paire retournée, nous vous enverrons un avoir pour commander la bonne pointure sur notre site.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
