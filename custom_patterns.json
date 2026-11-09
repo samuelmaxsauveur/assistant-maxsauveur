@@ -2,6 +2,54 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_09_11_56_56",
+      "topic_label": "Form name Form submitted 2026-11-09 11:56:56",
+      "situation": "Form name Form submitted 2026-11-09 11:56:56",
+      "response_template": "Bonjour Lionel,\n\nSi la question porte toujours sur le Wayne, la réponse reste la même : le **43** est la bonne pointure pour accueillir confortablement une semelle de 27,5 cm.\n\nSi vous avez un autre modèle en tête, n'hésitez pas à me le préciser et je vous confirme la pointure correspondante.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "form_name_form_submitted_2026_11_08_00_18_01",
+      "topic_label": "Form name Form submitted 2026-11-08 00:18:01",
+      "situation": "Form name Form submitted 2026-11-08 00:18:01",
+      "response_template": "Bonjour,\n\nMalheureusement, ce modèle n'est pas au programme pour le moment et nous ne sommes pas certains de le refaire.\n\nSi jamais la situation change, nous en informerons nos abonnés en priorité.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "commande__13899",
+      "topic_label": "Commande #13899",
+      "situation": "Commande #13899",
+      "response_template": "Bonjour Thomas,\n\nVotre commande #13899 (Deck Cuir Marron 41 + lait nettoyant) est en cours de préparation et la livraison est estimée entre le 10 et le 12 novembre. Vous recevrez automatiquement un email avec votre lien de suivi dès l'expédition.\n\nConcernant la promotion : nous n'appliquons pas de remises rétroactivement sur les commandes déjà passées, quelle que soit leur situation. Cette règle s'applique de façon uniforme.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "form_name_form_submitted_2026_11_02_21_27_04",
+      "topic_label": "Form name Form submitted 2026-11-02 21:27:04",
+      "situation": "Form name Form submitted 2026-11-02 21:27:04",
+      "response_template": "Bonjour Rayane,\n\nVotre Dakota Cuir Noir est en cours d'acheminement vers le point relais HSP (29 rue Ordener, 75018 Paris). La livraison est estimée entre le 10 et le 12 novembre. Vous recevrez automatiquement un email avec votre lien de suivi dès la prise en charge par le transporteur.\n\nConcernant le code MADMAX26-15 : cette promotion est active du 5 au 8 novembre 2026. Votre commande a été passée en septembre, et nous ne pouvons pas appliquer un code promotionnel rétroactivement sur une commande déjà finalisée. C'est une règle qui s'applique à tous, sans exception.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 3
+    },
+    {
+      "topic": "commande__13283___embauchoirs_bois_de_c_dre",
+      "topic_label": "Commande #13283 - Embauchoirs bois de cèdre",
+      "situation": "Commande #13283 - Embauchoirs bois de cèdre",
+      "response_template": "Bonjour Olivier,\n\nVotre commande #13283 (3 embauchoirs bois de cèdre en tailles 43, 44 et 45) est bien enregistrée et en cours de préparation. Il s'agit d'une précommande, avec une livraison prévue entre le 10 et le 12 novembre.\n\nLe message affiché sur votre espace client est normal à ce stade : le délai de changement de point relais est simplement passé, ce qui ne pose aucun problème puisque la livraison est bien orientée vers le Carrefour de Montreuil.\n\nVous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "renseignement_pointure",
+      "topic_label": "Renseignement pointure",
+      "situation": "Renseignement pointure",
+      "response_template": "Bonjour Anthony,\n\nVos embauchoirs (commande #13281) sont en cours de préparation et seront expédiés très prochainement, avec une livraison estimée entre le 10 et le 12 novembre. Vous recevrez automatiquement un email avec votre lien de suivi dès la prise en charge par le transporteur.\n\nSur la pointure : avec 26 cm, vous êtes en **41** sur notre guide.\n\n**Paul (mocassin)** : je vous recommande le **41**. Le modèle chausse serré au départ, c'est normal et nécessaire pour le maintien sans lacets. Le cuir et la semelle en liège se moulent au pied après quelques ports.\n\n**Deck (bateau)** : chausse légèrement grand, je vous recommande le **40**.\n\nSur les échanges de pointure : hors période Mad Max (terminée hier), les échanges se font via notre système d'avoir standard. Vous retournez la paire, nous émettons un avoir, et vous recommandez dans la bonne taille.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__infos_sur_la_taille",
       "topic_label": "Re: Infos sur la taille",
       "situation": "Re: Infos sur la taille",
@@ -542,14 +590,6 @@
       "topic_label": "MALFAÇON / Soucis Brogues - (Chaussures Derby 45) / Commande #10792",
       "situation": "MALFAÇON / Soucis Brogues - (Chaussures Derby 45) / Commande #10792",
       "response_template": "Bonjour Guillaume,\n\nVotre paire est bien réceptionnée depuis le 22 octobre et déjà partie en atelier. Nous allons faire notre possible pour que la réparation soit bouclée en moins de 6 à 8 semaines.\n\nEn guise de geste de notre part, nous glisserons deux produits d'entretien cuir dans votre colis de retour.\n\nNous vous tenons informé dès que votre paire est expédiée.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 2
-    },
-    {
-      "topic": "form_name_form_submitted_2026_11_02_21_27_04",
-      "topic_label": "Form name Form submitted 2026-11-02 21:27:04",
-      "situation": "Form name Form submitted 2026-11-02 21:27:04",
-      "response_template": "Bonjour Rayane,\n\nC'est fait, nous venons de mettre à jour votre point relais de livraison :\n\n**HSP – 29 rue Ordener, 75018 Paris**\n\nCette modification n'apparaîtra pas dans votre email de confirmation initial, mais elle est bien prise en compte et visible sur votre lien de suivi. Livraison estimée entre le 6 et le 8 novembre.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 2
     },
