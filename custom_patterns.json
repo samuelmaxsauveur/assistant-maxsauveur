@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__form_name_form_submitted_2026_11_04_18_11_28",
+      "topic_label": "RE: Form name Form submitted 2026-11-04 18:11:28",
+      "situation": "RE: Form name Form submitted 2026-11-04 18:11:28",
+      "response_template": "Bonjour Clément,\n\nMerci pour le retour et pour la photo.\n\nEn regardant les plis à l'avant, le cuir est déjà bien marqué à cet endroit. Monter d'une pointure ne réglerait pas cette pression au cou-de-pied et ne rattraperait pas les marques déjà formées, donc ce n'est pas la bonne piste.\n\nCe que la photo et votre description montrent surtout, c'est que vous avez de la place en longueur, ce qui est le bon signe : la pointure est juste. La pression que vous ressentez sur le dessus du pied est précisément ce que le cuir doit absorber avec le port. Sur un cuir épais comme celui des Brogues, ça prend un peu plus de temps que prévu, mais c'est vraiment en la portant que ça se règle.\n\nMon conseil : continuez à les mettre, même en intérieur, et donnez-leur encore quelques sorties. Le cuir va travailler et la gêne va diminuer progressivement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__13961_confirm_e",
       "topic_label": "Re: Commande #13961 confirmée",
       "situation": "Re: Commande #13961 confirmée",
