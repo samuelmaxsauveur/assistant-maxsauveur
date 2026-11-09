@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__13921_confirm_e",
+      "topic_label": "Re: Commande #13921 confirmée",
+      "situation": "Re: Commande #13921 confirmée",
+      "response_template": "Bonjour Thierry,\n\nVotre commande #13921 (Springsteen Daim Beige, 43) est en cours de préparation et la livraison est estimée entre le 11 et le 13 novembre à votre point relais MEDIA TEC à Morosaglia.\n\nVous recevrez automatiquement un email avec votre lien de suivi dès la prise en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_09_15_11_28",
       "topic_label": "Form name Form submitted 2026-11-09 15:11:28",
       "situation": "Form name Form submitted 2026-11-09 15:11:28",
@@ -590,14 +598,6 @@
       "topic_label": "Commande 13852",
       "situation": "Commande 13852",
       "response_template": "Bonjour Kévin,\n\nNous n'accordons pas de remise commerciale rétroactive après commande, ce n'est pas quelque chose que nous faisons.\n\nVous pouvez tout à fait retourner la paire si vous souhaitez exercer votre droit de rétractation, mais il y a un point important à avoir en tête : votre commande est déjà expédiée et vous avez pu profiter de votre pointure immédiatement. Les Chelsea Chapman partent vite, d'autant plus si vous n'êtes pas abonné à notre offre VIP. Nous ne pouvons pas vous garantir que le 44 sera encore disponible au moment où nous réceptionnerons votre paire. Vous prendriez donc un risque réel de vous retrouver sans chaussures.\n\nÀ vous de voir si cela vaut la peine.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__commande__13921_confirm_e",
-      "topic_label": "Re: Commande #13921 confirmée",
-      "situation": "Re: Commande #13921 confirmée",
-      "response_template": "Bonjour Thierry,\n\nC'est noté, nous venons de mettre à jour votre point relais avec l'adresse que vous nous avez transmise :\n\nMEDIA TEC, Route de Corte, 20218 Morosaglia\n\nCette modification n'apparaîtra pas dans votre email de confirmation initial, mais elle est bien prise en compte et visible sur votre lien de suivi dès l'expédition.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
