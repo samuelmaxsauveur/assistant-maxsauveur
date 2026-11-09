@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__commande__13410___deck_marron_t_43",
+      "topic_label": "Re: Re: Commande #13410 / DECK Marron t 43",
+      "situation": "Re: Re: Commande #13410 / DECK Marron t 43",
+      "response_template": "Bonjour Xavier,\n\nMerci pour la confirmation. Nous attendons le retour de notre logistique dès réception de la paire, et revenons vers vous dès que la vérification est effectuée.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande_non_re_u",
       "topic_label": "Commande non reçu",
       "situation": "Commande non reçu",
