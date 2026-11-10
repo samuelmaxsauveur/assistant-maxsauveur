@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "dakota_pointure",
+      "topic_label": "Dakota pointure",
+      "situation": "Dakota pointure",
+      "response_template": "Bonjour Chakir,\n\nContent que les Dakota vous plaisent.\n\nVoici mes réponses à vos trois questions :\n\n**L'échange en 42 :** Oui, nous prenons en charge le retour de votre 41 et l'expédition du 42, sans frais pour vous. Voici la procédure : téléchargez et complétez le bon de retour sur maxsauveur.com/pages/livraison-et-retour (motif : « échange taille »), emballez la paire avec le bon à l'intérieur, et expédiez-la à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau. Dès réception, nous vous expédions le 42.\n\n**Si le 42 ne vous convient pas :** Si après échange vous ne souhaitez plus du modèle, nous pouvons vous envoyer un avoir du montant payé, valable 6 mois sur notre site. En revanche, nous ne pourrons pas prendre en charge un second retour ni procéder à un remboursement dans ce cas.\n\n**Le zip :** Il n'est pas couvert par la garantie à vie. Contrairement à la semelle, le zip est une pièce mécanique dont la durabilité dépend directement de la façon dont il est utilisé au quotidien.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "question_sur_le_chaussant_des_bottines_dakota",
       "topic_label": "Question sur le chaussant des bottines Dakota",
       "situation": "Question sur le chaussant des bottines Dakota",
