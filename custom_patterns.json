@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "disponibilit__chelsea_chapman_42_5",
+      "topic_label": "Disponibilité Chelsea Chapman 42.5",
+      "situation": "Disponibilité Chelsea Chapman 42.5",
+      "response_template": "Bonjour Joseph,\n\nAvant de vous orienter vers l'alerte pointure, j'aurais besoin d'une information : quelle est la longueur exacte de votre pied en cm (talon contre un mur, marquez le bout du gros orteil) ?\n\nLa Chelsea Chapman a un chaussant spécifique, et selon votre mesure, le 42 ou le 43 pourraient très bien vous convenir. Cela vaut la peine de vérifier avant d'attendre un éventuel réassort en 42.5.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__commande__13961_confirm_e",
       "topic_label": "RE: Re: Commande #13961 confirmée",
       "situation": "RE: Re: Commande #13961 confirmée",
