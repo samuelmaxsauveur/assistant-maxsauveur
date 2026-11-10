@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_10_10_04_07",
+      "topic_label": "Form name Form submitted 2026-11-10 10:04:07",
+      "situation": "Form name Form submitted 2026-11-10 10:04:07",
+      "response_template": "Bonjour Baptiste,\n\nMalheureusement, la Dakota n'existe pas en 39, c'est la plus petite taille proposée pour ce modèle.\n\nUne solution qui fonctionne bien : ajouter une semelle d'ajustement dans le 40 pour combler l'espace et affiner le chaussant. C'est souvent ce que nous conseillons pour les pieds entre deux tailles sur ce modèle.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__13310_confirm_e",
       "topic_label": "Re: Commande #13310 confirmée",
       "situation": "Re: Commande #13310 confirmée",
