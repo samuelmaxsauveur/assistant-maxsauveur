@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_10_11_02_19",
+      "topic_label": "Form name Form submitted 2026-11-10 11:02:19",
+      "situation": "Form name Form submitted 2026-11-10 11:02:19",
+      "response_template": "Bonjour Anthony,\n\nVotre commande #13262 (embauchoirs bois de cèdre) est bien enregistrée et tout est normal. Il s'agit d'une précommande, avec une livraison prévue entre le 12 et le 18 novembre.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__la_commande__13862_a__t__annul_e",
       "topic_label": "Re: La commande #13862 a été annulée",
       "situation": "Re: La commande #13862 a été annulée",
