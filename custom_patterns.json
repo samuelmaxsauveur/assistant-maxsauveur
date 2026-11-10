@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "question_sur_le_chaussant_des_bottines_dakota",
+      "topic_label": "Question sur le chaussant des bottines Dakota",
+      "situation": "Question sur le chaussant des bottines Dakota",
+      "response_template": "Bonjour Esteban,\n\nMerci pour ces mesures détaillées, c'est utile.\n\nPremier point important : la Dakota est une boots à fermeture zip sur le côté, donc l'entrée du pied se fait sans contrainte particulière au cou-de-pied. Vous n'aurez pas le problème d'enfilage que vous avez rencontré avec vos mocassins Sebago.\n\nSur la question du volume et du chaussant : avec 28 cm de pied (mesurés avec chaussettes), notre guide vous place en 43. C'est la bonne base. En revanche, au-delà de la largeur, il y a des critères que nous ne pouvons pas évaluer à distance, comme la hauteur de voûte plantaire ou le volume global du pied. Ces éléments varient d'un pied à l'autre et influencent le ressenti final.\n\nCe que je peux vous dire avec certitude : le cuir de la Dakota est rigide au départ, comme tout cuir pleine fleur, et s'assouplit progressivement au fil des ports. Ce qui peut sembler un peu juste en début de vie de la chaussure finit souvent par se mouler naturellement au pied.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_10_18_37_48",
       "topic_label": "Form name Form submitted 2026-11-10 18:37:48",
       "situation": "Form name Form submitted 2026-11-10 18:37:48",
