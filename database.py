@@ -7,6 +7,9 @@ from datetime import datetime, timezone
 DB_PATH = os.environ.get("DB_PATH", "assistant.db")
 
 
+REVIEW_GOOGLE_COLUMNS = {"google_name": "TEXT", "google_score": "INTEGER", "google_at": "TEXT", "google_match": "TEXT"}
+
+
 def get_connection():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
@@ -247,6 +250,11 @@ def init_db():
         for column in REPAIR_EXTRA_COLUMNS:
             if column not in existing:
                 cursor.execute(f"ALTER TABLE repair_cases ADD COLUMN {column} TEXT")
+        # What Google's notification mails say about a customer we wrote to.
+        existing = {row[1] for row in cursor.execute("PRAGMA table_info(review_invites)")}
+        for column, kind in REVIEW_GOOGLE_COLUMNS.items():
+            if column not in existing:
+                cursor.execute(f"ALTER TABLE review_invites ADD COLUMN {column} {kind}")
         conn.commit()
         # Seed response_patterns from custom_patterns.json (survives Railway redeploys)
         _seed_patterns_from_json(conn)
@@ -1136,7 +1144,7 @@ def delete_client_return(case_id):
 
 
 REVIEW_INVITE_COLUMNS = {"status", "email", "name", "score", "content", "subject", "body",
-                         "note", "thread_id", "sent_at"}
+                         "note", "thread_id", "sent_at", "google_name", "google_score", "google_at", "google_match"}
 
 
 def review_invites_seeded():

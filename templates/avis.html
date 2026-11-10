@@ -25,6 +25,7 @@
         .alert { border: 2px solid #fcd34d; background: #fffbeb; font-size: 14px; line-height: 1.5; }
         .note { font-size: 13px; color: #92400e; margin-top: 6px; }
         .stars { color: #b45309; letter-spacing: 1px; }
+        .google { font-size: 13px; font-weight: 600; color: #0f766e; margin-top: 6px; }
         label.f { display: block; font-size: 12px; font-weight: 600; color: #555; margin: 10px 0 4px; }
         input, textarea { width: 100%; padding: 9px 10px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 15px; font-family: inherit; background: #fff; }
         textarea { resize: vertical; min-height: 340px; line-height: 1.5; font-size: 14px; }
@@ -70,10 +71,19 @@
         {% endfor %}
     </div>
 
+    {% if tab == 'envoyes' and invites %}
+    {% set confirmed = invites|selectattr('google_match', 'eq', 'sure')|list|length %}
+    {% set unsure = invites|selectattr('google_match', 'eq', 'maybe')|list|length %}
+    <div class="card meta"><strong>Avis Google retrouvés : {{ confirmed }} sur {{ invites|length }} mail{{ 's' if invites|length > 1 }} envoyé{{ 's' if invites|length > 1 }}{% if unsure %}, et {{ unsure }} à vérifier{% endif %}.</strong><br>{% if confirmed %}Ont posté : {{ invites|selectattr('google_match', 'eq', 'sure')|map(attribute='name', default='Client sans nom')|join(', ') }}<br>{% endif %}{% if unsure %}À vérifier : {{ invites|selectattr('google_match', 'eq', 'maybe')|map(attribute='name', default='Client sans nom')|join(', ') }}<br>{% endif %}Mis à jour chaque lundi matin à partir des mails que Google envoie à samuel@. Un client qui publie sous un pseudo peut ne pas être reconnu.</div>
+    {% endif %}
+
     {% for i in invites %}
     <div class="card invite" data-id="{{ i.yotpo_id }}">
         <div class="card-title">{{ i.name or 'Client sans nom' }} <span class="stars">{{ '★' * (i.score or 0) }}{{ '☆' * (5 - (i.score or 0)) }}</span></div>
         <div class="meta">{{ i.email }}{% if i.sent_at %} · envoyé le {{ i.sent_at[:10] }}{% endif %}</div>
+        {% set google_details %}le {{ (i.google_at or '')[:10] }}{% if i.google_score %}, {{ i.google_score }} étoile{{ 's' if i.google_score > 1 }}{% endif %}, signé {{ i.google_name }}{% endset %}
+        {% if i.google_match == 'sure' %}<div class="google">✓ Avis Google posté {{ google_details }}</div>{% endif %}
+        {% if i.google_match == 'maybe' %}<div class="note">À vérifier : avis Google posté {{ google_details }}. Le nom seul ne suffit pas à dire que c'est ce client.</div>{% endif %}
         {% if i.note %}<div class="note">{{ i.note }}</div>{% endif %}
         {% if i.status == 'sending' %}<div class="note">L'envoi a été interrompu. Regarde dans les messages envoyés de samuel@ s'il est parti avant de le remettre à valider.</div>{% endif %}
 

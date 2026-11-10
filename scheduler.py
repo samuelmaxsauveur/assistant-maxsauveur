@@ -579,6 +579,20 @@ def start():
         misfire_grace_time=3600
     )
 
+    # Which customers posted on Google, from Google's mails to samuel@. Reads only:
+    # every Monday before the report, and at startup so the page is never out of date.
+    scheduler.add_job(
+        avis.check_google,
+        CronTrigger(day_of_week="mon", hour=5, minute=45, timezone=paris_tz),
+        id="review_google_check",
+        misfire_grace_time=3600
+    )
+    scheduler.add_job(
+        avis.check_google,
+        id="review_google_check_start",
+        misfire_grace_time=3600
+    )
+
     # Mad Max gift cards: links on 6 Nov, reminders on the 1st of each month.
     # Nothing is sent while MADMAX_SENDING is not "1".
     scheduler.add_job(

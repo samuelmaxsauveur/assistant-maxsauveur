@@ -17,7 +17,8 @@ import html
 import os
 import re
 import time
-from datetime import datetime, timedelta
+import unicodedata
+from datetime import datetime, timedelta, timezone
 
 import requests
 
@@ -30,6 +31,9 @@ MAX_PAGES = 1000
 WINDOW_DAYS = 21  # A missed Monday must not lose the reviews of that week.
 LINK_PLACEHOLDER = "[LIEN GOOGLE À AJOUTER]"
 OWN_DOMAIN = "@maxsauveur.com"
+GOOGLE_SENDER = "businessprofile-noreply@google.com"
+GOOGLE_NOTICE = re.compile(r"avec (\d) étoile.*?Lire l'avis\s*<[^>]*>\s*([^\n]+)", re.S)
+GOOGLE_RANK = {None: 0, "maybe": 1, "sure": 2}
 
 # Tabs of the Avis page: key, title, statuses.
 STAGES = [
@@ -301,6 +305,91 @@ def edit(review_id, subject, body):
     if not invite or invite["status"] not in SENDABLE:
         raise ValueError("Ce mail ne peut plus être modifié")
     database.update_review_invite(review_id, subject=subject, body=body)
+
+
+def _words(text):
+    """Lowercase words without accents: Stéphane and Stephane are the same name."""
+    plain = unicodedata.normalize("NFKD", text or "").encode("ascii", "ignore").decode()
+    return re.findall(r"[a-z]+", plain.lower())
+
+
+def google_match(google_name, invite):
+    """How surely a name on Google is this customer: "sure", "maybe" or None.
+
+    Yotpo only keeps "Stephane K.", so the e-mail address is what proves a surname.
+    """
+    words = _words(google_name)
+    own = _words(invite.get("name"))
+    first = own[0] if own else ""
+    initial = own[1][:1] if len(own) > 1 else ""
+    local = "".join(_words((invite.get("email") or "").split("@")[0]))
+    others = [w for w in words if w != first]
+    if len(words) > 1:
+        if all(w in local for w in words):
+            return "sure"
+        if first in words and any(len(w) >= 3 and w in local for w in others):
+            return "sure"
+    if first in words and (not others or not initial or any(w.startswith(initial) for w in others)):
+        return "maybe"
+    if len(words) == 1 and len(words[0]) >= 4 and words[0] in local:
+        return "maybe"
+    return None
+
+
+def _parse_notice(subject, body):
+    """Name and score from Google's mail. The subject only has the first name, so it is the fallback."""
+    found = GOOGLE_NOTICE.search(body or "")
+    if found:
+        return found[2].strip(), int(found[1])
+    in_subject = re.match(r"(.+?) a laissé un avis", subject or "")
+    return (in_subject[1].strip() if in_subject else ""), None
+
+
+def _google_notices(service, since):
+    """Google's mail for each new review since that moment, oldest first."""
+    after = int(since.replace(tzinfo=timezone.utc).timestamp())
+    query = f'from:{GOOGLE_SENDER} subject:"a laissé un avis" after:{after}'
+    ids, token = [], None
+    while True:
+        page = service.users().messages().list(userId="me", q=query, pageToken=token).execute()
+        ids += [m["id"] for m in page.get("messages", [])]
+        token = page.get("nextPageToken")
+        if not token:
+            break
+    notices = []
+    for message_id in ids:
+        mail = gmail_helper.parse_email(service.users().messages().get(userId="me", id=message_id, format="full").execute())
+        name, score = _parse_notice(mail["subject"], mail["body"])
+        notices.append({"name": name, "score": score, "at": datetime.utcfromtimestamp(mail["internal_date"] / 1000)})
+    return sorted(notices, key=lambda n: n["at"])
+
+
+def check_google():
+    """Mark the customers whose review reached Google, from the mails Google sends to samuel@.
+
+    Reads only, sends nothing. A review counts only if it came after our mail. A mark
+    can only go up, so a review removed later keeps it. No mark proves nothing: a
+    customer can post under a pseudonym.
+    """
+    invites = [i for i in database.get_review_invites(["sent"]) if i["sent_at"]]
+    if not invites:
+        return
+    service = gmail_helper.get_samuel_service()
+    if not service:
+        print("[Avis] samuel@ is not connected, Google reviews not checked.")
+        return
+    first_sent = min(datetime.fromisoformat(i["sent_at"]) for i in invites)
+    for notice in _google_notices(service, first_sent):
+        levels = {i["yotpo_id"]: google_match(notice["name"], i) for i in invites
+                  if datetime.fromisoformat(i["sent_at"]) <= notice["at"]}
+        best = "sure" if "sure" in levels.values() else "maybe"
+        for invite in invites:
+            level = levels.get(invite["yotpo_id"])
+            if level == best and GOOGLE_RANK[level] > GOOGLE_RANK[invite["google_match"]]:
+                fields = {"google_name": notice["name"], "google_score": notice["score"],
+                          "google_at": notice["at"].isoformat(), "google_match": level}
+                database.update_review_invite(invite["yotpo_id"], **fields)
+                invite.update(fields)
 
 
 def counts_for_report():
