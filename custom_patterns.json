@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_10_18_37_48",
+      "topic_label": "Form name Form submitted 2026-11-10 18:37:48",
+      "situation": "Form name Form submitted 2026-11-10 18:37:48",
+      "response_template": "Bonjour Arthur,\n\nVotre commande #13898 (Carter Ceinture Western en Daim Marron Cognac) est bien enregistrée et sera expédiée jeudi. Vous recevrez automatiquement un email avec votre lien de suivi dès la prise en charge par le transporteur.\n\nMerci pout votre patience,\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
