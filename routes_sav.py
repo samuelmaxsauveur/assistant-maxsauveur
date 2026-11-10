@@ -535,6 +535,60 @@ def outbound_schedule():
         return jsonify({'success': False, 'error': str(e)})
 
 
+_DAYS = ("lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche")
+
+
+def _when(send_at):
+    """'2026-11-16T09:00' (Paris) -> 'lundi 16/11 à 09h00'."""
+    from datetime import datetime
+    try:
+        d = datetime.fromisoformat(send_at)
+    except (TypeError, ValueError):
+        return send_at or ''
+    return f"{_DAYS[d.weekday()]} {d.strftime('%d/%m')} à {d.strftime('%Hh%M')}"
+
+
+def _customer_wrote_since(service, mail):
+    """True when the customer wrote on the thread after the reply was scheduled."""
+    from datetime import datetime, timezone
+    if not service or not mail.get('thread_id'):
+        return False
+    try:
+        scheduled = datetime.fromisoformat(mail['created_at']).replace(tzinfo=timezone.utc).timestamp() * 1000
+        thread = service.users().threads().get(userId='me', id=mail['thread_id'], format='minimal').execute()
+        return any(int(m.get('internalDate') or 0) > scheduled and 'SENT' not in m.get('labelIds', [])
+                   for m in thread.get('messages', []))
+    except Exception as e:
+        print(f"[SAV] Thread {mail.get('thread_id')} unreadable for scheduled mail {mail['id']}: {e}")
+        return False
+
+
+@sav.route('/sav/programmes')
+def scheduled_page():
+    """Replies waiting to leave (« 📅 Différer »), with the recent failures and sends."""
+    from datetime import datetime, timedelta
+    import pytz
+    paris_now = datetime.now(pytz.timezone('Europe/Paris'))
+    now = paris_now.strftime('%Y-%m-%dT%H:%M')
+    recent = (paris_now - timedelta(days=7)).strftime('%Y-%m-%dT%H:%M')
+    month = (paris_now - timedelta(days=30)).strftime('%Y-%m-%dT%H:%M')
+    mails = database.get_scheduled_emails()
+    pending = [m for m in mails if m['status'] == 'pending']
+    try:
+        service = _get_service() if pending else None
+    except Exception as e:
+        print(f"[SAV] Gmail unavailable for the scheduled page: {e}")
+        service = None
+    for m in pending:
+        m['when'] = _when(m['send_at'])
+        m['late'] = m['send_at'] <= now
+        m['customer_wrote'] = _customer_wrote_since(service, m)
+    failed = [dict(m, when=_when(m['send_at'])) for m in mails if m['status'] == 'failed' and m['send_at'] >= month]
+    sent = [dict(m, when=_when(m['send_at'])) for m in reversed(mails)
+            if m['status'] == 'sent' and m['send_at'] >= recent]
+    return render_template('scheduled.html', pending=pending, failed=failed, sent=sent)
+
+
 @sav.route('/sav/scheduled/cancel', methods=['POST'])
 def scheduled_cancel():
     data = request.json or {}
