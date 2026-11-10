@@ -129,6 +129,7 @@
             <a href="/sav">🔧 SAV</a>
             <a href="/reparations">🛠 Réparations</a>
         <a href="/retours">↩️ Retours</a>
+        <a href="/erreurs">🚚 Erreurs</a>
         <a href="/avis">⭐ Avis</a>
             <a href="/client">🔍 Clients</a>
             <a href="/wing">+ Wing</a>
@@ -158,6 +159,8 @@
                             <span class="badge badge-red" style="margin-left:8px;">🔧 Retour / Réparation</span>
                         {% elif item.intent.intent == 'product_question' %}
                             <span class="badge badge-green" style="margin-left:8px;">💬 Question produit</span>
+                        {% elif item.intent.intent == 'prep_error' %}
+                            <span class="badge badge-orange" style="margin-left:8px;">🚚 Erreur de préparation ?</span>
                         {% endif %}
                     </div>
                     <div class="meta">De : {{ item.email.sender }} &nbsp;·&nbsp; {{ item.email.date }}</div>
@@ -267,6 +270,7 @@
                                 {% endif %}
                                 <button type="button" class="btn btn-secondary" onclick="sendReturnLabel('{{ item.email.id }}')" id="return-label-btn-{{ item.email.id }}" style="background:#f59e0b;color:white;">📦 Étiquette retour</button>
                                 <button type="button" class="btn btn-secondary" onclick="toggleRepairPanel('{{ item.email.id }}')" style="background:#7c3aed;color:white;">🔧 Étiquette réparation</button>
+                                <button type="button" class="btn btn-secondary" onclick="toggleErrorPanel('{{ item.email.id }}')" style="background:#b45309;color:white;">🚚 Erreur de préparation</button>
                                 <button type="button" class="btn btn-primary" onclick="sendEmail('{{ item.email.id }}')">Envoyer ✓</button>
                                 <button type="button" class="btn btn-secondary" onclick="toggleSchedule('{{ item.email.id }}')">📅 Différer</button>
                                 <button type="button" class="btn btn-secondary" onclick="ignoreEmail('{{ item.email.id }}', this)">Ignorer</button>
@@ -287,6 +291,17 @@
                                     <button type="button" class="btn btn-primary" id="repair-btn-{{ item.email.id }}" onclick="generateRepairLabel('{{ item.email.id }}')" style="background:#7c3aed;">Générer l'étiquette (facturée)</button>
                                 </div>
                                 <div id="repair-result-{{ item.email.id }}" style="margin-top:10px;"></div>
+                            </div>
+                            <div id="prep-{{ item.email.id }}" style="display:none; background:#fffbeb; border:1px solid #fcd34d; border-radius:8px; padding:14px; margin-top:12px; font-size:14px;">
+                                <div style="font-size:12px; font-weight:700; color:#92400e; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:10px;">🚚 Erreur de préparation de SSL</div>
+                                <div style="font-weight:600; margin-bottom:4px;">1. Ce que signale le client</div>
+                                <label style="display:block; margin:3px 0; cursor:pointer;"><input type="radio" name="prep-kind-{{ item.email.id }}" value="wrong_item" checked> Il a reçu une paire différente de sa commande</label>
+                                <label style="display:block; margin:3px 0 10px; cursor:pointer;"><input type="radio" name="prep-kind-{{ item.email.id }}" value="missing_item"> Il manque un article dans son colis</label>
+                                <div style="font-weight:600; margin-bottom:4px;">2. Commande concernée</div>
+                                <div id="prep-orders-{{ item.email.id }}" style="margin-bottom:10px;"></div>
+                                <button type="button" class="btn btn-primary" id="prep-btn-{{ item.email.id }}" onclick="openErrorCase('{{ item.email.id }}')" style="background:#b45309;">Ouvrir le dossier</button>
+                                <div style="font-size:12px; color:#777; margin-top:8px;">Le dossier reprend ce fil et ses photos. Rien n'est envoyé au client sans ton clic.</div>
+                                <div id="prep-result-{{ item.email.id }}" style="margin-top:10px;"></div>
                             </div>
                             <div class="schedule-form" id="schedule-{{ item.email.id }}">
                                 <label>Envoyer le :</label>
@@ -377,6 +392,7 @@ const emailData = {
     {% for item in emails %}
     "{{ item.email.id }}": {
         email_id: {{ item.email.id | tojson }},
+        thread_id: {{ item.email.thread_id | tojson }},
         body: {{ item.email.body | tojson }},
         subject: {{ item.email.subject | tojson }},
         sender: {{ item.email.sender | tojson }},
@@ -745,6 +761,58 @@ function toggleRepairPanel(id) {
         </label>`;
     }).join('');
     renderRepairProducts(id);
+}
+
+function toggleErrorPanel(id) {
+    const panel = document.getElementById('prep-' + id);
+    if (panel.style.display === 'block') { panel.style.display = 'none'; return; }
+    panel.style.display = 'block';
+    const d = emailData[id];
+    const orders = (d.orders && d.orders.length) ? d.orders : (d.order ? [d.order] : []);
+    const box = document.getElementById('prep-orders-' + id);
+    const manual = `<label style="display:block; margin:6px 0 0;">Autre numéro : <input type="text" id="prep-manual-${id}" placeholder="13450" style="width:110px;"></label>`;
+    if (!orders.length) {
+        box.innerHTML = '<span style="color:#b45309;">Aucune commande Shopify trouvée pour ce client.</span>' + manual;
+        return;
+    }
+    box.innerHTML = orders.map((o, i) => {
+        const date = (o.created_at || '').slice(0, 10).split('-').reverse().join('/');
+        const items = (o.products || []).map(p => p.name).join(', ');
+        return `<label style="display:block; margin:3px 0; cursor:pointer;">
+            <input type="radio" name="prep-order-${id}" value="${_escapeHtml(o.number)}" ${i === 0 ? 'checked' : ''}>
+            <strong>${_escapeHtml(o.number)}</strong> · ${_escapeHtml(date)} · <span style="color:#555;">${_escapeHtml(items)}</span>
+        </label>`;
+    }).join('') + manual;
+}
+
+async function openErrorCase(id) {
+    const d = emailData[id];
+    const btn = document.getElementById('prep-btn-' + id);
+    const result = document.getElementById('prep-result-' + id);
+    const manual = (document.getElementById('prep-manual-' + id) || {}).value || '';
+    const checked = document.querySelector(`input[name="prep-order-${id}"]:checked`);
+    const order = manual.trim() || (checked ? checked.value : '');
+    if (!order) { result.innerHTML = '❌ Choisis la commande.'; return; }
+    btn.disabled = true;
+    btn.textContent = '⏳ Ouverture (lecture des photos du fil)…';
+    try {
+        const res = await fetch('/erreurs/nouveau', {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                kind: document.querySelector(`input[name="prep-kind-${id}"]:checked`).value,
+                order_number: order, customer_name: d.sender, customer_email: d.sender_email,
+                thread_id: d.thread_id, subject: d.subject
+            })
+        });
+        const data = await safeJson(res);
+        if (!data.success) throw new Error(data.error || 'Erreur');
+        result.innerHTML = `✅ Dossier ouvert · <a href="${_escapeHtml(data.url)}" target="_blank">ouvrir le dossier</a>`;
+        btn.textContent = '✅ Dossier ouvert';
+    } catch(e) {
+        result.innerHTML = '❌ ' + _escapeHtml(e.message);
+        btn.textContent = 'Ouvrir le dossier';
+        btn.disabled = false;
+    }
 }
 
 function _repairOrder(id) {

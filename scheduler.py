@@ -16,6 +16,7 @@ import ups_tracking
 import workshop_mail
 import madmax
 import retours
+import erreurs
 import avis
 
 load_dotenv()
@@ -316,6 +317,18 @@ def send_morning_report():
     except Exception as e:
         print(f"[{datetime.now()}] Returns summary unavailable: {e}")
 
+    errors_html = ""
+    try:
+        waiting = {label: n for label, n in erreurs.counts_for_report().items() if n}
+        if waiting:
+            listing = " · ".join(f"{label} : {n}" for label, n in waiting.items())
+            errors_html = f"""
+        <div style="background: #fffbeb; border: 1px solid #fcd34d; border-radius: 6px; padding: 12px; margin-bottom: 24px; font-size: 14px;">
+            🚚 <strong>Erreurs logistique</strong> : {listing} · <a href="{BASE_URL}/erreurs" style="color: #b45309;">ouvrir</a>
+        </div>"""
+    except Exception as e:
+        print(f"[{datetime.now()}] Logistics errors summary unavailable: {e}")
+
     reviews_html = ""
     if reviews_waiting:
         listing = " · ".join(f"{label} : {n}" for label, n in reviews_waiting.items())
@@ -339,6 +352,7 @@ def send_morning_report():
         </p>
         {reviews_html}
         {returns_html}
+        {errors_html}
         {drafts_html}
         <hr style="border: none; border-top: 1px solid #eee; margin: 24px 0;">
         <p style="margin: 0; font-size: 12px; color: #aaa; text-align: center;">
@@ -530,6 +544,14 @@ def start():
         "interval",
         minutes=60,
         id="client_returns"
+    )
+
+    # Preparation errors by SSL: customer replies and photos, return labels, reshipments, refunds
+    scheduler.add_job(
+        erreurs.tick,
+        "interval",
+        minutes=60,
+        id="logistics_errors"
     )
 
     # Emails scheduled on a return file

@@ -19,6 +19,9 @@ WING_API_URL = "https://api-developer.wing.eu/v3"
 TEMPLATE_REF = "#10452_REPARATION"
 REF_SUFFIXES = ["_REPARATION", "_REPARATION_BIS", "_REPARATION_TER",
                 "_REPARATION_QUATER", "_REPARATION_5", "_REPARATION_6"]
+# Return labels for a preparation error by SSL (wrong pair sent): same
+# template, same account, another name so SSL and the Errors page tell them apart.
+ERROR_SUFFIXES = ["_ERREUR", "_ERREUR_BIS", "_ERREUR_TER"]
 
 
 def _gql(query, variables=None, token=None):
@@ -69,7 +72,7 @@ ORDER_FIELDS = """
   recipient { firstName lastName company phone email line1 line2 additional city zip countryCode }
   orderProducts { quantity product { designation price weight ean } }
   fulfillmentOrders {
-    id status service
+    id status service carrierPickupId carrierPickupName
     parcels { id trackingId labelURL trackingURL status organizationExpeditorId }
   }
 """
@@ -101,15 +104,15 @@ def _pickup_id(token, expeditor_id):
     raise Exception("Adresse d'enlèvement SSL introuvable sur le compte Wing réparation")
 
 
-def next_free_ref(order_number, token=None):
+def next_free_ref(order_number, token=None, suffixes=REF_SUFFIXES):
     """#13617_REPARATION, or _BIS, _TER... if that order already came back for repair."""
     token = token or _get_token()
     number = str(order_number).strip().lstrip('#')
-    for suffix in REF_SUFFIXES:
+    for suffix in suffixes:
         ref = f"#{number}{suffix}"
         if not _find_order(token, ref):
             return ref
-    raise Exception(f"Trop de réparations déjà ouvertes sur la commande #{number}")
+    raise Exception(f"Trop d'étiquettes déjà créées sur la commande #{number}")
 
 
 def cancel_label(ref, token=None):
@@ -118,7 +121,7 @@ def cancel_label(ref, token=None):
     Refuses anything but our own references, so a typo can never touch a
     customer's Shopify order on this account.
     """
-    if not any(ref.upper().endswith(s) for s in REF_SUFFIXES) and not ref.upper().endswith('_REP'):
+    if not any(ref.upper().endswith(s) for s in REF_SUFFIXES + ERROR_SUFFIXES) and not ref.upper().endswith('_REP'):
         raise Exception(f"{ref} n'est pas une référence de réparation, annulation refusée")
     token = token or _get_token()
     order = _find_order(token, ref)
@@ -137,7 +140,7 @@ def cancel_label(ref, token=None):
     return {"ref": ref, "remaining_parcels": sum(len(fo['parcels']) for fo in fos)}
 
 
-def create_repair_label(order_number, weight_kg=None, designation=None):
+def create_repair_label(order_number, weight_kg=None, designation=None, suffixes=REF_SUFFIXES):
     """Duplicate the template, rename it, generate the label.
 
     Returns {ref, order_id, tracking_id, label_url, tracking_url}.
@@ -148,7 +151,7 @@ def create_repair_label(order_number, weight_kg=None, designation=None):
     if not template:
         raise Exception(f"Commande modèle {TEMPLATE_REF} introuvable sur le compte Wing réparation")
 
-    ref = next_free_ref(order_number, token)
+    ref = next_free_ref(order_number, token, suffixes)
 
     r = template['recipient']
     recipient = {k: r[k] for k in ('firstName', 'lastName', 'company', 'phone', 'email',

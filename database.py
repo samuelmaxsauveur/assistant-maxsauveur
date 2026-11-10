@@ -225,6 +225,22 @@ def init_db():
                 updated_at  TEXT NOT NULL
             )
         """)
+        # Preparation errors made by SSL (wrong pair sent, missing item), from the
+        # customer's email to the reshipment, and what SSL owes for each one.
+        # Same shape as client_returns: the file's details live in `data`.
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS logistics_errors (
+                id              INTEGER PRIMARY KEY AUTOINCREMENT,
+                status          TEXT NOT NULL DEFAULT 'new',
+                order_number    TEXT,
+                customer_name   TEXT,
+                customer_email  TEXT,
+                thread_id       TEXT,
+                data            TEXT NOT NULL DEFAULT '{}',
+                created_at      TEXT NOT NULL,
+                updated_at      TEXT NOT NULL
+            )
+        """)
         # Columns added after the first release of repair_cases: the table
         # already exists in production, so they are added one by one.
         existing = {row[1] for row in cursor.execute("PRAGMA table_info(repair_cases)")}
@@ -1227,5 +1243,71 @@ def review_email_invited(email):
         return conn.execute(
             "SELECT 1 FROM review_invites WHERE email = ? AND status IN ('to_validate', 'sending', 'sent', 'failed') LIMIT 1",
             (email,)).fetchone() is not None
+    finally:
+        conn.close()
+
+
+# ---------------------------------------------------------------- logistics errors
+
+LOGISTICS_ERROR_COLUMNS = ("status", "order_number", "customer_name", "customer_email", "thread_id")
+
+
+def save_logistics_error(data=None, **fields):
+    now = datetime.utcnow().isoformat()
+    fields = {k: v for k, v in fields.items() if k in LOGISTICS_ERROR_COLUMNS}
+    columns = list(fields) + ["data", "created_at", "updated_at"]
+    values = list(fields.values()) + [json.dumps(data or {}, ensure_ascii=False), now, now]
+    conn = get_connection()
+    try:
+        cur = conn.execute(
+            f"INSERT INTO logistics_errors ({', '.join(columns)}) VALUES ({', '.join('?' for _ in columns)})",
+            values)
+        conn.commit()
+        return cur.lastrowid
+    finally:
+        conn.close()
+
+
+def get_logistics_error(case_id):
+    conn = get_connection()
+    try:
+        return _client_return(conn.execute("SELECT * FROM logistics_errors WHERE id = ?", (case_id,)).fetchone())
+    finally:
+        conn.close()
+
+
+def get_logistics_errors():
+    conn = get_connection()
+    try:
+        rows = conn.execute("SELECT * FROM logistics_errors ORDER BY id DESC").fetchall()
+        return [_client_return(r) for r in rows]
+    finally:
+        conn.close()
+
+
+def update_logistics_error(case_id, data=None, **fields):
+    """Update columns and merge `data` keys into the stored JSON. Returns the row."""
+    current = get_logistics_error(case_id)
+    if current is None:
+        raise ValueError(f"Dossier erreur {case_id} introuvable")
+    fields = {k: v for k, v in fields.items() if k in LOGISTICS_ERROR_COLUMNS}
+    if data:
+        fields["data"] = json.dumps({**current["data"], **data}, ensure_ascii=False)
+    fields["updated_at"] = datetime.utcnow().isoformat()
+    conn = get_connection()
+    try:
+        assignments = ", ".join(f"{k} = ?" for k in fields)
+        conn.execute(f"UPDATE logistics_errors SET {assignments} WHERE id = ?", (*fields.values(), case_id))
+        conn.commit()
+    finally:
+        conn.close()
+    return get_logistics_error(case_id)
+
+
+def delete_logistics_error(case_id):
+    conn = get_connection()
+    try:
+        conn.execute("DELETE FROM logistics_errors WHERE id = ?", (case_id,))
+        conn.commit()
     finally:
         conn.close()

@@ -26,6 +26,7 @@ from routes_newsletter import newsletter
 from routes_repairs import repairs_bp
 from routes_madmax import madmax_bp
 from routes_retours import retours_bp
+from routes_erreurs import erreurs_bp
 from routes_avis import avis_bp
 import madmax
 app.register_blueprint(validation)
@@ -35,6 +36,7 @@ app.register_blueprint(newsletter)
 app.register_blueprint(repairs_bp)
 app.register_blueprint(madmax_bp)
 app.register_blueprint(retours_bp)
+app.register_blueprint(erreurs_bp)
 app.register_blueprint(avis_bp)
 madmax.init_db()
 

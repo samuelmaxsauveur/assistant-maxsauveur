@@ -51,13 +51,13 @@
         </div>
     {% else %}
         <div id="form-zone">
-            <h1>Votre paire est prête</h1>
-            <p class="lead">Votre {{ model }} revient de notre atelier. Choisissez le point relais Chronopost (Shop2Shop) où vous souhaitez la recevoir, puis confirmez.</p>
+            <h1>{{ heading or 'Votre paire est prête' }}</h1>
+            <p class="lead">{{ intro or ('Votre ' ~ model ~ ' revient de notre atelier. Choisissez le point relais Chronopost (Shop2Shop) où vous souhaitez la recevoir, puis confirmez.') }}</p>
 
             <h2>Mode de livraison</h2>
             <div class="sans">
                 {% for key, opt in options.items() %}
-                <label class="option"><input type="radio" name="option" value="{{ key }}" {% if loop.first %}checked{% endif %} onchange="optionChanged()"> {{ opt.label }}</label>
+                <label class="option"><input type="radio" name="option" value="{{ key }}" {% if (default_option and key == default_option) or (not default_option and loop.first) %}checked{% endif %} onchange="optionChanged()"> {{ opt.label }}</label>
                 {% endfor %}
             </div>
 
@@ -94,7 +94,7 @@
 </div>
 {% if case and not confirmed %}
 <script>
-const TOKEN = {{ case.return_token | tojson }};
+const BASE = {{ (base_path or ('/retour/' ~ case.return_token)) | tojson }};
 const val = id => document.getElementById(id).value.trim();
 const option = () => document.querySelector('input[name="option"]:checked').value;
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -111,7 +111,7 @@ async function searchRelays() {
     btn.disabled = true;
     list.innerHTML = '<div class="msg">Recherche…</div>';
     try {
-        const res = await fetch(`/retour/${TOKEN}/relais`, {
+        const res = await fetch(`${BASE}/relais`, {
             method: 'POST', headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({option: option(), address: val('line1'), zip: val('zip'), city: val('city'), country: val('country_code')})
         });
@@ -146,7 +146,7 @@ async function confirmReturn() {
     btn.disabled = true;
     msg.textContent = 'Envoi…';
     try {
-        const res = await fetch(`/retour/${TOKEN}/confirmer`, {
+        const res = await fetch(`${BASE}/confirmer`, {
             method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload)
         });
         const data = await res.json();

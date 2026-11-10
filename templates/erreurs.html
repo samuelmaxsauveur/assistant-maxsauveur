@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Erreurs logistique · Max Sauveur</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f5; color: #333; }
+        header { background: #111; color: white; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        header h1 { font-size: 17px; font-weight: 600; }
+        .header-links { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+        header a { color: #aaa; text-decoration: none; font-size: 14px; white-space: nowrap; }
+        header a:hover { color: white; }
+        .container { max-width: 900px; margin: 18px auto 60px; padding: 0 12px; }
+        .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+        .tab { padding: 8px 12px; border-radius: 20px; background: #fff; color: #444; text-decoration: none; font-size: 13px; border: 1px solid #e5e5e5; white-space: nowrap; }
+        .tab.active { background: #0f766e; color: #fff; border-color: #0f766e; }
+        .tab .n { display: inline-block; min-width: 18px; padding: 0 5px; border-radius: 9px; background: #f0f0f0; color: #555; font-size: 11px; text-align: center; margin-left: 4px; }
+        .tab.active .n { background: rgba(255,255,255,0.25); color: #fff; }
+        .tab.empty { opacity: 0.55; }
+        .card { background: white; border-radius: 12px; margin-bottom: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); padding: 14px 16px; }
+        .card-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .meta { font-size: 13px; color: #777; line-height: 1.6; }
+        .meta a, .card a { color: #2563eb; }
+        .alert { border: 2px solid #fcd34d; background: #fffbeb; }
+        .error { border: 2px solid #fca5a5; background: #fef2f2; }
+        .row { display: flex; gap: 10px; align-items: center; padding: 10px 4px; border-bottom: 1px solid #f1f1f1; text-decoration: none; color: inherit; }
+        .row:last-child { border-bottom: none; }
+        .row:hover, .row.sel { background: #f0fdfa; }
+        .row .who { flex: 1; min-width: 0; }
+        .row .who strong { font-size: 14px; }
+        .row .sub { font-size: 12px; color: #777; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+        .dot.ok { background: #16a34a; } .dot.warn { background: #f59e0b; } .dot.bad { background: #dc2626; }
+        .pill { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px; background: #f0fdfa; color: #115e59; white-space: nowrap; }
+        .pill.amber { background: #fef3c7; color: #92400e; }
+        .section { border-top: 1px solid #f0f0f0; margin-top: 14px; padding-top: 12px; }
+        .section h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.4px; color: #888; margin-bottom: 8px; }
+        .checks { list-style: none; font-size: 14px; line-height: 1.5; }
+        .checks li { padding: 3px 0 3px 26px; position: relative; }
+        .checks li::before { position: absolute; left: 0; top: 3px; }
+        .checks li.ok::before { content: "✅"; } .checks li.warn::before { content: "⚠️"; } .checks li.bad::before { content: "⛔"; }
+        .checks li.bad { color: #991b1b; font-weight: 500; }
+        .amounts { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; }
+        .amount { background: #f8fafc; border-radius: 8px; padding: 8px 10px; }
+        .amount .l { font-size: 11px; color: #888; }
+        .amount .v { font-size: 17px; font-weight: 600; }
+        .amount.hi { background: #f0fdfa; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+        .full { grid-column: 1 / -1; }
+        label.f { display: block; font-size: 12px; font-weight: 600; color: #555; margin-bottom: 4px; }
+        input, select, textarea { width: 100%; padding: 9px 10px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 15px; font-family: inherit; background: #fff; }
+        input[type=checkbox], input[type=radio] { width: 20px; height: 20px; flex: none; }
+        textarea { resize: vertical; }
+        textarea.mail { min-height: 360px; line-height: 1.5; font-size: 14px; }
+        .line { display: flex; gap: 10px; align-items: center; padding: 6px 0; font-size: 14px; }
+        .line .qty { width: 64px; }
+        .actions { display: flex; gap: 8px; align-items: center; margin-top: 12px; flex-wrap: wrap; }
+        .btn { padding: 10px 14px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; display: inline-block; text-decoration: none; }
+        .btn-teal, .card a.btn-teal { background: #0f766e; color: white; }
+        .btn-green { background: #16a34a; color: white; }
+        .btn-purple { background: #7c3aed; color: white; }
+        .btn-red { background: #fee2e2; color: #991b1b; }
+        .btn-gray { background: #f0f0f0; color: #333; }
+        .btn-big { font-size: 16px; padding: 14px 18px; }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .msg { font-size: 13px; }
+        .thumbs img { width: 120px; max-height: 160px; object-fit: cover; border-radius: 8px; border: 1px solid #eee; }
+        .reply { background: #eff6ff; border-radius: 8px; padding: 10px 12px; font-size: 14px; white-space: pre-wrap; }
+        .codes { font-family: ui-monospace, Menlo, monospace; font-size: 16px; font-weight: 600; }
+        .log { font-size: 12px; color: #888; line-height: 1.7; }
+        .empty { text-align: center; color: #999; padding: 30px 0; font-size: 14px; }
+        .upload input[type=file] { display: none; }
+        .upload.busy label { pointer-events: none; opacity: 0.5; }
+        .progress { display: flex; gap: 12px; align-items: center; margin-top: 12px; padding: 12px; border-radius: 10px; background: #f0fdfa; border: 1px solid #99f6e4; }
+        .progress img { width: 64px; height: 84px; object-fit: cover; border-radius: 6px; border: 1px solid #ccc; flex: none; }
+        .spinner { display: inline-block; width: 16px; height: 16px; border: 3px solid #99f6e4; border-top-color: #0f766e; border-radius: 50%; animation: spin 0.8s linear infinite; vertical-align: -3px; margin-right: 8px; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .bar { height: 6px; background: #ccfbf1; border-radius: 3px; margin: 8px 0 4px; overflow: hidden; }
+        .bar div { height: 100%; width: 0; background: #0f766e; transition: width 0.2s; }
+        .updated { background: #dcfce7; color: #166534; border-radius: 8px; padding: 6px 10px; font-size: 13px; margin-bottom: 8px; }
+        .tab.active { background: #b45309; border-color: #b45309; }
+        .row:hover, .row.sel { background: #fffbeb; }
+        .pill.red { background: #fee2e2; color: #991b1b; }
+        .pill.green { background: #dcfce7; color: #166534; }
+        .pill.gray { background: #f0f0f0; color: #555; }
+        table.ledger { width: 100%; border-collapse: collapse; font-size: 13px; }
+        table.ledger th { text-align: left; font-size: 11px; text-transform: uppercase; color: #888; padding: 6px 4px; border-bottom: 1px solid #eee; }
+        table.ledger td { padding: 8px 4px; border-bottom: 1px solid #f3f3f3; vertical-align: top; }
+        table.ledger td.num { text-align: right; white-space: nowrap; font-weight: 600; }
+        .verdict { border-radius: 8px; padding: 10px 12px; font-size: 14px; line-height: 1.5; }
+        .verdict.error { background: #fef2f2; } .verdict.no_error { background: #f0fdf4; } .verdict.unclear { background: #fffbeb; }
+        .thumbs { display: flex; gap: 8px; flex-wrap: wrap; }
+        .thumbs .t { position: relative; }
+        .thumbs .t button { position: absolute; top: 4px; right: 4px; border: none; border-radius: 50%; width: 22px; height: 22px; background: rgba(0,0,0,0.55); color: #fff; cursor: pointer; font-size: 12px; }
+    </style>
+</head>
+<body>
+<header>
+    <h1>🚚 Erreurs logistique · Max Sauveur</h1>
+    <div class="header-links">
+        <a href="/">📬 Emails</a>
+        <a href="/sav">🔧 SAV</a>
+        <a href="/reparations">🛠 Réparations</a>
+        <a href="/retours">↩️ Retours</a>
+        <a href="/erreurs" style="color:white;">🚚 Erreurs</a>
+        <a href="/avis">⭐ Avis</a>
+    </div>
+</header>
+<div class="container">
+
+    <div class="card">
+        <div class="actions" style="margin-top:0;">
+            <input type="text" id="new-order" placeholder="N° de commande" style="width:150px;">
+            <select id="new-kind" style="width:auto;">
+                {% for key, label in kinds.items() %}<option value="{{ key }}">{{ label }}</option>{% endfor %}
+            </select>
+            <button class="btn btn-teal" onclick="newCase(this)">＋ Ouvrir un dossier</button>
+            <button class="btn btn-gray" onclick="post('/erreurs/verifier-maintenant', {}, this)">🔄 Vérifier les réponses et les colis</button>
+        </div>
+        <div class="meta" style="margin-top:6px;">Depuis un mail client, le plus simple est le bouton « 🚚 Erreur de préparation » sur sa carte dans 📬 Emails : le fil et ses photos suivent.</div>
+        <div class="msg" id="new-msg"></div>
+    </div>
+
+    <div class="tabs">
+        {% for key, title in stages %}
+        <a class="tab {% if key == tab %}active{% endif %} {% if not counts[key] %}empty{% endif %}" href="/erreurs?onglet={{ key }}">{{ title }}<span class="n">{{ counts[key] }}</span></a>
+        {% endfor %}
+        <a class="tab {% if tab == 'tableau' %}active{% endif %}" href="/erreurs?onglet=tableau">📊 Tableau des erreurs</a>
+    </div>
+
+{% if tab == 'tableau' %}
+    <div class="card">
+        <div class="actions" style="margin-top:0; justify-content:space-between;">
+            <div class="card-title">Erreurs de {{ month_label(month) }}</div>
+            <select style="width:auto;" onchange="location.href='/erreurs?onglet=tableau&mois=' + this.value">
+                {% for m in months %}<option value="{{ m }}" {% if m == month %}selected{% endif %}>{{ month_label(m) }}</option>{% endfor %}
+            </select>
+        </div>
+        <div class="meta" style="margin-bottom:10px;">Mauvaise paire renvoyée {{ euros(costs.reship) }} · mauvaise paire remboursée {{ euros(costs.refund) }} · article manquant {{ euros(costs.missing) }}. Une ligne apparaît dès que tu confirmes l'erreur.</div>
+        {% if rows %}
+        <table class="ledger">
+            <tr><th>Date</th><th>Commande</th><th>Client</th><th>Erreur</th><th style="text-align:right;">Montant</th><th>État</th><th>Déduit</th></tr>
+            {% for r in rows %}
+            <tr>
+                <td>{{ short_date(r.date) }}</td>
+                <td><a href="/erreurs?id={{ r.case.id }}">#{{ r.case.order_number }}</a></td>
+                <td>{{ r.case.customer_name }}</td>
+                <td>{{ r.detail }}</td>
+                <td class="num">{{ euros(r.amount) }}</td>
+                <td><span class="pill {% if r.billing == 'deducted' %}green{% elif r.billing == 'claimed' %}amber{% elif r.billing == 'voluntary' %}gray{% else %}red{% endif %}">{{ billing_labels[r.billing] }}</span></td>
+                <td>{% if r.billing != 'voluntary' %}<input type="checkbox" {% if r.billing == 'deducted' %}checked{% endif %} onchange="post('/erreurs/{{ r.case.id }}/reglage', {key: 'deducted', value: this.checked})">{% endif %}</td>
+            </tr>
+            {% endfor %}
+            <tr><td colspan="4" style="text-align:right; font-weight:600;">Total du mois</td><td class="num">{{ euros(total) }}</td><td colspan="2" class="meta">dont {{ euros(to_claim) }} à réclamer</td></tr>
+        </table>
+        {% else %}
+        <div class="empty">Aucune erreur confirmée en {{ month_label(month) }}.</div>
+        {% endif %}
+    </div>
+
+    <div class="card">
+        <div class="card-title">✉️ Mail de fin de mois à SSL</div>
+        {% if ssl[2] %}
+        <div class="meta" style="margin-bottom:8px;">De samuel@maxsauveur.com à {{ ssl_email }} · {{ ssl[2]|length }} erreur{{ 's' if ssl[2]|length > 1 }} pas encore réclamée{{ 's' if ssl[2]|length > 1 }}. Après l'envoi, elles passent en « Réclamé à SSL ».</div>
+        <input type="text" id="ssl-subject" value="{{ ssl[0] }}" style="margin-bottom:8px;">
+        <textarea class="mail" id="ssl-body">{{ ssl[1] }}</textarea>
+        <div class="actions">
+            <button class="btn btn-green" onclick="sendSsl(this)">Envoyer à SSL ✓</button>
+            <span class="msg" id="ssl-msg"></span>
+        </div>
+        {% else %}
+        <div class="empty">Rien à réclamer pour {{ month_label(month) }}.</div>
+        {% endif %}
+    </div>
+
+{% else %}
+    <div class="card" style="padding:6px 12px;">
+        {% for c in cases %}
+        <a class="row {% if view and view.case.id == c.id %}sel{% endif %}" href="/erreurs?id={{ c.id }}&onglet={{ tab }}">
+            <span class="dot {% if c.data.alert or c.data.reply_unread %}bad{% elif c.status in ('done',) %}ok{% else %}warn{% endif %}"></span>
+            <span class="who">
+                <strong>{{ c.customer_name or c.customer_email }}</strong> · #{{ c.order_number }}
+                <div class="sub">{{ kinds[c.data.kind] }} · {{ status_labels[c.status] }}</div>
+            </span>
+            {% if c.data.reply_unread %}<span class="pill red">réponse à lire</span>{% endif %}
+            {% if c.data.alert %}<span class="pill red">⚠️</span>{% endif %}
+        </a>
+        {% else %}
+        <div class="empty">Aucun dossier ici.</div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% if view %}
+{% set c = view.case %}{% set d = view.data %}{% set lines = view.order.lines or [] %}{% set v = d.verdict %}
+    <div class="card" id="fiche">
+        <div class="actions" style="margin-top:0; justify-content:space-between;">
+            <div class="card-title">{{ kinds[d.kind] }} · #{{ c.order_number }} · {{ c.customer_name }}</div>
+            <span class="pill amber">{{ status_labels[c.status] }}</span>
+        </div>
+        <div class="meta">{{ c.customer_email or 'adresse inconnue' }} · ouvert le {{ short_date(c.created_at[:10]) }}{% if view.cost is not none %} · SSL doit {{ euros(view.cost) }}{% endif %}</div>
+
+        {% if d.alert %}
+        <div class="card error" style="margin:12px 0 0; box-shadow:none;">⚠️ {{ d.alert }}
+            <div class="actions"><button class="btn btn-gray" onclick="post('/erreurs/{{ c.id }}/reglage', {key: 'alert_read'}, this)">Vu</button></div>
+        </div>
+        {% endif %}
+        {% if d.reply_unread %}
+        <div class="section"><h3>Réponse du client</h3>
+            <div class="reply">{{ d.reply }}</div>
+            <div class="actions"><button class="btn btn-gray" onclick="post('/erreurs/{{ c.id }}/reglage', {key: 'reply_read'}, this)">Lu</button></div>
+        </div>
+        {% endif %}
+
+        <div class="section"><h3>Commande #{{ c.order_number }}</h3>
+            <ul class="checks">
+            {% for l in lines %}<li>{{ loop.index0 }}. {{ line_label(l) }} · quantité {{ l.quantity }}</li>{% endfor %}
+            </ul>
+            {% if d.stock %}<div class="meta">Stock de la bonne paire : <strong>{{ d.stock.qty }}</strong> {% if d.stock.qty <= 0 %}<span class="pill red">épuisée, à toi de décider</span>{% endif %}</div>{% endif %}
+        </div>
+
+        <div class="section"><h3>Photos du client</h3>
+            <div class="thumbs">
+                {% for n in view.photos %}
+                <div class="t"><a href="/erreurs/{{ c.id }}/photo/{{ n }}" target="_blank"><img src="/erreurs/{{ c.id }}/photo/{{ n }}" alt=""></a>
+                    <button title="Supprimer" onclick="post('/erreurs/{{ c.id }}/photo/{{ n }}/supprimer', {}, this)">×</button></div>
+                {% else %}<div class="meta">Pas encore de photo. Elles arrivent seules quand le client répond au mail, ou ajoute-les ici.</div>{% endfor %}
+            </div>
+            <div class="actions upload">
+                <label class="btn btn-gray">🖼 Ajouter des photos<input type="file" accept="image/*" multiple onchange="upload(this)"></label>
+                {% if view.photos %}<button class="btn btn-purple" onclick="post('/erreurs/{{ c.id }}/verifier', {}, this, 'Lecture des photos…')">🔎 Faire lire les photos par Claude</button>{% endif %}
+            </div>
+        </div>
+
+        {% if v %}
+        <div class="section"><h3>Ce que Claude voit</h3>
+            <div class="verdict {{ v.verdict }}">
+                <strong>{% if v.verdict == 'error' %}⛔ Erreur de préparation probable{% elif v.verdict == 'no_error' %}✅ Correspond à la commande{% else %}❔ Impossible de trancher{% endif %}</strong><br>
+                {{ v.explanation }}
+                {% if v.box_label %}<div class="meta">Étiquette de la boîte : {{ v.box_label.designation }} · pointure {{ v.box_label.size }}{% if v.box_label.ean %} · code-barres {{ v.box_label.ean }}{% endif %}</div>{% endif %}
+                {% if v.seen %}<div class="meta">Photos : {{ v.seen }}</div>{% endif %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if not d.confirmed_at and c.status in ('new', 'waiting_photos', 'to_check') %}
+        <div class="section"><h3>Ta décision</h3>
+            {% if d.kind == WRONG %}
+            <label class="f">Paire commandée (celle à renvoyer)</label>
+            {% for l in lines %}
+            <label class="line"><input type="radio" name="line" value="{{ loop.index0 }}" data-label="{{ human_label(l) }}" {% if (v and v.line == loop.index0) or lines|length == 1 %}checked{% endif %} onchange="document.getElementById('ordered').value = this.dataset.label"> {{ line_label(l) }}</label>
+            {% endfor %}
+            <div class="grid" style="margin-top:8px;">
+                <div><label class="f">Commandé (pour le mail)</label><input type="text" id="ordered" value="{{ human_label(lines[v.line]) if v and v.line is not none and lines else (human_label(lines[0]) if lines|length == 1 else '') }}"></div>
+                <div><label class="f">Reçu à la place</label><input type="text" id="received" value="{{ v.received if v and v.received else '' }}" placeholder="ex : Oxford cuir marron en 40"></div>
+            </div>
+            {% else %}
+            <label class="f">Articles manquants (ceux à renvoyer)</label>
+            {% for l in lines %}
+            <label class="line"><input type="checkbox" name="line" value="{{ loop.index0 }}" {% if v and loop.index0 in v.missing %}checked{% endif %}> {{ line_label(l) }}</label>
+            {% endfor %}
+            {% endif %}
+            <label class="line"><input type="checkbox" id="voluntary"> Envoi volontaire (c'est moi qui l'ai demandé à SSL) : pas facturé</label>
+            <div class="actions">
+                {% if d.kind == WRONG %}
+                <button class="btn btn-green" onclick="confirmError(this)">✅ Erreur confirmée : créer l'étiquette retour (facturée)</button>
+                {% else %}
+                <button class="btn btn-green" onclick="confirmError(this)">✅ Erreur confirmée : renvoyer au même endroit</button>
+                {% endif %}
+                <button class="btn btn-red" onclick="if (confirm('Pas une erreur de SSL : le dossier sort du tableau.')) post('/erreurs/{{ c.id }}/pas-erreur', {}, this)">❌ Pas une erreur de SSL</button>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if d.confirmed_at %}
+        <div class="section"><h3>Suivi</h3>
+            <ul class="checks">
+                <li class="ok">Erreur confirmée le {{ short_date(d.confirmed_at[:10]) }}{% if d.received_text %} : {{ d.received_text }} au lieu de {{ d.ordered_text }}{% else %} : {{ d.ordered_text }}{% endif %}</li>
+                {% if d.label %}<li class="ok">Étiquette retour {{ d.label.ref }} · <a href="{{ d.label.label_url }}" target="_blank">voir l'étiquette</a>{% if d.label.tracking_url %} · <a href="{{ d.label.tracking_url }}" target="_blank">suivi {{ d.label.tracking_id }}</a>{% endif %}</li>{% endif %}
+                {% if d.received_at %}<li class="ok">Paire reçue chez SSL le {{ short_date(d.received_at[:10]) }}</li>{% endif %}
+                {% if d.address_confirmed_at %}<li class="ok">Le client a confirmé : {{ d.reship.where if d.reship else (d.delivery.relay_name or d.delivery.line1) }}</li>{% endif %}
+                {% if d.reship %}<li class="ok">Renvoi {{ d.reship.ref }} créé dans Wing (compte principal) vers {{ d.reship.where }} · à ajouter à une collecte</li>{% endif %}
+                {% if d.reship_tracking %}<li class="ok">Suivi : {% if d.reship_tracking.url %}<a href="{{ d.reship_tracking.url }}" target="_blank">{{ d.reship_tracking.id }}</a>{% else %}{{ d.reship_tracking.id }}{% endif %}</li>{% endif %}
+            </ul>
+            <div class="actions">
+                {% if d.kind == WRONG and not d.label and c.status == 'to_check' %}<button class="btn btn-purple" onclick="if (confirm('Créer l\'étiquette retour ? Elle est facturée par Wing.')) post('/erreurs/{{ c.id }}/etiquette', {}, this)">Réessayer l'étiquette</button>{% endif %}
+                {% if d.kind == MISSING and not d.reship and c.status == 'to_check' %}<button class="btn btn-purple" onclick="post('/erreurs/{{ c.id }}/renvoi', {}, this)">Réessayer le renvoi</button>{% endif %}
+                {% if c.status in ('label_ready', 'awaiting_return') %}<button class="btn btn-teal" onclick="post('/erreurs/{{ c.id }}/recue', {}, this)">📦 Paire bien réceptionnée chez SSL</button>{% endif %}
+                {% if d.kind == WRONG and not d.reship and c.status not in ('to_refund', 'done', 'cancelled') %}<button class="btn btn-gray" onclick="if (confirm('Rembourser le client au lieu de lui renvoyer la bonne paire ? SSL doit alors {{ euros(costs.refund) }}. Tu rembourses toi-même dans Shopify.')) post('/erreurs/{{ c.id }}/remboursement', {}, this)">💶 Rembourser plutôt ({{ euros(costs.refund) }})</button>{% endif %}
+                {% if c.status == 'to_refund' %}<button class="btn btn-green" onclick="post('/erreurs/{{ c.id }}/rembourse', {}, this)">Remboursé dans Shopify ✓</button><span class="meta">Le dossier se ferme aussi seul quand le remboursement apparaît dans Shopify.</span>{% endif %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if c.customer_email and c.status != 'cancelled' %}
+        <div class="section"><h3>Mail au client {% if view.proposed %}<span class="pill amber">à envoyer</span>{% endif %}</h3>
+            <select style="margin-bottom:8px;" onchange="location.href='/erreurs?id={{ c.id }}&mail=' + this.value + '#fiche'">
+                <option value="">Choisir un mail…</option>
+                {% for key, label in mails.items() %}<option value="{{ key }}" {% if key == view.mail_key %}selected{% endif %}>{{ label }}{% if (d.sent_mails or {}).get(key) %} (déjà {{ 'passé' if d.sent_mails[key] == 'skipped' else 'envoyé' }}){% endif %}</option>{% endfor %}
+            </select>
+            {% if view.mail_key %}
+            <input type="text" id="mail-subject" value="{{ view.subject }}" style="margin-bottom:8px;">
+            <textarea class="mail" id="mail-body">{{ view.body }}</textarea>
+            <div class="actions">
+                <button class="btn btn-green btn-big" onclick="sendMail(this)">Envoyer ✓</button>
+                <button class="btn btn-gray" onclick="post('/erreurs/{{ c.id }}/ignorer-mail', {template: '{{ view.mail_key }}'}, this)">Ne pas l'envoyer</button>
+                <span class="meta">Depuis hello@, dans le fil du client.</span>
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if d.confirmed_at %}
+        <div class="section"><h3>Facturation SSL</h3>
+            <div class="meta">{% if view.cost is not none %}{{ euros(view.cost) }} · {{ billing_labels[view.billing] }}{% endif %}</div>
+            <label class="line"><input type="checkbox" {% if d.voluntary %}checked{% endif %} onchange="post('/erreurs/{{ c.id }}/reglage', {key: 'voluntary', value: this.checked})"> Envoi volontaire, pas facturé à SSL</label>
+            {% if not d.voluntary %}<label class="line"><input type="checkbox" {% if d.deducted_at %}checked{% endif %} onchange="post('/erreurs/{{ c.id }}/reglage', {key: 'deducted', value: this.checked})"> Déduit de la facture SSL</label>{% endif %}
+        </div>
+        {% endif %}
+
+        <div class="section"><h3>Historique</h3>
+            <div class="log">{% for l in d.log or [] %}{{ l }}<br>{% endfor %}</div>
+            <div class="actions">
+                {% if c.status not in ('done', 'cancelled', 'not_error') %}<button class="btn btn-red" onclick="if (confirm('Annuler ce dossier ?')) post('/erreurs/{{ c.id }}/annuler', {}, this)">Annuler le dossier</button>{% endif %}
+                {% if not d.label and not d.reship %}<button class="btn btn-gray" onclick="if (confirm('Supprimer ce dossier et ses photos ?')) post('/erreurs/{{ c.id }}/supprimer', {}, this, null, '/erreurs')">Supprimer</button>{% endif %}
+            </div>
+        </div>
+    </div>
+{% endif %}
+</div>
+
+<script>
+const CASE_ID = {{ (view.case.id if view else None) | tojson }};
+const MAIL_KEY = {{ (view.mail_key if view else None) | tojson }};
+const MONTH = {{ month | tojson }};
+const ORDER = {{ (view.case.order_number if view else '') | tojson }};
+
+async function post(url, payload, btn, busyText, goTo) {
+    const label = btn ? btn.textContent : '';
+    if (btn) { btn.disabled = true; if (busyText) btn.textContent = '⏳ ' + busyText; }
+    try {
+        const res = await fetch(url, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload || {})});
+        const data = await res.json();
+        if (!data.success) throw new Error(data.error || 'Erreur');
+        if (data.alert) alert('⚠️ ' + data.alert);
+        go(goTo || (CASE_ID ? `/erreurs?id=${CASE_ID}` : location.pathname + location.search));
+        return data;
+    } catch (e) {
+        alert('❌ ' + e.message);
+        if (btn) { btn.disabled = false; btn.textContent = label; }
+    }
+}
+
+function go(url) {
+    // Same address with a #fragment does not reload: force it.
+    const target = new URL(url, location.href);
+    if (target.pathname + target.search === location.pathname + location.search) location.reload();
+    else location.href = target.href;
+}
+
+async function newCase(btn) {
+    const order = document.getElementById('new-order').value.trim();
+    const msg = document.getElementById('new-msg');
+    if (!order) { msg.textContent = 'Indique le numéro de commande.'; return; }
+    btn.disabled = true; msg.textContent = '⏳ Lecture de la commande…';
+    try {
+        const res = await fetch('/erreurs/nouveau', {method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({order_number: order, kind: document.getElementById('new-kind').value})});
+        const data = await res.json();
+        if (!data.success) throw new Error(data.error);
+        location.href = data.url;
+    } catch (e) { msg.textContent = '❌ ' + e.message; btn.disabled = false; }
+}
+
+async function upload(input) {
+    const form = new FormData();
+    for (const f of input.files) form.append('photos', f);
+    input.closest('.upload').classList.add('busy');
+    try {
+        const res = await fetch(`/erreurs/${CASE_ID}/photos`, {method: 'POST', body: form});
+        const data = await res.json();
+        if (!data.success) throw new Error(data.error);
+        go(`/erreurs?id=${CASE_ID}`);
+    } catch (e) { alert('❌ ' + e.message); input.closest('.upload').classList.remove('busy'); }
+}
+
+function confirmError(btn) {
+    const lines = [...document.querySelectorAll('input[name="line"]:checked')].map(i => parseInt(i.value, 10));
+    const payload = {lines, voluntary: document.getElementById('voluntary').checked};
+    const ordered = document.getElementById('ordered');
+    if (ordered) {
+        payload.ordered_text = ordered.value;
+        payload.received_text = document.getElementById('received').value;
+        if (!confirm(`Créer l'étiquette retour #${ORDER}_ERREUR ? Elle est facturée par Wing.`)) return;
+    } else if (!confirm('Créer le renvoi dans Wing (compte principal), au même relais ou à la même adresse ?')) return;
+    post(`/erreurs/${CASE_ID}/confirmer`, payload, btn, 'Création dans Wing…');
+}
+
+function sendMail(btn) {
+    if (!confirm('Envoyer ce mail au client ?')) return;
+    post(`/erreurs/${CASE_ID}/envoyer`, {template: MAIL_KEY, subject: document.getElementById('mail-subject').value,
+        body: document.getElementById('mail-body').value}, btn, 'Envoi…');
+}
+
+function sendSsl(btn) {
+    if (!confirm('Envoyer ce mail à SSL depuis samuel@ ?')) return;
+    post('/erreurs/ssl/envoyer', {month: MONTH, subject: document.getElementById('ssl-subject').value,
+        body: document.getElementById('ssl-body').value}, btn, 'Envoi…', `/erreurs?onglet=tableau&mois=${MONTH}`);
+}
+</script>
+</body>
+</html>

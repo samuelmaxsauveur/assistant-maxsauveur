@@ -797,7 +797,8 @@ def detect_intent(email_body, email_subject):
         messages=[{"role": "user", "content": f"""Analyse cet email et réponds UNIQUEMENT avec un JSON :
 {{"intent": "relay_change", "address": "adresse complète ou null", "has_full_address": true}}
 
-Intents possibles : relay_change, order_status, return_repair, product_question, other
+Intents possibles : relay_change, order_status, return_repair, product_question, prep_error, other
+prep_error = le client dit avoir reçu un article différent de sa commande (autre modèle, coloris ou pointure) ou un colis incomplet (article manquant).
 
 Sujet: {email_subject}
 Corps: {email_body[:500]}
