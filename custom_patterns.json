@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__la_commande__13862_a__t__annul_e",
+      "topic_label": "Re: La commande #13862 a été annulée",
+      "situation": "Re: La commande #13862 a été annulée",
+      "response_template": "Bonjour Sébastien,\n\nLe remboursement de 353 € a bien été effectué le 31 octobre sur votre paiement Alma. Vous pouvez le vérifier directement dans votre espace client Alma, qui gère les remboursements de son côté (échéances déjà prélevées remboursées, échéances à venir annulées).\n\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "commande__13998_confirm_e",
+      "topic_label": "Commande #13998 confirmée",
+      "situation": "Commande #13998 confirmée",
+      "response_template": "Bonjour Florian,\n\nMerci pour votre message.\n\nPour vérifier ce qui s'est passé à la préparation de votre commande #13998, pouvez-vous nous envoyer deux photos en réponse à ce mail :\n1. l'étiquette collée sur la boîte (avec le nom du modèle, la pointure et le code-barres) ;\n2. la paire reçue.\n\nDès réception, nous revenons vers vous très rapidement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__commande__13856_confirm_e",
       "topic_label": "Re: Re: Commande #13856 confirmée",
       "situation": "Re: Re: Commande #13856 confirmée",
