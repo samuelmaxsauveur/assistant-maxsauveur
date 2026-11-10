@@ -393,6 +393,104 @@ def get_order_delivery(order_number):
     }
 
 
+FINANCIAL_LABELS = {
+    'PAID': 'payée', 'PENDING': 'paiement en attente', 'AUTHORIZED': 'paiement autorisé, pas encore encaissé',
+    'PARTIALLY_PAID': 'partiellement payée', 'PARTIALLY_REFUNDED': 'partiellement remboursée',
+    'REFUNDED': 'remboursée en totalité', 'VOIDED': 'paiement annulé', 'EXPIRED': 'paiement expiré',
+}
+FULFILLMENT_LABELS = {
+    'FULFILLED': 'expédiée', 'UNFULFILLED': 'pas expédiée', 'PARTIALLY_FULFILLED': 'partiellement expédiée',
+    'IN_PROGRESS': 'en préparation', 'ON_HOLD': 'en attente', 'SCHEDULED': 'programmée',
+    'RESTOCKED': 'remise en stock', 'PENDING_FULFILLMENT': 'en attente d\'expédition',
+}
+TRANSACTION_LABELS = {'SUCCESS': 'réussi', 'PENDING': 'en attente', 'FAILURE': 'échoué', 'ERROR': 'échoué'}
+# Timeline lines that say nothing to a customer question.
+TIMELINE_NOISE = {'confirmation_number_generated', 'tax_finalization_capture_started', 'chargeback_risk_assessed',
+                  'tax_invoice_generated', 'closed', 'confirmed'}
+
+
+def _paris_time(iso):
+    from datetime import datetime
+    import pytz
+    moment = datetime.fromisoformat(iso.replace('Z', '+00:00'))
+    return moment.astimezone(pytz.timezone('Europe/Paris')).strftime('%d/%m/%Y %H:%M')
+
+
+def get_order_timeline(order_number):
+    """Payment, refunds, cancellation and timeline of an order, as Shopify shows
+    them, written out for Claude. Empty string if the order is not found."""
+    import re
+    shop = os.getenv('SHOPIFY_SHOP')
+    token = os.getenv('SHOPIFY_TOKEN')
+    url = f"https://{shop}/admin/api/2024-01/graphql.json"
+    headers = {'X-Shopify-Access-Token': token, 'Content-Type': 'application/json'}
+    number = str(order_number).lstrip('#').strip()
+    query = """
+    query($q: String!) {
+      orders(first: 5, query: $q) {
+        nodes {
+          name
+          displayFinancialStatus
+          displayFulfillmentStatus
+          cancelledAt
+          cancelReason
+          totalRefundedSet { shopMoney { amount currencyCode } }
+          refunds(first: 20) {
+            createdAt
+            note
+            totalRefundedSet { shopMoney { amount currencyCode } }
+            transactions(first: 5) { nodes { status gateway } }
+          }
+          events(first: 60, sortKey: CREATED_AT, reverse: true) {
+            nodes { __typename createdAt message action }
+          }
+        }
+      }
+    }
+    """
+    resp = requests.post(url, headers=headers, json={'query': query, 'variables': {'q': f'name:#{number}'}}, timeout=15)
+    body = resp.json()
+    if body.get('errors'):
+        raise RuntimeError(f"Shopify : {body['errors']}")
+    # The search matches the name as a prefix: keep the exact order only.
+    order = next((n for n in body['data']['orders']['nodes'] if n['name'].lstrip('#') == number), None)
+    if not order:
+        return ''
+
+    def money(m):
+        m = m['shopMoney']
+        return f"{float(m['amount']):.2f} {m['currencyCode']}".replace('.', ',')
+
+    lines = [f"\n\n--- Historique Shopify de la commande {order['name']} (fait foi pour le paiement, "
+             f"les remboursements et l'annulation) ---"]
+    financial = order.get('displayFinancialStatus') or ''
+    fulfillment = order.get('displayFulfillmentStatus') or ''
+    lines.append(f"Paiement : {FINANCIAL_LABELS.get(financial, financial.lower())} · "
+                 f"Expédition : {FULFILLMENT_LABELS.get(fulfillment, fulfillment.lower())}")
+    if order.get('cancelledAt'):
+        reason = f" (motif Shopify : {order['cancelReason'].lower()})" if order.get('cancelReason') else ''
+        lines.append(f"Commande annulée le {_paris_time(order['cancelledAt'])}{reason}")
+    refunds = order.get('refunds') or []
+    if refunds:
+        lines.append(f"Total remboursé : {money(order['totalRefundedSet'])}")
+        for r in refunds:
+            transactions = (r.get('transactions') or {}).get('nodes') or []
+            how = ', '.join(f"via {t['gateway']} ({TRANSACTION_LABELS.get(t['status'], t['status'].lower())})"
+                            for t in transactions) or 'sans transaction (aucun argent rendu)'
+            note = f" · note : {r['note']}" if r.get('note') else ''
+            lines.append(f"- Remboursement du {_paris_time(r['createdAt'])} : {money(r['totalRefundedSet'])} {how}{note}")
+    else:
+        lines.append("Aucun remboursement enregistré sur cette commande.")
+    events = [e for e in reversed(order['events']['nodes']) if e.get('action') not in TIMELINE_NOISE]
+    if events:
+        lines.append("Chronologie (la plus ancienne en premier ; les notes internes ne se citent pas au client) :")
+        for e in events:
+            text = re.sub(r'<[^>]+>', '', e.get('message') or '').strip()[:300]
+            kind = 'note interne : ' if e.get('__typename') == 'CommentEvent' else ''
+            lines.append(f"- {_paris_time(e['createdAt'])} : {kind}{text}")
+    return '\n'.join(lines)
+
+
 def format_order(order):
     tracking_number = None
     tracking_url = None

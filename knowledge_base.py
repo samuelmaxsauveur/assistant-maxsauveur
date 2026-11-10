@@ -119,6 +119,10 @@ KNOWLEDGE_BASE = """
 - Hors délai : avoir ou échange uniquement
 - Si le client retourne une commande reçue en promotion : avoir au prix promotionnel payé
 - Si colis non récupéré et revenu chez nous : au choix du client, renvoi gratuit vers un autre point relais Chrono2Shop, ou remboursement moins 9,50 € de frais de retour (frais de livraison initiaux non remboursés). Suivi dans l'onglet Retours de l'assistant.
+- Client qui demande où en est son remboursement : lire d'abord l'« Historique Shopify de la commande » fourni avec l'email. Il fait foi.
+  - Remboursement enregistré (réussi) : donner la date et le montant exacts, et par quel moyen (carte, Alma, PayPal…). Ne jamais annoncer un délai futur (« sous 3 à 5 jours ») pour un remboursement déjà fait. Si le client ne le voit toujours pas, l'inviter à vérifier auprès de sa banque ou de l'organisme de paiement, avec la date du remboursement.
+  - Paiement Alma : c'est Alma qui rembourse le client (échéances déjà payées remboursées, échéances à venir annulées). Le client peut le vérifier dans son espace client Alma.
+  - Aucun remboursement enregistré : ne pas dire qu'il est fait. Expliquer où en est le dossier (retour reçu ou non) et laisser Samuel confirmer.
 
 ### Codes promo & réductions
 - Codes générés automatiquement : impossibles à retrouver une fois expirés

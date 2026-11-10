@@ -310,6 +310,7 @@ def _build_context(email_body, email_subject, customer_name, order_info=None, hi
                 context += f"\n\n[Commande {idx + 1}{label}]"
                 context += f"\nNuméro : {o['number']}"
                 context += f"\nDate : {o['created_at']}"
+                context += f"\nStatut paiement : {o['status']}"
                 context += f"\nStatut livraison : {o['fulfillment_status']}"
                 context += f"\nTotal : {o['total']}"
                 if o.get('tracking_number'):
@@ -318,8 +319,24 @@ def _build_context(email_body, email_subject, customer_name, order_info=None, hi
                     context += f"\nLien suivi : {o['tracking_url']}"
                 items_str = ', '.join([f"{p['name']} x{p['qty']}" for p in o['products']])
                 context += f"\nArticles : {items_str}"
+        context += _shopify_timelines(orders_to_show[:3])
 
     return context
+
+
+def _shopify_timelines(orders):
+    """Refunds, cancellation and timeline of the orders, read in Shopify.
+
+    Without them a draft told a customer his refund would show "within 3 to 5
+    working days", ten days after Alma had refunded him."""
+    import shopify_api
+    out = ""
+    for o in orders:
+        try:
+            out += shopify_api.get_order_timeline(o['number'])
+        except Exception as e:
+            print(f"[Shopify] Timeline of {o.get('number')} unreadable: {e}")
+    return out
 
 
 OPUS_MODEL = "claude-opus-5-5"
