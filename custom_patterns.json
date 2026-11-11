@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_11_10_28_44",
+      "topic_label": "Form name Form submitted 2026-11-11 10:28:44",
+      "situation": "Form name Form submitted 2026-11-11 10:28:44",
+      "response_template": "Bonjour Williams,\n\nVotre commande #13735 (La Gigi Ceinture Cuir Marron, 105) est bien enregistrée et le paiement est confirmé. Il s'agit d'une précommande, avec une livraison prévue pour mi-décembre 2026.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande__10789___bottines_dakota_noires___d_collement_de_la",
       "topic_label": "Commande #10789 – Bottines Dakota noires : décollement de la trépointe",
       "situation": "Commande #10789 – Bottines Dakota noires : décollement de la trépointe",
