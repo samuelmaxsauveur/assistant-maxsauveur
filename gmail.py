@@ -242,8 +242,18 @@ def get_emails_to_answer(service, max_results=10):
     """
     import database
     scheduled_threads = database.get_scheduled_threads()
+    try:
+        import erreurs
+        error_threads = erreurs.open_threads()
+    except Exception as e:
+        print(f"Open error files unavailable: {e}")
+        error_threads = set()
     result = []
     for email in get_unread_emails(service, max_results=max_results * 3):
+        # A reply in the thread of an open file in Erreurs is handled there
+        # (red badge in the menu), never twice.
+        if email.get('thread_id') in error_threads:
+            continue
         try:
             state = needs_reply(service, email, scheduled_threads)
         except Exception as e:

@@ -105,7 +105,7 @@
         <a href="/sav">🔧 SAV</a>
         <a href="/reparations">🛠 Réparations</a>
         <a href="/retours">↩️ Retours</a>
-        <a href="/erreurs" style="color:white;">🚚 Erreurs</a>
+        <a href="/erreurs" style="color:white;">🚚 Erreurs{% if erreurs_unread %} <span style="display:inline-block; min-width:18px; padding:0 5px; border-radius:9px; background:#dc2626; color:#fff; font-size:11px; font-weight:700; text-align:center; line-height:18px;">{{ erreurs_unread }}</span>{% endif %}</a>
         <a href="/avis">⭐ Avis</a>
     </div>
 </header>
@@ -215,13 +215,6 @@
         </div>
         {% endif %}
 
-        <div class="section"><h3>Commande #{{ c.order_number }}</h3>
-            <ul class="checks">
-            {% for l in lines %}<li>{{ loop.index0 }}. {{ line_label(l) }} · quantité {{ l.quantity }}</li>{% endfor %}
-            </ul>
-            {% if d.stock %}<div class="meta">Stock de la bonne paire : <strong>{{ d.stock.qty }}</strong> {% if d.stock.qty <= 0 %}<span class="pill red">épuisée, à toi de décider</span>{% endif %}</div>{% endif %}
-        </div>
-
         <div class="section"><h3>Photos du client</h3>
             <div class="thumbs">
                 {% for n in view.photos %}
@@ -229,10 +222,19 @@
                     <button title="Supprimer" onclick="post('/erreurs/{{ c.id }}/photo/{{ n }}/supprimer', {}, this)">×</button></div>
                 {% else %}<div class="meta">Pas encore de photo. Elles arrivent seules quand le client répond au mail, ou ajoute-les ici.</div>{% endfor %}
             </div>
+            {% if d.unreadable_photos %}<div class="meta" style="color:#b45309; margin-top:6px;">⚠️ Pièce{{ 's' if d.unreadable_photos|length > 1 }} jointe{{ 's' if d.unreadable_photos|length > 1 }} illisible{{ 's' if d.unreadable_photos|length > 1 }} ici ({{ d.unreadable_photos|join(', ') }}) : ouvre-la dans Gmail.</div>{% endif %}
             <div class="actions upload">
                 <label class="btn btn-gray">🖼 Ajouter des photos<input type="file" accept="image/*" multiple onchange="upload(this)"></label>
                 {% if view.photos %}<button class="btn btn-purple" onclick="post('/erreurs/{{ c.id }}/verifier', {}, this, 'Lecture des photos…')">🔎 Faire lire les photos par Claude</button>{% endif %}
+                {% if c.thread_id %}<button class="btn btn-gray" onclick="post('/erreurs/{{ c.id }}/relire-fil', {}, this, 'Lecture du fil…')">📥 Reprendre les photos et relire les mails du client</button>{% endif %}
             </div>
+        </div>
+
+        <div class="section"><h3>Commande #{{ c.order_number }}</h3>
+            <ul class="checks">
+            {% for l in lines %}<li>{{ loop.index0 }}. {{ line_label(l) }} · quantité {{ l.quantity }}</li>{% endfor %}
+            </ul>
+            {% if d.stock %}<div class="meta">Stock de la bonne paire : <strong>{{ d.stock.qty }}</strong> {% if d.stock.qty <= 0 %}<span class="pill red">épuisée, à toi de décider</span>{% endif %}</div>{% endif %}
         </div>
 
         {% if v %}
@@ -250,17 +252,23 @@
         <div class="section"><h3>Ta décision</h3>
             {% if d.kind == WRONG %}
             <label class="f">Paire commandée (celle à renvoyer)</label>
+            {% set df = view.defaults %}
             {% for l in lines %}
-            <label class="line"><input type="radio" name="line" value="{{ loop.index0 }}" data-label="{{ human_label(l) }}" {% if (v and v.line == loop.index0) or lines|length == 1 %}checked{% endif %} onchange="document.getElementById('ordered').value = this.dataset.label"> {{ line_label(l) }}</label>
+            <label class="line"><input type="radio" name="line" value="{{ loop.index0 }}" data-label="{{ human_label(l) }}" {% if df.line == loop.index0 %}checked{% endif %} onchange="document.getElementById('ordered').value = this.dataset.label"> {{ line_label(l) }}</label>
             {% endfor %}
             <div class="grid" style="margin-top:8px;">
-                <div><label class="f">Commandé (pour le mail)</label><input type="text" id="ordered" value="{{ human_label(lines[v.line]) if v and v.line is not none and lines else (human_label(lines[0]) if lines|length == 1 else '') }}"></div>
-                <div><label class="f">Reçu à la place</label><input type="text" id="received" value="{{ v.received if v and v.received else '' }}" placeholder="ex : Oxford cuir marron en 40"></div>
+                <div><label class="f">Commandé (pour le mail)</label><input type="text" id="ordered" value="{{ df.ordered }}"></div>
+                <div><label class="f">Reçu à la place</label><input type="text" id="received" value="{{ df.received }}" placeholder="ex : Oxford cuir marron en 40">
+                    {% if df.source == 'photos' %}<div class="meta">Lu sur les photos par Claude.</div>
+                    {% elif df.source == 'mail' %}<div class="meta">Lu dans le mail du client{% if df.quote %} : « {{ df.quote }} »{% endif %}</div>
+                    {% elif df.mail_read %}<div class="meta" style="color:#b45309;">⚠️ Je n'ai pas réussi à trouver dans ses mails ce qu'il a reçu : remplis ce champ toi-même.</div>
+                    {% else %}<div class="meta" style="color:#b45309;">⚠️ Pas encore lu : remplis ce champ toi-même, ou clique sur « Reprendre les photos et relire les mails du client ».</div>{% endif %}
+                </div>
             </div>
             {% else %}
             <label class="f">Articles manquants (ceux à renvoyer)</label>
             {% for l in lines %}
-            <label class="line"><input type="checkbox" name="line" value="{{ loop.index0 }}" {% if v and loop.index0 in v.missing %}checked{% endif %}> {{ line_label(l) }}</label>
+            <label class="line"><input type="checkbox" name="line" value="{{ loop.index0 }}" {% if loop.index0 in view.defaults.missing %}checked{% endif %}> {{ line_label(l) }}</label>
             {% endfor %}
             {% endif %}
             <label class="line"><input type="checkbox" id="voluntary"> Envoi volontaire (c'est moi qui l'ai demandé à SSL) : pas facturé</label>

@@ -80,6 +80,7 @@ MAILS = {
     "tracking": "Numéro de suivi du renvoi",
     "refund": "Remboursement en cours",
     "not_error": "Pas d'erreur de préparation",
+    "free": "Réponse libre (question du client)",
 }
 # The status a sent email moves the file to (unchanged when absent).
 AFTER_SEND = {"ask_photos": "waiting_photos", "label": "awaiting_return", "address": "waiting_address"}
@@ -125,6 +126,24 @@ def human_label(line):
 def _lines(case, indexes):
     lines = (case["data"].get("order") or {}).get("lines") or []
     return [lines[i] for i in indexes if 0 <= i < len(lines)]
+
+
+def form_defaults(case):
+    """What the decision form proposes: the pair ordered, what came instead, and where it was read."""
+    data = case["data"]
+    lines = (data.get("order") or {}).get("lines") or []
+    verdict, mail = data.get("verdict") or {}, data.get("email_read") or {}
+    line = next((x for x in (verdict.get("line"), mail.get("line")) if isinstance(x, int) and 0 <= x < len(lines)), None)
+    if line is None:
+        pairs = [i for i, l in enumerate(lines) if l.get("category") != "other"]
+        line = pairs[0] if len(pairs) == 1 else (0 if len(lines) == 1 else None)
+    received, source = verdict.get("received"), "photos"
+    if not received:
+        received, source = mail.get("received"), "mail"
+    return {"line": line, "ordered": human_label(lines[line]) if line is not None else "",
+            "received": received or "", "source": source if received else None, "quote": mail.get("quote"),
+            "missing": verdict.get("missing") or mail.get("missing") or [],
+            "mail_read": bool(data.get("email_read"))}
 
 
 def stage(case):
@@ -192,28 +211,137 @@ def _sender(msg):
     return next((h["value"] for h in msg["payload"].get("headers", []) if h["name"].lower() == "from"), "")
 
 
-def _import_thread(case, service=None):
-    """Customer messages of the thread not seen yet: their photos go into the file.
+IMAGE_EXT = {".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png", ".gif": "image/gif",
+             ".webp": "image/webp", ".heic": "image/heic", ".heif": "image/heif"}
+MIN_PHOTO_BYTES = 30 * 1024     # smaller images are signature logos, not photos
+MAX_PHOTO_BYTES = 40 * 1024 * 1024
 
-    Returns (new customer messages, photos added)."""
+
+def _message_photos(service, msg):
+    """Every photo attached to a message, original bytes, whatever its size.
+
+    Gmail's shared helper drops images over 4 MB (Claude's limit for one image),
+    and phone photos often weigh 8 to 12 MB: here they are kept, then shrunk."""
+    found = []
+
+    def walk(part):
+        mime = (part.get("mimeType") or "").lower()
+        ext = os.path.splitext((part.get("filename") or "").lower())[1]
+        body = part.get("body") or {}
+        if (mime.startswith("image/") or ext in IMAGE_EXT) and (body.get("attachmentId") or body.get("data")) \
+                and MIN_PHOTO_BYTES <= int(body.get("size") or 0) <= MAX_PHOTO_BYTES:
+            data = body.get("data") or service.users().messages().attachments().get(
+                userId="me", messageId=msg["id"], id=body["attachmentId"]).execute().get("data", "")
+            raw = base64.urlsafe_b64decode(data + "=" * (-len(data) % 4))
+            found.append((raw, mime if mime.startswith("image/") else IMAGE_EXT.get(ext, "image/jpeg"),
+                          part.get("filename") or "photo"))
+        for sub in part.get("parts") or []:
+            walk(sub)
+
+    walk(msg.get("payload") or {})
+    return found
+
+
+QUOTE_START = re.compile(r"^\s*(>|De ?:|From ?:|Envoyé ?:|Sent ?:|-{2,}\s*(Original|Message)|_{5,}|Le .+ a écrit|On .+ wrote|"
+                         r"Envoyé à partir de|Envoyé de mon|Sent from my)", re.I)
+
+
+def _own_words(body):
+    """The customer's text without the quoted messages below it."""
+    kept = []
+    for line in (body or "").splitlines():
+        if QUOTE_START.match(line):
+            break
+        kept.append(line)
+    return "\n".join(kept).strip()
+
+
+READ_PROMPT = """Un client de Max Sauveur (chaussures et ceintures pour homme) nous écrit au sujet de sa commande #{number}, qu'il dit {problem}.
+
+Sa commande :
+{lines}
+
+Ses messages, du plus ancien au plus récent :
+{messages}
+
+Réponds uniquement avec ce JSON :
+{{"received": "ce que le client dit avoir reçu à la place, en quelques mots et avec ses mots (exemple : Derby bordeaux en cuir grainé, en 40), ou null s'il ne le dit pas clairement",
+ "line": numéro de la ligne de commande dont il parle (la paire commandée), ou null,
+ "missing": [numéros des lignes qu'il dit ne pas avoir reçues],
+ "quote": "la phrase exacte du client qui le dit, ou null"}}
+N'invente rien : si ce n'est pas écrit clairement, mets null."""
+
+
+def read_email(case, messages):
+    """What the customer says he received (or misses), read in his own messages by Haiku."""
+    data = case["data"]
+    texts = [_own_words(gmail_helper.parse_email(m).get("body", "")) for m in messages]
+    texts = [t for t in texts if t][-4:]
+    if not texts:
+        return {"received": None, "line": None, "missing": [], "quote": None}
+    lines = (data.get("order") or {}).get("lines") or []
+    prompt = READ_PROMPT.format(
+        number=case["order_number"], problem=PROBLEMS[data["kind"]],
+        lines="\n".join(f"{i}. {_line_label(l)}" for i, l in enumerate(lines)) or "(aucune ligne)",
+        messages="\n\n---\n\n".join(t[:2500] for t in texts))
+    import claude_ai
+    text = claude_ai._call_haiku([{"role": "user", "content": prompt}], max_tokens=400)
+    start = text.find("{")
+    found, _ = json.JSONDecoder().raw_decode(text[start:]) if start >= 0 else ({}, 0)
+    line = found.get("line")
+    return {"received": (found.get("received") or None) if isinstance(found.get("received"), str) else None,
+            "line": line if isinstance(line, int) and 0 <= line < len(lines) else None,
+            "missing": [i for i in found.get("missing") or [] if isinstance(i, int) and 0 <= i < len(lines)],
+            "quote": found.get("quote") if isinstance(found.get("quote"), str) else None}
+
+
+def refresh_from_thread(case, service=None, initial=False, full=False):
+    """Read the customer's thread: new messages, their photos, what he says he received.
+
+    A new customer message lights the red badge (reply_unread) unless the file is
+    just being opened. Photos are scanned again from the start while the file has
+    none (or on Samuel's request), so a photo missed once is not lost."""
     if not case.get("thread_id"):
-        return [], 0
+        return case
     service = service or gmail_helper.get_gmail_service()
-    seen = set(case["data"].get("seen_messages") or [])
-    fresh, added = [], 0
+    data = case["data"]
     messages = _thread(service, case["thread_id"])
-    for msg in messages:
-        if msg["id"] in seen or "maxsauveur.com" in _sender(msg).lower():
-            continue
-        fresh.append(msg)
-        for photo in gmail_helper.get_image_attachments(service, msg):
+    seen = set(data.get("seen_messages") or [])
+    customer = [m for m in messages if "maxsauveur.com" not in _sender(m).lower()]
+    fresh = [m for m in customer if m["id"] not in seen]
+    added, unreadable = 0, []
+    for msg in (customer if full or not photo_names(case["id"]) else fresh):
+        for raw, mime, name in _message_photos(service, msg):
             try:
-                if save_photo(case["id"], base64.b64decode(photo["data"]), photo["mime"]):
+                if save_photo(case["id"], raw, mime):
                     added += 1
             except ValueError as e:
-                print(f"[Erreurs] Photo skipped for file {case['id']}: {e}")
-    database.update_logistics_error(case["id"], data={"seen_messages": [m["id"] for m in messages]})
-    return fresh, added
+                print(f"[Erreurs] Photo {name} skipped for file {case['id']}: {e}")
+                if "maximum" not in str(e):
+                    unreadable.append(name)
+    changes = {"seen_messages": [m["id"] for m in messages]}
+    if unreadable:
+        changes["unreadable_photos"] = sorted(set((data.get("unreadable_photos") or []) + unreadable))
+    if fresh and not initial:
+        last = gmail_helper.parse_email(fresh[-1]).get("body", "")
+        changes.update(reply=_own_words(last)[:1500] or last[:1500], reply_unread=True,
+                       log=_log(data, "réponse du client" + (f" ({added} photo{'s' if added > 1 else ''})" if added else "")))
+    elif added:
+        changes["log"] = _log(data, f"{added} photo{'s' if added > 1 else ''} reprise{'s' if added > 1 else ''} du fil")
+    if not data.get("confirmed_at") and (fresh or full or not data.get("email_read")):
+        try:
+            changes["email_read"] = read_email(case, customer)
+        except Exception as e:
+            print(f"[Erreurs] Customer email unreadable for file {case['id']}: {e}")
+    case = database.update_logistics_error(case["id"], data=changes)
+    if added and not case["data"].get("confirmed_at"):
+        try:
+            case = verify(case["id"])
+        except Exception as e:
+            print(f"[Erreurs] Photo check failed for file {case['id']}: {e}")
+            case = database.update_logistics_error(case["id"], status="to_check", data={
+                "alert": f"Lecture des photos impossible ({e}). Relance-la ou vérifie à l'œil."})
+    return case
 
 
 def create(kind, order_number, customer_name="", customer_email="", thread_id=None, subject=""):
@@ -231,23 +359,15 @@ def create(kind, order_number, customer_name="", customer_email="", thread_id=No
             raise ValueError(f"Un dossier est déjà ouvert pour la commande #{number} (dossier {case['id']})")
     case_id = database.save_logistics_error(
         status="new", order_number=number,
-        customer_name=customer_name or order.get("full_name") or "",
+        customer_name=re.sub(r"\s*<[^>]*>", "", customer_name or "").strip().strip('"') or order.get("full_name") or "",
         customer_email=customer_email or order.get("email") or "",
         thread_id=thread_id or None,
         data={"kind": kind, "order": order, "subject": subject or "", "log": _log({}, "dossier ouvert")})
     case = database.get_logistics_error(case_id)
-    added = 0
     try:
-        _, added = _import_thread(case)
+        case = refresh_from_thread(case, initial=True)
     except Exception as e:
         print(f"[Erreurs] Thread unreadable for file {case_id}: {e}")
-    if added:
-        try:
-            return verify(case_id)
-        except Exception as e:
-            print(f"[Erreurs] Photo check failed for file {case_id}: {e}")
-            return database.update_logistics_error(case_id, status="to_check", data={
-                "alert": f"Lecture des photos impossible ({e}). Relance-la ou vérifie à l'œil."})
     return database.get_logistics_error(case_id)
 
 
@@ -257,7 +377,7 @@ VERIFY_PROMPT = """Un client de Max Sauveur (chaussures et ceintures pour homme)
 
 Commande #{number} :
 {lines}
-
+{said}
 Comment lire les photos :
 - L'étiquette collée sur la boîte porte la désignation du produit (modèle, coloris), la pointure et un code-barres. Si plusieurs étiquettes sont superposées, seule celle du dessus compte.
 - La photo de la paire montre le modèle et la couleur vraiment reçus.
@@ -286,8 +406,10 @@ def _verify_prompt(case):
     data = case["data"]
     lines = "\n".join(f"{i}. {_line_label(l)} (quantité {l['quantity']})"
                       for i, l in enumerate((data.get("order") or {}).get("lines") or []))
+    quote = (data.get("email_read") or {}).get("quote")
+    said = f"\nCe que le client écrit : « {quote} »\n" if quote else ""
     return VERIFY_PROMPT.format(problem=PROBLEMS[data["kind"]], number=case["order_number"],
-                                lines=lines or "(aucune ligne)", task=TASKS[data["kind"]])
+                                lines=lines or "(aucune ligne)", task=TASKS[data["kind"]], said=said)
 
 
 def verify(case_id):
@@ -699,6 +821,8 @@ Vous pouvez suivre le colis ici :
         body = f"""Votre colis retour est bien arrivé chez nous, merci.
 
 Comme convenu, nous procédons au remboursement de {ordered}. Il apparaîtra sur votre moyen de paiement sous quelques jours."""
+    elif template == "free":
+        body = "\n"
     elif template == "not_error":
         body = f"""{thanks}
 
@@ -723,6 +847,10 @@ def send(case_id, template, subject, body):
         raise ValueError("Adresse du client inconnue")
     if not (body or "").strip():
         raise ValueError("Le mail est vide")
+    if template == "free":
+        words = re.sub(r"(?i)^\s*bonjour[^\n]*|john de max sauveur\s*$", "", body.strip()).strip()
+        if not words:
+            raise ValueError("Écris ta réponse avant d'envoyer")
     if re.search(r"\[(lien|numéro)[^\]]*\]", body):
         raise ValueError("Le mail contient encore un champ à remplir entre crochets")
     service = gmail_helper.get_gmail_service()
@@ -740,6 +868,7 @@ def send(case_id, template, subject, body):
     status = AFTER_SEND.get(template, case["status"])
     return database.update_logistics_error(case_id, status=status, thread_id=thread_id, data={
         "sent_mails": {**(data.get("sent_mails") or {}), template: now_iso()}, "seen_messages": list(seen),
+        "reply_unread": False,
         "log": _log(data, f"mail envoyé : {MAILS[template]}")})
 
 
@@ -785,28 +914,35 @@ def _check_reship(token, case):
             **fields, "log": _log(data, f"renvoi expédié : {p['trackingId']}")})
 
 
-def _check_replies(service, case):
-    fresh, added = _import_thread(case, service)
-    if not fresh:
-        return
-    case = database.get_logistics_error(case["id"])
-    snippet = gmail_helper.parse_email(fresh[-1]).get("body", "")[:1500]
-    if case["status"] == "waiting_photos" and added:
-        try:
-            verify(case["id"])
-            return
-        except Exception as e:
-            print(f"[Erreurs] Photo check failed for file {case['id']}: {e}")
-    database.update_logistics_error(case["id"], data={
-        "reply": snippet, "reply_unread": True,
-        "log": _log(case["data"], "réponse du client" + (f" ({added} photo{'s' if added > 1 else ''})" if added else ""))})
-
-
 def _check_refund(case):
     order = retours.fetch_order(case["order_number"]) or {}
     if order.get("refunded", 0) > (case["data"].get("refunded_before") or 0):
         database.update_logistics_error(case["id"], status="done", data={
             "closed_at": now_iso(), "log": _log(case["data"], "remboursement vu dans Shopify")})
+
+
+def check_replies():
+    """Scheduler job, every 10 minutes: customer replies and their photos (the red badge)."""
+    service = None
+    for case in database.get_logistics_errors():
+        if case["status"] in CLOSED or not case.get("thread_id"):
+            continue
+        try:
+            service = service or gmail_helper.get_gmail_service()
+            refresh_from_thread(case, service)
+        except Exception as e:
+            print(f"[Erreurs] Reply check failed for file {case['id']}: {e}")
+
+
+def unread_count():
+    """Open files where the customer wrote and Samuel has not read it yet (the red badge)."""
+    return sum(1 for c in database.get_logistics_errors()
+               if c["status"] not in CLOSED and c["data"].get("reply_unread"))
+
+
+def open_threads():
+    """Gmail threads of open files: their new messages are handled here, not in 📬 Emails."""
+    return {c["thread_id"] for c in database.get_logistics_errors() if c["status"] not in CLOSED and c.get("thread_id")}
 
 
 def tick():
@@ -817,10 +953,9 @@ def tick():
     service, rep, main = None, None, None
     for case in cases:
         try:
-            if case["status"] in ("waiting_photos", "label_ready", "awaiting_return", "waiting_address", "to_check"):
+            if case.get("thread_id"):
                 service = service or gmail_helper.get_gmail_service()
-                _check_replies(service, case)
-                case = database.get_logistics_error(case["id"])
+                case = refresh_from_thread(case, service)
             if case["status"] == "awaiting_return" and case["data"].get("label"):
                 rep = rep or wing_repair._get_token("rep")
                 _check_return_label(rep, case)

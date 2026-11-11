@@ -130,7 +130,7 @@
             <a href="/sav/programmes">📅 Programmés</a>
             <a href="/reparations">🛠 Réparations</a>
         <a href="/retours">↩️ Retours</a>
-        <a href="/erreurs">🚚 Erreurs</a>
+        <a href="/erreurs">🚚 Erreurs{% if erreurs_unread %} <span style="display:inline-block; min-width:18px; padding:0 5px; border-radius:9px; background:#dc2626; color:#fff; font-size:11px; font-weight:700; text-align:center; line-height:18px;">{{ erreurs_unread }}</span>{% endif %}</a>
         <a href="/avis">⭐ Avis</a>
             <a href="/client">🔍 Clients</a>
             <a href="/wing">+ Wing</a>
@@ -165,6 +165,7 @@
                         {% endif %}
                     </div>
                     <div class="meta">De : {{ item.email.sender }} &nbsp;·&nbsp; {{ item.email.date }}</div>
+                    {% if item.error_case %}<div style="margin-top:8px; padding:8px 12px; border-radius:8px; background:#fffbeb; border:1px solid #fcd34d; font-size:13px; color:#92400e;">🚚 Ce client a un dossier ouvert dans Erreurs (commande #{{ item.error_case.order }}, {{ item.error_case.status }}). Si ce mail le concerne, réponds depuis <a href="/erreurs?id={{ item.error_case.id }}" style="color:#b45309; font-weight:600;">le dossier</a>.</div>{% endif %}
                 </div>
                 <div class="card-body">
                     <div>

@@ -41,12 +41,13 @@ def erreurs_page():
     view = None
     if selected:
         data = selected['data']
-        mail_key = request.args.get('mail') or erreurs.proposed_mail(selected)
+        mail_key = request.args.get('mail') or erreurs.proposed_mail(selected) or ('free' if data.get('reply_unread') else None)
         subject, body = erreurs.draft(selected, mail_key) if mail_key in erreurs.MAILS else ('', '')
         view = {'case': selected, 'data': data, 'order': data.get('order') or {},
                 'photos': erreurs.photo_names(selected['id']), 'mail_key': mail_key,
                 'subject': subject, 'body': body, 'cost': erreurs.cost(selected),
-                'billing': erreurs.billing(selected), 'proposed': erreurs.proposed_mail(selected)}
+                'billing': erreurs.billing(selected), 'proposed': erreurs.proposed_mail(selected),
+                'defaults': erreurs.form_defaults(selected)}
 
     month = request.args.get('mois') or erreurs.months()[0]
     rows = erreurs.ledger(month) if tab == 'tableau' else []
@@ -138,6 +139,7 @@ ACTIONS = {
     'annuler': lambda i, d: erreurs.cancel(i),
     'reglage': lambda i, d: erreurs.set_flag(i, d.get('key'), d.get('value')),
     'ignorer-mail': lambda i, d: erreurs.skip_mail(i, d.get('template')),
+    'relire-fil': lambda i, d: erreurs.refresh_from_thread(database.get_logistics_error(i), full=True),
 }
 
 

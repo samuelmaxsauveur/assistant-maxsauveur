@@ -64,7 +64,7 @@
         <a href="/sav">🔧 SAV</a>
         <a href="/reparations" style="color:white;">🛠 Réparations</a>
         <a href="/retours">↩️ Retours</a>
-        <a href="/erreurs">🚚 Erreurs</a>
+        <a href="/erreurs">🚚 Erreurs{% if erreurs_unread %} <span style="display:inline-block; min-width:18px; padding:0 5px; border-radius:9px; background:#dc2626; color:#fff; font-size:11px; font-weight:700; text-align:center; line-height:18px;">{{ erreurs_unread }}</span>{% endif %}</a>
         <a href="/avis">⭐ Avis</a>
     </div>
 </header>

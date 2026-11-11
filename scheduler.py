@@ -553,6 +553,13 @@ def start():
         minutes=60,
         id="logistics_errors"
     )
+    # Customer replies in the error files, more often: they light the red badge
+    scheduler.add_job(
+        erreurs.check_replies,
+        "interval",
+        minutes=10,
+        id="logistics_errors_replies"
+    )
 
     # Emails scheduled on a return file
     scheduler.add_job(

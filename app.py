@@ -37,6 +37,18 @@ app.register_blueprint(repairs_bp)
 app.register_blueprint(madmax_bp)
 app.register_blueprint(retours_bp)
 app.register_blueprint(erreurs_bp)
+
+
+@app.context_processor
+def _nav_badges():
+    """Red badge next to « 🚚 Erreurs » in every page's menu: customers who replied in a file."""
+    try:
+        import erreurs
+        return {'erreurs_unread': erreurs.unread_count()}
+    except Exception as e:
+        print(f"[Erreurs] Badge unavailable: {e}")
+        return {'erreurs_unread': 0}
+
 app.register_blueprint(avis_bp)
 madmax.init_db()
 
@@ -377,6 +389,21 @@ def index():
 
         with ThreadPoolExecutor(max_workers=5) as executor:
             processed = list(executor.map(_fetch_order_for_email, emails))
+        # A customer with an open file in Erreurs who writes from another thread:
+        # the card says so, so the answer goes through the file.
+        try:
+            import erreurs
+            open_files = {}
+            for c in database.get_logistics_errors():
+                if c['status'] not in erreurs.CLOSED and c.get('customer_email'):
+                    open_files.setdefault(c['customer_email'].lower(), c)
+            for item in processed:
+                c = open_files.get((item.get('sender_email') or '').lower())
+                if c:
+                    item['error_case'] = {'id': c['id'], 'order': c['order_number'],
+                                          'status': erreurs.STATUS_LABELS[c['status']]}
+        except Exception as e:
+            print(f"[Erreurs] Open files unavailable for the inbox: {e}")
         return render_template('index.html', emails=processed, pending_count=pending_count)
     except Exception:
         return f"<pre style='padding:20px'>{tb.format_exc()}</pre>", 500
