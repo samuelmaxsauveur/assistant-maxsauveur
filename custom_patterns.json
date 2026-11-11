@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__form_name_form_submitted_2026_11_10_22_29_01",
+      "topic_label": "Re: Form name Form submitted 2026-11-10 22:29:01",
+      "situation": "Re: Form name Form submitted 2026-11-10 22:29:01",
+      "response_template": "Bonjour Antoine,\n\nOui, le remboursement est possible. Sur le bon de retour, indiquez simplement \"remboursement\" comme motif à la place de \"avoir\".\n\nUn point important à noter : si vous renvoyez la commande pour être remboursé, votre carte cadeau de 60 € (MADMAX-46WQBG) sera perdue. Elle n'est conservée qu'en cas d'échange ou d'avoir.\n\nDès réception et contrôle de la paire, le remboursement de 348,50 € sera émis sur votre Visa sous 3 à 5 jours ouvrés.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "commande__13998_confirm_e",
+      "topic_label": "Commande #13998 confirmée",
+      "situation": "Commande #13998 confirmée",
+      "response_template": "Bonjour Florian,\n\nMerci pour les photos. Vous avez bien reçu Brogues Derby cuir grainé bordeaux en 40 au lieu de Brogues (derby cuir bordeaux) en 40 : l'erreur vient de notre préparation, et nous nous en excusons.\n\nVoici votre étiquette de retour prépayée :\nhttps://wing-labelling-system.s3.eu-west-3.amazonaws.com/549146d6-4924-4a03-a1b7-297a86f83bcd/LABEL/2026-11-11/LABEL-f8edc593-300f-43dc-b968-a08c8145913b-1794395544119-6A08222673040.pdf\n\nIl vous suffit de l'imprimer, de la coller sur le colis avec la paire dans sa boîte, puis de le déposer dans un bureau de poste ou un point Colissimo.\n\nDès que la paire arrive chez nous, nous vous envoyons la bonne. Vous n'avez rien à payer.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "re__re__la_commande__13862_a__t__annul_e",
       "topic_label": "Re: Re: La commande #13862 a été annulée",
       "situation": "Re: Re: La commande #13862 a été annulée",
@@ -102,14 +118,6 @@
       "topic_label": "Re: La commande #13862 a été annulée",
       "situation": "Re: La commande #13862 a été annulée",
       "response_template": "Bonjour Sébastien,\n\nLe remboursement de 353 € a bien été effectué le 31 octobre sur votre paiement Alma. Vous pouvez le vérifier directement dans votre espace client Alma, qui gère les remboursements de son côté (échéances déjà prélevées remboursées, échéances à venir annulées).\n\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "commande__13998_confirm_e",
-      "topic_label": "Commande #13998 confirmée",
-      "situation": "Commande #13998 confirmée",
-      "response_template": "Bonjour Florian,\n\nMerci pour votre message.\n\nPour vérifier ce qui s'est passé à la préparation de votre commande #13998, pouvez-vous nous envoyer deux photos en réponse à ce mail :\n1. l'étiquette collée sur la boîte (avec le nom du modèle, la pointure et le code-barres) ;\n2. la paire reçue.\n\nDès réception, nous revenons vers vous très rapidement.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
