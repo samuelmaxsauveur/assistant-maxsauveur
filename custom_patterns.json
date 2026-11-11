@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__la_commande__13862_a__t__annul_e",
+      "topic_label": "Re: Re: La commande #13862 a été annulée",
+      "situation": "Re: Re: La commande #13862 a été annulée",
+      "response_template": "Bonjour Sébastien,\n\nLe remboursement de 335€ correspondant à votre commande #13848 (Paul Cuir Grainé Noir) a bien été émis le 11 novembre via Payplug. Selon votre banque, il peut apparaître sous quelques jours ouvrés.\n\nSi vous ne le voyez pas d'ici la fin de semaine, n'hésitez pas à revenir vers nous avec votre relevé et nous ferons le point.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_10_22_29_01",
       "topic_label": "Form name Form submitted 2026-11-10 22:29:01",
       "situation": "Form name Form submitted 2026-11-10 22:29:01",
