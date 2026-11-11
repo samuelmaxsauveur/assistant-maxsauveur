@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_10_22_29_01",
+      "topic_label": "Form name Form submitted 2026-11-10 22:29:01",
+      "situation": "Form name Form submitted 2026-11-10 22:29:01",
+      "response_template": "Bonjour Antoine,\n\nLe retour est tout à fait possible. Voici la procédure :\n\n1. Téléchargez le bon de retour sur maxsauveur.com/pages/livraison-et-retour (motif : \"avoir\")\n2. Glissez-le dans la boîte avec la paire\n3. Expédiez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous enverrons un avoir pour commander la bonne taille.\n\nUn détail important avant de retourner : votre carte cadeau de 60€ (MADMAX-46WQBG, valable jusqu'au 15 avril 2027) reste bien active. Un échange de pointure ne la fait pas perdre.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "retour_commande__13835",
       "topic_label": "Retour commande #13835",
       "situation": "Retour commande #13835",
