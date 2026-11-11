@@ -218,7 +218,7 @@
         <div class="section"><h3>Photos du client</h3>
             <div class="thumbs">
                 {% for n in view.photos %}
-                <div class="t"><a href="/erreurs/{{ c.id }}/photo/{{ n }}" target="_blank"><img src="/erreurs/{{ c.id }}/photo/{{ n }}" alt=""></a>
+                <div class="t"><a href="/erreurs/{{ c.id }}/photo/{{ n }}" target="_blank"><img src="/erreurs/{{ c.id }}/photo/{{ n }}?mini=1" alt="" loading="lazy"></a>
                     <button title="Supprimer" onclick="post('/erreurs/{{ c.id }}/photo/{{ n }}/supprimer', {}, this)">×</button></div>
                 {% else %}<div class="meta">Pas encore de photo. Elles arrivent seules quand le client répond au mail, ou ajoute-les ici.</div>{% endfor %}
             </div>

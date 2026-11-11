@@ -196,10 +196,30 @@ def save_photo(case_id, raw, mime="image/jpeg"):
     return name
 
 
+THUMB_SIDE = 360
+
+
+def thumb_path(case_id, name):
+    """A small copy of the photo for the page (made once): the page no longer loads the full photos."""
+    p = photo_path(case_id, name)
+    if not p:
+        return None
+    thumb = os.path.join(_photo_dir(case_id), "mini_" + name)
+    if not os.path.exists(thumb):
+        from PIL import Image
+        with Image.open(p) as img:
+            img.thumbnail((THUMB_SIDE, THUMB_SIDE))
+            img.convert("RGB").save(thumb, "JPEG", quality=75)
+    return thumb
+
+
 def delete_photo(case_id, name):
     p = photo_path(case_id, name)
     if p:
         os.remove(p)
+        thumb = os.path.join(_photo_dir(case_id), "mini_" + name)
+        if os.path.exists(thumb):
+            os.remove(thumb)
     return bool(p)
 
 
@@ -310,7 +330,9 @@ def refresh_from_thread(case, service=None, initial=False, full=False):
     customer = [m for m in messages if "maxsauveur.com" not in _sender(m).lower()]
     fresh = [m for m in customer if m["id"] not in seen]
     added, unreadable = 0, []
-    for msg in (customer if full or not photo_names(case["id"]) else fresh):
+    # The whole thread is scanned once (and on Samuel's request), then only new messages.
+    rescan = full or (not photo_names(case["id"]) and not data.get("photos_scanned"))
+    for msg in (customer if rescan else fresh):
         for raw, mime, name in _message_photos(service, msg):
             try:
                 if save_photo(case["id"], raw, mime):
@@ -319,7 +341,7 @@ def refresh_from_thread(case, service=None, initial=False, full=False):
                 print(f"[Erreurs] Photo {name} skipped for file {case['id']}: {e}")
                 if "maximum" not in str(e):
                     unreadable.append(name)
-    changes = {"seen_messages": [m["id"] for m in messages]}
+    changes = {"seen_messages": [m["id"] for m in messages], "photos_scanned": True}
     if unreadable:
         changes["unreadable_photos"] = sorted(set((data.get("unreadable_photos") or []) + unreadable))
     if fresh and not initial:
@@ -332,7 +354,9 @@ def refresh_from_thread(case, service=None, initial=False, full=False):
         try:
             changes["email_read"] = read_email(case, customer)
         except Exception as e:
+            # Kept as read, so a failing call is not paid again every 10 minutes.
             print(f"[Erreurs] Customer email unreadable for file {case['id']}: {e}")
+            changes["email_read"] = {"received": None, "line": None, "missing": [], "quote": None, "failed": str(e)[:200]}
     case = database.update_logistics_error(case["id"], data=changes)
     if added and not case["data"].get("confirmed_at"):
         try:

@@ -93,7 +93,7 @@ def upload_photos(case_id):
 
 @erreurs_bp.route('/erreurs/<int:case_id>/photo/<name>')
 def photo(case_id, name):
-    path = erreurs.photo_path(case_id, name)
+    path = erreurs.thumb_path(case_id, name) if request.args.get('mini') else erreurs.photo_path(case_id, name)
     if not path:
         abort(404)
     return send_file(path, mimetype='image/jpeg')
