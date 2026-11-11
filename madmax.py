@@ -234,6 +234,27 @@ def get_order(token):
     return _row("SELECT * FROM madmax_orders WHERE token = ?", (token,))
 
 
+def card_for_order(order_name):
+    """La carte Mad Max d'une commande (« #13917 » ou « 13917 »), ou None."""
+    name = "#" + str(order_name or "").strip().lstrip("#")
+    return _row("SELECT * FROM madmax_orders WHERE order_name = ? AND is_test = 0", (name,))
+
+
+def card_state(o):
+    """L'état de la carte en une phrase, pour les brouillons et les vérifications."""
+    if o.get("review") == "cancelled":
+        return "annulée (code supprimé dans Shopify)"
+    if o.get("status") in ("refunded", "cancelled"):
+        return "perdue : la commande est remboursée ou annulée (à annuler dans le tableau de bord Mad Max)"
+    if o.get("review") == "to_check":
+        return "en cours de vérification par Samuel après un retour"
+    if not o.get("code"):
+        return "boîte pas encore ouverte (lien de tirage envoyé)"
+    if o.get("used"):
+        return f"déjà utilisée ({o['amount']} €, code {o['code']})"
+    return f"active : {o['amount']} €, code {o['code']}, valable du {STARTS_LABEL} au {ENDS_LABEL}, pas encore utilisée"
+
+
 def get_order_by_id(oid):
     return _row("SELECT * FROM madmax_orders WHERE id = ?", (oid,))
 

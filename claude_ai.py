@@ -270,6 +270,9 @@ def get_system_prompt(email_context='', extra_queries=None):
                 for p in selected:
                     extra += f"\n[{p['topic_label']}]\nSituation : {p['situation'][:1200]}\nRéponse type :\n{p['response_template'][:8000]}\n"
         if extra:
+            # Les réponses types viennent de vrais e-mails : elles contiennent les codes
+            # carte cadeau d'autres clients, qu'un brouillon ne doit jamais recopier.
+            extra = re.sub(r"MADMAX-[A-Z0-9]{6}", "[code carte cadeau du client]", extra)
             return BASE_SYSTEM_PROMPT + extra
     except Exception:
         pass
@@ -320,8 +323,33 @@ def _build_context(email_body, email_subject, customer_name, order_info=None, hi
                 items_str = ', '.join([f"{p['name']} x{p['qty']}" for p in o['products']])
                 context += f"\nArticles : {items_str}"
         context += _shopify_timelines(orders_to_show[:3])
+        context += _madmax_cards(orders_to_show[:3])
 
     return context
+
+
+def _madmax_cards(orders):
+    """Carte cadeau Mad Max des commandes affichées. Sans elle, un brouillon a
+    reconfirmé sa carte à un client qui renvoyait toute sa commande pour être
+    remboursé, en reprenant la réponse donnée la veille pour un échange."""
+    try:
+        import madmax
+        cards = [(o, madmax.card_for_order(o.get('number'))) for o in orders]
+    except Exception as e:
+        print(f"[MadMax] Gift card lookup failed: {e}")
+        return ""
+    cards = [(o, c) for o, c in cards if c]
+    if not cards:
+        return ""
+    out = "\n\n--- CARTE CADEAU MAD MAX (état réel, prioritaire sur l'historique) ---"
+    for o, c in cards:
+        out += f"\nCommande {o.get('number')} du jeudi 5 novembre : carte {madmax.card_state(c)}."
+    out += ("\nRègle : la carte est PERDUE si le client renvoie toute la commande pour être remboursé, ou si les "
+            "articles qu'il garde valent moins de 150 € avant remise. Le dire clairement, sans s'excuser. Seul un "
+            "échange de pointure ou un avoir la conserve. Si un message précédent disait que la carte restait "
+            "valable (cas d'un échange) et que le client demande maintenant un remboursement, corriger clairement "
+            "cette information. Ne citer aucun autre code que celui indiqué ici.")
+    return out
 
 
 def _shopify_timelines(orders):

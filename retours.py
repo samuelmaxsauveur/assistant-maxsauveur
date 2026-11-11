@@ -601,6 +601,33 @@ def _analyse_unclaimed(data):
     return {"checks": checks, "amounts": amounts, "returned": returned, "kept": kept}
 
 
+def _madmax_card_check(add, order, kept, data):
+    """Carte cadeau des commandes du jeudi 5 novembre : perdue avec un remboursement
+    de toute la commande, ou si ce qui est gardé passe sous 150 € avant remise."""
+    try:
+        import madmax
+        card = madmax.card_for_order(order.get("name"))
+    except Exception as e:
+        print(f"[Retours] Mad Max card lookup failed: {e}")
+        return
+    if not card or card.get("review") == "cancelled":
+        return
+    what = f"carte cadeau Mad Max de {card['amount']} € ({card['code']})" if card.get("code") else \
+           "carte cadeau Mad Max (boîte pas encore ouverte)"
+    kept_value = sum(l["catalogue"] * l["qty"] for l in kept)
+    below = not kept or kept_value < madmax.CARD_KEEP_MIN
+    choice = data.get("choice")
+    if not below:
+        add("ok", f"Le client a une {what} : elle reste valable, il garde {euros(kept_value)} d'articles avant remise.")
+    elif choice == "credit":
+        add("ok", f"Le client a une {what} : avec un avoir, elle reste valable.")
+    elif choice == "refund":
+        add("bad", f"Le client a une {what} : elle est perdue avec ce remboursement. Clique sur « Annuler la "
+                   f"carte » dans le tableau de bord Mad Max, et dis-le-lui dans le mail.")
+    else:
+        add("warn", f"Le client a une {what} : perdue s'il est remboursé, conservée s'il prend un avoir.")
+
+
 def analyse(data):
     """Checks and amounts for the file, from the order, the slip and Samuel's corrections."""
     if data.get("kind") == UNCLAIMED:
@@ -671,6 +698,7 @@ def analyse(data):
         if any(d["is_madmax"] for d in order["discounts"]):
             add("warn", "Remise Mad Max sur la commande : le palier se recalcule sur les articles gardés.")
 
+    _madmax_card_check(add, order, kept, data)
     credit_paid = _payment_checks(add, order, returned, data)
 
     choice = data.get("choice")

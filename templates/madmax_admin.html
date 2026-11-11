@@ -151,6 +151,8 @@ button { font: inherit; font-size: 12px; padding: 6px 10px; border: 1px solid va
       <td>
         <form class="inline" method="post" action="/madmax/admin/resend/link/{{ o.id }}"><button>Renvoyer le lien</button></form>
         {% if o.code %}<form class="inline" method="post" action="/madmax/admin/resend/code/{{ o.id }}"><button>Renvoyer le code</button></form>{% endif %}
+        {% if not o.is_test and o.review != "cancelled" %}<form class="inline" method="post" action="/madmax/admin/review/{{ o.id }}"><input type="hidden" name="decision" value="cancel">
+          <label class="small"><input type="checkbox" required> confirmer</label> <button>Annuler la carte</button></form>{% endif %}
         {% if o.is_test %}<form class="inline" method="post" action="/madmax/admin/resend/reminder/{{ o.id }}">
           <select name="month">{% for m in months %}<option value="{{ m }}">{{ m[5:] }}/{{ m[:4] }}</option>{% endfor %}</select>
           <button>Relance de test</button></form>{% endif %}
