@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "commande_13314",
+      "topic_label": "Commande 13314",
+      "situation": "Commande 13314",
+      "response_template": "Bonjour Kader,\n\nLa livraison est prévue entre le 12 et le 18 novembre. Vous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "commande__12045___produit_d_fectueux_ou_non_conforme_aux_att",
+      "topic_label": "Commande #12045 : Produit défectueux ou non conforme aux attentes",
+      "situation": "Commande #12045 : Produit défectueux ou non conforme aux attentes",
+      "response_template": "Bonjour Lucas,\n\nTout d'abord, toutes mes félicitations pour votre mariage à venir. C'est une belle étape et je comprends parfaitement que vos priorités budgétaires soient ailleurs cette année.\n\nCependant, il ne nous est comptablement et commercialement pas possible de convertir cette remise en un remboursement partiel (numéraire) sur une paire portée intensivement pendant 6 mois. Ce geste de 40 % est un effort exceptionnel que nous faisons sur notre marge pour vous accompagner sur un nouvel achat, il ne peut pas se transformer en sortie de trésorerie directe.\n\nPuisque vous êtes ouvert à d'autres solutions, voici ce que je vous propose pour que cet effort de notre part ne soit pas perdu :\n\nJe peux configurer votre code de 40 % pour qu'il n'ait absolument **aucune date d'expiration**. Ainsi, vous ne subissez aucune pression. Vous pourrez l'utiliser l'année prochaine, ou dans deux ans, pour une paire plus quotidienne quand le budget de votre mariage sera derrière vous. Par ailleurs, ce code reste valable sur nos accessoires : si vous avez besoin d'une belle ceinture en cuir pour accompagner votre costume croisé, cela peut être l'occasion de l'utiliser dès maintenant.\n\nJe vous laisse me confirmer si vous souhaitez que j'active ce code sans limite de temps.\n\nCordialement,\n\nJohn. de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__13972_confirm_e",
       "topic_label": "Re: Commande #13972 confirmée",
       "situation": "Re: Commande #13972 confirmée",
