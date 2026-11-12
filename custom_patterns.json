@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__form_name_form_submitted_2026_10_24_23_41_47",
+      "topic_label": "Re: Form name Form submitted 2026-10-24 23:41:47",
+      "situation": "Re: Form name Form submitted 2026-10-24 23:41:47",
+      "response_template": "Hi George,\n\nWe checked with our logistics team and your Deck Cuir Bordeaux in 42.5 is unfortunately out of stock due to a sync error on our end. We're sorry about this.\n\nWe can send you a 42 or a 43 instead. Since this model runs large, the right size will depend on your foot length. Could you measure your foot (heel against a wall, mark the tip of your big toe) and send us the measurement in cm? We'll confirm the best option straight away and get your order out as quickly as possible.\n\nJohn – Customer Care – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
