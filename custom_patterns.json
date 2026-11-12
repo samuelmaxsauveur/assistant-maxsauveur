@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__la_commande__13862_a__t__annul_e",
+      "topic_label": "Re: Re: Re: La commande #13862 a été annulée",
+      "situation": "Re: Re: Re: La commande #13862 a été annulée",
+      "response_template": "Bonjour Sébastien,\n\nLe 40,5 n'existe pas sur ces modèles.\n\nPour le 40 : seul le Cuir Grainé Noir est disponible en ligne actuellement. Il peut être expédié aujourd'hui en express, mais la commande doit être passée avant 10h30.\n\nCordialement\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_11_19_56_54",
       "topic_label": "Form name Form submitted 2026-11-11 19:56:54",
       "situation": "Form name Form submitted 2026-11-11 19:56:54",
