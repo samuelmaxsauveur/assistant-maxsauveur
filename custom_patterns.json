@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "fw__commande__13970_annule_et_remplace",
+      "topic_label": "Fw: Commande #13970 Annule et remplace",
+      "situation": "Fw: Commande #13970 Annule et remplace",
+      "response_template": "Bonjour Jean-Baptiste,\n\nLe mouvement de talon que vous décrivez sur le Wayne est effectivement courant dans les premières semaines, notamment avec la semelle commando qui est plus rigide et prend plus de temps à se flexibiliser qu'une semelle cuir classique. Le pied glisse légèrement au talon tant que la chaussure n'a pas épousé votre foulée.\n\nAvec 24,5 cm de pied, le 41 est déjà généreusement dimensionné pour vous sur ce modèle (le Wayne chausse légèrement grand). C'est probablement ce qui amplifie le décollement de talon que vous ressentez. Le 40 serait une meilleure pointure pour votre mesure.\n\nSi après quelques ports supplémentaires la gêne persiste, la procédure d'échange est simple : bon de retour sur maxsauveur.com/pages/livraison-et-retour (motif \"avoir\"), paire expédiée à SSL, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau, et nous vous émettons un avoir dès réception pour commander le 40.\n\nÀ noter : votre carte cadeau de 30 € (MADMAX-MVW5HP) reste valable jusqu'au 15 avril 2027 en cas d'échange. En revanche, elle serait perdue si vous optiez pour un remboursement.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande_13314",
       "topic_label": "Commande 13314",
       "situation": "Commande 13314",
