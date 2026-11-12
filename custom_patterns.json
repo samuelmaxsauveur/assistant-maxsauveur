@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__13972_confirm_e",
+      "topic_label": "Re: Commande #13972 confirmée",
+      "situation": "Re: Commande #13972 confirmée",
+      "response_template": "Bonjour Loïs,\n\nVotre commande #13972 est bien en cours de préparation et la livraison est estimée entre le 14 et le 16 novembre. Vous recevrez automatiquement votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__commande__13410___deck_marron_t_43",
       "topic_label": "Re: Re: Re: Commande #13410 / DECK Marron t 43",
       "situation": "Re: Re: Re: Commande #13410 / DECK Marron t 43",
