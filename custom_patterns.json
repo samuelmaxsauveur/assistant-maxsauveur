@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__pointure_40",
+      "topic_label": "Re: Pointure 40",
+      "situation": "Re: Pointure 40",
+      "response_template": "Bonjour Farah,\n\nAvec 26 cm, en ajoutant les 0,2 cm vous êtes à 26,2 cm, ce qui vous place en **40** sur notre guide.\n\nMais comme le Paul chausse petit, le **41** sera effectivement plus adapté pour vous. Pas besoin d'attendre le réassort du 40.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_12_12_17_42",
       "topic_label": "Form name Form submitted 2026-11-12 12:17:42",
       "situation": "Form name Form submitted 2026-11-12 12:17:42",
