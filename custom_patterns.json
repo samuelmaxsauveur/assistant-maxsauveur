@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__commande__13410___deck_marron_t_43",
+      "topic_label": "Re: Re: Re: Commande #13410 / DECK Marron t 43",
+      "situation": "Re: Re: Re: Commande #13410 / DECK Marron t 43",
+      "response_template": "Bonjour Xavier,\n\nMerci pour votre relance. Votre retour sera traité dans les 10 jours ouvrés suivant sa réception, et vous aurez des nouvelles de notre part la semaine prochaine.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__la_commande__13862_a__t__annul_e",
       "topic_label": "Re: La commande #13862 a été annulée",
       "situation": "Re: La commande #13862 a été annulée",
