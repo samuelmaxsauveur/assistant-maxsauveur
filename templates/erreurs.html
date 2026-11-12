@@ -211,7 +211,10 @@
         {% if d.reply_unread %}
         <div class="section"><h3>Réponse du client</h3>
             <div class="reply">{{ d.reply }}</div>
-            <div class="actions"><button class="btn btn-gray" onclick="post('/erreurs/{{ c.id }}/reglage', {key: 'reply_read'}, this)">Lu</button></div>
+            <div class="actions">
+                <a class="btn btn-teal" href="/erreurs?id={{ c.id }}&mail=free#mail-block">✍️ Répondre</a>
+                <button class="btn btn-gray" onclick="post('/erreurs/{{ c.id }}/reglage', {key: 'reply_read'}, this)">Lu</button>
+            </div>
         </div>
         {% endif %}
 
@@ -290,9 +293,18 @@
                 {% if d.label %}<li class="ok">Étiquette retour {{ d.label.ref }} · <a href="{{ d.label.label_url }}" target="_blank">voir l'étiquette</a>{% if d.label.tracking_url %} · <a href="{{ d.label.tracking_url }}" target="_blank">suivi {{ d.label.tracking_id }}</a>{% endif %}</li>{% endif %}
                 {% if d.received_at %}<li class="ok">Paire reçue chez SSL le {{ short_date(d.received_at[:10]) }}</li>{% endif %}
                 {% if d.address_confirmed_at %}<li class="ok">Le client a confirmé : {{ d.reship.where if d.reship else (d.delivery.relay_name or d.delivery.line1) }}</li>{% endif %}
+                {% if d.kind == WRONG %}<li class="{{ 'warn' if d.reship_item else 'ok' }}">Paire à renvoyer : <strong>{{ view.reship_text }}</strong>{% if d.reship_item %} (pointure changée, la commande était en {{ lines[d.lines[0]].variant if d.lines else '?' }}){% endif %}{% if d.stock and d.stock.qty is not none %} · {{ d.stock.qty }} en stock{% endif %}</li>{% endif %}
                 {% if d.reship %}<li class="ok">Renvoi {{ d.reship.ref }} créé dans Wing (compte principal) vers {{ d.reship.where }} · à ajouter à une collecte</li>{% endif %}
                 {% if d.reship_tracking %}<li class="ok">Suivi : {% if d.reship_tracking.url %}<a href="{{ d.reship_tracking.url }}" target="_blank">{{ d.reship_tracking.id }}</a>{% else %}{{ d.reship_tracking.id }}{% endif %}</li>{% endif %}
             </ul>
+            {% if view.variants %}
+            <div class="actions">
+                <select id="variant" style="width:auto;">
+                    {% for v in view.variants %}<option value="{{ v.id }}" {% if (d.reship_item and d.reship_item.variant_id == v.id) or (not d.reship_item and d.lines and lines[d.lines[0]].variant == v.size) %}selected{% endif %}>{{ v.size }} · {% if v.qty is none %}stock inconnu{% elif v.qty <= 0 %}épuisée{% else %}{{ v.qty }} en stock{% endif %}</option>{% endfor %}
+                </select>
+                <button class="btn btn-gray" onclick="post('/erreurs/{{ c.id }}/paire', {variant_id: document.getElementById('variant').value}, this)">Changer la pointure à renvoyer</button>
+            </div>
+            {% endif %}
             <div class="actions">
                 {% if d.kind == WRONG and not d.label and c.status == 'to_check' %}<button class="btn btn-purple" onclick="if (confirm('Créer l\'étiquette retour ? Elle est facturée par Wing.')) post('/erreurs/{{ c.id }}/etiquette', {}, this)">Réessayer l'étiquette</button>{% endif %}
                 {% if d.kind == MISSING and not d.reship and c.status == 'to_check' %}<button class="btn btn-purple" onclick="post('/erreurs/{{ c.id }}/renvoi', {}, this)">Réessayer le renvoi</button>{% endif %}
@@ -304,11 +316,20 @@
         {% endif %}
 
         {% if c.customer_email and c.status != 'cancelled' %}
-        <div class="section"><h3>Mail au client {% if view.proposed %}<span class="pill amber">à envoyer</span>{% endif %}</h3>
+        <div class="section" id="mail-block"><h3>Mail au client {% if view.proposed %}<span class="pill amber">à envoyer</span>{% endif %}</h3>
             <select style="margin-bottom:8px;" onchange="location.href='/erreurs?id={{ c.id }}&mail=' + this.value + '#fiche'">
                 <option value="">Choisir un mail…</option>
                 {% for key, label in mails.items() %}<option value="{{ key }}" {% if key == view.mail_key %}selected{% endif %}>{{ label }}{% if (d.sent_mails or {}).get(key) %} (déjà {{ 'passé' if d.sent_mails[key] == 'skipped' else 'envoyé' }}){% endif %}</option>{% endfor %}
             </select>
+            {% if view.mail_key == 'free' %}
+            <label class="f">Ta consigne pour Claude (facultatif) : ce que tu veux répondre, ta décision</label>
+            <textarea id="consigne" rows="2" placeholder="ex : la 41 est épuisée, propose-lui la 41,5 ou la 42" style="margin-bottom:8px;"></textarea>
+            <div class="actions" style="margin:0 0 10px;">
+                <button class="btn btn-purple" onclick="draftReply(this)">✨ Rédiger avec Claude</button>
+                <span class="meta">Claude lit le fil, le dossier et le stock des pointures. Sans consigne, il prépare une réponse d'attente et te dit quoi décider.</span>
+            </div>
+            <div class="card alert" id="claude-note" style="display:none; box-shadow:none; margin-bottom:10px; font-size:14px;"></div>
+            {% endif %}
             {% if view.mail_key %}
             <input type="text" id="mail-subject" value="{{ view.subject }}" style="margin-bottom:8px;">
             <textarea class="mail" id="mail-body">{{ view.body }}</textarea>
@@ -405,6 +426,22 @@ function confirmError(btn) {
         if (!confirm(`Créer l'étiquette retour #${ORDER}_ERREUR ? Elle est facturée par Wing.`)) return;
     } else if (!confirm('Créer le renvoi dans Wing (compte principal), au même relais ou à la même adresse ?')) return;
     post(`/erreurs/${CASE_ID}/confirmer`, payload, btn, 'Création dans Wing…');
+}
+
+async function draftReply(btn) {
+    const note = document.getElementById('claude-note');
+    const label = btn.textContent;
+    btn.disabled = true; btn.textContent = '⏳ Claude rédige…';
+    try {
+        const res = await fetch(`/erreurs/${CASE_ID}/rediger`, {method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({consigne: document.getElementById('consigne').value})});
+        const data = await res.json();
+        if (!data.success) throw new Error(data.error || 'Erreur');
+        if (data.draft) document.getElementById('mail-body').value = data.draft;
+        note.style.display = data.note ? 'block' : 'none';
+        note.textContent = data.note ? '🤔 ' + data.note : '';
+    } catch (e) { alert('❌ ' + e.message); }
+    btn.disabled = false; btn.textContent = label;
 }
 
 function sendMail(btn) {

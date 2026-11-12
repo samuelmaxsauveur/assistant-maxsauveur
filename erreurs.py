@@ -588,11 +588,64 @@ def set_flag(case_id, key, value):
 
 # ---------------------------------------------------------------- stock and Wing orders
 
+def variants_of(case):
+    """Every size of the pair to send back, with its stock and barcode, from Shopify."""
+    lines = _lines(case, case["data"].get("lines") or [])
+    if not lines or not lines[0].get("product_id"):
+        return []
+    try:
+        product = retours.avoirs._gql(
+            """query($id: ID!) { product(id: $id) { title variants(first: 60) {
+                 nodes { id title barcode inventoryQuantity } } } }""",
+            {"id": lines[0]["product_id"]})["product"]
+    except Exception as e:
+        print(f"[Erreurs] Sizes unavailable for #{case['order_number']}: {e}")
+        return []
+    return [{"id": v["id"].rsplit("/", 1)[-1], "size": v["title"], "barcode": v.get("barcode"),
+             "qty": v.get("inventoryQuantity"), "title": product["title"]} for v in product["variants"]["nodes"]]
+
+
+def reship_text(case):
+    """The pair that goes back to the customer, in words: the ordered one unless Samuel changed the size."""
+    data = case["data"]
+    item = data.get("reship_item")
+    if item:
+        return human_label({"title": item["title"], "variant": item["size"]})
+    return data.get("ordered_text") or ", ".join(human_label(l) for l in _lines(case, data.get("lines") or []))
+
+
+def set_reship_item(case_id, variant_id):
+    """Samuel sends another size than the one ordered (the customer asked for it)."""
+    case = database.get_logistics_error(case_id)
+    data = case["data"]
+    if data["kind"] != WRONG or not data.get("confirmed_at"):
+        raise ValueError("Seulement pour une mauvaise paire confirmée")
+    if data.get("reship"):
+        raise ValueError(f"Le renvoi {data['reship']['ref']} existe déjà dans Wing : change la pointure là-bas")
+    variant = next((v for v in variants_of(case) if v["id"] == str(variant_id)), None)
+    if not variant:
+        raise ValueError("Pointure introuvable dans Shopify")
+    ordered = (_lines(case, data.get("lines") or []) or [{}])[0]
+    if ordered.get("variant") == variant["size"]:
+        item = None
+        text = "paire à renvoyer : celle de la commande"
+    else:
+        item = {"variant_id": variant["id"], "title": variant["title"], "size": variant["size"],
+                "designation": f"{variant['title']} - {variant['size']}", "barcode": variant.get("barcode")}
+        text = f"paire à renvoyer : {variant['title']} en {variant['size']} (au lieu de {ordered.get('variant')})"
+    return database.update_logistics_error(case_id, data={
+        "reship_item": item, "stock": {"qty": variant["qty"], "checked_at": now_iso()}, "log": _log(data, text)})
+
+
 def stock_of(case):
     """Units in stock of the right item, or None when Shopify does not say."""
     lines = _lines(case, case["data"].get("lines") or [])
     if not lines:
         return None
+    item = case["data"].get("reship_item")
+    if item:
+        v = next((v for v in variants_of(case) if v["id"] == item["variant_id"]), None)
+        return {"qty": v["qty"], "checked_at": now_iso()} if v and v["qty"] is not None else None
     try:
         node = retours.avoirs._gql(
             """query($q: String!) { orders(first: 1, query: $q) { nodes { name
@@ -629,6 +682,18 @@ def _products(original, lines):
             weight = repair_catalog.PARCEL_TYPES[repair_catalog.parcel_type(label)]["weight"]
             products.append({"designation": label, "price": line.get("paid") or line.get("catalogue") or 100,
                              "weight": weight, "quantity": line["quantity"]})
+    return products
+
+
+def _reship_products(original, case):
+    """What goes in the reshipment: the ordered line, or the size Samuel chose instead."""
+    products = _products(original, _lines(case, case["data"].get("lines") or []))
+    item = case["data"].get("reship_item")
+    if item and products:
+        products[0]["designation"] = item["designation"]
+        products[0].pop("ean", None)
+        if item.get("barcode"):
+            products[0]["ean"] = item["barcode"]
     return products
 
 
@@ -747,8 +812,7 @@ def confirm_address(case, d):
     fields = {"delivery": d, "address_confirmed_at": now_iso()}
     try:
         token = wing_repair._get_token("main")
-        fulfillment = {"service": option["service"],
-                       "products": _products(_original(token, case), _lines(case, data.get("lines") or []))}
+        fulfillment = {"service": option["service"], "products": _reship_products(_original(token, case), case)}
         if option["relay"]:
             fulfillment.update(carrierPickupId=d["relay_id"], carrierPickupName=d["relay_name"])
         ref = _create_reship(token, case, recipient, fulfillment)
@@ -824,7 +888,7 @@ Dès que la paire arrive chez nous, nous vous envoyons la bonne. Vous n'avez rie
             ask = "confirmer votre adresse de livraison"
         body = f"""Votre colis retour est bien arrivé chez nous, merci.
 
-La bonne paire, {ordered}, est prête à partir. Pour la recevoir, il vous reste à {ask} sur cette page :
+La bonne paire, {reship_text(case)}, est prête à partir. Pour la recevoir, il vous reste à {ask} sur cette page :
 {link}
 
 Elle partira dès votre confirmation."""
@@ -837,7 +901,7 @@ Nous vous l'envoyons dans les prochains jours, {where}. Vous recevrez le numéro
     elif template == "tracking":
         tracking = data.get("reship_tracking") or {}
         what = "Votre article est parti" if data["kind"] == MISSING else "Votre paire est partie"
-        body = f"""{what} : {ordered}.
+        body = f"""{what} : {reship_text(case) if data["kind"] == WRONG else ordered}.
 
 Vous pouvez suivre le colis ici :
 {tracking.get('url') or tracking.get('id') or '[numéro de suivi]'}"""
@@ -860,6 +924,87 @@ https://maxsauveur.com/pages/livraison-et-retour"""
     if not subject.lower().startswith("re:"):
         subject = f"Re: {subject}"
     return subject, f"Bonjour {name},\n\n{body}\n\nJohn de Max Sauveur"
+
+
+REPLY_PROMPT = """Tu prépares la réponse de John (service client Max Sauveur) au dernier message d'un client qui a un dossier « erreur de préparation » ouvert chez nous.
+
+DOSSIER
+{facts}
+
+COMMANDE #{number}
+{lines}
+
+POINTURES DU MODÈLE À RENVOYER (stock Shopify en ce moment)
+{sizes}
+
+ÉCHANGES DANS CE FIL, du plus ancien au plus récent
+{thread}
+
+CONSIGNE DE SAMUEL (le responsable)
+{consigne}
+
+RÈGLES
+1. Réponds à ce que demande le client dans son dernier message, en t'appuyant uniquement sur le dossier, la commande, le stock et la consigne.
+2. La consigne de Samuel est sa décision : applique-la telle quelle. N'ajoute aucun geste, aucune option, aucune promesse qu'il n'a pas écrits.
+3. Si le client demande ce que seul Samuel peut décider (une autre pointure ou un autre modèle, un remboursement, un geste, un délai) et que la consigne ne le tranche pas, ne réponds pas sur le fond : écris une réponse courte qui dit qu'on regarde et qu'on revient vers lui très rapidement. Dans note_for_samuel, donne seulement la décision à prendre et les faits utiles (le stock de la pointure demandée et des pointures voisines). Ne lui propose aucune solution ni aucun geste (avoir, remboursement, réduction, autre modèle) : c'est lui qui décide.
+4. Ne cite jamais une pointure, un délai ou une disponibilité absents de ce qui précède. Une pointure à 0 en stock n'est pas disponible. Ne promets rien que la consigne ne dit pas : ni réserver ou mettre de côté une paire, ni un délai, ni une date.
+5. Les excuses ont déjà été faites dans le fil : ne t'excuse pas à nouveau. Pas de tiret long, ni dans le mail ni dans la note. Vouvoiement, sauf si le client tutoie. Signe « John de Max Sauveur ».
+6. Si ta réponse annonce l'envoi d'une autre pointure que la paire à renvoyer du dossier, rappelle à Samuel dans note_for_samuel de la changer dans le dossier avant le renvoi.
+
+Réponds uniquement avec ce JSON :
+{{"note_for_samuel": "1 ou 2 phrases pour Samuel", "draft": "le mail complet, de « Bonjour » à la signature"}}"""
+
+
+def _facts(case):
+    data = case["data"]
+    facts = [f"Type : {KINDS[data['kind']]}", f"Étape : {STATUS_LABELS[case['status']]}"]
+    if data.get("confirmed_at"):
+        if data["kind"] == WRONG:
+            facts.append(f"Erreur confirmée : reçu {data.get('received_text') or '?'} au lieu de {data.get('ordered_text') or '?'}")
+            facts.append(f"Paire à renvoyer : {reship_text(case)}")
+        else:
+            facts.append(f"Erreur confirmée : article manquant, {data.get('ordered_text') or '?'}")
+    if data.get("label"):
+        facts.append(f"Étiquette retour envoyée au client : {data['label']['ref']} (Colissimo)")
+    facts.append("Paire retournée reçue chez nous : " + ("oui" if data.get("received_at") else "pas encore"))
+    if data.get("reship"):
+        facts.append(f"Renvoi créé : {data['reship']['ref']} vers {data['reship']['where']}")
+    if data.get("reship_tracking"):
+        facts.append(f"Suivi du renvoi : {data['reship_tracking'].get('url') or data['reship_tracking'].get('id')}")
+    if data.get("outcome") == "refund":
+        facts.append("Samuel a choisi de rembourser le client.")
+    return "\n".join(facts)
+
+
+def draft_reply(case_id, consigne=""):
+    """Claude drafts the answer to the customer's last message, from the file, the thread and Samuel's words."""
+    import claude_ai
+    case = database.get_logistics_error(case_id)
+    data = case["data"]
+    thread = []
+    if case.get("thread_id"):
+        for m in _thread(gmail_helper.get_gmail_service(), case["thread_id"])[-8:]:
+            who = "Nous" if "maxsauveur.com" in _sender(m).lower() else "Client"
+            text = _own_words(gmail_helper.parse_email(m).get("body", ""))
+            if text:
+                thread.append(f"[{who}]\n{text[:2000]}")
+    if not thread and data.get("reply"):
+        thread.append(f"[Client]\n{data['reply']}")
+    sizes = [f"{v['size']} : {v['qty'] if v['qty'] is not None else '?'} en stock" for v in variants_of(case)] \
+        if data["kind"] == WRONG else []
+    prompt = REPLY_PROMPT.format(
+        facts=_facts(case), number=case["order_number"],
+        lines="\n".join(f"- {_line_label(l)}" for l in (data.get("order") or {}).get("lines") or []) or "(aucune)",
+        sizes="\n".join(sizes) or "(non disponible)", thread="\n\n".join(thread) or "(aucun message)",
+        consigne=(consigne or "").strip() or "(aucune : si la demande demande une décision, applique la règle 3)")
+    system = claude_ai.get_system_prompt(email_context=f"{data.get('subject') or ''} {thread[-1] if thread else ''}")
+    text = claude_ai._call_claude(system=system, messages=[{"role": "user", "content": prompt}], max_tokens=1500)
+    start = text.find("{")
+    try:
+        result, _ = json.JSONDecoder().raw_decode(text[start:])
+    except Exception:
+        result = {"note_for_samuel": "", "draft": text.strip()}
+    return {"note": (result.get("note_for_samuel") or "").strip(), "draft": (result.get("draft") or "").strip()}
 
 
 def send(case_id, template, subject, body):

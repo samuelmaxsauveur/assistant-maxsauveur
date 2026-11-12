@@ -47,7 +47,9 @@ def erreurs_page():
                 'photos': erreurs.photo_names(selected['id']), 'mail_key': mail_key,
                 'subject': subject, 'body': body, 'cost': erreurs.cost(selected),
                 'billing': erreurs.billing(selected), 'proposed': erreurs.proposed_mail(selected),
-                'defaults': erreurs.form_defaults(selected)}
+                'defaults': erreurs.form_defaults(selected), 'reship_text': erreurs.reship_text(selected),
+                'variants': erreurs.variants_of(selected) if (data.get('kind') == erreurs.WRONG and data.get('confirmed_at')
+                            and not data.get('reship') and selected['status'] not in erreurs.CLOSED + ('to_refund',)) else []}
 
     month = request.args.get('mois') or erreurs.months()[0]
     rows = erreurs.ledger(month) if tab == 'tableau' else []
@@ -140,6 +142,7 @@ ACTIONS = {
     'reglage': lambda i, d: erreurs.set_flag(i, d.get('key'), d.get('value')),
     'ignorer-mail': lambda i, d: erreurs.skip_mail(i, d.get('template')),
     'relire-fil': lambda i, d: erreurs.refresh_from_thread(database.get_logistics_error(i), full=True),
+    'paire': lambda i, d: erreurs.set_reship_item(i, d.get('variant_id')),
 }
 
 
@@ -156,6 +159,16 @@ def action(case_id, action):
         print(f"[Erreurs] {action} failed for file {case_id}: {e}")
         return _fail(e, 500)
     return _ok(case, alert=case['data'].get('alert'))
+
+
+@erreurs_bp.route('/erreurs/<int:case_id>/rediger', methods=['POST'])
+def draft_reply(case_id):
+    _case(case_id)
+    try:
+        return _ok(**erreurs.draft_reply(case_id, (request.json or {}).get('consigne', '')))
+    except Exception as e:
+        print(f"[Erreurs] Draft failed for file {case_id}: {e}")
+        return _fail(e, 500)
 
 
 @erreurs_bp.route('/erreurs/<int:case_id>/envoyer', methods=['POST'])
