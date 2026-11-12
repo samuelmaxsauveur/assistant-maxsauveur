@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "chelsea_chapman",
+      "topic_label": "Chelsea Chapman",
+      "situation": "Chelsea Chapman",
+      "response_template": "Bonjour Florian,\n\nAvec 27,6 cm, notre guide vous place en **42**.\n\nLa Chelsea Chapman chausse de façon assez ajustée, donc avant de vous confirmer la bonne pointure, j'aurais besoin d'une information : avez-vous un pied fort, c'est-à-dire large ou avec un cou-de-pied marqué ? Si c'est le cas, le 42,5 ou le 43 pourra mieux vous convenir.\n\nSur le stock : dès que vous m'avez confirmé ce point, je vous indique ce qui est disponible dans votre pointure.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__pointure_40",
       "topic_label": "Re: Pointure 40",
       "situation": "Re: Pointure 40",
