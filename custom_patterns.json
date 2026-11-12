@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "pointure_40",
+      "topic_label": "Pointure 40",
+      "situation": "Pointure 40",
+      "response_template": "Bonjour Farah,\n\nLe Paul en cuir noir pointure 40 est actuellement en rupture, mais il reviendra fin décembre/début janvier. Je vous invite à activer l'alerte directement sur la fiche produit pour être prévenue dès que la pointure est de nouveau disponible.\n\nUne chose importante à savoir sur ce modèle : il chausse petit. Il est possible que le 41 soit plus adapté pour vous. Si vous avez la longueur de votre pied en cm (talon contre un mur, à mesurer nu), je peux vous confirmer la bonne pointure.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__form_name_form_submitted_2026_11_10_22_29_01",
       "topic_label": "Re: Form name Form submitted 2026-11-10 22:29:01",
       "situation": "Re: Form name Form submitted 2026-11-10 22:29:01",
