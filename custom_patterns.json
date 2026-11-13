@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "livraison_embauchoirs_c_dres",
+      "topic_label": "Livraison embauchoirs cèdres",
+      "situation": "Livraison embauchoirs cèdres",
+      "response_template": "Bonjour Jonny,\n\nLes embauchoirs bois de cèdre sont en précommande avec une livraison prévue pour mi-novembre 2026. Vous recevrez automatiquement un email avec votre lien de suivi dès que votre colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "pointure_question",
       "topic_label": "Pointure Question",
       "situation": "Pointure Question",
