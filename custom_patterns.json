@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__14021_confirm_e",
+      "topic_label": "Re: Commande #14021 confirmée",
+      "situation": "Re: Commande #14021 confirmée",
+      "response_template": "Bonjour Geryl,\n\nNous acceptons la prise en charge de votre paire pour réparation.\n\nVoici la procédure :\n\n1. Imprimez l'étiquette de retour prépayée ci-dessous et collez-la sur le colis :\nhttps://wing-labelling-system.s3.eu-west-3.amazonaws.com/549146d6-4924-4a03-a1b7-297a86f83bcd/LABEL/2026-11-13/LABEL-dfaa9d8d-8122-4b35-a48e-9fa64e8c6ca8-1794584887090-6A08257621283.pdf\n\n2. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour\nIndiquez comme motif : \"réparation\".\nNotez également votre référence de réparation : #14021_REPARATION\n\n3. Glissez le bon de retour à l'intérieur du colis et expédiez-le à :\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nComptez 6 à 8 semaines maximum entre la réception de votre paire et son retour chez vous. Si la réparation n'est pas possible, nous procéderons à un échange directement avec notre atelier.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "probl_me_commande__13938",
       "topic_label": "Problème commande #13938",
       "situation": "Problème commande #13938",
@@ -70,14 +78,6 @@
       "topic_label": "Re: Commande #13223 confirmée",
       "situation": "Re: Commande #13223 confirmée",
       "response_template": "Bonjour Jolan,\n\nVos embauchoirs bois de cèdre (commande #13223) sont en cours d'acheminement, avec une livraison estimée entre le 18 et le 28 novembre. Vous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__commande__14021_confirm_e",
-      "topic_label": "Re: Commande #14021 confirmée",
-      "situation": "Re: Commande #14021 confirmée",
-      "response_template": "Bonjour Géryl,\n\nMerci pour les photos.\n\nAu vu de ce que nous voyons, il s'agit très probablement d'un frottement du cuir contre le papier de soie pendant le transport. Pourriez-vous tester deux choses : frotter légèrement la zone avec votre pouce, puis avec un tissu en coton propre ? Dans ce cas, les traces doivent partir facilement.\n\nDites-nous ce que vous observez et nous ferons le point.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
