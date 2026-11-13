@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__12045___produit_d_fectueux_ou_non_conforme_aux",
+      "topic_label": "Re: Commande #12045 : Produit défectueux ou non conforme aux attentes",
+      "situation": "Re: Commande #12045 : Produit défectueux ou non conforme aux attentes",
+      "response_template": "Bonjour Lucas,\n\nC'est noté. Voici votre code à 40 % sans date d'expiration :\n\n3HRDSDBBJSBA\n\nÀ saisir dans votre panier lors de votre prochain achat, valable sur toute la collection chaussures et ceintures.\n\nBonne continuation et tous nos vœux pour votre mariage.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "question_commande__14017",
       "topic_label": "Question commande #14017",
       "situation": "Question commande #14017",
