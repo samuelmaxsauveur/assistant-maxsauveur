@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_12_22_36_00",
+      "topic_label": "Form name Form submitted 2026-11-12 22:36:00",
+      "situation": "Form name Form submitted 2026-11-12 22:36:00",
+      "response_template": "Bonjour François,\n\nLe remboursement de 202,30 € a bien été émis le 13 novembre sur votre Mastercard se terminant par 2329. Si vous ne le voyez pas encore, comptez quelques jours ouvrés selon les délais de votre banque.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__chelsea_chapman",
       "topic_label": "Re: Chelsea Chapman",
       "situation": "Re: Chelsea Chapman",
