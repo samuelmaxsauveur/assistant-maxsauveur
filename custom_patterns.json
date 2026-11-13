@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__form_name_form_submitted_2026_11_13_14_16_54",
+      "topic_label": "Re: Form name Form submitted 2026-11-13 14:16:54",
+      "situation": "Re: Form name Form submitted 2026-11-13 14:16:54",
+      "response_template": "Bonjour Franck,\n\nAvec 25,5 cm de pied, en ajoutant les 0,2 cm vous êtes à 25,7 cm, ce qui vous place en 40 sur notre guide. Le Paul chaussant petit, nous vous recommandons le 41.\n\nUne chose importante : la taille Nike n'est pas une référence fiable pour les chaussures en cuir. Les sneakers taillent généralement bien plus grand, donc le 43 serait beaucoup trop grand pour vous.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_13_17_37_03",
       "topic_label": "Form name Form submitted 2026-11-13 17:37:03",
       "situation": "Form name Form submitted 2026-11-13 17:37:03",
