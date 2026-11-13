@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "demande_de_suivi___commandes__13219_et__13685",
+      "topic_label": "Demande de suivi – Commandes #13219 et #13685",
+      "situation": "Demande de suivi – Commandes #13219 et #13685",
+      "response_template": "Bonjour Tony,\n\nVos deux commandes sont bien enregistrées et les paiements confirmés.\n\n**Commande #13219 (embauchoirs bois de cèdre)** : il s'agit d'une précommande. La livraison est estimée entre le 18 et le 28 novembre. Vous recevrez automatiquement un email avec votre lien de suivi dès la prise en charge par le transporteur.\n\n**Commande #13685 (Morricone Noire)** : précommande également, avec une livraison prévue pour mi-décembre 2026. Même principe : un email de suivi vous sera envoyé automatiquement à l'expédition.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_13_16_16_10",
       "topic_label": "Form name Form submitted 2026-11-13 16:16:10",
       "situation": "Form name Form submitted 2026-11-13 16:16:10",
