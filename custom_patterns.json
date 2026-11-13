@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__votre_paire_max_sauveur_est_pr_te",
+      "topic_label": "Re: Re: Votre paire Max Sauveur est prête",
+      "situation": "Re: Re: Votre paire Max Sauveur est prête",
+      "response_template": "Bonjour Loïc,\n\nMerci pour les photos et confirmation de l'envoi.\n\nDès réception des mocassins et contrôle de la paire, nous procéderons au remboursement en déduisant le montant de la ceinture Jesse de votre commande. Vous conservez bien la ceinture, et le remboursement s'élèvera à 185 € (374 € payés, moins les 189 € correspondant à la ceinture).\n\nBon week-end à vous également.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "demande_de_suivi___commandes__13219_et__13685",
       "topic_label": "Demande de suivi – Commandes #13219 et #13685",
       "situation": "Demande de suivi – Commandes #13219 et #13685",
