@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__votre_paire_max_sauveur_est_pr_te",
+      "topic_label": "Re: Votre paire Max Sauveur est prête",
+      "situation": "Re: Votre paire Max Sauveur est prête",
+      "response_template": "Bonjour Loïc,\n\nMerci pour votre relance.\n\nNous pouvons reprendre les mocassins Paul, à condition que la paire soit en état de remise en vente (semelle non marquée, cuir intact).\n\nUn point important : la ceinture Jesse vous avait été proposée avec une remise de 150 € conditionnée à l'achat des mocassins. Si vous conservez la ceinture sans les chaussures, cette remise ne s'applique plus. Le remboursement des mocassins sera donc calculé en tenant compte de ce rééquilibrage.\n\nPour procéder au retour, voici la marche à suivre :\n\n1. Téléchargez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (motif : « remboursement »)\n2. Glissez le bon à l'intérieur du colis\n3. Expédiez à :\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle de la paire, nous traitons le remboursement.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__13223_confirm_e",
       "topic_label": "Re: Commande #13223 confirmée",
       "situation": "Re: Commande #13223 confirmée",
