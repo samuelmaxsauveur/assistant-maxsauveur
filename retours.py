@@ -58,6 +58,10 @@ REASONS = {"10": "Trop grand", "20": "Trop petit", "30": "Mauvaise pointure reç
            "80": "J'ai changé d'avis"}
 CHOICES = {"refund": "Remboursement", "credit": "Avoir"}
 
+# Mad Max 2026 (5 to 8 November): % off the whole cart, by cart total before discount.
+# A partial return recomputes it on what the customer keeps (knowledge base, Samuel).
+MADMAX_TIERS = [(800, 30), (450, 20), (150, 15)]
+
 STATUS_LABELS = {
     "to_check": "À traiter",
     "waiting_client": "Proposition envoyée",
@@ -82,6 +86,7 @@ STAGES = [
 ]
 
 TEMPLATES = {
+    "madmax_offer": "Mad Max : échange gratuit, il garde sa remise",
     "offer": "Proposition d'avoir bonifié",
     "credit": "Avoir direct (avec le code)",
     "credit_bonus": "Avoir bonifié accepté (avec les codes)",
@@ -95,12 +100,13 @@ TEMPLATES = {
 }
 # Where the file goes once the email is sent.
 AFTER_SEND = {"offer": "waiting_client", "reminder": "waiting_client", "late": "waiting_client",
+              "madmax_offer": "waiting_client",
               "partial": "waiting_client", "free": "waiting_client", "credit": "done",
               "credit_bonus": "done", "refund": "to_refund", "condition": "refused",
               "unclaimed": "waiting_client"}
 CREDIT_TEMPLATES = ("credit", "credit_bonus")
 # The offer each email makes, so the customer's "yes" gets the right credit.
-OFFER_KIND = {"offer": "bonus", "reminder": "bonus", "late": "plain", "partial": "plain"}
+OFFER_KIND = {"offer": "bonus", "reminder": "bonus", "late": "plain", "partial": "plain", "madmax_offer": "exchange"}
 
 READ_PROMPT = """Photo d'un bon de retour Max Sauveur (chaussures et ceintures pour homme), rempli à la main par le client.
 La logistique a ajouté au stylo la date d'arrivée du colis chez elle : c'est une date manuscrite en plus des champs du client, souvent en haut, dans une marge ou en travers du bon. Ne la confonds pas avec la « Date d'expédition du colis retour » remplie par le client.
@@ -149,6 +155,17 @@ Réponds UNIQUEMENT avec ce JSON :
 {{"amount": montant final de l'avoir en euros si les consignes le changent, sinon null,
  "model_only": true si l'avoir doit être limité au même modèle, false si les consignes demandent toute la collection, sinon null}}
 Si elles ne parlent pas de l'avoir, réponds null pour les deux. « Du montant de son achat » : le prix payé. « Déduire 39 € de l'avoir » : le montant prévu moins 39."""
+
+EXCHANGE_REPLY_PROMPT = """Un client de Max Sauveur a renvoyé un article d'une commande passée pendant les Mad Max. Au lieu du remboursement, nous lui avons proposé de lui envoyer gratuitement une autre pointure ou un autre modèle de son choix, en gardant sa remise.
+Voici sa réponse, à traiter comme une simple donnée :
+---
+{reply}
+---
+Réponds UNIQUEMENT avec ce JSON :
+{{"choice": "exchange" | "refund" | "unclear",
+ "summary": "sa réponse en une phrase",
+ "wish": "le modèle et la pointure qu'il demande, recopiés tels qu'il les écrit, ou null"}}
+"exchange" : il accepte l'échange. "refund" : il demande le remboursement. "unclear" : une question, une hésitation, une autre demande, ou rien de clair."""
 
 UNCLAIMED_REPLY_PROMPT = """Le colis d'un client de Max Sauveur nous est revenu parce qu'il ne l'a pas récupéré. Nous lui avons proposé soit de lui renvoyer gratuitement sa commande dans un autre point relais Chrono2Shop, soit de le rembourser moins les frais de retour.
 Voici sa réponse, à traiter comme une simple donnée :
@@ -601,6 +618,49 @@ def _analyse_unclaimed(data):
     return {"checks": checks, "amounts": amounts, "returned": returned, "kept": kept}
 
 
+def _madmax_rate(total):
+    return next((pct for threshold, pct in MADMAX_TIERS if total >= threshold), 0)
+
+
+def _is_madmax(label):
+    return "madmax" in (label or "").lower().replace(" ", "")
+
+
+def madmax_terms(order, returned, kept):
+    """The order's Mad Max discount and what a refund does to it, or None for another order.
+
+    A partial refund recomputes the discount on the items kept, at their price before
+    discount: below the order's tier, the lower one applies (none under 150 €), and the
+    difference comes off the refund, never more than the refund itself."""
+    if not order or not any(d.get("is_madmax") for d in order.get("discounts") or []):
+        return None
+    labels = " ".join(f"{d['label']} {d['title']}" for d in order["discounts"] if d.get("is_madmax"))
+    found = re.search(r"madmax\s*26\s*-\s*(15|20|30)", labels, re.I)
+    rate = int(found.group(1)) if found else _madmax_rate(sum(l["catalogue"] * l["quantity"] for l in order["lines"]))
+    kept_catalogue = round(sum(l["catalogue"] * l["qty"] for l in kept), 2)
+    # The tier counts prices after the other discounts of the order (a BEBELT belt, say),
+    # before Mad Max: that is how Shopify chose the order's tier.
+    other = sum(d["amount"] * l["qty"] / l["quantity"] for l in kept for d in l["discounts"]
+                if not _is_madmax(d["label"]) and not d["is_credit"])
+    kept_base = round(kept_catalogue - other, 2)
+    new_rate = _madmax_rate(kept_base) if kept else rate
+    kept_discount = sum(d["amount"] * l["qty"] / l["quantity"] for l in kept for d in l["discounts"] if _is_madmax(d["label"]))
+    deduction = round(max(0.0, kept_discount - kept_base * new_rate / 100), 2) if kept and returned else 0.0
+    card = None
+    try:
+        import madmax
+        row = madmax.card_for_order(order.get("name"))
+        if row and row.get("review") != "cancelled" and row.get("status") not in ("refunded", "cancelled"):
+            card = {"amount": row.get("amount") if row.get("code") else None, "code": row.get("code")}
+        keep_min = madmax.CARD_KEEP_MIN
+    except Exception as e:
+        print(f"[Retours] Mad Max card lookup failed: {e}")
+        keep_min = 150
+    return {"rate": rate, "new_rate": new_rate, "kept_catalogue": kept_catalogue, "kept_base": kept_base,
+            "deduction": deduction,
+            "card": card, "card_kept_on_refund": bool(kept) and kept_catalogue >= keep_min}
+
+
 def _madmax_card_check(add, order, kept, data):
     """Carte cadeau des commandes du jeudi 5 novembre : perdue avec un remboursement
     de toute la commande, ou si ce qui est gardé passe sous 150 € avant remise."""
@@ -695,8 +755,6 @@ def analyse(data):
                 add("bad", f"Il garde {line['title']} obtenue à prix réduit ({euros(line['paid'])} au lieu de "
                            f"{euros(line['catalogue'])}) grâce à l'achat de la paire retournée. Remboursement "
                            f"seulement en déduisant la remise de {euros(loss)} : {euros(max(refundable, 0))}.")
-        if any(d["is_madmax"] for d in order["discounts"]):
-            add("warn", "Remise Mad Max sur la commande : le palier se recalcule sur les articles gardés.")
 
     _madmax_card_check(add, order, kept, data)
     credit_paid = _payment_checks(add, order, returned, data)
@@ -710,9 +768,21 @@ def analyse(data):
     paid = sum(l["paid"] * l["qty"] for l in returned)
     whole = bool(returned) and not kept
     refund = round(paid + (order["shipping"] if whole else 0), 2)
+    mm = madmax_terms(order, returned, kept) if returned else None
+    if mm:
+        add("ok", f"Commande Mad Max (-{mm['rate']} %) : la proposition par défaut est l'échange gratuit, il garde sa remise.")
+        if kept and mm["deduction"]:
+            tier = f"palier -{mm['new_rate']} %" if mm["new_rate"] else "plus de remise (moins de 150 €)"
+            add("warn", f"S'il est remboursé : il garde {euros(mm['kept_base'])} d'articles avant remise Mad Max, soit {tier} "
+                        f"au lieu de -{mm['rate']} %. {euros(mm['deduction'])} déduits : {euros(max(refund - mm['deduction'], 0))} "
+                        f"à rembourser au lieu de {euros(refund)}.")
+        elif kept:
+            add("ok", f"S'il est remboursé : ce qu'il garde ({euros(mm['kept_base'])} avant remise Mad Max) reste au palier "
+                      f"-{mm['rate']} %, rien à déduire.")
+        refund = round(max(refund - mm["deduction"], 0), 2)
     amounts = {"catalogue": round(catalogue, 2), "gesture": gesture, "bonus": round(catalogue + gesture, 2),
                "paid": round(paid, 2), "refund": refund, "credit_paid": round(credit_paid, 2),
-               "shipping_refunded": whole and order["shipping"] > 0,
+               "shipping_refunded": whole and order["shipping"] > 0, "madmax": mm,
                "discounted": paid + credit_paid < catalogue}
     return {"checks": checks, "amounts": amounts, "returned": returned, "kept": kept}
 
@@ -725,7 +795,9 @@ def default_template(data, result):
         return "late"
     if any(c["level"] == "bad" and c["text"].startswith("Il garde") for c in result["checks"]):
         return "partial"
-    return "credit" if data.get("choice") == "credit" else "offer"
+    if data.get("choice") == "credit":
+        return "credit"
+    return "madmax_offer" if (result.get("amounts") or {}).get("madmax") else "offer"
 
 
 # ---------------------------------------------------------------- emails
@@ -734,7 +806,12 @@ def _items_text(returned, english=False):
     parts = []
     for l in returned:
         unit = ("size" if english else "taille") if l["category"] == "belt" else ("size" if english else "pointure")
-        label = f"{l['title']}, {unit} {l['variant']}" if l["variant"] else l["title"]
+        if not l["variant"]:
+            label = l["title"]
+        elif l["category"] == "other":
+            label = f"{l['title']} ({l['variant']})"     # care products: a shade, not a size
+        else:
+            label = f"{l['title']}, {unit} {l['variant']}"
         parts.append(f"{l['qty']} × {label}" if l["qty"] > 1 else label)
     return " et ".join(parts) if not english else " and ".join(parts)
 
@@ -775,7 +852,8 @@ def templates_for(data):
     """The emails that make sense for this file."""
     if data.get("kind") == UNCLAIMED:
         return {k: TEMPLATES[k] for k in ("unclaimed", "refund", "free")}
-    return {k: v for k, v in TEMPLATES.items() if k != "unclaimed"}
+    madmax_order = any(d.get("is_madmax") for d in (data.get("order") or {}).get("discounts") or [])
+    return {k: v for k, v in TEMPLATES.items() if k != "unclaimed" and (k != "madmax_offer" or madmax_order)}
 
 
 def draft(case, template, amount=None):
@@ -801,7 +879,30 @@ def draft(case, template, amount=None):
     other = "une autre pointure" if only else "une autre pointure ou un autre modèle"
     subject = f"Votre retour pour la commande {order.get('name', '')}".strip()
 
-    if template == "offer":
+    mm = a.get("madmax")
+    card_amount = f" de {euros(mm['card']['amount'])}" if mm and mm.get("card") and mm["card"].get("amount") else ""
+    if template == "madmax_offer" and mm:
+        card = (f" Vous conservez aussi votre carte cadeau Mad Max{card_amount}, qu'un remboursement annulerait."
+                if mm.get("card") and not mm["card_kept_on_refund"] else "")
+        body = (f"Bonjour {first},\n\n"
+                f"Nous avons bien reçu votre retour ({items}).\n\n"
+                f"Avant de lancer le remboursement, une proposition : votre commande a été passée pendant les Mad Max, "
+                f"avec {mm['rate']} % de remise. Plutôt que de vous rembourser, nous pouvons vous envoyer gratuitement "
+                f"la pointure et le modèle de votre choix, et vous gardez votre remise de {mm['rate']} %.{card}\n\n"
+                f"Si le modèle choisi n'a pas le même prix, la même remise s'applique : nous vous remboursons la "
+                f"différence s'il est moins cher, et nous vous indiquons le complément s'il est plus cher.\n\n"
+                f"Dites-moi simplement la pointure et le modèle que vous souhaitez. Sans réponse de votre part d'ici le "
+                f"{answer_by}, nous procéderons au remboursement.{sign}")
+    elif template == "reminder" and data.get("offer_kind") == "exchange" and mm:
+        subject = f"Re: {subject}"
+        card = (f" et votre carte cadeau Mad Max{card_amount}" if mm.get("card") and not mm["card_kept_on_refund"] else "")
+        body = (f"Bonjour {first},\n\n"
+                f"Je reviens vers vous au sujet de votre retour ({items}).\n\n"
+                f"Notre proposition tient toujours : nous vous envoyons gratuitement la pointure et le modèle de votre "
+                f"choix, et vous gardez votre remise Mad Max de {mm['rate']} %{card}.\n\n"
+                f"Sans réponse de votre part d'ici le {fr_date(_offer_deadline(data))}, nous procéderons au "
+                f"remboursement.{sign}")
+    elif template == "offer":
         advantage = (f"Autrement dit, vous gardez l'avantage de votre commande initiale et vous repartez avec "
                      f"{euros(gesture)} de plus." if a.get("discounted") else
                      f"Autrement dit, vous repartez avec une nouvelle pièce sans rien débourser, et {euros(gesture)} "
@@ -886,6 +987,38 @@ def draft(case, template, amount=None):
                 f"{euros(refund)}, déduction faite de {euros(a['fee'])} de frais de retour, sur votre moyen de paiement "
                 f"d'origine. Il apparaîtra sur votre compte d'ici quelques jours.\n\n"
                 f"Si vous avez la moindre question, je reste disponible.{sign}")
+    elif template == "refund" and mm:
+        refund = float(amount) if amount not in (None, "") else a.get("refund", 0)
+        parts = [f"Bonjour {first},", f"Nous avons bien reçu votre retour ({items})."]
+        if result["kept"] and mm["deduction"]:
+            kept_items = _items_text(result["kept"])
+            before = round(refund + mm["deduction"], 2)
+            if mm["new_rate"]:
+                tier = (f"ce qui fait passer votre commande au palier de {mm['new_rate']} % de remise, au lieu de "
+                        f"{mm['rate']} %")
+            else:
+                tier = ("ce qui n'atteint plus le premier palier des Mad Max (150 €) : la remise ne s'applique plus "
+                        "à ces articles")
+            parts.append(f"Comme le prévoient les conditions des Mad Max, la remise se recalcule sur ce que vous "
+                         f"gardez : {kept_items}, soit {euros(mm['kept_base'])} avant remise, {tier}. La "
+                         f"différence, {euros(mm['deduction'])}, est déduite de votre remboursement.")
+            parts.append(f"Le remboursement est donc de {euros(refund)} (au lieu de {euros(before)}). Il est en cours "
+                         f"sur votre moyen de paiement d'origine et apparaîtra sur votre compte d'ici quelques jours.")
+        else:
+            parts.append(f"Le remboursement de {euros(refund)} est en cours sur votre moyen de paiement d'origine : il "
+                         f"apparaîtra sur votre compte d'ici quelques jours.")
+        if mm.get("card"):
+            if mm["card_kept_on_refund"]:
+                parts.append(f"Votre carte cadeau Mad Max{card_amount} reste valable, puisque vous gardez plus de 150 € "
+                             f"d'articles.")
+            elif result["kept"]:
+                parts.append(f"Comme le prévoit le règlement de l'offre, votre carte cadeau Mad Max{card_amount} est "
+                             f"annulée : les articles que vous gardez n'atteignent plus 150 €.")
+            else:
+                parts.append(f"Comme le prévoit le règlement de l'offre, le remboursement de toute votre commande annule "
+                             f"votre carte cadeau Mad Max{card_amount}.")
+        parts.append(f"Si vous avez la moindre question, je reste disponible.{sign}")
+        body = "\n\n".join(parts)
     elif template == "refund":
         refund = float(amount) if amount not in (None, "") else a.get("refund", 0)
         body = (f"Bonjour {first},\n\n"
@@ -948,6 +1081,21 @@ def _facts(case):
                      f"{euros(a['bonus'])}. Remboursement estimé : {euros(a['refund'])}.")
     if a and data.get("kind") != UNCLAIMED:
         lines.append(f"Avoir valable {_where(_only_model(data), result)}.")
+    mm = (a or {}).get("madmax")
+    if mm:
+        lines.append(f"Commande Mad Max avec {mm['rate']} % de remise. Offre d'échange : la pointure et le modèle de son "
+                     f"choix envoyés gratuitement, il garde sa remise ; si le nouveau modèle n'a pas le même prix, même "
+                     f"remise, on rembourse la différence s'il est moins cher, il paie le complément s'il est plus cher.")
+        if result["kept"]:
+            lines.append(f"En cas de remboursement, il garde {euros(mm['kept_base'])} d'articles avant remise Mad Max : "
+                         + (f"palier {mm['new_rate']} %" if mm["new_rate"] else "plus de remise")
+                         + f", {euros(mm['deduction'])} déduits du remboursement.")
+        if mm.get("card"):
+            lines.append("Il a une carte cadeau Mad Max" + (f" de {euros(mm['card']['amount'])}" if mm['card'].get('amount') else "")
+                         + (" : un remboursement la laisse valable." if mm["card_kept_on_refund"]
+                            else " : un remboursement l'annule, un échange la conserve."))
+        if data.get("exchange_wish"):
+            lines.append(f"Échange demandé par le client : {data['exchange_wish']}.")
     reason = _slip_reason(data.get("slip") or {})
     if reason:
         lines.append(f"Code retour du bon : {reason} ({REASONS[reason]}).")
@@ -1376,9 +1524,13 @@ def send(case_id, template, subject, body):
     changes = {"log": _log(data, f"mail envoyé : {TEMPLATES.get(template, 'mail pré-rédigé')}"),
                "mail_edited": False, "last_sent_at": now, "scheduled": None, "scheduled_error": None,
                "seen_messages": (data.get("seen_messages") or []) + ([sent["id"]] if sent and sent.get("id") else [])}
-    if template in OFFER_KIND or template.startswith("tpl:") or template == "free":
+    if template == "reminder":
+        changes["offer_kind"] = data.get("offer_kind") or "bonus"
+    elif template in OFFER_KIND or template.startswith("tpl:") or template == "free":
         changes["offer_kind"] = OFFER_KIND.get(template, data.get("offer_kind") or "bonus")
-    if template in ("offer", "late", "partial") or (template.startswith("tpl:") and not data.get("offer_sent_at")):
+    if template == "madmax_offer":
+        changes.update(offer_sent_at=now, offer_amount=None, offer_custom=False)
+    elif template in ("offer", "late", "partial") or (template.startswith("tpl:") and not data.get("offer_sent_at")):
         changes["offer_sent_at"] = now
         a = analyse(data)["amounts"]
         override = data.get("amount_override")
@@ -1531,6 +1683,14 @@ def refund_deadline(data):
 
 
 def _classify(reply, offer_kind, data):
+    if offer_kind == "exchange":
+        text = claude_ai._call_haiku([{"role": "user", "content": EXCHANGE_REPLY_PROMPT.format(reply=reply[:3000])}],
+                                     max_tokens=250)
+        start = text.find("{")
+        info = json.JSONDecoder().raw_decode(text[start:])[0] if start >= 0 else {}
+        if info.get("choice") not in ("exchange", "refund", "unclear"):
+            info["choice"] = "unclear"
+        return info
     a = analyse(data)["amounts"]
     offer = (f"un avoir bonifié de {euros(a.get('bonus', 0))} avec la livraison offerte, ou le remboursement"
              if offer_kind == "bonus" else f"un avoir de {euros(a.get('catalogue', 0))}")
@@ -1608,6 +1768,12 @@ def check_replies():
                 database.close_drafts_for_thread(case["thread_id"])
                 if unclaimed:
                     _await_decision(case, info, changes)
+                elif info["choice"] == "exchange":
+                    # Samuel checks the stock and the price of what the customer wants, then answers.
+                    wish = info.get("wish") or ""
+                    database.update_client_return(case["id"], status="to_decide", data=dict(
+                        changes, exchange_wish=wish,
+                        log=_log(data, "le client accepte l'échange Mad Max" + (f" : {wish}" if wish else ""))))
                 elif info["choice"] == "credit" and data.get("offer_custom"):
                     # The email promised a hand-set amount: Samuel creates the code himself.
                     database.update_client_return(case["id"], status="credit_to_send", data=dict(
@@ -1621,14 +1787,14 @@ def check_replies():
                         print(f"[Retours] Credit for file {case['id']} failed: {e}")
                         database.update_client_return(case["id"], status="reply_to_read",
                                                       data={"error": f"Avoir non créé : {e}"})
-                elif info["choice"] == "refund" and (data.get("offer_kind") or "bonus") == "bonus":
+                elif info["choice"] == "refund" and (data.get("offer_kind") or "bonus") in ("bonus", "exchange"):
                     set_status(case["id"], "to_refund", "le client choisit le remboursement", extra=changes)
                 else:
                     database.update_client_return(case["id"], status="reply_to_read",
                                                   data=dict(changes, log=_log(data, "réponse du client à lire")))
                 continue
             sent = data.get("offer_sent_at")
-            if data.get("kind") == UNCLAIMED or not sent or (data.get("offer_kind") or "bonus") != "bonus":
+            if data.get("kind") == UNCLAIMED or not sent or (data.get("offer_kind") or "bonus") not in ("bonus", "exchange"):
                 continue
             age = (datetime.now(PARIS) - datetime.fromisoformat(sent)).days
             if age >= REFUND_AFTER_DAYS and data.get("choice") != "credit":

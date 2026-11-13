@@ -240,9 +240,10 @@
                 <div class="amount"><div class="l">Geste</div><div class="v">+ {{ euros(a.gesture) }}</div></div>
                 <div class="amount hi"><div class="l">Avoir bonifié</div><div class="v">{{ euros(a.bonus) }}</div></div>
                 <div class="amount"><div class="l">Remboursement</div><div class="v">{{ euros(a.refund) }}</div></div>
+                {% if a.madmax %}<div class="amount"><div class="l">Remise Mad Max</div><div class="v">-{{ a.madmax.rate }} %{% if a.madmax.deduction %} → {{ a.madmax.new_rate }} %{% endif %}</div></div>{% endif %}
             </div>
             <div class="meta" style="margin-top:6px;">
-                Remboursement = prix payé pour les articles retournés{% if a.shipping_refunded %}, plus les frais de port (commande renvoyée en entier){% endif %}.
+                Remboursement = prix payé pour les articles retournés{% if a.shipping_refunded %}, plus les frais de port (commande renvoyée en entier){% endif %}{% if a.madmax and a.madmax.deduction %}, moins {{ euros(a.madmax.deduction) }} de remise Mad Max recalculée sur ce qu'il garde{% endif %}.
                 {% if a.credit_paid %} La part payée en avoir ({{ euros(a.credit_paid) }}) n'est pas remboursable.{% endif %}
                 {% if view.refund_deadline %}<br>À rembourser au plus tard le <strong>{{ fr_date(view.refund_deadline) }}</strong> (10 jours ouvrés après l'arrivée, comme promis sur le bon).{% endif %}
             </div>
