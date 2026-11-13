@@ -2,6 +2,30 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_13_16_38_11",
+      "topic_label": "Form name Form submitted 2026-11-13 16:38:11",
+      "situation": "Form name Form submitted 2026-11-13 16:38:11",
+      "response_template": "Bonjour Alban,\n\nMerci pour votre retour.\n\nPourriez-vous nous envoyer une photo des œillets de vos Deck ? Cela nous permettra de regarder la situation de plus près.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "objet___erreur_de_livraison___commande_n__14027",
+      "topic_label": "Objet : Erreur de livraison – Commande n° 14027",
+      "situation": "Objet : Erreur de livraison – Commande n° 14027",
+      "response_template": "Bonjour Gaël,\n\nParfait, merci pour le dépôt. Dès que la paire arrive chez nous, nous vous expédions immédiatement les Brogues Cuir Bordeaux en 42.\n\nVous recevrez automatiquement un email avec votre lien de suivi à l'expédition.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
+      "topic": "re__cde__13849___code_offre_ne_fonctionne_pas",
+      "topic_label": "Re: Cde #13849 | Code offre ne fonctionne pas",
+      "situation": "Re: Cde #13849 | Code offre ne fonctionne pas",
+      "response_template": "Bonjour Emmanuel,\n\nEn regardant vos photos plus en détail, je vois effectivement ce que vous pointez : c'est la tranche du cuir (le bord coupé) qui présente un léger dédoublement juste au-dessus de la ligne de couture.\n\nSoyez totalement rassuré sur l'essentiel : la chaussure ne s'ouvre pas. La couture blanche qui assemble solidement les deux pièces du plateau est parfaitement intacte et sous bonne tension.\n\nCe que vous observez est un phénomène qui peut arriver sur une tranche à vif. Sous l'effet de la flexion répétée du pied lors de la marche, la couche supérieure du cuir (la fleur) peut parfois se soulever très légèrement de la couche interne sur l'extrême bord de la coupe. Il s'agit d'une réaction mécanique de la matière à cet endroit précis, et non d'un défaut de montage ou d'une faiblesse de la chaussure.\n\nS'agissant d'une paire déjà portée et d'une altération purement esthétique de la tranche, cela ne justifie pas un échange. Pour stabiliser ce petit soulèvement et retrouver un bord parfaitement net, la solution la plus efficace est d'appliquer (ou de demander à un cordonnier d'appliquer) une infime pointe de colle forte pour cuir à l'aide d'une aiguille fine juste sous le petit rabat, de presser quelques secondes, puis de lisser la tranche avec un peu de cirage noir.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "re__votre_paire_max_sauveur_est_pr_te",
       "topic_label": "Re: Votre paire Max Sauveur est prête",
       "situation": "Re: Votre paire Max Sauveur est prête",
@@ -86,14 +110,6 @@
       "topic_label": "Retour commande #13899",
       "situation": "Retour commande #13899",
       "response_template": "Bonjour Thomas,\n\nSur les lacets : ils sont bien marron, ton sur ton avec le cuir, et ce depuis le lancement du modèle. Les photos du site présentent le modèle sous plusieurs angles, et les lacets y apparaissent marron. C'est peut-être une question de calibration d'écran, mais en aucun cas des lacets noirs n'ont été fournis avec la Deck Cuir Marron. Si vous souhaitez un contraste plus marqué, vous pouvez tout à fait les remplacer par des lacets noirs, c'est un élément facile à changer chez n'importe quel cordonnier.\n\nSur la pointure : le chaussant peut varier selon la morphologie et la forme du pied, même en choisissant la bonne taille.\n\nSi vous souhaitez retourner la paire, voici la procédure :\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (motif : « remboursement »)\n2. Glissez le bon dans la boîte et emballez soigneusement\n3. Expédiez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous procéderons au remboursement de votre commande.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "objet___erreur_de_livraison___commande_n__14027",
-      "topic_label": "Objet : Erreur de livraison – Commande n° 14027",
-      "situation": "Objet : Erreur de livraison – Commande n° 14027",
-      "response_template": "Bonjour Ricou,\n\nMerci pour les photos. Vous avez bien reçu Brogues - Chaussures Derby Cuir Grainé Bordeaux en 42 au lieu de Brogues (derby cuir bordeaux) en 42 : l'erreur vient de notre préparation, et nous nous en excusons.\n\nVoici votre étiquette de retour prépayée :\nhttps://wing-labelling-system.s3.eu-west-3.amazonaws.com/549146d6-4924-4a03-a1b7-297a86f83bcd/LABEL/2026-11-13/LABEL-69db2315-5566-40f2-865c-c23c91dd2b1a-1794555150821-6A08240394385.pdf\n\nIl vous suffit de l'imprimer, de la coller sur le colis avec la paire dans sa boîte, puis de le déposer dans un bureau de poste ou un point Colissimo.\n\nDès que la paire arrive chez nous, nous vous envoyons la bonne. Vous n'avez rien à payer.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -1870,14 +1886,6 @@
       "topic_label": "Re: Commande #13809 confirmée",
       "situation": "Re: Commande #13809 confirmée",
       "response_template": "Bonjour Sébastien,\n\nPour organiser votre retour, voici la procédure :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez le motif : \"remboursement ou avoir\")\n2. Emballez soigneusement les Brogues Derby Cuir Gras Marron dans leur boîte d'origine avec le bon à l'intérieur\n3. Expédiez à notre adresse logistique :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et contrôle de la paire, le remboursement sera traité sous 10 jours ouvrés.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__cde__13849___code_offre_ne_fonctionne_pas",
-      "topic_label": "Re: Cde #13849 | Code offre ne fonctionne pas",
-      "situation": "Re: Cde #13849 | Code offre ne fonctionne pas",
-      "response_template": "Bonjour Emmanuel,\n\nNous allons voir ce que nous pouvons faire de notre côté pour vous ajouter le cirage à votre commande #13849. On revient vers vous très rapidement.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
