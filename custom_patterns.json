@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__14021_confirm_e",
+      "topic_label": "Re: Commande #14021 confirmée",
+      "situation": "Re: Commande #14021 confirmée",
+      "response_template": "Bonjour Géryl,\n\nMerci pour les photos.\n\nAu vu de ce que nous voyons, il s'agit très probablement d'un frottement du cuir contre le papier de soie pendant le transport. Pourriez-vous tester deux choses : frotter légèrement la zone avec votre pouce, puis avec un tissu en coton propre ? Dans ce cas, les traces doivent partir facilement.\n\nDites-nous ce que vous observez et nous ferons le point.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "livraison_embauchoirs_c_dres",
       "topic_label": "Livraison embauchoirs cèdres",
       "situation": "Livraison embauchoirs cèdres",
