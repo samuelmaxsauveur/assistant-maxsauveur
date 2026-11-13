@@ -2,6 +2,110 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_13_17_37_03",
+      "topic_label": "Form name Form submitted 2026-11-13 17:37:03",
+      "situation": "Form name Form submitted 2026-11-13 17:37:03",
+      "response_template": "Bonjour Michaël,\n\nRavi que les Logger Boots vous plaisent !\n\nLe cuir pleine fleur est effectivement bien plus rigide qu'un cuir Doc Martens au départ, mais il s'assouplit vraiment vite avec le port et se moule parfaitement au pied. Dans quelques semaines, elles seront d'un autre confort.\n\nLe lait nettoyant que vous avez commandé avec sera parfait pour les entretenir au quotidien.\n\nÀ bientôt, j'espère !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_retour_pour_la_commande__13494",
+      "topic_label": "Votre retour pour la commande #13494",
+      "situation": "Votre retour pour la commande #13494",
+      "response_template": "Bonjour Vincent,\n\nNous avons bien reçu votre retour (Brogues - Chaussures Derby Cuir Marron, pointure 44).\n\nLe délai légal de retour est de 14 jours à compter de la réception. Votre commande date du 1er octobre 2026, et nous avons reçu votre retour après ce délai. Nous ne pouvons donc pas procéder au remboursement. En revanche, nous pouvons vous proposer un avoir de 335 €, du montant de votre paire, valable 6 mois sur toute la collection, chaussures et ceintures.\n\nDites-moi simplement si cette solution vous convient et je vous l'envoie dans la foulée.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 3
+    },
+    {
+      "topic": "votre_retour_pour_la_commande__13873",
+      "topic_label": "Votre retour pour la commande #13873",
+      "situation": "Votre retour pour la commande #13873",
+      "response_template": "Bonjour Ugo,\n\nNous avons bien reçu votre retour (Deck - Chaussures Bateau Cuir Marron, pointure 40) et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux vous correspondre, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si une autre pointure ou un autre modèle vous tente, voici ce qu'on peut faire : nous vous envoyons un avoir de 360 €, soit le prix de votre paire (335 €) et 25 € offerts par la maison. Il est valable 6 mois sur toute la collection, chaussures et ceintures, et la livraison de votre nouvelle commande est offerte, à l'adresse de votre choix.\n\nAutrement dit, vous repartez avec une nouvelle pièce sans rien débourser, et 25 € de plus en poche.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte. Sans réponse de votre part d'ici le vendredi 20 novembre, nous procéderons au remboursement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_retour_pour_la_commande__13808",
+      "topic_label": "Votre retour pour la commande #13808",
+      "situation": "Votre retour pour la commande #13808",
+      "response_template": "Bonjour Sofiane,\n\nNous avons bien reçu votre retour (Wayne - Chaussures Boots Cuir Bordeaux, pointure 44) et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux vous correspondre, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si une autre pointure ou un autre modèle vous tente, voici ce qu'on peut faire : nous vous envoyons un avoir de 445 €, soit le prix de votre paire (410 €) et 35 € offerts par la maison. Il est valable 6 mois sur toute la collection, chaussures et ceintures, et la livraison de votre nouvelle commande est offerte, à l'adresse de votre choix.\n\nAutrement dit, vous repartez avec une nouvelle pièce sans rien débourser, et 35 € de plus en poche.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte. Sans réponse de votre part d'ici le vendredi 20 novembre, nous procéderons au remboursement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_retour_pour_la_commande__13891",
+      "topic_label": "Votre retour pour la commande #13891",
+      "situation": "Votre retour pour la commande #13891",
+      "response_template": "Bonjour Ugo,\n\nNous avons bien reçu votre retour (Paul - Chaussures Mocassin Cuir Noir, pointure 40) et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux vous correspondre, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si une autre pointure ou un autre modèle vous tente, voici ce qu'on peut faire : nous vous envoyons un avoir de 370 €, soit le prix de votre paire (335 €) et 35 € offerts par la maison. Il est valable 6 mois sur toute la collection, chaussures et ceintures, et la livraison de votre nouvelle commande est offerte, à l'adresse de votre choix.\n\nAutrement dit, vous repartez avec une nouvelle pièce sans rien débourser, et 35 € de plus en poche.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte. Sans réponse de votre part d'ici le vendredi 20 novembre, nous procéderons au remboursement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_retour_pour_la_commande__13410",
+      "topic_label": "Votre retour pour la commande #13410",
+      "situation": "Votre retour pour la commande #13410",
+      "response_template": "Bonjour Xavier,\n\nNous avons bien reçu votre retour (Deck - Chaussures Bateau Cuir Marron, pointure 43) et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux vous correspondre, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si une autre pointure ou un autre modèle vous tente, voici ce qu'on peut faire : nous vous envoyons un avoir de 360 €, soit le prix de votre paire (335 €) et 25 € offerts par la maison. Il est valable 6 mois sur toute la collection, chaussures et ceintures, et la livraison de votre nouvelle commande est offerte, à l'adresse de votre choix.\n\nAutrement dit, vous repartez avec une nouvelle pièce sans rien débourser, et 25 € de plus en poche.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte. Sans réponse de votre part d'ici le vendredi 20 novembre, nous procéderons au remboursement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_retour_pour_la_commande__13822",
+      "topic_label": "Votre retour pour la commande #13822",
+      "situation": "Votre retour pour la commande #13822",
+      "response_template": "Bonjour Philippe,\n\nNous avons bien reçu votre retour (Deck - Chaussures Bateau Cuir Marron, pointure 42 et Deck - Chaussures Bateau Cuir Bordeaux, pointure 41.5) et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux vous correspondre, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si une autre pointure ou un autre modèle vous tente, voici ce qu'on peut faire : nous vous envoyons un avoir de 720 €, soit le prix de vos articles (670 €) et 50 € offerts par la maison. Il est valable 6 mois sur toute la collection, chaussures et ceintures, et la livraison de votre nouvelle commande est offerte, à l'adresse de votre choix.\n\nAutrement dit, vous repartez avec une nouvelle pièce sans rien débourser, et 50 € de plus en poche.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte. Sans réponse de votre part d'ici le vendredi 20 novembre, nous procéderons au remboursement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_retour_pour_la_commande__13480",
+      "topic_label": "Votre retour pour la commande #13480",
+      "situation": "Votre retour pour la commande #13480",
+      "response_template": "Bonjour Maxime,\n\nNous avons bien reçu votre retour (Wayne - Chaussures Boots Cuir Bordeaux, pointure 42) et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux vous correspondre, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si une autre pointure ou un autre modèle vous tente, voici ce qu'on peut faire : nous vous envoyons un avoir de 445 €, soit le prix de votre paire (410 €) et 35 € offerts par la maison. Il est valable 6 mois sur toute la collection, chaussures et ceintures, et la livraison de votre nouvelle commande est offerte, à l'adresse de votre choix.\n\nAutrement dit, vous repartez avec une nouvelle pièce sans rien débourser, et 35 € de plus en poche.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte. Sans réponse de votre part d'ici le vendredi 20 novembre, nous procéderons au remboursement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_retour_pour_la_commande__13589",
+      "topic_label": "Votre retour pour la commande #13589",
+      "situation": "Votre retour pour la commande #13589",
+      "response_template": "Bonjour Vincent,\n\nNous avons bien reçu votre retour (Brogues - Chaussures Derby Daim Marron Noisette, pointure 42). Le remboursement de 244,25 € est en cours sur votre moyen de paiement d'origine : il apparaîtra sur votre compte d'ici quelques jours.\n\nSi vous avez la moindre question, je reste disponible.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_avoir_pour_la_commande__13469",
+      "topic_label": "Votre avoir pour la commande #13469",
+      "situation": "Votre avoir pour la commande #13469",
+      "response_template": "Bonjour Michel,\n\nNous avons bien reçu votre retour (Chelsea Chapman - Chaussures Boots Cuir Noir) et venons de générer votre avoir d'un montant de 289 €.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\nFVTRD8TQAANG\n\nConditions d'utilisation :\n- valable jusqu'au 13/05/2027,\n- utilisable uniquement sur le modèle Chelsea Chapman - Chaussures Boots Cuir Noir, en une seule commande,\n- réservé à votre adresse e-mail (robreau.michel@gmail.com) : pensez à commander avec cette adresse,\n- non cumulable avec d'autres codes ou promotions.\n\nSi vous avez la moindre question, je reste disponible.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_avoir_pour_la_commande__13823",
+      "topic_label": "Votre avoir pour la commande #13823",
+      "situation": "Votre avoir pour la commande #13823",
+      "response_template": "Bonjour Manuel,\n\nNous avons bien reçu votre retour (Brogues - Chaussures Derby Cuir Bordeaux) et venons de générer votre avoir d'un montant de 335 €.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\nY5RYHS2YL9VN\n\nConditions d'utilisation :\n- valable jusqu'au 13/05/2027,\n- utilisable uniquement sur le modèle Brogues - Chaussures Derby Cuir Bordeaux, en une seule commande,\n- réservé à votre adresse e-mail (msauveplane@pechbleu.com) : pensez à commander avec cette adresse,\n- non cumulable avec d'autres codes ou promotions.\n\nSi vous avez la moindre question, je reste disponible.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_avoir_pour_la_commande__13430",
+      "topic_label": "Votre avoir pour la commande #13430",
+      "situation": "Votre avoir pour la commande #13430",
+      "response_template": "Bonjour Emmanuel,\n\nNous avons bien reçu votre retour (Chelsea Chapman - Chaussures Boots Cuir Grainé Bordeaux) et venons de générer votre avoir d'un montant de 289 €.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\nGGKCJDMYZYUB\n\nConditions d'utilisation :\n- valable jusqu'au 13/05/2027,\n- utilisable uniquement sur le modèle Chelsea Chapman - Chaussures Boots Cuir Grainé Bordeaux, en une seule commande,\n- réservé à votre adresse e-mail (belfato@gmail.com) : pensez à commander avec cette adresse,\n- non cumulable avec d'autres codes ou promotions.\n\nSi vous avez la moindre question, je reste disponible.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_avoir_pour_la_commande__13459",
+      "topic_label": "Votre avoir pour la commande #13459",
+      "situation": "Votre avoir pour la commande #13459",
+      "response_template": "Bonjour Simon,\n\nNous avons bien reçu votre retour (Jason - Ceinture Western en Cuir de veau daim Marron) et venons de générer votre avoir d'un montant de 149 €.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\nX9Y37F7UCMEP\n\nConditions d'utilisation :\n- valable jusqu'au 13/05/2027,\n- utilisable uniquement sur le modèle Jason - Ceinture Western en Cuir de veau daim Marron, en une seule commande,\n- réservé à votre adresse e-mail (simon.baas02@gmail.com) : pensez à commander avec cette adresse,\n- non cumulable avec d'autres codes ou promotions.\n\nSi vous avez la moindre question, je reste disponible.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__mad_max___les_remises_de_cette_ann_e",
       "topic_label": "Re: Re: Mad Max : les remises de cette année",
       "situation": "Re: Re: Mad Max : les remises de cette année",
@@ -1504,14 +1608,6 @@
       "response_template": "Bonjour François,\n\nNous avons bien reçu votre retour (Le Moc Jagger - Chaussures Mocassin Cuir Pony Marron, pointure 39) et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux vous correspondre, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si une autre pointure ou un autre modèle vous tente, voici ce qu'on peut faire : nous vous envoyons un avoir de 324 €, soit le prix de votre paire (289 €) et 35 € offerts par la maison. Il est valable 6 mois sur toute la collection, chaussures et ceintures, et la livraison de votre nouvelle commande est offerte, à l'adresse de votre choix.\n\nAutrement dit, vous gardez l'avantage de votre commande initiale et vous repartez avec 35 € de plus.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte. Sans réponse de votre part d'ici le vendredi 6 novembre, nous procéderons au remboursement.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "votre_retour_pour_la_commande__13494",
-      "topic_label": "Votre retour pour la commande #13494",
-      "situation": "Votre retour pour la commande #13494",
-      "response_template": "Bonjour Vincent,\n\nNous avons bien reçu votre retour (Brogues - Chaussures Derby Cuir Marron, pointure 44) et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux vous correspondre, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si une autre pointure ou un autre modèle vous tente, voici ce qu'on peut faire : nous vous envoyons un avoir de 370 €, soit le prix de votre paire (335 €) et 35 € offerts par la maison. Il est valable 6 mois sur toute la collection, chaussures et ceintures, et la livraison de votre nouvelle commande est offerte, à l'adresse de votre choix.\n\nAutrement dit, vous repartez avec une nouvelle pièce sans rien débourser, et 35 € de plus en poche.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte. Sans réponse de votre part d'ici le vendredi 6 novembre, nous procéderons au remboursement.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 2
     },
     {
       "topic": "votre_avoir_pour_la_commande__13443",
