@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "conseil_pointure___brogues_derby_cuir_noir",
+      "topic_label": "Conseil pointure – Brogues Derby Cuir Noir",
+      "situation": "Conseil pointure – Brogues Derby Cuir Noir",
+      "response_template": "Bonjour Seiji,\n\nAvec 27,2 cm (pied le plus long), notre guide vous placerait en 43, mais les Brogues Derby Cuir Noir chaussent grand : je vous recommande le 42.\n\nBonne commande !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
