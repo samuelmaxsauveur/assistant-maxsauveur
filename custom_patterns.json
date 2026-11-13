@@ -2,6 +2,38 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "retour_commande__13899",
+      "topic_label": "Retour commande #13899",
+      "situation": "Retour commande #13899",
+      "response_template": "Bonjour Thomas,\n\nSur les lacets : ils sont bien marron, ton sur ton avec le cuir, et ce depuis le lancement du modèle. Les photos du site présentent le modèle sous plusieurs angles, et les lacets y apparaissent marron. C'est peut-être une question de calibration d'écran, mais en aucun cas des lacets noirs n'ont été fournis avec la Deck Cuir Marron. Si vous souhaitez un contraste plus marqué, vous pouvez tout à fait les remplacer par des lacets noirs, c'est un élément facile à changer chez n'importe quel cordonnier.\n\nSur la pointure : le chaussant peut varier selon la morphologie et la forme du pied, même en choisissant la bonne taille.\n\nSi vous souhaitez retourner la paire, voici la procédure :\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (motif : « remboursement »)\n2. Glissez le bon dans la boîte et emballez soigneusement\n3. Expédiez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous procéderons au remboursement de votre commande.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "objet___erreur_de_livraison___commande_n__14027",
+      "topic_label": "Objet : Erreur de livraison – Commande n° 14027",
+      "situation": "Objet : Erreur de livraison – Commande n° 14027",
+      "response_template": "Bonjour Ricou,\n\nMerci pour les photos. Vous avez bien reçu Brogues - Chaussures Derby Cuir Grainé Bordeaux en 42 au lieu de Brogues (derby cuir bordeaux) en 42 : l'erreur vient de notre préparation, et nous nous en excusons.\n\nVoici votre étiquette de retour prépayée :\nhttps://wing-labelling-system.s3.eu-west-3.amazonaws.com/549146d6-4924-4a03-a1b7-297a86f83bcd/LABEL/2026-11-13/LABEL-69db2315-5566-40f2-865c-c23c91dd2b1a-1794555150821-6A08240394385.pdf\n\nIl vous suffit de l'imprimer, de la coller sur le colis avec la paire dans sa boîte, puis de le déposer dans un bureau de poste ou un point Colissimo.\n\nDès que la paire arrive chez nous, nous vous envoyons la bonne. Vous n'avez rien à payer.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "d_faut_montage___une_commande__13466_est_en_transit",
+      "topic_label": "Défaut montage : Une commande #13466 est en transit",
+      "situation": "Défaut montage : Une commande #13466 est en transit",
+      "response_template": "Bonjour Léo,\n\nNous avons examiné vos photos en détail avec notre chef d'atelier. Votre paire ne présente aucun défaut de fabrication ni faiblesse structurelle : ce que vous observez sont des caractéristiques inhérentes au montage artisanal.\n\nQuelques précisions point par point :\n\nCe que vous identifiez comme une fissure au niveau de la semelle est en réalité le raccord de montage. Cette jonction est une étape technique obligatoire sur ce type de construction et se retrouve sur toutes nos paires.\n\nLes légers plis et marques autour des empiècements sont la tension naturelle exercée par la machine à coudre sur la peau lors de la piqûre, ainsi que le comportement normal de notre cuir pleine fleur lors de sa mise sur forme.\n\nLe léger relief sur la tranche de la semelle est la trace d'une finition manuelle. Contrairement à des chaussures industrielles aux cuirs rectifiés et recouverts de fixateurs synthétiques, notre cuir vit et porte l'empreinte de la main de l'artisan.\n\nCes détails garantissent l'authenticité de votre paire et disparaîtront visuellement dès les premiers ports, lorsque le cuir commencera à se faire à votre pied.\n\nSi toutefois cette approche brute et artisanale ne correspond pas à vos attentes esthétiques, nous préférons procéder à la résolution de la vente plutôt qu'à un échange : une nouvelle paire présenterait exactement les mêmes attributs. Vous pouvez dans ce cas nous retourner la paire pour un remboursement, sous réserve qu'elle soit dans un état strictement neuf, sans aucun pli de marche lié à un essayage.\n\nDites-nous comment vous souhaitez procéder.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "commande__13998_confirm_e",
+      "topic_label": "Commande #13998 confirmée",
+      "situation": "Commande #13998 confirmée",
+      "response_template": "Bonjour Florian,\n\nNotre message s'est croisé et nous regardons ce que nous pouvons faire pour votre pointure. Nous revenons vers vous très rapidement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 3
+    },
+    {
       "topic": "chelsea_chapman",
       "topic_label": "Chelsea Chapman",
       "situation": "Chelsea Chapman",
@@ -128,14 +160,6 @@
       "response_template": "Bonjour Antoine,\n\nOui, le remboursement est possible. Sur le bon de retour, indiquez simplement \"remboursement\" comme motif à la place de \"avoir\".\n\nUn point important à noter : si vous renvoyez la commande pour être remboursé, votre carte cadeau de 60 € (MADMAX-46WQBG) sera perdue. Elle n'est conservée qu'en cas d'échange ou d'avoir.\n\nDès réception et contrôle de la paire, le remboursement de 348,50 € sera émis sur votre Visa sous 3 à 5 jours ouvrés.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "commande__13998_confirm_e",
-      "topic_label": "Commande #13998 confirmée",
-      "situation": "Commande #13998 confirmée",
-      "response_template": "Bonjour Florian,\n\nMerci pour les photos. Vous avez bien reçu Brogues Derby cuir grainé bordeaux en 40 au lieu de Brogues (derby cuir bordeaux) en 40 : l'erreur vient de notre préparation, et nous nous en excusons.\n\nVoici votre étiquette de retour prépayée :\nhttps://wing-labelling-system.s3.eu-west-3.amazonaws.com/549146d6-4924-4a03-a1b7-297a86f83bcd/LABEL/2026-11-11/LABEL-f8edc593-300f-43dc-b968-a08c8145913b-1794395544119-6A08222673040.pdf\n\nIl vous suffit de l'imprimer, de la coller sur le colis avec la paire dans sa boîte, puis de le déposer dans un bureau de poste ou un point Colissimo.\n\nDès que la paire arrive chez nous, nous vous envoyons la bonne. Vous n'avez rien à payer.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 2
     },
     {
       "topic": "re__re__la_commande__13862_a__t__annul_e",
