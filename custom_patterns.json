@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__mad_max___les_remises_de_cette_ann_e",
+      "topic_label": "Re: Re: Mad Max : les remises de cette année",
+      "situation": "Re: Re: Mad Max : les remises de cette année",
+      "response_template": "Bonjour Jimmy,\n\nAvec 27 cm et un pied large avec un fort cou-de-pied, le 43 sera alors la bonne pointure pour vous sur le Paul. \n\nPour l'échange, voici la procédure :\n\n1. Téléchargez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (motif : « avoir »)\n2. Glissez-le dans la boîte avec la paire\n3. Expédiez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander le 43. Je vous conseille de passer la nouvelle commande rapidement dès réception de l'avoir, les stocks se réduisent effectivement.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_12_22_36_00",
       "topic_label": "Form name Form submitted 2026-11-12 22:36:00",
       "situation": "Form name Form submitted 2026-11-12 22:36:00",
