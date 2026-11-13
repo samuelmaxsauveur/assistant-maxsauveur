@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "question_commande__14017",
+      "topic_label": "Question commande #14017",
+      "situation": "Question commande #14017",
+      "response_template": "Bonjour Sébastien,\n\nPas de souci, nous mettons un 43,5 de côté pour vous. Faites le retour rapidement pour qu'on puisse vous l'expédier dès réception de la paire.\n\nPour le retour : téléchargez le bon sur maxsauveur.com/pages/livraison-et-retour (motif : « avoir »), glissez-le dans la boîte et expédiez à :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_13_14_16_54",
       "topic_label": "Form name Form submitted 2026-11-13 14:16:54",
       "situation": "Form name Form submitted 2026-11-13 14:16:54",
