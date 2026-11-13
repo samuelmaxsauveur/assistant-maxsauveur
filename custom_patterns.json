@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_13_16_16_10",
+      "topic_label": "Form name Form submitted 2026-11-13 16:16:10",
+      "situation": "Form name Form submitted 2026-11-13 16:16:10",
+      "response_template": "Bonjour Pierre,\n\nAucun réassort n'est prévu sur la ceinture Luca en cuir marron pull-up pour le moment.\n\nSi la situation évolue, vous serez notifié en priorité en activant l'alerte directement sur la fiche produit.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_13_16_38_11",
       "topic_label": "Form name Form submitted 2026-11-13 16:38:11",
       "situation": "Form name Form submitted 2026-11-13 16:38:11",
