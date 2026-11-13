@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "pointure_question",
+      "topic_label": "Pointure Question",
+      "situation": "Pointure Question",
+      "response_template": "Bonjour Peiao,\n\nAvec 28 cm, je vous recommande le **43** sur notre chaussure bateau.\n\nBonne commande !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "infos_commande__13040",
+      "topic_label": "Infos commande #13040",
+      "situation": "Infos commande #13040",
+      "response_template": "Bonjour Raphaëlle,\n\nMalheureusement, la ceinture à boucle personnalisable est un article réalisé sur mesure. Comme indiqué sur la fiche produit et dans nos conditions générales, nous ne pouvons ni procéder à un échange ni à un remboursement sur ce type de commande.\n\nNous sommes vraiment désolés.\n\nCordialement,\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "conseil_pointure___brogues_derby_cuir_noir",
       "topic_label": "Conseil pointure – Brogues Derby Cuir Noir",
       "situation": "Conseil pointure – Brogues Derby Cuir Noir",
@@ -3030,14 +3046,6 @@
       "topic_label": "Commande #13052",
       "situation": "Commande #13052",
       "response_template": "Bonjour Nicolas,\n\nVotre commande #13052 (Boucle Menthe - Ceinture Cuir Suede Cognac) a bien été passée le 4 août et correspond à la précommande de la vague 1 des ceintures à boucles personnalisables. La livraison est prévue pour mi-octobre 2026.\n\nConcernant le point relais, votre colis est bien orienté vers La Poste de Saint-Denis la Plaine. Dès que l'expédition est déclenchée, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "infos_commande__13040",
-      "topic_label": "Infos commande #13040",
-      "situation": "Infos commande #13040",
-      "response_template": "Bonjour Raphaëlle,\n\nVotre commande #13040 porte sur une ceinture à boucle personnalisable (Boucle Ivoire), passée début août. Il s'agit d'une précommande de la vague 1, dont la livraison est estimée à mi-octobre 2026.\n\nVous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
