@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__chelsea_chapman",
+      "topic_label": "Re: Chelsea Chapman",
+      "situation": "Re: Chelsea Chapman",
+      "response_template": "Bonjour Florian,\n\nAvec un pied classique, le **42** est la bonne pointure pour vous sur la Chelsea Chapman.\n\nPour le stock en 42, je vous reviens rapidement avec l'information.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__12045___produit_d_fectueux_ou_non_conforme_aux",
       "topic_label": "Re: Commande #12045 : Produit défectueux ou non conforme aux attentes",
       "situation": "Re: Commande #12045 : Produit défectueux ou non conforme aux attentes",
