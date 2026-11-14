@@ -4,7 +4,7 @@ import math
 import json
 import time
 import anthropic
-from knowledge_base import KNOWLEDGE_BASE
+from knowledge_base import KNOWLEDGE_BASE, DATE_FACTS
 
 BASE_SYSTEM_PROMPT = f"""Tu es John, du service client de Max Sauveur.
 
@@ -262,7 +262,8 @@ def get_system_prompt(email_context='', extra_queries=None):
             if daily_doc:
                 extra += f"\n\n--- DOCUMENT DES RÉPONSES TYPES (mis à jour chaque soir) ---\n{daily_doc['response_template']}\n"
             # Then inject top relevant individual patterns
-            non_meta = [p for p in patterns if not p.get('topic', '').startswith('_')]
+            non_meta = [p for p in patterns if not p.get('topic', '').startswith('_')
+                        and not contradicts_date_facts(p.get('response_template'))]
             selected = _select_relevant_patterns(email_context, non_meta, top_n=30,
                                                  extra_queries=extra_queries)
             if selected:
@@ -277,6 +278,32 @@ def get_system_prompt(email_context='', extra_queries=None):
     except Exception:
         pass
     return BASE_SYSTEM_PROMPT
+
+
+def contradicts_date_facts(text):
+    """True when a saved reply gives a product a delivery date the knowledge base denies.
+
+    Checked paragraph by paragraph: a reply about two orders gives each its own
+    paragraph (embauchoirs in November, Gigi in December), and a correction
+    (« mi-décembre, et non mi-novembre ») does not count as the wrong date."""
+    for paragraph in re.split(r"\n\s*\n", text or ""):
+        months = r"(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)"
+        cleaned = re.sub(rf"(et )?(non|pas) (pas )?(pour )?(la |le )?(mi-|fin |début )?{months}( 2026)?|"
+                         rf"au lieu de (la |le )?(mi-|fin |début )?{months}( 2026)?", "", paragraph, flags=re.I)
+        for fact in DATE_FACTS:
+            if re.search(fact["products"], cleaned, re.I) and re.search(fact["wrong"], cleaned, re.I):
+                return True
+    return False
+
+
+def _date_facts_for(orders):
+    """The delivery dates to give for the products of these orders, from the knowledge base."""
+    names = " ".join(p.get("name", "") for o in orders or [] for p in o.get("products", []))
+    lines = [f"- {f['label']} : {f['date']}" for f in DATE_FACTS if re.search(f["products"], names, re.I)]
+    if not lines:
+        return ""
+    return ("\n\n--- DATES DE LIVRAISON À DONNER (base de connaissances, prioritaires sur toute ancienne réponse) ---\n"
+            + "\n".join(lines))
 
 
 def _build_context(email_body, email_subject, customer_name, order_info=None, history=None, orders=None):
@@ -322,6 +349,7 @@ def _build_context(email_body, email_subject, customer_name, order_info=None, hi
                     context += f"\nLien suivi : {o['tracking_url']}"
                 items_str = ', '.join([f"{p['name']} x{p['qty']}" for p in o['products']])
                 context += f"\nArticles : {items_str}"
+        context += _date_facts_for(orders_to_show[:3])
         context += _shopify_timelines(orders_to_show[:3])
         context += _madmax_cards(orders_to_show[:3])
 

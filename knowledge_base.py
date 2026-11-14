@@ -3,6 +3,16 @@ Base de connaissances Max Sauveur - Extrait des historiques SAV
 Ce fichier est utilisé comme contexte supplémentaire pour Claude lors de la génération des réponses.
 """
 
+# Delivery dates the drafts must give, by product (same facts as the text below).
+# A saved reply that gives another month for these products is never shown to
+# Claude: an old wrong answer (« La Gigi... mi-novembre ») kept coming back.
+DATE_FACTS = [
+    {"products": r"\b(la )?gigi\b|\bmorricone\b", "label": "ceintures Gigi et Morricone (précommande d'octobre)",
+     "date": "mi-décembre 2026", "wrong": r"mi-novembre|novembre 2026|fin octobre|mi-octobre"},
+    {"products": r"embauchoir", "label": "embauchoirs bois de cèdre (précommande)",
+     "date": "mi-novembre 2026", "wrong": r"mi-décembre|fin octobre"},
+]
+
 KNOWLEDGE_BASE = """
 === BASE DE CONNAISSANCES SAV MAX SAUVEUR ===
 

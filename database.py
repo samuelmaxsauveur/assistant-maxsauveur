@@ -258,8 +258,27 @@ def init_db():
         conn.commit()
         # Seed response_patterns from custom_patterns.json (survives Railway redeploys)
         _seed_patterns_from_json(conn)
+        _fix_wrong_dates(conn)
     finally:
         conn.close()
+
+
+# Replies sent in October that gave the Gigi belts « mi-novembre » instead of
+# « mi-décembre » (Samuel, 14/11/2026). Corrected in place, once, so they stop
+# serving as models; the replies already sent to these customers stay as they were.
+WRONG_DATE_REPLIES = ("commande__13661_en_attente_r_ception", "commande__13524",
+                      "commande_n_13637_non_exp_di_e", "re__commande__13543_confirm_e")
+
+
+def _fix_wrong_dates(conn):
+    try:
+        for topic in WRONG_DATE_REPLIES:
+            conn.execute("UPDATE response_patterns SET response_template = REPLACE(response_template, "
+                         "'mi-novembre 2026', 'mi-décembre 2026') WHERE topic = ? AND response_template LIKE "
+                         "'%mi-novembre 2026%'", (topic,))
+        conn.commit()
+    except Exception as e:
+        print(f"[DB] Date fix skipped: {e}")
 
 
 def _seed_patterns_from_json(conn):
