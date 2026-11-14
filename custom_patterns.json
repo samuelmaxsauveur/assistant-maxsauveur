@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__form_name_form_submitted_2026_11_13_16_38_11",
+      "topic_label": "Re :Re: Form name Form submitted 2026-11-13 16:38:11",
+      "situation": "Re :Re: Form name Form submitted 2026-11-13 16:38:11",
+      "response_template": "Bonjour Alban,\n\nMerci pour les photos.\n\nAprès vérification, ce sont bien les mêmes œillets que sur le site. La différence que vous percevez est liée à la lumière du studio utilisée pour les photos produit, qui les fait paraître plus dorés et contrastés.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
