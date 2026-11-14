@@ -1002,10 +1002,49 @@ RÈGLES
 3. Si le client demande ce que seul Samuel peut décider (une autre pointure ou un autre modèle, un remboursement, un geste, un délai) et que la consigne ne le tranche pas, ne réponds pas sur le fond : écris une réponse courte qui dit qu'on regarde et qu'on revient vers lui très rapidement. Dans note_for_samuel, donne seulement la décision à prendre et les faits utiles (le stock de la pointure demandée et des pointures voisines). Ne lui propose aucune solution ni aucun geste (avoir, remboursement, réduction, autre modèle) : c'est lui qui décide.
 4. Ne cite jamais une pointure, un délai ou une disponibilité absents de ce qui précède. Une pointure à 0 en stock n'est pas disponible. Ne promets rien que la consigne ne dit pas : ni réserver ou mettre de côté une paire, ni un délai, ni une date.
 5. Les excuses ont déjà été faites dans le fil : ne t'excuse pas à nouveau. Pas de tiret long, ni dans le mail ni dans la note. Vouvoiement, sauf si le client tutoie. Signe « John de Max Sauveur ».
+7. Chaque point de la consigne de Samuel doit se retrouver dans le mail, avec les montants exacts du dossier. Pour une commande Mad Max, si le client demande un remboursement, explique avec les chiffres du dossier ce qu'il y perd (la remise sur toute la commande, le montant qu'il recevrait, sa carte cadeau) : ne demande jamais ces montants à Samuel, ils sont dans le dossier.
 6. Si ta réponse annonce l'envoi d'une autre pointure que la paire à renvoyer du dossier, rappelle à Samuel dans note_for_samuel de la changer dans le dossier avant le renvoi.
 
 Réponds uniquement avec ce JSON :
 {{"note_for_samuel": "1 ou 2 phrases pour Samuel", "draft": "le mail complet, de « Bonjour » à la signature"}}"""
+
+
+def madmax_effect(case):
+    """What refunding the missing item (or the wrong pair) would do to a Mad Max order, in words, or ''."""
+    data = case["data"]
+    order = data.get("order") or {}
+    lines = order.get("lines") or []
+    chosen = data.get("lines") or []
+    if not lines or not chosen:
+        return ""
+    qty = {i: (int((data.get("missing_qty") or {}).get(str(i)) or 0) or (1 if data["kind"] == WRONG else lines[i]["quantity"]))
+           for i in chosen if 0 <= i < len(lines)}
+    returned = [dict(lines[i], qty=q) for i, q in qty.items()]
+    kept = [dict(l, qty=l["quantity"] - qty.get(i, 0)) for i, l in enumerate(lines) if l["quantity"] - qty.get(i, 0) > 0]
+    mm = retours.madmax_terms(order, returned, kept)
+    if not mm:
+        return ""
+    paid = round(sum(l["paid"] * l["qty"] for l in returned), 2)
+    refund = round(max(paid - mm["deduction"], 0), 2)
+    what = ", ".join(_qty_label(lines[i], q) for i, q in qty.items())
+    total = round(sum(l["catalogue"] * l["quantity"] for l in lines), 2)
+    text = (f"Commande Mad Max avec {mm['rate']} % de remise ({retours.euros(total)} d'articles avant remise). "
+            f"Si on rembourse {what} (payé {retours.euros(paid)}) au lieu de "
+            f"le renvoyer, ce qu'il garde vaut {retours.euros(mm['kept_base'])} avant remise : ")
+    if mm["deduction"]:
+        tier = f"palier de {mm['new_rate']} %" if mm["new_rate"] else "plus aucune remise (moins de 150 €)"
+        text += (f"{tier} sur TOUTE la commande au lieu de {mm['rate']} %, soit {retours.euros(mm['deduction'])} de remise perdue, "
+                 f"déduite du remboursement : il recevrait {retours.euros(refund)}"
+                 + (" (rien du tout)." if not refund else "."))
+    else:
+        text += f"même palier, rien à déduire : il recevrait {retours.euros(refund)}."
+    if mm.get("card"):
+        card = f" de {retours.euros(mm['card']['amount'])}" if mm["card"].get("amount") else ""
+        text += (f" Sa carte cadeau Mad Max{card} resterait valable." if mm["card_kept_on_refund"]
+                 else f" Sa carte cadeau Mad Max{card} serait annulée (ce qu'il garde passe sous 150 €).")
+    if data.get("reship"):
+        text += f" Le renvoi {data['reship']['ref']} est déjà créé : en le gardant, il conserve sa remise et sa carte."
+    return text
 
 
 def _facts(case):
@@ -1026,6 +1065,12 @@ def _facts(case):
         facts.append(f"Suivi du renvoi : {data['reship_tracking'].get('url') or data['reship_tracking'].get('id')}")
     if data.get("outcome") == "refund":
         facts.append("Samuel a choisi de rembourser le client.")
+    try:
+        effect = madmax_effect(case)
+        if effect:
+            facts.append(effect)
+    except Exception as e:
+        print(f"[Erreurs] Mad Max effect unavailable for file {case['id']}: {e}")
     return "\n".join(facts)
 
 
