@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__une_commande__14035_est_en_transit",
+      "topic_label": "Re: Une commande #14035 est en transit",
+      "situation": "Re: Une commande #14035 est en transit",
+      "response_template": "Bonjour Léonard,\n\nContent que la paire vous plaise !\n\nCe type de marque peut apparaître pendant le transport sur du cuir pleine fleur, notamment par frottement avec le carton. La bonne nouvelle : un simple lait naturel pour cuir devrait faire disparaître ça très rapidement. Appliquez-en une fine couche sur la zone concernée, laissez pénétrer quelques minutes, puis essuyez avec un chiffon doux.\n\nN'hésitez pas à nous envoyer une photo après si ça ne disparaît pas complètement.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__commande__13543_confirm_e",
       "topic_label": "Re: Re: Commande #13543 confirmée",
       "situation": "Re: Re: Commande #13543 confirmée",
