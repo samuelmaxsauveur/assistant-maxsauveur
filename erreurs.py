@@ -141,11 +141,14 @@ def form_defaults(case):
     if not received:
         received, source = mail.get("received"), "mail"
     missing = verdict.get("missing") or mail.get("missing") or []
+    short = bool(re.search(r"\b(seule?s?|manqu\w*|un seul|une seule)\b", (verdict.get("received") or "").lower()))
+    if data["kind"] == MISSING and not missing and isinstance(verdict.get("line"), int):
+        missing = [verdict["line"]]
     qty = {i: int((verdict.get("missing_qty") or {}).get(str(i)) or lines[i]["quantity"]) for i in range(len(lines))}
     suggest = None
-    if data["kind"] == WRONG and missing and not verdict.get("received"):
-        suggest = MISSING      # the photos show an item missing, not another pair
-    elif data["kind"] == MISSING and verdict.get("received") and not missing:
+    if data["kind"] == WRONG and (verdict.get("missing") or short):
+        suggest = MISSING      # the photos show an item missing (« 1 seul … au lieu de 2 »), not another pair
+    elif data["kind"] == MISSING and verdict.get("received") and not verdict.get("missing") and not short:
         suggest = WRONG
     return {"line": line, "ordered": human_label(lines[line]) if line is not None else "",
             "received": received or "", "source": source if received else None, "quote": mail.get("quote"),
