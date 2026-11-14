@@ -22,9 +22,11 @@ PAGES = [
     ("Page « Livraison et retour »", "https://maxsauveur.com/pages/livraison-et-retour", None, None),
     ("Conditions générales de vente, article 6 (droit de rétractation, retours, remboursements)",
      "https://maxsauveur.com/policies/refund-policy", r"6\s*\.\s*Droit de rétractation", r"7\s*\.\s*Responsabilité"),
+    ("Règlement de la carte cadeau Mad Max (commandes du 5 novembre 2026 : ce que devient la carte après un retour)",
+     "https://maxsauveur.com/pages/reglement-carte-cadeau-mad-max", None, None),
 ]
 TTL = 24 * 3600
-MAX_CHARS = 9000
+MAX_CHARS = 14000
 _cache = {"at": 0, "text": ""}
 
 
