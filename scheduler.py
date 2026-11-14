@@ -121,6 +121,13 @@ def process_new_emails():
                     sender_email, [order_info] if order_info else [], customer_name)
             except Exception as e:
                 print(f"[{datetime.now()}] Could not fetch repair files for {email_id}: {e}")
+            try:
+                import enquete
+                product_context += enquete.investigate(
+                    sender_email, customer_name, [order_info] if order_info else [],
+                    [email.get('subject', ''), email.get('body', '')] + [h['body'] for h in history])
+            except Exception as e:
+                print(f"[{datetime.now()}] Investigation failed for {email_id}: {e}")
 
             # Generate Claude AI draft response
             draft_response = claude_ai.generate_response(

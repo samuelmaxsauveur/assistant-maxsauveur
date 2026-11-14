@@ -513,6 +513,12 @@ def generate():
         wing_context += repairs.customer_context(sender_email, all_orders, customer_name)
     except Exception:
         pass
+    try:
+        import enquete
+        wing_context += enquete.investigate(sender_email, customer_name, all_orders,
+                                            [data.get('subject', ''), data.get('body', '')] + [h['body'] for h in history])
+    except Exception as e:
+        print(f"[Enquête] Unavailable for {sender_email}: {e}")
 
     # Extract image attachments from the email thread
     email_images = []
@@ -602,6 +608,12 @@ def ask():
                                                   customer_name)
     except Exception:
         pass
+    try:
+        import enquete
+        repair_context += enquete.investigate(data.get('sender_email') or sender_email_ask, customer_name, all_orders_ask,
+                                              [data.get('subject', ''), data.get('body', ''), question])
+    except Exception as e:
+        print(f"[Enquête] Unavailable for the discussion: {e}")
 
     result = claude_ai.answer_question(
         data['body'],

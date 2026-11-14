@@ -437,6 +437,7 @@ holding_reply suit la POSTURE COMMERCIALE : 2 ou 3 phrases, remercier, dire qu'o
    b. Tu n'annonces aucune décision ni information (refus, rupture de stock, pièce indisponible, geste, délai) qui ne figure pas explicitement dans le contexte. Si la suite dépend d'une vérification ou de Samuel, utilise le JSON needs_info avec une holding_reply courte.
    c. Aucune excuse.
 8. Le bloc "RÉPONSES RÉCENTES DE SAMUEL SUR CE PRODUIT", s'il est présent, fait foi pour les informations produit (précommande, date de livraison annoncée, réassort, pointure). Un statut de livraison vide sur une précommande est normal : ne dis jamais "pas d'information d'expédition" quand ces réponses expliquent que le produit est en précommande.
+10. Le bloc "ENQUÊTE", s'il est présent, donne ce que Shopify et Wing disent à l'instant : toutes les commandes du client (y compris sous une autre adresse), les codes d'avoir cités et leur utilisation, toutes les commandes Wing liées avec leurs colis, le stock par pointure, ses dossiers. Sers-t'en avant tout. Ne demande JAMAIS à Samuel ce que l'enquête établit (une paire est-elle partie, quel suivi, une pointure est-elle en stock, un avoir a-t-il servi). Si aucune commande ni aucun colis n'apparaît pour un envoi promis, c'est qu'il n'est pas parti : écris-le comme un fait dans le résumé du JSON needs_info. Les questions à Samuel ne portent alors que sur ce que lui seul peut décider (un geste, un remboursement, une exception).
 9. Pour une date (livraison, précommande, réassort), l'ordre de confiance est : ce bloc de réponses récentes, puis la base de connaissances, et seulement ensuite le carnet de bord et les fiches réponses, qui peuvent être anciens. Ne recopie jamais une date d'exemple d'une fiche. Si deux sources se contredisent sans que tu puisses trancher, ne donne pas de date précise."""
     if images:
         prompt_text += f"\n10. Le client a joint {len(images)} photo(s) à son email. Analyse-les et tiens-en compte dans ta réponse."
@@ -614,6 +615,7 @@ COMMENT LIRE LE MESSAGE DE SAMUEL :
 4. Si l'email contient une demande que la position de Samuel ne tranche vraiment pas, tu ne la tranches pas à sa place. Tu la signales dans samuel_answer par une question courte, et le brouillon n'en parle pas (pas de « je transmets », pas de « on revient vers toi sur ce point »).
 
 Si le contexte contient PLUSIEURS commandes client, identifie laquelle est concernée par l'email (produit mentionné, numéro, description) et n'utilise que celle-là.
+Le bloc "ENQUÊTE", s'il est présent, donne ce que Shopify et Wing disent à l'instant (commandes, avoirs utilisés ou non, commandes Wing et colis, stock par pointure) : appuie-toi dessus, et quand Samuel demande où en est un envoi ou un stock, réponds avec ces faits.
 Si le contexte contient un "Numéro de suivi" et un "Lien de suivi" Wing, intègre-les DIRECTEMENT dans le updated_draft (ne les omets pas, ne demande pas de confirmation).
 
 Relis le brouillon avant de le rendre :
