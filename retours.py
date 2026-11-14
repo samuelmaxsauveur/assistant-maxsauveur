@@ -681,6 +681,9 @@ def _madmax_card_check(add, order, kept, data):
         add("ok", f"Le client a une {what} : elle reste valable, il garde {euros(kept_value)} d'articles avant remise.")
     elif choice == "credit":
         add("ok", f"Le client a une {what} : avec un avoir, elle reste valable.")
+    elif choice == "refund" and not kept:
+        add("bad", f"Le client a une {what} : elle est perdue avec ce remboursement. Elle sera annulée "
+                   f"automatiquement au contrôle du lendemain du remboursement dans Shopify : dis-le-lui dans le mail.")
     elif choice == "refund":
         add("bad", f"Le client a une {what} : elle est perdue avec ce remboursement. Clique sur « Annuler la "
                    f"carte » dans le tableau de bord Mad Max, et dis-le-lui dans le mail.")

@@ -419,8 +419,9 @@ def _refresh_statuses(order_rows, flag=False):
                 fields["status"] = o["status"] = status
             if kept != o.get("kept_value"):
                 fields["kept_value"] = o["kept_value"] = kept
-            lost = ((status == "ok" and kept < CARD_KEEP_MIN)
-                    or (status == "refunded" and o.get("code") and not o.get("used")))
+            # A full refund is not flagged any more: its card is cancelled without waiting
+            # (_void_refunded_cards). A partial return under the threshold still waits for Sam.
+            lost = status == "ok" and kept < CARD_KEEP_MIN
             if flag and lost and not o.get("review"):
                 fields["review"] = o["review"] = "to_check"
                 flagged.append(o)
@@ -902,9 +903,10 @@ def daily_check(day):
     orders = _rows("SELECT * FROM madmax_orders WHERE is_test = 0 AND status != 'cancelled' AND review != 'cancelled'")
     flagged = _refresh_statuses(orders, flag=True) if orders else []
     voided = _void_cancelled_cards()
-    if flagged or voided:
+    refunded = _void_refunded_cards()
+    if flagged or voided or refunded:
         try:
-            _send_alert(flagged, voided)
+            _send_alert(flagged, voided, refunded)
         except Exception as e:
             print(f"[MadMax] Alert email failed: {e}", flush=True)
 
@@ -925,8 +927,27 @@ def _void_cancelled_cards():
     return notes
 
 
-def _send_alert(flagged, voided=()):
+def _void_refunded_cards():
+    """Commande remboursée en totalité : selon le règlement la carte est perdue, et
+    aucun échange de pointure ne peut s'y cacher. Le code est supprimé sans attendre
+    Sam (sa décision du 14/11/2026) ; une carte qu'il a choisi de garder n'est pas touchée."""
+    notes = []
+    for o in _rows("""SELECT * FROM madmax_orders WHERE is_test = 0 AND status = 'refunded'
+                      AND review NOT IN ('cancelled', 'kept')"""):
+        try:
+            note = cancel_card(o["id"])
+        except Exception as e:
+            print(f"[MadMax] Void failed for {o['order_name']}: {e}", flush=True)
+            note = f"échec de l'annulation ({e}), nouvel essai demain"
+        notes.append(f"- {o['order_name']} · {o['email']} · {note}")
+    return notes
+
+
+def _send_alert(flagged, voided=(), refunded=()):
     lines = []
+    if refunded:
+        lines += [f"{len(refunded)} commande(s) du jeudi 5 novembre ont été remboursées en totalité. Selon le "
+                  "règlement, la carte cadeau est perdue : elle a été annulée automatiquement.", *refunded, ""]
     if voided:
         lines += [f"{len(voided)} commande(s) du jeudi 5 novembre ont été annulées après le tirage. Selon le "
                   "règlement, la carte cadeau est perdue :", *voided, ""]
@@ -943,7 +964,7 @@ def _send_alert(flagged, voided=()):
     msg = email.mime.text.MIMEText("\n".join(lines), "plain", "utf-8")
     msg["From"] = email.utils.formataddr(("Assistant Max Sauveur", os.getenv("GMAIL_ADDRESS", "hello@maxsauveur.com")))
     msg["To"] = ALERT_EMAIL
-    parts = ([f"{len(voided)} carte(s) annulée(s)"] if voided else []) + \
+    parts = ([f"{len(voided) + len(refunded)} carte(s) annulée(s)"] if voided or refunded else []) + \
             ([f"{len(flagged)} carte(s) à vérifier"] if flagged else [])
     msg["Subject"] = f"[Mad Max] {' et '.join(parts)} après une annulation ou un retour"
     raw = base64.urlsafe_b64encode(msg.as_bytes()).decode()
