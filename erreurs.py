@@ -140,10 +140,32 @@ def form_defaults(case):
     received, source = verdict.get("received"), "photos"
     if not received:
         received, source = mail.get("received"), "mail"
+    missing = verdict.get("missing") or mail.get("missing") or []
+    qty = {i: int((verdict.get("missing_qty") or {}).get(str(i)) or lines[i]["quantity"]) for i in range(len(lines))}
+    suggest = None
+    if data["kind"] == WRONG and missing and not verdict.get("received"):
+        suggest = MISSING      # the photos show an item missing, not another pair
+    elif data["kind"] == MISSING and verdict.get("received") and not missing:
+        suggest = WRONG
     return {"line": line, "ordered": human_label(lines[line]) if line is not None else "",
             "received": received or "", "source": source if received else None, "quote": mail.get("quote"),
-            "missing": verdict.get("missing") or mail.get("missing") or [],
-            "mail_read": bool(data.get("email_read"))}
+            "missing": missing, "qty": qty, "suggest": suggest, "mail_read": bool(data.get("email_read"))}
+
+
+def set_kind(case_id, kind):
+    """Samuel changes the type of a file opened as the wrong one (a missing item, not another pair)."""
+    case = database.get_logistics_error(case_id)
+    data = case["data"]
+    if kind not in KINDS:
+        raise ValueError("Type inconnu")
+    if data.get("confirmed_at"):
+        raise ValueError("Erreur déjà confirmée : le type ne peut plus changer")
+    return database.update_logistics_error(case_id, data={
+        "kind": kind, "log": _log(data, f"type changé : {KINDS[kind]}")})
+
+
+def _qty_label(line, qty):
+    return human_label(line) if qty == line["quantity"] == 1 else f"{qty} {human_label(line)}"
 
 
 def stage(case):
@@ -416,6 +438,7 @@ Réponds uniquement avec ce JSON :
  "line": numéro de la ligne de commande concernée, ou null,
  "received": "ce que le client a reçu à la place, en quelques mots (exemple : Oxford cuir marron en 40)", ou null,
  "missing": [numéros des lignes absentes du colis],
+ "missing_qty": {{"numéro de ligne": nombre d'unités manquantes}} pour chaque ligne de "missing" (exemple : 2 commandés, 1 reçu : 1),
  "explanation": "1 ou 2 phrases pour Samuel : ce qui correspond, ce qui diffère"}}"""
 
 TASKS = {
@@ -462,6 +485,15 @@ def verify(case_id):
     if not isinstance(verdict.get("line"), int) or not 0 <= verdict["line"] < len(lines):
         verdict["line"] = 0 if len(lines) == 1 else None
     verdict["missing"] = [i for i in verdict.get("missing") or [] if isinstance(i, int) and 0 <= i < len(lines)]
+    qty = {}
+    for k, v in (verdict.get("missing_qty") or {}).items():
+        try:
+            i, n = int(k), int(v)
+        except (TypeError, ValueError):
+            continue
+        if i in verdict["missing"] and 1 <= n <= lines[i]["quantity"]:
+            qty[str(i)] = n
+    verdict["missing_qty"] = qty
     verdict["photos"] = names[-4:]
     status = case["status"] if case["data"].get("confirmed_at") else "to_check"
     return database.update_logistics_error(case_id, status=status, data={
@@ -471,7 +503,7 @@ def verify(case_id):
 
 # ---------------------------------------------------------------- Samuel's decision
 
-def confirm(case_id, lines, ordered_text="", received_text="", voluntary=False):
+def confirm(case_id, lines, ordered_text="", received_text="", voluntary=False, quantities=None):
     """Samuel confirms the error. Wrong pair: the return label is created (billed).
     Missing item: the reshipment is created on the main Wing account, same relay or address."""
     case = database.get_logistics_error(case_id)
@@ -486,9 +518,21 @@ def confirm(case_id, lines, ordered_text="", received_text="", voluntary=False):
         raise ValueError("Choisis une seule paire commandée")
     if data["kind"] == WRONG and not (received_text or "").strip():
         raise ValueError("Indique ce que le client a reçu")
-    ordered = (ordered_text or "").strip() or ", ".join(human_label(l) for l in picked)
+    missing_qty = {}
+    if data["kind"] == MISSING:
+        for i, line in zip(chosen, picked):
+            try:
+                n = int((quantities or {}).get(str(i)) or line["quantity"])
+            except (TypeError, ValueError):
+                n = line["quantity"]
+            if not 1 <= n <= line["quantity"]:
+                raise ValueError(f"Quantité impossible pour {line['title']} (commandé : {line['quantity']})")
+            missing_qty[str(i)] = n
+        ordered = (ordered_text or "").strip() or ", ".join(_qty_label(l, missing_qty[str(i)]) for i, l in zip(chosen, picked))
+    else:
+        ordered = (ordered_text or "").strip() or ", ".join(human_label(l) for l in picked)
     case = database.update_logistics_error(case_id, data={
-        "confirmed_at": now_iso(), "lines": chosen, "ordered_text": ordered,
+        "confirmed_at": now_iso(), "lines": chosen, "ordered_text": ordered, "missing_qty": missing_qty,
         "received_text": (received_text or "").strip(), "voluntary": bool(voluntary),
         "outcome": "missing" if data["kind"] == MISSING else "reship",
         "log": _log(data, "erreur confirmée par Samuel" + (" (envoi volontaire)" if voluntary else ""))})
@@ -667,12 +711,15 @@ def _original(token, case):
     return order
 
 
-def _products(original, lines):
-    """The Wing products of these order lines (designation, price, weight, EAN), as SSL knows them."""
+def _products(original, lines, quantities=None):
+    """The Wing products of these order lines (designation, price, weight, EAN), as SSL knows them.
+    `quantities` is how many of each line to send, when not the whole line (1 of 2 missing)."""
     by_name = {op["product"]["designation"].lower(): op for op in original["orderProducts"]}
     products = []
-    for line in lines:
+    for n, line in enumerate(lines):
         label = _line_label(line)
+        if quantities:
+            line = dict(line, quantity=quantities[n])
         op = by_name.get(label.lower())
         if op:
             p = op["product"]
@@ -743,7 +790,10 @@ def reship_same_place(case_id):
                                        "additional", "city", "zip", "countryCode") if r.get(k)}
         fo = (original.get("fulfillmentOrders") or [{}])[0]
         service = fo.get("service") or original.get("service")
-        fulfillment = {"service": service, "products": _products(original, _lines(case, data.get("lines") or []))}
+        chosen = data.get("lines") or []
+        qty = [int((data.get("missing_qty") or {}).get(str(i)) or 0) or None for i in chosen]
+        fulfillment = {"service": service,
+                       "products": _products(original, _lines(case, chosen), qty if all(qty) else None)}
         if fo.get("carrierPickupId"):
             fulfillment.update(carrierPickupId=fo["carrierPickupId"], carrierPickupName=fo.get("carrierPickupName") or "")
         ref = _create_reship(token, case, recipient, fulfillment)

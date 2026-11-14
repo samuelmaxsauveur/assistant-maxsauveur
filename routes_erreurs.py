@@ -125,7 +125,7 @@ def confirm(case_id):
     try:
         lines = [int(i) for i in d.get('lines') or []]
         case = erreurs.confirm(case_id, lines, d.get('ordered_text', ''), d.get('received_text', ''),
-                               bool(d.get('voluntary')))
+                               bool(d.get('voluntary')), d.get('quantities') or {})
     except ValueError as e:
         return _fail(e)
     return _ok(case, alert=case['data'].get('alert'))
@@ -143,6 +143,7 @@ ACTIONS = {
     'ignorer-mail': lambda i, d: erreurs.skip_mail(i, d.get('template')),
     'relire-fil': lambda i, d: erreurs.refresh_from_thread(database.get_logistics_error(i), full=True),
     'paire': lambda i, d: erreurs.set_reship_item(i, d.get('variant_id')),
+    'type': lambda i, d: erreurs.set_kind(i, d.get('kind')),
 }
 
 

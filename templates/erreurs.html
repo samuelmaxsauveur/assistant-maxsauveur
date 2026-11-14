@@ -253,6 +253,14 @@
 
         {% if not d.confirmed_at and c.status in ('new', 'waiting_photos', 'to_check') %}
         <div class="section"><h3>Ta décision</h3>
+            {% set other_kind = MISSING if d.kind == WRONG else WRONG %}
+            {% if view.defaults.suggest %}
+            <div class="card alert" style="box-shadow:none; margin-bottom:10px; font-size:14px;">
+                🤔 Les photos montrent plutôt {{ 'un article manquant' if view.defaults.suggest == MISSING else 'une autre paire que celle commandée' }} : ce dossier devrait être en « {{ kinds[view.defaults.suggest] }} ».
+                <div class="actions"><button class="btn btn-teal" onclick="post('/erreurs/{{ c.id }}/type', {kind: '{{ view.defaults.suggest }}'}, this)">Passer en « {{ kinds[view.defaults.suggest] }} »</button></div>
+            </div>
+            {% endif %}
+            <div class="meta" style="margin-bottom:8px;">Type : <strong>{{ kinds[d.kind] }}</strong> · <a href="#" onclick="post('/erreurs/{{ c.id }}/type', {kind: '{{ other_kind }}'}); return false;">changer en « {{ kinds[other_kind] }} »</a></div>
             {% if d.kind == WRONG %}
             <label class="f">Paire commandée (celle à renvoyer)</label>
             {% set df = view.defaults %}
@@ -269,9 +277,13 @@
                 </div>
             </div>
             {% else %}
-            <label class="f">Articles manquants (ceux à renvoyer)</label>
+            <label class="f">Articles manquants (ceux à renvoyer), avec la quantité qui manque</label>
             {% for l in lines %}
-            <label class="line"><input type="checkbox" name="line" value="{{ loop.index0 }}" {% if loop.index0 in view.defaults.missing %}checked{% endif %}> {{ line_label(l) }}</label>
+            <div class="line">
+                <input type="checkbox" name="line" value="{{ loop.index0 }}" id="line-{{ loop.index0 }}" {% if loop.index0 in view.defaults.missing %}checked{% endif %}>
+                <label for="line-{{ loop.index0 }}" style="flex:1;">{{ line_label(l) }}{% if l.quantity > 1 %} <span class="meta">(commandé : {{ l.quantity }})</span>{% endif %}</label>
+                {% if l.quantity > 1 %}<input type="number" class="qty" id="qty-{{ loop.index0 }}" min="1" max="{{ l.quantity }}" value="{{ view.defaults.qty[loop.index0] }}" title="Quantité manquante">{% endif %}
+            </div>
             {% endfor %}
             {% endif %}
             <label class="line"><input type="checkbox" id="voluntary"> Envoi volontaire (c'est moi qui l'ai demandé à SSL) : pas facturé</label>
@@ -418,7 +430,9 @@ async function upload(input) {
 
 function confirmError(btn) {
     const lines = [...document.querySelectorAll('input[name="line"]:checked')].map(i => parseInt(i.value, 10));
-    const payload = {lines, voluntary: document.getElementById('voluntary').checked};
+    const quantities = {};
+    lines.forEach(i => { const q = document.getElementById('qty-' + i); if (q) quantities[i] = parseInt(q.value, 10); });
+    const payload = {lines, quantities, voluntary: document.getElementById('voluntary').checked};
     const ordered = document.getElementById('ordered');
     if (ordered) {
         payload.ordered_text = ordered.value;
