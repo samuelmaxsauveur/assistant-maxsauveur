@@ -54,7 +54,8 @@ KNOWLEDGE_BASE = """
 ## PROCÉDURES SAV
 
 ### Retours & Échanges
-- Retour par le CLIENT à ses frais (sauf défaut de fabrication ou erreur de préparation = mauvais produit envoyé)
+- Retour par le CLIENT à ses frais (sauf défaut de fabrication, erreur de préparation = mauvais produit envoyé, ou échange de pointure offert pendant les Mad Max). Un retour pour remboursement n'est jamais pris en charge.
+- Commande passée deux fois (par exemple sous deux adresses e-mail après une faute de frappe) : le bloc ENQUÊTE retrouve les deux. Le retour de la commande en trop suit les conditions habituelles.
 - Pas d'étiquette de retour fournie sauf erreur de notre part
 - JAMAIS de prise en charge des frais de retour pour : mauvaise taille choisie, conseil pointure, modèle qui ne convient pas, préférence personnelle
 - Un conseil pointure de notre part n'est pas une erreur de préparation — le client reste seul responsable de son choix de taille
@@ -235,6 +236,7 @@ KNOWLEDGE_BASE = """
 ### Mad Max 2026 : remises et retours partiels
 - Remises automatiques du jeudi 5 au dimanche 8 novembre 2026 (MADMAX26-15, -20, -30) : -15 % dès 150 €, -20 % dès 450 €, -30 % dès 800 € sur le panier entier. Non cumulables entre elles ni avec un autre code.
 - Échange de pointure offert pendant les Mad Max : une fois par commande, même modèle, à demander dans la semaine qui suit la réception. Pointure épuisée : avoir du montant payé pour la paire. Un échange ne change pas la remise.
+- « Le retour était gratuit pendant les Mad Max » : non. Seul l'échange de pointure ci-dessus est offert. Un retour en vue d'un remboursement reste à la charge du client, comme le disent la page « Livraison et retour » et l'article 6 des CGV (Samuel, 14/11/2026).
 - Retour partiel : on recalcule la remise sur les articles conservés, à leur prix avant remise. S'ils n'atteignent plus le palier de la commande, c'est le palier inférieur qui s'applique (aucune remise sous 150 €). La différence est déduite du remboursement, sans jamais dépasser le montant à rembourser.
 - Exemple : commande de 850 € avant remise, payée 595 € (-30 %). Le client renvoie une paire de 410 €. Il garde 440 € d'articles, donc -15 % : 374 €. Remboursement : 595 - 374 = 221 € (et non 287 €).
 - Toujours montrer ce calcul au client dans la réponse, et le faire valider par Samuel avant tout remboursement.

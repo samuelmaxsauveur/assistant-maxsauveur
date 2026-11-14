@@ -250,6 +250,11 @@ def get_system_prompt(email_context='', extra_queries=None):
                 for s in reversed(older):
                     first_line = s['summary'].split('\n')[0][:180]
                     extra += f"\n[{s['date']}] {first_line}\n"
+        try:
+            import conditions
+            extra += conditions.block()
+        except Exception as e:
+            print(f"[Conditions] Unavailable: {e}")
         processes = database.get_all_processes()
         if processes:
             extra += "\n\n--- PROCESSUS MANUELS ENREGISTRÉS ---\n"
@@ -465,6 +470,7 @@ holding_reply suit la POSTURE COMMERCIALE : 2 ou 3 phrases, remercier, dire qu'o
    b. Tu n'annonces aucune décision ni information (refus, rupture de stock, pièce indisponible, geste, délai) qui ne figure pas explicitement dans le contexte. Si la suite dépend d'une vérification ou de Samuel, utilise le JSON needs_info avec une holding_reply courte.
    c. Aucune excuse.
 8. Le bloc "RÉPONSES RÉCENTES DE SAMUEL SUR CE PRODUIT", s'il est présent, fait foi pour les informations produit (précommande, date de livraison annoncée, réassort, pointure). Un statut de livraison vide sur une précommande est normal : ne dis jamais "pas d'information d'expédition" quand ces réponses expliquent que le produit est en précommande.
+11. Pour toute question sur les retours, les échanges, les remboursements ou leurs frais (gratuit ou pas, délais, conditions, Mad Max), la réponse est dans le bloc "CONDITIONS PUBLIÉES SUR MAXSAUVEUR.COM" et dans la base de connaissances : réponds avec, et ne la demande JAMAIS à Samuel, ni dans needs_info.
 10. Le bloc "ENQUÊTE", s'il est présent, donne ce que Shopify et Wing disent à l'instant : toutes les commandes du client (y compris sous une autre adresse), les codes d'avoir cités et leur utilisation, toutes les commandes Wing liées avec leurs colis, le stock par pointure, ses dossiers. Sers-t'en avant tout. Ne demande JAMAIS à Samuel ce que l'enquête établit (une paire est-elle partie, quel suivi, une pointure est-elle en stock, un avoir a-t-il servi). Si aucune commande ni aucun colis n'apparaît pour un envoi promis, c'est qu'il n'est pas parti : écris-le comme un fait dans le résumé du JSON needs_info. Les questions à Samuel ne portent alors que sur ce que lui seul peut décider (un geste, un remboursement, une exception).
 9. Pour une date (livraison, précommande, réassort), l'ordre de confiance est : ce bloc de réponses récentes, puis la base de connaissances, et seulement ensuite le carnet de bord et les fiches réponses, qui peuvent être anciens. Ne recopie jamais une date d'exemple d'une fiche. Si deux sources se contredisent sans que tu puisses trancher, ne donne pas de date précise."""
     if images:
@@ -643,6 +649,7 @@ COMMENT LIRE LE MESSAGE DE SAMUEL :
 4. Si l'email contient une demande que la position de Samuel ne tranche vraiment pas, tu ne la tranches pas à sa place. Tu la signales dans samuel_answer par une question courte, et le brouillon n'en parle pas (pas de « je transmets », pas de « on revient vers toi sur ce point »).
 
 Si le contexte contient PLUSIEURS commandes client, identifie laquelle est concernée par l'email (produit mentionné, numéro, description) et n'utilise que celle-là.
+Pour une question sur les retours, les échanges, les remboursements ou leurs frais, la réponse est dans le bloc "CONDITIONS PUBLIÉES SUR MAXSAUVEUR.COM" et dans la base de connaissances : appuie-toi dessus sans le demander à Samuel.
 Le bloc "ENQUÊTE", s'il est présent, donne ce que Shopify et Wing disent à l'instant (commandes, avoirs utilisés ou non, commandes Wing et colis, stock par pointure) : appuie-toi dessus, et quand Samuel demande où en est un envoi ou un stock, réponds avec ces faits.
 Si le contexte contient un "Numéro de suivi" et un "Lien de suivi" Wing, intègre-les DIRECTEMENT dans le updated_draft (ne les omets pas, ne demande pas de confirmation).
 
