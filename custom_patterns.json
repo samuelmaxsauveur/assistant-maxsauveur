@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__votre_avoir_pour_la_commande__13430",
+      "topic_label": "Re: Votre avoir pour la commande #13430",
+      "situation": "Re: Votre avoir pour la commande #13430",
+      "response_template": "Bonjour Emmanuel,\n\nAvec 28,2 cm de pied et 11,5 cm de large, vous êtes effectivement plutôt en **44** sur la Chelsea Chapman.\n\nVotre avoir de 289 € (code GGKCJDMYZYUB) est valable jusqu'au 13/05/2027 sur ce même modèle. Vous pouvez l'utiliser pour commander directement le 44 sur notre site avec votre adresse email belfato@gmail.com.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__form_name_form_submitted_2026_11_13_14_16_54",
       "topic_label": "Re: Form name Form submitted 2026-11-13 14:16:54",
       "situation": "Re: Form name Form submitted 2026-11-13 14:16:54",
