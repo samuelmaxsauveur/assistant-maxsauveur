@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__commande__13543_confirm_e",
+      "topic_label": "Re: Re: Commande #13543 confirmée",
+      "situation": "Re: Re: Commande #13543 confirmée",
+      "response_template": "Bonjour Margot,\n\nVotre colis n'est pas encore parti. La Gigi Ceinture est en précommande avec une livraison prévue pour mi-décembre 2026, et non mi-novembre comme indiqué dans notre précédent message.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "demande_de_retour",
       "topic_label": "Demande de retour",
       "situation": "Demande de retour",
