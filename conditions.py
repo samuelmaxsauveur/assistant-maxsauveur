@@ -26,7 +26,7 @@ PAGES = [
      "https://maxsauveur.com/pages/reglement-carte-cadeau-mad-max", None, None),
 ]
 TTL = 24 * 3600
-MAX_CHARS = 14000
+MAX_CHARS = 16000
 _cache = {"at": 0, "text": ""}
 
 
