@@ -127,21 +127,65 @@ def _stock_line(product_id):
     return f"{product['title']} : {sizes or 'stock inconnu'}."
 
 
+OFFER_LABELS = {"bonus": "un avoir bonifié", "plain": "un avoir", "exchange": "un échange Mad Max gratuit"}
+
+
+def _return_line(c):
+    """A Retours file in plain facts: what came back, what we already wrote and to which address, his answer."""
+    d = c["data"]
+    order = d.get("order") or {}
+    qty = {k: int(v) for k, v in (d.get("returned") or {}).items() if str(v).isdigit() and int(v) > 0}
+    items = ", ".join(f"{l['title']}" + (f" {l['variant']}" if l.get("variant") else "")
+                      for l in order.get("lines") or [] if l.get("id") in qty)
+    parts = [retours.STATUS_LABELS.get(c["status"], c["status"])]
+    if items:
+        parts.append(f"article retourné : {items}")
+    if d.get("arrival_date"):
+        parts.append(f"colis arrivé chez SSL le {_date(d['arrival_date'])}")
+    to = c.get("customer_email") or order.get("email") or "?"
+    if d.get("offer_sent_at"):
+        offer = OFFER_LABELS.get(d.get("offer_kind") or "bonus", "une proposition")
+        amount = f" de {retours.euros(float(d['offer_amount']))}" if d.get("offer_amount") else ""
+        parts.append(f"mail envoyé le {_date(d['offer_sent_at'])} à {to} (« Votre retour pour la commande "
+                     f"{order.get('name') or '#' + str(c.get('order_number'))} ») : réception du colis confirmée et "
+                     f"proposition d'{offer[3:] if offer.startswith('un ') else offer}{amount} au lieu du remboursement")
+    elif d.get("last_sent_at"):
+        parts.append(f"dernier mail envoyé le {_date(d['last_sent_at'])} à {to}")
+    if d.get("reply_at"):
+        choice = {"credit": "il choisit l'avoir", "refund": "il choisit le remboursement",
+                  "exchange": "il accepte l'échange"}.get(d.get("reply_choice"), "réponse à lire")
+        parts.append(f"réponse du client le {_date(d['reply_at'])} : {choice}"
+                     + (f" ({d['reply_summary']})" if d.get("reply_summary") else ""))
+    if c["status"] == "waiting_client" and d.get("offer_sent_at") and not d.get("reply_at"):
+        parts.append("pas encore de réponse à cette proposition : s'il écrit maintenant qu'il veut le remboursement, "
+                     "c'est son choix, on prend acte et on rembourse sans lui refaire la proposition")
+    if d.get("credit_code"):
+        parts.append(f"avoir créé : {d['credit_code']}" + (f" ({retours.euros(float(d['credit_amount']))})" if d.get("credit_amount") else ""))
+    if c["status"] in ("to_refund", "waiting_client", "reply_to_read", "to_decide"):
+        try:
+            refund = retours.analyse(d)["amounts"].get("refund")
+            if refund is not None:
+                parts.append(f"remboursement prévu s'il est remboursé : {retours.euros(refund)}")
+        except Exception as e:
+            print(f"[Enquête] Return file {c['id']} amounts unavailable: {e}")
+    return f"Dossier Retours n°{c['id']} (commande #{c.get('order_number')}) : " + " · ".join(parts) + "."
+
+
 def _files(numbers, email):
     lines = []
     email = (email or "").lower()
     for c in database.get_client_returns():
         if c.get("order_number") in numbers or (email and (c.get("customer_email") or "").lower() == email):
-            d = c["data"]
-            extra = f", avoir {d['credit_code']}" if d.get("credit_code") else ""
-            lines.append(f"Dossier Retours n°{c['id']} (commande #{c.get('order_number')}) : "
-                         f"{retours.STATUS_LABELS.get(c['status'], c['status'])}{extra}.")
+            lines.append(_return_line(c))
     try:
         import erreurs
         for c in database.get_logistics_errors():
             if c.get("order_number") in numbers or (email and (c.get("customer_email") or "").lower() == email):
+                sent = ", ".join(f"{erreurs.MAILS.get(k, k)} le {_date(v)}" for k, v in (c["data"].get("sent_mails") or {}).items()
+                                 if v and v != "skipped")
                 lines.append(f"Dossier Erreurs logistique n°{c['id']} (commande #{c.get('order_number')}, "
-                             f"{erreurs.KINDS[c['data']['kind']]}) : {erreurs.STATUS_LABELS[c['status']]}.")
+                             f"{erreurs.KINDS[c['data']['kind']]}) : {erreurs.STATUS_LABELS[c['status']]}"
+                             + (f" · mails envoyés à {c.get('customer_email')} : {sent}" if sent else "") + ".")
     except Exception as e:
         print(f"[Enquête] Error files unavailable: {e}")
     return lines
