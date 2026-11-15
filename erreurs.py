@@ -47,6 +47,16 @@ COST_REFUND = 12.00    # wrong pair, customer refunded instead
 COST_MISSING = 10.00   # missing item sent: shipping + preparation
 
 RESHIP_SUFFIXES = ("_RENVOI", "_RENVOI_BIS", "_RENVOI_TER")
+
+# Who made the error. Only SSL's are billed to SSL; the workshop's (a 42 in a box
+# labelled 43, Samuel 16/11/2026) and Samuel's own requests are handled the same
+# way for the customer (label, reshipment) but cost SSL nothing.
+ORIGINS = {"ssl": "SSL (préparation)", "workshop": "Atelier (fabrication ou mise en boîte)",
+           "voluntary": "Envoi volontaire (demandé par moi à SSL)"}
+
+
+def origin(data):
+    return data.get("origin") or ("voluntary" if data.get("voluntary") else "ssl")
 MAX_PHOTOS = 8
 
 STATUS_LABELS = {
@@ -152,7 +162,8 @@ def form_defaults(case):
         suggest = WRONG
     return {"line": line, "ordered": human_label(lines[line]) if line is not None else "",
             "received": received or "", "source": source if received else None, "quote": mail.get("quote"),
-            "missing": missing, "qty": qty, "suggest": suggest, "mail_read": bool(data.get("email_read"))}
+            "missing": missing, "qty": qty, "suggest": suggest, "mail_read": bool(data.get("email_read")),
+            "origin": verdict.get("origin") or origin(data)}
 
 
 def set_kind(case_id, kind):
@@ -429,6 +440,7 @@ Commande #{number} :
 {said}
 Comment lire les photos :
 - L'étiquette collée sur la boîte porte la désignation du produit (modèle, coloris), la pointure et un code-barres. Si plusieurs étiquettes sont superposées, seule celle du dessus compte.
+- La pointure est souvent inscrite aussi à l'intérieur de la chaussure : si elle diffère de l'étiquette de la boîte, c'est une erreur.
 - La photo de la paire montre le modèle et la couleur vraiment reçus.
 {task}
 
@@ -439,6 +451,7 @@ Réponds uniquement avec ce JSON :
  "seen": "ce que montrent les photos, en une phrase",
  "verdict": "error" si le client n'a pas reçu ce qu'il a commandé, "no_error" si les photos correspondent à la commande, "unclear" si les photos ne permettent pas de trancher,
  "line": numéro de la ligne de commande concernée, ou null,
+ "origin": "ssl" si l'étiquette de la boîte ne correspond pas à la commande (la logistique a pris la mauvaise boîte), "workshop" si l'étiquette de la boîte correspond à la commande mais que la paire à l'intérieur est différente (pointure inscrite dans la chaussure, modèle ou coloris : erreur de l'atelier), ou null,
  "received": "ce que le client a reçu à la place, en quelques mots (exemple : Oxford cuir marron en 40)", ou null,
  "missing": [numéros des lignes absentes du colis],
  "missing_qty": {{"numéro de ligne": nombre d'unités manquantes}} pour chaque ligne de "missing" (exemple : 2 commandés, 1 reçu : 1),
@@ -497,6 +510,8 @@ def verify(case_id):
         if i in verdict["missing"] and 1 <= n <= lines[i]["quantity"]:
             qty[str(i)] = n
     verdict["missing_qty"] = qty
+    if verdict.get("origin") not in ("ssl", "workshop"):
+        verdict["origin"] = None
     verdict["photos"] = names[-4:]
     status = case["status"] if case["data"].get("confirmed_at") else "to_check"
     return database.update_logistics_error(case_id, status=status, data={
@@ -506,7 +521,7 @@ def verify(case_id):
 
 # ---------------------------------------------------------------- Samuel's decision
 
-def confirm(case_id, lines, ordered_text="", received_text="", voluntary=False, quantities=None):
+def confirm(case_id, lines, ordered_text="", received_text="", voluntary=False, quantities=None, origin_key=None):
     """Samuel confirms the error. Wrong pair: the return label is created (billed).
     Missing item: the reshipment is created on the main Wing account, same relay or address."""
     case = database.get_logistics_error(case_id)
@@ -536,10 +551,24 @@ def confirm(case_id, lines, ordered_text="", received_text="", voluntary=False, 
         ordered = (ordered_text or "").strip() or ", ".join(human_label(l) for l in picked)
     case = database.update_logistics_error(case_id, data={
         "confirmed_at": now_iso(), "lines": chosen, "ordered_text": ordered, "missing_qty": missing_qty,
-        "received_text": (received_text or "").strip(), "voluntary": bool(voluntary),
+        "received_text": (received_text or "").strip(), "voluntary": (origin_key or ("voluntary" if voluntary else "ssl")) == "voluntary",
+        "origin": origin_key if origin_key in ORIGINS else ("voluntary" if voluntary else "ssl"),
+        "workshop": repair_catalog.workshop_for(_line_label(picked[0]))[0] if picked else "",
         "outcome": "missing" if data["kind"] == MISSING else "reship",
-        "log": _log(data, "erreur confirmée par Samuel" + (" (envoi volontaire)" if voluntary else ""))})
+        "log": _log(data, "erreur confirmée par Samuel : " + ORIGINS[origin_key if origin_key in ORIGINS else ("voluntary" if voluntary else "ssl")])})
     return create_label(case_id) if data["kind"] == WRONG else reship_same_place(case_id)
+
+
+def reopen(case_id):
+    """A file closed as « pas une erreur » or cancelled by mistake goes back to « À vérifier »."""
+    case = database.get_logistics_error(case_id)
+    data = case["data"]
+    if case["status"] not in ("not_error", "cancelled"):
+        raise ValueError("Ce dossier n'est pas fermé")
+    if data.get("label") or data.get("reship"):
+        raise ValueError("Une étiquette ou un renvoi existe déjà dans Wing : vérifie-le avant de rouvrir")
+    return database.update_logistics_error(case_id, status="to_check", data={
+        "closed_at": None, "confirmed_at": None, "log": _log(data, "dossier rouvert")})
 
 
 def not_an_error(case_id, note=""):
@@ -621,7 +650,13 @@ def set_flag(case_id, key, value):
     case = database.get_logistics_error(case_id)
     if key == "voluntary":
         return database.update_logistics_error(case_id, data={
-            "voluntary": bool(value), "log": _log(case["data"], "envoi volontaire" if value else "erreur de SSL")})
+            "voluntary": bool(value), "origin": "voluntary" if value else "ssl",
+            "log": _log(case["data"], "envoi volontaire" if value else "erreur de SSL")})
+    if key == "origin":
+        if value not in ORIGINS:
+            raise ValueError("Origine inconnue")
+        return database.update_logistics_error(case_id, data={
+            "origin": value, "voluntary": value == "voluntary", "log": _log(case["data"], f"origine : {ORIGINS[value]}")})
     if key == "deducted":
         return database.update_logistics_error(case_id, data={
             "deducted_at": now_iso() if value else None,
@@ -904,6 +939,7 @@ def draft(case, template):
     name = _first_name(case)
     number = f"#{case['order_number']}"
     ordered = data.get("ordered_text") or ", ".join(human_label(l) for l in (data.get("order") or {}).get("lines") or [])
+    whose = "notre atelier" if origin(data) == "workshop" else "notre préparation"
     thanks = ("Merci pour les photos." if len(photo_names(case["id"])) > 1 else "Merci pour la photo.") \
         if photo_names(case["id"]) else "Merci pour votre message."
     received = data.get("received_text") or ""
@@ -924,7 +960,7 @@ Pour vérifier ce qui s'est passé à la préparation de votre commande {number}
 
 Dès réception, nous revenons vers vous très rapidement."""
     elif template == "label":
-        body = f"""{thanks} Vous avez bien reçu {received} au lieu de {ordered} : l'erreur vient de notre préparation, et nous nous en excusons.
+        body = f"""{thanks} Vous avez bien reçu {received} au lieu de {ordered} : l'erreur vient de {whose}, et nous nous en excusons.
 
 Voici votre étiquette de retour prépayée :
 {label.get('label_url') or '[lien de l étiquette]'}
@@ -948,7 +984,7 @@ Elle partira dès votre confirmation."""
     elif template == "missing":
         where = (f"au même point relais ({reship.get('where')})" if reship.get("relay")
                  else "à la même adresse")
-        body = f"""{thanks} Il manquait bien {ordered} dans votre colis : l'erreur vient de notre préparation, et nous nous en excusons.
+        body = f"""{thanks} Il manquait bien {ordered} dans votre colis : l'erreur vient de {whose}, et nous nous en excusons.
 
 Nous vous l'envoyons dans les prochains jours, {where}. Vous recevrez le numéro de suivi par mail dès son départ."""
     elif template == "tracking":
@@ -1050,6 +1086,8 @@ def madmax_effect(case):
 def _facts(case):
     data = case["data"]
     facts = [f"Type : {KINDS[data['kind']]}", f"Étape : {STATUS_LABELS[case['status']]}"]
+    if data.get("confirmed_at"):
+        facts.append(f"Origine de l'erreur : {ORIGINS[origin(data)]}")
     if data.get("confirmed_at"):
         if data["kind"] == WRONG:
             facts.append(f"Erreur confirmée : reçu {data.get('received_text') or '?'} au lieu de {data.get('ordered_text') or '?'}")
@@ -1243,7 +1281,7 @@ def cost(case):
     data = case["data"]
     if not data.get("confirmed_at") or case["status"] in ("not_error", "cancelled"):
         return None
-    if data.get("voluntary"):
+    if origin(data) != "ssl":
         return 0.0
     if data["kind"] == MISSING:
         return COST_MISSING
@@ -1252,8 +1290,8 @@ def cost(case):
 
 def billing(case):
     data = case["data"]
-    if data.get("voluntary"):
-        return "voluntary"
+    if origin(data) != "ssl":
+        return origin(data)
     if data.get("deducted_at"):
         return "deducted"
     if data.get("claimed_at"):
@@ -1261,7 +1299,7 @@ def billing(case):
     return "to_claim"
 
 
-BILLING_LABELS = {"voluntary": "Volontaire, non facturé", "to_claim": "À réclamer",
+BILLING_LABELS = {"voluntary": "Volontaire, non facturé", "workshop": "Erreur atelier, non facturée à SSL", "to_claim": "À réclamer",
                   "claimed": "Réclamé à SSL", "deducted": "Déduit de la facture"}
 
 
@@ -1270,7 +1308,10 @@ def detail(case):
     if data["kind"] == MISSING:
         return f"{data.get('ordered_text') or 'article'} manquant"
     text = f"{data.get('received_text') or '?'} envoyé au lieu de {data.get('ordered_text') or '?'}"
-    return text + (", client remboursé" if data.get("outcome") == "refund" else ", bonne paire renvoyée")
+    text += ", client remboursé" if data.get("outcome") == "refund" else ", bonne paire renvoyée"
+    if origin(data) == "workshop":
+        text += f" (erreur de l'atelier{' ' + data['workshop'] if data.get('workshop') else ''})"
+    return text
 
 
 def ledger(month=None):

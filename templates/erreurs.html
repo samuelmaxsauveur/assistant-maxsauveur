@@ -150,8 +150,8 @@
                 <td>{{ r.case.customer_name }}</td>
                 <td>{{ r.detail }}</td>
                 <td class="num">{{ euros(r.amount) }}</td>
-                <td><span class="pill {% if r.billing == 'deducted' %}green{% elif r.billing == 'claimed' %}amber{% elif r.billing == 'voluntary' %}gray{% else %}red{% endif %}">{{ billing_labels[r.billing] }}</span></td>
-                <td>{% if r.billing != 'voluntary' %}<input type="checkbox" {% if r.billing == 'deducted' %}checked{% endif %} onchange="post('/erreurs/{{ r.case.id }}/reglage', {key: 'deducted', value: this.checked})">{% endif %}</td>
+                <td><span class="pill {% if r.billing == 'deducted' %}green{% elif r.billing == 'claimed' %}amber{% elif r.billing in ('voluntary', 'workshop') %}gray{% else %}red{% endif %}">{{ billing_labels[r.billing] }}</span></td>
+                <td>{% if r.billing not in ('voluntary', 'workshop') %}<input type="checkbox" {% if r.billing == 'deducted' %}checked{% endif %} onchange="post('/erreurs/{{ r.case.id }}/reglage', {key: 'deducted', value: this.checked})">{% endif %}</td>
             </tr>
             {% endfor %}
             <tr><td colspan="4" style="text-align:right; font-weight:600;">Total du mois</td><td class="num">{{ euros(total) }}</td><td colspan="2" class="meta">dont {{ euros(to_claim) }} à réclamer</td></tr>
@@ -286,14 +286,17 @@
             </div>
             {% endfor %}
             {% endif %}
-            <label class="line"><input type="checkbox" id="voluntary"> Envoi volontaire (c'est moi qui l'ai demandé à SSL) : pas facturé</label>
+            <label class="f" style="margin-top:8px;">Origine de l'erreur {% if v and v.origin %}<span class="meta">(proposée d'après les photos)</span>{% endif %}</label>
+            {% for key, label in origins.items() %}
+            <label class="line"><input type="radio" name="origin" value="{{ key }}" {% if view.defaults.origin == key %}checked{% endif %}> {{ label }}{% if key == 'ssl' %} : facturée à SSL{% else %} : rien n'est facturé à SSL{% endif %}</label>
+            {% endfor %}
             <div class="actions">
                 {% if d.kind == WRONG %}
                 <button class="btn btn-green" onclick="confirmError(this)">✅ Erreur confirmée : créer l'étiquette retour (facturée)</button>
                 {% else %}
                 <button class="btn btn-green" onclick="confirmError(this)">✅ Erreur confirmée : renvoyer au même endroit</button>
                 {% endif %}
-                <button class="btn btn-red" onclick="if (confirm('Pas une erreur de SSL : le dossier sort du tableau.')) post('/erreurs/{{ c.id }}/pas-erreur', {}, this)">❌ Pas une erreur de SSL</button>
+                <button class="btn btn-red" onclick="if (confirm('Pas d\'erreur : le client a reçu ce qu\'il a commandé. Le dossier se ferme.')) post('/erreurs/{{ c.id }}/pas-erreur', {}, this)">❌ Pas d'erreur : il a reçu sa commande</button>
             </div>
         </div>
         {% endif %}
@@ -357,8 +360,12 @@
         {% if d.confirmed_at %}
         <div class="section"><h3>Facturation SSL</h3>
             <div class="meta">{% if view.cost is not none %}{{ euros(view.cost) }} · {{ billing_labels[view.billing] }}{% endif %}</div>
-            <label class="line"><input type="checkbox" {% if d.voluntary %}checked{% endif %} onchange="post('/erreurs/{{ c.id }}/reglage', {key: 'voluntary', value: this.checked})"> Envoi volontaire, pas facturé à SSL</label>
-            {% if not d.voluntary %}<label class="line"><input type="checkbox" {% if d.deducted_at %}checked{% endif %} onchange="post('/erreurs/{{ c.id }}/reglage', {key: 'deducted', value: this.checked})"> Déduit de la facture SSL</label>{% endif %}
+            <label class="f">Origine de l'erreur</label>
+            <select style="width:auto; margin-bottom:6px;" onchange="post('/erreurs/{{ c.id }}/reglage', {key: 'origin', value: this.value})">
+                {% for key, label in origins.items() %}<option value="{{ key }}" {% if origin_of(d) == key %}selected{% endif %}>{{ label }}</option>{% endfor %}
+            </select>
+            {% if d.workshop and origin_of(d) == 'workshop' %}<div class="meta">Atelier qui fabrique ce modèle : {{ d.workshop }}</div>{% endif %}
+            {% if origin_of(d) == 'ssl' %}<label class="line"><input type="checkbox" {% if d.deducted_at %}checked{% endif %} onchange="post('/erreurs/{{ c.id }}/reglage', {key: 'deducted', value: this.checked})"> Déduit de la facture SSL</label>{% endif %}
         </div>
         {% endif %}
 
@@ -366,6 +373,7 @@
             <div class="log">{% for l in d.log or [] %}{{ l }}<br>{% endfor %}</div>
             <div class="actions">
                 {% if c.status not in ('done', 'cancelled', 'not_error') %}<button class="btn btn-red" onclick="if (confirm('Annuler ce dossier ?')) post('/erreurs/{{ c.id }}/annuler', {}, this)">Annuler le dossier</button>{% endif %}
+                {% if c.status in ('not_error', 'cancelled') and not d.label and not d.reship %}<button class="btn btn-teal" onclick="post('/erreurs/{{ c.id }}/rouvrir', {}, this)">↩️ Rouvrir le dossier</button>{% endif %}
                 {% if not d.label and not d.reship %}<button class="btn btn-gray" onclick="if (confirm('Supprimer ce dossier et ses photos ?')) post('/erreurs/{{ c.id }}/supprimer', {}, this, null, '/erreurs')">Supprimer</button>{% endif %}
             </div>
         </div>
@@ -432,7 +440,8 @@ function confirmError(btn) {
     const lines = [...document.querySelectorAll('input[name="line"]:checked')].map(i => parseInt(i.value, 10));
     const quantities = {};
     lines.forEach(i => { const q = document.getElementById('qty-' + i); if (q) quantities[i] = parseInt(q.value, 10); });
-    const payload = {lines, quantities, voluntary: document.getElementById('voluntary').checked};
+    const origin = (document.querySelector('input[name="origin"]:checked') || {}).value || 'ssl';
+    const payload = {lines, quantities, origin, voluntary: origin === 'voluntary'};
     const ordered = document.getElementById('ordered');
     if (ordered) {
         payload.ordered_text = ordered.value;

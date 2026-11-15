@@ -56,7 +56,8 @@ def erreurs_page():
     ssl = erreurs.ssl_mail(month) if tab == 'tableau' else None
     return render_template(
         'erreurs.html', tab=tab, stages=erreurs.STAGES, counts=counts, cases=cases, view=view,
-        status_labels=erreurs.STATUS_LABELS, kinds=erreurs.KINDS, mails=erreurs.MAILS,
+        status_labels=erreurs.STATUS_LABELS, kinds=erreurs.KINDS, mails=erreurs.MAILS, origins=erreurs.ORIGINS,
+        origin_of=erreurs.origin,
         month=month, months=erreurs.months(), month_label=erreurs.month_label, rows=rows, ssl=ssl,
         ssl_email=erreurs.SSL_EMAIL, billing_labels=erreurs.BILLING_LABELS,
         total=sum(r['amount'] for r in rows), to_claim=sum(r['amount'] for r in rows if r['billing'] == 'to_claim'),
@@ -125,7 +126,7 @@ def confirm(case_id):
     try:
         lines = [int(i) for i in d.get('lines') or []]
         case = erreurs.confirm(case_id, lines, d.get('ordered_text', ''), d.get('received_text', ''),
-                               bool(d.get('voluntary')), d.get('quantities') or {})
+                               bool(d.get('voluntary')), d.get('quantities') or {}, d.get('origin'))
     except ValueError as e:
         return _fail(e)
     return _ok(case, alert=case['data'].get('alert'))
@@ -144,6 +145,7 @@ ACTIONS = {
     'relire-fil': lambda i, d: erreurs.refresh_from_thread(database.get_logistics_error(i), full=True),
     'paire': lambda i, d: erreurs.set_reship_item(i, d.get('variant_id')),
     'type': lambda i, d: erreurs.set_kind(i, d.get('kind')),
+    'rouvrir': lambda i, d: erreurs.reopen(i),
 }
 
 
