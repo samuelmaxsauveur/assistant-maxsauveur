@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_16_15_59_55",
+      "topic_label": "Form name Form submitted 2026-11-16 15:59:55",
+      "situation": "Form name Form submitted 2026-11-16 15:59:55",
+      "response_template": "Hi George,\n\nThank you for following up.\n\nWe actually sent you an email last week explaining that your Deck Cuir Bordeaux in 42.5 is no longer available, and offering you the choice between a 42 or a 43 as a replacement. It's possible that email landed in your spam folder, it's worth checking there.\n\nCould you let us know which size you'd prefer? Since this model runs slightly large, both options are worth considering depending on your foot length. As soon as we hear back from you, we'll get your order moving straight away.\n\nJohn – Customer Care – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "r_ception_chaussures",
       "topic_label": "Réception Chaussures",
       "situation": "Réception Chaussures",
