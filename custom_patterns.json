@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__form_name_form_submitted_2026_11_02_17_12_22",
+      "topic_label": "Re: Re: Form name Form submitted 2026-11-02 17:12:22",
+      "situation": "Re: Re: Form name Form submitted 2026-11-02 17:12:22",
+      "response_template": "Bonjour Gauthier,\n\nPas d'inquiétude, le bon de retour joint à cet email nous suffira. Notre équipe logistique saura faire le lien avec votre dossier de réparation (#11405_REPARATION) dès réception du colis.\n\nNous suivrons l'acheminement et vous tiendrons informé dès que la paire sera entre nos mains.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__probl_me_commande__13990",
       "topic_label": "Re: Problème COMMANDE #13990",
       "situation": "Re: Problème COMMANDE #13990",
