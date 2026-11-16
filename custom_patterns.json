@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__votre_retour_pour_la_commande__13494",
+      "topic_label": "Re: Votre retour pour la commande #13494",
+      "situation": "Re: Votre retour pour la commande #13494",
+      "response_template": "Bonjour Vincent,\n\nMerci pour ces justificatifs. Avec un dépôt en bureau de poste le 9 octobre et une réception chez nous le 12 octobre, vous êtes bien dans les délais légaux de rétractation.\n\nVotre remboursement de 335 € va être traité sur votre Visa se terminant en 2125. Il apparaîtra sur votre compte d'ici quelques jours ouvrés selon votre banque.\n\nVeuillez nous excuser pour cette confusion au niveau des dates.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__votre_retour_pour_la_commande__13410",
       "topic_label": "Re: Votre retour pour la commande #13410",
       "situation": "Re: Votre retour pour la commande #13410",
