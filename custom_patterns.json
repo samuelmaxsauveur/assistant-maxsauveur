@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "commande_13992",
+      "topic_label": "Commande 13992",
+      "situation": "Commande 13992",
+      "response_template": "Bonjour Kévin,\n\nVotre commande #13992 n'est pas encore partie, nous nous rapprochons de la logistique pour accélérer les choses et revenons vers vous très rapidement avec une date d'expédition.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "paire_de_dakota_mad_max",
       "topic_label": "Paire de Dakota Mad Max",
       "situation": "Paire de Dakota Mad Max",
