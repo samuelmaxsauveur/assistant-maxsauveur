@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re___probl_me_commande__13990",
+      "topic_label": "Re : Problème COMMANDE #13990",
+      "situation": "Re : Problème COMMANDE #13990",
+      "response_template": "Bonjour Axel,\n\nPas de problème, le remboursement est possible une fois la paire revenue chez nous.\n\nUne chose tout de même : une paire de Max Sauveur n'est pas vraiment une chaussure d'occasion, c'est une pièce qui accompagne bien plus qu'un événement. Si l'envie revient, le 43 est toujours en stock et vous pourrait servir longtemps.\n\nCela dit, si vous préférez le remboursement, utilisez l'étiquette prépayée que nous vous avons envoyée, déposez le colis en bureau de poste, et dès réception nous procédons au remboursement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande_13386",
       "topic_label": "Re: Commande 13386",
       "situation": "Re: Commande 13386",
