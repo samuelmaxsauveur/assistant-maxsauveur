@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__votre_retour_pour_la_commande__13410",
+      "topic_label": "Re: Votre retour pour la commande #13410",
+      "situation": "Re: Votre retour pour la commande #13410",
+      "response_template": "Bonjour Xavier,\n\nVotre choix est noté. Nous allons procéder au remboursement de 335 € sur votre Visa se terminant en 3309. Comptez quelques jours ouvrés selon votre banque.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande_13992",
       "topic_label": "Commande 13992",
       "situation": "Commande 13992",
