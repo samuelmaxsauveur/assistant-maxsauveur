@@ -2,6 +2,86 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__il_vous_reste_6_heures",
+      "topic_label": "Re: Il vous reste 6 heures",
+      "situation": "Re: Il vous reste 6 heures",
+      "response_template": "Bonjour Simon,\n\nVotre demande portait sur la confirmation de votre commande, et c'est ce que nous avons vérifié. La seconde commande a été passée avec une adresse e-mail différente (simon.619@hotlail.fr), ce qui l'a enregistrée sur un compte distinct. Il nous était impossible de la rattacher à la vôtre ou de détecter ce doublon sans cette information.\n\nPour le retour de la paire en trop, la procédure reste la même :\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (motif : « remboursement »)\n2. Glissez le bon dans la boîte et emballez soigneusement la paire\n3. Expédiez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, le remboursement de 348,50 € sera émis sur votre Visa d'origine.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
+      "topic": "form_name_form_submitted_2026_11_15_06_38_52",
+      "topic_label": "Form name Form submitted 2026-11-15 06:38:52",
+      "situation": "Form name Form submitted 2026-11-15 06:38:52",
+      "response_template": "Bonjour Pauline,\n\nLes ceintures à boucles personnalisables ne sont plus disponibles à la commande pour l'instant. Nous prévoyons de relancer une précommande fin novembre, et ce sera le bon moment pour commander les modèles qui vous intéressent.\n\nJe vous conseille de vous abonner à nos communications pour ne pas manquer l'ouverture.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "form_name_form_submitted_2026_11_06_16_01_50",
+      "topic_label": "Form name Form submitted 2026-11-06 16:01:50",
+      "situation": "Form name Form submitted 2026-11-06 16:01:50",
+      "response_template": "Bonjour Patrick,\n\nMerci pour votre suivi.\n\nAprès vérification avec notre équipe logistique, nous n'avons malheureusement plus de chaussettes en stock. Est-ce qu'un autre accessoire vous ferait plaisir à la place ?\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
+      "topic": "commande__14006",
+      "topic_label": "Commande #14006",
+      "situation": "Commande #14006",
+      "response_template": "Bonjour Dylan,\n\nAvec 25,6 cm de pied, en ajoutant les 0,2 cm vous êtes à 25,8 cm, ce qui vous place en **40** sur notre guide.\n\nLe Paul chausse serré au début, mais c'est normal sur ce modèle : le cuir et la semelle en liège se moulent progressivement au pied. Le **40** est la bonne pointure pour vous. Le 41 serait trop grand et compromettrait le maintien, surtout sans lacets.\n\nVous n'avez pas besoin de faire d'échange.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__re__mad_max___les_remises_de_cette_ann_e",
+      "topic_label": "Re: Re: Mad Max : les remises de cette année",
+      "situation": "Re: Re: Mad Max : les remises de cette année",
+      "response_template": "Bonjour Jimmy,\n\nPas de problème pour orienter votre retour vers un remboursement plutôt qu'un avoir. Il vous suffit d'indiquer « remboursement » comme motif sur le bon de retour.\n\nConcernant la boîte abîmée : ce qui compte pour nous, c'est l'état de la paire elle-même. Si les chaussures sont en état de remise en vente à réception, le retour sera traité normalement.\n\nPour rappel, l'adresse d'expédition :\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nBonne journée,\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
+      "topic": "form_name_form_submitted_2026_11_14_11_08_59",
+      "topic_label": "Form name Form submitted 2026-11-14 11:08:59",
+      "situation": "Form name Form submitted 2026-11-14 11:08:59",
+      "response_template": "Bonjour Mahmud,\n\nMerci pour votre message. Pourriez-vous nous envoyer quelques photos du défaut constaté ? Cela nous permettra de regarder cela attentivement et de vous proposer la meilleure solution.\n\nNous revenons vers vous très rapidement.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_retour_pour_la_commande__13873",
+      "topic_label": "Votre retour pour la commande #13873",
+      "situation": "Votre retour pour la commande #13873",
+      "response_template": "Bonjour Ugo,\n\nNous avons bien reçu votre demande concernant la commande #13891 (Paul Mocassin Cuir Noir, pointure 40).\n\nUn email de confirmation vous a été envoyé le 13 novembre à l'adresse ugo.fekri@live.fr, pensez à vérifier vos indésirables si vous ne l'avez pas reçu. Ce message confirmait la réception du colis chez nous et vous proposait un avoir bonifié de 370 €.\n\nSi, comme pour la commande #13873, vous préférez le remboursement, c'est tout à fait possible. Dites-le moi et nous traitons les deux remboursements de 335 € ensemble.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
+      "topic": "il_vous_reste_6_heures",
+      "topic_label": "Il vous reste 6 heures",
+      "situation": "Il vous reste 6 heures",
+      "response_template": "Bonjour Simon,\n\nVous avez bien deux commandes à votre nom, passées le même jour. La raison pour laquelle vous n'en voyez qu'une dans votre espace client : elles ont été passées avec deux adresses e-mail différentes. L'une avec simon.619@hotmail.fr, l'autre avec simon.619@hotlail.fr (une lettre manquante dans \"hotmail\"). Chaque adresse génère un compte distinct, d'où l'impression de n'avoir qu'une commande.\n\nSur le retour gratuit pendant les Mad Max : seul l'échange de pointure était offert, pas les retours en vue d'un remboursement. La page livraison et retour et les CGV le précisent. Pour renvoyer la commande en trop, la procédure habituelle s'applique.\n\nUn point important avant de décider : votre commande du 5 novembre vous a donné droit à une carte cadeau de 15 € (code MADMAX-J9DWEF, valable jusqu'au 15 avril 2027). Si vous retournez la commande pour un remboursement, cette carte sera perdue.\n\nPour le retour de la paire en trop :\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (motif : « remboursement »)\n2. Glissez le bon dans la boîte et emballez soigneusement la paire\n3. Expédiez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, le remboursement de 348,50 € sera émis sur votre moyen de paiement d'origine.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
+      "topic": "probl_me_commande__13990",
+      "topic_label": "Problème COMMANDE #13990",
+      "situation": "Problème COMMANDE #13990",
+      "response_template": "Bonjour Axel,\n\nMerci pour les photos. Vous avez bien reçu Chelsea Chapman Cuir Noir en 42 (boîte 43) au lieu de Chelsea Chapman (boots cuir noir) en 43 : l'erreur vient de notre atelier, et nous nous en excusons.\n\nVoici votre étiquette de retour prépayée :\nhttps://wing-labelling-system.s3.eu-west-3.amazonaws.com/549146d6-4924-4a03-a1b7-297a86f83bcd/LABEL/2026-11-16/LABEL-421618e1-39d4-4fde-b4f9-7387a945b029-1794787379978-6A08266792585.pdf\n\nIl vous suffit de l'imprimer, de la coller sur le colis avec la paire dans sa boîte, puis de le déposer dans un bureau de poste ou un point Colissimo.\n\nDès que la paire arrive chez nous, nous vous envoyons la bonne. Vous n'avez rien à payer.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "une_commande__13972_a__t__livr_e",
+      "topic_label": "Une commande #13972 a été livrée",
+      "situation": "Une commande #13972 a été livrée",
+      "response_template": "Bonjour Loïs,\n\nUn remboursement est possible, mais il y a un point important à connaître avant de trancher : votre commande #13972 bénéficie d'une remise Mad Max de 15 %. Cette remise s'applique dès 150 € d'articles avant remise. Si nous remboursons les 2 imperméabilisants (20,40 €), ce que vous conservez tombe à 135 € avant remise, soit sous le seuil. La remise de 15 % serait alors annulée sur l'ensemble de la commande, ce qui représente 20,25 € à déduire du remboursement. Vous recevriez donc 0,15 €. Par ailleurs, votre carte cadeau Mad Max de 20 € serait annulée dans le même temps, puisque le montant conservé passerait sous 150 €.\n\nEn gardant le renvoi déjà préparé, vous conservez votre remise et votre carte cadeau.\n\nNous regardons la suite avec notre responsable et revenons vers vous très rapidement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "re__une_commande__14035_est_en_transit",
       "topic_label": "Re: Une commande #14035 est en transit",
       "situation": "Re: Une commande #14035 est en transit",
@@ -22,14 +102,6 @@
       "topic_label": "Demande de retour",
       "situation": "Demande de retour",
       "response_template": "Bonjour Matthias,\n\nLe Wayne chausse légèrement grand, donc si vous ressentez du jeu, le 42,5 est effectivement le bon réflexe. Il vous reste 1 exemplaire en stock, donc n'attendez pas trop si vous souhaitez faire l'échange.\n\nVoici la procédure :\n\n1. Téléchargez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (motif : \"avoir\")\n2. Glissez le bon à l'intérieur du colis, emballez soigneusement la paire\n3. Expédiez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous émettrons un avoir pour commander le 42,5.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "une_commande__13972_a__t__livr_e",
-      "topic_label": "Une commande #13972 a été livrée",
-      "situation": "Une commande #13972 a été livrée",
-      "response_template": "Bonjour Loïs,\n\nMerci pour les photos, il manque bien l'imperméabilisant dans votre colis : l'erreur vient de notre préparation, et nous nous en excusons.\n\nNous vous l'envoyons dans les prochains jours, à la même adresse. Vous recevrez le numéro de suivi par mail dès son départ.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -98,14 +170,6 @@
       "example_count": 1
     },
     {
-      "topic": "il_vous_reste_6_heures",
-      "topic_label": "Il vous reste 6 heures",
-      "situation": "Il vous reste 6 heures",
-      "response_template": "Bonjour Simon,\n\nEffectivement, vous avez bien deux commandes à votre nom. Vous pouvez nous retourner celle de votre choix pour obtenir le remboursement correspondant.\n\nVoici la procédure :\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (motif : « remboursement »)\n2. Glissez le bon dans la boîte et emballez soigneusement la paire\n3. Expédiez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, le remboursement sera émis sur votre moyen de paiement d'origine.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "demande_taille_chaussure",
       "topic_label": "Demande taille chaussure",
       "situation": "Demande taille chaussure",
@@ -160,14 +224,6 @@
       "response_template": "Bonjour Vincent,\n\nNous avons bien reçu votre retour (Brogues - Chaussures Derby Cuir Marron, pointure 44).\n\nLe délai légal de retour est de 14 jours à compter de la réception. Votre commande date du 1er octobre 2026, et nous avons reçu votre retour après ce délai. Nous ne pouvons donc pas procéder au remboursement. En revanche, nous pouvons vous proposer un avoir de 335 €, du montant de votre paire, valable 6 mois sur toute la collection, chaussures et ceintures.\n\nDites-moi simplement si cette solution vous convient et je vous l'envoie dans la foulée.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 3
-    },
-    {
-      "topic": "votre_retour_pour_la_commande__13873",
-      "topic_label": "Votre retour pour la commande #13873",
-      "situation": "Votre retour pour la commande #13873",
-      "response_template": "Bonjour Ugo,\n\nNous avons bien reçu votre retour (Deck - Chaussures Bateau Cuir Marron, pointure 40) et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux vous correspondre, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si une autre pointure ou un autre modèle vous tente, voici ce qu'on peut faire : nous vous envoyons un avoir de 360 €, soit le prix de votre paire (335 €) et 25 € offerts par la maison. Il est valable 6 mois sur toute la collection, chaussures et ceintures, et la livraison de votre nouvelle commande est offerte, à l'adresse de votre choix.\n\nAutrement dit, vous repartez avec une nouvelle pièce sans rien débourser, et 25 € de plus en poche.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte. Sans réponse de votre part d'ici le vendredi 20 novembre, nous procéderons au remboursement.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
     },
     {
       "topic": "votre_retour_pour_la_commande__13808",
@@ -246,14 +302,6 @@
       "topic_label": "Votre avoir pour la commande #13459",
       "situation": "Votre avoir pour la commande #13459",
       "response_template": "Bonjour Simon,\n\nNous avons bien reçu votre retour (Jason - Ceinture Western en Cuir de veau daim Marron) et venons de générer votre avoir d'un montant de 149 €.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\nX9Y37F7UCMEP\n\nConditions d'utilisation :\n- valable jusqu'au 13/05/2027,\n- utilisable uniquement sur le modèle Jason - Ceinture Western en Cuir de veau daim Marron, en une seule commande,\n- réservé à votre adresse e-mail (simon.baas02@gmail.com) : pensez à commander avec cette adresse,\n- non cumulable avec d'autres codes ou promotions.\n\nSi vous avez la moindre question, je reste disponible.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__re__mad_max___les_remises_de_cette_ann_e",
-      "topic_label": "Re: Re: Mad Max : les remises de cette année",
-      "situation": "Re: Re: Mad Max : les remises de cette année",
-      "response_template": "Bonjour Jimmy,\n\nAvec 27 cm et un pied large avec un fort cou-de-pied, le 43 sera alors la bonne pointure pour vous sur le Paul. \n\nPour l'échange, voici la procédure :\n\n1. Téléchargez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (motif : « avoir »)\n2. Glissez-le dans la boîte avec la paire\n3. Expédiez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous envoyons un avoir pour commander le 43. Je vous conseille de passer la nouvelle commande rapidement dès réception de l'avoir, les stocks se réduisent effectivement.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -962,14 +1010,6 @@
       "example_count": 1
     },
     {
-      "topic": "re__il_vous_reste_6_heures",
-      "topic_label": "Re: Il vous reste 6 heures",
-      "situation": "Re: Il vous reste 6 heures",
-      "response_template": "Bonjour Simon,\n\nVotre commande #13945 (Powell Boots Cuir Grainé Marron, 42) est bien la seule enregistrée à votre nom. Pas de doublon, vous pouvez être rassuré.\n\nBonne soirée,\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
       "topic": "re__commande_13852",
       "topic_label": "Re: Commande 13852",
       "situation": "Re: Commande 13852",
@@ -1056,14 +1096,6 @@
       "response_template": "Bonjour [Prénom],\n\n**DÉTERMINER LA BONNE TAILLE**\n\nPour trouver votre taille de ceinture, la règle est simple : la taille correspond à la distance entre l'ardillon et le trou du milieu (sur 5 trous).\n\nEn pratique :\n- Pour un pantalon taille 40/42 → tour de taille ~85/90 cm → recommander 95 cm\n- Pour un pantalon taille 38 → tour de taille ~80/85 cm → recommander 90 cm\n\nChaque taille propose plusieurs trous, ce qui permet une marge des deux côtés pour un ajustement confortable.\n\n**CARACTÉRISTIQUES DE COUPE**\n\nCertains modèles présentent une largeur variable selon l'emplacement (exemple : la ceinture Jonas) :\n- 2 cm au niveau de la boucle et du bout\n- 2,5 cm sur la partie centrale\n\nC'est une caractéristique propre au style et qui lui donne ce galbe particulier. La description du site fait référence à la largeur aux extrémités.\n\n**POUR UN ÉCHANGE DE CEINTURE**\n\nPas de souci. Voici la procédure :\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (indiquez « avoir »)\n2. Emballez soigneusement la ceinture avec le bon à l'intérieur\n3. Expédiez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous générons un avoir que vous pourrez utiliser pour commander la bonne taille ou la couleur souhaitée.",
       "key_points": "Ton friendly et rassurant. Toujours expliquer la règle de mesure (ardillon-trou du milieu) plutôt que de demander la pointure. Pour les échanges : système d'avoir uniquement, même produit même couleur (sauf ajustement stock). Ne pas proposer de frais de retour gratuits sauf erreur de préparation.",
       "example_count": 6
-    },
-    {
-      "topic": "form_name_form_submitted_2026_11_06_16_01_50",
-      "topic_label": "Form name Form submitted 2026-11-06 16:01:50",
-      "situation": "Form name Form submitted 2026-11-06 16:01:50",
-      "response_template": "Bonjour Patrick,\n\nMerci pour votre retour détaillé.\n\nConcernant les chaussettes, nous vous présentons nos excuses. Ce n'est pas normal, et nous allons vérifier avec notre équipe logistique ce qui s'est passé lors de la préparation de votre commande. Nous vous tenons informé.\n\nPour la boîte abîmée, c'est effectivement regrettable, mais il s'agit d'un aléa lié au transport sur lequel nous n'avons pas de prise. Ce que nous contrôlons, c'est la protection intérieure : la boîte à chaussures, le carton d'emballage et le papier de soie sont précisément là pour absorber les chocs et protéger la paire. Si la paire elle-même est en bon état, c'est que cette protection a joué son rôle.\n\nPour les chaussures, nous travaillons à rendre notre guide des pointures le plus précis possible pour permettre à chacun de commander à distance en toute confiance. Mais selon la morphologie du pied, la forme et le volume interne du modèle, une paire peut ne pas convenir à tout le monde, et c'est tout à fait compréhensible.\n\nVoici la procédure pour retourner les Brogues :\n\n1. Téléchargez le bon de retour sur : https://maxsauveur.com/pages/livraison-et-retour\n2. Indiquez comme motif : « remboursement »\n3. Glissez le bon à l'intérieur du colis, emballé soigneusement avec la boîte d'origine\n4. Expédiez à :\n   SSL – Solutions & Services Logistiques\n   14 avenue Lamartine\n   13170 Les Pennes-Mirabeau\n\nDès réception et contrôle de la paire, nous procéderons au remboursement des Brogues (335 €) dans les 3 à 5 jours ouvrés.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
     },
     {
       "topic": "annuler_commande__13407",
@@ -1725,7 +1757,7 @@
       "topic": "commande__13661_en_attente_r_ception",
       "topic_label": "Commande #13661 en attente réception",
       "situation": "Commande #13661 en attente réception",
-      "response_template": "Bonjour Ronaldo,\n\nVotre commande #13661 (La Gigi, ceinture cuir lézard noir, 85) est bien en précommande. La livraison est prévue pour mi-novembre 2026.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
+      "response_template": "Bonjour Ronaldo,\n\nVotre commande #13661 (La Gigi, ceinture cuir lézard noir, 85) est bien en précommande. La livraison est prévue pour mi-décembre 2026.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -2197,7 +2229,7 @@
       "topic": "commande__13524",
       "topic_label": "Commande #13524",
       "situation": "Commande #13524",
-      "response_template": "Bonjour Anthony,\n\nVotre commande #13524 (La Gigi Cuir Lézard Noir et La Gigi Cuir Marron, toutes deux en taille 95) est en précommande. La livraison est prévue pour mi-novembre 2026.\n\nVous recevrez automatiquement un email avec votre lien de suivi dès que votre colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "response_template": "Bonjour Anthony,\n\nVotre commande #13524 (La Gigi Cuir Lézard Noir et La Gigi Cuir Marron, toutes deux en taille 95) est en précommande. La livraison est prévue pour mi-décembre 2026.\n\nVous recevrez automatiquement un email avec votre lien de suivi dès que votre colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -2541,7 +2573,7 @@
       "topic": "commande_n_13637_non_exp_di_e",
       "topic_label": "Commande n°13637 non expédiée",
       "situation": "Commande n°13637 non expédiée",
-      "response_template": "Bonjour Timothé,\n\nTout est normal. Votre commande #13637 (Gigi - Ceinture Cuir Lézard Noir 85) est une précommande, comme indiqué sur la fiche produit au moment de votre achat. La livraison est prévue pour mi-novembre 2026.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
+      "response_template": "Bonjour Timothé,\n\nTout est normal. Votre commande #13637 (Gigi - Ceinture Cuir Lézard Noir 85) est une précommande, comme indiqué sur la fiche produit au moment de votre achat. La livraison est prévue pour mi-décembre 2026.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -2565,7 +2597,7 @@
       "topic": "re__commande__13543_confirm_e",
       "topic_label": "Re: Commande #13543 confirmée",
       "situation": "Re: Commande #13543 confirmée",
-      "response_template": "Bonjour Margot,\n\nVotre commande #13543 (Gigi Ceinture Cuir Marron, taille 85) est en précommande, comme indiqué sur la fiche produit au moment de votre achat. La livraison est prévue pour mi-novembre 2026.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
+      "response_template": "Bonjour Margot,\n\nVotre commande #13543 (Gigi Ceinture Cuir Marron, taille 85) est en précommande, comme indiqué sur la fiche produit au moment de votre achat. La livraison est prévue pour mi-décembre 2026.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
