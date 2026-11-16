@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__form_name_form_submitted_2026_10_17_01_50_26",
+      "topic_label": "Re: Form name Form submitted 2026-10-17 01:50:26",
+      "situation": "Re: Form name Form submitted 2026-10-17 01:50:26",
+      "response_template": "Bonjour Fabrice,\n\nBonne idée. Les Wico arrivent à notre atelier la semaine prochaine, et nous ferons partir les lacets avec votre commande dans la foulée.\n\nPas de problème.\n\nBonne soirée,\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "re__re__votre_avoir_pour_la_commande__13823",
       "topic_label": "RE: RE: Votre avoir pour la commande #13823",
       "situation": "RE: RE: Votre avoir pour la commande #13823",
@@ -2830,14 +2838,6 @@
       "topic_label": "Re: Ceinture Jonny défectueuse ?",
       "situation": "Re: Ceinture Jonny défectueuse ?",
       "response_template": "Bonjour Arthur,\n\nMerci pour votre retour. Il n'est pas question de mettre en doute le soin que vous apportez à vos affaires. C'est justement pour trancher de façon objective que nous proposons un examen de la boucle par notre atelier.\n\nNous émettons une étiquette de retour prépayée uniquement lorsqu'un défaut de fabrication est confirmé. Les photos ne permettent pas de l'établir à ce stade, c'est donc l'examen en atelier qui fera foi.\n\nVoici comment procéder :\n\n1. Complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour, avec comme motif « diagnostic boucle ». Indiquez aussi le nom et la ville de la commande d'origine (Valérie Lemaitre, Gujan Mestras) pour que nous retrouvions la vente.\n2. Emballez soigneusement la ceinture avec le bon à l'intérieur.\n3. Expédiez le colis à :\n\nSSL Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nSi l'atelier conclut à un défaut du placage, nous prenons en charge la remise en état de la boucle et nous vous remboursons les frais d'envoi. Dans tous les cas, nous reviendrons vers vous avec les conclusions de l'atelier.\n\nÀ vous,\n\nJohn - Service Client - Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__form_name_form_submitted_2026_10_17_01_50_26",
-      "topic_label": "Re: Form name Form submitted 2026-10-17 01:50:26",
-      "situation": "Re: Form name Form submitted 2026-10-17 01:50:26",
-      "response_template": "Bonjour Fabrice,\n\nMerci pour les photos.\n\nNous avons bien les lacets correspondant à vos Wayne bordeaux et vos Deck nubuck marron. Nous vérifions les bonnes références de votre côté et vous les expédions gratuitement dès qu'ils sont prêts.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
