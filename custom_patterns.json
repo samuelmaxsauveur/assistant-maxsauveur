@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "_no_subject_",
+      "topic_label": "(No Subject)",
+      "situation": "(No Subject)",
+      "response_template": "Hi Raül,\n\nNo problem at all. Since the 42 is in stock, here's how we'll handle this:\n\nReturn your size 41 using the return form available at maxsauveur.com/pages/livraison-et-retour (reason: \"avoir\"), slip it in the box, and ship it to:\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\nFrance\n\nOnce we receive and inspect the pair, we'll send you a store credit of 335€, valid exclusively on the Blucher Derby Cuir Marron, so you can order the 42 at no extra cost and keep the full benefit of your Mad Max discount.\n\nBest,\nJohn – Customer Care – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__form_name_form_submitted_2026_10_17_01_50_26",
       "topic_label": "Re: Form name Form submitted 2026-10-17 01:50:26",
       "situation": "Re: Form name Form submitted 2026-10-17 01:50:26",
