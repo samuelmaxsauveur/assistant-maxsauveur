@@ -2,6 +2,54 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__votre_avoir_pour_la_commande__13823",
+      "topic_label": "RE: Votre avoir pour la commande #13823",
+      "situation": "RE: Votre avoir pour la commande #13823",
+      "response_template": "Bonjour Manuel,\n\nLe 41 est malheureusement en rupture de stock pour l'instant. La meilleure chose à faire est de vous abonner à l'alerte pointure directement sur la fiche produit : vous serez prévenu dès qu'il revient en stock. Des retours sont attendus en cours de semaine, il y a donc de bonnes chances que le 41 réapparaisse très prochainement.\n\nVotre avoir Y5RYHS2YL9VN (335 €, valable jusqu'au 13/05/2027) reste bien actif et vous pourrez l'utiliser dès que la pointure sera disponible.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "form_name_form_submitted_2026_11_14_22_46_05",
+      "topic_label": "Form name Form submitted 2026-11-14 22:46:05",
+      "situation": "Form name Form submitted 2026-11-14 22:46:05",
+      "response_template": "Bonjour Morgan,\n\nVos embauchoirs bois de cèdre (commande #13193) sont en précommande. La livraison est estimée entre le 18 et le 28 novembre. Vous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "form_name_form_submitted_2026_11_15_15_21_02",
+      "topic_label": "Form name Form submitted 2026-11-15 15:21:02",
+      "situation": "Form name Form submitted 2026-11-15 15:21:02",
+      "response_template": "Bonjour Yohan,\n\nMerci pour votre message, et quel beau compliment pour votre ami !\n\nMalheureusement, les remises Mad Max s'appliquent uniquement pendant la période promotionnelle, et nous ne pouvons pas les accorder en dehors, même à titre exceptionnel. \nLes Springsteen restent disponibles sur le site au tarif habituel. Et votre intuition sur la taille est bonne : le modèle chausse légèrement grand, donc le 43 est effectivement le bon choix pour un pied habituellement en 44.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "commande__13678_confirm_e",
+      "topic_label": "Commande #13678 confirmée",
+      "situation": "Commande #13678 confirmée",
+      "response_template": "Bonjour Léopold,\n\nVotre ceinture Morricone est en précommande, avec une livraison prévue pour mi-décembre 2026. Dès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "commande__13125_confirm_e",
+      "topic_label": "Commande #13125 confirmée",
+      "situation": "Commande #13125 confirmée",
+      "response_template": "Bonjour Denis,\n\nVos embauchoirs bois de cèdre (commande #13125) sont en précommande. La livraison est estimée entre le 18 et le 28 novembre. Vous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__une_commande__13840_est_en_transit",
+      "topic_label": "RE: Une commande #13840 est en transit",
+      "situation": "RE: Une commande #13840 est en transit",
+      "response_template": "Bonjour Marine,\n\nNous n'avons pas encore réceptionné votre colis en retour. Dès qu'il arrive chez notre logisticien, nous le préparons pour le réexpédier vers le point relais que vous nous avez indiqué :\n\nROMAIN PICANT PEINTURE\n6 rue Camille Blaisot\n14210 Evrecy\n\nNous revenons vers vous dès que c'est fait.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
@@ -1022,14 +1070,6 @@
       "topic_label": "Re: Commande #13836 confirmée",
       "situation": "Re: Commande #13836 confirmée",
       "response_template": "Bonjour Chakir,\n\nVotre Dakota part la semaine prochaine, vous recevrez votre lien de suivi dès l'expédition.\n\nSur la question de la promo : quand vous avez passé commande le 23 octobre, vous aviez accès à l'ensemble des pointures disponibles en Dakota, y compris votre 41. C'est précisément cette priorité-là que vous avez eue en commandant à ce moment.\n\nAujourd'hui, avec les Mad Max, il ne reste quasiment plus aucune pointure en Dakota. Même si vous vouliez en profiter, il n'y aurait aucune garantie d'avoir votre taille.\n\nSi la commande ne vous convient plus, vous pouvez tout à fait nous la retourner à réception.\n\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__une_commande__13840_est_en_transit",
-      "topic_label": "RE: Une commande #13840 est en transit",
-      "situation": "RE: Une commande #13840 est en transit",
-      "response_template": "Bonjour Marine,\n\nD'après le suivi Chronopost, votre colis est (ou a été) disponible au point relais suivant :\n\nROMAIN PICANT PEINTURE\n6 rue Camille Blaisot\n14210 Evrecy\n\nPouvez-vous vérifier s'il est encore récupérable là-bas via ce lien : https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR722172205TS\n\nSi le colis est toujours disponible en point relais, c'est la solution la plus rapide pour être dans les temps pour le 25 novembre.\n\nS'il est déjà reparti vers nous, nous le réexpédions dès réception vers le point relais de votre choix. Dans ce cas, donnez-nous l'adresse complète d'un point relais Chrono2Shop près de chez vous et nous nous en occupons.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
