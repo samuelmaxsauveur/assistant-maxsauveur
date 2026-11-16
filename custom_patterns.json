@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__votre_avoir_pour_la_commande__13823",
+      "topic_label": "RE: RE: Votre avoir pour la commande #13823",
+      "situation": "RE: RE: Votre avoir pour la commande #13823",
+      "response_template": "Bonjour Manuel,\n\nPas de souci ! Voici comment procéder :\n\n1. Rendez-vous sur la fiche produit des Brogues Bordeaux\n2. Cliquez sur la pointure 41 (qui apparaît barrée car épuisée)\n3. Un bouton « Prévenez-moi quand la taille sera disponible » s'affiche alors\n4. Cliquez dessus, entrez votre adresse e-mail, et vous serez notifié dès que le 41 revient en stock\n\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re___probl_me_commande__13990",
       "topic_label": "Re : Problème COMMANDE #13990",
       "situation": "Re : Problème COMMANDE #13990",
