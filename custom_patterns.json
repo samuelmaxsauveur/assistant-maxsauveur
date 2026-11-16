@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande_13386",
+      "topic_label": "Re: Commande 13386",
+      "situation": "Re: Commande 13386",
+      "response_template": "Bonjour Pierre-Louis,\n\nNous recevons les paires cette semaine. Dès l'inspection qualité effectuée, votre commande partira. Vous devriez la recevoir d'ici la fin de semaine, début de semaine prochaine au plus tard.\n\nVous recevrez automatiquement un email avec votre lien de suivi dès l'expédition.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__form_name_form_submitted_2026_11_14_11_08_59",
       "topic_label": "Re: Form name Form submitted 2026-11-14 11:08:59",
       "situation": "Re: Form name Form submitted 2026-11-14 11:08:59",
