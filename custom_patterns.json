@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "paire_de_dakota_mad_max",
+      "topic_label": "Paire de Dakota Mad Max",
+      "situation": "Paire de Dakota Mad Max",
+      "response_template": "Bonjour Thomas,\n\nMerci pour le compliment, ravie que la paire vous plaise en vrai !\n\nSur la pointure : vous êtes sur la bonne taille. Le cuir de la Dakota est assez rigide au départ, c'est tout à fait normal. Il faut compter quelques jours de port régulier pour qu'il s'assouplisse et s'adapte à la forme de votre pied. La sensation de serré aux orteils va progressivement disparaître.\n\nPetite question toutefois, est-ce que vous touchez le bout de la chaussure avec vos orteils en marchant?\n\nSur le zip : c'est un cas qu'on n'a pas rencontré jusqu'ici, ce qui rend difficile de vous donner une réponse précise à distance. Notre recommandation : passez voir un cordonnier, il aura probablement les outils adaptés pour remettre le coulisseau en place sur ces picots.\n\nSi cela ne donne rien, revenez vers nous et on avisera.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_16_10_19_23",
       "topic_label": "Form name Form submitted 2026-11-16 10:19:23",
       "situation": "Form name Form submitted 2026-11-16 10:19:23",
