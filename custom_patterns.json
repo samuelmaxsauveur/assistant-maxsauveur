@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__probl_me_commande__13990",
+      "topic_label": "Re: Problème COMMANDE #13990",
+      "situation": "Re: Problème COMMANDE #13990",
+      "response_template": "Bonjour Axel,\n\nPas de problème, on s'occupe de l'échange pour un 44.\n\nIl vous suffit de retourner la paire avec le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour. Précisez bien \"échange 44\" comme motif, glissez-le dans la boîte et expédiez le tout à :\n\nDès réception, nous vous envoyons un avoir du montant total de votre commande (255,40 €), valable sur le site pour commander votre 44. Les frais de livraison sont à avancer au moment de la commande, mais nous vous les remboursons dès qu'elle est passée.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_no_subject_",
       "topic_label": "(No Subject)",
       "situation": "(No Subject)",
