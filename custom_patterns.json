@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "r_ception_chaussures",
+      "topic_label": "Réception Chaussures",
+      "situation": "Réception Chaussures",
+      "response_template": "Bonjour Marvin,\n\nMerci pour votre retour et pour nous avoir transmis ces photos.\n\nVous avez raison, ce que vous observez n'est pas représentatif de la qualité de finition de nos Deck. Nous pouvons vous échanger la paire sans problème.\n\nVoici la procédure :\n\n1. Téléchargez et remplissez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (motif : « échange »)\n2. Glissez-le dans la boîte avec la paire\n3. Expédiez le colis à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous vous envoyons la nouvelle paire.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__form_name_form_submitted_2026_11_02_17_12_22",
       "topic_label": "Re: Re: Form name Form submitted 2026-11-02 17:12:22",
       "situation": "Re: Re: Form name Form submitted 2026-11-02 17:12:22",
