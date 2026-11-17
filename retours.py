@@ -656,7 +656,10 @@ def madmax_terms(order, returned, kept):
     except Exception as e:
         print(f"[Retours] Mad Max card lookup failed: {e}")
         keep_min = 150
+    kept_paid = round(sum(l["paid"] * l["qty"] for l in kept), 2)
     return {"rate": rate, "new_rate": new_rate, "kept_catalogue": kept_catalogue, "kept_base": kept_base,
+            "kept_paid": kept_paid, "new_discount": round(kept_base * new_rate / 100, 2),
+            "kept_after": round(kept_base - kept_base * new_rate / 100, 2),
             "deduction": deduction,
             "card": card, "card_kept_on_refund": bool(kept) and kept_catalogue >= keep_min}
 

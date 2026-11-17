@@ -234,10 +234,14 @@ def _madmax_calc(o, texts):
     refund = round(max(paid - mm["deduction"], 0), 2)
     back = ", ".join(f"{l['title']} {l['variant']}".strip() + (f" × {l['qty']}" if l["qty"] > 1 else "") for l in returned)
     tier = f"{mm['new_rate']} %" if mm["new_rate"] else "aucune remise"
-    line = (f"CALCUL MAD MAX fait par le code pour #{o['number']} (à reprendre tel quel, ne refais aucun calcul) : "
-            f"s'il renvoie {back}, il garde {retours.euros(mm['kept_base'])} d'articles avant remise, donc palier {tier} "
-            f"au lieu de {mm['rate']} %. Remise à déduire : {retours.euros(mm['deduction'])}. Payé pour ce qu'il renvoie : "
-            f"{retours.euros(paid)}. Remboursement : {retours.euros(refund)}.")
+    line = (f"CALCUL MAD MAX fait par le code pour #{o['number']} (seuls ces chiffres font foi : ceux de nos messages "
+            f"précédents peuvent être faux ; reprends-les tels quels, ne refais aucun calcul). S'il renvoie {back} :\n"
+            f"  · articles gardés avant remise : {retours.euros(mm['kept_base'])}, donc palier {tier} au lieu de {mm['rate']} %\n"
+            f"  · remise à {tier} sur ces articles : {retours.euros(mm['new_discount'])}, soit {retours.euros(mm['kept_after'])} après remise\n"
+            f"  · payé pour ces articles avec la remise de {mm['rate']} % : {retours.euros(mm['kept_paid'])}\n"
+            f"  · différence à déduire du remboursement : {retours.euros(mm['deduction'])}\n"
+            f"  · payé pour ce qu'il renvoie : {retours.euros(paid)}\n"
+            f"  · remboursement : {retours.euros(paid)} - {retours.euros(mm['deduction'])} = {retours.euros(refund)}")
     if mm.get("card"):
         line += (" Sa carte cadeau Mad Max reste valable." if mm["card_kept_on_refund"]
                  else " Sa carte cadeau Mad Max est annulée (ce qu'il garde passe sous 150 €).")

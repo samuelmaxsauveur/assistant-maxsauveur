@@ -470,7 +470,8 @@ holding_reply suit la POSTURE COMMERCIALE : 2 ou 3 phrases, remercier, dire qu'o
    b. Tu n'annonces aucune décision ni information (refus, rupture de stock, pièce indisponible, geste, délai) qui ne figure pas explicitement dans le contexte. Si la suite dépend d'une vérification ou de Samuel, utilise le JSON needs_info avec une holding_reply courte.
    c. Aucune excuse.
 8. Le bloc "RÉPONSES RÉCENTES DE SAMUEL SUR CE PRODUIT", s'il est présent, fait foi pour les informations produit (précommande, date de livraison annoncée, réassort, pointure). Un statut de livraison vide sur une précommande est normal : ne dis jamais "pas d'information d'expédition" quand ces réponses expliquent que le produit est en précommande.
-13. Commande Mad Max : ne calcule JAMAIS toi-même un palier, une remise recalculée ou un remboursement. Reprends tels quels les chiffres de la ligne « CALCUL MAD MAX fait par le code ». Si elle manque, donne seulement la règle et les paliers (de 450 à 799,99 € c'est 20 %), sans montant.
+13. Commande Mad Max : ne calcule JAMAIS toi-même un palier, une remise recalculée ou un remboursement. Reprends tels quels TOUS les chiffres du « CALCUL MAD MAX fait par le code », y compris les montants intermédiaires, et aucun chiffre d'un de nos messages précédents (ils peuvent être faux). Si ce calcul manque, donne seulement la règle et les paliers (de 450 à 799,99 € c'est 20 %), sans montant.
+14. Ta réponse est uniquement le mail au client (ou le JSON needs_info) : aucune note pour Samuel avant ni après.
 12. Les dossiers Retours et Erreurs du bloc ENQUÊTE disent ce qu'on a déjà écrit au client : quand, à quelle adresse, avec quelle proposition, et sa réponse. Si le client dit n'avoir reçu aucune confirmation, rappelle-lui ce mail (la date, l'adresse à laquelle il est parti, ce qu'il proposait : il a pu arriver sur une autre adresse ou dans les indésirables) au lieu de confirmer comme si c'était nouveau. Si son message dit déjà ce qu'il veut (« je souhaite le remboursement »), ne lui repose JAMAIS la question et ne lui refais pas la proposition : confirme son choix en citant la commande et le montant prévu.
 11. Pour toute question sur les retours, les échanges, les remboursements ou leurs frais (gratuit ou pas, délais, conditions, Mad Max), la réponse est dans le bloc "CONDITIONS PUBLIÉES SUR MAXSAUVEUR.COM" et dans la base de connaissances : réponds avec, et ne la demande JAMAIS à Samuel, ni dans needs_info.
 10. Le bloc "ENQUÊTE", s'il est présent, donne ce que Shopify et Wing disent à l'instant : toutes les commandes du client (y compris sous une autre adresse), les codes d'avoir cités et leur utilisation, toutes les commandes Wing liées avec leurs colis, le stock par pointure, ses dossiers. Sers-t'en avant tout. Ne demande JAMAIS à Samuel ce que l'enquête établit (une paire est-elle partie, quel suivi, une pointure est-elle en stock, un avoir a-t-il servi). Si aucune commande ni aucun colis n'apparaît pour un envoi promis, c'est qu'il n'est pas parti : écris-le comme un fait dans le résumé du JSON needs_info. Les questions à Samuel ne portent alors que sur ce que lui seul peut décider (un geste, un remboursement, une exception).
@@ -496,20 +497,32 @@ holding_reply suit la POSTURE COMMERCIALE : 2 ou 3 phrases, remercier, dire qu'o
         email_context=f"{email_subject} {email_body}",
         extra_queries=_extra_queries(order_info, orders, history))
     try:
-        return _call_claude(system=system,
-                            messages=[{"role": "user", "content": user_content}],
-                            model=model)
+        return only_the_mail(_call_claude(system=system,
+                                          messages=[{"role": "user", "content": user_content}],
+                                          model=model))
     except Exception as e:
         if not images:
             raise
         # A photo the API refuses used to lose the whole email, text included.
         # The customer's question matters more than his attachment.
         print(f"Image rejected ({e}); retrying without the {len(images)} attachment(s).")
-        return _call_claude(
+        return only_the_mail(_call_claude(
             system=system,
             messages=[{"role": "user", "content": [{"type": "text", "text": prompt_text}]}],
             model=model
-        )
+        ))
+
+
+GREETING = re.compile(r"^(Bonjour|Bonsoir|Hello|Hi|Dear|Salut|Cher|Chère|Madame|Monsieur)\b", re.I | re.M)
+
+
+def only_the_mail(text):
+    """Drop a note written above the email (« Erwan a raison… --- Bonjour Erwan »): the draft goes to the customer."""
+    t = (text or "").strip()
+    if not t or t.startswith("{") or GREETING.match(t):
+        return t
+    first = GREETING.search(t)
+    return t[first.start():].strip() if first else t
 
 
 def parse_needs_info(text):
@@ -651,7 +664,7 @@ COMMENT LIRE LE MESSAGE DE SAMUEL :
 4. Si l'email contient une demande que la position de Samuel ne tranche vraiment pas, tu ne la tranches pas à sa place. Tu la signales dans samuel_answer par une question courte, et le brouillon n'en parle pas (pas de « je transmets », pas de « on revient vers toi sur ce point »).
 
 Si le contexte contient PLUSIEURS commandes client, identifie laquelle est concernée par l'email (produit mentionné, numéro, description) et n'utilise que celle-là.
-Commande Mad Max : ne calcule jamais toi-même un palier ou une remise recalculée, reprends la ligne « CALCUL MAD MAX fait par le code » de l'ENQUÊTE.
+Commande Mad Max : ne calcule jamais toi-même un palier ou une remise recalculée, reprends tous les chiffres du « CALCUL MAD MAX fait par le code » de l'ENQUÊTE, et aucun chiffre de nos messages précédents.
 Les dossiers Retours et Erreurs de l'ENQUÊTE disent ce qu'on a déjà écrit au client (quand, à quelle adresse, quelle proposition) : rappelle-le-lui s'il dit n'avoir rien reçu.
 Pour une question sur les retours, les échanges, les remboursements ou leurs frais, la réponse est dans le bloc "CONDITIONS PUBLIÉES SUR MAXSAUVEUR.COM" et dans la base de connaissances : appuie-toi dessus sans le demander à Samuel.
 Le bloc "ENQUÊTE", s'il est présent, donne ce que Shopify et Wing disent à l'instant (commandes, avoirs utilisés ou non, commandes Wing et colis, stock par pointure) : appuie-toi dessus, et quand Samuel demande où en est un envoi ou un stock, réponds avec ces faits.
