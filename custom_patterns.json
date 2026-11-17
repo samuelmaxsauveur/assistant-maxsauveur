@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__form_name_form_submitted_2026_11_14_11_08_59",
+      "topic_label": "Re: Re: Form name Form submitted 2026-11-14 11:08:59",
+      "situation": "Re: Re: Form name Form submitted 2026-11-14 11:08:59",
+      "response_template": "Bonjour Abbas,\n\nAvec grand plaisir ! Vos Brogues vont continuer à se faire à votre pied et à se patiner avec le temps.\n\nN'hésitez pas à revenir vers nous si vous avez la moindre question ou si vous rencontrez le moindre problème.\n\nBonne journée,\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__form_name_form_submitted_2026_11_16_15_59_55",
       "topic_label": "Re: Form name Form submitted 2026-11-16 15:59:55",
       "situation": "Re: Form name Form submitted 2026-11-16 15:59:55",
