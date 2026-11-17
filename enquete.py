@@ -13,6 +13,7 @@ those searches for every draft and hands Claude the facts:
 
 Reads only. Each search fails on its own without stopping the others.
 """
+import json
 import re
 from concurrent.futures import ThreadPoolExecutor
 
@@ -191,6 +192,60 @@ def _files(numbers, email):
     return lines
 
 
+TIERS_TEXT = ("paliers Mad Max, sur le montant des articles gardés avant remise : moins de 150 € : aucune remise ; "
+              "de 150 à 449,99 € : 15 % ; de 450 à 799,99 € : 20 % ; 800 € et plus : 30 %")
+RETURN_WORDS = re.compile(r"retour|renvo|rembours|échang|echang|garde", re.I)
+MADMAX_READ = """Une commande Max Sauveur :
+{lines}
+
+Messages échangés avec le client (les siens et les nôtres) :
+{texts}
+
+Quels articles de cette commande le client veut-il renvoyer pour être remboursé, et lesquels garde-t-il ou échange-t-il contre une autre pointure ?
+Réponds uniquement avec ce JSON :
+{{"returned": [{{"line": numéro de ligne, "qty": quantité renvoyée}}], "exchanged": [numéros des lignes échangées contre une autre pointure]}}
+Si ce n'est pas clair, réponds {{"returned": [], "exchanged": []}}."""
+
+
+def _madmax_calc(o, texts):
+    """The Mad Max discount of a refund, computed by the code from what the customer says he sends back."""
+    import claude_ai
+    lines = o["lines"]
+    prompt = MADMAX_READ.format(
+        lines="\n".join(f"{i}. {l['title']}" + (f" {l['variant']}" if l["variant"] else "") + f" × {l['quantity']}"
+                        for i, l in enumerate(lines)),
+        texts="\n\n---\n\n".join(t[:1500] for t in texts if t)[:5000])
+    text = claude_ai._call_haiku([{"role": "user", "content": prompt}], max_tokens=200)
+    start = text.find("{")
+    found = json.loads(text[start:text.rfind("}") + 1]) if start >= 0 else {}
+    qty = {}
+    for r in found.get("returned") or []:
+        i, n = r.get("line"), r.get("qty") or 1
+        if isinstance(i, int) and 0 <= i < len(lines) and isinstance(n, int) and n > 0:
+            qty[i] = min(n, lines[i]["quantity"])
+    if not qty:
+        return None
+    returned = [dict(lines[i], qty=n) for i, n in qty.items()]
+    kept = [dict(l, qty=l["quantity"] - qty.get(i, 0)) for i, l in enumerate(lines) if l["quantity"] - qty.get(i, 0) > 0]
+    mm = retours.madmax_terms(o, returned, kept)
+    if not mm:
+        return None
+    paid = round(sum(l["paid"] * l["qty"] for l in returned) + (o["shipping"] if not kept else 0), 2)
+    refund = round(max(paid - mm["deduction"], 0), 2)
+    back = ", ".join(f"{l['title']} {l['variant']}".strip() + (f" × {l['qty']}" if l["qty"] > 1 else "") for l in returned)
+    tier = f"{mm['new_rate']} %" if mm["new_rate"] else "aucune remise"
+    line = (f"CALCUL MAD MAX fait par le code pour #{o['number']} (à reprendre tel quel, ne refais aucun calcul) : "
+            f"s'il renvoie {back}, il garde {retours.euros(mm['kept_base'])} d'articles avant remise, donc palier {tier} "
+            f"au lieu de {mm['rate']} %. Remise à déduire : {retours.euros(mm['deduction'])}. Payé pour ce qu'il renvoie : "
+            f"{retours.euros(paid)}. Remboursement : {retours.euros(refund)}.")
+    if mm.get("card"):
+        line += (" Sa carte cadeau Mad Max reste valable." if mm["card_kept_on_refund"]
+                 else " Sa carte cadeau Mad Max est annulée (ce qu'il garde passe sous 150 €).")
+    if found.get("exchanged"):
+        line += " Un échange de pointure ne change pas la remise : l'article échangé compte dans ce qu'il garde."
+    return line
+
+
 def investigate(sender_email, customer_name="", orders=(), texts=()):
     """The ENQUÊTE block for Claude, or '' when nothing could be read."""
     texts = [t for t in texts if t]
@@ -265,6 +320,19 @@ def investigate(sender_email, customer_name="", orders=(), texts=()):
 
     if shopify:
         out.append("Commandes Shopify connues :\n" + "\n".join("- " + order_line(o) for o in shopify))
+    for o in shopify + by_name:
+        if not any(d.get("is_madmax") for d in o.get("discounts") or []):
+            continue
+        rate = retours.madmax_terms(o, [], o["lines"] and [dict(l, qty=l["quantity"]) for l in o["lines"]])
+        block = f"Commande Mad Max #{o['number']}" + (f" (remise de {rate['rate']} %)" if rate else "") + f" : {TIERS_TEXT}."
+        if any(RETURN_WORDS.search(t or "") for t in texts[:2]):
+            try:
+                calc = _madmax_calc(o, texts[:6])
+                if calc:
+                    block += "\n" + calc
+            except Exception as e:
+                print(f"[Enquête] Mad Max calculation failed for #{o['number']}: {e}")
+        out.append(block)
     if names:
         out.append("Autres commandes Shopify au même nom : " +
                    ("\n" + "\n".join("- " + order_line(o) for o in by_name) if by_name else "aucune."))
