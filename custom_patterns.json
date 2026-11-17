@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_16_22_38_34",
+      "topic_label": "Form name Form submitted 2026-11-16 22:38:34",
+      "situation": "Form name Form submitted 2026-11-16 22:38:34",
+      "response_template": "Bonjour Alban,\n\nNous venons justement de sortir la brogue en noir et en marron, avec un nouveau type de grainé différent des versions précédentes.\n\nN'hésitez pas à les découvrir sur le site.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
