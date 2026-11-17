@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__13581_confirm_e",
+      "topic_label": "Re: Commande #13581 confirmée",
+      "situation": "Re: Commande #13581 confirmée",
+      "response_template": "Bonjour Rémi,\n\nVos deux ceintures Gigi (Cuir Marron et Cuir Lézard Noir, taille 95) sont en précommande. La livraison est prévue pour mi-décembre 2026. Vous recevrez automatiquement un email avec votre lien de suivi dès que votre colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__13682_confirm_e",
       "topic_label": "Re: Commande #13682 confirmée",
       "situation": "Re: Commande #13682 confirmée",
