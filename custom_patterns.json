@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__une_commande__13915_a__t__livr_e",
+      "topic_label": "Re: Re: Une commande #13915 a été livrée",
+      "situation": "Re: Re: Une commande #13915 a été livrée",
+      "response_template": "Bonjour Erwan,\n\nVous avez tout à fait raison. 452 € se situe bien dans la tranche 450-800 €, soit une remise de 20 % et non 15 %. Notre message précédent était inexact sur ce point.\n\nVoici le calcul corrigé, en reprenant les chiffres exacts :\n\n- Articles conservés avant remise : 452 €\n- Remise applicable : 20 % soit 90,40 €\n- Montant conservé après remise : 361,60 €\n- Payé pour ces articles avec la remise de 30 % : 316,40 €\n- Différence à déduire du remboursement : 45,20 €\n- Payé pour les deux paires retournées : 574 €\n- **Remboursement : 574 € - 45,20 € = 528,80 €**\n\nLa procédure reste identique à ce que nous vous avons indiqué. N'hésitez pas si vous avez une question avant d'expédier le colis.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_16_18_27_47",
       "topic_label": "Form name Form submitted 2026-11-16 18:27:47",
       "situation": "Form name Form submitted 2026-11-16 18:27:47",
