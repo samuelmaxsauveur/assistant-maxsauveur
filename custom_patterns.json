@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__13682_confirm_e",
+      "topic_label": "Re: Commande #13682 confirmée",
+      "situation": "Re: Commande #13682 confirmée",
+      "response_template": "Bonjour Aziliz,\n\nVotre commande #13682 (La Gigi Ceinture Cuir Marron, taille 80) est bien enregistrée et le paiement est confirmé. Il s'agit d'une précommande, avec une livraison prévue pour mi-décembre 2026.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__r_clamation_observation",
       "topic_label": "Re: Réclamation/observation",
       "situation": "Re: Réclamation/observation",
