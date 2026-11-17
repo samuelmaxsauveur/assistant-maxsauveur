@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__r_ception_chaussures",
+      "topic_label": "Re: Réception Chaussures",
+      "situation": "Re: Réception Chaussures",
+      "response_template": "Bonjour Marvin,\n\nPas du tout : l'avoir sera calculé au prix actuel de la paire, vous n'aurez aucune différence à régler.\n\nDeux options s'offrent à vous :\n\n1. **Avoir pour commander un autre modèle ou une autre pointure** : vous recevez un avoir du prix actuel de la paire, et les frais de réexpédition sont offerts de notre côté. Votre carte cadeau de 40 € (MADMAX-VK2RCW, valable jusqu'au 15 avril 2027) reste bien active.\n\n2. **Remboursement** : si vous préférez un remboursement, votre carte cadeau de 40 € sera perdue.\n\nDans les deux cas, voici la procédure de retour :\n1. Téléchargez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (motif : « avoir » ou « remboursement » selon votre choix)\n2. Glissez-le dans la boîte avec la paire\n3. Expédiez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDites-moi simplement quelle option vous convient.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__form_name_form_submitted_2026_11_14_11_08_59",
       "topic_label": "Re: Re: Form name Form submitted 2026-11-14 11:08:59",
       "situation": "Re: Re: Form name Form submitted 2026-11-14 11:08:59",
