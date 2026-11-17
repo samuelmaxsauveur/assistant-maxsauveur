@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__r_clamation_observation",
+      "topic_label": "Re: Réclamation/observation",
+      "situation": "Re: Réclamation/observation",
+      "response_template": "Bonjour Isabelle,\n\nMerci pour les photos.\n\nUn point important : la pochette qui accompagne votre ceinture n'est pas en tissu, c'est du cuir, fabriqué sur mesure pour nos modèles. Si la ceinture semble difficile à y insérer, c'est à cause du plastique de protection qui l'entoure et la rigidifie. Une fois ce plastique retiré, le cuir s'enroulera naturellement et la ceinture rentrera parfaitement.\n\nSur le conditionnement : nous avons fait le choix délibéré de ne pas développer de boîtes de présentation. Proposer des emballages cadeaux élaborés nous obligerait à en répercuter le coût sur le prix final. Nous préférons concentrer 100 % de nos investissements dans la qualité des matières et le savoir-faire, plutôt que dans du packaging éphémère.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__une_commande__13915_a__t__livr_e",
       "topic_label": "Re: Re: Une commande #13915 a été livrée",
       "situation": "Re: Re: Une commande #13915 a été livrée",
