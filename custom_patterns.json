@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__form_name_form_submitted_2026_11_16_15_59_55",
+      "topic_label": "Re: Form name Form submitted 2026-11-16 15:59:55",
+      "situation": "Re: Form name Form submitted 2026-11-16 15:59:55",
+      "response_template": "Hi George,\n\nWith 26.4 cm, adding the 0.2 cm puts you at 26.6 cm, which lands you on a 41 on our size guide. Since the Deck runs slightly large, the 42 is the right call, and it will give you all the room you need for thicker socks, no need to go up to a 43.\n\nWe'll update your order to a 42 and get it shipped out shortly.\n\nJohn – Customer Care – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_16_22_38_34",
       "topic_label": "Form name Form submitted 2026-11-16 22:38:34",
       "situation": "Form name Form submitted 2026-11-16 22:38:34",
