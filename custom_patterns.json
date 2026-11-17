@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_16_21_59_24",
+      "topic_label": "Form name Form submitted 2026-11-16 21:59:24",
+      "situation": "Form name Form submitted 2026-11-16 21:59:24",
+      "response_template": "Bonjour Erwan,\n\nVos embauchoirs bois de cèdre (commande #13226) sont bien enregistrés et le paiement est confirmé. La livraison est estimée entre le 18 et le 28 novembre. Vous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "retour_commande__13908",
       "topic_label": "Retour commande #13908",
       "situation": "Retour commande #13908",
