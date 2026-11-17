@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re___no_subject_",
+      "topic_label": "Re: (No Subject)",
+      "situation": "Re: (No Subject)",
+      "response_template": "Hi Raül,\n\nWe perfectly understand your decision and will proceed with a refund of the shoes upon their return.\n\nTo clarify our approach: our brand operates on a direct-to-consumer model with very tight margins to offer high-quality materials at a fair price. We deliberately choose not to artificially inflate our retail prices to absorb and offer \"free\" international shipping and returns. The shipping fees you see are simply the exact costs charged by the carriers for deliveries outside of France.\n\nRegarding the fit, we provide a size chart on our website and offer personalized advice via email to assist you as much as possible. We always give this advice in good faith based on the measurements you provided. However, foot volume, shape, and instep vary significantly from one person to another. Fitting footwear at a distance is never an exact science, which is why the final choice and our standard return policy always apply, as detailed on our website.\n\nWe respect your choice to purchase from brands operating under a different logistical and pricing model. You can ship the unworn shoes back to the logistics address provided in our previous email. We will process your refund as soon as the pair is received and inspected.\n\nBest,\nJohn – Customer Care – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_16_15_59_55",
       "topic_label": "Form name Form submitted 2026-11-16 15:59:55",
       "situation": "Form name Form submitted 2026-11-16 15:59:55",
