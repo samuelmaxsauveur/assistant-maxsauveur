@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande_13302___taille",
+      "topic_label": "Re: Commande 13302 - taille",
+      "situation": "Re: Commande 13302 - taille",
+      "response_template": "Salut Benjamin,\n\nMerci pour ta patience.\n\nNous avons regardé les photos des semelles de ton Moc Jagger. Malheureusement, la semelle est trop marquée pour que nous puissions reprendre la paire : un client qui la recevrait serait dans la même situation que toi, ce ne serait pas raisonnable.\n\nPour ne pas te laisser sur le carreau, nous pouvons te proposer une remise de 20 % sur un nouveau modèle de ton choix. Si la Derby Golf Marron te fait de l'œil, elle s'applique là aussi.\n\nDis-moi si tu veux qu'on regarde ça ensemble.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "suivi_de_commande",
       "topic_label": "Suivi de commande",
       "situation": "Suivi de commande",
