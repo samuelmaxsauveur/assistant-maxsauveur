@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__une_commande__13840_est_en_transit",
+      "topic_label": "RE: RE: Une commande #13840 est en transit",
+      "situation": "RE: RE: Une commande #13840 est en transit",
+      "response_template": "Bonjour Marine,\n\nNotre équipe traite les retours vendredi et nous ferons le point à ce moment-là. Nous revenons vers vous dès que c'est fait.\n\nConcernant une nouvelle commande : la Brogue Derby Cuir Noir n'est malheureusement plus disponible en 45 actuellement.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__une_commande__13972_est_en_transit",
       "topic_label": "Re: Une commande #13972 est en transit",
       "situation": "Re: Une commande #13972 est en transit",
