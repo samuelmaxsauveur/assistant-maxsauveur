@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__commande__13863_confirm_e",
+      "topic_label": "Re: Re: Re: Commande #13863 confirmée",
+      "situation": "Re: Re: Re: Commande #13863 confirmée",
+      "response_template": "Bonjour Pierre,\n\nJe comprends l'hésitation, mais il y a un point important à avoir en tête : il ne reste que 2 paires de Dakota Noir en 42 en stock, et ce sera épuisé bien avant le showroom de fin décembre. Si le 42 vous intéresse, il faut trancher rapidement.\n\nSur la ceinture, vous trouverez notre guide de taille directement sur chaque fiche produit, il vous donnera toutes les indications pour choisir la bonne taille.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__retour_commande__13908",
       "topic_label": "Re: Re: Retour commande #13908",
       "situation": "Re: Re: Retour commande #13908",
