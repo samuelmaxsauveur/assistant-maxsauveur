@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__retour_commande__13908",
+      "topic_label": "Re: Re: Retour commande #13908",
+      "situation": "Re: Re: Retour commande #13908",
+      "response_template": "Bonjour Théo,\n\nNotre message précédent contenait une erreur de calcul, et il est important de vous la signaler avant que le retour arrive.\n\nComme vous renvoyez l'intégralité de la commande (boots + kit d'entretien), et non uniquement les boots, le calcul change. En ne gardant rien, les articles conservés passent à 0 €, soit sous le seuil de 150 €. La remise Mad Max de 20 % est donc annulée sur l'ensemble de la commande.\n\nConcrètement :\n- Articles gardés avant remise : 0 € (retour total)\n- Remise applicable : aucune\n- Remise initialement accordée sur le kit d'entretien (seule partie \"gardée\" dans le scénario précédent) : 13,80 €\n- Remboursement : 328 € (boots) - 13,80 € = **314,20 €**\n\nPar ailleurs, votre carte cadeau de 20 € (code MADMAX-MAT63U) est annulée, puisque le montant conservé passe sous 150 €.\n\nSur le délai : comptez 15 jours ouvrés à compter de la réception de votre colis par notre entrepôt.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__une_commande__13972_est_en_transit",
       "topic_label": "Re: Re: Une commande #13972 est en transit",
       "situation": "Re: Re: Une commande #13972 est en transit",
