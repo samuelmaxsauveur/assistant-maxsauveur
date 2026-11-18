@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__une_commande__13972_est_en_transit",
+      "topic_label": "Re: Re: Une commande #13972 est en transit",
+      "situation": "Re: Re: Une commande #13972 est en transit",
+      "response_template": "Bonjour Loïs,\n\nContent que l'objet vous plaise !\n\nSur la capacité : le cuir de nos porte-cartes est effectivement assez rigide au départ, c'est lié à sa qualité. Avec le temps et le port, il s'assouplit et permet d'accueillir jusqu'à 10 cartes, plus des pièces et des billets.\n\nSi malgré cela ce n'est pas suffisant pour votre utilisation, nous pouvons bien sûr organiser le retour. Quelques points à savoir avant de vous décider :\n\nVotre commande bénéficiait d'une remise Mad Max de 15 %. En retournant le porte-carte, les articles que vous conserveriez (chamoisine et imperméabilisants) ne représentent plus que 30 € avant remise, ce qui est sous le seuil de 150 €. La remise serait donc annulée sur ces articles, et 4,50 € seraient déduits de votre remboursement : vous recevriez 105,15 € au lieu de 109,65 €.\n\nPar ailleurs, votre carte cadeau Mad Max de 20 € (valable jusqu'au 15 avril 2027) serait annulée dans le même temps.\n\nDites-moi ce que vous souhaitez faire, et nous vous donnons la procédure de retour si vous confirmez.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_18_11_18_27",
       "topic_label": "Form name Form submitted 2026-11-18 11:18:27",
       "situation": "Form name Form submitted 2026-11-18 11:18:27",
