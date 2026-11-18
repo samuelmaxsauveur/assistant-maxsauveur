@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__retour_commande__13908",
+      "topic_label": "Re: Retour commande #13908",
+      "situation": "Re: Retour commande #13908",
+      "response_template": "Bonjour Théo,\n\nMerci pour le retour.\n\nUn point important à avoir en tête : comme vous optez pour un remboursement total de la commande, votre carte cadeau Mad Max de 20 € (code MADMAX-MAT63U) sera perdue. Elle n'est conservée qu'en cas d'échange de pointure ou d'avoir.\n\nPar ailleurs, le retour de la commande appelle un recalcul de la remise Mad Max. Si vous renvoyez les boots et conservez uniquement le kit d'entretien (40 €), le montant des articles gardés avant remise passe à 410 €, soit le palier -15 % au lieu du -20 % dont a bénéficié votre commande. Concrètement :\n\n- Articles gardés avant remise : 410 €, palier applicable : 15 %\n- Remise recalculée sur ces articles : 61,50 € (soit 348,50 € après remise)\n- Ce que vous avez payé pour ces articles avec la remise de 20 % : 328 €\n- Différence à déduire du remboursement : 20,50 €\n- Ce que vous avez payé pour les boots : 55,20 €\n- Remboursement des boots : 55,20 € - 20,50 € = **34,70 €**\n\nDès réception et contrôle de la paire, le remboursement de 34,70 € sera émis sur votre Mastercard d'origine.\n\nLe Wayne Bordeaux 41 est disponible en stock (3 exemplaires). Si vous souhaitez en commander un après le remboursement, n'attendez pas trop.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_18_15_25_04",
       "topic_label": "Form name Form submitted 2026-11-18 15:25:04",
       "situation": "Form name Form submitted 2026-11-18 15:25:04",
