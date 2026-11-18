@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "commande_13596",
+      "topic_label": "Commande 13596",
+      "situation": "Commande 13596",
+      "response_template": "Bonjour Alexandre,\n\nVotre commande #13596 (Wico Cuir Grainé Noir, 43) est bien enregistrée et le paiement est confirmé.\n\nNous avons pris un peu de retard sur la réception de cette paire, que nous attendons cette semaine. Une fois reçue, nous procédons à un contrôle avant expédition, et votre commande devrait partir la semaine prochaine. Vous recevrez automatiquement un email avec votre lien de suivi dès la prise en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__retour_commande__13908",
       "topic_label": "Re: Retour commande #13908",
       "situation": "Re: Retour commande #13908",
