@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_18_11_41_46",
+      "topic_label": "Form name Form submitted 2026-11-18 11:41:46",
+      "situation": "Form name Form submitted 2026-11-18 11:41:46",
+      "response_template": "Bonjour Quentin,\n\nLe remboursement de 335 € a bien été émis aujourd'hui sur votre Mastercard se terminant par 6511. Comptez quelques jours ouvrés selon les délais de votre banque.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__une_commande__13840_est_en_transit",
       "topic_label": "RE: RE: Une commande #13840 est en transit",
       "situation": "RE: RE: Une commande #13840 est en transit",
