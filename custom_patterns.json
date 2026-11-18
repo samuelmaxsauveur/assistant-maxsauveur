@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_18_11_18_27",
+      "topic_label": "Form name Form submitted 2026-11-18 11:18:27",
+      "situation": "Form name Form submitted 2026-11-18 11:18:27",
+      "response_template": "Bonjour Catherine,\n\nLa Carter Western en Cuir Noir taille 75 est actuellement en rupture de stock sur notre site. Nous ne pouvons donc pas vous donner de date de livraison pour ce coloris et cette taille.\n\nJe vous invite à activer l'alerte disponible sur la fiche produit (cliquez sur la taille barrée, puis \"Prévenez-moi quand disponible\") pour être informée dès le réassort.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_18_11_21_10",
       "topic_label": "Form name Form submitted 2026-11-18 11:21:10",
       "situation": "Form name Form submitted 2026-11-18 11:21:10",
