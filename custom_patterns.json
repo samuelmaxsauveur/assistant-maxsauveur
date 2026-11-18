@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_18_06_43_58",
+      "topic_label": "Form name Form submitted 2026-11-18 06:43:58",
+      "situation": "Form name Form submitted 2026-11-18 06:43:58",
+      "response_template": "Bonjour Aurélien,\n\nMerci pour votre suivi. Nous sommes en pleine période de forte activité et le traitement des retours prend un peu plus de temps que d'habitude cette semaine. Nous avons bien noté votre retour et nous nous en occupons.\n\nAvant de procéder, pourriez-vous nous indiquer la raison de votre retour ? Cela nous aidera à traiter votre dossier dans les meilleures conditions.\n\nPar ailleurs, sachez que nous pouvons vous proposer un échange de taille ou de modèle sans frais, ce qui vous permettrait de conserver votre remise BEBELT. Si cette option vous intéresse, dites-le-nous en même temps.\n\nNous revenons vers vous dès le traitement effectué.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "bon_de_retour_oubli__dans_le_colis___commande__13928__joel_w",
       "topic_label": "Bon de retour oublié dans le colis – Commande #13928 (Joel Wanlin)",
       "situation": "Bon de retour oublié dans le colis – Commande #13928 (Joel Wanlin)",
