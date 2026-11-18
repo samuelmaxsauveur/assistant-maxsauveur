@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__une_commande__13972_est_en_transit",
+      "topic_label": "Re: Une commande #13972 est en transit",
+      "situation": "Re: Une commande #13972 est en transit",
+      "response_template": "Bonjour Loïs,\n\nNoté pour le renvoi du porte carte, merci de nous en avoir informés.\n\nJuste par curiosité, qu'est-ce qui ne vous a pas convenu ? Un souci de taille, de matière, de format ?\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande_13596",
       "topic_label": "Commande 13596",
       "situation": "Commande 13596",
