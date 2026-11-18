@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_18_11_21_10",
+      "topic_label": "Form name Form submitted 2026-11-18 11:21:10",
+      "situation": "Form name Form submitted 2026-11-18 11:21:10",
+      "response_template": "Bonjour Catherine,\n\nC'est effectivement une contrainte technique imposée par l'application Chrono2Shop, qui ne permet pas de sélectionner son point relais avant le paiement. Nous en sommes les premiers embêtés.\n\nPour trouver les points relais disponibles près de Montreuil-en-Touraine (37530), vous pouvez les consulter ici : https://www.chronopost.fr/expeditionAvanceeSec/ounoustrouver.html\n\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_18_11_41_46",
       "topic_label": "Form name Form submitted 2026-11-18 11:41:46",
       "situation": "Form name Form submitted 2026-11-18 11:41:46",
