@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "suivi_de_commande",
+      "topic_label": "Suivi de commande",
+      "situation": "Suivi de commande",
+      "response_template": "Bonjour Flavie,\n\nVotre commande #13898 (Carter Ceinture Western Daim Marron Cognac) a bien été expédiée le 12 novembre. Voici votre lien de suivi : https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR731529928TS\n\nMalheureusement, le colis étant déjà en cours de livraison, il n'est plus possible de modifier le point relais de notre côté. Vous pouvez tenter de contacter directement Chronopost pour qu'ils interviennent, mais cela restera compliqué à ce stade de l'acheminement.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__13373_confirm_e",
       "topic_label": "Re: Commande #13373 confirmée",
       "situation": "Re: Commande #13373 confirmée",
