@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "bon_de_retour_oubli__dans_le_colis___commande__13928__joel_w",
+      "topic_label": "Bon de retour oublié dans le colis – Commande #13928 (Joel Wanlin)",
+      "situation": "Bon de retour oublié dans le colis – Commande #13928 (Joel Wanlin)",
+      "response_template": "Bonjour Joël,\n\nPas de souci, nous transmettrons le bon à l'équipe logistique pour qu'elle puisse identifier votre colis dès réception.\n\nAvant de lancer la procédure, j'aurais une question : qu'est-ce qui motive ce retour ? La taille, le confort, le modèle en lui-même ?\n\nLa raison pour laquelle je vous pose la question : votre commande a été passée lors des Mad Max, et vous avez droit à un échange de pointure offert (un seul, même modèle). Si c'est une question de taille, on peut vous renvoyer directement la bonne pointure sans frais, ce qui est souvent plus simple qu'un remboursement.\n\nUn point important si vous optez pour un remboursement total : votre carte cadeau Mad Max de 30 € (code MADMAX-MZSGMX, valable jusqu'au 15 avril 2027) sera perdue. Elle reste en revanche valable si vous passez par un échange de pointure ou un avoir.\n\nDites-moi ce qui vous convient le mieux, et on s'occupe de tout.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
