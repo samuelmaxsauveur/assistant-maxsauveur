@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_18_15_25_04",
+      "topic_label": "Form name Form submitted 2026-11-18 15:25:04",
+      "situation": "Form name Form submitted 2026-11-18 15:25:04",
+      "response_template": "Bonjour Félix,\n\nLe cuir pull-up de la Deck est un cuir naturel très peu traité, ce qui lui donne ce côté patine caractéristique. Voici l'essentiel :\n\n**Fréquence :** Un entretien tous les 2 à 3 mois suffit en usage normal, ou dès que le cuir commence à sembler sec.\n\n**Produit :** Une crème nourrissante incolore est parfaite. Elle nourrit le cuir sans en modifier la teinte. Évitez les produits contenant des solvants ou les crèmes trop grasses qui risquent d'alourdir le grain.\n\n**Application :** Un chiffon doux, en petites quantités, en mouvements circulaires. Laissez sécher quelques minutes, puis brossez.\n\n**À noter :** Le cuir pull-up marque facilement, notamment les égratignures légères, qui s'estompent souvent à la chaleur des doigts ou avec un peu de crème. C'est une caractéristique de ce type de cuir, pas un défaut.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_18_06_43_58",
       "topic_label": "Form name Form submitted 2026-11-18 06:43:58",
       "situation": "Form name Form submitted 2026-11-18 06:43:58",
