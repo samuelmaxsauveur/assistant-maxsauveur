@@ -15,10 +15,13 @@ import avoirs
 import retours
 
 PENDING = re.compile(r"avoir à valider : ([\d\s.,]+) € · commande #(\d+)(?: · modèle ([^)]+))?", re.I)
+NEED_ORDER = re.compile(r"avoir en attente du numéro de commande · montant : ([^·)]+?)(?: · modèle ([^)]+))?\)", re.I)
+ORDER_NUMBER = re.compile(r"(?<!\d)#?\s?(1\d{4})(?!\d)")
 
 READ = """Samuel, le fondateur de Max Sauveur, écrit une consigne à l'assistant de son service client, à propos d'un client.
 Commandes du client : {orders}
 Proposition d'avoir faite à Samuel et en attente de sa validation : {pending}
+Demande d'avoir de Samuel en attente du numéro de commande : {need}
 Consigne de Samuel :
 ---
 {question}
@@ -27,7 +30,8 @@ Samuel DEMANDE-t-il de créer maintenant un avoir (un code de réduction en euro
 Réponds uniquement avec ce JSON :
 {{"confirm": true s'il valide la proposition en attente telle quelle (« oui », « ok », « vas-y », « valide »), sinon false,
  "create": true ou false,
- "amount": montant de l'avoir en euros, ou null,
+ "amount": montant de l'avoir en euros s'il le donne en chiffres, ou null,
+ "basis": "order" s'il demande le montant de la commande ou ce que le client a payé, "item" s'il demande le montant d'un article précis, sinon null,
  "order": "numéro de la commande concernée (chiffres seulement), ou null",
  "model": "modèle de l'article concerné s'il le cite, ou null",
  "model_only": true si l'avoir doit être limité à ce modèle, sinon false,
@@ -35,13 +39,14 @@ Réponds uniquement avec ce JSON :
  "free_shipping": true s'il offre aussi la livraison de la prochaine commande, sinon false}}"""
 
 
-def _read(question, orders, pending=None):
+def _read(question, orders, pending=None, need=None):
     import claude_ai
     listing = "; ".join(f"{o.get('number')} ({', '.join(p.get('name', '') for p in o.get('products', []))})"
                         for o in orders or []) or "aucune"
     waiting = (f"{pending['amount']} € sur la commande #{pending['order']}" if pending else "aucune")
+    needing = (f"oui (montant : {need['amount']})" if need else "aucune")
     text = claude_ai._call_haiku([{"role": "user", "content": READ.format(orders=listing, question=question[:2000],
-                                                                          pending=waiting)}], max_tokens=250)
+                                                                          pending=waiting, need=needing)}], max_tokens=250)
     start = text.find("{")
     return json.loads(text[start:text.rfind("}") + 1]) if start >= 0 else {}
 
@@ -54,6 +59,46 @@ def _pending(previous):
         return None
     amount = float(found.group(1).replace(" ", "").replace("\u202f", "").replace(",", "."))
     return {"amount": amount, "order": found.group(2), "model": (found.group(3) or "").strip() or None}
+
+
+def _need_order(previous):
+    """A credit Samuel asked for, waiting for the order number (« c'est la commande 13672 »)."""
+    last = (previous or [{}])[-1].get("claude_answer") or "" if previous else ""
+    found = NEED_ORDER.search(last)
+    if not found:
+        return None
+    return {"amount": found.group(1).strip(), "model": (found.group(2) or "").strip() or None}
+
+
+def _order_number(info, question, orders, email_text, customer_name):
+    """The order the credit is for: named by Samuel, the customer's, quoted in his email, or found by his name.
+    Returns (number, None) or (None, the question to ask Samuel)."""
+    named = re.sub(r"\D", "", str(info.get("order") or "")) or next(iter(ORDER_NUMBER.findall(question or "")), "")
+    if named:
+        return named, None
+    known = [str(o.get("number") or "").lstrip("#") for o in orders or [] if o.get("number")]
+    if len(known) == 1:
+        return known[0], None
+    try:
+        import enquete
+        quoted = list(dict.fromkeys(enquete.NUMBER_RE.findall(email_text or "")))
+    except Exception:
+        quoted = []
+    if len(quoted) == 1:
+        return quoted[0], None
+    if not known and customer_name and "@" not in customer_name:
+        try:
+            found = retours.search_orders_by_name(customer_name)
+        except Exception as e:
+            print(f"[SAV credit] Name search failed: {e}")
+            found = []
+        if len(found) == 1:
+            return found[0]["number"], None
+        known = [o["number"] for o in found]
+    choices = known or quoted
+    if choices:
+        return None, f"Pour quelle commande ? J'en vois plusieurs : {', '.join('#' + n for n in choices[:6])}."
+    return None, "Je ne trouve pas sa commande : donne-moi son numéro."
 
 
 def _stem(word):
@@ -85,12 +130,13 @@ def _proposal(number, model):
     return amount, detail, exact
 
 
-def maybe_create(question, orders, previous=None):
-    """(context block for Claude, note for Samuel, waiting): waiting is True when Samuel must first validate an amount."""
-    pending = _pending(previous)
-    if not pending and not re.search(r"\bavoir|\bcode\b", question or "", re.I):
+def maybe_create(question, orders, previous=None, email_text="", customer_name=""):
+    """(context block for Claude, note for Samuel, waiting): waiting is True when Samuel must answer first
+    (validate an amount, or give the order number)."""
+    pending, need = _pending(previous), _need_order(previous)
+    if not pending and not need and not re.search(r"\bavoir|\bcode\b", question or "", re.I):
         return "", None, False
-    info = _read(question, orders, pending)
+    info = _read(question, orders, pending, need)
     try:
         amount = float(info.get("amount") or 0)
     except (TypeError, ValueError):
@@ -103,12 +149,27 @@ def maybe_create(question, orders, previous=None):
         # « non, mets plutôt 150 € » : his amount, on the order and item of the proposal unless he names others.
         info["order"] = info.get("order") or pending["order"]
         info["model"] = info.get("model") or pending["model"]
+    elif need:
+        # « c'est la commande 13672 » completes the request that was waiting for it.
+        info["create"] = True
+        info["model"] = info.get("model") or need["model"]
+        if amount <= 0:
+            figure = re.sub(r"[^\d,.]", "", need["amount"]).replace(",", ".")
+            if figure:
+                amount = float(figure)
+            elif need["amount"] in ("order", "item"):
+                info["basis"] = need["amount"]
     if not info.get("create"):
         return "", None, False
-    number = re.sub(r"\D", "", str(info.get("order") or "")) or \
-        next((str(o.get("number") or "").lstrip("#") for o in orders or [] if o.get("number")), "")
+    number, ask = _order_number(info, question, orders, email_text, customer_name)
     if not number:
-        return "", "Avoir non créé : je ne trouve aucune commande Shopify pour ce client.", True
+        spec = (f"{amount:.2f} €" if amount > 0 else info.get("basis") or "à valider")
+        model = f" · modèle {info['model']}" if info.get("model") else ""
+        return "", f"Avoir pas encore créé. {ask} (avoir en attente du numéro de commande · montant : {spec}{model})", True
+    if amount <= 0 and info.get("basis") in ("order", "item"):
+        # Samuel said what to take: what the customer paid, created without asking again.
+        amount, _, exact = _proposal(number, info.get("model"))
+        info["model"] = exact or info.get("model")
     if amount <= 0:
         # No amount given: propose what he paid, and wait for Samuel's « oui » (or another amount).
         proposed, detail, exact = _proposal(number, info.get("model"))
