@@ -56,20 +56,33 @@ def _pending(previous):
     return {"amount": amount, "order": found.group(2), "model": (found.group(3) or "").strip() or None}
 
 
+def _stem(word):
+    """noire -> noir, marrons -> marron: Samuel writes like he speaks, Shopify titles are masculine singular."""
+    word = word.rstrip("s")
+    return word[:-1] if word.endswith("e") and len(word) > 4 else word
+
+
+def _matches(model, line):
+    wanted = {_stem(w) for w in avoirs._norm(model).split() if len(w) > 2}
+    label = {_stem(w) for w in avoirs._norm(f"{line['title']} {line['variant']}").split()}
+    return bool(wanted) and wanted <= label
+
+
 def _proposal(number, model):
-    """What the customer paid for his order (or for the model named), shipping excluded, line by line."""
+    """What the customer paid for his order (or for the model named), shipping excluded, line by line,
+    and the exact item label when the model points at one line."""
     order = retours.fetch_order(number)
     if not order:
         raise RuntimeError(f"Commande #{number} introuvable dans Shopify")
     lines = order["lines"]
     if model:
-        wanted = [w for w in avoirs._norm(model).split() if len(w) > 2]
-        picked = [l for l in lines if wanted and all(w in avoirs._norm(f"{l['title']} {l['variant']}") for w in wanted)]
+        picked = [l for l in lines if _matches(model, l)]
         lines = picked or lines
     amount = round(sum(l["paid"] * l["quantity"] for l in lines), 2)
     detail = ", ".join(f"{l['title']}" + (f" {l['variant']}" if l["variant"] else "")
                        + f" : {retours.euros(l['paid'] * l['quantity'])}" for l in lines)
-    return amount, detail
+    exact = f"{lines[0]['title']} {lines[0]['variant']}".strip() if len(lines) == 1 else None
+    return amount, detail, exact
 
 
 def maybe_create(question, orders, previous=None):
@@ -82,9 +95,14 @@ def maybe_create(question, orders, previous=None):
         amount = float(info.get("amount") or 0)
     except (TypeError, ValueError):
         amount = 0
-    if pending and info.get("confirm") and amount <= 0:
+    if pending and info.get("confirm") and (amount <= 0 or abs(amount - pending["amount"]) < 0.01):
+        # Samuel's « oui » takes the proposal as it stands: amount, order and exact item.
         amount, info["order"], info["model"] = pending["amount"], pending["order"], pending["model"]
         info["create"] = True
+    elif pending and info.get("create") and amount > 0:
+        # « non, mets plutôt 150 € » : his amount, on the order and item of the proposal unless he names others.
+        info["order"] = info.get("order") or pending["order"]
+        info["model"] = info.get("model") or pending["model"]
     if not info.get("create"):
         return "", None, False
     number = re.sub(r"\D", "", str(info.get("order") or "")) or \
@@ -93,14 +111,20 @@ def maybe_create(question, orders, previous=None):
         return "", "Avoir non créé : je ne trouve aucune commande Shopify pour ce client.", True
     if amount <= 0:
         # No amount given: propose what he paid, and wait for Samuel's « oui » (or another amount).
-        proposed, detail = _proposal(number, info.get("model"))
-        model = f" · modèle {info['model']}" if info.get("model") else ""
+        proposed, detail, exact = _proposal(number, info.get("model"))
+        model = f" · modèle {exact or info['model']}" if info.get("model") else ""
         return "", (f"Avant de créer l'avoir, je te propose {retours.euros(proposed)} : le montant payé pour la commande "
                     f"#{number}, frais de port non compris ({detail}). Je le crée ? Réponds « oui », ou donne-moi un "
                     f"autre montant. (avoir à valider : {retours.euros(proposed)} · commande #{number}{model})"), True
     order = avoirs.get_order(number)
     items = order["lineItems"]["nodes"]
     model = info.get("model") or (items[0]["title"] if items else "")
+    if info.get("model") and items:
+        # Shopify's matcher does not know « noire » is « Noir »: give it the exact line when ours finds one.
+        lines = [{"title": i["title"], "variant": i["variantTitle"] or ""} for i in items]
+        hit = [l for l in lines if _matches(info["model"], l)]
+        if len(hit) == 1:
+            model = f"{hit[0]['title']} {hit[0]['variant']}".strip()
     av = avoirs.prepare(number, model, amount=round(amount, 2), model_only=bool(info.get("model_only")))
     if isinstance(info.get("months"), int) and 0 < info["months"] <= 24:
         av["ends_at"] = avoirs._add_months(datetime.now(timezone.utc), info["months"])
