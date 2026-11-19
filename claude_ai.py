@@ -311,8 +311,35 @@ def _date_facts_for(orders):
             + "\n".join(lines))
 
 
+def shipping_dates(now=None):
+    """Today, the next shipping day of an order placed now, and the delivery window, computed (not guessed).
+
+    Calendar (knowledge base): ordered before Tuesday 11:00, shipped Tuesday; after, Thursday
+    (taken as before Thursday 11:00, else the next Tuesday). Delivery in France: 3 to 5 working days."""
+    import datetime as dt
+    import pytz
+    import retours
+    now = now or dt.datetime.now(pytz.timezone("Europe/Paris"))
+    ship = None
+    for offset in range(0, 9):
+        day = (now + dt.timedelta(days=offset)).date()
+        if day.weekday() in (1, 3) and (offset > 0 or now.hour < 11):
+            ship = day
+            break
+    first, last = retours.add_workdays(ship, 3), retours.add_workdays(ship, 5)
+    return (f"\n\n--- DATES (calculées par le code, à reprendre telles quelles) ---\n"
+            f"Aujourd'hui : {retours.fr_date(now.date())}, {now:%Hh%M} (heure de Paris).\n"
+            f"Une commande passée maintenant est expédiée le {retours.fr_date(ship)} et livrée en France (point relais "
+            f"Chrono2Shop ou domicile) entre le {retours.fr_date(first)} et le {retours.fr_date(last)}, soit 3 à 5 jours "
+            f"ouvrés après l'expédition.")
+
+
 def _build_context(email_body, email_subject, customer_name, order_info=None, history=None, orders=None):
     context = f"Email de : {customer_name}\nSujet : {email_subject}\n\nContenu :\n{email_body}"
+    try:
+        context += shipping_dates()
+    except Exception as e:
+        print(f"[Dates] Unavailable: {e}")
     # History FIRST — highest priority context
     if history:
         context += "\n\n--- HISTORIQUE DES ÉCHANGES AVEC CE CLIENT (priorité absolue) ---"
