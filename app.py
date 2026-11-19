@@ -619,7 +619,10 @@ def ask():
     credit_note = None
     try:
         import sav_credit
-        credit_block, credit_note = sav_credit.maybe_create(question, all_orders_ask)
+        credit_block, credit_note, waiting = sav_credit.maybe_create(question, all_orders_ask, previous_exchanges)
+        if waiting:
+            # Samuel validates the amount first: the draft stays as it is until then.
+            return jsonify({'samuel_answer': credit_note, 'updated_draft': ''})
         repair_context += credit_block
     except Exception as e:
         print(f"[SAV credit] Failed: {e}")
