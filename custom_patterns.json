@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_18_22_23_42",
+      "topic_label": "Form name Form submitted 2026-11-18 22:23:42",
+      "situation": "Form name Form submitted 2026-11-18 22:23:42",
+      "response_template": "Bonjour Otto,\n\nLa garantie à vie Max Sauveur porte sur la **semelle** : elle est conçue pour être ressemelable indéfiniment. Concrètement, si la semelle s'use avec le temps, vous pouvez la faire ressemeler chez n'importe quel cordonnier, ou via notre atelier.\n\nCe que la garantie ne couvre pas : l'usure normale du cuir, de la doublure ou des lacets.\n\nTous les détails ici : https://maxsauveur.com/pages/la-garantie-a-vie-de-nos-semelles\n\nN'hésitez pas si vous avez des questions sur un modèle ou une pointure avant de passer commande.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
