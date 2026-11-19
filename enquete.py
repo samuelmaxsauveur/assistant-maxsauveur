@@ -121,11 +121,59 @@ def _wing_line(ref, account, o):
 
 
 def _stock_line(product_id):
-    product = avoirs._gql("""query($id: ID!) { product(id: $id) { title variants(first: 60) {
-        nodes { title inventoryQuantity } } } }""", {"id": product_id})["product"]
-    sizes = ", ".join(f"{v['title']} : {v['inventoryQuantity']}" for v in product["variants"]["nodes"]
-                      if v.get("inventoryQuantity") is not None)
-    return f"{product['title']} : {sizes or 'stock inconnu'}."
+    product = avoirs._gql("""query($id: ID!) { product(id: $id) { title status variants(first: 60) {
+        nodes { title inventoryQuantity availableForSale inventoryPolicy } } } }""", {"id": product_id})["product"]
+    sizes = []
+    for v in product["variants"]["nodes"]:
+        if v.get("availableForSale") and (v.get("inventoryQuantity") or 0) > 0:
+            sizes.append(f"{v['title']} : {v['inventoryQuantity']} en stock")
+        elif v.get("availableForSale"):
+            sizes.append(f"{v['title']} : commandable (stock {v.get('inventoryQuantity')}, vente en précommande ou sur réassort)")
+        else:
+            sizes.append(f"{v['title']} : épuisée, non commandable")
+    state = "" if product.get("status") == "ACTIVE" else f" [fiche {str(product.get('status')).lower()}, pas en vente sur le site]"
+    return f"{product['title']}{state} : {', '.join(sizes) or 'stock inconnu'}."
+
+
+_catalog = {"at": 0, "items": []}
+
+
+def _catalog_items():
+    """Titles of the products on sale, read once every 6 hours."""
+    import time
+    if not _catalog["items"] or time.time() - _catalog["at"] > 6 * 3600:
+        items, after = [], None
+        for _ in range(4):
+            data = avoirs._gql("""query($after: String) { products(first: 250, after: $after, query: "status:active") {
+                pageInfo { hasNextPage endCursor } nodes { id title } } }""", {"after": after})["products"]
+            items += data["nodes"]
+            if not data["pageInfo"]["hasNextPage"]:
+                break
+            after = data["pageInfo"]["endCursor"]
+        _catalog.update(at=time.time(), items=items)
+    return _catalog["items"]
+
+
+ARTICLES = {"le", "la", "les", "l"}
+
+
+def _mentioned_products(texts, limit=4):
+    """Products named in the customer's own words (« ceinture Western modèle Carter ... noire »)."""
+    words = set(avoirs._norm(" ".join(texts)).split())
+    if not words:
+        return []
+    found = []
+    for p in _catalog_items():
+        parts = p["title"].split(" - ")
+        model = [w for w in avoirs._norm(parts[0]).split() if w not in ARTICLES]
+        if not model or not all(w in words for w in model) or all(len(w) < 4 for w in model):
+            continue
+        rest = set(avoirs._norm(parts[1] if len(parts) > 1 else "").split())
+        colour_hits = len(rest & words)
+        found.append((colour_hits, p["id"]))
+    found.sort(key=lambda x: -x[0])
+    best = found[0][0] if found else 0
+    return [pid for hits, pid in found if hits == best or best == 0][:limit]
 
 
 OFFER_LABELS = {"bonus": "un avoir bonifié", "plain": "un avoir", "exchange": "un échange Mad Max gratuit"}
@@ -310,7 +358,13 @@ def investigate(sender_email, customer_name="", orders=(), texts=()):
         for l in o["lines"]:
             if l.get("product_id") and l.get("category") != "other" and l["product_id"] not in product_ids:
                 product_ids.append(l["product_id"])
-    stock_job = pool.submit(lambda: [_stock_line(p) for p in product_ids[:MAX_PRODUCTS]])
+    try:
+        for pid in _mentioned_products(texts[:2]):
+            if pid not in product_ids:
+                product_ids.append(pid)
+    except Exception as e:
+        print(f"[Enquête] Products named in the email unavailable: {e}")
+    stock_job = pool.submit(lambda: [_stock_line(p) for p in product_ids[:MAX_PRODUCTS + 3]])
 
     out = []
 
@@ -360,7 +414,8 @@ def investigate(sender_email, customer_name="", orders=(), texts=()):
     try:
         stock = stock_job.result(timeout=40)
         if stock:
-            out.append("Stock Shopify actuel par pointure :\n" + "\n".join("- " + s for s in stock))
+            out.append("Stock Shopify actuel par pointure ou taille (seule source pour dire qu'une taille est disponible ou épuisée) :\n"
+                       + "\n".join("- " + s for s in stock))
     except Exception as e:
         print(f"[Enquête] Stock unreadable: {e}")
     try:
