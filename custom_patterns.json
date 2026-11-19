@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "retour",
+      "topic_label": "Retour",
+      "situation": "Retour",
+      "response_template": "Hi Raül,\n\nThanks for letting us know and for sending the receipt.\n\nJust to be clear on our end: for orders shipped outside mainland France, return shipping costs remain the customer's responsibility, and we're not able to cover the cost of reshipping either. This applies to your return from Spain.\n\nWe'll process your request as soon as the parcel is received and inspected at our warehouse.\n\nJohn – Customer Care – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_18_22_23_42",
       "topic_label": "Form name Form submitted 2026-11-18 22:23:42",
       "situation": "Form name Form submitted 2026-11-18 22:23:42",
