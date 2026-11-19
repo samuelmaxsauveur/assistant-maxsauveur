@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "dakota_again",
+      "topic_label": "Dakota again",
+      "situation": "Dakota again",
+      "response_template": "Bonjour Thomas,\n\nNous avons bien pris connaissance de votre message, et nous nous excusons sincèrement. Après ce que vous avez traversé avec cette paire, ce nouveau défaut n'est pas acceptable.\n\nAprès examen de l'historique de votre dossier, nous sommes convaincus que cette paire présente un défaut de montage réel. Nous ne cherchons pas à la réparer une nouvelle fois : nous préférons vous envoyer une paire neuve en échange.\n\nPour cela, voici la procédure pour nous retourner la paire actuelle :\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (motif : « défaut fabrication »)\n2. Glissez le bon dans la boîte\n3. Collez l'étiquette de retour prépayée ci-dessous et déposez le colis :\nhttps://wing-labelling-system.s3.eu-west-3.amazonaws.com/549146d6-4924-4a03-a1b7-297a86f83bcd/LABEL/2026-11-19/colis-6A08311842449\n\nAdresse logistique :\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception, nous organisons l'envoi de votre paire neuve.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__au",
       "topic_label": "Re: Au",
       "situation": "Re: Au",
