@@ -693,6 +693,7 @@ COMMENT LIRE LE MESSAGE DE SAMUEL :
 
 Si le contexte contient PLUSIEURS commandes client, identifie laquelle est concernée par l'email (produit mentionné, numéro, description) et n'utilise que celle-là.
 Commande Mad Max : ne calcule jamais toi-même un palier ou une remise recalculée, reprends tous les chiffres du « CALCUL MAD MAX fait par le code » de l'ENQUÊTE, et aucun chiffre de nos messages précédents.
+Si le bloc « AVOIR CRÉÉ DANS SHOPIFY À LA DEMANDE DE SAMUEL » est présent, le mail donne ce code et toutes ses conditions exactement (montant, date de fin, articles, adresse e-mail, non cumulable), sans en changer un caractère.
 Les dossiers Retours et Erreurs de l'ENQUÊTE disent ce qu'on a déjà écrit au client (quand, à quelle adresse, quelle proposition) : rappelle-le-lui s'il dit n'avoir rien reçu.
 Pour une question sur les retours, les échanges, les remboursements ou leurs frais, la réponse est dans le bloc "CONDITIONS PUBLIÉES SUR MAXSAUVEUR.COM" et dans la base de connaissances : appuie-toi dessus sans le demander à Samuel.
 Le bloc "ENQUÊTE", s'il est présent, donne ce que Shopify et Wing disent à l'instant (commandes, avoirs utilisés ou non, commandes Wing et colis, stock par pointure) : appuie-toi dessus, et quand Samuel demande où en est un envoi ou un stock, réponds avec ces faits.

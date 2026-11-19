@@ -615,18 +615,38 @@ def ask():
     except Exception as e:
         print(f"[Enquête] Unavailable for the discussion: {e}")
 
-    result = claude_ai.answer_question(
-        data['body'],
-        data['subject'],
-        customer_name,
-        order_info,
-        question,
-        previous_exchanges=previous_exchanges,
-        orders=all_orders_ask,
-        repair_context=repair_context
-    )
+    # « Crée-lui un avoir de 120 € » : the code is created now and goes in the mail.
+    credit_note = None
+    try:
+        import sav_credit
+        credit_block, credit_note = sav_credit.maybe_create(question, all_orders_ask)
+        repair_context += credit_block
+    except Exception as e:
+        print(f"[SAV credit] Failed: {e}")
+        credit_note = f"Avoir NON créé : {e}"
+
+    try:
+        result = claude_ai.answer_question(
+            data['body'],
+            data['subject'],
+            customer_name,
+            order_info,
+            question,
+            previous_exchanges=previous_exchanges,
+            orders=all_orders_ask,
+            repair_context=repair_context
+        )
+    except Exception as e:
+        if not credit_note:
+            raise
+        # The code exists in Shopify: Samuel must see it even if the mail could not be written.
+        print(f"[SAV credit] Draft failed after the credit: {e}")
+        return jsonify({'samuel_answer': f"{credit_note} La rédaction du mail a échoué ({e}) : relance, le même avoir sera repris.",
+                        'updated_draft': ''})
     samuel_answer = result.get('samuel_answer', '')
     updated_draft = result.get('updated_draft', '')
+    if credit_note:
+        samuel_answer = f"{credit_note} {samuel_answer}".strip()
 
     # Save this exchange for daily learning
     try:
