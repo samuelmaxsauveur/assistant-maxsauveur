@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__form_name_form_submitted_2026_11_18_11_18_27",
+      "topic_label": "Re: Form name Form submitted 2026-11-18 11:18:27",
+      "situation": "Re: Form name Form submitted 2026-11-18 11:18:27",
+      "response_template": "Bonjour Catherine,\n\nLa Carter Western en Cuir Noir taille 75 est bien disponible sur notre site, avec 1 exemplaire en stock. Vous pouvez passer commande directement.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande_13302___taille",
       "topic_label": "Re: Commande 13302 - taille",
       "situation": "Re: Commande 13302 - taille",
