@@ -237,7 +237,15 @@
                             </div>
                         </div>
                         {% else %}
-                        <div class="no-order">Aucune commande trouvée pour ce client.</div>
+                        <div id="noorder-{{ item.email.id }}">
+                            <div class="no-order">Aucune commande trouvée pour ce client.</div>
+                            <div style="margin-top:8px; font-size:13px;">
+                                <button type="button" class="btn btn-secondary" style="padding:4px 10px; font-size:13px;" onclick="searchOrders('{{ item.email.id }}', true)">🔍 Chercher dans le fil et à son nom</button>
+                                <div style="margin-top:6px;">ou n° : <input type="text" id="card-manual-{{ item.email.id }}" placeholder="13450" style="width:90px;">
+                                    <button type="button" class="btn btn-secondary" style="padding:4px 10px; font-size:13px;" onclick="loadTypedOrder('{{ item.email.id }}', 'card')">Charger</button></div>
+                                <div id="card-manual-msg-{{ item.email.id }}" style="margin-top:6px;"></div>
+                            </div>
+                        </div>
                         {% endif %}
                     </div>
                     <div class="reply-section">
@@ -640,6 +648,37 @@ async function sendReturnLabel(id) {
     if (!_labelIds[id]) {
         if (btn.dataset.running === '1') return; // prevent double-click
         btn.dataset.running = '1';
+        if (!d.order) {
+            // No order on the card: look in the whole thread and by name, then ask for the number.
+            btn.textContent = '⏳ Recherche de la commande…';
+            btn.disabled = true;
+            await searchOrders(id, true);
+            if (d.order) {
+                const o = d.order;
+                const owner = o.same_customer === false ? `\nAttention : elle est au nom de ${o.customer_name || o.customer_email}.` : '';
+                if (!confirm(`Commande retrouvée : ${o.number} (${(o.products || []).map(p => p.name).join(', ')}).${owner}\nCréer l'étiquette retour sur cette commande ?`)) {
+                    btn.textContent = '📦 Étiquette retour';
+                    btn.disabled = false;
+                    btn.dataset.running = '';
+                    return;
+                }
+            } else {
+                const typed = (prompt("Je ne trouve pas sa commande, ni dans le fil ni à son nom.\nNuméro de commande ? (laisse vide pour un mail sans étiquette)") || '').trim().replace(/^#/, '');
+                if (typed) {
+                    try {
+                        const found = await _lookupOrders(id, typed);
+                        if (!(found.orders || []).length) throw new Error(found.error || `Commande ${typed} introuvable dans Shopify.`);
+                        _mergeOrders(id, found.orders, true);
+                    } catch(e) {
+                        alert(e.message);
+                        btn.textContent = '📦 Étiquette retour';
+                        btn.disabled = false;
+                        btn.dataset.running = '';
+                        return;
+                    }
+                }
+            }
+        }
         btn.textContent = '⏳ Génération étiquette Wing...';
         btn.disabled = true;
         try {
@@ -741,27 +780,140 @@ function _escapeHtml(s) {
     return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 
+// Orders of a card: those found on load, plus those found or typed afterwards (searchOrders, loadTypedOrder).
+function _ordersOf(id) {
+    const d = emailData[id];
+    return (d.orders && d.orders.length) ? d.orders : (d.order ? [d.order] : []);
+}
+
+function _orderLine(o) {
+    const date = (o.created_at || '').slice(0, 10).split('-').reverse().join('/');
+    const items = (o.products || []).map(p => p.name).join(', ');
+    const owner = o.same_customer === false
+        ? ` · <span style="color:#b45309;">au nom de ${_escapeHtml(o.customer_name || o.customer_email || '?')}, vérifie</span>` : '';
+    return `<strong>${_escapeHtml(o.number)}</strong> · ${_escapeHtml(date)} · <span style="color:#555;">${_escapeHtml(items)}</span>${owner}`;
+}
+
+async function _lookupOrders(id, number) {
+    const d = emailData[id];
+    const res = await fetch('/orders-lookup', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({order_number: number || '', sender: d.sender, sender_email: d.sender_email,
+                              subject: d.subject, body: d.body, thread_id: d.thread_id})
+    });
+    return await safeJson(res);
+}
+
+// Found orders join the card: drafts (Générer, Demander) and the 📦 / 🔧 / 🚚 buttons use them.
+function _mergeOrders(id, found, typed) {
+    const d = emailData[id];
+    const known = _ordersOf(id).filter(k => !found.some(o => o.number === k.number));
+    d.orders = typed ? [...found, ...known] : [...known, ...found];
+    if (typed || !d.order) d.order = d.orders[0] || null;
+    if (typed && found.length) d.pick = found[0].number;
+    const card = document.getElementById('noorder-' + id);
+    if (card && d.orders.length) {
+        card.innerHTML = `<div style="font-size:13px; color:#166534; margin-bottom:6px;">Commande retrouvée :</div>`
+            + d.orders.map(o => `<div style="font-size:13px; margin:3px 0;">${_orderLine(o)}</div>`).join('')
+            + `<div style="font-size:12px; color:#777; margin-top:6px;">Clique sur <strong>Générer</strong> pour que le brouillon en tienne compte.</div>`;
+    }
+}
+
+function _refreshPanels(id) {
+    const repair = document.getElementById('repair-' + id);
+    const prep = document.getElementById('prep-' + id);
+    if (repair && repair.style.display === 'block') renderRepairOrders(id);
+    if (prep && prep.style.display === 'block') renderErrorOrders(id);
+}
+
+// Order numbers quoted anywhere in the thread, then the customer's name: when the card found nothing.
+async function searchOrders(id, force) {
+    const d = emailData[id];
+    if (d.searching || (d.searched && !force)) return;
+    d.searching = true;
+    const msg = document.getElementById('card-manual-msg-' + id);
+    if (msg) msg.innerHTML = '⏳ Je cherche dans tout le fil et à son nom…';
+    _refreshPanels(id);
+    try {
+        const data = await _lookupOrders(id, '');
+        _mergeOrders(id, data.orders || [], false);
+        if (msg && !(data.orders || []).length) msg.innerHTML = '<span style="color:#b45309;">Rien trouvé dans le fil ni à son nom : tape le numéro.</span>';
+    } catch(e) {
+        if (msg) msg.innerHTML = '❌ ' + _escapeHtml(e.message);
+    }
+    d.searching = false;
+    d.searched = true;
+    _refreshPanels(id);
+}
+
+// A number typed by Samuel (card, 🔧 panel): the Shopify order, whoever it belongs to.
+// In the 🔧 panel a number Shopify does not know still gives a label, with the pair written by hand.
+async function loadTypedOrder(id, where) {
+    const d = emailData[id];
+    const input = document.getElementById(where + '-manual-' + id);
+    const msg = document.getElementById(where + '-manual-msg-' + id);
+    const typed = (input.value || '').trim().replace(/^#/, '').trim();
+    if (!typed) return;
+    if (msg) msg.innerHTML = '⏳';
+    try {
+        const data = await _lookupOrders(id, typed);
+        if (data.error) throw new Error(data.error);
+        if ((data.orders || []).length) {
+            _mergeOrders(id, data.orders, true);
+            if (msg) msg.innerHTML = '';
+        } else if (where === 'repair') {
+            const ref = '#' + typed.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().replace(/[\s-]+/g, '_').replace(/[^A-Z0-9_]/g, '');
+            d.freeOrders = [{number: ref, products: [], free: true}, ...(d.freeOrders || []).filter(o => o.number !== ref)];
+            d.pick = ref;
+        } else {
+            if (msg) msg.innerHTML = `<span style="color:#b45309;">Commande ${_escapeHtml(typed)} introuvable dans Shopify.</span>`;
+            return;
+        }
+        _refreshPanels(id);
+    } catch(e) {
+        if (msg) msg.innerHTML = '❌ ' + _escapeHtml(e.message);
+    }
+}
+
+function _manualField(id, where, placeholder) {
+    const kept = (document.getElementById(where + '-manual-' + id) || {}).value || '';
+    const button = where === 'repair'
+        ? ` <button type="button" class="btn btn-secondary" style="padding:4px 10px; font-size:13px;" onclick="loadTypedOrder('${id}', 'repair')">Charger</button>
+            <span id="repair-manual-msg-${id}" style="margin-left:6px;"></span>` : '';
+    return `<div style="margin:6px 0 0;">Autre numéro : <input type="text" id="${where}-manual-${id}" value="${_escapeHtml(kept)}" placeholder="${placeholder}" style="width:110px;">${button}</div>`;
+}
+
+function _searchState(id) {
+    const d = emailData[id];
+    if (d.searching || !d.searched) return '<span style="color:#555;">⏳ Je cherche sa commande dans tout le fil et à son nom…</span>';
+    return '<span style="color:#b45309;">Aucune commande trouvée dans le fil ni à son nom : tape le numéro.</span>';
+}
+
 function toggleRepairPanel(id) {
     const panel = document.getElementById('repair-' + id);
     if (panel.style.display === 'block') { panel.style.display = 'none'; return; }
     panel.style.display = 'block';
+    renderRepairOrders(id);
+    if (!_ordersOf(id).length) searchOrders(id);
+}
+
+// The orders to choose from in 🔧: Shopify orders, then numbers Shopify does not know.
+function _repairChoices(id) {
+    return [..._ordersOf(id), ...(emailData[id].freeOrders || [])];
+}
+
+function renderRepairOrders(id) {
     const d = emailData[id];
-    const orders = (d.orders && d.orders.length) ? d.orders : (d.order ? [d.order] : []);
+    const choices = _repairChoices(id);
     const box = document.getElementById('repair-orders-' + id);
-    if (!orders.length) {
-        box.innerHTML = '<span style="color:#b45309;">Aucune commande Shopify trouvée pour ce client.</span>';
-        return;
-    }
+    const picked = Math.max(0, choices.findIndex(o => o.number === d.pick));
     // The order the customer mentions comes first in d.orders: preselected.
-    box.innerHTML = orders.map((o, i) => {
-        const date = (o.created_at || '').slice(0, 10).split('-').reverse().join('/');
-        const items = (o.products || []).map(p => p.name).join(', ');
-        return `<label style="display:block; margin:3px 0; cursor:pointer;">
-            <input type="radio" name="repair-order-${id}" value="${i}" ${i === 0 ? 'checked' : ''}
+    const list = choices.map((o, i) => `<label style="display:block; margin:3px 0; cursor:pointer;">
+            <input type="radio" name="repair-order-${id}" value="${i}" ${i === picked ? 'checked' : ''}
                    onchange="renderRepairProducts('${id}')">
-            <strong>${_escapeHtml(o.number)}</strong> · ${_escapeHtml(date)} · <span style="color:#555;">${_escapeHtml(items)}</span>
-        </label>`;
-    }).join('');
+            ${o.free ? `<strong>${_escapeHtml(o.number)}</strong> · <span style="color:#b45309;">introuvable dans Shopify, l'étiquette portera ce nom</span>` : _orderLine(o)}
+        </label>`).join('');
+    box.innerHTML = (list || _searchState(id)) + _manualField(id, 'repair', '13450');
     renderRepairProducts(id);
 }
 
@@ -769,22 +921,20 @@ function toggleErrorPanel(id) {
     const panel = document.getElementById('prep-' + id);
     if (panel.style.display === 'block') { panel.style.display = 'none'; return; }
     panel.style.display = 'block';
-    const d = emailData[id];
-    const orders = (d.orders && d.orders.length) ? d.orders : (d.order ? [d.order] : []);
+    renderErrorOrders(id);
+    if (!_ordersOf(id).length) searchOrders(id);
+}
+
+function renderErrorOrders(id) {
+    const orders = _ordersOf(id);
     const box = document.getElementById('prep-orders-' + id);
-    const manual = `<label style="display:block; margin:6px 0 0;">Autre numéro : <input type="text" id="prep-manual-${id}" placeholder="13450" style="width:110px;"></label>`;
-    if (!orders.length) {
-        box.innerHTML = '<span style="color:#b45309;">Aucune commande Shopify trouvée pour ce client.</span>' + manual;
-        return;
-    }
-    box.innerHTML = orders.map((o, i) => {
-        const date = (o.created_at || '').slice(0, 10).split('-').reverse().join('/');
-        const items = (o.products || []).map(p => p.name).join(', ');
-        return `<label style="display:block; margin:3px 0; cursor:pointer;">
-            <input type="radio" name="prep-order-${id}" value="${_escapeHtml(o.number)}" ${i === 0 ? 'checked' : ''}>
-            <strong>${_escapeHtml(o.number)}</strong> · ${_escapeHtml(date)} · <span style="color:#555;">${_escapeHtml(items)}</span>
-        </label>`;
-    }).join('') + manual;
+    const pick = emailData[id].pick;
+    const picked = Math.max(0, orders.findIndex(o => o.number === pick));
+    const list = orders.map((o, i) => `<label style="display:block; margin:3px 0; cursor:pointer;">
+            <input type="radio" name="prep-order-${id}" value="${_escapeHtml(o.number)}" ${i === picked ? 'checked' : ''}>
+            ${_orderLine(o)}
+        </label>`).join('');
+    box.innerHTML = (list || _searchState(id)) + _manualField(id, 'prep', '13450');
 }
 
 async function openErrorCase(id) {
@@ -818,16 +968,21 @@ async function openErrorCase(id) {
 }
 
 function _repairOrder(id) {
-    const d = emailData[id];
-    const orders = (d.orders && d.orders.length) ? d.orders : (d.order ? [d.order] : []);
     const checked = document.querySelector(`input[name="repair-order-${id}"]:checked`);
-    return checked ? orders[parseInt(checked.value, 10)] : null;
+    return checked ? _repairChoices(id)[parseInt(checked.value, 10)] : null;
 }
 
 function renderRepairProducts(id) {
     const order = _repairOrder(id);
     const box = document.getElementById('repair-products-' + id);
+    if (order && order.free) {
+        const kept = (document.getElementById('repair-free-' + id) || {}).value || '';
+        box.innerHTML = `<input type="text" id="repair-free-${id}" value="${_escapeHtml(kept)}" placeholder="Ex. Gigi Noir 42" style="width:260px;"
+                                onchange="suggestRepairType('${id}')">`;
+        return;
+    }
     const products = (order && order.products) || [];
+    if (!order) { box.innerHTML = 'Choisis d\'abord la commande.'; return; }
     if (!products.length) { box.innerHTML = 'Aucun article dans cette commande.'; return; }
     box.innerHTML = products.map((p, i) => `<label style="display:block; margin:3px 0; cursor:pointer; color:#333;">
             <input type="radio" name="repair-product-${id}" value="${i}" ${i === 0 ? 'checked' : ''}
@@ -838,6 +993,10 @@ function renderRepairProducts(id) {
 
 function _repairProduct(id) {
     const order = _repairOrder(id);
+    if (order && order.free) {
+        const name = ((document.getElementById('repair-free-' + id) || {}).value || '').trim();
+        return name ? {name} : null;
+    }
     const checked = document.querySelector(`input[name="repair-product-${id}"]:checked`);
     return (order && checked) ? order.products[parseInt(checked.value, 10)] : null;
 }
@@ -858,9 +1017,11 @@ async function generateRepairLabel(id) {
     const product = _repairProduct(id);
     const btn = document.getElementById('repair-btn-' + id);
     const result = document.getElementById('repair-result-' + id);
-    if (!order || !product) { result.innerHTML = '❌ Choisis la commande et la paire.'; return; }
+    if (!order || !product) { result.innerHTML = order && order.free ? '❌ Écris la paire concernée.' : '❌ Choisis la commande et la paire.'; return; }
     const ptype = document.getElementById('repair-type-' + id).value;
-    if (!confirm(`Créer l'étiquette réparation pour ${order.number} (${product.name}) ?\nElle sera facturée par Wing.`)) return;
+    const warn = order.free ? `\nCe numéro n'est pas une commande Shopify : l'étiquette sera nommée ${order.number}_REPARATION.`
+        : (order.same_customer === false ? `\nAttention : cette commande est au nom de ${order.customer_name || order.customer_email}.` : '');
+    if (!confirm(`Créer l'étiquette réparation pour ${order.number} (${product.name}) ?${warn}\nElle sera facturée par Wing.`)) return;
 
     btn.disabled = true;
     btn.textContent = '⏳ Création dans Wing...';

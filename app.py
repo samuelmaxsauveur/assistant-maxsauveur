@@ -836,11 +836,90 @@ def _run_repair_label_job(job_id, data):
         _label_jobs[job_id] = {'status': 'error', 'success': False, 'error': str(e)}
 
 
+_ORDER_IN_TEXT = re.compile(r"(?<![\d.,])(1\d{4})(?![\d.,])")
+
+
+@app.route('/orders-lookup', methods=['POST'])
+def orders_lookup():
+    """Orders for an email card that found none, so a label is never blocked.
+
+    Samuel (19/11/2026): « quand tu ne trouves pas un numéro de commande dans un
+    mail, je ne peux pas générer de bon de retour ». With a number he typed: that
+    order, whoever it belongs to (the panel shows the owner's name when it is not
+    the sender). Without: the order numbers quoted anywhere in the thread, kept
+    when the order is the sender's or the number is written as an order number
+    (a bare 13008 can be a postcode), then the orders under his name.
+    """
+    import enquete
+    data = request.json or {}
+    sender_email, sender_name = resolve_sender(data.get('sender') or '', data.get('body') or '')
+    sender_email = data.get('sender_email') or sender_email
+
+    def tagged(o):
+        mine = (o.get('customer_email') or '').lower() == (sender_email or '').lower() \
+            or gmail_helper.same_person(o.get('customer_name'), sender_name, sender_email)
+        return dict(o, same_customer=bool(mine))
+
+    typed = str(data.get('order_number') or '').strip().lstrip('#').strip()
+    if typed:
+        if not typed.isdigit():
+            return jsonify({'orders': [], 'missing': typed})
+        try:
+            order = shopify_api.get_order_by_number(typed)
+        except Exception as e:
+            return jsonify({'orders': [], 'error': f'Shopify injoignable : {e}'})
+        return jsonify({'orders': [tagged(order)]} if order else {'orders': [], 'missing': typed})
+
+    texts = [data.get('subject') or '', data.get('body') or '']
+    if data.get('thread_id'):
+        try:
+            texts += [m.get('body') or '' for m in gmail_helper.get_thread_messages(get_service(), data['thread_id'])]
+        except Exception as e:
+            print(f"[Orders lookup] Thread {data['thread_id']} unreadable: {e}")
+    text = "\n".join(texts)
+    written = set(enquete.NUMBER_RE.findall(text))
+    numbers = list(dict.fromkeys(list(written) + _ORDER_IN_TEXT.findall(text)))[:8]
+    found = []
+    for number in numbers:
+        try:
+            order = shopify_api.get_order_by_number(number)
+        except Exception:
+            continue
+        if order:
+            order = tagged(order)
+            if order['same_customer'] or number in written:
+                found.append(order)
+    if not found and sender_name and '@' not in sender_name:
+        try:
+            found = [o for o in map(tagged, shopify_api.get_all_orders_by_customer_name(sender_name))
+                     if o['same_customer']]
+        except Exception as e:
+            print(f"[Orders lookup] Name search failed for {sender_name!r}: {e}")
+    if not found:
+        # Last resort: the name in the signature, or an address written in the body.
+        # Loose, so these come flagged with their owner's name for Samuel to judge.
+        try:
+            found = [tagged(o) for o in _lookup_orders_by_name(sender_name, data.get('body') or '')]
+        except Exception as e:
+            print(f"[Orders lookup] Signature search failed: {e}")
+    print(f"[Orders lookup] {sender_email}: {[o['number'] for o in found]} (numbers seen {numbers})")
+    return jsonify({'orders': found[:8]})
+
+
+def _label_ref(value):
+    """#13672, or a free reference when the pair has no Shopify order (« Billaut ceinture » -> BILLAUT_CEINTURE)."""
+    import unicodedata
+    value = unicodedata.normalize('NFKD', str(value or '')).encode('ascii', 'ignore').decode()
+    value = value.replace('#', '').strip().upper()
+    return re.sub(r'[^A-Z0-9_]', '', re.sub(r'[\s\-]+', '_', value))[:40]
+
+
 @app.route('/prepare-repair-label', methods=['POST'])
 def prepare_repair_label():
     """Start the repair label job; the page polls /label-job-status/<job_id>."""
     import uuid, threading
     data = request.json or {}
+    data['order_number'] = _label_ref(data.get('order_number'))
     if not data.get('order_number') or not data.get('product'):
         return jsonify({'error': 'Commande et paire requises'}), 400
     if data.get('parcel_type') and data['parcel_type'] not in repair_catalog.PARCEL_TYPES:
