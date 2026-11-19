@@ -82,10 +82,7 @@ def published_conditions():
 
 
 # Where a published page is out of date, Samuel's word wins; said right under the page text.
-CORRECTIONS = [
-    "Délai de livraison en point relais en France : le tableau ci-dessus indique encore « Mondial Relay, 7-9 jours », "
-    "c'est périmé. Le bon délai est de 3 à 5 jours ouvrés après l'expédition, en Chrono2Shop (Samuel, 19/11/2026).",
-]
+CORRECTIONS = []      # the delivery page was corrected on the site on 19/11/2026 (Chrono2Shop, 3-5 jours)
 
 
 def block():
@@ -94,5 +91,5 @@ def block():
         return ""
     return ("\n\n--- CONDITIONS PUBLIÉES SUR MAXSAUVEUR.COM (relues chaque jour : elles font foi pour les retours, "
             "les échanges, les remboursements et leurs frais) ---\n" + text
-            + "\n\nCORRECTIONS DE SAMUEL (elles l'emportent sur le texte du site) :\n"
-            + "\n".join("- " + c for c in CORRECTIONS) + "\n")
+            + ("\n\nCORRECTIONS DE SAMUEL (elles l'emportent sur le texte du site) :\n"
+               + "\n".join("- " + c for c in CORRECTIONS) if CORRECTIONS else "") + "\n")

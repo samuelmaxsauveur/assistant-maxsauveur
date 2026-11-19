@@ -314,8 +314,8 @@ def _date_facts_for(orders):
 def shipping_dates(now=None):
     """Today, the next shipping day of an order placed now, and the delivery window, computed (not guessed).
 
-    Calendar (knowledge base): ordered before Tuesday 11:00, shipped Tuesday; after, Thursday
-    (taken as before Thursday 11:00, else the next Tuesday). Delivery in France: 3 to 5 working days."""
+    Calendar (knowledge base, Samuel 19/11/2026): before Tuesday 11:00, shipped Tuesday; before
+    Thursday 11:00, Thursday; after, the next Tuesday. Delivery in France: 3 to 5 working days."""
     import datetime as dt
     import pytz
     import retours

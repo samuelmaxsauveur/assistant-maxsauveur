@@ -201,10 +201,11 @@ KNOWLEDGE_BASE = """
 ## EXPÉDITION — CALENDRIER
 
 - Commande passée avant mardi 11h → expédiée le mardi
-- Commande passée après mardi 11h → expédiée le jeudi
+- Commande passée après mardi 11h et avant jeudi 11h → expédiée le jeudi
+- Commande passée après jeudi 11h → expédiée le mardi suivant (Samuel, 19/11/2026)
 - Livraison standard : 3-5 jours ouvrés
 - Livraison express : 1-2 jours ouvrés (commande avant 11h)
-- Livraison en point relais en France (Chrono2Shop) : 3 à 5 jours ouvrés après l'expédition. La page « Livraison et retour » du site indique encore « Mondial Relay, 7-9 jours » : c'est périmé, ne jamais l'annoncer (Samuel, 19/11/2026).
+- Livraison en point relais en France (Chrono2Shop, 9,50 €) : 3 à 5 jours ouvrés après l'expédition (page « Livraison et retour » corrigée le 19/11/2026).
 
 ---
 
