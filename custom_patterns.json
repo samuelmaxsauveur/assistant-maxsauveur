@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__13378_confirm_e",
+      "topic_label": "Re: Commande #13378 confirmée",
+      "situation": "Re: Commande #13378 confirmée",
+      "response_template": "Bonjour Gilles,\n\nLes Wico sont bien arrivés en entrepôt cette semaine. Après contrôle, votre commande #13378 partira la semaine prochaine. Vous recevrez automatiquement votre lien de suivi dès l'expédition.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "stock_disponibilite",
+      "topic_label": "Disponibilité et rupture de stock",
+      "situation": "Client demande la disponibilité d'un modèle et d'une taille spécifiques. Peut être rupture temporaire avec réassort prévu, ou disponibilité confirmée avec exemplaires en stock. Client en attente de confirmation avant de passer commande.",
+      "response_template": "Bonjour [Prénom],\n\n**Situation de stock :**\nLe [MODÈLE] en [VARIANTE] taille [TAILLE] [est bien disponible sur notre site / n'est malheureusement pas disponible actuellement], avec [NOMBRE] exemplaire(s) en stock.\n\n[SI DISPONIBLE]\nVous pouvez passer commande directement. Votre colis partira en livraison [Type] selon notre calendrier habituel. Vous recevrez un lien de suivi dès l'expédition.\n\n[SI INDISPONIBLE ET RÉASSORT PRÉVU]\nNous prévoyons un réassort en [PÉRIODE]. Je vous recommande d'activer l'alerte pointure directement sur la fiche produit : vous serez notifié dès que votre taille revient en stock, sans avoir à revenir vérifier régulièrement.\n\n[SI INDISPONIBLE ET PAS DE DATE CONFIRMÉE]\nJe n'ai pas de date ferme à vous communiquer pour le moment. Le mieux est d'activer l'alerte pointure sur la fiche produit : vous serez informé en priorité dès qu'une paire devient disponible.\n\n[SI RUPTURE DÉFINITIVE]\nMalheureusement, aucun réassort n'est prévu sur ce modèle dans cette taille. Nous travaillons avec des collections en quantités limitées, et certaines pointures ne reviennent pas systématiquement.\n\n**Vérification rapide avant commande :**\nUne fois disponibilité confirmée, nous réservons la paire momentanément pendant que vous finalisez votre commande, sans engagement supplémentaire de votre part.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
+      "key_points": "Ton : transparent et pratique. Toujours confirmer le stock EXACT AVANT de suggérer au client de passer commande. Utiliser le nombre exact d'exemplaires en stock pour rassurer. Ne JAMAIS s'engager sur date de réassort incertaine — dire 'pas de date ferme' plutôt que de décevoir. Toujours proposer l'alerte pointure comme solution prioritaire. Si rupture définitive : expliquer les collections en quantités limitées. AJOUT DU JOUR : Après confirmation de disponibilité, noter qu'on peut réserver momentanément la paire pendant la finalisation de commande pour rassurer le client.",
+      "example_count": 53
+    },
+    {
       "topic": "re__dakota_again",
       "topic_label": "Re: Dakota again",
       "situation": "Re: Dakota again",
@@ -40,14 +56,6 @@
       "response_template": "Bonjour [Prénom],\n\n[Décrire les photos : la doublure du talon droit est décollée et effilochée / la semelle avant est décollée / l'article reçu est un modèle différent de celui commandé / etc.] confirme bien [un défaut de fabrication / une erreur de notre part]. Nous prenons cela en charge intégralement : retour, réparation et renvoi, sans frais pour vous.\n\n**Procédure pour retourner votre paire :**\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (motif : « défaut fabrication »)\n2. Emballez soigneusement votre paire avec le bon à l'intérieur\n3. Expédiez à :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\nFrance\n\n**Délai de réparation :** Comptez 6 à 8 semaines pour le passage en atelier. Dès réparation, nous vous renvoyons votre paire avec un numéro de suivi.\n\n**Geste commercial :** En guise de remerciement pour votre patience, nous glisserons [deux produits d'entretien cuir / un accessoire] dans votre colis de retour.\n\nCordialement,\nJohn de Max Sauveur",
       "key_points": "Ton : assumer le défaut ou l'erreur clairement, sans hésitation. Humain, transparent sur délais. Jamais d'excuses excessives. Engagements : prise en charge 100% (retour, réparation, renvoi sans frais). Délai standard 6-8 semaines. Demander toujours photos avant confirmer (même pour erreur de préparation). Geste commercial fréquent (produits d'entretien, accessoires). Ne pas proposer d'étiquette prépayée sauf si erreur de notre part avérée.",
       "example_count": 69
-    },
-    {
-      "topic": "stock_disponibilite",
-      "topic_label": "Disponibilité et stock",
-      "situation": "Client demande la disponibilité d'un modèle et d'une taille spécifiques. Peut être rupture temporaire avec réassort prévu, ou disponibilité confirmée avec exemplaires en stock.",
-      "response_template": "Bonjour [Prénom],\n\n**Situation de stock :**\nLe [MODÈLE] en [VARIANTE] taille [TAILLE] [est bien disponible sur notre site / n'est malheureusement pas disponible actuellement], avec [NOMBRE] exemplaire(s) en stock.\n\n[SI DISPONIBLE]\nVous pouvez passer commande directement. Votre colis partira en livraison [Type] selon notre calendrier habituel. Vous recevrez un lien de suivi dès l'expédition.\n\n[SI INDISPONIBLE ET RÉASSORT PRÉVU]\nNous prévoyons un réassort en [PÉRIODE]. Je vous recommande d'activer l'alerte pointure directement sur la fiche produit : vous serez notifié dès que votre taille revient en stock, sans avoir à revenir vérifier régulièrement.\n\n[SI INDISPONIBLE ET PAS DE DATE CONFIRMÉE]\nJe n'ai pas de date ferme à vous communiquer pour le moment. Le mieux est d'activer l'alerte pointure sur la fiche produit : vous serez informé en priorité dès qu'une paire devient disponible.\n\n[SI RUPTURE DÉFINITIVE]\nMalheureusement, aucun réassort n'est prévu sur ce modèle dans cette taille. Nous travaillons avec des collections en quantités limitées, et certaines pointures ne reviennent pas systématiquement.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
-      "key_points": "Ton : transparent et pratique. Toujours confirmer le stock EXACT AVANT de suggérer au client de passer commande. Utiliser le nombre exact d'exemplaires en stock pour rassurer. Ne JAMAIS s'engager sur date de réassort incertaine — dire 'pas de date ferme' plutôt que de décevoir. Toujours proposer l'alerte pointure comme solution prioritaire. Si rupture définitive : expliquer les collections en quantités limitées.",
-      "example_count": 52
     },
     {
       "topic": "dakota_again",
