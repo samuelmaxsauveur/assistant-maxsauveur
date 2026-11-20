@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "demande_de_pr_cision_concernant_la_date_d_exp_dition___comma",
+      "topic_label": "Demande de précision concernant la date d’expédition – Commande #13943",
+      "situation": "Demande de précision concernant la date d’expédition – Commande #13943",
+      "response_template": "Bonjour Suthagar,\n\nVotre paire arrive dans notre entrepôt la semaine prochaine. Nous procédons ensuite à l'inspection et à la vérification de la conformité, et votre colis repart la semaine suivante. Nous ne pouvons pas vous donner de date précise à ce stade, car cela dépend de la réception du colis de notre fournisseur.\n\nCompte tenu de vos déplacements début décembre, si vous souhaitez nous indiquer un point relais alternatif plus pratique, n'hésitez pas à nous le transmettre et nous l'intégrerons avant l'expédition.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande__13496",
       "topic_label": "Commande #13496",
       "situation": "Commande #13496",
