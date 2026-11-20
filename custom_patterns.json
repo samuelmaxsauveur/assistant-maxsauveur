@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_20_05_39_26",
+      "topic_label": "Form name Form submitted 2026-11-20 05:39:26",
+      "situation": "Form name Form submitted 2026-11-20 05:39:26",
+      "response_template": "Bonjour Matthieu,\n\nL'offre BEBELT n'est malheureusement plus disponible à ce jour. Si la page est encore visible sur le site, elle sera retirée prochainement.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__max_sauveur___service_client",
       "topic_label": "Re: Re: Max Sauveur — Service Client",
       "situation": "Re: Re: Max Sauveur — Service Client",
