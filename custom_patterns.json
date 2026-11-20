@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_20_13_03_26",
+      "topic_label": "Form name Form submitted 2026-11-20 13:03:26",
+      "situation": "Form name Form submitted 2026-11-20 13:03:26",
+      "response_template": "Bonjour,\n\nLes boucles western ne sont pas disponibles pour le moment. Une nouvelle vague de précommande est prévue en décembre, et c'est via la newsletter que vous en serez informé en premier.\n\nVous pouvez vous inscrire directement sur maxsauveur.com.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "bottines_wayne_bordeaux",
       "topic_label": "Bottines wayne bordeaux",
       "situation": "Bottines wayne bordeaux",
