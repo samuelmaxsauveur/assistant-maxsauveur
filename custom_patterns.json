@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "bottines_wayne_bordeaux",
+      "topic_label": "Bottines wayne bordeaux",
+      "situation": "Bottines wayne bordeaux",
+      "response_template": "Bonjour Matthieu,\n\nSur la couleur : le Wayne bordeaux est un cuir pleine fleur teint en bordeaux franc. Les reflets légèrement plus sombres que vous voyez sur certaines photos sont dus à la lumière du studio et aux contrastes naturels du cuir, pas à une teinte tachetée. La couleur est uniforme.\n\nSur la taille : le Wayne chausse légèrement grand. Je vous recommande de prendre une demi-taille en dessous de votre taille habituelle. Si vous me donnez votre pointure ou votre mesure de pied en cm (talon contre un mur, bout du gros orteil), je vous confirme la recommandation précise.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "retour",
       "topic_label": "Retour",
       "situation": "Retour",
