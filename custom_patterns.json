@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "commande__13496",
+      "topic_label": "Commande #13496",
+      "situation": "Commande #13496",
+      "response_template": "Bonjour Michael,\n\nÀ ce jour, aucun retour n'est enregistré de notre côté sur la commande #13496 (Paul Mocassin Cuir Marron, pointure 41). Pourriez-vous nous transmettre le numéro de suivi de votre colis retour et le justificatif de dépôt ? Nous pourrons ainsi le localiser.\n\nConcernant l'avoir de 169 € : le 21 mai, vous nous aviez indiqué qu'un avoir pouvait vous convenir pour le retour de la ceinture de la commande #12132. Il a été émis le 2 juin, puis utilisé le 2 octobre pour régler une partie de la commande #13496. Comme le précisent nos conditions de retour, un avoir émis ne peut plus être converti en remboursement.\n\nPour une commande réglée en partie avec un avoir, voici ce qui s'applique au retour : votre avoir de 169 € est réactivé, et la part payée par carte, soit 175,75 €, est remboursée sur votre Mastercard se terminant par 8990. Cela suppose que le colis soit bien reçu, qu'il ait été envoyé dans les 14 jours suivant la livraison et que la paire soit en parfait état.\n\nDès réception de vos justificatifs, nous faisons le point.\n\nJohn - Service Client - Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__commande__13856_confirm_e",
       "topic_label": "Re: Re: Re: Commande #13856 confirmée",
       "situation": "Re: Re: Re: Commande #13856 confirmée",
