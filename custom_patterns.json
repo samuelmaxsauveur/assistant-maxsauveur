@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_20_17_06_35",
+      "topic_label": "Form name Form submitted 2026-11-20 17:06:35",
+      "situation": "Form name Form submitted 2026-11-20 17:06:35",
+      "response_template": "Bonjour Théo,\n\nAvec 26,5 cm de pied, en ajoutant les 0,2 cm vous êtes à 26,7 cm, ce qui vous place en **40** sur notre guide. Le Cody cuir gras chausse légèrement grand, donc le 40 restant est en réalité la taille idéale pour vous.\n\nPour votre question sur le retour : oui, si la paire ne vous convient pas à réception, vous pouvez nous la retourner dans les 14 jours pour un remboursement complet (frais de livraison inclus si c'est l'intégralité de la commande). La procédure est disponible ici : https://maxsauveur.com/pages/livraison-et-retour\n\nIl ne reste qu'un exemplaire en stock, donc si vous souhaitez la commander, c'est le bon moment.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__fw__commande__13970_annule_et_remplace",
       "topic_label": "Re: Fw: Commande #13970 Annule et remplace",
       "situation": "Re: Fw: Commande #13970 Annule et remplace",
