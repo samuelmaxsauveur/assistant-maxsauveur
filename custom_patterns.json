@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__fw__commande__13970_annule_et_remplace",
+      "topic_label": "Re: Fw: Commande #13970 Annule et remplace",
+      "situation": "Re: Fw: Commande #13970 Annule et remplace",
+      "response_template": "Bonjour Jean-Baptiste,\n\nNous avons bien réceptionné votre colis le 19 novembre. Le traitement des retours prend 10 jours ouvrés à compter de la réception, soit jusqu'au 3 décembre environ. Vous recevrez un email dès que le dossier sera traité.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_20_13_03_26",
       "topic_label": "Form name Form submitted 2026-11-20 13:03:26",
       "situation": "Form name Form submitted 2026-11-20 13:03:26",
