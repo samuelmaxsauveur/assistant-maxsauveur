@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_20_07_51_29",
+      "topic_label": "Form name Form submitted 2026-11-20 07:51:29",
+      "situation": "Form name Form submitted 2026-11-20 07:51:29",
+      "response_template": "Bonjour Emmanuel,\n\nMax Sauveur est une marque exclusivement en ligne. Nous n'avons plus de boutique physique, il n'est donc pas possible d'essayer les Wayne à Nantes ni ailleurs.\n\nPour vous aider à trouver la bonne pointure sans risque, je peux vous guider si vous me donnez la longueur de votre pied en cm (pied nu, talon contre un mur, marquez le bout du gros orteil). Et si la paire ne vous convient pas à réception, le retour reste possible.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
