@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__max_sauveur___service_client",
+      "topic_label": "Re: Re: Max Sauveur — Service Client",
+      "situation": "Re: Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Maxime,\n\nMerci pour votre relance. Je vous dois une explication claire.\n\nNous avons tenté de procéder à votre remboursement de 239 € à deux reprises, les 2 septembre et 1er octobre, mais les deux tentatives ont échoué côté banque, notre prestataire de paiement. L'argent n'a donc jamais quitté notre système, ce qui explique que vous n'ayez rien reçu.\n\nNous sommes en train de régler ce problème technique pour procéder au virement et revenons vers vous très rapidement avec une confirmation.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 5
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_20_07_51_29",
       "topic_label": "Form name Form submitted 2026-11-20 07:51:29",
       "situation": "Form name Form submitted 2026-11-20 07:51:29",
@@ -1664,14 +1672,6 @@
       "response_template": "Bonjour Jérémie,\n\nVotre paire a bien été réceptionnée et votre dossier de réparation est ouvert. L'étiquette de retour vers notre atelier est en cours de traitement, vous recevrez une confirmation dès que la paire est prise en charge pour réparation.\n\nSur le remboursement de la différence de ceinture, on s'en occupe.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re__re__max_sauveur___service_client",
-      "topic_label": "Re: Re: Max Sauveur — Service Client",
-      "situation": "Re: Re: Max Sauveur — Service Client",
-      "response_template": "Salut Xavier,\n\nLe Powell n'existe pas en demi-pointure, donc le choix se fait entre 43 et 44.\n\nEn te basant sur ta Chelsea Chapman en 43, qui a un chaussant assez proche du Powell, le 43 sera la bonne option. Le mocassin en 43,5 n'est pas la meilleure référence ici, les deux modèles chaussent très différemment.\n\nMême avec de grosses chaussettes, reste sur le 43 : le 44 risquerait d'être trop grand.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 4
     },
     {
       "topic": "re__votre_avoir_pour_la_commande__13453",
