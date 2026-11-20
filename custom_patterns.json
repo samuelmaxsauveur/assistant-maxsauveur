@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "retour_cde__13952",
+      "topic_label": "Retour cde #13952",
+      "situation": "Retour cde #13952",
+      "response_template": "Bonjour Aristide,\n\nPour le délai : à compter de la réception de votre retour, comptez 10 jours ouvrés pour que le remboursement soit traité. Vous pouvez suivre l'acheminement de votre colis via le numéro de suivi Colissimo pour confirmer la date exacte de réception de notre côté.\n\nUn point important : votre commande #13952 a bénéficié d'une remise Mad Max de 15 %, et vous disposez d'une carte cadeau de 30 € (code MADMAX-T6MBKA, valable jusqu'au 15 avril 2027). En procédant à un remboursement, cette carte sera définitivement perdue.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_20_16_54_48",
       "topic_label": "Form name Form submitted 2026-11-20 16:54:48",
       "situation": "Form name Form submitted 2026-11-20 16:54:48",
