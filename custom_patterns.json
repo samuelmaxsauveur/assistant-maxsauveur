@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "retour",
+      "topic_label": "Retour",
+      "situation": "Retour",
+      "response_template": "Bonjour Louis,\n\nMerci pour votre message. Le délai de traitement est de 10 jours ouvrés à compter de la réception de votre retour. Vous recevrez un email de notre part dès que votre dossier sera traité.\n\nBonne journée,\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "demande_de_pr_cision_concernant_la_date_d_exp_dition___comma",
       "topic_label": "Demande de précision concernant la date d’expédition – Commande #13943",
       "situation": "Demande de précision concernant la date d’expédition – Commande #13943",
@@ -128,14 +136,6 @@
       "response_template": "Bonjour Stéphane,\n\nNous avons bien reçu votre paire. Voici votre avoir :\n\nCode : Q32J84YPAWLE\nMontant : 287 €\nValable jusqu'au 19 mai 2027, sur nos chaussures et ceintures homme, en une seule commande.\nÀ utiliser avec votre adresse stephane.garcia47@outlook.fr, non cumulable avec d'autres codes ou promotions.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 2
-    },
-    {
-      "topic": "retour",
-      "topic_label": "Retour",
-      "situation": "Retour",
-      "response_template": "Hi Raül,\n\nThanks for letting us know and for sending the receipt.\n\nJust to be clear on our end: for orders shipped outside mainland France, return shipping costs remain the customer's responsibility, and we're not able to cover the cost of reshipping either. This applies to your return from Spain.\n\nWe'll process your request as soon as the parcel is received and inspected at our warehouse.\n\nJohn – Customer Care – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
     },
     {
       "topic": "form_name_form_submitted_2026_11_18_22_23_42",
