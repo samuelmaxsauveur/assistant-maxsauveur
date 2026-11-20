@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_20_16_54_48",
+      "topic_label": "Form name Form submitted 2026-11-20 16:54:48",
+      "situation": "Form name Form submitted 2026-11-20 16:54:48",
+      "response_template": "Bonjour Jonathan,\n\nVotre retour est bien noté. Avant de valider le remboursement, je voulais vous informer d'un point important : votre commande #13971 avait bénéficié d'une remise Mad Max et vous avait donné droit à une carte cadeau (lien de tirage envoyé le 6 novembre). Si vous optez pour un remboursement total, cette carte est annulée définitivement.\n\nEn revanche, si vous préférez un échange contre une taille inférieure (via un avoir), la carte reste valable.\n\n**Deux options s'offrent à vous :**\n\n**Option 1 — Échange de pointure (avoir)**\nVous recevez un avoir du montant payé pour commander la bonne taille. Votre carte cadeau Mad Max est conservée. D'après le stock actuel, le 43 est disponible (12 exemplaires).\n\n**Option 2 — Remboursement**\nRemboursement de 294,50 €. Votre carte cadeau Mad Max est annulée.\n\nDites-moi simplement quelle option vous convient, et je traite cela dans la foulée.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_20_17_06_35",
       "topic_label": "Form name Form submitted 2026-11-20 17:06:35",
       "situation": "Form name Form submitted 2026-11-20 17:06:35",
