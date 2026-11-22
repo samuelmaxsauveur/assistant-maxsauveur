@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__form_name_form_submitted_2026_11_06_15_15_14",
+      "topic_label": "Re: Form name Form submitted 2026-11-06 15:15:14",
+      "situation": "Re: Form name Form submitted 2026-11-06 15:15:14",
+      "response_template": "Bonjour Robin,\n\nRavi que les embauchoirs vous plaisent !\n\nPas de problème pour la commande #13582 : nous venons de mettre à jour le point relais de livraison avec la consigne PickUp au 20 rue du Parc, 59110 La Madeleine. Cette modification n'apparaîtra pas dans votre email de confirmation initial, mais elle est bien prise en compte et visible sur votre lien de suivi dès l'expédition.\n\nVos ceintures Gigi et Morricone sont toujours prévues pour mi-décembre, vous recevrez votre lien de suivi automatiquement à ce moment-là.\n\nBonne journée,\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande_13314",
       "topic_label": "Commande 13314",
       "situation": "Commande 13314",
