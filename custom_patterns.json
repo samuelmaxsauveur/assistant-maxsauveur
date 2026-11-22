@@ -2,6 +2,46 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "question_pointure",
+      "topic_label": "Question pointure",
+      "situation": "Question pointure",
+      "response_template": "Bonjour Mikaël,\n\nAvec 27,2 cm, notre guide vous place en **42**. Le Wico a un chaussant standard, le **42** est la bonne pointure.\n\nBonne commande !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "defaut_fabrication",
+      "topic_label": "Défaut avéré : semelle décollée, couture lâchée, cuir fendu, garantie",
+      "situation": "Client signale un défaut de fabrication (semelle décollée, couture lâchée, languette décollée, cuir fendu, talon endommagé, ou erreur de préparation avec mauvais modèle/variante expédié). Max Sauveur prend en charge intégralement retour, réparation et renvoi sans frais.",
+      "response_template": "Bonjour [Prénom],\n\n[Décrire les photos : la doublure du talon droit est décollée et effilochée / la semelle avant est décollée / l'article reçu est un modèle différent de celui commandé / etc.] confirme bien [un défaut de fabrication / une erreur de notre part]. Nous prenons cela en charge intégralement : retour, réparation et renvoi, sans frais pour vous.\n\n**Procédure pour retourner votre paire :**\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (motif : « défaut fabrication »)\n2. Emballez soigneusement votre paire avec le bon à l'intérieur\n3. Expédiez à :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\nFrance\n\n**Délai de réparation :** Comptez 6 à 8 semaines pour le passage en atelier. Dès réparation, nous vous renvoyons votre paire avec un numéro de suivi.\n\n**Geste commercial :** En guise de remerciement pour votre patience, nous glisserons [deux produits d'entretien cuir / un accessoire] dans votre colis de retour.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
+      "key_points": "Ton : assumer le défaut ou l'erreur clairement, sans hésitation. Humain, transparent sur délais. Jamais d'excuses excessives. Engagements : prise en charge 100% (retour, réparation, renvoi sans frais). Délai standard 6-8 semaines. Demander toujours photos avant confirmer (même pour erreur de préparation). Geste commercial fréquent (produits d'entretien, accessoires). Ne pas proposer d'étiquette prépayée (client assume les frais, sauf erreur notre part = gratuit).",
+      "example_count": 70
+    },
+    {
+      "topic": "remboursement_avoir",
+      "topic_label": "Remboursements, avoirs, délais de traitement, montants retenus",
+      "situation": "Client reçoit un avoir suite à retour. Code avoir généré avec conditions d'utilisation restrictives. Client souhaite utiliser un avoir pour un autre modèle ou une autre taille. Client demande où en est son remboursement après retour accepté.",
+      "response_template": "Bonjour [Prénom],\n\n**AVOIR GÉNÉRÉ**\n\nNous avons bien reçu votre retour ([MODÈLE] - [DESCRIPTIF]) et venons de générer votre avoir d'un montant de [MONTANT] €.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n[CODE_AVOIR]\n\n**CONDITIONS D'UTILISATION**\n\n- Valable jusqu'au [DATE : +6 mois],\n- Utilisable [SUR LE MÊME MODÈLE / SUR NOS CHAUSSURES ET CEINTURES HOMME],\n- Réservé à votre adresse e-mail ([EMAIL]) : pensez à commander avec cette adresse,\n- Non cumulable avec d'autres codes ou promotions.\n\n**DÉLAI DE TRAITEMENT**\n\nDès réception et contrôle, comptez 3 à 5 jours ouvrés pour recevoir votre code avoir.\n\n**SI RETOUR EN PROMOTION**\n\nSi vous aviez acheté votre paire en promotion, l'avoir est établi sur le montant que vous avez réellement payé (prix promotionnel), non le prix catalogue.\n\n**REMBOURSEMENT : VÉRIFICATION STATUT**\n\nSi vous demandez le statut d'un remboursement :\n- Vérifier d'abord l'historique Shopify fourni avec l'email de retour — il fait foi\n- Si remboursement enregistré : donner la date exacte et le montant, avec le moyen (carte, Alma, PayPal…)\n- Si paiement Alma : c'est Alma qui rembourse (échéances déjà payées remboursées, à venir annulées). Inviter le client à vérifier son espace Alma\n- Si aucun remboursement enregistré : ne pas le confirmer, expliquer où en est le dossier (retour reçu ou non) et laisser Samuel confirmer\n- Délai légal : 10 jours ouvrés à compter de la date de réception du retour en entrepôt\n\nCordialement,\nJohn – Service Client – Max Sauveur",
+      "key_points": "Ton informatif, clair, rassurant. Engagements : traitement 3-5 jours ouvrés, avoir valable 6 mois, usage unique, non cumulable. CRITIQUE : avoir sur le MONTANT RÉELLEMENT PAYÉ (prix promotionnel si applicable), jamais le prix catalogue. Code réservé à l'adresse e-mail du client — doit commander avec cette adresse. Pour remboursement : JAMAIS annoncer un délai futur si déjà traité. Lire l'historique Shopify d'abord. Si Alma, renvoyer au client. Si absent : expliquer sans confirmer.",
+      "example_count": 169
+    },
+    {
+      "topic": "re__retour_cde__13952",
+      "topic_label": "RE: Retour cde #13952",
+      "situation": "RE: Retour cde #13952",
+      "response_template": "Bonjour Aristide,\n\nLe suivi Colissimo (n° 8U02217328083) confirme bien la livraison mardi 17 novembre. Votre retour est enregistré de notre côté.\n\nComptez 10 jours ouvrés à compter du 17 novembre pour que le remboursement soit traité sur votre Payplug.\n\nComme mentionné dans notre précédent message, votre carte cadeau de 30 € (code MADMAX-T6MBKA) sera définitivement perdue avec ce remboursement.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "re__form_name_form_submitted_2026_11_18_22_23_42",
+      "topic_label": "Re: Form name Form submitted 2026-11-18 22:23:42",
+      "situation": "Re: Form name Form submitted 2026-11-18 22:23:42",
+      "response_template": "Bonjour Otto,\n\nLe ressemelage via notre atelier est à 55 €.\n\nPour lancer la procédure, il vous suffit de nous renvoyer la paire avec le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour (motif : \"réparation\"). Comptez 6 à 8 semaines de délai atelier.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "retour_cde__13952",
       "topic_label": "Retour cde #13952",
       "situation": "Retour cde #13952",
@@ -146,28 +186,12 @@
       "example_count": 16
     },
     {
-      "topic": "remboursement_avoir",
-      "topic_label": "Remboursements et avoirs",
-      "situation": "Client reçoit un avoir suite à retour. Code avoir généré avec conditions d'utilisation restrictives. Client souhaite utiliser un avoir pour un autre modèle ou une autre taille.",
-      "response_template": "Bonjour [Prénom],\n\n**AVOIR GÉNÉRÉ**\n\nNous avons bien reçu votre retour ([MODÈLE] - [DESCRIPTIF]) et venons de générer votre avoir d'un montant de [MONTANT] €.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n[CODE_AVOIR]\n\n**CONDITIONS D'UTILISATION**\n\n- Valable jusqu'au [DATE : +6 mois],\n- Utilisable [SUR LE MÊME MODÈLE / SUR NOS CHAUSSURES ET CEINTURES HOMME],\n- Réservé à votre adresse e-mail ([EMAIL]) : pensez à commander avec cette adresse,\n- Non cumulable avec d'autres codes ou promotions.\n\n**DÉLAI DE TRAITEMENT**\n\nDès réception et contrôle, comptez 3 à 5 jours ouvrés pour recevoir votre code avoir.\n\n**SI RETOUR EN PROMOTION**\n\nSi vous aviez acheté votre paire en promotion, l'avoir est établi sur le montant que vous avez réellement payé (prix promotionnel), non le prix catalogue.\n\n**CAS SPÉCIAL : CEINTURE RETOURNÉE AVEC CHAUSSURES**\n\nSi le client retourne les chaussures auxquelles une ceinture offerte était associée, déduire du montant de l'avoir le prix réel de la ceinture.\n\nN'hésitez pas si vous avez d'autres questions.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
-      "key_points": "Ton informatif, clair, rassurant. Engagements : traitement 3-5 jours ouvrés, avoir valable 6 mois, usage unique, non cumulable. CRITIQUE : avoir sur le MONTANT RÉELLEMENT PAYÉ (prix promotionnel si applicable), jamais le prix catalogue. Code réservé à l'adresse e-mail du client — doit commander avec cette adresse. Distinguer avoir 'même modèle' vs avoir 'toute collection'. Ceinture offerte retournée = prix déduit de l'avoir.",
-      "example_count": 168
-    },
-    {
       "topic": "retour_procedure",
       "topic_label": "Procédure de retour",
       "situation": "Client demande comment retourner un article. Inclut modalités complètes de retour, frais à charge, adresse d'expédition, bon de retour à télécharger. Cas spécifique : erreur de préparation (mauvais article expédié) justifiant prise en charge ou étiquette prépayée.",
       "response_template": "Bonjour [Prénom],\n\nPas de problème pour organiser ce retour. Voici la procédure complète à suivre :\n\n**Étape 1 : Téléchargez le bon de retour**\nRendez-vous sur : https://maxsauveur.com/pages/livraison-et-retour\n\n**Étape 2 : Remplissez le bon de retour**\nComplétez le formulaire avec :\n- Vos nom et prénom\n- Le numéro de votre commande (trouvable dans votre email de confirmation)\n- La raison du retour : « avoir », « remboursement », ou « défaut fabrication » selon votre situation\n\n**Étape 3 : Emballez soigneusement**\nMettez la paire dans sa boîte d'origine, glissez le bon de retour à l'intérieur du colis, et emballez l'ensemble pour éviter les dommages.\n\n**Étape 4 : Expédiez à notre adresse logistique**\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\nFrance\n\n⚠️ **IMPORTANT** : Le code postal doit s'écrire **13170** sans espace. Certains transporteurs rejettent le format « 13 170 ».\n\n**Frais de retour**\nLes frais de retour sont à votre charge, sauf en cas de :\n- Défaut de fabrication avéré\n- Erreur de notre part (mauvais article expédié)\n\n**Délais de traitement**\nDès réception et contrôle de la paire en état neuf et dans sa boîte d'origine, comptez 3 à 5 jours ouvrés pour traiter votre demande.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
       "key_points": "Ton clair, rassurant, pratique. CRITIQUE : code postal 13170 SANS ESPACE — certains transporteurs le rejettent au format « 13 170 ». Bon de retour OBLIGATOIRE à l'intérieur du colis avec motif précisé. Frais TOUJOURS à charge du client sauf défaut ou erreur de préparation. Délai 3-5 jours ouvrés après réception et contrôle. Paire doit être neuve et dans sa boîte. Pour retours internationaux : frais à charge du client, pas de prise en charge.",
       "example_count": 52
-    },
-    {
-      "topic": "defaut_fabrication",
-      "topic_label": "Défaut de fabrication",
-      "situation": "Client signale un défaut de fabrication (semelle décollée, couture lâchée, languette décollée, cuir fendu, talon endommagé, ou erreur de préparation avec mauvais modèle/variante expédié). Max Sauveur prend en charge intégralement retour, réparation et renvoi sans frais.",
-      "response_template": "Bonjour [Prénom],\n\n[Décrire les photos : la doublure du talon droit est décollée et effilochée / la semelle avant est décollée / l'article reçu est un modèle différent de celui commandé / etc.] confirme bien [un défaut de fabrication / une erreur de notre part]. Nous prenons cela en charge intégralement : retour, réparation et renvoi, sans frais pour vous.\n\n**Procédure pour retourner votre paire :**\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (motif : « défaut fabrication »)\n2. Emballez soigneusement votre paire avec le bon à l'intérieur\n3. Expédiez à :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\nFrance\n\n**Délai de réparation :** Comptez 6 à 8 semaines pour le passage en atelier. Dès réparation, nous vous renvoyons votre paire avec un numéro de suivi.\n\n**Geste commercial :** En guise de remerciement pour votre patience, nous glisserons [deux produits d'entretien cuir / un accessoire] dans votre colis de retour.\n\nCordialement,\nJohn de Max Sauveur",
-      "key_points": "Ton : assumer le défaut ou l'erreur clairement, sans hésitation. Humain, transparent sur délais. Jamais d'excuses excessives. Engagements : prise en charge 100% (retour, réparation, renvoi sans frais). Délai standard 6-8 semaines. Demander toujours photos avant confirmer (même pour erreur de préparation). Geste commercial fréquent (produits d'entretien, accessoires). Ne pas proposer d'étiquette prépayée sauf si erreur de notre part avérée.",
-      "example_count": 69
     },
     {
       "topic": "dakota_again",
