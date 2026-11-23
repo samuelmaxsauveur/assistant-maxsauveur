@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "size___powell_boots",
+      "topic_label": "Size - Powell Boots",
+      "situation": "Size - Powell Boots",
+      "response_template": "Hey Guilherme,\n\nWith 26.8 cm, you're right between 42 and 43 on our guide. Since we don't offer half sizes on the Powell, the 43 is the right call.\n\nOn your concern about slim feet: the Powell has a form that's fairly close to a classic dress shoe last, so it shouldn't feel as loose as moccasins typically do. The leather will also mold to your foot over the first few wears. That said, if you find there's a bit of play in width, a thin insole will sort it out easily.\n\nThe 43 is available in both the Brown Grained Leather and the Black if either of those interests you.\n\nJohn – Customer Care – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "taille_id_ale_chaussures_powel",
       "topic_label": "Taille idéale chaussures Powel",
       "situation": "Taille idéale chaussures Powel",
