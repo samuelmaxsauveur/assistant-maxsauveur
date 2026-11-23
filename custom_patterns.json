@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "taille_id_ale_chaussures_powel",
+      "topic_label": "Taille idéale chaussures Powel",
+      "situation": "Taille idéale chaussures Powel",
+      "response_template": "Bonjour Baptiste,\n\nAvec 26,7 cm, vous êtes en **41** sur notre. Pas besoin de descendre.\n\nEt comme vous n'aimez pas flotter, le 41 sera parfait : le cuir s'adapte au port sans jamais être lâche.\n\nBonne commande !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_23_17_17_56",
       "topic_label": "Form name Form submitted 2026-11-23 17:17:56",
       "situation": "Form name Form submitted 2026-11-23 17:17:56",
