@@ -2,6 +2,110 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_23_17_27_52",
+      "topic_label": "Form name Form submitted 2026-11-23 17:27:52",
+      "situation": "Form name Form submitted 2026-11-23 17:27:52",
+      "response_template": "Bonjour Thierry,\n\nVotre commande #13734 (Morricone Ceinture Western Cuir de veau Noir et Gigi Ceinture Cuir Lézard Noir, toutes deux en taille 105) est bien enregistrée et le paiement est confirmé. Il s'agit d'une précommande : la livraison est prévue pour mi-décembre 2026.\n\nVous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "defaut_fabrication",
+      "topic_label": "Défaut de fabrication et demande de photo",
+      "situation": "Client signale un défaut de fabrication (semelle décollée, couture lâchée, languette décollée, cuir fendu, talon endommagé, ou erreur de préparation avec mauvais modèle/variante expédié). Max Sauveur prend en charge intégralement retour, réparation et renvoi sans frais.",
+      "response_template": "Bonjour [Prénom],\n\n[Décrire les photos : la doublure du talon droit est décollée et effilochée / la semelle avant est décollée / l'article reçu est un modèle différent de celui commandé / etc.] confirme bien [un défaut de fabrication / une erreur de notre part]. Nous prenons cela en charge intégralement : retour, réparation et renvoi, sans frais pour vous.\n\n**Procédure pour retourner votre paire :**\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (motif : « défaut fabrication »)\n2. Emballez soigneusement votre paire avec le bon à l'intérieur\n3. Expédiez à :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\nFrance\n\n**Délai de réparation :** Comptez 6 à 8 semaines pour le passage en atelier. Dès réparation, nous vous renvoyons votre paire avec un numéro de suivi.\n\n**Geste commercial :** En guise de remerciement pour votre patience, nous glisserons [deux produits d'entretien cuir / un accessoire] dans votre colis de retour.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
+      "key_points": "Ton : assumer le défaut ou l'erreur clairement, sans hésitation. Humain, transparent sur délais. Jamais d'excuses excessives. Engagements : prise en charge 100% (retour, réparation, renvoi sans frais). Délai standard 6-8 semaines. Demander toujours photos avant confirmer (même pour erreur de préparation). Geste commercial fréquent (produits d'entretien, accessoires).",
+      "example_count": 71
+    },
+    {
+      "topic": "suivi_livraison",
+      "topic_label": "Suivi de livraison et modification de point relais",
+      "situation": "Client demande le statut de sa livraison, souhaite modifier son adresse de livraison ou son point relais après commande passée mais avant expédition. Colis arrivé chez nous, client doit choisir son point relais final.",
+      "response_template": "Bonjour [Prénom],\n\n**POUR MODIFIER VOTRE POINT RELAIS CHRONOPOST**\nVotre commande n'étant pas encore expédiée, nous pouvons tout à fait rediriger votre [PRODUIT] vers un nouveau point relais Chrono2Shop de votre choix.\n\nPourriez-vous sélectionner un nouveau point relais sur ce lien et nous communiquer l'adresse complète ?\nhttps://www.chronopost.fr/expeditionAvanceeSec/ounoustrouver.html\n\nDès réception, nous mettons à jour votre livraison.\n\n**MODIFICATION D'ADRESSE OU POINT RELAIS**\nC'est noté ! Nous venons de mettre à jour [l'adresse / le point relais] avec :\n[Nom du point relais / Adresse complète]\n[Code postal] [Ville]\n\nVos articles sont prêts à partir. Vous recevrez un email avec votre lien de suivi dès que le colis sera pris en charge.\n\n**IMPORTANT** : Cette modification n'apparaîtra pas dans votre email de confirmation initial, mais elle est bien prise en compte dans votre lien de suivi. C'est tout à fait normal.\n\n**COLIS ARRIVÉ CHEZ NOUS**\nVotre colis retour est bien arrivé chez nous, merci. La bonne paire, [PRODUIT] en [TAILLE], est prête à partir. Pour la recevoir, il vous reste à choisir le point relais Chronopost (Shop2Shop) où vous souhaitez la recevoir sur cette page :\n[LIEN_PERSONNALISÉ]\n\nElle partira dès votre confirmation.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
+      "key_points": "Ton rassurant, pratique. Changement d'adresse/point relais possible AVANT expédition uniquement. POINT CRITIQUE : expliquer clairement que la modification n'apparaît pas dans l'email de confirmation initial — c'est NORMAL et visible uniquement sur le lien de suivi. Pour Chrono2Shop : proposer uniquement un autre point Chronopost via le finder officiel. Chrono2Shop → Chrono2Shop obligatoire.",
+      "example_count": 92
+    },
+    {
+      "topic": "remboursement_avoir",
+      "topic_label": "Remboursement et avoir",
+      "situation": "Client reçoit un avoir suite à retour. Code avoir généré avec conditions d'utilisation restrictives. Client souhaite utiliser un avoir pour un autre modèle ou une autre taille. Client demande où en est son remboursement après retour accepté. Client en attente de remboursement et demande le statut.",
+      "response_template": "Bonjour [Prénom],\n\n**AVOIR GÉNÉRÉ**\nNous avons bien reçu votre retour ([MODÈLE] - [DESCRIPTIF]) et venons de générer votre avoir d'un montant de [MONTANT] €.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n[CODE_AVOIR]\n\n**CONDITIONS D'UTILISATION**\n- Valable jusqu'au [DATE : +6 mois],\n- Utilisable [SUR LE MÊME MODÈLE / SUR NOS CHAUSSURES ET CEINTURES HOMME],\n- Réservé à votre adresse e-mail ([EMAIL]) : pensez à commander avec cette adresse,\n- Non cumulable avec d'autres codes ou promotions.\n\n**DÉLAI DE TRAITEMENT**\nDès réception et contrôle, comptez 3 à 5 jours ouvrés pour recevoir votre code avoir.\n\n**SI RETOUR EN PROMOTION**\nSi vous aviez acheté votre paire en promotion, l'avoir est établi sur le montant que vous avez réellement payé (prix promotionnel), non le prix catalogue.\n\n**REMBOURSEMENT : VÉRIFICATION STATUT**\nSi vous demandez le statut d'un remboursement :\n- Vérifier d'abord l'historique Shopify fourni avec l'email de retour — il fait foi\n- Si remboursement enregistré : donner la date exacte et le montant, avec le moyen (carte, Alma, PayPal…). Ne jamais annoncer un délai futur si déjà traité.\n- Si paiement Alma : c'est Alma qui rembourse (échéances déjà payées remboursées, à venir annulées)\n- Si aucun remboursement enregistré : ne pas affirmer qu'il est fait. Expliquer le statut du retour.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
+      "key_points": "Ton informatif, clair, rassurant. Engagements : traitement 3-5 jours ouvrés, avoir valable 6 mois, usage unique, non cumulable. CRITIQUE : avoir sur le MONTANT RÉELLEMENT PAYÉ (prix promotionnel si applicable), jamais le prix catalogue. Code réservé à l'adresse e-mail du client — doit commander avec cette adresse. Pour remboursement : JAMAIS annoncer délai futur si déjà traité. Lire l'historique Shopify qui fait foi.",
+      "example_count": 171
+    },
+    {
+      "topic": "retour_procedure",
+      "topic_label": "Procédure de retour",
+      "situation": "Client demande comment retourner un article. Inclut modalités complètes de retour, frais à charge, adresse d'expédition, bon de retour à télécharger. Cas spécifique : erreur de préparation (mauvais article expédié) justifiant prise en charge ou étiquette prépayée.",
+      "response_template": "Bonjour [Prénom],\n\nPas de problème pour organiser ce retour. Voici la procédure complète :\n\n**Étape 1 : Téléchargez le bon de retour**\nRendez-vous sur : https://maxsauveur.com/pages/livraison-et-retour\n\n**Étape 2 : Remplissez le bon de retour**\nComplétez le formulaire avec :\n- Vos nom et prénom\n- Le numéro de votre commande\n- La raison du retour : « avoir », « remboursement », ou « défaut fabrication »\n\n**Étape 3 : Emballez soigneusement**\nMettez la paire dans sa boîte d'origine, glissez le bon de retour à l'intérieur du colis, et emballez l'ensemble.\n\n**Étape 4 : Expédiez à notre adresse logistique**\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\nFrance\n\n⚠️ **IMPORTANT** : Le code postal doit s'écrire **13170** sans espace. Certains transporteurs rejettent le format « 13 170 ».\n\n**Frais de retour**\nLes frais de retour sont à votre charge, sauf en cas de défaut de fabrication avéré ou erreur de notre part (mauvais article expédié).\n\n**Délais de traitement**\nDès réception et contrôle de la paire en état neuf et dans sa boîte d'origine, comptez 3 à 5 jours ouvrés.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
+      "key_points": "Ton clair, rassurant, pratique. CRITIQUE : code postal 13170 SANS ESPACE — certains transporteurs le rejettent au format « 13 170 ». Bon de retour OBLIGATOIRE à l'intérieur du colis avec motif précisé. Frais TOUJOURS à charge du client sauf défaut ou erreur de préparation. Délai 3-5 jours ouvrés après réception et contrôle. Paire doit être neuve et dans sa boîte.",
+      "example_count": 54
+    },
+    {
+      "topic": "commande__13998_confirm_e",
+      "topic_label": "Commande #13998 confirmée",
+      "situation": "Commande #13998 confirmée",
+      "response_template": "Bonjour Florian,\n\nVotre colis retour est bien arrivé chez nous, merci.\n\nLa bonne paire, Brogues (derby cuir bordeaux) en 40, est prête à partir. Pour la recevoir, il vous reste à choisir le point relais Chronopost (Shop2Shop) où vous souhaitez la recevoir sur cette page :\nhttps://assistant-maxsauveur-production.up.railway.app/erreur/CD6AQJtcTq4YyUrnL-vByQ\n\nElle partira dès votre confirmation.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 4
+    },
+    {
+      "topic": "une_commande__13972_a__t__livr_e",
+      "topic_label": "Une commande #13972 a été livrée",
+      "situation": "Une commande #13972 a été livrée",
+      "response_template": "Bonjour Loïs,\n\nVotre article est parti : 2 Imperméabilisant.\n\nVous pouvez suivre le colis ici :\nhttps://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR734138872TS\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 3
+    },
+    {
+      "topic": "objet___erreur_de_livraison___commande_n__14027",
+      "topic_label": "Objet : Erreur de livraison – Commande n° 14027",
+      "situation": "Objet : Erreur de livraison – Commande n° 14027",
+      "response_template": "Bonjour Ricou,\n\nVotre colis retour est bien arrivé chez nous, merci.\n\nLa bonne paire, Brogues (derby cuir bordeaux) en 42, est prête à partir. Pour la recevoir, il vous reste à choisir le point relais Chronopost (Shop2Shop) où vous souhaitez la recevoir sur cette page :\nhttps://assistant-maxsauveur-production.up.railway.app/erreur/EULyZUERhBNyuBDl_jAXag\n\nElle partira dès votre confirmation.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 3
+    },
+    {
+      "topic": "probl_me_commande__13990",
+      "topic_label": "Problème COMMANDE #13990",
+      "situation": "Problème COMMANDE #13990",
+      "response_template": "Bonjour Axel,\n\nVotre colis retour est bien arrivé chez nous, merci.\n\nLa bonne paire, Chelsea Chapman (boots cuir noir) en 43, est prête à partir. Pour la recevoir, il vous reste à choisir le point relais Chronopost (Shop2Shop) où vous souhaitez la recevoir sur cette page :\nhttps://assistant-maxsauveur-production.up.railway.app/erreur/KNEi-FxudYRUQXC8X3RSLA\n\nElle partira dès votre confirmation.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
+      "topic": "re__re__re__re__re__re__une_commande__12957_est_en_transit",
+      "topic_label": "Re: Re: Re: Re: Re: Re: Une commande #12957 est en transit",
+      "situation": "Re: Re: Re: Re: Re: Re: Une commande #12957 est en transit",
+      "response_template": "Bonjour Louis Marie,\n\nPas de souci. Passez votre commande directement via ce lien, qui applique automatiquement votre avoir de 335 € :\n\nhttps://maxsauveur.com/discount/Y5PW7PNSMSPM?redirect=/products/deck-chaussures-bateau-cuir-marron\n\nLes frais de livraison de 9,50 € s'afficheront au moment du paiement : nous vous les remboursons dès que la commande est passée.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
+      "topic": "retour",
+      "topic_label": "Retour",
+      "situation": "Retour",
+      "response_template": "Bonjour Chakir,\n\nNous n'avons pas encore réceptionné votre retour dans notre entrepôt. Dès réception et contrôle de la paire, le remboursement est traité sous 10 jours ouvrés.\n\nAvez-vous un numéro de suivi pour votre retour ? Cela permettra de localiser le colis.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 3
+    },
+    {
+      "topic": "commande__13247",
+      "topic_label": "Commande #13247",
+      "situation": "Commande #13247",
+      "response_template": "Bonjour Johann,\n\nPourriez-vous nous envoyer une photo des deux embauchoirs concernés ? Cela nous permettra de confirmer le problème côté logistique et de déclencher l'envoi de remplacement.\n\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "pointure_conseil",
+      "topic_label": "Conseil de pointure avant achat",
+      "situation": "Client demande sa taille en fonction d'une mesure en cm. Peut inclure des questions de comparaison avec d'autres modèles Max Sauveur comme référence valide. Client pose des questions sur le chaussant spécifique d'un modèle avant achat. Client hésite entre deux pointures. Client demande confirmation de pointure pour un modèle spécifique avant achat.",
+      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et pour avoir suivi notre méthode de mesure.\n\nAvec [MESURE_CM] cm de pied, en ajoutant les 0,2 cm vous êtes à [MESURE_PLUS_02] cm, ce qui vous place en **[TAILLE_GUIDE]** sur notre guide.\n\n**SUR VOTRE MODÈLE**\n\nLe [MODÈLE] chausse [légèrement grand/juste au départ]. Avec un pied [large/fin], je vous recommande donc le **[TAILLE_FINALE]** pour ne pas être à l'étroit en largeur (si large) ou pour un bon maintien sans jeu (si fin).\n\n**SUR LES MOCASSINS - SENSATION COU-DE-PIED**\n\nSans lacets, le mocassin serre un peu au cou-de-pied au premier port, c'est normal et nécessaire pour le maintien. Le cuir et la semelle en liège s'assouplissent rapidement avec le port et après quelques sorties, l'ajustement devient naturel.\n\n**SUR LA CHELSEA CHAPMAN**\n\nLa Chelsea Chapman chausse ajusté. Avec [MESURE_PLUS_02] cm, vous êtes effectivement plutôt en **[TAILLE]**. Valider la mesure en longueur ET en largeur avant de confirmer.\n\n**POUR PIEDS LARGES**\n\nAvec des pieds larges, ne pas descendre en-dessous de la taille calculée — le maintien s'en trouverait compromis.\n\nN'hésitez pas si vous avez d'autres questions.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
+      "key_points": "Ton rassurant, éducatif. Ajouter 0,2 cm à la mesure brute OBLIGATOIRE. Accepter comparaisons de modèles Max Sauveur comme repères valides. Pieds larges = maintenir la taille calculée, ne pas descendre. Cou-de-pied fort = AVANTAGE sur mocassin (bon maintien). Expliquer assouplissement cuir + liège comme processus normal et rapide. Chelsea Chapman chausse ajusté, bien valider longueur ET largeur. Exemple du jour : Wico chaussant standard, 27,2 cm + 0,2 = 27,4 → taille 42 confirmée.",
+      "example_count": 192
+    },
+    {
       "topic": "re__form_name_form_submitted_2026_11_06_15_15_14",
       "topic_label": "Re: Form name Form submitted 2026-11-06 15:15:14",
       "situation": "Re: Form name Form submitted 2026-11-06 15:15:14",
@@ -26,36 +130,12 @@
       "example_count": 213
     },
     {
-      "topic": "pointure_conseil",
-      "topic_label": "Conseil de pointure avant achat",
-      "situation": "Client demande sa taille en fonction d'une mesure en cm. Peut inclure des questions de comparaison avec d'autres modèles Max Sauveur comme référence valide. Client pose des questions sur le chaussant spécifique d'un modèle avant achat. Client hésite entre deux pointures. Client demande confirmation de pointure pour un modèle spécifique avant achat.",
-      "response_template": "Bonjour [Prénom],\n\nMerci pour votre message et pour avoir suivi notre méthode de mesure.\n\nAvec [MESURE_CM] cm de pied, en ajoutant les 0,2 cm vous êtes à [MESURE_PLUS_02] cm, ce qui vous place en **[TAILLE_GUIDE]** sur notre guide.\n\n**SUR VOTRE MODÈLE**\n\nLe [MODÈLE] chausse [légèrement grand/juste au départ]. Avec un pied [large/fin], je vous recommande donc le **[TAILLE_FINALE]** pour ne pas être à l'étroit en largeur (si large) ou pour un bon maintien sans jeu (si fin).\n\n**SUR LES MOCASSINS - SENSATION COU-DE-PIED**\n\nSans lacets, le mocassin serre un peu au cou-de-pied au premier port, c'est normal et nécessaire pour le maintien. Le cuir et la semelle en liège s'assouplissent rapidement avec le port et après quelques sorties, l'ajustement devient naturel.\n\n**SUR LA CHELSEA CHAPMAN**\n\nLa Chelsea Chapman chausse ajusté. Avec [MESURE_PLUS_02] cm, vous êtes effectivement plutôt en **[TAILLE]**. Valider la mesure en longueur ET en largeur avant de confirmer.\n\n**POUR PIEDS LARGES**\n\nAvec des pieds larges, ne pas descendre en-dessous de la taille calculée — le maintien s'en trouverait compromis.\n\nN'hésitez pas si vous avez d'autres questions.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
-      "key_points": "Ton rassurant, éducatif. Ajouter 0,2 cm à la mesure brute OBLIGATOIRE. Accepter comparaisons de modèles Max Sauveur comme repères valides. Pieds larges = maintenir la taille calculée, ne pas descendre. Cou-de-pied fort = AVANTAGE sur mocassin (bon maintien). Expliquer assouplissement cuir + liège comme processus normal et rapide. Chelsea Chapman chausse ajusté, bien valider longueur ET largeur. Réponse d'aujourd'hui à Mikaël : confirmation claire avec mesure + modèle + pointure. Formulation validée : « Guide vous place en [TAILLE] » + « chaussant standard » = bon pour confirmer.",
-      "example_count": 191
-    },
-    {
       "topic": "question_pointure",
       "topic_label": "Question pointure",
       "situation": "Question pointure",
       "response_template": "Bonjour Mikaël,\n\nAvec 27,2 cm, notre guide vous place en **42**. Le Wico a un chaussant standard, le **42** est la bonne pointure.\n\nBonne commande !\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "defaut_fabrication",
-      "topic_label": "Défaut avéré : semelle décollée, couture lâchée, cuir fendu, garantie",
-      "situation": "Client signale un défaut de fabrication (semelle décollée, couture lâchée, languette décollée, cuir fendu, talon endommagé, ou erreur de préparation avec mauvais modèle/variante expédié). Max Sauveur prend en charge intégralement retour, réparation et renvoi sans frais.",
-      "response_template": "Bonjour [Prénom],\n\n[Décrire les photos : la doublure du talon droit est décollée et effilochée / la semelle avant est décollée / l'article reçu est un modèle différent de celui commandé / etc.] confirme bien [un défaut de fabrication / une erreur de notre part]. Nous prenons cela en charge intégralement : retour, réparation et renvoi, sans frais pour vous.\n\n**Procédure pour retourner votre paire :**\n\n1. Téléchargez et complétez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (motif : « défaut fabrication »)\n2. Emballez soigneusement votre paire avec le bon à l'intérieur\n3. Expédiez à :\n\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\nFrance\n\n**Délai de réparation :** Comptez 6 à 8 semaines pour le passage en atelier. Dès réparation, nous vous renvoyons votre paire avec un numéro de suivi.\n\n**Geste commercial :** En guise de remerciement pour votre patience, nous glisserons [deux produits d'entretien cuir / un accessoire] dans votre colis de retour.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
-      "key_points": "Ton : assumer le défaut ou l'erreur clairement, sans hésitation. Humain, transparent sur délais. Jamais d'excuses excessives. Engagements : prise en charge 100% (retour, réparation, renvoi sans frais). Délai standard 6-8 semaines. Demander toujours photos avant confirmer (même pour erreur de préparation). Geste commercial fréquent (produits d'entretien, accessoires). Ne pas proposer d'étiquette prépayée (client assume les frais, sauf erreur notre part = gratuit).",
-      "example_count": 70
-    },
-    {
-      "topic": "remboursement_avoir",
-      "topic_label": "Remboursements, avoirs, délais de traitement, montants retenus",
-      "situation": "Client reçoit un avoir suite à retour. Code avoir généré avec conditions d'utilisation restrictives. Client souhaite utiliser un avoir pour un autre modèle ou une autre taille. Client demande où en est son remboursement après retour accepté.",
-      "response_template": "Bonjour [Prénom],\n\n**AVOIR GÉNÉRÉ**\n\nNous avons bien reçu votre retour ([MODÈLE] - [DESCRIPTIF]) et venons de générer votre avoir d'un montant de [MONTANT] €.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n[CODE_AVOIR]\n\n**CONDITIONS D'UTILISATION**\n\n- Valable jusqu'au [DATE : +6 mois],\n- Utilisable [SUR LE MÊME MODÈLE / SUR NOS CHAUSSURES ET CEINTURES HOMME],\n- Réservé à votre adresse e-mail ([EMAIL]) : pensez à commander avec cette adresse,\n- Non cumulable avec d'autres codes ou promotions.\n\n**DÉLAI DE TRAITEMENT**\n\nDès réception et contrôle, comptez 3 à 5 jours ouvrés pour recevoir votre code avoir.\n\n**SI RETOUR EN PROMOTION**\n\nSi vous aviez acheté votre paire en promotion, l'avoir est établi sur le montant que vous avez réellement payé (prix promotionnel), non le prix catalogue.\n\n**REMBOURSEMENT : VÉRIFICATION STATUT**\n\nSi vous demandez le statut d'un remboursement :\n- Vérifier d'abord l'historique Shopify fourni avec l'email de retour — il fait foi\n- Si remboursement enregistré : donner la date exacte et le montant, avec le moyen (carte, Alma, PayPal…)\n- Si paiement Alma : c'est Alma qui rembourse (échéances déjà payées remboursées, à venir annulées). Inviter le client à vérifier son espace Alma\n- Si aucun remboursement enregistré : ne pas le confirmer, expliquer où en est le dossier (retour reçu ou non) et laisser Samuel confirmer\n- Délai légal : 10 jours ouvrés à compter de la date de réception du retour en entrepôt\n\nCordialement,\nJohn – Service Client – Max Sauveur",
-      "key_points": "Ton informatif, clair, rassurant. Engagements : traitement 3-5 jours ouvrés, avoir valable 6 mois, usage unique, non cumulable. CRITIQUE : avoir sur le MONTANT RÉELLEMENT PAYÉ (prix promotionnel si applicable), jamais le prix catalogue. Code réservé à l'adresse e-mail du client — doit commander avec cette adresse. Pour remboursement : JAMAIS annoncer un délai futur si déjà traité. Lire l'historique Shopify d'abord. Si Alma, renvoyer au client. Si absent : expliquer sans confirmer.",
-      "example_count": 169
     },
     {
       "topic": "re__retour_cde__13952",
@@ -120,14 +200,6 @@
       "response_template": "Bonjour Matthieu,\n\nSur la couleur : le Wayne bordeaux est un cuir pleine fleur teint en bordeaux franc. Les reflets légèrement plus sombres que vous voyez sur certaines photos sont dus à la lumière du studio et aux contrastes naturels du cuir, pas à une teinte tachetée. La couleur est uniforme.\n\nSur la taille : le Wayne chausse légèrement grand. Je vous recommande de prendre une demi-taille en dessous de votre taille habituelle. Si vous me donnez votre pointure ou votre mesure de pied en cm (talon contre un mur, bout du gros orteil), je vous confirme la recommandation précise.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "retour",
-      "topic_label": "Retour",
-      "situation": "Retour",
-      "response_template": "Bonjour Louis,\n\nMerci pour votre message. Le délai de traitement est de 10 jours ouvrés à compter de la réception de votre retour. Vous recevrez un email de notre part dès que votre dossier sera traité.\n\nBonne journée,\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 2
     },
     {
       "topic": "demande_de_pr_cision_concernant_la_date_d_exp_dition___comma",
@@ -208,14 +280,6 @@
       "response_template": "Bonjour [Prénom],\n\n**Sur le délai légal de rétractation :**\nConformément à la réglementation européenne, la charge de la preuve de l'exercice du droit de rétractation dans les délais impartis incombe au consommateur. Le délai légal de 14 jours s'achève à compter de la réception du colis.\n\nSi la date d'expédition est invoquée, nous exigeons la présentation d'une preuve officielle de dépôt (bordereau d'expédition daté) démontrant que le colis a été confié aux services postaux au plus tard le dernier jour du délai. Un simple message WhatsApp ou email sans date d'expédition officielle ne constitue pas une preuve valide.\n\n**En l'absence de preuve documentaire :**\nLe remboursement reste exclu passé le délai légal. Nous proposons un avoir à titre de geste commercial, valable 6 mois sur notre site.\n\n**Sur les retours depuis l'étranger :**\nPour les retours expédiés en dehors de la France métropolitaine, les frais d'expédition restent à votre charge. Nous ne pouvons pas couvrir les frais de retour ni de reshipping. Nous traiterons votre demande dès réception et inspection du colis en entrepôt.\n\n**Sur notre modèle commercial :**\nNotre marque opère selon un modèle direct-to-consumer avec des marges très serrées pour offrir des matériaux de haute qualité à un prix juste. Nous ne gonflons pas artificiellement nos prix pour absorber gratuitement les retours internationaux.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
       "key_points": "Ton : ferme, honnête, transparent, sans agressivité. Ne pas céder à la pression. Respecter strictement le délai légal de 14 jours, exiger une preuve officielle de dépôt datée (bordereau d'expédition, pas messages). Proposition : avoir commercial à titre gracieux en-dehors du cadre légal. RETOURS INTERNATIONAUX : frais TOUJOURS à charge du client, jamais pris en charge. Ne JAMAIS rembourser après délai sans preuve irréfutable. Expliquer le modèle commercial DTC sans excuses excessives.",
       "example_count": 16
-    },
-    {
-      "topic": "retour_procedure",
-      "topic_label": "Procédure de retour",
-      "situation": "Client demande comment retourner un article. Inclut modalités complètes de retour, frais à charge, adresse d'expédition, bon de retour à télécharger. Cas spécifique : erreur de préparation (mauvais article expédié) justifiant prise en charge ou étiquette prépayée.",
-      "response_template": "Bonjour [Prénom],\n\nPas de problème pour organiser ce retour. Voici la procédure complète à suivre :\n\n**Étape 1 : Téléchargez le bon de retour**\nRendez-vous sur : https://maxsauveur.com/pages/livraison-et-retour\n\n**Étape 2 : Remplissez le bon de retour**\nComplétez le formulaire avec :\n- Vos nom et prénom\n- Le numéro de votre commande (trouvable dans votre email de confirmation)\n- La raison du retour : « avoir », « remboursement », ou « défaut fabrication » selon votre situation\n\n**Étape 3 : Emballez soigneusement**\nMettez la paire dans sa boîte d'origine, glissez le bon de retour à l'intérieur du colis, et emballez l'ensemble pour éviter les dommages.\n\n**Étape 4 : Expédiez à notre adresse logistique**\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\nFrance\n\n⚠️ **IMPORTANT** : Le code postal doit s'écrire **13170** sans espace. Certains transporteurs rejettent le format « 13 170 ».\n\n**Frais de retour**\nLes frais de retour sont à votre charge, sauf en cas de :\n- Défaut de fabrication avéré\n- Erreur de notre part (mauvais article expédié)\n\n**Délais de traitement**\nDès réception et contrôle de la paire en état neuf et dans sa boîte d'origine, comptez 3 à 5 jours ouvrés pour traiter votre demande.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
-      "key_points": "Ton clair, rassurant, pratique. CRITIQUE : code postal 13170 SANS ESPACE — certains transporteurs le rejettent au format « 13 170 ». Bon de retour OBLIGATOIRE à l'intérieur du colis avec motif précisé. Frais TOUJOURS à charge du client sauf défaut ou erreur de préparation. Délai 3-5 jours ouvrés après réception et contrôle. Paire doit être neuve et dans sa boîte. Pour retours internationaux : frais à charge du client, pas de prise en charge.",
-      "example_count": 52
     },
     {
       "topic": "dakota_again",
@@ -754,22 +818,6 @@
       "example_count": 2
     },
     {
-      "topic": "probl_me_commande__13990",
-      "topic_label": "Problème COMMANDE #13990",
-      "situation": "Problème COMMANDE #13990",
-      "response_template": "Bonjour Axel,\n\nMerci pour les photos. Vous avez bien reçu Chelsea Chapman Cuir Noir en 42 (boîte 43) au lieu de Chelsea Chapman (boots cuir noir) en 43 : l'erreur vient de notre atelier, et nous nous en excusons.\n\nVoici votre étiquette de retour prépayée :\nhttps://wing-labelling-system.s3.eu-west-3.amazonaws.com/549146d6-4924-4a03-a1b7-297a86f83bcd/LABEL/2026-11-16/LABEL-421618e1-39d4-4fde-b4f9-7387a945b029-1794787379978-6A08266792585.pdf\n\nIl vous suffit de l'imprimer, de la coller sur le colis avec la paire dans sa boîte, puis de le déposer dans un bureau de poste ou un point Colissimo.\n\nDès que la paire arrive chez nous, nous vous envoyons la bonne. Vous n'avez rien à payer.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "une_commande__13972_a__t__livr_e",
-      "topic_label": "Une commande #13972 a été livrée",
-      "situation": "Une commande #13972 a été livrée",
-      "response_template": "Bonjour Loïs,\n\nUn remboursement est possible, mais il y a un point important à connaître avant de trancher : votre commande #13972 bénéficie d'une remise Mad Max de 15 %. Cette remise s'applique dès 150 € d'articles avant remise. Si nous remboursons les 2 imperméabilisants (20,40 €), ce que vous conservez tombe à 135 € avant remise, soit sous le seuil. La remise de 15 % serait alors annulée sur l'ensemble de la commande, ce qui représente 20,25 € à déduire du remboursement. Vous recevriez donc 0,15 €. Par ailleurs, votre carte cadeau Mad Max de 20 € serait annulée dans le même temps, puisque le montant conservé passerait sous 150 €.\n\nEn gardant le renvoi déjà préparé, vous conservez votre remise et votre carte cadeau.\n\nNous regardons la suite avec notre responsable et revenons vers vous très rapidement.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 2
-    },
-    {
       "topic": "re__une_commande__14035_est_en_transit",
       "topic_label": "Re: Une commande #14035 est en transit",
       "situation": "Re: Une commande #14035 est en transit",
@@ -1042,14 +1090,6 @@
       "example_count": 1
     },
     {
-      "topic": "objet___erreur_de_livraison___commande_n__14027",
-      "topic_label": "Objet : Erreur de livraison – Commande n° 14027",
-      "situation": "Objet : Erreur de livraison – Commande n° 14027",
-      "response_template": "Bonjour Gaël,\n\nParfait, merci pour le dépôt. Dès que la paire arrive chez nous, nous vous expédions immédiatement les Brogues Cuir Bordeaux en 42.\n\nVous recevrez automatiquement un email avec votre lien de suivi à l'expédition.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 2
-    },
-    {
       "topic": "re__cde__13849___code_offre_ne_fonctionne_pas",
       "topic_label": "Re: Cde #13849 | Code offre ne fonctionne pas",
       "situation": "Re: Cde #13849 | Code offre ne fonctionne pas",
@@ -1120,14 +1160,6 @@
       "response_template": "Bonjour Léo,\n\nNous avons examiné vos photos en détail avec notre chef d'atelier. Votre paire ne présente aucun défaut de fabrication ni faiblesse structurelle : ce que vous observez sont des caractéristiques inhérentes au montage artisanal.\n\nQuelques précisions point par point :\n\nCe que vous identifiez comme une fissure au niveau de la semelle est en réalité le raccord de montage. Cette jonction est une étape technique obligatoire sur ce type de construction et se retrouve sur toutes nos paires.\n\nLes légers plis et marques autour des empiècements sont la tension naturelle exercée par la machine à coudre sur la peau lors de la piqûre, ainsi que le comportement normal de notre cuir pleine fleur lors de sa mise sur forme.\n\nLe léger relief sur la tranche de la semelle est la trace d'une finition manuelle. Contrairement à des chaussures industrielles aux cuirs rectifiés et recouverts de fixateurs synthétiques, notre cuir vit et porte l'empreinte de la main de l'artisan.\n\nCes détails garantissent l'authenticité de votre paire et disparaîtront visuellement dès les premiers ports, lorsque le cuir commencera à se faire à votre pied.\n\nSi toutefois cette approche brute et artisanale ne correspond pas à vos attentes esthétiques, nous préférons procéder à la résolution de la vente plutôt qu'à un échange : une nouvelle paire présenterait exactement les mêmes attributs. Vous pouvez dans ce cas nous retourner la paire pour un remboursement, sous réserve qu'elle soit dans un état strictement neuf, sans aucun pli de marche lié à un essayage.\n\nDites-nous comment vous souhaitez procéder.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "commande__13998_confirm_e",
-      "topic_label": "Commande #13998 confirmée",
-      "situation": "Commande #13998 confirmée",
-      "response_template": "Bonjour Florian,\n\nNotre message s'est croisé et nous regardons ce que nous pouvons faire pour votre pointure. Nous revenons vers vous très rapidement.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 3
     },
     {
       "topic": "chelsea_chapman",
@@ -1328,14 +1360,6 @@
       "response_template": "Bonjour [Prénom],\n\nMerci pour votre message.\n\n**ENTRETIEN DU DAIM**\n\nLe daim demande un entretien spécifique, différent du cuir lisse :\n- Une brosse à daim pour raviver les fibres et enlever la poussière\n- Un spray imperméabilisant pour daim avant le premier port, et à renouveler régulièrement\n- En cas de tache, une gomme à daim permet d'effacer les marques légères à sec\n\nÀ éviter absolument : les cirages classiques et les crèmes pour cuir lisse, qui abîmeraient le daim.\n\n**SUR LES MATIÈRES NATURELLES**\n\nNos chaussures sont fabriquées en full grain leather (cuir pleine fleur, non corrigé). C'est une matière naturelle qui marque avec l'usage, se patine, et s'assouplit avec le temps. Les variations de teinte, les petites imperfections ou les marques de gras sont des caractéristiques, pas des défauts. Elles témoignent de l'authenticité et de la qualité du cuir.\n\n**SUR LE CONFORT ET LA SEMELLE**\n\nNos chaussures sont équipées d'une semelle intérieure en liège qui se moule progressivement à la forme exacte de votre pied. Au premier port, la sensation peut sembler rigide ou serrante, c'est normal : après quelques sorties, le résultat est celui d'un chausson sur mesure.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
       "key_points": "Ton : rassurant, éducatif sur les matières naturelles. Distinguer daim (entretien spécifique) du cuir lisse. Full grain leather = matière vivante, marques normales et naturelles. Semelle liège = se moule au pied, rigidité initiale normale. Ne jamais s'engager sur une taille sans mesure exacte du pied en cm. Expliquer l'assouplissement du cuir comme processus naturel, jamais comme défaut.",
       "example_count": 22
-    },
-    {
-      "topic": "suivi_livraison",
-      "topic_label": "Suivi de colis, transporteur, point relais, colis perdu, adresse",
-      "situation": "Client demande le statut de sa livraison, souhaite modifier son adresse de livraison ou son point relais après commande passée mais avant expédition.",
-      "response_template": "Bonjour [Prénom],\n\n**POUR MODIFIER VOTRE POINT RELAIS CHRONOPOST**\n\nVotre commande n'étant pas encore expédiée, nous pouvons tout à fait rediriger votre [PRODUIT] vers un nouveau point relais Chrono2Shop de votre choix.\n\nPourriez-vous sélectionner un nouveau point relais sur ce lien et nous communiquer l'adresse complète ?\nhttps://www.chronopost.fr/expeditionAvanceeSec/ounoustrouver.html\n\nDès réception, nous mettons à jour votre livraison.\n\n**MODIFICATION D'ADRESSE OU POINT RELAIS**\n\nC'est noté ! Nous venons de mettre à jour [l'adresse / le point relais] avec :\n[Nom du point relais / Adresse complète]\n[Code postal] [Ville]\n\nVos articles sont prêts à partir. Vous recevrez un email avec votre lien de suivi dès que le colis sera pris en charge.\n\n**IMPORTANT** : Cette modification n'apparaîtra pas dans votre email de confirmation initial, mais elle est bien prise en compte dans votre lien de suivi. C'est tout à fait normal.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
-      "key_points": "Ton rassurant, pratique. Changement d'adresse/point relais possible AVANT expédition uniquement. POINT CRITIQUE : expliquer clairement que la modification n'apparaît pas dans l'email de confirmation initial — c'est NORMAL et visible uniquement sur le lien de suivi. Pour Chrono2Shop : proposer uniquement un autre point Chronopost via le finder officiel. Chrono2Shop → Chrono2Shop obligatoire.",
-      "example_count": 90
     },
     {
       "topic": "dakota_pointure",
@@ -2614,14 +2638,6 @@
       "topic_label": "Commande #13618",
       "situation": "Commande #13618",
       "response_template": "Bonjour Enzo,\n\nVotre commande #13618 (Morricone - Ceinture Western en Cuir de veau Noir, taille 90) est bien en précommande, comme indiqué sur la fiche produit au moment de l'achat. La livraison est prévue pour mi-décembre 2026.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__re__re__re__re__re__une_commande__12957_est_en_transit",
-      "topic_label": "Re: Re: Re: Re: Re: Re: Une commande #12957 est en transit",
-      "situation": "Re: Re: Re: Re: Re: Re: Une commande #12957 est en transit",
-      "response_template": "Bonjour Louis Marie,\n\nVotre Deck en 42 part cette semaine. Vous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
