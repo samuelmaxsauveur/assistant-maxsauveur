@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_23_17_17_56",
+      "topic_label": "Form name Form submitted 2026-11-23 17:17:56",
+      "situation": "Form name Form submitted 2026-11-23 17:17:56",
+      "response_template": "Bonjour Hugues,\n\nAvec 29,4/29,5 cm, tu es effectivement en 44,5 sur notre guide. Le 45 peut tout à fait fonctionner sur le Paul : comme il chausse un peu juste au départ (cuir pleine fleur + semelle liège qui se moulent au pied), la demi-pointure du dessus est souvent une bonne option pour ce profil de pied.\n\nIl reste 2 paires en stock en 45 cuir noir, tu peux commander directement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
