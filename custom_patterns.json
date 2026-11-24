@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__une_commande__13840_est_en_transit",
+      "topic_label": "Re: RE: RE: Une commande #13840 est en transit",
+      "situation": "Re: RE: RE: Une commande #13840 est en transit",
+      "response_template": "Bonjour Marine,\n\nNous avons débloqué le 45 issu de votre retour pour que vous puissiez le commander directement sur le site, en choisissant votre adresse et l'expédition express.\n\nUne fois votre nouvelle commande passée, nous remboursons la commande initiale (#13840) sur votre Visa.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__une_commande__13926_est_en_transit",
       "topic_label": "Re: Une commande #13926 est en transit",
       "situation": "Re: Une commande #13926 est en transit",
