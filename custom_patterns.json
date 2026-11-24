@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__votre_retour_pour_la_commande__13410",
+      "topic_label": "Re: Re: Re: Votre retour pour la commande #13410",
+      "situation": "Re: Re: Re: Votre retour pour la commande #13410",
+      "response_template": "Bonjour Xavier,\n\nVous avez tout à fait raison. Nous avons signalé cela à notre comptabilité, cela ne se reproduira plus.\n\nVotre remboursement de 335 € a bien été émis ce jour sur votre Visa se terminant en 3309. Selon les délais de votre banque, il devrait apparaître sur votre compte d'ici quelques jours ouvrés.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__form_name_form_submitted_2026_11_23_15_32_39",
       "topic_label": "Re: Form name Form submitted 2026-11-23 15:32:39",
       "situation": "Re: Form name Form submitted 2026-11-23 15:32:39",
