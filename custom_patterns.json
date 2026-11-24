@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__une_commande__13926_est_en_transit",
+      "topic_label": "Re: Une commande #13926 est en transit",
+      "situation": "Re: Une commande #13926 est en transit",
+      "response_template": "Bonjour Victor,\n\nLe colis n'ayant pas été récupéré au point relais dans le délai imparti, il a été retourné à notre entrepôt. Voici ce qu'on peut faire :\n\n**Option 1 :** Réexpédition vers un nouveau point relais Chronopost (Chrono2Shop) de votre choix. Vous pouvez en trouver un près de chez vous ici : https://www.chronopost.fr/expeditionAvanceeSec/ounoustrouver.html\n\n**Option 2 :** Remboursement. Dans ce cas, nous déduisons 9,50 € de frais de retour du montant à rembourser, et les frais de livraison initiaux ne sont pas remboursés. Un point important : votre carte cadeau Mad Max (boîte pas encore ouverte) sera définitivement perdue avec le remboursement.\n\nDites-moi quelle option vous convient et on s'en occupe immédiatement.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__votre_retour_pour_la_commande__13812",
       "topic_label": "RE: Votre retour pour la commande #13812",
       "situation": "RE: Votre retour pour la commande #13812",
