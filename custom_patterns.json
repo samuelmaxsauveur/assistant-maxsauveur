@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__une_commande__14051_est_en_transit",
+      "topic_label": "Re: Une commande #14051 est en transit",
+      "situation": "Re: Une commande #14051 est en transit",
+      "response_template": "Bonjour Denis,\n\nNous voyons bien que votre colis XR734147446TS est en transit depuis le 16 novembre sans avancement. Nous ouvrons une enquête auprès de Chronopost en tant qu'émetteur et revenons vers vous dès que nous avons des éléments concrets.\n\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__une_commande__13840_est_en_transit",
       "topic_label": "Re: RE: RE: Une commande #13840 est en transit",
       "situation": "Re: RE: RE: Une commande #13840 est en transit",
