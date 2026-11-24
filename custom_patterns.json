@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__form_name_form_submitted_2026_11_23_15_32_39",
+      "topic_label": "Re: Form name Form submitted 2026-11-23 15:32:39",
+      "situation": "Re: Form name Form submitted 2026-11-23 15:32:39",
+      "response_template": "Bonjour Julien,\n\nOui, prenez bien la même taille que vos chaussures : des embauchoirs en 42 pour votre Deck en 42.\n\nBonne journée !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__form_name_form_submitted_2026_11_20_16_54_48",
       "topic_label": "Re: Re: Form name Form submitted 2026-11-20 16:54:48",
       "situation": "Re: Re: Form name Form submitted 2026-11-20 16:54:48",
