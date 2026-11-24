@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "fwd__demande_d_information_pointure",
+      "topic_label": "Fwd: Demande d'information pointure",
+      "situation": "Fwd: Demande d'information pointure",
+      "response_template": "Bonjour Thierry,\n\nMerci pour ce retour. La pression en bout d'orteils peut effectivement indiquer un problème de longueur, mais avant de conclure, une question : avez-vous bien pris votre mesure talon contre un mur, pied nu, et marqué le bout du gros orteil ? La position lors de la mesure peut facilement faire varier quelques millimètres.\n\nAvec 272 mm, vous êtes à 27,4 cm, ce qui correspond à un 43. Le 43,5 n'existe pas dans ce modèle, et le 44 correspond à une mesure de 28,5 cm, soit un pied sensiblement plus grand que le vôtre.\n\nSi votre prise de mesure est rigoureuse et que la contrainte persiste en longueur, revenez vers nous avec votre mesure revérifiée et nous y regarderons de plus près.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__bottines_wayne_bordeaux",
       "topic_label": "Re: Bottines wayne bordeaux",
       "situation": "Re: Bottines wayne bordeaux",
