@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "springsteen",
+      "topic_label": "Springsteen",
+      "situation": "Springsteen",
+      "response_template": "Bonjour Florian,\n\nCela dépend du coloris. La Springsteen n'est pas un modèle qui fonctionne de la même façon selon les versions : certains coloris reviennent, d'autres non.\n\nEn attendant, les deux coloris actuels sont encore disponibles sur le site en plusieurs pointures si vous souhaitez en profiter maintenant.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "demande_pointure",
       "topic_label": "Demande pointure",
       "situation": "Demande pointure",
