@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "retour_commande__13918",
+      "topic_label": "Retour commande #13918",
+      "situation": "Retour commande #13918",
+      "response_template": "Bonjour Alexandre,\n\nVotre retour est bien enregistré de notre côté. Le colis n'a pas encore été contrôlé par l'équipe logistique, ce qui explique l'absence de confirmation automatique.\n\nUn point important avant que le dossier soit traité : votre carte cadeau de 50 € (code MADMAX-59XKRV, valable jusqu'au 15 avril 2027) sera définitivement perdue si vous êtes remboursé sur l'intégralité de la commande. Elle ne peut être conservée qu'en cas d'échange de pointure ou d'avoir.\n\nDès réception et contrôle de la paire, nous reviendrons vers vous pour finaliser le dossier. Comptez 10 jours ouvrés à partir de la livraison chez nous.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__paire_de_dakota_mad_max",
       "topic_label": "Re: Paire de Dakota Mad Max",
       "situation": "Re: Paire de Dakota Mad Max",
