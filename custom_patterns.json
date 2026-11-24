@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__retour",
+      "topic_label": "Re: Retour",
+      "situation": "Re: Retour",
+      "response_template": "Bonjour Chakir,\n\nMerci pour la confirmation. Nous revenons vers vous dans la semaine.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "retour_commande__13918",
       "topic_label": "Retour commande #13918",
       "situation": "Retour commande #13918",
