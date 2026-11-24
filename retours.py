@@ -19,7 +19,9 @@ import io
 import json
 import os
 import re
+import threading
 import time
+import uuid
 from concurrent.futures import ThreadPoolExecutor
 from datetime import date, datetime, timedelta, timezone
 
@@ -351,43 +353,55 @@ def _read_photo(jpeg, prompt):
     ]))
 
 
-PDF_PROMPT = """Ce PDF contient un ou plusieurs {what}, scannés, photographiés ou remplis à l'ordinateur. Le plus souvent, il y en a un par page. Un même {one} peut aussi tenir sur deux pages (recto verso) : regroupe alors ces pages. Ignore les pages blanches et celles qui ne sont ni un bon ni une étiquette.
+PDF_PROMPT = """Ce PDF contient un ou plusieurs {what}, scannés, photographiés ou remplis à l'ordinateur. Le plus souvent, il y en a un par page. Chaque page qui porte un {one} complet est un {one} à part, même si le client, la commande ou les articles se répètent d'une page à l'autre (un client peut faire deux retours). Ne regroupe que deux pages qui se suivent, quand la seconde n'est que la suite de la première (son verso, sans nom ni commande). Ignore les pages blanches et celles qui ne sont ni un bon ni une étiquette.
 Lis chaque {one} selon les consignes ci-dessous, qui décrivent le JSON d'un seul {one}, et ajoute-lui "pages": [numéros de ses pages, à partir de 1].
 Réponds UNIQUEMENT avec ce JSON : {{"documents": [un objet par {one}]}}
 
 Consignes pour chaque {one} :
 """
-PDF_MAX_BYTES = 25 * 1024 * 1024
-PDF_MAX_PAGES = 30
+# A PDF is read in parts of a few pages, side by side: a scan of 34 slips takes
+# about a minute instead of four, and each answer stays short enough to be whole.
+PDF_MAX_BYTES = 80 * 1024 * 1024     # what we accept from the page
+PDF_PART_BYTES = 18 * 1024 * 1024    # what one request to Claude carries at most
+PDF_PART_PAGES = 6
+PDF_MAX_PAGES = 120
 
 
-def pdf_pages(raw):
-    """Number of pages, or None when pypdf cannot tell (Claude still gets the PDF)."""
+def _pdf_reader(raw):
+    """pypdf's reader, or None when it cannot open the PDF (Claude then gets it whole)."""
     try:
         from pypdf import PdfReader
-        return len(PdfReader(io.BytesIO(raw)).pages)
+        reader = PdfReader(io.BytesIO(raw))
+        return reader if len(reader.pages) else None
     except Exception:
         return None
 
 
+def _pdf_part(reader, indexes):
+    """A PDF of only these pages (0-based)."""
+    from pypdf import PdfWriter
+    writer = PdfWriter()
+    for i in indexes:
+        writer.add_page(reader.pages[i])
+    out = io.BytesIO()
+    writer.write(out)
+    return out.getvalue()
+
+
 def _read_pdf(pdf, prompt, what, one):
     """Every slip (or label) Claude finds in a PDF, each with its pages, cleaned up like a photo."""
-    if len(pdf) > PDF_MAX_BYTES:
-        raise RuntimeError(f"PDF trop lourd ({len(pdf) // (1024 * 1024)} Mo, 25 Mo au plus) : découpe-le.")
     try:
         found = _ask([
             {"type": "document", "source": {"type": "base64", "media_type": "application/pdf",
                                             "data": base64.b64encode(pdf).decode()}},
             {"type": "text", "text": PDF_PROMPT.format(what=what, one=one) + _fill(prompt)},
-        ], max_tokens=8000)
+        ], max_tokens=6000)
     except anthropic.BadRequestError as e:
         if "pdf" in str(e).lower():
             raise RuntimeError("le PDF est abîmé ou protégé. Réenregistre-le, ou photographie le bon.") from e
         raise
     docs = found.get("documents") if isinstance(found.get("documents"), list) else [found]
     docs = [d for d in docs if isinstance(d, dict)]
-    if not docs:
-        raise RuntimeError("Aucun bon ni étiquette trouvé dans le PDF.")
     for d in docs:
         d["pages"] = [int(n) for n in d.get("pages") or [] if str(n).isdigit()]
         _clean(d)
@@ -1438,34 +1452,133 @@ def create_from_photo(raw, kind=None):
     return _fill_case(case_id, [name], read, "étiquette photographiée" if kind == UNCLAIMED else "bon photographié")
 
 
-def create_from_pdf(raw, kind=None):
-    """One file per slip (or label) found in a PDF, each keeping the PDF and its page numbers.
-    Read once, before any file exists: a PDF Claude cannot read gives a single file with the error."""
-    pages = pdf_pages(raw)
-    if pages and pages > PDF_MAX_PAGES:
-        raise ValueError(f"PDF de {pages} pages : découpe-le en morceaux de {PDF_MAX_PAGES} pages au plus.")
+_PDF_JOBS = {}
+_PDF_LOCK = threading.Lock()
+
+
+def start_pdf(raw, kind=None):
+    """Check the PDF, then read it in the background: returns the id the page follows with pdf_job()."""
+    if len(raw) > PDF_MAX_BYTES:
+        raise ValueError(f"PDF trop lourd ({len(raw) // (1024 * 1024)} Mo, {PDF_MAX_BYTES // (1024 * 1024)} Mo au plus) : découpe-le.")
+    reader = _pdf_reader(raw)
+    total = len(reader.pages) if reader else None
+    if total and total > PDF_MAX_PAGES:
+        raise ValueError(f"PDF de {total} pages : découpe-le en morceaux de {PDF_MAX_PAGES} pages au plus.")
+    job = uuid.uuid4().hex[:12]
+    _PDF_JOBS[job] = {"pages": total, "pages_read": 0, "files": 0, "filled": 0, "ids": [],
+                      "errors": [], "done": False, "error": None, "started": time.time()}
+    threading.Thread(target=_run_pdf, args=(job, raw, reader, kind), daemon=True).start()
+    return job
+
+
+def pdf_job(job):
+    """Where the reading of a PDF stands, or None (unknown id, or the server restarted since)."""
+    state = _PDF_JOBS.get(job)
+    return {k: v for k, v in state.items() if k != "started"} if state else None
+
+
+def _pdf_parts(raw, reader):
+    """The PDF cut into parts of a few pages: [(0-based page indexes, bytes, reader)], or [(None, raw, None)] whole."""
+    if not reader:
+        return [(None, raw, None)]
+    total = len(reader.pages)
+    per_page = len(raw) / total
+    size = max(1, min(PDF_PART_PAGES, int(PDF_PART_BYTES // max(per_page, 1))))
+    # An even size keeps two-sided slips (pages 1-2, 3-4...) inside one part.
+    if size > 1 and size % 2:
+        size -= 1
+    parts = []
+    for start in range(0, total, size):
+        indexes = list(range(start, min(start + size, total)))
+        try:
+            parts.append((indexes, _pdf_part(reader, indexes) if len(indexes) < total else raw, reader))
+        except Exception:
+            return [(None, raw, None)]
+    return parts
+
+
+def _read_part(part, kind):
+    """The slips of one part, their pages renumbered as in the whole PDF. A part Claude
+    cannot read gives one exception carrying its pages, so those pages still get a file."""
+    indexes, pdf = part[:2]
     try:
-        docs = read_pdf(raw, kind)
+        docs = read_pdf(pdf, kind)
     except Exception as e:
-        docs = [e]
-    jobs = []
-    for read in docs:
-        case_id = database.save_client_return(status="to_check", data={"kind": kind})
-        name = save_pdf(case_id, raw)
-        pages = [] if isinstance(read, Exception) else read.get("pages") or []
-        what = ("PDF reçu" if isinstance(read, Exception)
-                else ("étiquette lue" if kind == UNCLAIMED else "bon lu") + " dans un PDF") + (
-            f" (page{'s' if len(pages) > 1 else ''} {', '.join(map(str, pages))})" if pages else "")
-        jobs.append((case_id, [name], read, what, {"pdf_pages": pages}))
-    # Each file looks up its order and drafts its mail: side by side, so a PDF of
-    # ten slips takes about the time of three, well inside the server's 5 minutes.
-    with ThreadPoolExecutor(max_workers=4) as pool:
-        return list(pool.map(lambda job: _fill_case(*job), jobs))
+        if indexes is None:
+            return [e]
+        err = RuntimeError(f"pages {indexes[0] + 1} à {indexes[-1] + 1} non lues : {e}"
+                           if len(indexes) > 1 else f"page {indexes[0] + 1} non lue : {e}")
+        err.pages = [i + 1 for i in indexes]
+        return [err]
+    if indexes is not None and len(indexes) > 1 and any(_grouped_badly(d["pages"]) for d in docs):
+        # Pages far apart, or more than two, taken as one slip: each page is read alone.
+        return [d for i in indexes for d in _read_part(([i], _pdf_part(part[2], [i])) + part[2:], kind)]
+    for d in docs:
+        if indexes is not None:
+            d["pages"] = [indexes[p - 1] + 1 for p in d["pages"] if 1 <= p <= len(indexes)]
+            d["_part"] = indexes
+    return docs
 
 
-def create_from_file(raw, kind=None):
-    """A photo gives one file, a PDF one per slip it holds: the list of new files."""
-    return create_from_pdf(raw, kind) if is_pdf(raw) else [create_from_photo(raw, kind)]
+def _grouped_badly(pages):
+    """A slip holds one page, or two that follow each other (front and back)."""
+    pages = sorted(set(pages))
+    return len(pages) > 2 or (len(pages) == 2 and pages[1] - pages[0] != 1)
+
+
+def _run_pdf(job, raw, reader, kind):
+    """Read every part, open one file per slip (holding only its pages), then match and draft them."""
+    state = _PDF_JOBS[job]
+    try:
+        def read(part):
+            docs = _read_part(part, kind)
+            with _PDF_LOCK:
+                state["pages_read"] += len(part[0]) if part[0] is not None else (state["pages"] or 0)
+            return docs
+
+        with ThreadPoolExecutor(max_workers=4) as pool:
+            docs = [d for found in pool.map(read, _pdf_parts(raw, reader)) for d in found]
+        if not docs:
+            raise RuntimeError("aucun bon ni étiquette trouvé dans le PDF.")
+        # Files in the order of the PDF.
+        docs.sort(key=lambda d: min(getattr(d, "pages", None) or (d.get("pages") if isinstance(d, dict) else None) or [0]))
+        todo = []
+        for doc in docs:
+            failed = isinstance(doc, Exception)
+            pages = getattr(doc, "pages", []) if failed else doc.get("pages") or []
+            keep = [p - 1 for p in pages] or (None if failed else doc.get("_part"))
+            case_id = database.save_client_return(status="to_check", data={"kind": kind})
+            try:
+                excerpt = _pdf_part(reader, keep) if reader and keep else raw
+            except Exception:
+                excerpt = raw
+            name = save_pdf(case_id, excerpt)
+            if not failed:
+                doc.pop("_part", None)
+            what = ("PDF reçu" if failed else ("étiquette lue" if kind == UNCLAIMED else "bon lu") + " dans un PDF") + (
+                f" (page{'s' if len(pages) > 1 else ''} {', '.join(map(str, pages))})" if pages else "")
+            todo.append((case_id, [name], doc, what, {"pdf_pages": pages, "pdf_whole": excerpt is raw}))
+            state["ids"].append(case_id)
+        state["files"] = len(todo)
+
+        def fill(args):
+            case = _fill_case(*args)
+            with _PDF_LOCK:
+                state["filled"] += 1
+                if case["data"].get("error"):
+                    state["errors"].append(case["data"]["error"])
+            return case
+
+        with ThreadPoolExecutor(max_workers=4) as pool:
+            list(pool.map(fill, todo))
+        print(f"[Retours] PDF {job}: {state['pages']} pages, {state['files']} files in {time.time() - state['started']:.0f} s")
+    except Exception as e:
+        print(f"[Retours] PDF {job} failed: {e}")
+        state["error"] = f"PDF non lu : {e}"
+    state["done"] = True
+    # Forget jobs older than a day.
+    for old in [k for k, v in list(_PDF_JOBS.items()) if v["done"] and time.time() - v["started"] > 86400]:
+        _PDF_JOBS.pop(old, None)
 
 
 def update(case_id, fields):

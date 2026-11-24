@@ -77,13 +77,27 @@ def new_return():
         return _fail("Aucune photo ni PDF reçu")
     kind = request.form.get('kind') if request.form.get('kind') == retours.UNCLAIMED else None
     raw = f.read()
+    if retours.is_pdf(raw):
+        # Read in the background: the page follows /retours/pdf/<job> (a scan of 34 slips takes a minute or two).
+        try:
+            return jsonify({'success': True, 'job': retours.start_pdf(raw, kind)})
+        except Exception as e:
+            return _fail(f"PDF refusé : {e}")
     try:
-        cases = retours.create_from_file(raw, kind)
+        case = retours.create_from_photo(raw, kind)
     except Exception as e:
         print(f"[Retours] New file failed: {e}")
-        return _fail(f"{'PDF' if retours.is_pdf(raw) else 'Photo'} illisible : {e}")
-    errors = [c['data'].get('error') for c in cases if c['data'].get('error')]
-    return _ok(cases[0], error=errors[0] if errors else None, count=len(cases))
+        return _fail(f"Photo illisible : {e}")
+    return _ok(case, error=case['data'].get('error'))
+
+
+@retours_bp.route('/retours/pdf/<job>')
+def pdf_job(job):
+    state = retours.pdf_job(job)
+    if not state:
+        return _fail("Lecture du PDF introuvable : le serveur a sans doute redémarré. Regarde l'onglet "
+                     "« À traiter » avant de renvoyer le PDF, des fiches ont pu être ouvertes.", 404)
+    return jsonify({'success': True, **state})
 
 
 @retours_bp.route('/retours/<int:case_id>/photo/<name>')

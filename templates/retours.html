@@ -112,7 +112,7 @@
             </label>
             <button class="btn btn-gray" onclick="checkNow(this)">🔄 Vérifier les réponses</button>
         </div>
-        <div class="meta" style="margin-top:8px;">Un bon ou une étiquette par photo, avec la date d'arrivée chez SSL écrite au stylo. Un PDF peut en contenir plusieurs (un par page) : chaque bon devient une fiche. Comptez une vingtaine de secondes de lecture par photo, un peu plus par PDF.</div>
+        <div class="meta" style="margin-top:8px;">Un bon ou une étiquette par photo, avec la date d'arrivée chez SSL écrite au stylo. Un PDF peut en contenir plusieurs (un par page, 120 pages au plus) : chaque bon devient une fiche. Comptez une vingtaine de secondes par photo, une à deux minutes pour un PDF de 30 bons.</div>
         <div class="progress" id="upload-progress" style="display:none;">
             <img id="upload-preview" alt="">
             <div style="flex:1; min-width:0;">
@@ -168,7 +168,7 @@
         {% if d.error %}<div class="card error" style="margin:12px 0 0;"><div class="meta">⚠️ {{ d.error }}</div></div>{% endif %}
 
         <div class="section" style="display:flex; gap:14px; flex-wrap:wrap;">
-            <div class="thumbs">{% for p in d.photos or [] %}{% if p.endswith('.pdf') %}{% set pages = d.pdf_pages or [] %}<a class="pdf-link" href="/retours/{{ c.id }}/photo/{{ p }}{% if pages %}#page={{ pages[0] }}{% endif %}" target="_blank">📄 PDF{% if pages %}<br><span>page{{ 's' if pages|length > 1 }} {{ pages|join(', ') }}</span>{% endif %}</a>{% else %}<a href="/retours/{{ c.id }}/photo/{{ p }}" target="_blank"><img src="/retours/{{ c.id }}/photo/{{ p }}" alt="photo du dossier"></a>{% endif %}{% endfor %}</div>
+            <div class="thumbs">{% for p in d.photos or [] %}{% if p.endswith('.pdf') %}{% set pages = d.pdf_pages or [] %}<a class="pdf-link" href="/retours/{{ c.id }}/photo/{{ p }}{% if pages and d.pdf_whole != false %}#page={{ pages[0] }}{% endif %}" target="_blank">📄 PDF{% if pages %}<br><span>page{{ 's' if pages|length > 1 }} {{ pages|join(', ') }}</span>{% endif %}</a>{% else %}<a href="/retours/{{ c.id }}/photo/{{ p }}" target="_blank"><img src="/retours/{{ c.id }}/photo/{{ p }}" alt="photo du dossier"></a>{% endif %}{% endfor %}</div>
             {% set slip = d.slip or {} %}
             <div class="meta" style="flex:1; min-width:200px;">
                 <strong>Lu sur {{ "l'étiquette" if unclaimed else 'le bon' }} :</strong><br>
@@ -493,6 +493,38 @@ function isPdf(file) {
     return file.type === 'application/pdf' || /\.pdf$/i.test(file.name || '');
 }
 
+// A PDF is read on the server in the background: follow it until every file is ready.
+async function followPdf(job, n, step, bar, detail) {
+    const started = Date.now();
+    let lost = 0;
+    while (true) {
+        await new Promise(res => setTimeout(res, 2000));
+        const sec = Math.round((Date.now() - started) / 1000);
+        let s;
+        try {
+            const res = await fetch('/retours/pdf/' + job);
+            s = await res.json();
+        } catch (e) {
+            // A restart or a weak connection: keep trying for two minutes.
+            if (++lost > 60) throw new Error('plus de nouvelles du serveur : regarde l\'onglet « À traiter » avant de renvoyer le PDF');
+            continue;
+        }
+        lost = 0;
+        if (!s.success) throw new Error(s.error || 'lecture interrompue');
+        if (s.done && s.error && !s.ids.length) throw new Error(s.error);
+        if (s.done) return s;
+        if (!s.files) {
+            step.textContent = `⏳ PDF${n} : lecture des bons…`;
+            detail.textContent = s.pages ? `${s.pages_read}/${s.pages} pages lues (${sec} s)` : `Claude lit chaque page (${sec} s)`;
+            bar.style.width = (s.pages ? 70 + Math.round(15 * s.pages_read / s.pages) : Math.min(85, 70 + Math.round(sec / 4))) + '%';
+        } else {
+            step.textContent = `⏳ PDF${n} : ${s.files} fiche${s.files > 1 ? 's' : ''}, recherche des commandes…`;
+            detail.textContent = `${s.filled}/${s.files} prêtes (${sec} s)`;
+            bar.style.width = (85 + Math.round(14 * s.filled / s.files)) + '%';
+        }
+    }
+}
+
 async function uploadPhotos(input, kind) {
     const files = [...input.files];
     input.value = '';
@@ -507,7 +539,7 @@ async function uploadPhotos(input, kind) {
     card.classList.add('busy');
     box.style.display = 'flex';
     msg.textContent = '';
-    let first = null, failed = 0, opened = 0;
+    let first = null, failed = 0, opened = 0, unread = 0;
     for (let i = 0; i < files.length; i++) {
         const n = files.length > 1 ? ` ${i + 1}/${files.length}` : '';
         const pdf = isPdf(files[i]);
@@ -539,8 +571,19 @@ async function uploadPhotos(input, kind) {
                     reading = setInterval(tickReading, 1000);
                 }
             }, kind);
-            first = first || j.id;
-            opened += j.count || 1;
+            if (reading) { clearInterval(reading); reading = null; }
+            if (j.job) {
+                const r = await followPdf(j.job, n, step, bar, detail);
+                first = first || r.ids[0];
+                opened += r.ids.length;
+                if (r.errors.length) {
+                    unread += r.errors.length;
+                    msg.textContent = `⚠️ ${Noun}${n} : ${r.errors.length} fiche${r.errors.length > 1 ? 's' : ''} à vérifier à la main (lecture impossible, voir la fiche).`;
+                }
+            } else {
+                first = first || j.id;
+                opened += 1;
+            }
         } catch (e) {
             failed++;
             msg.textContent = '⚠️ ' + Noun + n + ' : ' + e.message;
@@ -552,7 +595,7 @@ async function uploadPhotos(input, kind) {
         step.textContent = failed ? '⚠️ Un fichier n\'est pas passé (voir ci-dessous), ouverture des autres…'
             : (opened > 1 ? `✅ ${opened} fiches ouvertes, ouverture de la première…` : '✅ Lu, ouverture de la fiche…');
         detail.textContent = '';
-        if (failed || opened > 1) await new Promise(res => setTimeout(res, failed ? 4000 : 1500));
+        if (failed || unread || opened > 1) await new Promise(res => setTimeout(res, failed || unread ? 5000 : 1500));
         go(first, 'a-traiter');
     } else {
         box.style.display = 'none';
