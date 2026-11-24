@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_24_12_31_25",
+      "topic_label": "Form name Form submitted 2026-11-24 12:31:25",
+      "situation": "Form name Form submitted 2026-11-24 12:31:25",
+      "response_template": "Bonjour Florian,\n\nNotre suivi indique bien que le colis XR736126015TS a été livré à votre point relais. Voici le lien pour vérifier en détail : https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR736126015TS\n\nDans ce type de situation, Chronopost demande que la réclamation soit ouverte des deux côtés. Nous allons ouvrir une enquête de notre côté auprès de Chronopost, et nous vous invitons à faire de même en les contactant directement au 09 69 391 391 (service gratuit, du lundi au samedi de 8h à 20h), en vous munissant de votre numéro de suivi.\n\nNous revenons vers vous dès que nous avons des éléments.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "size___powell_boots",
       "topic_label": "Size - Powell Boots",
       "situation": "Size - Powell Boots",
