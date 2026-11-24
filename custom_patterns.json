@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__form_name_form_submitted_2026_11_20_07_51_29",
+      "topic_label": "Re: Form name Form submitted 2026-11-20 07:51:29",
+      "situation": "Re: Form name Form submitted 2026-11-20 07:51:29",
+      "response_template": "Bonjour M. Carceles,\n\nAvec 25,4 cm, en ajoutant les 0,2 cm vous êtes à 25,6 cm, ce qui vous place en 40 sur notre guide. Le Wayne chaussant légèrement grand, le 40 est bien la bonne pointure pour vous.\n\nLe Wayne bordeaux est disponible en 40 (2 paires en stock), vous pouvez commander directement sur le site.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__votre_retour_pour_la_commande__13410",
       "topic_label": "Re: Re: Re: Votre retour pour la commande #13410",
       "situation": "Re: Re: Re: Votre retour pour la commande #13410",
