@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__paire_de_dakota_mad_max",
+      "topic_label": "Re: Paire de Dakota Mad Max",
+      "situation": "Re: Paire de Dakota Mad Max",
+      "response_template": "Bonjour Thomas,\n\nMerci pour ce retour.\n\nPour les 15 € de cordonnier, voici un avoir de 30 € pour vous dédommager :\n\nCode : EQCPH8BS28ZD\nValable jusqu'au 24 mai 2027, sur nos chaussures et ceintures homme, en une seule commande, à utiliser avec l'adresse t.gutperle3@gmail.com. Non cumulable avec d'autres codes ou promotions.\n\nPour la pointure, je pense que c'est la bonne selon votre ressenti.\n\nCordialement,\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_23_15_32_39",
       "topic_label": "Form name Form submitted 2026-11-23 15:32:39",
       "situation": "Form name Form submitted 2026-11-23 15:32:39",
