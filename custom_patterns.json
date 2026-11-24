@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "commande_13596",
+      "topic_label": "Commande 13596",
+      "situation": "Commande 13596",
+      "response_template": "Bonjour Alexandre,\n\nVos Wico sont bien arrivées ce matin en entrepôt. Nous sommes en train de vérifier l'ensemble des commandes avant expédition, ce qui prend un peu plus de temps que prévu. Votre paire partira au plus vite et vous recevrez automatiquement un email avec votre lien de suivi dès la prise en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "re__form_name_form_submitted_2026_11_20_17_06_35",
       "topic_label": "Re: Form name Form submitted 2026-11-20 17:06:35",
       "situation": "Re: Form name Form submitted 2026-11-20 17:06:35",
@@ -566,14 +574,6 @@
       "topic_label": "Re: Une commande #13972 est en transit",
       "situation": "Re: Une commande #13972 est en transit",
       "response_template": "Bonjour Loïs,\n\nNoté pour le renvoi du porte carte, merci de nous en avoir informés.\n\nJuste par curiosité, qu'est-ce qui ne vous a pas convenu ? Un souci de taille, de matière, de format ?\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "commande_13596",
-      "topic_label": "Commande 13596",
-      "situation": "Commande 13596",
-      "response_template": "Bonjour Alexandre,\n\nVotre commande #13596 (Wico Cuir Grainé Noir, 43) est bien enregistrée et le paiement est confirmé.\n\nNous avons pris un peu de retard sur la réception de cette paire, que nous attendons cette semaine. Une fois reçue, nous procédons à un contrôle avant expédition, et votre commande devrait partir la semaine prochaine. Vous recevrez automatiquement un email avec votre lien de suivi dès la prise en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
