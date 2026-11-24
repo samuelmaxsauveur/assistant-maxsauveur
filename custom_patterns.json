@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__form_name_form_submitted_2026_11_20_17_06_35",
+      "topic_label": "Re: Form name Form submitted 2026-11-20 17:06:35",
+      "situation": "Re: Form name Form submitted 2026-11-20 17:06:35",
+      "response_template": "Bonjour Théo,\n\nLe guide est bien adapté au Cody, mais c'est précisément le fait que ce modèle chausse grand qui explique la différence. Votre mesure de 26,7 cm place sur un 42 en taille standard, mais comme le Cody taille plus grand, le 40 est la bonne pointure pour vous.\n\nLe seul exemplaire disponible est en 40, le reste étant épuisé. Si vous souhaitez passer commande, c'est maintenant.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "fwd__demande_d_information_pointure",
       "topic_label": "Fwd: Demande d'information pointure",
       "situation": "Fwd: Demande d'information pointure",
