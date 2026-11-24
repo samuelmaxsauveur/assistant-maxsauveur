@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_23_15_32_39",
+      "topic_label": "Form name Form submitted 2026-11-23 15:32:39",
+      "situation": "Form name Form submitted 2026-11-23 15:32:39",
+      "response_template": "Bonjour Julien,\n\nLes embauchoirs sont bien disponibles sur notre site ! Vous pouvez les commander directement.\n\nN'hésitez pas si vous avez d'autres questions.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__form_name_form_submitted_2026_11_20_16_54_48",
       "topic_label": "Re: Form name Form submitted 2026-11-20 16:54:48",
       "situation": "Re: Form name Form submitted 2026-11-20 16:54:48",
