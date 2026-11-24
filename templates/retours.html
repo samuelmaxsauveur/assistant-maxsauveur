@@ -68,6 +68,8 @@
         .btn:disabled { opacity: 0.5; cursor: not-allowed; }
         .msg { font-size: 13px; }
         .thumbs img { width: 120px; max-height: 160px; object-fit: cover; border-radius: 8px; border: 1px solid #eee; }
+        .thumbs .pdf-link { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 120px; height: 120px; border-radius: 8px; border: 1px solid #eee; background: #f8fafc; font-size: 22px; text-decoration: none; color: #333; text-align: center; }
+        .thumbs .pdf-link span { font-size: 12px; color: #666; }
         .reply { background: #eff6ff; border-radius: 8px; padding: 10px 12px; font-size: 14px; white-space: pre-wrap; }
         .codes { font-family: ui-monospace, Menlo, monospace; font-size: 16px; font-weight: 600; }
         .log { font-size: 12px; color: #888; line-height: 1.7; }
@@ -102,15 +104,15 @@
             <label class="btn btn-teal btn-big">📷 Photographier un bon de retour
                 <input type="file" accept="image/*" capture="environment" onchange="uploadPhotos(this)">
             </label>
-            <label class="btn btn-gray">🖼 Choisir des photos
-                <input type="file" accept="image/*" multiple onchange="uploadPhotos(this)">
+            <label class="btn btn-gray">🖼 Choisir des photos ou des PDF
+                <input type="file" accept="image/*,application/pdf,.pdf" multiple onchange="uploadPhotos(this)">
             </label>
-            <label class="btn btn-purple">📦 Colis non récupéré : photo de l'étiquette
-                <input type="file" accept="image/*" onchange="uploadPhotos(this, 'unclaimed')">
+            <label class="btn btn-purple">📦 Colis non récupéré : photo ou PDF de l'étiquette
+                <input type="file" accept="image/*,application/pdf,.pdf" multiple onchange="uploadPhotos(this, 'unclaimed')">
             </label>
             <button class="btn btn-gray" onclick="checkNow(this)">🔄 Vérifier les réponses</button>
         </div>
-        <div class="meta" style="margin-top:8px;">Un bon ou une étiquette par photo, avec la date d'arrivée chez SSL écrite au stylo. Comptez une vingtaine de secondes de lecture par photo.</div>
+        <div class="meta" style="margin-top:8px;">Un bon ou une étiquette par photo, avec la date d'arrivée chez SSL écrite au stylo. Un PDF peut en contenir plusieurs (un par page) : chaque bon devient une fiche. Comptez une vingtaine de secondes de lecture par photo, un peu plus par PDF.</div>
         <div class="progress" id="upload-progress" style="display:none;">
             <img id="upload-preview" alt="">
             <div style="flex:1; min-width:0;">
@@ -166,7 +168,7 @@
         {% if d.error %}<div class="card error" style="margin:12px 0 0;"><div class="meta">⚠️ {{ d.error }}</div></div>{% endif %}
 
         <div class="section" style="display:flex; gap:14px; flex-wrap:wrap;">
-            <div class="thumbs">{% for p in d.photos or [] %}<a href="/retours/{{ c.id }}/photo/{{ p }}" target="_blank"><img src="/retours/{{ c.id }}/photo/{{ p }}" alt="photo du dossier"></a>{% endfor %}</div>
+            <div class="thumbs">{% for p in d.photos or [] %}{% if p.endswith('.pdf') %}{% set pages = d.pdf_pages or [] %}<a class="pdf-link" href="/retours/{{ c.id }}/photo/{{ p }}{% if pages %}#page={{ pages[0] }}{% endif %}" target="_blank">📄 PDF{% if pages %}<br><span>page{{ 's' if pages|length > 1 }} {{ pages|join(', ') }}</span>{% endif %}</a>{% else %}<a href="/retours/{{ c.id }}/photo/{{ p }}" target="_blank"><img src="/retours/{{ c.id }}/photo/{{ p }}" alt="photo du dossier"></a>{% endif %}{% endfor %}</div>
             {% set slip = d.slip or {} %}
             <div class="meta" style="flex:1; min-width:200px;">
                 <strong>Lu sur {{ "l'étiquette" if unclaimed else 'le bon' }} :</strong><br>
@@ -468,7 +470,7 @@ function sendPhoto(blob, onProgress, kind) {
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
         xhr.open('POST', '/retours/nouveau');
-        xhr.timeout = 180000;
+        xhr.timeout = 290000;
         xhr.upload.onprogress = e => { if (e.lengthComputable) onProgress(e.loaded / e.total); };
         xhr.upload.onload = () => onProgress(1);
         xhr.onload = () => {
@@ -479,12 +481,16 @@ function sendPhoto(blob, onProgress, kind) {
             else reject(new Error((j && j.error) || 'erreur du serveur (' + xhr.status + ')'));
         };
         xhr.onerror = () => reject(new Error('connexion perdue pendant l\'envoi, réessaie'));
-        xhr.ontimeout = () => reject(new Error('pas de réponse après 3 minutes, réessaie'));
+        xhr.ontimeout = () => reject(new Error('pas de réponse après 5 minutes : regarde l\'onglet « À traiter » avant de réessayer'));
         const fd = new FormData();
-        fd.append('photo', blob, 'bon.jpg');
+        fd.append('photo', blob, isPdf(blob) ? 'bon.pdf' : 'bon.jpg');
         if (kind) fd.append('kind', kind);
         xhr.send(fd);
     });
+}
+
+function isPdf(file) {
+    return file.type === 'application/pdf' || /\.pdf$/i.test(file.name || '');
 }
 
 async function uploadPhotos(input, kind) {
@@ -501,27 +507,32 @@ async function uploadPhotos(input, kind) {
     card.classList.add('busy');
     box.style.display = 'flex';
     msg.textContent = '';
-    let first = null, failed = 0;
+    let first = null, failed = 0, opened = 0;
     for (let i = 0; i < files.length; i++) {
         const n = files.length > 1 ? ` ${i + 1}/${files.length}` : '';
-        document.getElementById('upload-preview').src = URL.createObjectURL(files[i]);
-        step.textContent = `⏳ Photo${n} prise en compte, préparation…`;
+        const pdf = isPdf(files[i]);
+        const noun = pdf ? 'le PDF' : 'la photo', Noun = pdf ? 'PDF' : 'Photo';
+        const preview = document.getElementById('upload-preview');
+        preview.style.display = pdf ? 'none' : '';
+        if (!pdf) preview.src = URL.createObjectURL(files[i]);
+        step.textContent = `⏳ ${Noun}${n} pris${pdf ? '' : 'e'} en compte, préparation…`;
         bar.style.width = '5%';
         detail.textContent = '';
-        const blob = await shrink(files[i]);
+        // A PDF goes as it is: Claude reads it page by page.
+        const blob = pdf ? files[i] : await shrink(files[i]);
         const started = Date.now();
         let reading = null;
         try {
             const j = await sendPhoto(blob, p => {
                 bar.style.width = Math.max(5, Math.round(p * 70)) + '%';
                 if (p < 1) {
-                    step.textContent = `⏳ Envoi de la photo${n}… ${Math.round(p * 100)} %`;
+                    step.textContent = `⏳ Envoi de ${noun}${n}… ${Math.round(p * 100)} %`;
                     detail.textContent = `${Math.round(blob.size / 1024)} Ko`;
                 } else if (!reading) {
-                    step.textContent = `⏳ Photo${n} bien reçue : lecture de ${what}…`;
+                    step.textContent = `⏳ ${Noun}${n} bien reçu${pdf ? '' : 'e'} : lecture de ${pdf ? (kind ? 'ses étiquettes' : 'ses bons') : what}…`;
                     const tickReading = () => {
                         const s = Math.round((Date.now() - started) / 1000);
-                        detail.textContent = `Claude lit ${what} et cherche la commande dans Shopify (${s} s)`;
+                        detail.textContent = `Claude lit ${pdf ? 'chaque page' : what} et cherche la commande dans Shopify (${s} s)`;
                         bar.style.width = Math.min(95, 70 + s) + '%';
                     };
                     tickReading();
@@ -529,17 +540,19 @@ async function uploadPhotos(input, kind) {
                 }
             }, kind);
             first = first || j.id;
+            opened += j.count || 1;
         } catch (e) {
             failed++;
-            msg.textContent = '⚠️ Photo' + n + ' : ' + e.message;
+            msg.textContent = '⚠️ ' + Noun + n + ' : ' + e.message;
         }
         if (reading) clearInterval(reading);
     }
     if (first) {
         bar.style.width = '100%';
-        step.textContent = failed ? '⚠️ Une photo n\'est pas passée (voir ci-dessous), ouverture des autres…' : '✅ Photo lue, ouverture de la fiche…';
+        step.textContent = failed ? '⚠️ Un fichier n\'est pas passé (voir ci-dessous), ouverture des autres…'
+            : (opened > 1 ? `✅ ${opened} fiches ouvertes, ouverture de la première…` : '✅ Lu, ouverture de la fiche…');
         detail.textContent = '';
-        if (failed) await new Promise(res => setTimeout(res, 4000));
+        if (failed || opened > 1) await new Promise(res => setTimeout(res, failed ? 4000 : 1500));
         go(first, 'a-traiter');
     } else {
         box.style.display = 'none';

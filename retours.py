@@ -15,10 +15,12 @@ Wing with one click, or refunded by hand in Shopify.
 """
 import base64
 import difflib
+import io
 import json
 import os
 import re
 import time
+from concurrent.futures import ThreadPoolExecutor
 from datetime import date, datetime, timedelta, timezone
 
 import anthropic
@@ -285,9 +287,21 @@ def save_photo(case_id, raw):
     return name, data
 
 
+def save_pdf(case_id, raw):
+    """The PDF as received: Claude reads it whole, the card links to it."""
+    name = f"doc_{int(time.time() * 1000)}.pdf"
+    with open(os.path.join(_dir(case_id), name), "wb") as f:
+        f.write(raw)
+    return name
+
+
+def is_pdf(raw):
+    return raw[:1024].lstrip().startswith(b"%PDF")
+
+
 def photo_path(case_id, name):
-    """Absolute path of one photo of the file, or None (names are checked, never trusted)."""
-    if not re.fullmatch(r"bon_\d+\.jpg", name or ""):
+    """Absolute path of one photo or PDF of the file, or None (names are checked, never trusted)."""
+    if not re.fullmatch(r"bon_\d+\.jpg|doc_\d+\.pdf", name or ""):
         return None
     p = os.path.join(_dir(case_id), name)
     return p if os.path.exists(p) else None
@@ -302,22 +316,13 @@ def delete_photos(case_id):
 
 # ---------------------------------------------------------------- reading the slip
 
-def _read_photo(jpeg, prompt):
-    """The JSON Claude reads on a photo, with its order number and dates cleaned up."""
+def _fill(prompt):
     year = today().year
-    client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
-    msg = client.messages.create(
-        model="claude-sonnet-4-6", max_tokens=1024,
-        messages=[{"role": "user", "content": [
-            {"type": "image", "source": {"type": "base64", "media_type": "image/jpeg",
-                                         "data": base64.b64encode(jpeg).decode()}},
-            {"type": "text", "text": prompt.replace("{year}", str(year)).replace("{last_year}", str(year - 1))},
-        ]}])
-    text = next(b.text for b in msg.content if b.type == "text")
-    start = text.find("{")
-    if start < 0:
-        raise RuntimeError("Claude n'a pas su lire la photo.")
-    slip, _ = json.JSONDecoder().raw_decode(text[start:])
+    return prompt.replace("{year}", str(year)).replace("{last_year}", str(year - 1))
+
+
+def _clean(slip):
+    """Order number in digits, dates in full and recent."""
     slip["order_number"] = re.sub(r"\D", "", str(slip.get("order_number") or "")) or None
     for key in ("arrival_date", "client_shipping_date"):
         d = _recent(_parse_date(slip.get(key)))
@@ -325,9 +330,71 @@ def _read_photo(jpeg, prompt):
     return slip
 
 
-def read_slip(jpeg):
-    """What Claude reads on the photo of the slip."""
-    slip = _read_photo(jpeg, READ_PROMPT)
+def _ask(content, max_tokens=1024):
+    client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+    msg = client.messages.create(model="claude-sonnet-4-6", max_tokens=max_tokens,
+                                 messages=[{"role": "user", "content": content}])
+    text = next(b.text for b in msg.content if b.type == "text")
+    start = text.find("{")
+    if start < 0:
+        raise RuntimeError("Claude n'a pas su lire le document.")
+    found, _ = json.JSONDecoder().raw_decode(text[start:])
+    return found
+
+
+def _read_photo(jpeg, prompt):
+    """The JSON Claude reads on a photo, with its order number and dates cleaned up."""
+    return _clean(_ask([
+        {"type": "image", "source": {"type": "base64", "media_type": "image/jpeg",
+                                     "data": base64.b64encode(jpeg).decode()}},
+        {"type": "text", "text": _fill(prompt)},
+    ]))
+
+
+PDF_PROMPT = """Ce PDF contient un ou plusieurs {what}, scannés, photographiés ou remplis à l'ordinateur. Le plus souvent, il y en a un par page. Un même {one} peut aussi tenir sur deux pages (recto verso) : regroupe alors ces pages. Ignore les pages blanches et celles qui ne sont ni un bon ni une étiquette.
+Lis chaque {one} selon les consignes ci-dessous, qui décrivent le JSON d'un seul {one}, et ajoute-lui "pages": [numéros de ses pages, à partir de 1].
+Réponds UNIQUEMENT avec ce JSON : {{"documents": [un objet par {one}]}}
+
+Consignes pour chaque {one} :
+"""
+PDF_MAX_BYTES = 25 * 1024 * 1024
+PDF_MAX_PAGES = 30
+
+
+def pdf_pages(raw):
+    """Number of pages, or None when pypdf cannot tell (Claude still gets the PDF)."""
+    try:
+        from pypdf import PdfReader
+        return len(PdfReader(io.BytesIO(raw)).pages)
+    except Exception:
+        return None
+
+
+def _read_pdf(pdf, prompt, what, one):
+    """Every slip (or label) Claude finds in a PDF, each with its pages, cleaned up like a photo."""
+    if len(pdf) > PDF_MAX_BYTES:
+        raise RuntimeError(f"PDF trop lourd ({len(pdf) // (1024 * 1024)} Mo, 25 Mo au plus) : découpe-le.")
+    try:
+        found = _ask([
+            {"type": "document", "source": {"type": "base64", "media_type": "application/pdf",
+                                            "data": base64.b64encode(pdf).decode()}},
+            {"type": "text", "text": PDF_PROMPT.format(what=what, one=one) + _fill(prompt)},
+        ], max_tokens=8000)
+    except anthropic.BadRequestError as e:
+        if "pdf" in str(e).lower():
+            raise RuntimeError("le PDF est abîmé ou protégé. Réenregistre-le, ou photographie le bon.") from e
+        raise
+    docs = found.get("documents") if isinstance(found.get("documents"), list) else [found]
+    docs = [d for d in docs if isinstance(d, dict)]
+    if not docs:
+        raise RuntimeError("Aucun bon ni étiquette trouvé dans le PDF.")
+    for d in docs:
+        d["pages"] = [int(n) for n in d.get("pages") or [] if str(n).isdigit()]
+        _clean(d)
+    return docs
+
+
+def _slip_fields(slip):
     for item in slip.get("items") or []:
         code = re.sub(r"\D", "", str(item.get("reason_code") or ""))
         item["reason_code"] = code if code in REASONS else None
@@ -336,12 +403,27 @@ def read_slip(jpeg):
     return slip
 
 
-def read_label(jpeg):
-    """What Claude reads on the label of a parcel that came back."""
-    label = _read_photo(jpeg, LABEL_PROMPT)
+def _label_fields(label):
     label["tracking_numbers"] = [t for t in (re.sub(r"[^A-Za-z0-9]", "", str(n)).upper()
                                              for n in label.get("tracking_numbers") or []) if t]
     return label
+
+
+def read_slip(jpeg):
+    """What Claude reads on the photo of the slip."""
+    return _slip_fields(_read_photo(jpeg, READ_PROMPT))
+
+
+def read_label(jpeg):
+    """What Claude reads on the label of a parcel that came back."""
+    return _label_fields(_read_photo(jpeg, LABEL_PROMPT))
+
+
+def read_pdf(pdf, kind=None):
+    """Every slip, or every label of an unclaimed parcel, in a PDF."""
+    if kind == UNCLAIMED:
+        return [_label_fields(d) for d in _read_pdf(pdf, LABEL_PROMPT, "étiquettes de colis", "étiquette")]
+    return [_slip_fields(d) for d in _read_pdf(pdf, READ_PROMPT, "bons de retour", "bon")]
 
 
 # ---------------------------------------------------------------- the Shopify order
@@ -1323,29 +1405,67 @@ def prepare_mail(case_id, template, consignes, amount, scope=None):
                                                         "mail_edited": False})
 
 
-def create_from_photo(raw, kind=None):
-    """A new file from the photo of a slip or of a label: read, matched to its order, drafted."""
-    case_id = database.save_client_return(status="to_check", data={"kind": kind})
-    name, jpeg = save_photo(case_id, raw)
-    data = {"photos": [name], "log": _log({}, "étiquette photographiée" if kind == UNCLAIMED else "bon photographié")}
-    try:
-        slip = read_label(jpeg) if kind == UNCLAIMED else read_slip(jpeg)
-        data["slip"] = slip
-        data["choice"] = _slip_choice(slip)
-        arrival = _parse_date(slip.get("arrival_date"))
+def _fill_case(case_id, files, read, what, extra=None):
+    """A new file with what was read (or why it could not be), matched to its order and drafted."""
+    data = {"photos": files, "log": _log({}, what), **(extra or {})}
+    if isinstance(read, Exception):
+        data["error"] = f"Lecture impossible : {read}"
+        data["arrival_date"] = today().isoformat()
+    else:
+        data["slip"] = read
+        data["choice"] = _slip_choice(read)
+        arrival = _parse_date(read.get("arrival_date"))
         data["arrival_from_slip"] = bool(arrival)
         data["arrival_date"] = (arrival or today()).isoformat()
-    except Exception as e:
-        data["error"] = f"Lecture de la photo impossible : {e}"
-        data["arrival_date"] = today().isoformat()
-    database.update_client_return(case_id, data=data,
-                                  order_number=(data.get("slip") or {}).get("order_number"),
-                                  customer_name=(data.get("slip") or {}).get("name"))
+    slip = data.get("slip") or {}
+    database.update_client_return(case_id, data=data, order_number=slip.get("order_number"),
+                                  customer_name=slip.get("name"))
     try:
         return refresh(case_id)
     except Exception as e:
         print(f"[Retours] Analysis failed for file {case_id}: {e}")
         return database.update_client_return(case_id, data={"error": f"Analyse impossible : {e}"})
+
+
+def create_from_photo(raw, kind=None):
+    """A new file from the photo of a slip or of a label: read, matched to its order, drafted."""
+    case_id = database.save_client_return(status="to_check", data={"kind": kind})
+    name, jpeg = save_photo(case_id, raw)
+    try:
+        read = read_label(jpeg) if kind == UNCLAIMED else read_slip(jpeg)
+    except Exception as e:
+        read = e
+    return _fill_case(case_id, [name], read, "étiquette photographiée" if kind == UNCLAIMED else "bon photographié")
+
+
+def create_from_pdf(raw, kind=None):
+    """One file per slip (or label) found in a PDF, each keeping the PDF and its page numbers.
+    Read once, before any file exists: a PDF Claude cannot read gives a single file with the error."""
+    pages = pdf_pages(raw)
+    if pages and pages > PDF_MAX_PAGES:
+        raise ValueError(f"PDF de {pages} pages : découpe-le en morceaux de {PDF_MAX_PAGES} pages au plus.")
+    try:
+        docs = read_pdf(raw, kind)
+    except Exception as e:
+        docs = [e]
+    jobs = []
+    for read in docs:
+        case_id = database.save_client_return(status="to_check", data={"kind": kind})
+        name = save_pdf(case_id, raw)
+        pages = [] if isinstance(read, Exception) else read.get("pages") or []
+        what = ("PDF reçu" if isinstance(read, Exception)
+                else ("étiquette lue" if kind == UNCLAIMED else "bon lu") + " dans un PDF") + (
+            f" (page{'s' if len(pages) > 1 else ''} {', '.join(map(str, pages))})" if pages else "")
+        jobs.append((case_id, [name], read, what, {"pdf_pages": pages}))
+    # Each file looks up its order and drafts its mail: side by side, so a PDF of
+    # ten slips takes about the time of three, well inside the server's 5 minutes.
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        return list(pool.map(lambda job: _fill_case(*job), jobs))
+
+
+def create_from_file(raw, kind=None):
+    """A photo gives one file, a PDF one per slip it holds: the list of new files."""
+    return create_from_pdf(raw, kind) if is_pdf(raw) else [create_from_photo(raw, kind)]
 
 
 def update(case_id, fields):

@@ -74,14 +74,16 @@ def _fail(e, code=400):
 def new_return():
     f = request.files.get('photo')
     if not f:
-        return _fail("Aucune photo reçue")
+        return _fail("Aucune photo ni PDF reçu")
     kind = request.form.get('kind') if request.form.get('kind') == retours.UNCLAIMED else None
+    raw = f.read()
     try:
-        case = retours.create_from_photo(f.read(), kind)
+        cases = retours.create_from_file(raw, kind)
     except Exception as e:
         print(f"[Retours] New file failed: {e}")
-        return _fail(f"Photo illisible : {e}")
-    return _ok(case, error=case['data'].get('error'))
+        return _fail(f"{'PDF' if retours.is_pdf(raw) else 'Photo'} illisible : {e}")
+    errors = [c['data'].get('error') for c in cases if c['data'].get('error')]
+    return _ok(cases[0], error=errors[0] if errors else None, count=len(cases))
 
 
 @retours_bp.route('/retours/<int:case_id>/photo/<name>')
@@ -89,7 +91,7 @@ def photo(case_id, name):
     path = retours.photo_path(case_id, name)
     if not path:
         abort(404)
-    return send_file(path, mimetype='image/jpeg')
+    return send_file(path, mimetype='application/pdf' if name.endswith('.pdf') else 'image/jpeg')
 
 
 @retours_bp.route('/retours/<int:case_id>/recalculer', methods=['POST'])
