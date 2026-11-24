@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__bottines_wayne_bordeaux",
+      "topic_label": "Re: Bottines wayne bordeaux",
+      "situation": "Re: Bottines wayne bordeaux",
+      "response_template": "Bonjour Matthieu,\n\nAvec 27 cm, en ajoutant les 0,2 cm vous êtes à 27,2 cm, ce qui vous place en **42** sur notre guide.\n\nCordialement,\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "springsteen",
       "topic_label": "Springsteen",
       "situation": "Springsteen",
