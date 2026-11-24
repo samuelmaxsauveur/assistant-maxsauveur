@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__r_ception_chaussures",
+      "topic_label": "Re: Réception Chaussures",
+      "situation": "Re: Réception Chaussures",
+      "response_template": "Bonjour Marvin,\n\nNous avons bien réceptionné votre paire. Le dossier sera traité dans un délai de 10 jours ouvrés à compter de la réception.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_24_12_31_25",
       "topic_label": "Form name Form submitted 2026-11-24 12:31:25",
       "situation": "Form name Form submitted 2026-11-24 12:31:25",
@@ -550,14 +558,6 @@
       "topic_label": "Re: Une commande #13915 a été livrée",
       "situation": "Re: Une commande #13915 a été livrée",
       "response_template": "Bonjour Erwan,\n\nPas de problème pour organiser tout ça, mais il y a un point important à connaître avant.\n\nVotre commande #13915 a bénéficié d'une remise Mad Max de 30 % (sur un panier de 1 230 € avant remise). Si vous retournez les Wayne Bordeaux 43 et les Wayne Noir 42.5 et gardez uniquement le Wayne Bordeaux 42 (que vous échangez en 42.5) ainsi que les produits d'entretien, le montant des articles conservés avant remise sera de 452 € (410 € + 42 €). Ce palier correspond à la remise de -15 %, et non de -30 %.\n\nConcrètement :\n\n- Articles conservés avant remise : 452 €\n- Remise applicable : 15 % soit 67,80 €\n- Montant conservé après remise : 384,20 €\n- Montant payé pour ces articles avec la remise de 30 % : 300,90 €\n- Différence à déduire du remboursement : 83,30 €\n\nLe remboursement pour les deux paires retournées serait donc de :\n- Valeur payée des deux paires (2 × 287 €) = 574 € moins 83,30 € de recalcul de remise = 490,70 €\n\nPar ailleurs, votre carte cadeau Mad Max de 15 € (code MADMAX-M35GCF, valable jusqu'au 15 avril 2027) : avec un échange de pointure, elle reste bien valable.\n\nSi vous souhaitez procéder sur cette base, voici la marche à suivre :\n\n1. Téléchargez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour\n2. Indiquez le motif pour chaque paire (\"remboursement\" pour les deux à retourner, \"avoir\" pour le Bordeaux 43 à échanger en 42.5)\n3. Glissez le bon dans la boîte et expédiez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nLe Wayne Bordeaux 42.5 est disponible en stock. Dès réception et contrôle, nous traitons votre dossier.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__r_ception_chaussures",
-      "topic_label": "Re: Réception Chaussures",
-      "situation": "Re: Réception Chaussures",
-      "response_template": "Bonjour Marvin,\n\nPas du tout : l'avoir sera calculé au prix actuel de la paire, vous n'aurez aucune différence à régler.\n\nDeux options s'offrent à vous :\n\n1. **Avoir pour commander un autre modèle ou une autre pointure** : vous recevez un avoir du prix actuel de la paire, et les frais de réexpédition sont offerts de notre côté. Votre carte cadeau de 40 € (MADMAX-VK2RCW, valable jusqu'au 15 avril 2027) reste bien active.\n\n2. **Remboursement** : si vous préférez un remboursement, votre carte cadeau de 40 € sera perdue.\n\nDans les deux cas, voici la procédure de retour :\n1. Téléchargez le bon de retour : https://maxsauveur.com/pages/livraison-et-retour (motif : « avoir » ou « remboursement » selon votre choix)\n2. Glissez-le dans la boîte avec la paire\n3. Expédiez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDites-moi simplement quelle option vous convient.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
