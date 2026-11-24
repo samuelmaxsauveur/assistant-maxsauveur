@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__form_name_form_submitted_2026_11_20_16_54_48",
+      "topic_label": "Re: Re: Form name Form submitted 2026-11-20 16:54:48",
+      "situation": "Re: Re: Form name Form submitted 2026-11-20 16:54:48",
+      "response_template": "Bonjour Jonathan,\n\nMerci pour la confirmation de l'envoi.\n\nDès réception et contrôle de votre paire, nous vous enverrons l'avoir par email pour commander le Blucher Derby Cuir Noir en 43.\n\nConcernant la carte cadeau : je peux transmettre votre demande à notre équipe pour qu'elle vous renvoie le lien de tirage. Je reviens vers vous dès que c'est fait.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande_13596",
       "topic_label": "Commande 13596",
       "situation": "Commande 13596",
