@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__form_name_form_submitted_2026_11_20_16_54_48",
+      "topic_label": "Re: Form name Form submitted 2026-11-20 16:54:48",
+      "situation": "Re: Form name Form submitted 2026-11-20 16:54:48",
+      "response_template": "Bonjour Jonathan,\n\nPour l'avoir : dès réception et contrôle de votre paire, nous vous enverrons un code promo par email, valable 6 mois sur toute la collection.\n\nPour la carte cadeau : vous avez reçu le 6 novembre un email avec un lien personnel de tirage. Si vous ne le retrouvez pas, vérifiez vos spams. \n\nConcernant le modèle : le 42,5 n'est effectivement plus disponible sur les Brogues Derby Cuir Noir. En revanche, le Blucher Derby Cuir Noir est disponible en 42,5 (2 en stock). Ce modèle chausse légèrement petit, le 43 serait la bonne taille.\n\nPour lancer le retour :\n1. Téléchargez le bon de retour sur maxsauveur.com/pages/livraison-et-retour (motif : « avoir »)\n2. Glissez-le dans la boîte avec la paire\n3. Expédiez à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__une_commande__14051_est_en_transit",
       "topic_label": "Re: Une commande #14051 est en transit",
       "situation": "Re: Une commande #14051 est en transit",
