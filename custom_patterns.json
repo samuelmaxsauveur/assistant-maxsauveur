@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "demande_pointure",
+      "topic_label": "Demande pointure",
+      "situation": "Demande pointure",
+      "response_template": "Bonjour,\n\nAvec 29,5 cm, le Wayne vous correspond en **45**.\n\nMalheureusement, le 45 est actuellement épuisé. Je vous invite à activer l'alerte directement sur la fiche produit en cliquant sur la pointure barrée : vous serez prévenu en priorité dès qu'elle sera de nouveau disponible.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__re__commande__13863_confirm_e",
       "topic_label": "Re: Re: Re: Re: Commande #13863 confirmée",
       "situation": "Re: Re: Re: Re: Commande #13863 confirmée",
