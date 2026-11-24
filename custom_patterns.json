@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__re__commande__13863_confirm_e",
+      "topic_label": "Re: Re: Re: Re: Commande #13863 confirmée",
+      "situation": "Re: Re: Re: Re: Commande #13863 confirmée",
+      "response_template": "Bonjour Pierre,\n\nLe retour est bien arrivé chez nous le 18 novembre, nous le confirmons. Le dossier est en cours de traitement, vous aurez bientôt un retour.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__votre_retour_pour_la_commande__13410",
       "topic_label": "Re: Re: Votre retour pour la commande #13410",
       "situation": "Re: Re: Votre retour pour la commande #13410",
