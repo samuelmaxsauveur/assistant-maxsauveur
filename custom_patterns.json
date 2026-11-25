@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "max_sauveur___service_client",
+      "topic_label": "Max Sauveur — Service Client",
+      "situation": "Max Sauveur — Service Client",
+      "response_template": "Bonjour Dhoud,\n\nNous avons récemment reçu votre colis en retour expéditeur : il semble que les Embauchoirs bois de cèdre (41) n'aient pas pu être récupérés au point relais dans les délais impartis.\n\nPas de panique, ils sont bien chez nous et vous avez deux options :\n\n**1. Renvoyer la commande**\nIndiquez-moi un autre point relais Chrono2Shop et nous vous les renvoyons gratuitement. Vous pouvez en trouver un ici : https://www.chronopost.fr/expeditionAvanceeSec/ounoustrouver.html\n\n**2. Être remboursé**\nSi vous ne souhaitez plus votre commande, nous vous la remboursons, déduction faite de 9,50 € de frais de retour.\n\nDites-moi simplement quelle option vous convient et je m'en occupe dans la foulée.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 18
+    },
+    {
+      "topic": "votre_retour_pour_la_commande__13971",
+      "topic_label": "Votre retour pour la commande #13971",
+      "situation": "Votre retour pour la commande #13971",
+      "response_template": "Bonjour Jonathan,\n\nC'est noté pour votre échange : nous vous envoyons Blucher - Chaussures Derby Cuir Noir, pointure 43, sans frais d'expédition.\n\nLe colis sera livré au point relais Boulangerie. Il sera remis au transporteur le jeudi 26 novembre, puis comptez 3 à 5 jours ouvrés pour la livraison.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "fw__commande__14094_confirm_e",
       "topic_label": "Fw: Commande #14094 confirmée",
       "situation": "Fw: Commande #14094 confirmée",
@@ -382,14 +398,6 @@
       "topic_label": "Votre retour pour la commande #13836",
       "situation": "Votre retour pour la commande #13836",
       "response_template": "Bonjour Chakir,\n\nNous avons bien reçu votre retour (Dakota - Chaussures Chelsea Boots Cuir Noir, pointure 41) et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux vous correspondre, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si une autre pointure ou un autre modèle vous tente, voici ce qu'on peut faire : nous vous envoyons un avoir de 445 €, soit le prix de votre paire (410 €) et 35 € offerts par la maison. Il est valable 6 mois sur toute la collection, chaussures et ceintures, et la livraison de votre nouvelle commande est offerte, à l'adresse de votre choix.\n\nAutrement dit, vous repartez avec une nouvelle pièce sans rien débourser, et 35 € de plus en poche.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte. Sans réponse de votre part d'ici le mardi 1er décembre, nous procéderons au remboursement.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "votre_retour_pour_la_commande__13971",
-      "topic_label": "Votre retour pour la commande #13971",
-      "situation": "Votre retour pour la commande #13971",
-      "response_template": "Bonjour Jonathan,\n\nNous avons bien reçu votre retour (Brogues - Chaussures Derby Cuir Noir, pointure 43.5).\n\nAvant de lancer le remboursement, une proposition : votre commande a été passée pendant les Mad Max, avec 15 % de remise. Plutôt que de vous rembourser, nous pouvons vous envoyer gratuitement la pointure et le modèle de votre choix, et vous gardez votre remise de 15 %. Vous conservez aussi votre carte cadeau Mad Max, qu'un remboursement annulerait.\n\nSi le modèle choisi n'a pas le même prix, la même remise s'applique : nous vous remboursons la différence s'il est moins cher, et nous vous indiquons le complément s'il est plus cher.\n\nDites-moi simplement la pointure et le modèle que vous souhaitez. Sans réponse de votre part d'ici le mardi 1er décembre, nous procéderons au remboursement.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
@@ -2952,14 +2960,6 @@
       "response_template": "Bonjour Laurent,\n\nPas d'inquiétude, la différence avec votre 44 habituel vient probablement de la largeur plutôt que de la longueur. Je vous recommande le 43.\n\nSi à réception la paire ne convient pas, un échange reste possible via notre procédure habituelle.\n\nBonne commande !\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "max_sauveur___service_client",
-      "topic_label": "Max Sauveur — Service Client",
-      "situation": "Max Sauveur — Service Client",
-      "response_template": "Bonjour Raphael,\n\nNous avons bien reçu vos mocassins Paul et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux répondre à vos attentes, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si un autre modèle vous fait de l'œil, on peut vous proposer une solution plus simple : nous vous envoyons un avoir d'une valeur de 394€ (soit 35€ offerts par la maison) et nous prenons en charge les frais de livraison pour cet échange. Cela vous permet de trouver la pièce idéale sans aucun frais supplémentaire.\n\n=> Si c'est seulement un problème de pointure, on s'occupe de l'échange gratuitement et on vous ajoute en plus une carte cadeau de 35€.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 17
     },
     {
       "topic": "retour_commande__13512",
