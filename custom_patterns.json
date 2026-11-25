@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "colis_jamais_re_u",
+      "topic_label": "Colis jamais reçu",
+      "situation": "Colis jamais reçu",
+      "response_template": "Bonjour Émilie,\n\nVotre commande #13509 contient la Gigi Ceinture Cuir Marron, qui est une précommande. La livraison est prévue pour mi-décembre 2026. Le statut vide que vous voyez sur votre espace client est tout à fait normal pour ce type de commande, et l'email que vous avez reçu était un envoi automatique de notre système.\n\nVotre colis n'a pas encore été expédié. Dès qu'il est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__votre_retour_pour_la_commande__13949",
       "topic_label": "Re: Votre retour pour la commande #13949",
       "situation": "Re: Votre retour pour la commande #13949",
