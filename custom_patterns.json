@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__votre_avoir_pour_la_commande__13945",
+      "topic_label": "RE: Votre avoir pour la commande #13945",
+      "situation": "RE: Votre avoir pour la commande #13945",
+      "response_template": "Bonjour Simon,\nPour l'expédition de votre nouvelle commande passée avec l'avoir : nous ne pouvons pas techniquement supprimer les frais de port au moment du checkout, mais nous vous remboursons les frais dès que la commande est passée. Commandez avec votre avoir EP9BAFBDUB9W, puis envoyez-nous simplement la confirmation de commande et nous remboursons les frais d'expédition directement sur votre carte.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande_en_attente_d_exp_dition__20_11_",
       "topic_label": "Commande en attente d'expédition (20/11)",
       "situation": "Commande en attente d'expédition (20/11)",
