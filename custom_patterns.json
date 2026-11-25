@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__votre_retour_pour_la_commande__14054",
+      "topic_label": "Re: Votre retour pour la commande #14054",
+      "situation": "Re: Votre retour pour la commande #14054",
+      "response_template": "Bonjour Aurélien,\n\nMerci pour ce retour détaillé, c'est utile.\n\nJuste un point sur lequel je ne veux pas vous laisser avec une idée inexacte : les Brogues Derby chaussent effectivement large et conviennent aux pieds larges. Ce n'est pas un problème de largeur. Ce que vous décrivez, en revanche, pointe vers la hauteur du cou-de-pied : c'est une donnée morphologique indépendante de la largeur ou de la longueur du pied, et que le cuir, même de qualité, ne peut pas compenser au-delà d'un certain point. Ce n'est pas lié à la construction Goodyear non plus.\n\nPour la Chelsea Chapman, elle est effectivement plus souple (cousu Blake), mais sans pouvoir garantir qu'elle conviendra mieux à votre cou-de-pied à distance, je préfère ne pas vous orienter vers elle sans certitude.\n\nNous allons procéder au remboursement de 335 € sur votre carte d'origine. Comptez quelques jours ouvrés selon votre banque.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "colis_jamais_re_u",
       "topic_label": "Colis jamais reçu",
       "situation": "Colis jamais reçu",
