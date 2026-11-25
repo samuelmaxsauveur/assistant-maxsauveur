@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__votre_retour_pour_la_commande__13908",
+      "topic_label": "Re: Votre retour pour la commande #13908",
+      "situation": "Re: Votre retour pour la commande #13908",
+      "response_template": "Bonjour Théo,\n\nParfait, nous allons donc procéder à l'échange vers le Wayne Bordeaux 41, disponible en stock (4 exemplaires).\n\nSur votre question concernant la politique de remboursement : vous avez bien lu nos conditions. Une fois un avoir émis, un remboursement en argent n'est plus possible. En revanche, si le 41 ne vous convenait pas non plus, il vous serait possible de demander un nouvel échange vers un autre modèle.\n\nUn point important également : votre carte cadeau Mad Max de 20 € (code MADMAX-MAT63U, valable jusqu'au 15 avril 2027) reste bien valable dans le cadre de cet échange de pointure.\n\nNous allons générer votre avoir et vous l'envoyer par email dès que tout est confirmé de notre côté.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__14006___r_ception_de_mon_retour",
       "topic_label": "Re: Commande #14006 : réception de mon retour",
       "situation": "Re: Commande #14006 : réception de mon retour",
