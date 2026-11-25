@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "commande__14006___r_ception_de_mon_retour",
+      "topic_label": "Commande #14006 : réception de mon retour",
+      "situation": "Commande #14006 : réception de mon retour",
+      "response_template": "Bonjour Dylan,\n\nNous avons bien réceptionné votre retour. Cependant, notre équipe logistique a constaté des traces de pliures sur la paire. Nous devons la faire expertiser par notre atelier pour évaluer si elle peut être remise en état.\n\nNous revenons vers vous dès que nous avons les conclusions de cette expertise.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
