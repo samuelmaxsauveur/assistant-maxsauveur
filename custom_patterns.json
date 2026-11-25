@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__14006___r_ception_de_mon_retour",
+      "topic_label": "Re: Commande #14006 : réception de mon retour",
+      "situation": "Re: Commande #14006 : réception de mon retour",
+      "response_template": "Bonjour Dylan,\n\nNous entendons votre retour, mais nous devons vous préciser un point important : les plis sur le cuir peuvent apparaître dès l'essayage, même sans marcher, simplement en enfilant la chaussure ou en tentant de la mettre. C'est précisément pour cela qu'il est recommandé d'essayer sur un tapis et de nous contacter immédiatement si vous constatez un problème à la réception, notamment une boîte endommagée.\n\nNous n'avons pas eu cette information au moment de la livraison, ce qui ne nous permet pas de confirmer l'origine des traces constatées par notre équipe logistique.\n\nNous allons travailler avec notre atelier pour tenter de remettre la paire en état de revente, et nous revenons vers vous dès que nous avons une réponse.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__votre_avoir_pour_la_commande__13945",
       "topic_label": "RE: Votre avoir pour la commande #13945",
       "situation": "RE: Votre avoir pour la commande #13945",
