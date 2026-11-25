@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "fw__commande__14094_confirm_e",
+      "topic_label": "Fw: Commande #14094 confirmée",
+      "situation": "Fw: Commande #14094 confirmée",
+      "response_template": "Bonjour Simon,\n\nVotre commande #14094 (Powell Cuir Grainé Marron 41) est bien enregistrée. Dès qu'elle sera expédiée, nous procéderons au remboursement sur votre Visa.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__votre_retour_pour_la_commande__13908",
       "topic_label": "Re: Re: Votre retour pour la commande #13908",
       "situation": "Re: Re: Votre retour pour la commande #13908",
