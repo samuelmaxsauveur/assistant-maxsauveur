@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__form_name_form_submitted_2026_11_24_12_31_25",
+      "topic_label": "RE: Re: Form name Form submitted 2026-11-24 12:31:25",
+      "situation": "RE: Re: Form name Form submitted 2026-11-24 12:31:25",
+      "response_template": "Bonjour Florian,\n\nL'incohérence que vous signalez est en effet un élément concret : un dépôt indiqué à 8h42 dans un commerce qui n'ouvre qu'à 10h n'est pas possible. C'est exactement le type de preuve à mentionner à Chronopost lorsque vous les contacterez.\nDe notre côté, nous avons également ouvert un dossier de réclamation auprès de Chronopost. Nous revenons vers vous dès que nous avons des éléments.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__form_name_form_submitted_2026_11_24_21_04_47",
       "topic_label": "Re: Form name Form submitted 2026-11-24 21:04:47",
       "situation": "Re: Form name Form submitted 2026-11-24 21:04:47",
