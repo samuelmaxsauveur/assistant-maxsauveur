@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__form_name_form_submitted_2026_11_20_05_39_26",
+      "topic_label": "Re: Form name Form submitted 2026-11-20 05:39:26",
+      "situation": "Re: Form name Form submitted 2026-11-20 05:39:26",
+      "response_template": "Bonjour Matthieu,\n\nL'offre BEBELT n'est pas reconductible exceptionnellement. C'est une offre commerciale avec une durée définie, et nous ne pouvons pas la prolonger au cas par cas.\n\nSi vous avez d'autres questions avant de passer commande, je suis disponible.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__votre_retour_pour_la_commande__13971",
       "topic_label": "Re: Votre retour pour la commande #13971",
       "situation": "Re: Votre retour pour la commande #13971",
