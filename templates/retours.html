@@ -303,7 +303,49 @@
         <div class="actions">
             <button class="btn btn-purple" onclick="customerChoice('credit', this)">Il veut l'avoir{% if a and d.offer_kind != 'plain' %} ({{ euros(d.offer_amount or a.bonus) }}){% elif a %} ({{ euros(d.offer_amount or a.catalogue) }}){% endif %}</button>
             <button class="btn btn-gray" onclick="customerChoice('refund', this)">Il veut le remboursement</button>
+            <button class="btn btn-gray" onclick="customerChoice('exchange', this)">Il veut un échange</button>
             <span class="msg" id="choice-msg"></span>
+        </div>
+        {% endif %}
+
+        {% if not unclaimed and o and c.status in ('to_check', 'waiting_client', 'reply_to_read', 'to_decide') and not d.exchange %}
+        {% set open_ex = c.status == 'to_decide' or d.reply_choice == 'exchange' %}
+        {% set wish = d.exchange_wish or (d.slip or {}).get('exchange_wish') %}
+        <div class="section" id="echange">
+            <h3>{{ "Ta décision : envoyer l'échange" if open_ex else 'Échange' }}</h3>
+            {% if wish %}<div class="meta" style="margin-bottom:6px;">Ce que le client demande : <strong>{{ wish }}</strong></div>{% endif %}
+            <div id="ex-closed" {% if open_ex %}style="display:none;"{% endif %}>
+                <div class="meta">S'il préfère recevoir une autre pointure ou un autre modèle, prépare ici sa nouvelle commande dans Wing. L'avoir reste possible comme avant.</div>
+                <div class="actions"><button class="btn btn-purple" onclick="openExchange()">🔁 Préparer un échange</button></div>
+            </div>
+            <div id="ex-form" style="display:none;">
+                <div class="msg" id="ex-loading">⏳ Chargement du catalogue, du stock et des collectes…</div>
+                <div class="grid" style="margin-top:8px;">
+                    <div class="full"><label class="f">Produit (n'importe quel modèle du site)</label>
+                        <input id="ex-product" list="ex-catalogue" placeholder="Tape le nom du modèle" onchange="exchangeProduct()">
+                        <datalist id="ex-catalogue"></datalist></div>
+                    <div><label class="f">Taille</label><select id="ex-variant" onchange="exchangeSummary()"><option value="">Choisis d'abord le produit</option></select></div>
+                    <div><label class="f">Quantité</label><input id="ex-qty" type="number" min="1" value="1" inputmode="numeric" onchange="exchangeSummary()"></div>
+                    <div class="full"><label class="f">Livraison</label>
+                        <label class="line"><input type="radio" name="ex-where" value="same" checked onchange="exchangeWhere()"><span id="ex-same">Même livraison que sa commande</span></label>
+                        <label class="line"><input type="radio" name="ex-where" value="relay" onchange="exchangeWhere()"><span>Un autre point relais Chrono2Shop</span></label>
+                    </div>
+                </div>
+                <div id="ex-relay" style="display:none;">
+                    <div class="grid">
+                        <div><label class="f">Code postal</label><input id="ex-zip" inputmode="numeric" value="{{ o.shipping_zip or '' }}"></div>
+                        <div><label class="f">Ville</label><input id="ex-city" value="{{ o.shipping_city or '' }}"></div>
+                    </div>
+                    <div class="actions"><button class="btn btn-gray" onclick="exchangeRelays(this)">🔍 Chercher les points relais</button><span class="msg" id="ex-relay-msg"></span></div>
+                    <div id="ex-relay-list"></div>
+                </div>
+                <div style="margin-top:8px;"><label class="f">Collecte Wing</label><select id="ex-collect"></select></div>
+                <div class="meta" id="ex-summary" style="margin-top:8px;"></div>
+                <div class="actions">
+                    <button class="btn btn-purple" id="ex-btn" onclick="createExchange(this)" disabled>🔁 Créer la commande d'échange dans Wing</button>
+                    <span class="msg" id="ex-msg"></span>
+                </div>
+            </div>
         </div>
         {% endif %}
 
@@ -337,11 +379,21 @@
 
         {% if c.status == 'to_reship' %}
         <div class="section">
-            <h3>À réexpédier par toi</h3>
+            <h3>{{ 'Échange à expédier' if d.exchange else 'À réexpédier par toi' }}</h3>
+            {% if d.exchange %}{% set ex = d.exchange %}
+            <div class="codes">{{ ex.ref }} · {{ ex.quantity }} × {{ ex.item }}</div>
+            <div class="meta">Vers {{ 'le ' if ex.relay else 'son adresse : ' }}{{ ex.where }}.
+                {% if ex.collect_at %}Ajoutée à la collecte du {{ short_date(ex.collect_at[:10]) }}.
+                {% elif ex.collect_error %}<br>⚠️ Pas ajoutée à la collecte ({{ ex.collect_error }}) : ajoute-la dans Wing (compte principal).
+                {% else %}À ajouter à une collecte dans Wing (compte principal).{% endif %}
+                <br>Le mail de confirmation au client est prêt ci-dessous. Clique ici une fois le colis parti.</div>
+            {% else %}
             {% if d.reship_ref %}<div class="codes">{{ d.reship_ref }} · {{ d.reship_relay }}</div>{% endif %}
             <div class="meta">{% if d.reship_ref %}Commande créée dans Wing : ajoute-la à ta collecte. Clique ici une fois qu'elle est partie.{% else %}Renvoie la commande au point relais indiqué dans sa réponse, sans frais pour le client, puis clique ici.{% endif %}</div>
+            {% endif %}
             <div class="actions">
-                <button class="btn btn-gray" onclick="setStatus('done', this, 'colis réexpédié')">C'est réexpédié</button>
+                {% if d.exchange %}<button class="btn btn-gray" onclick="setStatus('done', this, 'échange expédié')">C'est expédié</button>
+                {% else %}<button class="btn btn-gray" onclick="setStatus('done', this, 'colis réexpédié')">C'est réexpédié</button>{% endif %}
             </div>
         </div>
         {% endif %}
@@ -694,6 +746,153 @@ async function searchRelays(btn) {
     busy(btn, false);
 }
 
+// ---------------------------------------------------------------- exchange: a new order in Wing
+let EX = {catalogue: [], product: null, delivery: {}, paid: null};
+
+async function openExchange() {
+    document.getElementById('ex-closed').style.display = 'none';
+    document.getElementById('ex-form').style.display = 'block';
+    const loading = document.getElementById('ex-loading');
+    let j;
+    try {
+        const r = await fetch('/retours/' + CASE_ID + '/echange');
+        j = await r.json();
+        if (!j.success) throw new Error(j.error || 'Erreur');
+    } catch (e) { loading.textContent = '⚠️ ' + (e.message || RESTARTING); return; }
+    EX.catalogue = j.catalogue || [];
+    EX.delivery = j.delivery || {};
+    EX.paid = (j.suggestion || {}).returned_paid;
+    const list = document.getElementById('ex-catalogue');
+    list.innerHTML = '';
+    EX.catalogue.forEach(p => { const o = document.createElement('option'); o.value = p.title; list.append(o); });
+    document.getElementById('ex-same').textContent = EX.delivery.where
+        ? 'Même livraison que sa commande : ' + EX.delivery.where
+        : 'Même livraison que sa commande (adresse introuvable : choisis un point relais)';
+    const collect = document.getElementById('ex-collect');
+    collect.innerHTML = '';
+    (j.collects || []).forEach((c, i) => {
+        const o = document.createElement('option'); o.value = c.id; o.textContent = 'Ajouter à la collecte du ' + c.label; collect.append(o);
+    });
+    const none = document.createElement('option'); none.value = ''; none.textContent = 'Ne pas ajouter à une collecte (je le ferai dans Wing)';
+    collect.append(none);
+    const s = j.suggestion || {};
+    if (s.product) {
+        document.getElementById('ex-product').value = s.product.title;
+        showVariants(s.product, s.variant_id);
+    }
+    loading.textContent = (j.warnings || []).length ? '⚠️ En partie indisponible : ' + j.warnings.join(' · ') : '';
+}
+
+function showVariants(product, picked) {
+    EX.product = product;
+    const select = document.getElementById('ex-variant');
+    select.innerHTML = '';
+    const first = document.createElement('option'); first.value = ''; first.textContent = 'Choisis la taille'; select.append(first);
+    product.variants.forEach(v => {
+        const o = document.createElement('option');
+        o.value = v.id;
+        const stock = v.qty > 0 ? `${v.qty} en stock` : (v.sellable ? `stock ${v.qty ?? '?'}, précommande` : 'épuisée');
+        o.textContent = `${v.size} · ${stock} · ${v.price.toFixed(2).replace('.', ',').replace(',00', '')} €`;
+        o.selected = v.id === picked;
+        select.append(o);
+    });
+    exchangeSummary();
+}
+
+async function exchangeProduct() {
+    const title = document.getElementById('ex-product').value.trim();
+    const p = EX.catalogue.find(x => x.title.toLowerCase() === title.toLowerCase());
+    const msg = document.getElementById('ex-msg');
+    if (!p) { msg.textContent = title ? '⚠️ Choisis un produit de la liste.' : ''; return; }
+    msg.textContent = '⏳ Tailles et stock…';
+    try {
+        const r = await fetch('/retours/echange/produit?id=' + encodeURIComponent(p.id));
+        const j = await r.json();
+        if (!j.success) throw new Error(j.error);
+        msg.textContent = '';
+        showVariants(j.product, null);
+    } catch (e) { msg.textContent = '⚠️ ' + e.message; }
+}
+
+function exchangeWhere() {
+    const relay = document.querySelector('input[name=ex-where]:checked').value === 'relay';
+    document.getElementById('ex-relay').style.display = relay ? 'block' : 'none';
+    exchangeSummary();
+}
+
+async function exchangeRelays(btn) {
+    const msg = document.getElementById('ex-relay-msg');
+    const list = document.getElementById('ex-relay-list');
+    busy(btn, true, '⏳ Recherche…');
+    msg.textContent = '';
+    list.textContent = '';
+    try {
+        const j = await post('/retours/' + CASE_ID + '/relais', {
+            address: '', zip: document.getElementById('ex-zip').value, city: document.getElementById('ex-city').value});
+        if (!j.relays.length) msg.textContent = 'Aucun point relais trouvé : essaie un autre code postal.';
+        j.relays.forEach(r => {
+            const line = document.createElement('label');
+            line.className = 'line';
+            const radio = document.createElement('input');
+            radio.type = 'radio'; radio.name = 'ex-relay'; radio.value = r.id; radio.dataset.name = r.name;
+            radio.addEventListener('change', exchangeSummary);
+            const text = document.createElement('span');
+            text.textContent = `${r.name} · ${r.address}, ${r.zip} ${r.city} · à ${(r.distance / 1000).toFixed(1).replace('.', ',')} km`;
+            line.append(radio, text);
+            list.append(line);
+        });
+    } catch (e) { msg.textContent = '⚠️ ' + e.message; }
+    busy(btn, false);
+    exchangeSummary();
+}
+
+function exchangeChoice() {
+    const vid = document.getElementById('ex-variant').value;
+    const v = EX.product && EX.product.variants.find(x => x.id === vid);
+    const qty = Math.max(1, parseInt(document.getElementById('ex-qty').value, 10) || 1);
+    const toRelay = document.querySelector('input[name=ex-where]:checked').value === 'relay';
+    const relay = toRelay ? document.querySelector('input[name=ex-relay]:checked') : null;
+    const collect = document.getElementById('ex-collect');
+    return {v, qty, toRelay, relay, collectId: collect.value,
+            collectLabel: collect.value ? collect.options[collect.selectedIndex].textContent.replace('Ajouter à la collecte du ', '') : ''};
+}
+
+function exchangeSummary() {
+    const c = exchangeChoice();
+    const box = document.getElementById('ex-summary');
+    const btn = document.getElementById('ex-btn');
+    const where = c.toRelay ? (c.relay ? 'point relais ' + c.relay.dataset.name : null) : EX.delivery.where;
+    btn.disabled = !c.v || !where;
+    if (!c.v) { box.textContent = ''; return; }
+    const euro = n => n.toFixed(2).replace('.', ',').replace(',00', '') + ' €';
+    let text = `${c.qty} × ${EX.product.title} en ${c.v.size}, prix catalogue ${euro(c.v.price * c.qty)}.`;
+    if (EX.paid != null) {
+        const gap = c.v.price * c.qty - EX.paid;
+        text += ` Payé pour l'article retourné : ${euro(EX.paid)}` + (Math.abs(gap) >= 0.01 ? ` (écart ${gap > 0 ? '+' : '−'}${euro(Math.abs(gap))}, à régler avec le client si besoin).` : '.');
+    }
+    if (!(c.v.qty > 0)) text += ' ⚠️ Pas de stock pour cette taille.';
+    if (!where) text += ' Choisis le point relais.';
+    box.textContent = text;
+}
+
+async function createExchange(btn) {
+    const c = exchangeChoice();
+    if (!c.v) return;
+    const where = c.toRelay ? 'point relais ' + c.relay.dataset.name : EX.delivery.where;
+    const stock = c.v.qty > 0 ? '' : '\n⚠️ Pas de stock pour cette taille.';
+    if (!confirm(`Créer dans Wing la commande d'échange :\n${c.qty} × ${EX.product.title} en ${c.v.size}\nvers ${where}\n`
+                 + (c.collectId ? `ajoutée à la collecte du ${c.collectLabel}` : 'sans collecte (à ajouter dans Wing)') + stock)) return;
+    busy(btn, true, '⏳ Création dans Wing…');
+    const msg = document.getElementById('ex-msg');
+    msg.textContent = '';
+    try {
+        await post('/retours/' + CASE_ID + '/echange', {
+            variant_id: c.v.id, quantity: c.qty, collect_id: c.collectId,
+            relay_id: c.relay ? c.relay.value : '', relay_name: c.relay ? c.relay.dataset.name : ''});
+        go(CASE_ID, null);
+    } catch (e) { msg.textContent = '⚠️ ' + e.message; busy(btn, false); }
+}
+
 async function recreateOrder(btn) {
     const relay = document.querySelector('input[name=relay]:checked');
     if (!relay) return;
@@ -847,6 +1046,8 @@ async function deleteCase(btn) {
 }
 
 templateChanged();
+// The customer accepted an exchange: the form is ready when the file opens.
+{% if view and not view.data.exchange and (view.case.status == 'to_decide' or view.data.reply_choice == 'exchange') and view.data.kind != 'unclaimed' and view.order %}openExchange();{% endif %}
 // The customer asked for another relay point: the list is ready when the file opens.
 {% if view and view.case.status == 'to_decide' and view.data.reply_choice == 'relay' %}searchRelays(document.getElementById('r-search'));{% endif %}
 if (location.hash === '#fiche') {

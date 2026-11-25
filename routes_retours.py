@@ -3,6 +3,7 @@ import os
 from flask import Blueprint, request, jsonify, render_template, send_file, abort
 
 import database
+import exchanges
 import retours
 
 retours_bp = Blueprint('retours', __name__)
@@ -209,7 +210,7 @@ def set_status(case_id):
 
 @retours_bp.route('/retours/<int:case_id>/client', methods=['POST'])
 def customer_choice(case_id):
-    """Samuel reads the answer: the customer takes the credit, or the refund."""
+    """Samuel reads the answer: the customer takes the credit, the refund, or an exchange."""
     choice = (request.json or {}).get('choice')
     case = database.get_client_return(case_id)
     if not case:
@@ -220,10 +221,53 @@ def customer_choice(case_id):
             case = retours.create_credit(case_id, bonus=bonus, amount=(request.json or {}).get('amount'))
         elif choice == 'refund':
             case = retours.set_status(case_id, 'to_refund', "le client choisit le remboursement")
+        elif choice == 'exchange':
+            case = retours.set_status(case_id, 'to_decide', "le client demande un échange",
+                                      extra={'reply_choice': 'exchange'})
         else:
             return _fail("Choix inconnu")
     except Exception as e:
         return _fail(e)
+    return _ok(case)
+
+
+@retours_bp.route('/retours/<int:case_id>/echange')
+def exchange_info(case_id):
+    """What the « Échange » section needs: the catalogue, what to preselect, where the order went, the collects."""
+    case = database.get_client_return(case_id)
+    if not case:
+        return _fail("Dossier introuvable", 404)
+    out = {'success': True, 'catalogue': [], 'suggestion': {}, 'delivery': {}, 'collects': [], 'warnings': []}
+    for key, call in (('catalogue', exchanges.catalogue), ('suggestion', lambda: exchanges.suggestion(case)),
+                      ('delivery', lambda: exchanges.delivery(case)), ('collects', exchanges.collects)):
+        try:
+            out[key] = call()
+        except Exception as e:
+            print(f"[Retours] Exchange {key} unavailable for file {case_id}: {e}")
+            out['warnings'].append(f"{key} : {e}")
+    return jsonify(out)
+
+
+@retours_bp.route('/retours/echange/produit')
+def exchange_product():
+    try:
+        return jsonify({'success': True, 'product': exchanges.product(request.args.get('id', ''))})
+    except Exception as e:
+        return _fail(e)
+
+
+@retours_bp.route('/retours/<int:case_id>/echange', methods=['POST'])
+def exchange_create(case_id):
+    data = request.json or {}
+    if not data.get('variant_id'):
+        return _fail("Choisis l'article et la taille")
+    try:
+        case = exchanges.create(case_id, data['variant_id'], data.get('quantity') or 1,
+                                data.get('relay_id') or None, data.get('relay_name') or None,
+                                data.get('collect_id') or None)
+    except Exception as e:
+        print(f"[Retours] Exchange failed for file {case_id}: {e}")
+        return _fail(f"{e} · Vérifie dans Wing (compte principal) avant de réessayer.")
     return _ok(case)
 
 

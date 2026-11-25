@@ -176,7 +176,8 @@ def _mentioned_products(texts, limit=4):
     return [pid for hits, pid in found if hits == best or best == 0][:limit]
 
 
-OFFER_LABELS = {"bonus": "un avoir bonifié", "plain": "un avoir", "exchange": "un échange Mad Max gratuit"}
+OFFER_LABELS = {"bonus": "un avoir bonifié", "plain": "un avoir", "exchange": "un échange Mad Max gratuit",
+                "swap": "un échange avec les frais d'expédition offerts"}
 
 
 def _return_line(c):
@@ -208,6 +209,10 @@ def _return_line(c):
     if c["status"] == "waiting_client" and d.get("offer_sent_at") and not d.get("reply_at"):
         parts.append("pas encore de réponse à cette proposition : s'il écrit maintenant qu'il veut le remboursement, "
                      "c'est son choix, on prend acte et on rembourse sans lui refaire la proposition")
+    ex = d.get("exchange")
+    if ex:
+        parts.append(f"échange créé dans Wing ({ex['ref']}) : {ex['quantity']} × {ex['item']} vers {ex['where']}"
+                     + (f", remis au transporteur le {_date(ex['collect_at'][:10])}" if ex.get("collect_at") else ""))
     if d.get("credit_code"):
         parts.append(f"avoir créé : {d['credit_code']}" + (f" ({retours.euros(float(d['credit_amount']))})" if d.get("credit_amount") else ""))
     if c["status"] in ("to_refund", "waiting_client", "reply_to_read", "to_decide"):
