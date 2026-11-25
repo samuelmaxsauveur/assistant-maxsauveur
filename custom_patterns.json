@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__votre_retour_pour_la_commande__13971",
+      "topic_label": "Re: Votre retour pour la commande #13971",
+      "situation": "Re: Votre retour pour la commande #13971",
+      "response_template": "Bonjour Jonathan,\n\nAvec 27 cm de pied, vous êtes effectivement bien en 43 sur notre guide. Mais attention : le Blucher Derby chausse plus petit que les Brogues, je vous recommande donc de rester sur le 43 plutôt que le 42,5. Cette taille est disponible.\n\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande__14006___r_ception_de_mon_retour",
       "topic_label": "Commande #14006 : réception de mon retour",
       "situation": "Commande #14006 : réception de mon retour",
