@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__votre_retour_pour_la_commande__13908",
+      "topic_label": "Re: Re: Votre retour pour la commande #13908",
+      "situation": "Re: Re: Votre retour pour la commande #13908",
+      "response_template": "Bonjour Théo,\n\nNoté, nous procédons donc au remboursement de 383,20 € sur votre Mastercard d'origine. Il sera traité d'ici le 1er décembre.\n\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande_13314",
       "topic_label": "Re: Commande 13314",
       "situation": "Re: Commande 13314",
