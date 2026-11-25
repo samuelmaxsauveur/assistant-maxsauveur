@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande_13314",
+      "topic_label": "Re: Commande 13314",
+      "situation": "Re: Commande 13314",
+      "response_template": "Bonjour Kader,\n\nLes frais de retour restent à votre charge, conformément à nos conditions générales. Aucun engagement contraire n'a été pris lors de nos échanges précédents.\n\nLa procédure reste celle indiquée dans notre message du 22 novembre :\n\n1. Bon de retour sur https://maxsauveur.com/pages/livraison-et-retour (motif : « remboursement »)\n2. Glisser dans le colis avec les embauchoirs\n3. Expédier à : SSL – Solutions & Services Logistiques, 14 avenue Lamartine, 13170 Les Pennes-Mirabeau\n\nDès réception et contrôle, nous procédons au remboursement intégral de 59 € sur votre Visa se terminant en 9346.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__votre_retour_pour_la_commande__13908",
       "topic_label": "Re: Votre retour pour la commande #13908",
       "situation": "Re: Votre retour pour la commande #13908",
