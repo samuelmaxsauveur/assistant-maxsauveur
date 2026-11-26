@@ -1029,10 +1029,10 @@ def draft(case, template, amount=None):
                 f"{ask} Dès votre réponse, la nouvelle commande part à la même adresse de livraison que la "
                 f"précédente, sauf si vous m'en indiquez une autre.{sign}")
     elif template == "exchange_sent":
+        import exchanges
         ex = data.get("exchange") or {}
-        qty = int(ex.get("quantity") or 1)
-        item = _items_text([{"title": ex.get("title", ""), "variant": ex.get("size", ""), "qty": qty,
-                             "category": category(ex.get("title", ""))}])
+        item = _items_text([{"title": i.get("title") or "", "variant": i.get("size") or "", "qty": int(i.get("quantity") or 1),
+                             "category": category(i.get("title") or "")} for i in exchanges.items_of(ex)])
         to = f"au {ex.get('where', '')}" if ex.get("relay") else f"à votre adresse, {ex.get('where', '')}"
         days = "3 à 5 jours ouvrés" if ex.get("relay") else "quelques jours ouvrés"
         when = (f"Il sera remis au transporteur le {fr_date(datetime.fromisoformat(ex['collect_at']).date())}, puis "
@@ -1238,7 +1238,8 @@ def _facts(case):
         lines.append(f"Échange demandé par le client : {wanted}.")
     ex = data.get("exchange")
     if ex:
-        lines.append(f"Échange créé : {ex['quantity']} × {ex['item']} envoyé gratuitement vers {ex['where']}"
+        import exchanges
+        lines.append(f"Échange créé : {exchanges.items_text(ex)}, envoyé gratuitement vers {ex['where']}"
                      + (f", remis au transporteur le {fr_date(datetime.fromisoformat(ex['collect_at']).date())}"
                         if ex.get("collect_at") else "") + ".")
     reason = _slip_reason(data.get("slip") or {})

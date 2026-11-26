@@ -211,7 +211,8 @@ def _return_line(c):
                      "c'est son choix, on prend acte et on rembourse sans lui refaire la proposition")
     ex = d.get("exchange")
     if ex:
-        parts.append(f"échange créé dans Wing ({ex['ref']}) : {ex['quantity']} × {ex['item']} vers {ex['where']}"
+        import exchanges
+        parts.append(f"échange créé dans Wing ({ex['ref']}) : {exchanges.items_text(ex)} vers {ex['where']}"
                      + (f", remis au transporteur le {_date(ex['collect_at'][:10])}" if ex.get("collect_at") else ""))
     if d.get("credit_code"):
         parts.append(f"avoir créé : {d['credit_code']}" + (f" ({retours.euros(float(d['credit_amount']))})" if d.get("credit_amount") else ""))

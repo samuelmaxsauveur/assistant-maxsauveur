@@ -51,6 +51,7 @@ def retours_page():
             'credit_where': retours._where(bool(data.get('credit_model_only')), result),
             'models': " et ".join(l['title'] for l in result['returned']),
             'tab_of': next(k for k, _, s in retours.STAGES if selected['status'] in s),
+            'exchange_items': exchanges.items_of(data.get('exchange')),
         }
     custom = sorted(database.get_all_outbound_templates(), key=lambda t: (t.get('label') or '').lower())
     return render_template('retours.html', tab=tab, stages=retours.STAGES, counts=counts, cases=cases,
@@ -259,11 +260,12 @@ def exchange_product():
 @retours_bp.route('/retours/<int:case_id>/echange', methods=['POST'])
 def exchange_create(case_id):
     data = request.json or {}
-    if not data.get('variant_id'):
-        return _fail("Choisis l'article et la taille")
+    items = data.get('items') or ([{'variant_id': data['variant_id'], 'quantity': data.get('quantity') or 1}]
+                                  if data.get('variant_id') else [])
+    if not any(i.get('variant_id') for i in items):
+        return _fail("Choisis au moins un article et sa taille")
     try:
-        case = exchanges.create(case_id, data['variant_id'], data.get('quantity') or 1,
-                                data.get('relay_id') or None, data.get('relay_name') or None,
+        case = exchanges.create(case_id, items, data.get('relay_id') or None, data.get('relay_name') or None,
                                 data.get('collect_id') or None)
     except Exception as e:
         print(f"[Retours] Exchange failed for file {case_id}: {e}")

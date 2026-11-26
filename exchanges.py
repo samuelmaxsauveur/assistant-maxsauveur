@@ -78,23 +78,47 @@ def _size_in(text, sizes):
 
 
 def suggestion(case):
-    """The product and size to preselect: what he asks for if it names a model, else the returned one."""
+    """The lines to preselect: the models his wish names (with the size he wrote), else one line per
+    returned piece, in the size he asks for when he returned only one, or the same size."""
     import enquete
     data = case["data"]
     order = data.get("order") or {}
     text = wish(data)
     returned = retours.analyse(data)["returned"]
-    named = enquete._mentioned_products([text], limit=1) if text else []
-    line = (returned or order.get("lines") or [{}])[0]
-    pid = named[0] if named else line.get("product_id")
-    if not pid:
-        return {"wish": text, "product": None, "variant_id": None}
-    p = product(pid)
-    sizes = [v["size"] for v in p["variants"]]
-    size = _size_in(text, sizes) or (line.get("variant") if not named and not text else None)
-    picked = next((v["id"] for v in p["variants"] if v["size"] == size), None)
-    return {"wish": text, "product": p, "variant_id": picked,
+    named = enquete._mentioned_products([text], limit=3) if text else []
+    rows = []
+    if named:
+        for pid in named:
+            p = product(pid)
+            size = _size_in(text, [v["size"] for v in p["variants"]])
+            rows.append({"product": p, "variant_id": next((v["id"] for v in p["variants"] if v["size"] == size), None),
+                         "quantity": 1})
+    else:
+        for line in returned or (order.get("lines") or [])[:1]:
+            if not line.get("product_id"):
+                continue
+            p = product(line["product_id"])
+            sizes = [v["size"] for v in p["variants"]]
+            size = (_size_in(text, sizes) if len(returned) <= 1 else None) or (None if text and len(returned) <= 1 else line.get("variant"))
+            rows.append({"product": p, "variant_id": next((v["id"] for v in p["variants"] if v["size"] == size), None),
+                         "quantity": int(line.get("qty") or 1)})
+    return {"wish": text, "rows": rows,
             "returned_paid": round(sum(l["paid"] * l["qty"] for l in returned), 2) if returned else None}
+
+
+def items_of(exchange):
+    """The pieces of an exchange (files created before 26/11/2026 hold a single one)."""
+    if not exchange:
+        return []
+    if exchange.get("items"):
+        return exchange["items"]
+    return [{"item": exchange.get("item"), "title": exchange.get("title"), "size": exchange.get("size"),
+             "quantity": exchange.get("quantity") or 1, "price": exchange.get("price")}]
+
+
+def items_text(exchange):
+    """« 1 × Powell - ... - 44, 1 × Jonas - ... - 85 »"""
+    return ", ".join(f"{i['quantity']} × {i['item']}" for i in items_of(exchange))
 
 
 # ---------------------------------------------------------------- where it goes, and when
@@ -171,8 +195,9 @@ def _free_ref(token, number, case_id):
     raise RuntimeError(f"Trop d'échanges déjà créés pour la commande #{number}.")
 
 
-def create(case_id, variant_id, quantity=1, relay_id=None, relay_name=None, collect_id=None):
-    """The exchange order in Wing, added to the collect Samuel chose. Only from his click."""
+def create(case_id, items, relay_id=None, relay_name=None, collect_id=None):
+    """The exchange order in Wing, with every piece Samuel chose ([{variant_id, quantity}]),
+    added to the collect he chose. Only from his click."""
     case = database.get_client_return(case_id)
     data = case["data"]
     order = data.get("order")
@@ -184,8 +209,13 @@ def create(case_id, variant_id, quantity=1, relay_id=None, relay_name=None, coll
         raise RuntimeError("Création déjà en cours : attends quelques secondes puis recharge la fiche.")
     if not order:
         raise RuntimeError("Commande introuvable : saisis d'abord le numéro de commande.")
-    quantity = max(1, int(quantity or 1))
-    v = _variant(variant_id)
+    wanted = {}
+    for it in items or []:
+        if it.get("variant_id"):
+            wanted[it["variant_id"]] = wanted.get(it["variant_id"], 0) + max(1, int(it.get("quantity") or 1))
+    if not wanted:
+        raise ValueError("Choisis au moins un article et sa taille.")
+    pieces = [dict(_variant(vid), quantity=qty) for vid, qty in wanted.items()]
     database.update_client_return(case_id, data={"exchange_pending": datetime.now(retours.PARIS).isoformat()})
     try:
         token = wing_repair._get_token("main")
@@ -214,10 +244,10 @@ def create(case_id, variant_id, quantity=1, relay_id=None, relay_name=None, coll
             to_relay = False
             fulfillment = {"service": (fo.get("service") or (original or {}).get("service") or HOME["service"])}
             where = f"{recipient.get('line1', '')}, {recipient.get('zip', '')} {recipient.get('city', '')}"
-        designation = f"{v['title']} - {v['size']}"
-        weight = repair_catalog.PARCEL_TYPES[repair_catalog.parcel_type(v["title"])]["weight"]
-        fulfillment["products"] = [{"designation": designation, "price": v["price"] or 100, "weight": weight,
-                                    "quantity": quantity, **({"ean": v["barcode"]} if v.get("barcode") else {})}]
+        fulfillment["products"] = [{
+            "designation": f"{v['title']} - {v['size']}", "price": v["price"] or 100,
+            "weight": repair_catalog.PARCEL_TYPES[repair_catalog.parcel_type(v["title"])]["weight"],
+            "quantity": v["quantity"], **({"ean": v["barcode"]} if v.get("barcode") else {})} for v in pieces]
         ref = _free_ref(token, order["number"], case_id)
         result = wing_repair._gql("""
         mutation($input: OrderToCreateInput!) { createOrder(input: $input) { id ref fulfillmentOrders { id status } } }
@@ -229,11 +259,12 @@ def create(case_id, variant_id, quantity=1, relay_id=None, relay_name=None, coll
         database.update_client_return(case_id, data={"exchange_pending": None})
         raise
     created = result["data"]["createOrder"]
-    print(f"[Retours] Exchange {ref} created in Wing for file {case_id}: {quantity} x {designation}")
-    exchange = {"ref": ref, "wing_id": created["id"], "item": designation, "title": v["title"], "size": v["size"],
-                "quantity": quantity, "price": v["price"], "where": where, "relay": to_relay,
-                "stock_before": v["qty"], "created_at": datetime.now(retours.PARIS).isoformat()}
-    log = f"échange créé dans Wing : {ref}, {quantity} × {designation}, vers {where}"
+    lines = [{"item": f"{v['title']} - {v['size']}", "title": v["title"], "size": v["size"], "quantity": v["quantity"],
+              "price": v["price"], "stock_before": v["qty"]} for v in pieces]
+    exchange = {"ref": ref, "wing_id": created["id"], "items": lines, "where": where, "relay": to_relay,
+                "created_at": datetime.now(retours.PARIS).isoformat()}
+    print(f"[Retours] Exchange {ref} created in Wing for file {case_id}: {items_text(exchange)}")
+    log = f"échange créé dans Wing : {ref}, {items_text(exchange)}, vers {where}"
     if collect_id:
         try:
             collect = _add_to_collect(token, collect_id, [f["id"] for f in created["fulfillmentOrders"]])

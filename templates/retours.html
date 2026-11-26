@@ -320,12 +320,10 @@
             </div>
             <div id="ex-form" style="display:none;">
                 <div class="msg" id="ex-loading">⏳ Chargement du catalogue, du stock et des collectes…</div>
+                <datalist id="ex-catalogue"></datalist>
+                <div id="ex-rows" style="margin-top:8px;"></div>
+                <div class="actions" style="margin-top:4px;"><button class="btn btn-gray" onclick="addExchangeRow()">+ Ajouter un article</button></div>
                 <div class="grid" style="margin-top:8px;">
-                    <div class="full"><label class="f">Produit (n'importe quel modèle du site)</label>
-                        <input id="ex-product" list="ex-catalogue" placeholder="Tape le nom du modèle" onchange="exchangeProduct()">
-                        <datalist id="ex-catalogue"></datalist></div>
-                    <div><label class="f">Taille</label><select id="ex-variant" onchange="exchangeSummary()"><option value="">Choisis d'abord le produit</option></select></div>
-                    <div><label class="f">Quantité</label><input id="ex-qty" type="number" min="1" value="1" inputmode="numeric" onchange="exchangeSummary()"></div>
                     <div class="full"><label class="f">Livraison</label>
                         <label class="line"><input type="radio" name="ex-where" value="same" checked onchange="exchangeWhere()"><span id="ex-same">Même livraison que sa commande</span></label>
                         <label class="line"><input type="radio" name="ex-where" value="relay" onchange="exchangeWhere()"><span>Un autre point relais Chrono2Shop</span></label>
@@ -381,7 +379,8 @@
         <div class="section">
             <h3>{{ 'Échange à expédier' if d.exchange else 'À réexpédier par toi' }}</h3>
             {% if d.exchange %}{% set ex = d.exchange %}
-            <div class="codes">{{ ex.ref }} · {{ ex.quantity }} × {{ ex.item }}</div>
+            <div class="codes">{{ ex.ref }}</div>
+            <div class="meta" style="margin-bottom:4px;">{% for i in view.exchange_items %}{{ i.quantity }} × {{ i.item }}{% if not loop.last %}<br>{% endif %}{% endfor %}</div>
             <div class="meta">Vers {{ 'le ' if ex.relay else 'son adresse : ' }}{{ ex.where }}.
                 {% if ex.collect_at %}Ajoutée à la collecte du {{ short_date(ex.collect_at[:10]) }}.
                 {% elif ex.collect_error %}<br>⚠️ Pas ajoutée à la collecte ({{ ex.collect_error }}) : ajoute-la dans Wing (compte principal).
@@ -747,7 +746,7 @@ async function searchRelays(btn) {
 }
 
 // ---------------------------------------------------------------- exchange: a new order in Wing
-let EX = {catalogue: [], product: null, delivery: {}, paid: null};
+let EX = {catalogue: [], delivery: {}, paid: null, rows: []};
 
 async function openExchange() {
     document.getElementById('ex-closed').style.display = 'none';
@@ -770,22 +769,47 @@ async function openExchange() {
         : 'Même livraison que sa commande (adresse introuvable : choisis un point relais)';
     const collect = document.getElementById('ex-collect');
     collect.innerHTML = '';
-    (j.collects || []).forEach((c, i) => {
+    (j.collects || []).forEach(c => {
         const o = document.createElement('option'); o.value = c.id; o.textContent = 'Ajouter à la collecte du ' + c.label; collect.append(o);
     });
     const none = document.createElement('option'); none.value = ''; none.textContent = 'Ne pas ajouter à une collecte (je le ferai dans Wing)';
     collect.append(none);
-    const s = j.suggestion || {};
-    if (s.product) {
-        document.getElementById('ex-product').value = s.product.title;
-        showVariants(s.product, s.variant_id);
-    }
+    const rows = (j.suggestion || {}).rows || [];
+    if (rows.length) rows.forEach(r => addExchangeRow(r.product, r.variant_id, r.quantity));
+    else addExchangeRow();
     loading.textContent = (j.warnings || []).length ? '⚠️ En partie indisponible : ' + j.warnings.join(' · ') : '';
 }
 
-function showVariants(product, picked) {
-    EX.product = product;
-    const select = document.getElementById('ex-variant');
+// One line per piece to send: product, size (with stock and price), quantity.
+function addExchangeRow(product, picked, quantity) {
+    const row = {product: null, el: document.createElement('div')};
+    row.el.className = 'grid';
+    row.el.style.cssText = 'margin-bottom:8px; padding-bottom:8px; border-bottom:1px dashed #eee;';
+    row.el.innerHTML = `
+        <div class="full"><label class="f">Produit (n'importe quel modèle du site)</label>
+            <input class="ex-product" list="ex-catalogue" placeholder="Tape le nom du modèle"></div>
+        <div><label class="f">Taille</label><select class="ex-variant"><option value="">Choisis d'abord le produit</option></select></div>
+        <div><label class="f">Quantité</label><div style="display:flex; gap:8px; align-items:center;">
+            <input class="ex-qty" type="number" min="1" value="${quantity || 1}" inputmode="numeric">
+            <button class="btn btn-gray ex-remove" title="Retirer cet article">✕</button></div></div>`;
+    row.el.querySelector('.ex-product').addEventListener('change', () => exchangeProduct(row));
+    row.el.querySelector('.ex-variant').addEventListener('change', exchangeSummary);
+    row.el.querySelector('.ex-qty').addEventListener('change', exchangeSummary);
+    row.el.querySelector('.ex-remove').addEventListener('click', () => {
+        EX.rows = EX.rows.filter(r => r !== row); row.el.remove(); exchangeSummary();
+    });
+    EX.rows.push(row);
+    document.getElementById('ex-rows').append(row.el);
+    if (product) {
+        row.el.querySelector('.ex-product').value = product.title;
+        showVariants(row, product, picked);
+    }
+    exchangeSummary();
+}
+
+function showVariants(row, product, picked) {
+    row.product = product;
+    const select = row.el.querySelector('.ex-variant');
     select.innerHTML = '';
     const first = document.createElement('option'); first.value = ''; first.textContent = 'Choisis la taille'; select.append(first);
     product.variants.forEach(v => {
@@ -799,8 +823,8 @@ function showVariants(product, picked) {
     exchangeSummary();
 }
 
-async function exchangeProduct() {
-    const title = document.getElementById('ex-product').value.trim();
+async function exchangeProduct(row) {
+    const title = row.el.querySelector('.ex-product').value.trim();
     const p = EX.catalogue.find(x => x.title.toLowerCase() === title.toLowerCase());
     const msg = document.getElementById('ex-msg');
     if (!p) { msg.textContent = title ? '⚠️ Choisis un produit de la liste.' : ''; return; }
@@ -810,7 +834,7 @@ async function exchangeProduct() {
         const j = await r.json();
         if (!j.success) throw new Error(j.error);
         msg.textContent = '';
-        showVariants(j.product, null);
+        showVariants(row, j.product, null);
     } catch (e) { msg.textContent = '⚠️ ' + e.message; }
 }
 
@@ -847,13 +871,16 @@ async function exchangeRelays(btn) {
 }
 
 function exchangeChoice() {
-    const vid = document.getElementById('ex-variant').value;
-    const v = EX.product && EX.product.variants.find(x => x.id === vid);
-    const qty = Math.max(1, parseInt(document.getElementById('ex-qty').value, 10) || 1);
+    const pieces = EX.rows.map(r => {
+        const vid = r.el.querySelector('.ex-variant').value;
+        const v = r.product && r.product.variants.find(x => x.id === vid);
+        const qty = Math.max(1, parseInt(r.el.querySelector('.ex-qty').value, 10) || 1);
+        return v ? {v, qty, title: r.product.title} : null;
+    });
     const toRelay = document.querySelector('input[name=ex-where]:checked').value === 'relay';
     const relay = toRelay ? document.querySelector('input[name=ex-relay]:checked') : null;
     const collect = document.getElementById('ex-collect');
-    return {v, qty, toRelay, relay, collectId: collect.value,
+    return {pieces: pieces.filter(Boolean), incomplete: pieces.some(p => !p), toRelay, relay, collectId: collect.value,
             collectLabel: collect.value ? collect.options[collect.selectedIndex].textContent.replace('Ajouter à la collecte du ', '') : ''};
 }
 
@@ -862,32 +889,35 @@ function exchangeSummary() {
     const box = document.getElementById('ex-summary');
     const btn = document.getElementById('ex-btn');
     const where = c.toRelay ? (c.relay ? 'point relais ' + c.relay.dataset.name : null) : EX.delivery.where;
-    btn.disabled = !c.v || !where;
-    if (!c.v) { box.textContent = ''; return; }
+    btn.disabled = !c.pieces.length || c.incomplete || !where;
+    if (!c.pieces.length) { box.textContent = ''; return; }
     const euro = n => n.toFixed(2).replace('.', ',').replace(',00', '') + ' €';
-    let text = `${c.qty} × ${EX.product.title} en ${c.v.size}, prix catalogue ${euro(c.v.price * c.qty)}.`;
+    const total = c.pieces.reduce((t, p) => t + p.v.price * p.qty, 0);
+    let text = c.pieces.map(p => `${p.qty} × ${p.title} en ${p.v.size}`).join(' + ') + ` : prix catalogue ${euro(total)}.`;
     if (EX.paid != null) {
-        const gap = c.v.price * c.qty - EX.paid;
-        text += ` Payé pour l'article retourné : ${euro(EX.paid)}` + (Math.abs(gap) >= 0.01 ? ` (écart ${gap > 0 ? '+' : '−'}${euro(Math.abs(gap))}, à régler avec le client si besoin).` : '.');
+        const gap = total - EX.paid;
+        text += ` Payé pour les articles retournés : ${euro(EX.paid)}` + (Math.abs(gap) >= 0.01 ? ` (écart ${gap > 0 ? '+' : '−'}${euro(Math.abs(gap))}, à régler avec le client si besoin).` : '.');
     }
-    if (!(c.v.qty > 0)) text += ' ⚠️ Pas de stock pour cette taille.';
+    const empty = c.pieces.filter(p => !(p.v.qty > 0)).map(p => `${p.title} en ${p.v.size}`);
+    if (empty.length) text += ' ⚠️ Pas de stock : ' + empty.join(', ') + '.';
+    if (c.incomplete) text += ' Choisis la taille de chaque article (ou retire la ligne).';
     if (!where) text += ' Choisis le point relais.';
     box.textContent = text;
 }
 
 async function createExchange(btn) {
     const c = exchangeChoice();
-    if (!c.v) return;
+    if (!c.pieces.length || c.incomplete) return;
     const where = c.toRelay ? 'point relais ' + c.relay.dataset.name : EX.delivery.where;
-    const stock = c.v.qty > 0 ? '' : '\n⚠️ Pas de stock pour cette taille.';
-    if (!confirm(`Créer dans Wing la commande d'échange :\n${c.qty} × ${EX.product.title} en ${c.v.size}\nvers ${where}\n`
-                 + (c.collectId ? `ajoutée à la collecte du ${c.collectLabel}` : 'sans collecte (à ajouter dans Wing)') + stock)) return;
+    const empty = c.pieces.some(p => !(p.v.qty > 0)) ? '\n⚠️ Un article n\'a pas de stock.' : '';
+    if (!confirm(`Créer dans Wing la commande d'échange :\n` + c.pieces.map(p => `${p.qty} × ${p.title} en ${p.v.size}`).join('\n')
+                 + `\nvers ${where}\n` + (c.collectId ? `ajoutée à la collecte du ${c.collectLabel}` : 'sans collecte (à ajouter dans Wing)') + empty)) return;
     busy(btn, true, '⏳ Création dans Wing…');
     const msg = document.getElementById('ex-msg');
     msg.textContent = '';
     try {
         await post('/retours/' + CASE_ID + '/echange', {
-            variant_id: c.v.id, quantity: c.qty, collect_id: c.collectId,
+            items: c.pieces.map(p => ({variant_id: p.v.id, quantity: p.qty})), collect_id: c.collectId,
             relay_id: c.relay ? c.relay.value : '', relay_name: c.relay ? c.relay.dataset.name : ''});
         go(CASE_ID, null);
     } catch (e) { msg.textContent = '⚠️ ' + e.message; busy(btn, false); }
