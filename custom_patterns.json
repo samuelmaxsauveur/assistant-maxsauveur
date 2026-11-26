@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__alors___a_donne_quoi__",
+      "topic_label": "Re: Alors, ça donne quoi ?",
+      "situation": "Re: Alors, ça donne quoi ?",
+      "response_template": "Salut Jérémy,\n\nVotre commande #13527 est bien enregistrée et le paiement est confirmé. Elle porte sur deux ceintures en précommande (Morricone Cuir de veau Noir et Gigi Cuir Lézard Noir, taille 100). La livraison est prévue pour mi-décembre 2026.\n\nVous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "ceinture",
       "topic_label": "Ceinture",
       "situation": "Ceinture",
@@ -4078,14 +4086,6 @@
       "topic_label": "Form name Form submitted 2026-10-14 13:36:19",
       "situation": "Form name Form submitted 2026-10-14 13:36:19",
       "response_template": "Bonjour,\n\nVotre Chelsea Chapman Bordeaux 42.5 sera expédiée courant de la semaine prochaine. Vous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__alors___a_donne_quoi__",
-      "topic_label": "Re: Alors, ça donne quoi ?",
-      "situation": "Re: Alors, ça donne quoi ?",
-      "response_template": "Bonjour Aurélie,\n\nVotre commande #13282 porte sur des embauchoirs en bois de cèdre, actuellement en précommande. La livraison est prévue pour mi-novembre 2026, comme indiqué sur la fiche produit au moment de votre achat. L'email que vous avez reçu était un envoi automatique de notre part, et non une confirmation de livraison imminente.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nBonne journée à vous !\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
