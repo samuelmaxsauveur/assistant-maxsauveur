@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__votre_paire_max_sauveur_est_pr_te",
+      "topic_label": "Re: Re: Re: Votre paire Max Sauveur est prête",
+      "situation": "Re: Re: Re: Votre paire Max Sauveur est prête",
+      "response_template": "Bonjour Loïc,\n\nVous avez raison, le montant de 146 € ne correspond pas à ce que nous vous avions confirmé. Le complément de 39 € vient d'être émis et vous recevrez bien 185 € au total sur votre Visa se terminant en 5080.\n\nToutes nos excuses pour cette erreur.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "demande_d__change___commande_n_13934",
       "topic_label": "Demande d’échange – Commande n°13934",
       "situation": "Demande d’échange – Commande n°13934",
