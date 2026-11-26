@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "retour_commande__13882",
+      "topic_label": "Retour commande #13882",
+      "situation": "Retour commande #13882",
+      "response_template": "Bonjour Geoffrey,\n\nNous avons fait le point avec notre équipe logistique : votre retour n'a pas encore été réceptionné de notre côté, nous n'en avons aucune trace pour l'instant.\n\nAvez-vous un numéro de suivi pour ce colis ? Cela nous permettra de localiser le retour et de faire avancer le dossier.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__re__une_commande__13915_a__t__livr_e",
       "topic_label": "Re: Re: Re: Re: Une commande #13915 a été livrée",
       "situation": "Re: Re: Re: Re: Une commande #13915 a été livrée",
