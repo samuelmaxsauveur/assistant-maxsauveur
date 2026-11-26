@@ -243,7 +243,7 @@ KNOWLEDGE_BASE = """
 - Commande passée avant ou après le 27 novembre : pas de cadeaux, rien d'appliqué après coup.
 - Retour de la paire pour REMBOURSEMENT (CGV article 21) : les 3 cadeaux sont annulés. La ceinture Jesse et les embauchoirs doivent revenir avec la paire, dans leur état d'origine et non utilisés, sinon leur valeur (169 € et 29 €) est déduite du remboursement. La carte cadeau de 50 € est désactivée, ou ses 50 € sont déduits du remboursement si elle a déjà servi. Le dire clairement, sans s'excuser.
 - Échange de pointure ou retour contre AVOIR : le client garde ses 3 cadeaux.
-- Ne rien inventer sur la durée de validité de la carte de 50 € ni sur sa date d'envoi : transmettre à Samuel.
+- La carte cadeau digitale de 50 € arrive par e-mail le lendemain de la commande. Elle est valable un an. Pas reçue au bout de deux jours : vérifier les spams, puis transmettre à Samuel.
 
 ### Mad Max 2026 : remises et retours partiels
 - Remises automatiques du jeudi 5 au dimanche 8 novembre 2026 (MADMAX26-15, -20, -30) : -15 % dès 150 €, -20 % dès 450 €, -30 % dès 800 € sur le panier entier. Non cumulables entre elles ni avec un autre code.
