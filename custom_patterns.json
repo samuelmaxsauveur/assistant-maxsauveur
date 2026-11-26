@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__une_commande__13915_a__t__livr_e",
+      "topic_label": "Re: Re: Re: Une commande #13915 a été livrée",
+      "situation": "Re: Re: Re: Une commande #13915 a été livrée",
+      "response_template": "Bonjour Erwan,\n\nFaisons le point sur chacun de vos trois questions.\n\n**Remboursement commande #13915 (528,80 €)**\nLe remboursement effectivement traité est de 848,40 €, soit davantage que le montant que vous attendiez. Nous avons remboursé les trois paires de Wayne (Bordeaux 43, Bordeaux 42 et Noir 42.5) et avons conservé uniquement les accessoires que vous avez gardés (lait nettoyant et shampoing). Ce remboursement a été émis le 25 novembre sur votre Visa se terminant par 1261. Il devrait apparaître sur votre relevé d'ici quelques jours ouvrés si ce n'est pas déjà le cas.\n\n**Remboursement commande #13419 (410 €)**\nLe remboursement de 410 € a été initié le 26 novembre sur votre Visa se terminant par 1837. Comptez quelques jours ouvrés selon votre établissement bancaire.\n\n**Wayne Bordeaux 42.5**\nCette pointure est épuisée et non disponible à ce jour. Il n'y aura donc pas d'expédition sur ce point.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "max_sauveur___service_client",
       "topic_label": "Max Sauveur — Service Client",
       "situation": "Max Sauveur — Service Client",
