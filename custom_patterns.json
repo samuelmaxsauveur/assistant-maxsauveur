@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "ceinture",
+      "topic_label": "Ceinture",
+      "situation": "Ceinture",
+      "response_template": "Bonjour Lucien,\n\nVotre commande #13622 (La Gigi, ceinture cuir marron, taille 85) est bien enregistrée et le paiement est confirmé. Il s'agit d'une précommande, avec une livraison prévue pour mi-décembre 2026.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_26_09_46_20",
       "topic_label": "Form name Form submitted 2026-11-26 09:46:20",
       "situation": "Form name Form submitted 2026-11-26 09:46:20",
@@ -4174,14 +4182,6 @@
       "topic_label": "Fwd: Commande #13550 confirmée",
       "situation": "Fwd: Commande #13550 confirmée",
       "response_template": "Bonjour Charline,\n\nC'est fait, votre commande #13550 a bien été mise à jour : la Gigi est désormais en taille 80, et la Morricone reste en 85.\n\nComme il s'agit d'une précommande, la livraison est prévue pour mi-décembre 2026. Vous recevrez automatiquement un email avec votre lien de suivi dès l'expédition.\n\nBelle journée à vous,\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "ceinture",
-      "topic_label": "Ceinture",
-      "situation": "Ceinture",
-      "response_template": "Bonjour,\n\nMerci pour votre message.\n\nC'est une bonne question, et la réponse est un peu nuancée. La ceinture Jesse est réalisée en cuir embossé façon croco, et ce type de matière est naturellement plus délicat qu'un cuir lisse. L'embossage en relief crée des aspérités qui, au contact répété de la boucle lors de l'enfilage ou du serrage, peuvent générer des frottements et laisser des traces ou des creux sur la surface.\n\nCe que vous observez est donc probablement lié à ce phénomène, et non à un défaut de la ceinture elle-même.\n\nPour éviter que ça s'aggrave, voici quelques précautions à prendre :\n\n- Évitez de faire frotter la boucle sur la partie embossée en serrant ou desserrant la ceinture. Prenez le temps de la manipuler doucement.\n- Essayez de passer la ceinture dans vos passants avant de la boucler, plutôt que de la faire glisser avec la boucle déjà en contact avec le cuir.\n\nJe reste disponible,\n\nCordialement,\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
