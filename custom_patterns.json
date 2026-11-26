@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_26_09_46_20",
+      "topic_label": "Form name Form submitted 2026-11-26 09:46:20",
+      "situation": "Form name Form submitted 2026-11-26 09:46:20",
+      "response_template": "Bonjour David,\n\nVotre commande #14083 (Brogues Derby Cuir Grainé Bordeaux, 43) vient d'être expédiée ce matin. Voici votre lien de suivi : https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=XR743037801TS\n\nLa livraison est estimée entre le 28 et le 30 novembre à la consigne Orange Bleue Angers, vous serez donc largement prêt pour le 4 décembre.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
