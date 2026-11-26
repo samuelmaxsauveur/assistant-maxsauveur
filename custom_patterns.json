@@ -2,6 +2,78 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__question_pointure",
+      "topic_label": "Re: Question pointure",
+      "situation": "Re: Question pointure",
+      "response_template": "Bonjour Mikaël,\n\nOui, c'est tout à fait habituel : les chaussures en cuir taillent différemment des sneakers, qui sont conçues avec beaucoup plus de jeu. Se retrouver 1 à 2 tailles en dessous par rapport à ses habituelles en sneakers, c'est normal.\n\nCela dit, pour être totalement sûr, je vous invite à vérifier une deuxième fois votre mesure : 27,2 cm correspond bien à un 42 sur notre guide, mais à titre de repère, un 43 correspond à environ 27,7 cm et un 44 à environ 28,5 cm. Si votre mesure est en réalité plus proche de ces valeurs, cela changerait la recommandation.\n\nPouvez-vous reprendre la mesure (pied nu, talon contre le mur) et me confirmer le résultat ?\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_avoir_pour_la_commande__13672",
+      "topic_label": "Votre avoir pour la commande #13672",
+      "situation": "Votre avoir pour la commande #13672",
+      "response_template": "Bonjour Stephane,\n\nNous avons bien reçu votre retour (Powell - Chaussures Boots Cuir Grainé Marron) et venons de générer votre avoir d'un montant de 287 €.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\nGP8E29NM9SWU\n\nConditions d'utilisation :\n- valable jusqu'au 26/05/2027,\n- utilisable sur nos chaussures et ceintures homme, en une seule commande,\n- réservé à votre adresse e-mail (stephane.garcia47@outlook.fr) : pensez à commander avec cette adresse,\n- non cumulable avec d'autres codes ou promotions.\n\nSi vous avez la moindre question, je reste disponible.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_avoir_pour_la_commande__14039",
+      "topic_label": "Votre avoir pour la commande #14039",
+      "situation": "Votre avoir pour la commande #14039",
+      "response_template": "Bonjour Thibaut,\n\nNous avons bien reçu votre retour (Paul - Chaussures Mocassin Cuir Bordeaux) et venons de générer votre avoir d'un montant de 335 €.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\nAMEE3M7BEBER\n\nConditions d'utilisation :\n- valable jusqu'au 26/05/2027,\n- utilisable sur nos chaussures et ceintures homme, en une seule commande,\n- réservé à votre adresse e-mail (thibaut.godet@wanadoo.fr) : pensez à commander avec cette adresse,\n- non cumulable avec d'autres codes ou promotions.\n\nSi vous avez la moindre question, je reste disponible.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_avoir_pour_la_commande__13904",
+      "topic_label": "Votre avoir pour la commande #13904",
+      "situation": "Votre avoir pour la commande #13904",
+      "response_template": "Bonjour Joe,\n\nNous avons bien reçu votre retour (Dakota - Chaussures Chelsea Boots Cuir Noir) et venons de générer votre avoir d'un montant de 410 €.\n\nVoici votre code à saisir dans votre panier avant de finaliser la commande :\n\n5SB2X7T5VAWM\n\nConditions d'utilisation :\n- valable jusqu'au 26/05/2027,\n- utilisable sur nos chaussures et ceintures homme, en une seule commande,\n- réservé à votre adresse e-mail (issa-joe@hotmail.com) : pensez à commander avec cette adresse,\n- non cumulable avec d'autres codes ou promotions.\n\nSi vous avez la moindre question, je reste disponible.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_retour_pour_la_commande__13395",
+      "topic_label": "Votre retour pour la commande #13395",
+      "situation": "Votre retour pour la commande #13395",
+      "response_template": "Bonjour Louis,\n\nNous avons bien reçu votre retour (Dakota - Chaussures Chelsea Boots Cuir Noir, pointure 42) et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux vous correspondre, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si une autre pointure ou un autre modèle vous tente, voici ce qu'on peut faire : nous vous envoyons un avoir de 445 €, soit le prix de votre paire (410 €) et 35 € offerts par la maison. Il est valable 6 mois sur toute la collection, chaussures et ceintures, et la livraison de votre nouvelle commande est offerte, à l'adresse de votre choix.\n\nAutrement dit, vous repartez avec une nouvelle pièce sans rien débourser, et 35 € de plus en poche.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte. Sans réponse de votre part d'ici le jeudi 3 décembre, nous procéderons au remboursement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_retour_pour_la_commande__14006",
+      "topic_label": "Votre retour pour la commande #14006",
+      "situation": "Votre retour pour la commande #14006",
+      "response_template": "Bonjour Dylan,\n\nNous avons bien reçu votre retour (Paul - Chaussures Mocassin Cuir Noir, pointure 40).\n\nAvant de lancer le remboursement, une proposition : votre commande a été passée pendant les Mad Max, avec 15 % de remise. Plutôt que de vous rembourser, nous pouvons vous envoyer gratuitement la pointure et le modèle de votre choix, et vous gardez votre remise de 15 %.\n\nSi le modèle choisi n'a pas le même prix, la même remise s'applique : nous vous remboursons la différence s'il est moins cher, et nous vous indiquons le complément s'il est plus cher.\n\nDites-moi simplement la pointure et le modèle que vous souhaitez. Sans réponse de votre part d'ici le jeudi 3 décembre, nous procéderons au remboursement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_retour_pour_la_commande__13916",
+      "topic_label": "Votre retour pour la commande #13916",
+      "situation": "Votre retour pour la commande #13916",
+      "response_template": "Bonjour Alban,\n\nNous avons bien reçu votre retour (Deck - Chaussures Bateau Cuir Marron, pointure 42.5).\n\nAvant de lancer le remboursement, une proposition : votre commande a été passée pendant les Mad Max, avec 15 % de remise. \n\nPlutôt que de vous rembourser, nous pouvons vous envoyer gratuitement la pointure et le modèle de votre choix, et vous gardez votre remise de 15 %. Vous conservez aussi votre carte cadeau Mad Max de 15 €, qu'un remboursement annulerait.\n\nSi le modèle choisi n'a pas le même prix, la même remise s'applique : nous vous remboursons la différence s'il est moins cher, et nous vous indiquons le complément s'il est plus cher.\n\nDites-moi simplement la pointure et le modèle que vous souhaitez. Sans réponse de votre part d'ici le jeudi 3 décembre, nous procéderons au remboursement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_retour_pour_la_commande__13887",
+      "topic_label": "Votre retour pour la commande #13887",
+      "situation": "Votre retour pour la commande #13887",
+      "response_template": "Bonjour William,\n\nNous avons bien reçu votre retour (Dakota - Chaussures Chelsea Boots Cuir Noir, pointure 42) et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux vous correspondre, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si une autre pointure ou un autre modèle vous tente, voici ce qu'on peut faire : nous vous envoyons un avoir de 445 €, soit le prix de votre paire (410 €) et 35 € offerts par la maison. Il est valable 6 mois sur toute la collection, chaussures et ceintures, et la livraison de votre nouvelle commande est offerte, à l'adresse de votre choix.\n\nAutrement dit, vous repartez avec une nouvelle pièce sans rien débourser, et 35 € de plus en poche.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte. Sans réponse de votre part d'ici le jeudi 3 décembre, nous procéderons au remboursement.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_retour_pour_la_commande__13793",
+      "topic_label": "Votre retour pour la commande #13793",
+      "situation": "Votre retour pour la commande #13793",
+      "response_template": "Bonjour Stephane,\n\nNous avons bien reçu votre retour (Chelsea Chapman - Chaussures Boots Cuir Grainé Bordeaux, pointure 44).\n\nLe délai de retour prévu par nos conditions de vente étant dépassé, nous ne pouvons pas procéder au remboursement. En revanche, nous pouvons vous proposer un avoir de 289 €, du montant de votre paire, valable 12 mois sur toute la collection, chaussures et ceintures.\n\nDites-moi simplement si cette solution vous convient et je vous l'envoie dans la foulée.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__re__re__votre_paire_max_sauveur_est_pr_te",
       "topic_label": "Re: Re: Re: Votre paire Max Sauveur est prête",
       "situation": "Re: Re: Re: Votre paire Max Sauveur est prête",
