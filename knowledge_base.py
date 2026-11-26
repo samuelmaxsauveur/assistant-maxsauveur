@@ -235,6 +235,14 @@ KNOWLEDGE_BASE = """
 - Relances : le 1er de chaque mois de décembre à avril, tant que le code n'a pas servi. Chaque relance contient un lien « Arrêter les rappels ». Si le client demande quand même à ne plus les recevoir, le transmettre à Samuel.
 - Ne pas prolonger une carte expirée ni la convertir en avoir sans l'accord de Samuel.
 
+### Black Friday du vendredi 27 novembre 2026 (offre « 3 cadeaux »)
+- Aucune remise sur les boots. Pour toute paire de boots achetée le vendredi 27 novembre (jusqu'à minuit), 3 cadeaux dans la boîte : la ceinture Jesse offerte (169 €, camel, marron ou croco noir), une paire d'embauchoirs en cèdre offerte (29 €) et une carte cadeau digitale de 50 €. Soit 248 € de cadeaux.
+- Modèles concernés : Powell, Wayne, Springsteen, Chelsea Chapman, Plain Toe et Wico (6 modèles, 12 coloris). Page de l'offre : https://go.maxsauveur.com
+- Juste après la commande, un nécessaire d'entretien adapté au cuir de la paire est proposé à -10 %.
+- La carte cadeau de 50 € est une carte cadeau digitale, valable sur tous les produits du site. Ne pas la confondre avec les cartes Mad Max (codes MADMAX-, dès 150 € de chaussures et ceintures seulement).
+- Commande passée avant ou après le 27 novembre : pas de cadeaux, rien d'appliqué après coup.
+- Ne rien inventer sur la durée de validité de la carte de 50 €, sa date d'envoi, ni sur ce que deviennent les cadeaux si la paire est retournée : transmettre à Samuel.
+
 ### Mad Max 2026 : remises et retours partiels
 - Remises automatiques du jeudi 5 au dimanche 8 novembre 2026 (MADMAX26-15, -20, -30) : -15 % dès 150 €, -20 % dès 450 €, -30 % dès 800 € sur le panier entier. Non cumulables entre elles ni avec un autre code.
 - Échange de pointure offert pendant les Mad Max : une fois par commande, même modèle, à demander dans la semaine qui suit la réception. Pointure épuisée : avoir du montant payé pour la paire. Un échange ne change pas la remise.
