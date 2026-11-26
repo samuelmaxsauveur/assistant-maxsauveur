@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__votre_avoir_pour_la_commande__14039",
+      "topic_label": "Re: Votre avoir pour la commande #14039",
+      "situation": "Re: Votre avoir pour la commande #14039",
+      "response_template": "Bonjour Thibaut,\n\nRavi de l'entendre, les Wayne sont une belle paire !\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__question_pointure",
       "topic_label": "Re: Question pointure",
       "situation": "Re: Question pointure",
