@@ -241,7 +241,9 @@ KNOWLEDGE_BASE = """
 - Juste après la commande, un nécessaire d'entretien adapté au cuir de la paire est proposé à -10 %.
 - La carte cadeau de 50 € est une carte cadeau digitale, valable sur tous les produits du site. Ne pas la confondre avec les cartes Mad Max (codes MADMAX-, dès 150 € de chaussures et ceintures seulement).
 - Commande passée avant ou après le 27 novembre : pas de cadeaux, rien d'appliqué après coup.
-- Ne rien inventer sur la durée de validité de la carte de 50 €, sa date d'envoi, ni sur ce que deviennent les cadeaux si la paire est retournée : transmettre à Samuel.
+- Retour de la paire pour REMBOURSEMENT (CGV article 21) : les 3 cadeaux sont annulés. La ceinture Jesse et les embauchoirs doivent revenir avec la paire, dans leur état d'origine et non utilisés, sinon leur valeur (169 € et 29 €) est déduite du remboursement. La carte cadeau de 50 € est désactivée, ou ses 50 € sont déduits du remboursement si elle a déjà servi. Le dire clairement, sans s'excuser.
+- Échange de pointure ou retour contre AVOIR : le client garde ses 3 cadeaux.
+- Ne rien inventer sur la durée de validité de la carte de 50 € ni sur sa date d'envoi : transmettre à Samuel.
 
 ### Mad Max 2026 : remises et retours partiels
 - Remises automatiques du jeudi 5 au dimanche 8 novembre 2026 (MADMAX26-15, -20, -30) : -15 % dès 150 €, -20 % dès 450 €, -30 % dès 800 € sur le panier entier. Non cumulables entre elles ni avec un autre code.

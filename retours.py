@@ -767,6 +767,29 @@ def madmax_terms(order, returned, kept):
             "card": card, "card_kept_on_refund": bool(kept) and kept_catalogue >= keep_min}
 
 
+def _black_friday_check(add, order, returned, kept, data):
+    """Boots du Black Friday (27 novembre 2026, CGV article 21) : la ceinture Jesse
+    offerte repère la commande. Remboursement = les 3 cadeaux sont annulés."""
+    lines = returned + kept
+    free_belt = any(l["category"] == "belt" and l["paid"] == 0 for l in lines)
+    # createdAt est en heure UTC : minuit à Paris tombe encore le 26.
+    if not free_belt or order.get("created_at") not in ("2026-11-26", "2026-11-27"):
+        return
+    boots_back = [l for l in returned if l["category"] == "shoes" and "mbauchoir" not in l["title"].lower()]
+    if not boots_back:
+        return
+    choice = data.get("choice")
+    if choice == "credit":
+        add("ok", "Commande Black Friday : avec un avoir, le client garde ses 3 cadeaux (CGV article 21).")
+    elif choice == "refund":
+        add("bad", "Commande Black Friday (CGV article 21) : avec un remboursement, les 3 cadeaux sont annulés. La "
+                   "ceinture Jesse et les embauchoirs doivent revenir avec la paire, sinon déduis 169 € et 29 € du "
+                   "remboursement. Désactive la carte cadeau de 50 € dans Shopify, ou déduis 50 € si elle a servi.")
+    else:
+        add("warn", "Commande Black Friday : remboursée, elle perd la ceinture, les embauchoirs et la carte de 50 € "
+                    "(CGV article 21) ; avec un avoir, le client garde ses 3 cadeaux.")
+
+
 def _madmax_card_check(add, order, kept, data):
     """Carte cadeau des commandes du jeudi 5 novembre : perdue avec un remboursement
     de toute la commande, ou si ce qui est gardé passe sous 150 € avant remise."""
@@ -866,6 +889,7 @@ def analyse(data):
                            f"seulement en déduisant la remise de {euros(loss)} : {euros(max(refundable, 0))}.")
 
     _madmax_card_check(add, order, kept, data)
+    _black_friday_check(add, order, returned, kept, data)
     credit_paid = _payment_checks(add, order, returned, data)
 
     choice = data.get("choice")
