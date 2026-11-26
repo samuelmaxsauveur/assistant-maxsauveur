@@ -52,6 +52,7 @@ def repairs_page():
         c['model'] = repair_catalog.model_name(c.get('product'))
         c['can_remind'] = c.get('decision') == 'credit' and c['status'] in repairs.CREDIT_AWAITED
         c['credit_reminders'] = re.findall(r"(\d{2}/\d{2}/\d{4}) : relance avoir", c.get('notes') or '')
+        c['can_cancel_label'] = repairs.can_cancel_label(c)
     by_workshop = {}
     for c in cases:
         by_workshop.setdefault(c.get('workshop') or 'Sans atelier', []).append(c)
@@ -289,6 +290,16 @@ def batch_status():
         if note:
             notes.append(f"{case['wing_ref']} : {note}")
     return jsonify({'success': True, 'count': len(ids), 'notes': notes})
+
+
+@repairs_bp.route('/reparations/<int:case_id>/supprimer', methods=['POST'])
+def delete_repair(case_id):
+    try:
+        case, done = repairs.delete_case(case_id, bool((request.json or {}).get('cancel_label')))
+    except Exception as e:
+        print(f"[Repairs] Delete failed for file {case_id}: {e}")
+        return jsonify({'success': False, 'error': str(e)}), 400
+    return jsonify({'success': True, 'ref': case['wing_ref'], 'done': done})
 
 
 @repairs_bp.route('/reparations/<int:case_id>', methods=['POST'])

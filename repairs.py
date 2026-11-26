@@ -6,6 +6,7 @@ Script web app (REPAIR_SHEET_URL, guarded by REPAIR_SHEET_SECRET), so Samuel
 keeps his overview in the sheet without filling it by hand.
 """
 import os
+import shutil
 from datetime import datetime
 
 import requests
@@ -164,6 +165,42 @@ def update_case(case_id, **fields):
     case = database.update_repair_case(case_id, fields)
     synced = push_to_sheet(case)
     return case, synced
+
+
+def can_cancel_label(case):
+    """The label sent to the customer can still be voided: ours, and not used yet."""
+    ref = (case.get("wing_ref") or "").upper()
+    return (case["status"] == "awaiting_customer" and bool(case.get("tracking_id"))
+            and (case.get("parcel_status") or "CREATED") == "CREATED"
+            and any(ref.endswith(s) for s in wing_repair.REF_SUFFIXES))
+
+
+def delete_case(case_id, cancel_label=False):
+    """Samuel (26/11/2026): « supprimer un dossier en cours si le problème n'est plus d'actualité ».
+
+    The customer's Wing label is voided first when Samuel asks, so it can no longer
+    be used; if Wing refuses, nothing is deleted. The sheet only ever adds or updates
+    rows, so it keeps a last line « Annulé » saying the file was deleted here.
+    """
+    import repair_docs
+    import repair_photos
+    case = database.get_repair_case(case_id)
+    if not case:
+        raise ValueError("Dossier introuvable")
+    done = []
+    if cancel_label:
+        if not can_cancel_label(case):
+            raise ValueError("L'étiquette a déjà servi ou n'est pas une étiquette de réparation : décoche l'annulation.")
+        wing_repair.cancel_label(case["wing_ref"])
+        done.append(f"étiquette {case['wing_ref']} annulée dans Wing")
+    stamp = datetime.now().strftime("%d/%m/%Y")
+    push_to_sheet(dict(case, status="cancelled",
+                       notes=f"{case.get('notes') or ''}\n{stamp} : dossier supprimé de l'assistant".strip()))
+    database.delete_repair_case(case_id)
+    for folder in (repair_photos._dir(case_id), repair_docs._case_dir(case_id)):
+        shutil.rmtree(folder, ignore_errors=True)
+    print(f"[Repairs] File {case['wing_ref']} deleted" + (f" ({', '.join(done)})" if done else ""))
+    return case, done
 
 
 def refresh_from_wing():

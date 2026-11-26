@@ -916,6 +916,15 @@ def set_repair_inbox_cases(item_id, case_ids):
         conn.close()
 
 
+def delete_repair_case(case_id):
+    conn = get_connection()
+    try:
+        conn.execute("DELETE FROM repair_cases WHERE id = ?", (case_id,))
+        conn.commit()
+    finally:
+        conn.close()
+
+
 def get_repair_cases():
     conn = get_connection()
     try:

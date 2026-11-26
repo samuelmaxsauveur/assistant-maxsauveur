@@ -203,6 +203,10 @@
                             <button class="btn btn-purple" onclick="saveCase({{ c.id }}, this)">Enregistrer</button>
                             <span class="msg" id="msg-{{ c.id }}"></span>
                         </div>
+                        <div class="actions" style="margin-top:14px; padding-top:10px; border-top:1px solid #f0f0f0;">
+                            {% if c.can_cancel_label %}<label style="display:flex; gap:6px; align-items:center; font-size:13px; color:#555;"><input type="checkbox" id="cancel-label-{{ c.id }}" checked style="width:auto;"> Annuler aussi l'étiquette Wing envoyée au client (pas encore utilisée)</label>{% endif %}
+                            <button class="btn btn-gray" style="color:#b91c1c;" onclick="deleteCase({{ c.id }}, this, {{ c.wing_ref | tojson }}, {{ status_labels[c.status] | tojson }}, {{ 'true' if c.status in ('awaiting_customer', 'delivered_customer', 'credit_received', 'cancelled') else 'false' }})">🗑 Supprimer le dossier</button>
+                        </div>
                     </div>
                 </td>
             </tr>
@@ -334,6 +338,20 @@ async function sendWorkshop(btn) {
     if (!d.success) { msg.textContent = '❌ ' + (d.error || 'Erreur'); btn.disabled = false; }
     else if (d.mode === 'reminder') { msg.textContent = `✅ Relance envoyée à ${d.to}, notée dans chaque dossier.`; setTimeout(() => location.reload(), 2500); }
     else { msg.textContent = `✅ Envoyé à ${d.to} avec ${d.photos} photo(s). Les articles passent dans « Demande envoyée ».`; setTimeout(() => location.href = '/reparations?onglet=etiquette', 2500); }
+}
+
+// A file whose problem is no longer relevant: gone from the assistant (the sheet keeps a line « Annulé »).
+async function deleteCase(id, btn, ref, status, safe) {
+    const box = document.getElementById('cancel-label-' + id);
+    const cancel = !!(box && box.checked);
+    let question = `Supprimer le dossier ${ref} ?` + (cancel ? `\nSon étiquette Wing sera annulée : le client ne pourra plus l'utiliser.` : '');
+    if (!safe) question += `\n\n⚠️ La paire n'est plus chez le client (« ${status} ») : le dossier et sa trace disparaîtront de l'assistant.`;
+    if (!confirm(question)) return;
+    const msg = document.getElementById('msg-' + id);
+    btn.disabled = true; msg.textContent = '⏳ ...';
+    const d = await post('/reparations/' + id + '/supprimer', {cancel_label: cancel});
+    if (d.success) { msg.textContent = '✅ Dossier supprimé' + (d.done.length ? ' · ' + d.done.join(', ') : ''); setTimeout(() => location.reload(), 1200); }
+    else { msg.textContent = '❌ ' + d.error; btn.disabled = false; }
 }
 
 async function saveCase(id, btn) {
