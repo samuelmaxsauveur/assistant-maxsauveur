@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "demande_d__change___commande_n_13934",
+      "topic_label": "Demande d’échange – Commande n°13934",
+      "situation": "Demande d’échange – Commande n°13934",
+      "response_template": "Bonjour Léandre,\n\nMerci pour la photo. Renvoyez-nous la paire pour que nous puissions constater le problème sur le zip. Voici la procédure :\n\n1. Téléchargez et remplissez le bon de retour sur maxsauveur.com/pages/livraison-et-retour (motif : « défaut fabrication »).\n2. Glissez-le dans le colis et expédiez-le à :\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nDès réception et vérification de la paire, nous vous proposerons selon le cas un échange ou un avoir.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "retour_commande__13882",
       "topic_label": "Retour commande #13882",
       "situation": "Retour commande #13882",
