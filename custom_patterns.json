@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__votre_avoir_pour_la_commande__13856",
+      "topic_label": "Re: Votre avoir pour la commande #13856",
+      "situation": "Re: Votre avoir pour la commande #13856",
+      "response_template": "Bonjour Morgan,\n\nRavi que vous ayez trouvé votre taille, vous serez livré très rapidement !\n\nPour l'offre Black Friday, elle concerne six modèles de boots spécifiques (Powell, Wayne, Springsteen, Chelsea Chapman, Plain Toe et Wico), la Dakota n'en fait malheureusement pas partie.\n\nBon week-end à vous également !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__14112_confirm_e",
       "topic_label": "RE: Commande #14112 confirmée",
       "situation": "RE: Commande #14112 confirmée",
