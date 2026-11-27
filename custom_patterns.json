@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__re__re__form_name_form_submitted_2026_11_24_12_31_25",
+      "topic_label": "RE: Re: RE: Re: Form name Form submitted 2026-11-24 12:31:25",
+      "situation": "RE: Re: RE: Re: Form name Form submitted 2026-11-24 12:31:25",
+      "response_template": "Bonjour Florian,\n\nNotre dossier de réclamation est bien ouvert auprès de Chronopost. C'est effectivement surprenant qu'ils indiquent ne pas avoir reçu notre signalement.\n\nSi Chronopost vous confirme par écrit que le colis est perdu, pourriez-vous nous transmettre ce mail ? Cela nous permettra de faire avancer les choses de notre côté.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__probl_me_semelle_boot_springsteen",
       "topic_label": "Re: Problème semelle Boot Springsteen",
       "situation": "Re: Problème semelle Boot Springsteen",
