@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__12045___produit_d_fectueux_ou_non_conforme_aux",
+      "topic_label": "Re: Commande #12045 : Produit défectueux ou non conforme aux attentes",
+      "situation": "Re: Commande #12045 : Produit défectueux ou non conforme aux attentes",
+      "response_template": "Bonjour Lucas,\n\nLe code 3HRDSDBBJSBA n'est pas cumulable avec les offres promotionnelles en cours. C'est pour cette raison qu'il ne s'applique pas sur les articles du Black Friday.\n\nVous pourrez l'utiliser sans problème hors période de promotion, il n'a pas de date d'expiration.\n\nBonne journée,\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "relance_remboursement_retour___commande__13928__jo_l_wanlin_",
       "topic_label": "Relance remboursement retour – Commande #13928 (Joël Wanlin)",
       "situation": "Relance remboursement retour – Commande #13928 (Joël Wanlin)",
@@ -1782,14 +1790,6 @@
       "topic_label": "Re: Chelsea Chapman",
       "situation": "Re: Chelsea Chapman",
       "response_template": "Bonjour Florian,\n\nAvec un pied classique, le **42** est la bonne pointure pour vous sur la Chelsea Chapman.\n\nPour le stock en 42, je vous reviens rapidement avec l'information.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "re__commande__12045___produit_d_fectueux_ou_non_conforme_aux",
-      "topic_label": "Re: Commande #12045 : Produit défectueux ou non conforme aux attentes",
-      "situation": "Re: Commande #12045 : Produit défectueux ou non conforme aux attentes",
-      "response_template": "Bonjour Lucas,\n\nC'est noté. Voici votre code à 40 % sans date d'expiration :\n\n3HRDSDBBJSBA\n\nÀ saisir dans votre panier lors de votre prochain achat, valable sur toute la collection chaussures et ceintures.\n\nBonne continuation et tous nos vœux pour votre mariage.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
