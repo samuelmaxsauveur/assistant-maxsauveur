@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "relance_remboursement_retour___commande__13928__jo_l_wanlin_",
+      "topic_label": "Relance remboursement retour – Commande #13928 (Joël Wanlin)",
+      "situation": "Relance remboursement retour – Commande #13928 (Joël Wanlin)",
+      "response_template": "Bonjour Joël,\n\nVotre retour n'est pas encore enregistré dans notre système. Le délai de traitement est de 10 jours ouvrés à compter de la réception du colis, et votre paire a apparemment été envoyée sans numéro de suivi, ce qui rend son localisation difficile.\n\nAvez-vous le numéro de suivi pour suivre votre colis et savoir exactement où il est ?\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__max_sauveur___service_client",
       "topic_label": "Re: Max Sauveur — Service Client",
       "situation": "Re: Max Sauveur — Service Client",
