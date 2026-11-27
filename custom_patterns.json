@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__r_clamation___d_faut_de_couture_sur_une_paire_de_chaussu",
+      "topic_label": "Re: Réclamation – Défaut de couture sur une paire de chaussures Max Sauveur Commande #12795",
+      "situation": "Re: Réclamation – Défaut de couture sur une paire de chaussures Max Sauveur Commande #12795",
+      "response_template": "Bonjour Jérôme,\n\nVotre paire a bien été réceptionnée par notre équipe logistique le 12 novembre. Elle est actuellement en cours de réparation dans notre atelier. Comptez 6 à 8 semaines à partir de la réception, vous recevrez un email avec un lien de suivi dès qu'elle repart.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "commande_14113_question",
       "topic_label": "Commande 14113 question",
       "situation": "Commande 14113 question",
