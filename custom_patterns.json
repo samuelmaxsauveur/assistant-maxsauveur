@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__relance_remboursement_retour___commande__13928__jo_l_wan",
+      "topic_label": "Re: Relance remboursement retour – Commande #13928 (Joël Wanlin)",
+      "situation": "Re: Relance remboursement retour – Commande #13928 (Joël Wanlin)",
+      "response_template": "Bonjour Joël,\n\nMerci pour ces précisions et pour la photo du reçu d'affranchissement.\n\nDeux points de notre côté :\n\nAvez-vous bien glissé un bon de retour à l'intérieur du colis ? C'est ce qui permet à l'entrepôt d'identifier votre dossier et de traiter le retour. Si ce n'est pas le cas, indiquez-le nous.\n\nPar ailleurs, le reçu d'affranchissement que vous avez joint ne constitue pas une preuve de dépôt officielle. Nous vous invitons à vous rapprocher de votre bureau de poste de Carignan afin d'obtenir une attestation de dépôt avec les références de l'envoi. Ce document nous sera indispensable si le colis n'est pas réceptionné et que nous devons ouvrir un dossier.\n\nDès que vous avez cet élément, transmettez-le nous.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__alors___a_donne_quoi__",
       "topic_label": "Re: Alors, ça donne quoi ?",
       "situation": "Re: Alors, ça donne quoi ?",
