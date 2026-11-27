@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande_14113_question",
+      "topic_label": "Re: Commande 14113 question",
+      "situation": "Re: Commande 14113 question",
+      "response_template": "Bonjour Paul,\n\nMerci pour la mesure. Avec 26,8 cm sur votre pied le plus long, vous êtes loin d'un 44 : cette pointure correspond à environ 28,5 cm de pied. Je vous recommande plutôt le 42.\n\nLe 44 que vous avez commandé sera beaucoup trop grand pour vous. \n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__13394",
       "topic_label": "Re: Commande #13394",
       "situation": "Re: Commande #13394",
