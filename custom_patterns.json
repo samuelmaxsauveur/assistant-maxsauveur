@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__probl_me_semelle_boot_springsteen",
+      "topic_label": "Re: Problème semelle Boot Springsteen",
+      "situation": "Re: Problème semelle Boot Springsteen",
+      "response_template": "Bonjour Nicolas,\n\nNous nous en excusons : la garantie à vie des semelles était bien en vigueur au moment de votre achat, et elle s'applique à votre paire.\n\nAvant de déclencher la prise en charge, pourriez-vous nous envoyer quelques photos de la semelle ? Nous avons besoin de voir précisément où se situe le défaut ou le décollement pour préparer au mieux votre dossier.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__12045___produit_d_fectueux_ou_non_conforme_aux",
       "topic_label": "Re: Commande #12045 : Produit défectueux ou non conforme aux attentes",
       "situation": "Re: Commande #12045 : Produit défectueux ou non conforme aux attentes",
