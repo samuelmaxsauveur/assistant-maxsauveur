@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "conseil_pointure",
+      "topic_label": "Conseil Pointure",
+      "situation": "Conseil Pointure",
+      "response_template": "Bonjour Luc,\n\nAvec 26,7 cm de pied, je vous recommande le 42 sur le Powell.\n\nVotre référence Thursday Boots Diplomat en 41,5 est un bon repère.\n\nBonne commande !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "re__probl_me_semelle_boot_springsteen",
       "topic_label": "Re: Problème semelle Boot Springsteen",
       "situation": "Re: Problème semelle Boot Springsteen",
@@ -4246,14 +4254,6 @@
       "topic_label": "Commande #13456",
       "situation": "Commande #13456",
       "response_template": "Bonjour Geoffrey,\n\nVotre commande #13456 (Chelsea Chapman Noir 41 + ceinture Liam Marron 90) est bien enregistrée. Elle est en cours de collecte dans notre entrepôt, pas encore expédiée.\n\nLa Chelsea Chapman est une précommande, ce qui explique le délai depuis le 22 septembre. La livraison est estimée entre le 20 et le 22 octobre. Vous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par Chronopost.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "conseil_pointure",
-      "topic_label": "Conseil pointure",
-      "situation": "Conseil pointure",
-      "response_template": "Bonjour Quentin,\n\nAvec 26,8 cm, notre guide vous place en **41**.\n\nLe Deck chausse légèrement grand, donc le 41 sera parfaitement adapté. Pas besoin de viser le 41,5.\n\nN'hésitez pas si vous avez d'autres questions avant de passer commande.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
