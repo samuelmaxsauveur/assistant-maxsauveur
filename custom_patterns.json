@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__14112_confirm_e",
+      "topic_label": "RE: Commande #14112 confirmée",
+      "situation": "RE: Commande #14112 confirmée",
+      "response_template": "Bonjour Baptiste,\n\nPas de souci, le changement a déjà été effectué : votre ceinture Jesse est bien passée en Cuir Croco Noir (taille 85).\n\nVous recevrez un email de confirmation avec le récapitulatif mis à jour.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "conseil_pointure",
       "topic_label": "Conseil Pointure",
       "situation": "Conseil Pointure",
