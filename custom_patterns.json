@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__13394",
+      "topic_label": "Re: Commande #13394",
+      "situation": "Re: Commande #13394",
+      "response_template": "Bonjour Gabriel,\n\nVoici votre avoir pour les chaussettes :\n\nCode : BUXY7KXWFN78\nMontant : 15 €\nValable jusqu'au 27/05/2027 en une seule commande, réservé à l'adresse ulve.gabriel@gmail.com, non cumulable avec d'autres codes ou promotions.\n\nLes embauchoirs en 40 sont disponibles sur le site, vous pouvez passer commande directement en utilisant ce code.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__votre_avoir_pour_la_commande__13856",
       "topic_label": "Re: Votre avoir pour la commande #13856",
       "situation": "Re: Votre avoir pour la commande #13856",
