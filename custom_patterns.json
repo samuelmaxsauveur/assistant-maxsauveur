@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__max_sauveur___service_client",
+      "topic_label": "Re: Max Sauveur — Service Client",
+      "situation": "Re: Max Sauveur — Service Client",
+      "response_template": "Bonjour Dhoud,\n\nC'est noté, la réexpédition vers la Coccinelle Express (732CJ) est bien programmée. Vous recevrez un email avec votre lien de suivi dès que le colis est pris en charge.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 15
+    },
+    {
       "topic": "re__re__form_name_form_submitted_2026_11_24_21_04_47",
       "topic_label": "Re: Re: Form name Form submitted 2026-11-24 21:04:47",
       "situation": "Re: Re: Form name Form submitted 2026-11-24 21:04:47",
@@ -2568,14 +2576,6 @@
       "response_template": "nous venons de corriger le probleme",
       "key_points": "",
       "example_count": 4
-    },
-    {
-      "topic": "re__max_sauveur___service_client",
-      "topic_label": "Re: Max Sauveur — Service Client",
-      "situation": "Re: Max Sauveur — Service Client",
-      "response_template": "Salut Xavier,\n\nVoici ton code : FD9CNBS11ENB \n\nBonne journée !\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 14
     },
     {
       "topic": "choix_de_pointure",
