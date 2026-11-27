@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "commande_14113_question",
+      "topic_label": "Commande 14113 question",
+      "situation": "Commande 14113 question",
+      "response_template": "Bonjour Paul,\n\nLe conseil en haut de la page (prendre une taille au-dessus) s'applique effectivement au Paul, qui chausse serré au départ. Votre réflexe était le bon.\n\nCela dit, pour vous confirmer que le 44 est bien la bonne taille pour vous, pourriez-vous me donner la longueur exacte de votre pied en cm (pied nu, talon contre un mur, en marquant le bout du gros orteil) ? Cela nous permettra de valider le choix définitivement.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__commande__13555_confirm_e",
       "topic_label": "Re: Commande #13555 confirmée",
       "situation": "Re: Commande #13555 confirmée",
