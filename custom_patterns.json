@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "form_name_form_submitted_2026_11_26_22_43_35",
+      "topic_label": "Form name Form submitted 2026-11-26 22:43:35",
+      "situation": "Form name Form submitted 2026-11-26 22:43:35",
+      "response_template": "Bonjour Rémy,\n\nVotre commande #13633 (La Gigi, ceinture cuir marron, taille 80) est bien enregistrée et le paiement est confirmé. Il s'agit d'une précommande, avec une livraison prévue pour mi-décembre 2026, donc tout à fait dans les temps pour les fêtes.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "probl_me_semelle_boot_springsteen",
       "topic_label": "Problème semelle Boot Springsteen",
       "situation": "Problème semelle Boot Springsteen",
