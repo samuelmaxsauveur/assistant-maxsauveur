@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__question_pointure",
+      "topic_label": "Re: Re: Question pointure",
+      "situation": "Re: Re: Question pointure",
+      "response_template": "Bonjour Mikaël,\n\nLes photos sont claires, la mesure confirme bien un pied en dessous de 27 cm. Le **42** est la bonne pointure pour le Wico.\n\nBonne commande !\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "re__r_clamation___d_faut_de_couture_sur_une_paire_de_chaussu",
       "topic_label": "Re: Réclamation – Défaut de couture sur une paire de chaussures Max Sauveur Commande #12795",
       "situation": "Re: Réclamation – Défaut de couture sur une paire de chaussures Max Sauveur Commande #12795",
