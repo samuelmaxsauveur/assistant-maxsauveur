@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__commande__13555_confirm_e",
+      "topic_label": "Re: Commande #13555 confirmée",
+      "situation": "Re: Commande #13555 confirmée",
+      "response_template": "Bonjour Anne-Hélène,\n\nVotre commande #13555 (La Gigi, ceinture cuir marron, taille 105) est bien enregistrée et le paiement a été confirmé. Il s'agit d'une précommande, avec une livraison prévue pour mi-décembre 2026.\n\nVotre colis n'a pas encore été expédié, c'est tout à fait normal pour ce type de commande. Dès qu'il est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "form_name_form_submitted_2026_11_26_22_43_35",
       "topic_label": "Form name Form submitted 2026-11-26 22:43:35",
       "situation": "Form name Form submitted 2026-11-26 22:43:35",
