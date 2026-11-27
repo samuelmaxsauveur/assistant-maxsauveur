@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "probl_me_semelle_boot_springsteen",
+      "topic_label": "Problème semelle Boot Springsteen",
+      "situation": "Problème semelle Boot Springsteen",
+      "response_template": "Bonjour Nicolas,\n\nMerci pour les photos et les détails, c'est utile.\n\nAprès examen, bonne nouvelle sur un point : ce que vous voyez au niveau de la couture n'aura pas d'incidence sur la solidité de la semelle. Les Springsteen sont montées en Goodyear, une construction cousue en deux passages, ce qui leur confère une très bonne tenue dans la durée.\n\nEn revanche, votre paire a été achetée en octobre 2021. À cette époque, la garantie à vie des semelles n'était pas encore en vigueur chez nous, et nous ne pouvons donc pas l'appliquer rétroactivement à cette commande.\n\nCe que nous pouvons faire : prendre en charge le ressemelage de votre paire pour 40€, en nous occupant de tout. Si vous souhaitez aller dans ce sens, dites-le-nous et nous vous donnons la marche à suivre.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
       "topic": "_daily_doc",
       "topic_label": "Document des réponses types (mis à jour chaque soir)",
       "situation": "Document de référence consolidé de toutes les réponses types",
