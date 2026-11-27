@@ -2,6 +2,22 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__re__form_name_form_submitted_2026_11_24_21_04_47",
+      "topic_label": "Re: Re: Form name Form submitted 2026-11-24 21:04:47",
+      "situation": "Re: Re: Form name Form submitted 2026-11-24 21:04:47",
+      "response_template": "Bonjour Loïc,\n\nPour vous répondre avec précision : il s'agit bien de cuir box calf pleine fleur, conformément à la fiche produit. Ce que vous observez pourrait toutefois indiquer un problème survenu lors du traitement du cuir en chaîne de montage, côté tannerie, et non une substitution de matière.\n\nC'est précisément pourquoi nous avons besoin de l'expertise de notre atelier sur la paire physique. Nous ne pouvons pas vous apporter une réponse définitive avant de l'avoir examinée, et ce serait vous induire en erreur que de le faire.\n\nCe que nous pouvons vous confirmer par écrit : si notre atelier constate un défaut sur le cuir à réception, un échange contre une paire neuve vous sera proposé.\n\nVous pouvez envoyer la paire avec l'étiquette prépayée et la référence #13993_REPARATION que nous vous avons transmises. C'est la bonne voie pour obtenir une réponse factuelle et une solution adaptée.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 1
+    },
+    {
+      "topic": "votre_retour_pour_la_commande__13793",
+      "topic_label": "Votre retour pour la commande #13793",
+      "situation": "Votre retour pour la commande #13793",
+      "response_template": "Bonjour Stephane,\n\nLe délai de retour prévu par nos conditions de vente étant dépassé, nous ne pouvons pas procéder au remboursement, même si la pointure en 43 ne vous convenait pas. Dans ce cas, seul un avoir serait possible.\n\nSi vous souhaitez tout de même tenter le 43, nous pouvons vous envoyer un avoir de 289 € valable 6 mois uniquement sur le modèle Chelsea Chapman - Chaussures Boots Cuir Grainé Bordeaux, que vous pourrez utiliser pour commander la bonne pointure. Si celle-ci ne vous convient pas non plus, nous pourrons vous émettre un nouvel avoir.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "re__re__question_pointure",
       "topic_label": "Re: Re: Question pointure",
       "situation": "Re: Re: Question pointure",
@@ -142,14 +158,6 @@
       "topic_label": "Votre retour pour la commande #13887",
       "situation": "Votre retour pour la commande #13887",
       "response_template": "Bonjour William,\n\nNous avons bien reçu votre retour (Dakota - Chaussures Chelsea Boots Cuir Noir, pointure 42) et votre demande de remboursement est enregistrée. On s'en occupe.\n\nPar simple curiosité, au-delà du problème de taille, est-ce qu'il y a un détail sur le modèle (le cuir, la forme ou le style) qui ne vous a pas totalement convaincu ?\n\nOn essaie de comprendre si une autre pièce de la collection pourrait mieux vous correspondre, que vous soyez plutôt dans une recherche d'esthétique précise ou de durabilité.\n\n=> Si une autre pointure ou un autre modèle vous tente, voici ce qu'on peut faire : nous vous envoyons un avoir de 445 €, soit le prix de votre paire (410 €) et 35 € offerts par la maison. Il est valable 6 mois sur toute la collection, chaussures et ceintures, et la livraison de votre nouvelle commande est offerte, à l'adresse de votre choix.\n\nAutrement dit, vous repartez avec une nouvelle pièce sans rien débourser, et 35 € de plus en poche.\n\nDites-moi simplement si vous préférez cette option ou si nous validons le remboursement initial sur votre compte. Sans réponse de votre part d'ici le jeudi 3 décembre, nous procéderons au remboursement.\n\nJohn de Max Sauveur",
-      "key_points": "",
-      "example_count": 1
-    },
-    {
-      "topic": "votre_retour_pour_la_commande__13793",
-      "topic_label": "Votre retour pour la commande #13793",
-      "situation": "Votre retour pour la commande #13793",
-      "response_template": "Bonjour Stephane,\n\nNous avons bien reçu votre retour (Chelsea Chapman - Chaussures Boots Cuir Grainé Bordeaux, pointure 44).\n\nLe délai de retour prévu par nos conditions de vente étant dépassé, nous ne pouvons pas procéder au remboursement. En revanche, nous pouvons vous proposer un avoir de 289 €, du montant de votre paire, valable 12 mois sur toute la collection, chaussures et ceintures.\n\nDites-moi simplement si cette solution vous convient et je vous l'envoie dans la foulée.\n\nJohn de Max Sauveur",
       "key_points": "",
       "example_count": 1
     },
