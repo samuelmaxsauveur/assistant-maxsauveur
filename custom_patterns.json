@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__probl_me_semelle_boot_springsteen",
+      "topic_label": "Re: Problème semelle Boot Springsteen",
+      "situation": "Re: Problème semelle Boot Springsteen",
+      "response_template": "Bonjour Nicolas,\n\nNous acceptons la prise en charge de votre paire pour réparation.\n\nVoici la procédure :\n\n1. Imprimez l'étiquette de retour prépayée ci-dessous et collez-la sur le colis :\nhttps://wing-labelling-system.s3.eu-west-3.amazonaws.com/549146d6-4924-4a03-a1b7-297a86f83bcd/LABEL/2026-11-27/LABEL-0e572396-5284-4450-9fd8-fe24659257ee-1795800596846-6A08371297432.pdf\n\n2. Téléchargez et complétez le bon de retour disponible ici : https://maxsauveur.com/pages/livraison-et-retour\nIndiquez comme motif : \"réparation\".\nNotez également votre référence de réparation : #2150_REPARATION\n\n3. Glissez le bon de retour à l'intérieur du colis et expédiez-le à :\nSSL – Solutions & Services Logistiques\n14 avenue Lamartine\n13170 Les Pennes-Mirabeau\n\nComptez 6 à 8 semaines maximum entre la réception de votre paire et son retour chez vous.\n\nN'hésitez pas si vous avez la moindre question.\n\nJohn de Max Sauveur",
+      "key_points": "",
+      "example_count": 2
+    },
+    {
       "topic": "re__relance_remboursement_retour___commande__13928__jo_l_wan",
       "topic_label": "Re: Relance remboursement retour – Commande #13928 (Joël Wanlin)",
       "situation": "Re: Relance remboursement retour – Commande #13928 (Joël Wanlin)",
@@ -56,14 +64,6 @@
       "response_template": "Bonjour Luc,\n\nAvec 26,7 cm de pied, je vous recommande le 42 sur le Powell.\n\nVotre référence Thursday Boots Diplomat en 41,5 est un bon repère.\n\nBonne commande !\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 2
-    },
-    {
-      "topic": "re__probl_me_semelle_boot_springsteen",
-      "topic_label": "Re: Problème semelle Boot Springsteen",
-      "situation": "Re: Problème semelle Boot Springsteen",
-      "response_template": "Bonjour Nicolas,\n\nNous nous en excusons : la garantie à vie des semelles était bien en vigueur au moment de votre achat, et elle s'applique à votre paire.\n\nAvant de déclencher la prise en charge, pourriez-vous nous envoyer quelques photos de la semelle ? Nous avons besoin de voir précisément où se situe le défaut ou le décollement pour préparer au mieux votre dossier.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 1
     },
     {
       "topic": "re__commande__12045___produit_d_fectueux_ou_non_conforme_aux",
