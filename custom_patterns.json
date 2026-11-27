@@ -2,6 +2,14 @@
   "_comment": "Patterns de réponse sauvegardés. Ajoutés ici = permanents sur Railway.",
   "patterns": [
     {
+      "topic": "re__alors___a_donne_quoi__",
+      "topic_label": "Re: Alors, ça donne quoi ?",
+      "situation": "Re: Alors, ça donne quoi ?",
+      "response_template": "Bonjour Anne-Claire,\n\nVotre commande #13640 (La Gigi - Ceinture Cuir Marron 95 et Morricone - Ceinture Western en Cuir de veau Noir 95) est bien enregistrée et le paiement est confirmé. Il s'agit d'une précommande, avec une livraison prévue pour mi-décembre 2026, donc tout à fait dans les temps pour les fêtes.\n\nDès que votre colis est pris en charge par le transporteur, vous recevrez automatiquement un email avec votre lien de suivi.\n\nJohn – Service Client – Max Sauveur",
+      "key_points": "",
+      "example_count": 3
+    },
+    {
       "topic": "re__commande_14113_question",
       "topic_label": "Re: Commande 14113 question",
       "situation": "Re: Commande 14113 question",
@@ -264,14 +272,6 @@
       "response_template": "Bonjour Erwan,\n\nJe comprends votre frustration, et je vais vous expliquer exactement ce qui s'est passé.\n\nLe Wayne Bordeaux 42.5 était déjà épuisé avant même que votre retour ne nous parvienne. Ce n'est donc pas la conséquence de votre retour : cette pointure n'était plus disponible indépendamment de votre situation.\n\nSur le fond : nous vous avons conseillé du mieux possible sur le guide des tailles, mais le choix des paires à commander vous appartient. En période Mad Max, nous recommandons explicitement de ne commander qu'une paire, précisément pour laisser les autres pointures disponibles pour l'ensemble des clients. Ici, quatre paires ont été commandées, et aucune ne s'est avérée convenir. Ces paires auraient pu être achetées par d'autres clients qui cherchaient leur pointure.\n\nPar ailleurs, les échanges via plusieurs retours successifs créent des contraintes logistiques importantes, ce qui explique que nous ayons traité ce dossier par un remboursement intégral.\n\nNous ne pouvons pas vous garantir la disponibilité du Wayne Bordeaux 42.5 ni vous proposer un tarif Mad Max sur une commande future. Si cette pointure devait revenir en stock, vous en seriez informé via l'alerte pointure sur la fiche produit.\n\nJohn – Service Client – Max Sauveur",
       "key_points": "",
       "example_count": 1
-    },
-    {
-      "topic": "re__alors___a_donne_quoi__",
-      "topic_label": "Re: Alors, ça donne quoi ?",
-      "situation": "Re: Alors, ça donne quoi ?",
-      "response_template": "Salut Jérémy,\n\nVotre commande #13527 est bien enregistrée et le paiement est confirmé. Elle porte sur deux ceintures en précommande (Morricone Cuir de veau Noir et Gigi Cuir Lézard Noir, taille 100). La livraison est prévue pour mi-décembre 2026.\n\nVous recevrez automatiquement un email avec votre lien de suivi dès que le colis est pris en charge par le transporteur.\n\nJohn – Service Client – Max Sauveur",
-      "key_points": "",
-      "example_count": 2
     },
     {
       "topic": "ceinture",
